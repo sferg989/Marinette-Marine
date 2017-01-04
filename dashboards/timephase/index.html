@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cost Dashboard </title>
+    <script src="../../inc/lib/js/jquery.js"></script>
+    <script src="../../inc/lib/js/jsgrid.min.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="../../inc/lib/js/Chart.bundle.js"></script>
+    <script src="../../inc/lib/js/select2-4.0.3/dist/js/select2.full.js"></script>
+    <script src="timephase_filter.js"></script>
+
+    <link rel="stylesheet" href="../../inc/lib/js/jsgrid.min.css">
+    <link rel="stylesheet" href="../../inc/lib/js/jsgrid-theme.css">
+    <link rel="stylesheet" href="../../inc/lib/js/select2-4.0.3/dist/css/select2.min.css">
+    <link rel="stylesheet" href="../../inc/lib/css/bootstrap/css/bootstrap.css">
+
+    <style>
+        .alt-grid [class*="col-"] {padding-left:0;padding-right:0}
+        .alt-grid .row {margin-left:5px;margin-right:5px}
+
+        /* container adjusted */
+        .alt-grid .container {width:96%;max-width:none;padding:0;}
+        .grid_header {
+            font-size: xx-small;
+            font: bold;
+            text-align: center;
+        }
+        #hiding_div {
+            display: none;
+        }
+        .center-text {
+              text-align: center;
+          }
+    </style>
+</head>
+<body class="alt-grid">
+<!--<div id = "filters">-->
+<div class="container">
+    <h6> Timephased EV Dashboard</h6>
+    <div  class="row">
+        <div class="col-md-2">
+            <label for="project">Project Filter</label>
+            <select id = "project" class="project">
+                <option>LCS13</option>
+            </select>
+        </div>
+        <div class="col-md-2">
+            <label for="cam">Cam Filter</label>
+            <select id = "cam" class="cam">
+            </select>
+        </div>
+        <div class="col-md-2">
+            <label for="ca">CA Filter</label>
+            <select id = "ca" class="ca">
+                <option>1.16.1.1.1.621</option>
+
+            </select>
+        </div>
+        <div class="col-md-2">
+            <label for="start_period">Starting Period</label>
+            <select id = "start_period" class="start_period">
+                <option>201401</option>
+            </select>
+        </div>
+        <div class="col-md-2">
+            <label for="end_period">Ending Period</label>
+            <select id = "end_period" class="end_period">
+                <option>201411</option>
+            </select>
+        </div>
+        <div class="col-md-2">
+            <label for="rpt_type">Report Type</label>
+            <select id = "rpt_type" class="rpt_type">
+                <option>dollars</option>
+            </select>
+        </div>
+        <div class="col-md-1">
+
+            <button id = "submit" type="button" class="btn btn-success">Submit</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div id="chart_div"></div>
+        </div>
+        <div class="col-md-5">
+            <div id="spicpi_chart_div"></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div id="table_div"></div>
+        </div>
+        <div class="col-md-5">
+            <div id="spi_cpi_table_div"></div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

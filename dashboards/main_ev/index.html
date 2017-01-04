@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard </title>
+    <script src="../../inc/lib/js/jquery.js"></script>
+    <script src="../../inc/lib/js/jsgrid.min.js"></script>
+    <script src="../../inc/lib/js/RGraph/libraries/RGraph.common.core.js"></script>
+    <script src="../../inc/lib/js/RGraph/libraries/RGraph.common.dynamic.js"></script>
+    <script src="../../inc/lib/js/RGraph/libraries/RGraph.common.effects.js"></script>
+    <script src="../../inc/lib/js/RGraph/libraries/RGraph.meter.js"></script>
+    <script src="../../inc/lib/js/RGraph/libraries/RGraph.thermometer.js"></script>
+    <script src="../../inc/lib/js/select2-4.0.3/dist/js/select2.full.js"></script>
+
+    <link rel="stylesheet" href="../../inc/lib/js/jsgrid.min.css">
+    <link rel="stylesheet" href="../../inc/lib/js/jsgrid-theme.css">
+    <link rel="stylesheet" href="../../inc/lib/js/select2-4.0.3/dist/css/select2.min.css">
+    <link rel="stylesheet" href="../../inc/lib/css/bootstrap/css/bootstrap.css">
+    <script src="dashboard_filter.js"></script>
+    <script src="dashboard_grid.js"></script>
+    <style>
+    .alt-grid [class*="col-"] {padding-left:0;padding-right:0}
+    .alt-grid .row {margin-left:5;margin-right:5}
+
+    /* container adjusted */
+    .alt-grid .container {width:96%;max-width:none;padding:0;}
+    .jsgrid-grid-header,
+    .jsgrid-grid-body{
+        overflow: auto;
+    }
+    .grid_header {
+        font-size: xx-small;
+        font: bold;
+        text-align: center;
+    }
+    .font_class {
+        font-weight: 900;
+        text-align: center;
+    }
+    #hiding_div {
+        display: none;
+    }
+
+
+</style>
+</head>
+<body class="alt-grid">
+<!--<div id = "filters">-->
+<div class="container">
+    <h6> Main EV Dashboard</h6>
+    <div class="row">
+
+        <div class="col-md-2">
+            <label for="project">Project Filter</label>
+            <select id = "project" class="project">
+                <option>2</option>
+            </select>
+        </div>
+        <div class="col-md-2">
+            <label for="cam">Cam Filter</label>
+            <select id = "cam" class="cam">
+            </select>
+        </div>
+        <div class="col-md-2">
+            <label for="ca">Cam Filter</label>
+            <select id = "ca" class="ca">
+            </select>
+        </div>
+        <div class="col-md-2">
+            <label for="period">Period Filter</label>
+            <select id = "period" class="period">
+                <option>201610</option>
+            </select>
+        </div>
+        <div class="col-md-2">
+            <label for="rpt_type">Report Type</label>
+            <select id = "rpt_type" class="rpt_type">
+                <option>dollars</option>
+            </select>
+        </div>
+        <div class="col-md-1">
+
+            <button id = "submit" type="button" class="btn btn-success">Submit</button>
+        </div>
+
+
+    </div>
+    <div id = "hiding_div" >
+    <div class="row">
+        <div class="col-md-10">
+            <div align = 'center'>Cost Data <div id = "costData"></div></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-10">
+            <div align = 'center'><div id = "costIndices"></div></div>
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-md-2">
+            <div align = 'center'>SPI <div id = spi_val></div>
+                <canvas id="spi" width="150" height="85">
+                [No canvas support]
+                </canvas>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div align = 'center'>CPI <div id = cpi_val></div>
+                <canvas id="cpi" width="150" height="85">
+                    [No canvas support]
+                </canvas>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div align = 'center'>TCPI <div id = tcpi_val></div>
+                <canvas id="tcpi" width="150" height="85">
+                    [No canvas support]
+                </canvas>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div align = 'center'>Percent Scheduled
+                <canvas id="ps" width="100" height="150">
+                    [No canvas support]
+                </canvas>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div align = 'center'>Percent Complete
+                <canvas id="pc" width="100" height="150">
+                    [No canvas support]
+                </canvas>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div align = 'center'>Actuals Spent <sub>EAC</sub>
+                <canvas align = 'center' id="actuals_spent" width="100" height="150">
+                    [No canvas support]
+                </canvas>
+            </div>
+        </div>
+   </div>
+        <div class="row">
+            <div class="col-md-3">
+                <div align = 'center'>BEI Start <div id = bei_start_val></div>
+                    <canvas id="bei_start" width="150" height="85">
+                        [No canvas support]
+                    </canvas>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div align = 'center'>BEI Finish <div id = bei_finish_val></div>
+                    <canvas id="bei_finish" width="150" height="85">
+                        [No canvas support]
+                    </canvas>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+
+
+</body>
+</html>

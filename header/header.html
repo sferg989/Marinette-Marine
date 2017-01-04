@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <style>
+    html, body, iframe { height: 90%; }
+</style>
+</head>
+<body >
+<script>
+        function loadIframe(url) {
+            var $iframe = $('#iframe1');;
+            if ( $iframe.length ) {
+                $iframe.attr('src',url);
+                return false;
+            }
+            return true;
+        }
+    function thisWorked()
+    {
+        alert("yess");
+    }
+
+</script>
+<div >
+<nav class="navbar">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Marinette Marine EVMS</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li class="dropdown" ><a class="dropdown-toggle" data-toggle="dropdown" href="#">Dashboards<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#" onclick="loadIframe('../dashboards/timephase/index.html')">TimePhase Dashboard</a></li>
+                    <li><a href="#" onclick="loadIframe('../dashboards/main_ev/index.html')">Main EV Dashboard</a></li>
+                </ul>
+            </li>
+            <li class="dropdown" ><a class="dropdown-toggle" data-toggle="dropdown" href="#">Processing Tools<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#" onclick="loadIframe('../monthly_processing/processing_status/index.html')">Processing Status</a></li>
+                </ul>
+            </li>
+            <li class="dropdown" ><a class="dropdown-toggle" data-toggle="dropdown" href="#">Project Loaders<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#" onclick="loadIframe('../timephased_import.php')">Timephase Loader</a></li>
+                    <li><a href="#" onclick="loadIframe('../projectdata_import.php')">Project Data Loader</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</nav>
+</div>
+
+
+
+</body>
+</html>
+<iframe name='iframe1' id="iframe1" src="../dashboards/timephase/index.html"
+        frameborder="0" border="0" cellspacing="0"
+        style="border-style: none;width: 100%; height: 100%;"></iframe>

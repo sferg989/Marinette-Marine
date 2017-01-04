@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="localhost - processing_status@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="2.6">
+    <schema id="1" name="processing_status">
+      <visible>1</visible>
+    </schema>
+    <schema id="2" name="cost"/>
+    <schema id="3" name="fmm_evms"/>
+    <schema id="4" name="information_schema"/>
+    <schema id="5" name="mysql"/>
+    <schema id="6" name="performance_schema"/>
+    <schema id="7" name="phpmyadmin"/>
+    <schema id="8" name="test"/>
+    <table id="9" parent="1" name="log"/>
+    <table id="10" parent="1" name="ship"/>
+    <table id="11" parent="1" name="steps"/>
+    <column id="12" parent="9" name="id">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="13" parent="9" name="user">
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="14" parent="9" name="changed_on">
+      <data-type>datetime|0</data-type>
+    </column>
+    <column id="15" parent="9" name="status_change">
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="16" parent="9" name="pfa_notes_change">
+      <data-type>blob|0</data-type>
+    </column>
+    <key id="17" parent="9" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <column id="18" parent="10" name="id">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="19" parent="10" name="step_id">
+      <data-type>int(9)|0</data-type>
+    </column>
+    <column id="20" parent="10" name="ship_code">
+      <data-type>int(9)|0</data-type>
+    </column>
+    <column id="21" parent="10" name="period">
+      <data-type>int(9)|0</data-type>
+    </column>
+    <column id="22" parent="10" name="status">
+      <data-type>tinyint(1)|0</data-type>
+    </column>
+    <column id="23" parent="10" name="pfa_notes">
+      <data-type>blob|0</data-type>
+    </column>
+    <column id="24" parent="10" name="completed_by">
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="25" parent="10" name="completed_on">
+      <data-type>datetime|0</data-type>
+    </column>
+    <key id="26" parent="10" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <column id="27" parent="11" name="id">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="28" parent="11" name="wi">
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="29" parent="11" name="step">
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="30" parent="11" name="timeline">
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <key id="31" parent="11" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+  </database-model>
+</dataSource>

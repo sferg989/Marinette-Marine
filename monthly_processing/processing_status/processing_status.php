@@ -116,7 +116,7 @@ if($control=="status_grid")
         $step_id    = $rs->fields["step_id"];
         $status     = $rs->fields["status"];
         $pfa_notes  = addslashes($rs->fields["pfa_notes"]);
-        $wi         = addslashes($rs->fields["wi"]);
+        $wi         = htmlentities($rs->fields["wi"]);
         $url        = addslashes($rs->fields["url"]);
         $step       = addslashes($rs->fields["step"]);
         $timeline   = addslashes($rs->fields["timeline"]);

@@ -3,7 +3,6 @@
  */
 $(document).ready(function() {
     var url      = "cur_month_setup.php";
-
     function goBack() {
         window.history.back();
     }
@@ -21,51 +20,21 @@ $(document).ready(function() {
             }
         }
     };
-    function createSelect2Box(filter_name) {
-        $("."+filter_name).select2({
-            //minimumResultsForSearch: -1,
-            width : 154,
-            allowClear : true,
-            placeholder: "Select "+filter_name,
-            ajax: {
-                url: url+"/"+filter_name,
-                dataType: 'json',
-                delay: 250,
-                data: function (params) {
-                    return {
-                        filter: filter_name,
-                        q     : params.term, // search term
-                        page  : params.page
-                    };
-                },
-                processResults: function (data, page) {
-                    // parse the results into the format expected by Select2.
-                    // since we are using custom formatting functions we do not need to
-                    // alter the remote JSON data
-                    return {
-                        results: data.items
-                    };
-                },
-                cache: true
-            }
-        });
-    }
-    function performStep(action)
+
+    function performStep(step, callBack)
     {
         $.ajax({
             type : "POST",
             url  : url,
             async: false,
-                data: {
-                    control         : action,
-                    rpt_period      : getUrlParameter('rpt_period'),
-                    code            : code.toString()
-                },
-            success: function (json) {
-                $("#status").append(json+"<br><br>");
-                $("#status").addClass( "status_font" );
+            dataType: 'json',
+            data: {
+                control         : step.action,
+                rpt_period      : getUrlParameter('rpt_period'),
+                code            : code.toString()
             }
         });
+        callBack(step);
     }
     $("#rpt_period_div").append(getUrlParameter('rpt_period'));
     $("#title").append(getUrlParameter('ship_code'));
@@ -95,11 +64,11 @@ $(document).ready(function() {
     });
 
     var dataView = new Slick.Data.DataView();
-    step_grid = new Slick.Grid("#step_grid", dataView, columns, options);
+    step_grid    = new Slick.Grid("#step_grid", dataView, columns, options);
     step_grid.setSelectionModel(new Slick.RowSelectionModel({selectActiveRow: false}));
     step_grid.registerPlugin(checkboxSelector);
     var columnpicker = new Slick.Controls.ColumnPicker(columns, step_grid, options);
-    var code = getUrlParameter('ship_code');
+    var code         = getUrlParameter('ship_code');
 
     $.ajax({
         dataType: "json",
@@ -121,13 +90,30 @@ $(document).ready(function() {
     $("#back_btn").click(function(){
         goBack();
     });
+
+
     $("#mybutton").click(function() {
-        $("#status_grids").empty();
-        selectedIndexes = step_grid.getSelectedRows();
+        var selectedIndexes = step_grid.getSelectedRows(),count = selectedIndexes.length;
+/*        $.each(selectedIndexes, function( index, value ) {
+            var step = {};
+
+            step.action = step_grid.getDataItem(value).action;
+            step.name   = step_grid.getDataItem(value).name;
+            $("#status").append("<div id = \""+step.action+"\">"+step.name+"</div><br>");
+            $("#"+step.action).addClass("in_que");
+        });*/
 
         $.each(selectedIndexes, function( index, value ) {
-            var action = step_grid.getDataItem(value).action;
-            performStep(action);
+            var step = {};
+            step.action = step_grid.getDataItem(value).action;
+            step.name = step_grid.getDataItem(value).name;
+            console.log("I am on step "+step.name);
+            //$("#status").append("<div id = \""+step.action+"\">"+step.name+"</div><br>");
+            performStep(step, function(ln){
+                console.log('Welcome Mr. ' + ln);
+                $("#status").append(step.name+" is complete<br>");
+            });
+            //$("#"+step.action).addClass("complete");
         });
 
     });

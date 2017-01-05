@@ -7,14 +7,14 @@ include("../../inc/inc.php");
  * Time: 2:22 PM
  */
 $user = "fs11239";
-$debug = true;
+$debug = false;
 if(strlen($code)==3)
 {
     $ship_code = "0".$code;
 }
-$ship_name= getProjectNameFromCode($ship_code);
+$ship_name       = getProjectNameFromCode($ship_code);
 $prev_rpt_period = getPreviousRPTPeriod($rpt_period);
-$data = returnPeriodData($ship_code, $prev_rpt_period,$rpt_period);
+$data            = returnPeriodData($ship_code, $prev_rpt_period, $rpt_period);
 
 $prev_year          = $data["prev_year"];
 $cur_year           = $data["cur_year"];
@@ -41,7 +41,7 @@ $path2CobraBkup     = $cur_month_dir."/".$ship_code." ".$cur_month_letters." ". 
 if($control=="step_grid")
 {
     $data = "[";
-    $sql = "select id,name, action from processing_status.setup_for_cur_month order by id";
+    $sql = "select id,name, action from processing_status.setup_for_cur_month order by order_id";
     //print $sql;
     $rs = dbCall($sql);
     while (!$rs->EOF)
@@ -74,7 +74,6 @@ if($control =="bkup")
 
 if($control =="new_folder")
 {
-
     if($prev_year!=$cur_year)
     {
         print "made it";

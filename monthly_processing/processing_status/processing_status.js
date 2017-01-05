@@ -121,10 +121,6 @@ $(document).ready(function() {
             formatter: myStepLink,
             field    : "wi"
         },{
-            id   : "step",
-            name : "Check List Step",
-            field: "step"
-        },{
             id   : "timeline",
             name : "timeline",
             field: "timeline"

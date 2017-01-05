@@ -125,7 +125,6 @@ $(document).ready(function() {
         goBack();
     });
     $("#mybutton").click(function() {
-        $("#status_grids").empty();
         selectedIndexes = step_grid.getSelectedRows();
 
         $.each(selectedIndexes, function( index, value ) {

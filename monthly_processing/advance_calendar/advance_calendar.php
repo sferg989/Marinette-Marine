@@ -7,7 +7,7 @@ include("../../inc/inc.php");
  * Time: 2:22 PM
  */
 $user = "fs11239";
-$debug = true;
+$debug = false;
 if(strlen($code)==3)
 {
     $ship_code = "0".$code;

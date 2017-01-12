@@ -20,8 +20,7 @@ $(document).ready(function() {
             }
         }
     };
-
-    function performStep(step, callBack)
+    function performStep(step)
     {
         $.ajax({
             type : "POST",
@@ -34,10 +33,12 @@ $(document).ready(function() {
                 code            : code.toString()
             }
         });
-        callBack(step);
     }
-    $("#rpt_period_div").append(getUrlParameter('rpt_period'));
-    $("#title").append(getUrlParameter('ship_code'));
+    var rpt_period = getUrlParameter('rpt_period');
+    var code         = getUrlParameter('ship_code');
+
+    $("#rpt_period_div").append(rpt_period);
+    $("#title").append(code);
 
     $("#rpt_period_div").addClass("title_font");
     $("#title").addClass("title_font");
@@ -68,14 +69,13 @@ $(document).ready(function() {
     step_grid.setSelectionModel(new Slick.RowSelectionModel({selectActiveRow: false}));
     step_grid.registerPlugin(checkboxSelector);
     var columnpicker = new Slick.Controls.ColumnPicker(columns, step_grid, options);
-    var code         = getUrlParameter('ship_code');
 
     $.ajax({
         dataType: "json",
         url     : url,
         data: {
             control   : "step_grid",
-            rpt_period : getUrlParameter('rpt_period')
+            rpt_period : rpt_period
         },
         success: function(data) {
             dataView.beginUpdate();
@@ -93,35 +93,41 @@ $(document).ready(function() {
 
 
     $("#mybutton").click(function() {
-        var worker = new Worker('doWork.js');
-
-        worker.addEventListener('message', function(e) {
-            console.log('Worker said: ', e.data);
-        }, false);
-
-        worker.postMessage('Hello World');
+        var step = {};
+        step.code       = code;
+        step.rpt_period = rpt_period;
         var selectedIndexes = step_grid.getSelectedRows(),count = selectedIndexes.length;
-/*        $.each(selectedIndexes, function( index, value ) {
-            var step = {};
-
+        var n, worker;
+        $.each(selectedIndexes, function(index, value ) {
             step.action = step_grid.getDataItem(value).action;
             step.name   = step_grid.getDataItem(value).name;
-            $("#status").append("<div id = \""+step.action+"\">"+step.name+"</div><br>");
-            $("#"+step.action).addClass("in_que");
-        });*/
+            $("#status").append("<br><div class=\"row\"><div class=\"col-md-1\" id = \"img_"+step.action+"\"><img src=\"../../inc/images/ajax-loader.gif\" height=\"32\" width=\"32\"/></div><div class=\"col-md-2\" id = \""+step.action+"\">"+step.name+"</div></div><br>");
 
+            workers     = new Worker("workers/cobra_bkup.js");
+            workers.onmessage = workerDone;
+            workers.postMessage(step);
+
+            function workerDone(e) {
+                    console.log(e.data.id+" has completed");
+                $("#img_"+e.data.id+" img").attr("src", "../images/tick.png");
+            }
+        });
         $.each(selectedIndexes, function( index, value ) {
-            var step = {};
-            step.action = step_grid.getDataItem(value).action;
-            step.name = step_grid.getDataItem(value).name;
-            console.log("I am on step "+step.name);
-            $("#status").append("<div id = \""+step.action+"\">"+step.name+"</div><br>");
+/*            workers.action = new Worker('workers/cobra_bkup.js');
 
-            performStep(step, function(ln){
-                console.log('Welcome Mr. ' + ln);
-                $("#status").append(step.name+" is complete<br>");
-            });
-            $("#"+step.action).addClass("complete");
+            //var worker = new Worker('workers/cobra_bkup.js');
+            workers.action.postMessage(step);
+            workers.action.onmessage = function(e) {
+                msg = e.data;
+                if(msg=="finished")
+                {
+                    $("#img_"+step.action+" img").attr("src", "../images/tick.png");
+                }
+            }*/
+
+            //$("#"+step.action).addClass("complete");
+            //performStep(step);
+            //
         });
 
     });

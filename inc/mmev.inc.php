@@ -5,9 +5,9 @@
  * Date: 12/9/2016
  * Time: 12:39 PM
  */
-session_start();
-extract($_SESSION);
-extract($_COOKIE);
+//session_start();
+//extract($_SESSION);
+//extract($_COOKIE);
 extract($_REQUEST);
 set_time_limit(0);
 error_reporting(0);

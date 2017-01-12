@@ -232,8 +232,9 @@ function copyProjectFromCobra($ship_code,$copy_dest, $g_path2CobraAPI,$g_path2CM
 
 function createCobraBatchrptCMDFile($ship_code,$path2CobraAPI,$g_path2CMD,$bat_file_name)
 {
+    $token              = rand(0, 100);
     $content            = file_get_contents($g_path2CMD . "cmdCobraTEMPLATE.cmd");
-    $new_cmd_file_name  = $g_path2CMD . "" . $ship_code . ".cmd";
+    $new_cmd_file_name  = $g_path2CMD."".$ship_code."-".$token.".cmd";
 
     $content_cobra_api  = str_replace("####", $path2CobraAPI, $content);
     $content_final      = str_replace("****", $bat_file_name, $content_cobra_api);
@@ -272,7 +273,7 @@ function createArchiveCMDFile($ship_code,$path2CobraAPI,$g_path2CMD,$g_path2BAT)
     file_put_contents($new_cmd_file_name,$content_final);
     return $new_cmd_file_name;
 }
-function createArchiveBatFile($ship_code,$cur_2digit_month,$cur_2digit_year,$cur_month_letters,$cur_year,$g_path2BAT)
+function createArchiveBatFile($ship_code,$prev_2digit_month,$prev_2digit_year,$prev_month_letters,$prev_year,$g_path2BAT)
 {
 
     /*
@@ -280,9 +281,14 @@ function createArchiveBatFile($ship_code,$cur_2digit_month,$cur_2digit_year,$cur
      * #### Name of the Arhived Project
      * $$$$ Description of Project
     */
+
     $project2copy = $ship_code;
-    $arhive_project_name = $ship_code."".$cur_2digit_month."".$cur_2digit_year;
-    $project_description = $ship_code." ".$cur_month_letters." ".$cur_year." Archive";
+
+
+    //$arhive_project_name = $ship_code."".$cur_2digit_month."".$cur_2digit_year;
+    $arhive_project_name = $ship_code.""."-test";
+
+    $project_description = $ship_code." ".$prev_month_letters." ".$prev_year." Archive";
 
     $content            = file_get_contents($g_path2BAT . "archiveprojectTEMPLATE.bat");
     $content1           = str_replace("****", $project2copy, $content);
@@ -292,10 +298,10 @@ function createArchiveBatFile($ship_code,$cur_2digit_month,$cur_2digit_year,$cur
     file_put_contents($path2_new_bat_file,$content_final);
     return $path2_new_bat_file;
 }
-function archiveCobraProject($ship_code, $cur_month,$cur_year_last2,$cur_month_letters,$cur_year,$g_path2CobraAPI,$g_path2CMD,$g_path2BAT, $debug=false)
+function archiveCobraProject($ship_code, $prev_month,$cur_year_last2,$cur_month_letters,$cur_year,$g_path2CobraAPI,$g_path2CMD,$g_path2BAT, $debug=false)
 {
     $cmd_file   = createArchiveCMDFile($ship_code,$g_path2CobraAPI,$g_path2CMD,$g_path2BAT);
-    $batch_file = createArchiveBatFile($ship_code,$cur_month,$cur_year_last2,$cur_month_letters,$cur_year,$g_path2BAT);
+    $batch_file = createArchiveBatFile($ship_code,$prev_month,$cur_year_last2,$cur_month_letters,$cur_year,$g_path2BAT);
     if($debug==false)
     {
         exec($cmd_file);
@@ -312,40 +318,26 @@ function createReClassCMDFile($ship_code,$path2CobraAPI,$g_path2CMD,$bat_file_na
     file_put_contents($new_cmd_file_name,$content_final);
     return $new_cmd_file_name;
 }
-function createReClassBatFile($ship_code,$g_path2BAT,$source_class,$target_class,$target_action,$source_action ="copy",$rsrc_code_from = "source",$allow_complete = 0,$include_in_forecast = 0)
+function createReClassBatFile($ship_code,$g_path2BAT)
 {
 
     /*
     *  **** Project to ReClass
-     * @@@@ SourceAction - Copy or CopyDelete(deletes source copy is done)
-     * #### SourceClass -
-     * %%%% TargetClass -
-     * &&&& CopyResourceAssignmentCodeFrom - Source or Target
-     * !!!! AllowComplete - 0,1- reclass completed CA's
-     * ???? IncludeForecastInUpdateTotals. 0,1.  0-will exclude when the update totals is run, 1- will include them.
-     * $$$$ TargetAction -  Add or replace.  append the target class or replace it.
      *
      */
     $project2ReClass = $ship_code;
 
-    $content            = file_get_contents($g_path2BAT . "reclassTEMPLATE.bat");
+    $content            = file_get_contents($g_path2BAT . "reclassTEMPLATE.v.2.bat");
 
-    $content1      = str_replace("****", $project2ReClass, $content);
-    $content2      = str_replace("@@@@", $source_action, $content1);
-    $content3      = str_replace("####", $source_class, $content2);
-    $content4      = str_replace("%%%%", $target_class, $content3);
-    $content5      = str_replace("&&&&", $rsrc_code_from, $content4);
-    $content6      = str_replace("!!!!", $allow_complete, $content5);
-    $content7      = str_replace("$$$$", $target_action, $content6);
-    $content_final = str_replace("????", $include_in_forecast, $content7);
+    $content_final     = str_replace("****", $project2ReClass, $content);
     $token         = rand (0,100);
     $path2_new_bat_file = $g_path2BAT.$ship_code."-".$token."_reclass.BAT";
     file_put_contents($path2_new_bat_file,$content_final);
     return $path2_new_bat_file;
 }
-function reClassCobraProject($ship_code, $g_path2CobraAPI,$g_path2CMD,$g_path2BAT,$source_class,$target_class,$target_action,$source_action,$rsrc_code_from,$allow_complete,$include_in_forecast,$debug=false)
+function reClassCobraProject($ship_code, $g_path2CobraAPI,$g_path2CMD,$g_path2BAT,$debug=false)
 {
-    $bat_file_name  = createReClassBatFile($ship_code,$g_path2BAT,$source_class,$target_class,$target_action,$source_action,$rsrc_code_from,$allow_complete,$include_in_forecast);
+    $bat_file_name  = createReClassBatFile($ship_code,$g_path2BAT);
     $cmd_file       = createReClassCMDFile($ship_code,$g_path2CobraAPI,$g_path2CMD,$bat_file_name);
     if($debug==false)
     {

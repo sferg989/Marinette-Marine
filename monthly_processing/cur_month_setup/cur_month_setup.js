@@ -93,6 +93,13 @@ $(document).ready(function() {
 
 
     $("#mybutton").click(function() {
+        var worker = new Worker('doWork.js');
+
+        worker.addEventListener('message', function(e) {
+            console.log('Worker said: ', e.data);
+        }, false);
+
+        worker.postMessage('Hello World');
         var selectedIndexes = step_grid.getSelectedRows(),count = selectedIndexes.length;
 /*        $.each(selectedIndexes, function( index, value ) {
             var step = {};
@@ -108,12 +115,13 @@ $(document).ready(function() {
             step.action = step_grid.getDataItem(value).action;
             step.name = step_grid.getDataItem(value).name;
             console.log("I am on step "+step.name);
-            //$("#status").append("<div id = \""+step.action+"\">"+step.name+"</div><br>");
+            $("#status").append("<div id = \""+step.action+"\">"+step.name+"</div><br>");
+
             performStep(step, function(ln){
                 console.log('Welcome Mr. ' + ln);
                 $("#status").append(step.name+" is complete<br>");
             });
-            //$("#"+step.action).addClass("complete");
+            $("#"+step.action).addClass("complete");
         });
 
     });

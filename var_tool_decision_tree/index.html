@@ -1,10 +1,47 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE HTML>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="../inc/lib/css/bootstrap/css/bootstrap.css">
+<style>
+    .answer_yes{
+        font-weight: 900;
+        color : green;
+
+
+    }
+    .answer_no {
+        font-weight: 900;
+    }
+ </style>
 </head>
 <body>
-$END$
 </body>
+
+
+
+<body class="alt-grid">
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div><h6>Cost Variance Decision Tree</h6></div>
+            <br>
+            <div id = "question_div"></div>
+
+        </div>
+    </div>
+    <div class="row">
+            <br><br>
+            <div class = "col-md-3"  id = "yes_btn_div"></div>
+            <div class = "col-md-3" id = "no_btn_div"></div>
+            <div class = "col-md-3" id = "rtn_btn_div"></div>
+        </div>
+    </div>
+</div>
+
+</body>
+<script src="decision_tree.js"></script>
+
+
 </html>

@@ -19,7 +19,6 @@ $(document).ready(function() {
     }
     function updateShipProcessStatus(code,rpt_period, status,step_id,comment_id,pfa_notes)
     {
-
         $.ajax({
             dataType: "json",
             url     : url,
@@ -68,10 +67,22 @@ $(document).ready(function() {
         arrayOfGrids.push(grid);
 
     }
+    function getWIList(){
+        $.ajax({
+            url     : url,
+            data: {
+                control   : "wi_list"
+            },
+            success : function (data) {
+                $("#wi_list").append(data);
+            }
+        });
+    }
     function myStepLink(row, cell, value, columnDef, dataContext) {
         var link_paran = "<a href="+dataContext.url+"?ship_code="+dataContext.code+"&rpt_period="+rpt_period+">"+value+"</a>";
         return link_paran;
     }
+
     function createSelect2Box(filter_name) {
         $("."+filter_name).select2({
             //minimumResultsForSearch: -1,
@@ -117,7 +128,7 @@ $(document).ready(function() {
             sortable           : true
         },{
             id       : "wi",
-            name     : "WOrk Instruction",
+            name     : "Work Instruction",
             formatter: myStepLink,
             field    : "wi"
         },{
@@ -203,4 +214,11 @@ $(document).ready(function() {
         });
 
     });
+    $("#wi_btn").click(function(){
+        getWIList()
+    });
+    $("#wi_btn_close").click(function() {
+        $("#wi_list").empty();
+    })
+
 })

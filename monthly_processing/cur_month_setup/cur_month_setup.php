@@ -36,7 +36,7 @@ $path2_cobra_dir    = $base_path."".$ship_name."/".$ship_code ;
 $previous_month_dir = $path2_cobra_dir."/".$ship_code . " " . $prev_year . "/" . $ship_code . " " . $prev_month . "." . $prev_year_last2 . " Cobra Processing";
 $cur_month_dir      = $path2_cobra_dir."/". $ship_code . " " . $cur_year . "/" . $ship_code . " " . $cur_month . "." . $cur_year_last2 . " Cobra Processing";
 
-$path2CobraBkup     = $cur_month_dir."/".$ship_code." ".$cur_month_letters." ". $cur_year." Cobra Backups";
+$path2CobraBkup     = $previous_month_dir."/".$ship_code." ".$prev_month_letters." ". $prev_year." Cobra Backups";
 
 if($control=="step_grid")
 {
@@ -63,7 +63,8 @@ if($control=="step_grid")
 
 if($control =="archive_project")
 {
-    archiveCobraProject($ship_code, $cur_month,$cur_year_last2,$cur_month_letters,$cur_year,$g_path2CobraAPI,$g_path2ArhiveProjectCMD,$g_path2ArhiveProjectBAT,$debug);
+    $ship_code= "04731116";
+    archiveCobraProject($ship_code, $prev_month,$prev_year_last2,$prev_month_letters,$prev_year,$g_path2CobraAPI,$g_path2ArhiveProjectCMD,$g_path2ArhiveProjectBAT,$debug);
     die("Archive Prior Month Cobra Project");
 }
 if($control =="bkup")

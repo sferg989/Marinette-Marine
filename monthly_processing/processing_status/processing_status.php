@@ -169,7 +169,27 @@ if($control =="update_status")
     }
 
 }
+if($control=="wi_list"){
+    $data = "<ul>";
+    $sql = "select step_id, common_name from processing_status.wi";
+    $rs = dbCall($sql, "processing_status");
 
+    while (!$rs->EOF)
+    {
+        $step_id     = $rs->fields["step_id"];
+        $common_name = $rs->fields["common_name"];
+        $data.="<li>
+                    <img src=\"../../inc/images/Word-icon-small.png\" height=\"24\" width=\"24\"/>
+                    
+                    <a href=\"file:\\\ $g_path2_wi\\$common_name.docx\" download=\"filename\">
+                    $common_name
+                    asd</li>
+                    </a>";
+        $rs->MoveNext();
+    }
+    $data.="</ul>";
+    die($data);
+}
 if($filter =="rpt_period")
 {
     if($q!="")
@@ -201,4 +221,5 @@ if($filter =="rpt_period")
     }";
     die($data);
 }
+
 

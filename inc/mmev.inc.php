@@ -34,3 +34,4 @@ $g_path2AdvanceCalendarProjectCMD = $g_path_to_util . "advance_calendar\\CMD\\";
 
 $g_path2CobraAPI = "\"program files (x86)\"\\deltek\\\"cobra 5\"\\cobra.api.exe";
 
+$g_path2_wi = "Y:\\Program Management\\Cobra Processing 5.1\\Cobra 5.1 Work Instructions";

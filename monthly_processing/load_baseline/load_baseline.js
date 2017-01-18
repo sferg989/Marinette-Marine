@@ -2,12 +2,9 @@
  * Created by fs11239 on 12/14/2016.
  */
 $(document).ready(function() {
-    var url      = "advance_calendar.php";
-    var start_rpt_period_val = $(".start_rpt_period").val();
-    var to_rpt_period_val    = $(".to_rpt_period").val();
-
+    var url      = "load_baseline.php";
     function goBack() {
-        window.location.href = '../processing_status/index.html';
+        window.history.back();
     }
     var getUrlParameter = function getUrlParameter(sParam) {
         var sPageURL = decodeURIComponent(window.location.search.substring(1)),
@@ -24,29 +21,14 @@ $(document).ready(function() {
         }
     };
 
-    function performStep(action)
-    {
-        $.ajax({
-            type : "POST",
-            url  : url,
-            async: false,
-                data: {
-                    control         : action,
-                    rpt_period      : getUrlParameter('rpt_period'),
-                    code            : code.toString()
-                },
-            success: function (json) {
-                $("#status").append(json+"<br><br>");
-                $("#status").addClass( "status_font" );
-            }
-        });
-    }
+    var rpt_period = getUrlParameter('rpt_period');
+    var code       = getUrlParameter('ship_code');
 
-    $("#rpt_period_div").append(getUrlParameter('rpt_period'));
-    $("#title").append(getUrlParameter('ship_code'));
+    $("#rpt_period_div").append(rpt_period);
+    $("#title").append(code);
 
-    $("#title").addClass("title_font");
     $("#rpt_period_div").addClass("title_font");
+    $("#title").addClass("title_font");
     var options = [];
     var options = {
         enableCellNavigation: true,
@@ -70,18 +52,17 @@ $(document).ready(function() {
     });
 
     var dataView = new Slick.Data.DataView();
-    step_grid = new Slick.Grid("#step_grid", dataView, columns, options);
+    step_grid    = new Slick.Grid("#step_grid", dataView, columns, options);
     step_grid.setSelectionModel(new Slick.RowSelectionModel({selectActiveRow: false}));
     step_grid.registerPlugin(checkboxSelector);
     var columnpicker = new Slick.Controls.ColumnPicker(columns, step_grid, options);
-    var code = getUrlParameter('ship_code');
 
     $.ajax({
         dataType: "json",
         url     : url,
         data: {
-            control     : "step_grid",
-            rpt_period  : getUrlParameter('rpt_period')
+            control   : "step_grid",
+            rpt_period : rpt_period
         },
         success: function(data) {
             dataView.beginUpdate();
@@ -96,13 +77,37 @@ $(document).ready(function() {
     $("#back_btn").click(function(){
         goBack();
     });
-    $("#mybutton").click(function() {
-        selectedIndexes = step_grid.getSelectedRows();
 
-        $.each(selectedIndexes, function( index, value ) {
-            var action = step_grid.getDataItem(value).action;
-            performStep(action);
+
+    $("#mybutton").click(function() {
+        var step = {};
+        step.code       = code;
+        step.rpt_period = rpt_period;
+        var selectedIndexes = step_grid.getSelectedRows(),count = selectedIndexes.length;
+        var userName =window.btoa("Steve");
+        var password =window.btoa("jan17");
+        var hostName = "PMDB";
+        var portNumber = "4444";
+        url = hostName+":"+portNumber+"";
+        $.ajax({
+            url     : url,
+            data: {
+                control   : "step_grid",
+                rpt_period : rpt_period
+            },
+            success: function(data) {
+                dataView.beginUpdate();
+                dataView.setItems(data);
+                dataView.endUpdate();
+                dataView.refresh();
+                step_grid.render();
+                step_grid.updateRowCount();
+            }
         });
+        $.each(selectedIndexes, function(index, value ) {
+
+        });
+
 
     });
 })

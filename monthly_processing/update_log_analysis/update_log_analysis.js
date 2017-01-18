@@ -2,12 +2,9 @@
  * Created by fs11239 on 12/14/2016.
  */
 $(document).ready(function() {
-    var url      = "advance_calendar.php";
-    var start_rpt_period_val = $(".start_rpt_period").val();
-    var to_rpt_period_val    = $(".to_rpt_period").val();
-
+    var url      = "update_log_analysis.php";
     function goBack() {
-        window.location.href = '../processing_status/index.html';
+        window.history.back();
     }
     var getUrlParameter = function getUrlParameter(sParam) {
         var sPageURL = decodeURIComponent(window.location.search.substring(1)),
@@ -23,30 +20,28 @@ $(document).ready(function() {
             }
         }
     };
-
-    function performStep(action)
+    function performStep(step)
     {
         $.ajax({
             type : "POST",
             url  : url,
             async: false,
-                data: {
-                    control         : action,
-                    rpt_period      : getUrlParameter('rpt_period'),
-                    code            : code.toString()
-                },
-            success: function (json) {
-                $("#status").append(json+"<br><br>");
-                $("#status").addClass( "status_font" );
+            dataType: 'json',
+            data: {
+                control         : step.action,
+                rpt_period      : getUrlParameter('rpt_period'),
+                code            : code.toString()
             }
         });
     }
+    var rpt_period = getUrlParameter('rpt_period');
+    var code         = getUrlParameter('ship_code');
 
-    $("#rpt_period_div").append(getUrlParameter('rpt_period'));
-    $("#title").append(getUrlParameter('ship_code'));
+    $("#rpt_period_div").append(rpt_period);
+    $("#title").append(code);
 
-    $("#title").addClass("title_font");
     $("#rpt_period_div").addClass("title_font");
+    $("#title").addClass("title_font");
     var options = [];
     var options = {
         enableCellNavigation: true,
@@ -70,18 +65,17 @@ $(document).ready(function() {
     });
 
     var dataView = new Slick.Data.DataView();
-    step_grid = new Slick.Grid("#step_grid", dataView, columns, options);
+    step_grid    = new Slick.Grid("#step_grid", dataView, columns, options);
     step_grid.setSelectionModel(new Slick.RowSelectionModel({selectActiveRow: false}));
     step_grid.registerPlugin(checkboxSelector);
     var columnpicker = new Slick.Controls.ColumnPicker(columns, step_grid, options);
-    var code = getUrlParameter('ship_code');
 
     $.ajax({
         dataType: "json",
         url     : url,
         data: {
-            control     : "step_grid",
-            rpt_period  : getUrlParameter('rpt_period')
+            control   : "step_grid",
+            rpt_period : rpt_period
         },
         success: function(data) {
             dataView.beginUpdate();
@@ -96,13 +90,28 @@ $(document).ready(function() {
     $("#back_btn").click(function(){
         goBack();
     });
-    $("#mybutton").click(function() {
-        selectedIndexes = step_grid.getSelectedRows();
 
-        $.each(selectedIndexes, function( index, value ) {
-            var action = step_grid.getDataItem(value).action;
-            performStep(action);
+    $("#mybutton").click(function() {
+        var step = {};
+        step.code       = code;
+        step.rpt_period = rpt_period;
+        var selectedIndexes = step_grid.getSelectedRows(),count = selectedIndexes.length;
+        var n, worker;
+        $.each(selectedIndexes, function(index, value ) {
+            step.action = step_grid.getDataItem(value).action;
+            step.name   = step_grid.getDataItem(value).name;
+            $("#status").append("<br><div class=\"row\"><div class=\"col-md-1\" id = \"img_"+step.action+"\"><img src=\"../../inc/images/ajax-loader.gif\" height=\"32\" width=\"32\"/></div><div class=\"col-md-2\" id = \""+step.action+"\">"+step.name+"</div></div><br>");
+
+            workers     = new Worker("workers/workers.js");
+            workers.onmessage = workerDone;
+            workers.postMessage(step);
+
+            function workerDone(e) {
+                    console.log(e.data.id+" has completed");
+                $("#img_"+e.data.id+" img").attr("src", "../images/tick.png");
+            }
         });
+
 
     });
 })

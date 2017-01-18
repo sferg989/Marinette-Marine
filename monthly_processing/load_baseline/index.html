@@ -23,6 +23,10 @@
     <script src="../../inc/lib/js/SlickGrid-master/slick.dataview.js"></script>
     <script src="../../inc/lib/js/SlickGrid-master/controls/slick.columnpicker.js"></script>
     <script src="../../inc/lib/js/SlickGrid-master/plugins/slick.cellrangeselector.js"></script>
+    <link rel="stylesheet" href="../../inc/lib/js/select2-4.0.3/dist/css/select2.min.css">
+    <link rel="stylesheet" href="../../inc/lib/css/bootstrap/css/bootstrap.css">
+    <script src="../../inc/lib/js/select2-4.0.3/dist/js/select2.full.min.js"></script>
+    <script src="load_baseline.js"></script>
 
     <style>
         .alt-grid [class*="col-"] {padding-left:15;padding-right:15}
@@ -32,6 +36,29 @@
         .alt-grid .container {width:96%;max-width:none;padding:0;}
         .cell-title {
             font-weight: 900;
+        }
+        .title_font {
+            font-size: 25px;
+            font-family : "Helvetica ";
+        }
+        .in_que {
+            font-size: 25px;
+            font-family : "Helvetica";
+            color : blue;
+        }
+        .processing {
+            font-size: 25px;
+            font-family : "Helvetica ";
+            color : red;
+        }
+        .complete {
+            font-size: 25px;
+            font-family : "Helvetica ";
+            color : green;
+        }
+        .status_font {
+            font-weight: 900;
+            color : red;
         }
         .slick-viewport {
             overflow-x: hidden !important;
@@ -66,26 +93,37 @@
         }
     </style>
 
-    <link rel="stylesheet" href="../../inc/lib/css/bootstrap/css/bootstrap.css">
-    <script src="advance_calendar.js"></script>
-
 </head>
 <body class="alt-grid">
 <!--<div id = "filters">-->
+<br>
+<br>
 <div class="container">
-    <h6> Project Status</h6>
         <div class="row">
-            <div class="col-md-6">
-                <div id = "project_grid"></div>
+            <div class="col-md-1">
+                <button id="back_btn" type="button" class="btn btn-info">Back</button>
+            </div>
+            <div class="col-md-3">
+                <h6><div id = "rpt_period_div">Reporting Period- </div></h6>
+            </div>
+            <div class="col-md-3">
+                <h6><div id = "title">Load Baseline </div></h6>
             </div>
         </div>
-
+    <br><br>
     <div class="row">
-            <div class = "col-md-3">
-                <button class ="btn-success" id="mybutton">Submit</button><br><br>
-            </div>
+        <div class="col-md-6">
+            <div id = "step_grid"></div>
         </div>
-    <div id="status_grids"></div>
+    </div>
+    <div class="row">
+        <div class = "col-md-3">
+            <br>
+            <br>
+            <button id="mybutton" type="button" class="btn btn-success">Submit</button>
+        </div>
+    </div>
+    <div id="status"></div>
 </div>
 
 

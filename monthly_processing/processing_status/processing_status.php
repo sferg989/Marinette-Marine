@@ -105,6 +105,7 @@ if($control=="status_grid")
           timeline
         from processing_status.steps  st left join processing_status.ship ship
           on st.id = ship.step_id and ship.ship_code = $ship_code and ship.period = $rpt_period   
+        where st.url is not NULL and st.url <> ''
         order by step_id
   ";
     //print $sql;

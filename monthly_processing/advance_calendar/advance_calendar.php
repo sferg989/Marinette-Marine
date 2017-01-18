@@ -57,67 +57,7 @@ if($control=="step_grid")
     $data.="]";
     die($data);
 }
-if($filter =="start_rpt_period")
-{
-    if($q!="")
-    {
-        $wc = "where period like '%$q%'";
-    }
-    else
-    {
-        $wc = "";
-    }
 
-    $data ="{\"items\": [";
-
-    $sql = "select period from processing_status.ship $wc group by period";
-    //print $sql;
-    $rs = dbCall($sql);
-    while (!$rs->EOF) {
-        $rpt_period = $rs->fields["period"];
-        $data.="      
-        {
-            \"id\": $rpt_period,
-            \"text\": \"$rpt_period\"
-        },";
-        $rs->MoveNext();
-    }
-    $data = substr($data, 0, -1);
-    $data.="],
-    \"more\": false
-    }";
-    die($data);
-}
-if($filter =="to_rpt_period")
-{
-    if($q!="")
-    {
-        $wc = "where period like '%$q%'";
-    }
-    else
-    {
-        $wc = "";
-    }
-    $data ="{\"items\": [";
-
-    $sql = "select period from processing_status.ship $wc group by period";
-    //print $sql;
-    $rs = dbCall($sql);
-    while (!$rs->EOF) {
-        $rpt_period = $rs->fields["period"];
-        $data.="      
-        {
-            \"id\": $rpt_period,
-            \"text\": \"$rpt_period\"
-        },";
-        $rs->MoveNext();
-    }
-    $data = substr($data, 0, -1);
-    $data.="],
-    \"more\": false
-    }";
-    die($data);
-}
 if($control =="bkup")
 {
     if(file_exists($path2CobraBkup)==false)
@@ -170,13 +110,14 @@ if($control=="advance_calendar")
 {
     $ship_code           = "04731116-test";
 
-    $status_date_for_loe        = "1";
-    $update_rates_fte           = "1";
+    $status_date_for_loe        = "0";
+    $update_rates_fte           = "0";
     $sync_calendar              = "1";
     $rolling_wave_skip          = "1";
-    $update_eac                 = "1";
+    $update_eac                 = "0";
 
     advanceCalendarCobraProject($ship_code,$g_path2CobraAPI,$g_path2AdvanceCalendarProjectCMD,$g_path2AdvanceCalendarProjectBAT,$status_date_for_loe,$update_rates_fte,$sync_calendar,$rolling_wave_skip, $update_eac,$debug);
     die("Calendar Advance-Complete");
 }
+
 

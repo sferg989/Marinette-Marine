@@ -133,6 +133,22 @@ function createRPTfromDate($date){
     $rpt_period = "$year"."$month";
     return $rpt_period;
 }
+function createRPTPeriodfromDate($date){
+    $date_array = explode("-", $date);
+    $day = $date_array[2];
+    $month = $date_array[1];
+    $year = $date_array[0];
+    if($day>15)
+    {
+        $month = $month+1;
+    }
+    if(strlen($month)==1)
+    {
+        $month = "0".$month;
+    }
+    $rpt_period = "$year"."$month";
+    return $rpt_period;
+}
 function makeNewYearDIR($ship_name,$ship_code,$new_year,$base_path)
 {
     $path = $base_path."".$ship_name."/".$ship_code."/".$ship_code." ".$new_year;
@@ -437,4 +453,32 @@ function returnPeriodData($ship_code, $start_rpt_period,$to_rpt_period)
     $data["cur_month_letters"]  = $cur_month_letters;
     $data["ship_name"]          = $ship_name;
     return $data;
+}
+function checkifArray($variable){
+    if(is_array($variable)==false){
+        return $variable;
+    }
+    else{
+        $variable = "";
+        return $variable;
+    }
+}
+function fixExcelDateTime($date){
+    //10/19/2016 1:42:47 pm
+    //2016-19-20 13:42:47
+    $data_date  = substr(trim($date), 0, 10);
+    $time_part  = substr(trim($date), -10);
+    $data_date  = fixExcelDate($data_date);
+    $time       = date("H:i:s", strtotime($time_part));
+    $final      = $data_date . " " . $time;
+    return $final;
+}
+function fixExcelDate2DigitYear($date)
+{
+    //print "THis is the date. ".$date."<br>";
+    if($date=="")
+    {
+        return "";
+    }
+    return  date('Y-m-d', strtotime($date));
 }

@@ -4,7 +4,7 @@
 $(document).ready(function() {
     var arrayOfGrids  =[];
     var url      = "processing_status.php";
-    var rpt_period = $(".rpt_period").val();
+    var rpt_period;
     function openRowDivs()
     {
         $("#status_grids").append("<div class=\"row\">");
@@ -221,4 +221,4 @@ $(document).ready(function() {
         $("#wi_list").empty();
     })
 
-})
+});

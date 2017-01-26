@@ -1,5 +1,9 @@
 <?php
 include('inc/inc.php');
+if($action =="submit"){
+
+    die("made it");
+}
 session_start();
 function insertNewUser($username,$password){
     $pw = base64_encode($password);
@@ -59,7 +63,8 @@ switch ($result) {
         break;
     case "user_did_not_match":
         //$_SESSION["user_name"] = $username;
-        $z.="bootbox.confirm({
+        $z.="
+bootbox.confirm({
     message : 'Is this the first time you are logging into EV?',
     buttons : {
         confirm: {
@@ -72,63 +77,23 @@ switch ($result) {
         }
     },
     callback: function (result) {
-        console.log('This was logged in the callback: ' + result);
         if (result == false) {
-            bootbox.alert(\"Please try again\", 
-            function(){ navigate('login.html');});
+            bootbox.alert(\"Please try again\",
+                function(){ navigate('login.html');});
         }
-        if (result == 'yes') {
-            console.log('yesss');
-            bootbox.form({
-    title: 'User details',
-    fields: {
-        name: {
-            label: 'Name',
-            value: 'John Connor',
-            type:  'text'
-        },
-        email: {
-            label: 'E-mail',
-            type:  'email',
-            value: 'johnconnor@skynet.com'
-        },
-        type: {
-            label: 'Type',
-            type:  'select',
-            options: [
-                {value: 1, text: 'Human'},
-                {value: 2, text: 'Robot'}
-            ]
-        },
-        alive: {
-            label: 'Is alive',
-            type: 'checkbox',
-            value: true
-        },
-        loves: {
-            label: 'Loves',
-            type: 'checkbox',
-            value: ['bike','mom','vg'],
-            options: [
-                {value: 'bike', text: 'Motorbike'},
-                {value: 'mom', text: 'His mom'},
-                {value: 'vg', text: 'Video games'},
-                {value: 'kill', text: 'Killing people'}
-            ]
-        },
-        passwd: {
-            label: 'Password',
-            type: 'password'
-        },
-        desc: {
-            label: 'Description',
-            type: 'textarea'
-        }
-    },
-    callback: function (values) {
-        console.log(values)
-    }
-})
+        if (result == true) {
+            var form;
+            form = $('<form action=\"login.php?action=submit\">ROLE :<br><select name=\"role\" id=\"role\"><option selected=\"selected\" value=\"PFA\">PFA</option><option value=\"admin\">admin</option><option value=\"cam\">CAM</option></select><br>Email :<br><input type=\"text\" name=\"email\"><br>First Name :<br> <input type=\"text\" name=\"first_name\"><br>Last Name :<br><input type=\"text\" name=\"last_name\"></form>');
+
+        bootbox.confirm(form,function(){
+        var e = document.getElementById(\"role\");
+        var role = e.options[e.selectedIndex].value;
+        var email = form.find('input[name=email]').val();
+        var first_name = form.find('input[name=first_name]').val();
+        var last_name = form.find('input[name=last_name]').val();
+        console.log(email);
+
+        });
         }
     }
 });</script>";

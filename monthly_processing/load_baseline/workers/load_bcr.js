@@ -7,7 +7,7 @@ self.addEventListener('message', function(e) {
 }, false);
 this.onmessage = function(e) {
 
-    var action     = "bcr_check";
+    var action     = e.data.action;
     var code       = e.data.code;
     var rpt_period = e.data.rpt_period;
     var data       = escape(e.data.bcrData2);

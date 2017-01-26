@@ -7,14 +7,13 @@ self.addEventListener('message', function(e) {
 }, false);
 this.onmessage = function(e) {
 
-    var action     = "bcr_check";
     var code       = e.data.code;
+    var action     = e.data.action;
     var rpt_period = e.data.rpt_period;
-    var data       = escape(e.data.bcrData2);
     var http       = new XMLHttpRequest();
 
     var url = "../load_baseline.php";
-    var params = "control="+action+"&bcr_data="+data+"&rpt_period="+rpt_period+"&code="+code+"";
+    var params = "control="+action+"&rpt_period="+rpt_period+"&code="+code+"";
     http.open("POST", url, true);
 
 //Send the proper header information along with the request
@@ -22,7 +21,7 @@ this.onmessage = function(e) {
 
     http.onreadystatechange = function() {//Call a function when the state changes.
         if(http.readyState == 4 && http.status == 200) {
-            postMessage({id: action});
+            postMessage(action+","+this.responseText);
         }
     }
     http.send(params);

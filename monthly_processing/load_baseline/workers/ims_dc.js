@@ -5,20 +5,25 @@ self.addEventListener('message', function(e) {
     self.postMessage(e.data);
 
 }, false);
-var url = "../load_baseline.php";
 this.onmessage = function(e) {
     var action     = e.data.action;
     var name       = e.data.name;
     var code       = e.data.code;
     var rpt_period = e.data.rpt_period;
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            postMessage({id: action});
+    var data     = escape(e.data.p6Data2);
+    var http = new XMLHttpRequest();
 
+    var url = "../load_baseline.php";
+    var params = "control="+action+"&p6data="+data+"&rpt_period="+rpt_period+"&code="+code+"";
+    http.open("POST", url, true);
+
+//Send the proper header information along with the request
+    http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+    http.onreadystatechange = function() {//Call a function when the state changes.
+        if(http.readyState == 4 && http.status == 200) {
+            postMessage({id: action});
         }
-    };
-    var params = "control="+action+"&rpt_period="+rpt_period+"&code="+code+"";
-    xhttp.open("GET", url+"?"+params+"", true);
-    xhttp.send();
+    }
+    http.send(params);
 };

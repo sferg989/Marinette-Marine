@@ -8,25 +8,6 @@ include("../../inc/inc.php");
  */
 $user = "fs11239";
 $debug = true;
-function checkifArray($variable){
-    if(is_array($variable)==false){
-        return $variable;
-    }
-    else{
-        $variable = "";
-        return $variable;
-    }
-}
-function fixExcelDateTime($date){
-    //10/19/2016 1:42:47 pm
-    //2016-19-20 13:42:47
-    $data_date  = substr(trim($date), 0, 10);
-    $time_part  = substr(trim($date), -10);
-    $data_date  = fixExcelDate($data_date);
-    $time       = date("H:i:s", strtotime($time_part));
-    $final      = $data_date . " " . $time;
-    return $final;
-}
 function insertFortisXML($xml_array){
     $insert_sql = "
         insert into fortis_xml (
@@ -109,7 +90,7 @@ function insertFortisXML($xml_array){
             $i=0;
         }
         $date                = fixExcelDate($value["DATE"]);
-        $rpt_period          = createRPTfromDate($date);
+        $rpt_period          = createRPTPeriodfromDate($date);
         $bcr                 = $value["BCR"];
         $part                = checkifArray($value["PART"]);
         $rev                 = checkifArray($value["REV"]);
@@ -173,7 +154,7 @@ function insertFortisXML($xml_array){
         $denial_confirmed    = checkifArray($value["DENIAL_CONFIRMED"]);
         $volume_name         = $value["Volume-Name"];
         $file_name           = $value["File-Name"];
-        //print $initiator ."\r";
+        print $notes ."\r";
 
         $sql.="
          (
@@ -248,7 +229,7 @@ function insertFortisXML($xml_array){
     if($i!=200)
     {
         $sql = substr($sql, 0, -1);
-        print $sql;
+        //print $sql;
         $junk = dbCall($sql,"processing_status");
     }
 }
@@ -301,8 +282,13 @@ if($control=="load_xml"){
     $path2_fortis_export = $path2_cobra_dir . "/" . $ship_code . " Fortis Export/" . $ship_code . "Fortis.xml";
 
     $xml        = simplexml_load_file($path2_fortis_export);
+    //print $xml;
+    //die("made it");
     $json       = json_encode($xml);
     $xml_array  = json_decode($json, TRUE);
+    //print $path2_fortis_export;
+    //var_dump($xml);
+
     truncateTable("processing_status", "fortis_xml");
     insertFortisXML($xml_array["NEW_Baseline_Change_Request"]);
 

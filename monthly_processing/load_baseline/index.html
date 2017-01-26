@@ -56,6 +56,13 @@
             font-family : "Helvetica ";
             color : green;
         }
+        .table_headers {
+            text-align: center;
+        }
+        .table_data {
+            text-align: right;
+            font-weight: bold
+        }
         .status_font {
             font-weight: 900;
             color : red;
@@ -112,18 +119,48 @@
         </div>
     <br><br>
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-4">
+            <br>
+            <br>
             <div id = "step_grid"></div>
+        </div>
+        <div class="col-md-8">
+            <h6>Copy/Paste P6 Data</h6>
+            <div id = "text_area_p6">
+                <textarea id = "p6data" class="form-control" placeholer="Copy Data from P6"></textarea>
+            </div>
+            <h6>Copy/Paste BCR Data</h6>
+            <div id = "text_area_bcr">
+                <textarea id = "bcr_data" class="form-control" placeholer="Copy Data from BCR"></textarea>
+            </div>
         </div>
     </div>
     <div class="row">
-        <div class = "col-md-3">
+        <div class = "col-md-2">
             <br>
             <br>
-            <button id="mybutton" type="button" class="btn btn-success">Submit</button>
+            <button id="mybutton" type="button" class="btn btn-warning">Load Baseline</button>
+        </div>
+        <div class = "col-md-2">
+            <br>
+            <br>
+            <button id="load_bcrs" type="button" class="btn btn-warning">LOAD BCR's</button>
+        </div>
+        <div class = "col-md-2">
+            <br>
+            <br>
+            <button id="ims_dc" type="button" class="btn btn-success">Compare baseline to BCR</button>
+        </div>
+        <div class = "col-md-4">
+            <div id = "demo"></div>
         </div>
     </div>
-    <div id="status"></div>
+
+    <div id="status_row" class="row">
+        <div id = "status" class = "col-md-4">
+
+        </div>
+    </div>
 </div>
 
 

@@ -46,9 +46,17 @@ $(function() {
         var user_name, password, con_password, email, role;
         user_name    = $("#r_username").val();
         password     = $("#r_password").val();
-        con_password = $("#password").val();
+        con_password = $("#r_confirm_password").val();
         email        = $("#r_email").val();
         role         = $("#role").val();
+        if(password=="" || password == undefined){
+            bootbox.alert("The Passwords do not match!");
+            return false;
+        }
+        if(con_password=="" || con_password == undefined){
+            bootbox.alert("The Passwords do not match!");
+            return false;
+        }
         if(password!=con_password)
         {
             bootbox.alert("The Passwords do not match!");
@@ -79,7 +87,7 @@ $(function() {
                     bootbox.alert("That Username already exists");
                 }
                 if(response=="login"){
-                    navigate("header/header.html");
+                    navigate("../header/header.html");
                 }
             }
         });

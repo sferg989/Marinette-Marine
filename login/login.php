@@ -50,6 +50,7 @@ function checkUser($username,$password){
     {
         session_start();
         $_SESSION["logged_in"] = "true";
+        $_SESSION["user_name"] = $username;
         $msg = "login";
         return $msg;
     }

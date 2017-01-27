@@ -6,7 +6,7 @@ include("../../inc/inc.php");
  * Date: 12/1/2016
  * Time: 2:22 PM
  */
-$user = "fs11239";
+$user = $_SESSION["user_name"];
 $debug = false;
 if(strlen($code)==3)
 {

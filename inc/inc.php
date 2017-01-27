@@ -419,8 +419,8 @@ function getPreviousRPTPeriod($rpt_period)
     else{
         $new_year = $year;
         $new_month = intval($month)-1;
+        $new_month = month2digit($new_month);
     }
-    $month = month2digit(substr($rpt_period, -2));
     $prev_period = $new_year."".$new_month;
     return $prev_period;
 

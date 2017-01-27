@@ -6,7 +6,7 @@ include("../../inc/inc.php");
  * Date: 12/1/2016
  * Time: 2:22 PM
  */
-$user = "fs11239";
+$user = $_SESSION["user_name"];
 
 function insertIntoProcessingStatusShips($step_id, $ship_code, $period, $status, $pfa_notes, $completed_by, $completed_on)
 {
@@ -31,7 +31,6 @@ function insertIntoProcessingStatusShipsLog($user, $status_change, $pfa_notes_ch
     VALUES
         ('$user','$timestamp','$status_change', '$pfa_notes_change',$step_id, $ship_code, $period) 
     ";
-    //print $sql;
     $junk = dbCall($sql,"processing_status");
 }
 function deleteProcessingShipSteps($id)
@@ -166,6 +165,8 @@ if($control =="update_status")
     }
     else{
         insertIntoProcessingStatusShips($step_id, $ship_code, $rpt_period, $status, $pfa_notes, $user);
+        insertIntoProcessingStatusShipsLog($user, $status_change, $pfa_notes_change, $step_id, $ship_code, $rpt_period);
+
         die("made it");
     }
 

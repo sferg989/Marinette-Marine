@@ -5,6 +5,7 @@ $(document).ready(function() {
     var arrayOfGrids  =[];
     var url      = "processing_status.php";
     var rpt_period;
+
     function openRowDivs()
     {
         $("#status_grids").append("<div class=\"row\">");
@@ -84,11 +85,13 @@ $(document).ready(function() {
     }
 
     function createSelect2Box(filter_name) {
+        var place_holder = filter_name.replace("_", "  ");
+
         $("."+filter_name).select2({
             //minimumResultsForSearch: -1,
             width : 154,
             allowClear : true,
-            placeholder: "Select "+filter_name,
+            placeholder: "Select "+place_holder,
             ajax: {
                 url: url+"/"+filter_name,
                 dataType: 'json',

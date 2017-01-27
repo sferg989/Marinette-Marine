@@ -1,18 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="47f822d5-caa4-4777-9772-746577f23a95" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/inc/inc.php" afterPath="$PROJECT_DIR$/inc/inc.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/inc/mmev.inc.php" afterPath="$PROJECT_DIR$/inc/mmev.inc.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/login/login.html" afterPath="$PROJECT_DIR$/login/login.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/login/login.js" afterPath="$PROJECT_DIR$/login/login.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/login/login.php" afterPath="$PROJECT_DIR$/login/login.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/monthly_processing/cur_month_setup/cur_month_setup.php" afterPath="$PROJECT_DIR$/monthly_processing/cur_month_setup/cur_month_setup.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/monthly_processing/processing_status/index.html" afterPath="$PROJECT_DIR$/monthly_processing/processing_status/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/monthly_processing/processing_status/processing_status.js" afterPath="$PROJECT_DIR$/monthly_processing/processing_status/processing_status.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/monthly_processing/processing_status/processing_status.php" afterPath="$PROJECT_DIR$/monthly_processing/processing_status/processing_status.php" />
-    </list>
+    <list default="true" id="47f822d5-caa4-4777-9772-746577f23a95" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -443,7 +432,7 @@
       <workItem from="1485438160135" duration="15948000" />
       <workItem from="1485463086170" duration="5249000" />
       <workItem from="1485523722841" duration="57000" />
-      <workItem from="1485523879243" duration="1854000" />
+      <workItem from="1485523879243" duration="1945000" />
     </task>
     <task id="LOCAL-00001" summary="processing status index">
       <created>1484232740617</created>
@@ -508,11 +497,18 @@
       <option name="project" value="LOCAL" />
       <updated>1485465320555</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="finished the login.html&#10;">
+      <created>1485526344488</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1485526344488</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="677785000" />
+    <option name="totallyTimeSpent" value="677876000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -527,7 +523,7 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12916666" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12916666" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32946146" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32946146" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32916668" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -593,7 +589,8 @@
     <MESSAGE value="working bootbox.confirm" />
     <MESSAGE value="working bootstrap login" />
     <MESSAGE value="working bootstrap login finish" />
-    <option name="LAST_COMMIT_MESSAGE" value="working bootstrap login finish" />
+    <MESSAGE value="finished the login.html&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="finished the login.html&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

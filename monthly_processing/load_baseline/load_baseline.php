@@ -1,5 +1,6 @@
 <?php
 include("../../inc/inc.php");
+include("../../inc/lib/php/phpExcel-1.8/classes/phpexcel.php");
 /**
  * Created by PhpStorm.
  * User: fs11239
@@ -8,6 +9,22 @@ include("../../inc/inc.php");
  */
 $user = "fs11239";
 $debug = false;
+function formatCurrencyNumber($number){
+    if($number!="" or $number !=0){
+        $value = number_format($number,2,".",",");
+        $number = htmlentities("$".$value);
+        return $number;
+    }
+    return "";
+}
+function formatNumber($number){
+    if($number!="" or $number !=0){
+        $value = number_format($number,2,".",",");
+        $number = $value;
+        return $number;
+    }
+    return "";
+}
 function determineBCRTableClass($reason){
     if($reason=="Not in Current Month Baseline"){
         $class = "bg-warning";
@@ -15,9 +32,11 @@ function determineBCRTableClass($reason){
         $class = "bg-warning";
     }if($reason=="Baseline Values Changed"){
         $class = "bg-danger";
-    }if($reason=="BCR is WRONG"){
+    }
+    if(stripos($reason, "wrong")>0){
         $class = "bg-danger";
     }
+
     return $class;
 }
 function createTableFromBase($schema,$base_table, $new_table_name){
@@ -61,11 +80,11 @@ function getBCRs($table_name, $ship_code){
 function getPeriodBaseline($ship_code,$table_name)
 {
     $wc= "";
-    //$wc = "and wbs = '1.16.1.9.992.620'";
+    //$wc = " and wbs = '1.28.1.2.3.M.MFG-OF'";
 
     $sql = "select ship_code,wbs,activity_id,s_labor_units,s_material_cost,bl_project_start,bl_project_finish from $table_name where ship_code = $ship_code
      $wc";
-
+    //print $sql;
     $rs = dbCall($sql,"ims_data_check");
     $data_array = array();
     while (!$rs->EOF)
@@ -129,7 +148,7 @@ if($control=="step_grid")
     $data.="]";
     die($data);
 }
-if($control=="ims_data_check"){
+if($control=="load_p6_data"){
 
     $table_name   = $rpt_period . "_baseline";
     $create_table = checkIfTableExists("ims_data_check", $table_name);
@@ -347,7 +366,8 @@ if($control=="compare_ca"){
             }
         }
     }
-
+    //var_dump($diffs);
+    //die();
     //var_dump($not_in_cur);
     //var_dump($not_in_prev);
 
@@ -408,20 +428,21 @@ if($control=="compare_ca"){
             //if there is a BCR are the changes the values the same
             $wp = (string)$act;
             $type = stripos($wp, "MATL");
-
-            if($type>=0){
+            if($type===false){
+                $type = "labor";
+            }else{
                 $type = "matl";
             }
-            else{
-                $type = "labor";
-            }
+
             if($type =="matl")
             {
-                $matl_diff = abs($values["prev_matl"] - $values["cur_matl"]);
-                $bcr_val   = abs($bcr_data[$key][$act]["matl_dollars"]);
+                $matl_diff = $values["cur_matl"] - $values["prev_matl"];
+                $bcr_val   = $bcr_data[$key][$act]["matl_dollars"];
+                $bcr_num   = $bcr_data[$key][$act]["bcr"];
+
 
                 if($matl_diff!=$bcr_val){
-                    $bcr_is_wrong[$key][$act]["reason"]      = "BCR is WRONG";
+                    $bcr_is_wrong[$key][$act]["reason"]      = "BCR is $bcr_num is WRONG";
                     $bcr_is_wrong[$key][$act]["cur_labor"]   = $values["cur_labor"];
                     $bcr_is_wrong[$key][$act]["cur_matl"]    = $values["cur_matl"];
                     $bcr_is_wrong[$key][$act]["cur_start"]   = $values["cur_start"];
@@ -435,10 +456,11 @@ if($control=="compare_ca"){
             }
             if($type =="labor")
             {
-                $labor_diff = abs($values["prev_labor"] - $values["cur_labor"]);
-                $bcr_val    = abs($bcr_data[$key][$act]["hours"]);
+                $labor_diff = $values["cur_labor"] - $values["prev_labor"];
+                $bcr_val    = $bcr_data[$key][$act]["hours"];
+                $bcr_num   = $bcr_data[$key][$act]["bcr"];
                 if($labor_diff!=$bcr_val){
-                    $bcr_is_wrong[$key][$act]["reason"]      = "BCR is WRONG";
+                    $bcr_is_wrong[$key][$act]["reason"]      = "BCR is $bcr_num is WRONG";
                     $bcr_is_wrong[$key][$act]["cur_labor"]   = $values["cur_labor"];
                     $bcr_is_wrong[$key][$act]["cur_matl"]    = $values["cur_matl"];
                     $bcr_is_wrong[$key][$act]["cur_start"]   = $values["cur_start"];
@@ -451,10 +473,8 @@ if($control=="compare_ca"){
             }
         }
     }
-    //var_dump($bcr_is_wrong);
-    //die();
-    $data = "<div id = \"bcr_grid\" class = \"col-md-8\">
-    <table  class=\"table \">
+    $data = "<div id = \"bcr_grid\" class = \"col-md-12\">
+    <table  id = \"example\" class=\"table \">
         <tr>
             <th class = \"table_headers\">WBS Path</th>
             <th class = \"table_headers\">ActID</th>
@@ -499,12 +519,12 @@ if($control=="compare_ca"){
                     <td class = \"table_data\">$key</td>
                     <td class = \"table_data\">$act</td>
                     <td class = \"table_data\">".$values["reason"]."</td>
-                    <td class = \"table_data\">".$values["cur_labor"]."</td>	
-                    <td class = \"table_data\">".$values["cur_matl"]."</td>	
+                    <td class = \"table_data\">".formatNumber($values["cur_labor"])."</td>	
+                    <td class = \"table_data\">".formatCurrencyNumber($values["cur_matl"])."</td>	
                     <td class = \"table_data\">".$values["cur_start"]."</td>
                     <td class = \"table_data\">".$values["cur_finish"]."</td>
-                    <td class = \"table_data\">".$values["prev_labor"]."</td>	
-                    <td class = \"table_data\">".$values["prev_matl"]."</td>	
+                    <td class = \"table_data\">".formatNumber($values["prev_labor"])."</td>	
+                    <td class = \"table_data\">".formatCurrencyNumber($values["prev_matl"])."</td>	
                     <td class = \"table_data\">".$values["prev_start"]."</td>	
                     <td class = \"table_data\">".$values["prev_finish"]."</td>
                 </tr>
@@ -517,8 +537,11 @@ if($control=="compare_ca"){
     </table>
     </div>
     ";
-
-    die($data);
+    $token         = rand (0,1000);
+    $path2_export = $g_path_to_util."excel_exports/"."$token"."export.xls";
+    $path = "../../util/excel_exports/".$token."export.xls";
+    file_put_contents($path2_export,$data);
+    die($data."<>".$path);
 
 }
 

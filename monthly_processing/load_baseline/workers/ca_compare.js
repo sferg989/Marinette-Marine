@@ -21,7 +21,10 @@ this.onmessage = function(e) {
 
     http.onreadystatechange = function() {//Call a function when the state changes.
         if(http.readyState == 4 && http.status == 200) {
-            postMessage(action+","+this.responseText);
+            var data_response = this.responseText.split("<>");
+            var html = data_response[0];
+            var excel_file = data_response[1];
+            postMessage(action+"<>"+html+"<>"+excel_file);
         }
     }
     http.send(params);

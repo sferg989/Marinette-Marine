@@ -1,7 +1,9 @@
 /**
  * Created by fs11239 on 12/14/2016.
  */
+
 $(document).ready(function() {
+
     var url      = "load_baseline.php";
     function goBack() {
         window.history.back();
@@ -35,60 +37,15 @@ $(document).ready(function() {
             }
         }
     };
-
     var rpt_period = getUrlParameter('rpt_period');
     var code       = getUrlParameter('ship_code');
-
 
     $("#rpt_period_div").append(rpt_period);
     $("#title").append(code);
 
     $("#rpt_period_div").addClass("title_font");
     $("#title").addClass("title_font");
-    var options = [];
-    var options = {
-        enableCellNavigation: true,
-        editable            : true,
-        forceFitColumns     : true,
-        autoHeight          : true,
-        sort                : false,
-        autoEdit            : true,
-        asyncEditorLoading  : false
-    };
-    var checkboxSelector = new Slick.CheckboxSelectColumn({
-        cssClass: "slick-cell-checkboxsel"
-    });
-    var columns = [];
 
-    columns.push(checkboxSelector.getColumnDefinition());
-    columns.push({
-        id    : "step",
-        name  : "Step",
-        field : "name"
-    });
-
-    var dataView = new Slick.Data.DataView();
-    step_grid    = new Slick.Grid("#step_grid", dataView, columns, options);
-    step_grid.setSelectionModel(new Slick.RowSelectionModel({selectActiveRow: false}));
-    step_grid.registerPlugin(checkboxSelector);
-    var columnpicker = new Slick.Controls.ColumnPicker(columns, step_grid, options);
-
-    $.ajax({
-        dataType: "json",
-        url     : url,
-        data: {
-            control   : "step_grid",
-            rpt_period : rpt_period
-        },
-        success: function(data) {
-            dataView.beginUpdate();
-            dataView.setItems(data);
-            dataView.endUpdate();
-            dataView.refresh();
-            step_grid.render();
-            step_grid.updateRowCount();
-        }
-    });
 
     $("#back_btn").click(function(){
         goBack();
@@ -97,35 +54,30 @@ $(document).ready(function() {
     $("#mybutton").click(function() {
         var step        = {};
         var p6Dataval   = $('#p6data').val();
+
+        step.code       = code;
+        step.action     = "load_p6_data";
+        step.name       = "Load P6 Data";
+        step.rpt_period = rpt_period;
+        step.p6Data2    = p6Dataval;
+
         if(p6Dataval=="" || p6Dataval ==undefined){
             alert("Please Insert some data tp upload!");
             return false;
         }
-        step.code       = code;
-        step.rpt_period = rpt_period;
-        step.p6Data2    = p6Dataval;
-
-        var selectedIndexes = step_grid.getSelectedRows(),count = selectedIndexes.length;
         var worker;
-        $.each(selectedIndexes, function(index, value ) {
-            step.action = step_grid.getDataItem(value).action;
-            step.name   = step_grid.getDataItem(value).name;
-            if($("#img_"+step.action.length))
-            {
-                $("#img_"+step.action).empty();
-            }
-            $("#status").append("<div id = \"img_"+step.action+"\"><br><img src=\"../../inc/images/ajax-loader.gif\" height=\"32\" width=\"32\"/>"+step.name+"<br></div>");
-            workers     = new Worker("workers/ims_dc.js");
-            workers.onmessage = workerDone;
-            workers.postMessage(step);
-
-            function workerDone(e) {
-                console.log(e.data.id+" has completed");
-                $("#img_"+e.data.id+" img").attr("src", "../images/tick.png");
-            }
-        });
-
-
+        if($("#img_"+step.action.length))
+        {
+            $("#img_"+step.action).empty();
+        }
+        $("#status").append("<div id = \"img_"+step.action+"\"><br><img src=\"../../inc/images/ajax-loader.gif\" height=\"32\" width=\"32\"/>"+step.name+"<br></div>");
+        workers     = new Worker("workers/load_p6.js");
+        workers.onmessage = workerDone;
+        workers.postMessage(step);
+        function workerDone(e) {
+            console.log(e.data.id+" has completed");
+            $("#img_"+e.data.id+" img").attr("src", "../images/tick.png");
+        }
     });
     $("#load_bcrs").click(function() {
         var step = {};
@@ -143,7 +95,7 @@ $(document).ready(function() {
         var worker;
         if($("#img_"+step.action.length))
         {
-            $("#img_"+step.action).empty();
+            $("#img_"+step.action).remove();
         }
         $("#status").append("<div id = \"img_"+step.action+"\"><br><img src=\"../../inc/images/ajax-loader.gif\" height=\"32\" width=\"32\"/>"+step.name+"<br></div>");
 
@@ -156,6 +108,7 @@ $(document).ready(function() {
             $("#img_"+e.data.id+" img").attr("src", "../images/tick.png");
         }
     });
+
     $("#ims_dc").click(function() {
         var step = {};
         var data_check;
@@ -164,12 +117,12 @@ $(document).ready(function() {
         step.action = "compare_ca";
         if($("#img_"+step.action.length))
         {
-            $("#img_"+step.action).empty();
+            $("#img_"+step.action).remove();
         }
         step.name   = "Compare Baseline to BCR's"
         data_check = checkifBCRAndBaselineLoaded(code, rpt_period);
         var bcr, baseline, result, bcr_result,
-            baseline_result,response_data,id, html_table;
+            baseline_result,response_data,id, html_table, file_name;
 
         result          = data_check.split(",");
         bcr             = result[0];
@@ -195,15 +148,20 @@ $(document).ready(function() {
 
         workers.postMessage(step);
         function workerDone(e) {
-            if(e.data!= undefined){
-                response_data = e.data.split(",");
+            e.data = e.data+"";
+            if(e.data!= ""){
+                response_data = e.data.split("<>");
                 id = response_data[0];
                 //$("#text_"+id).addClass("color : red");
                 if ($("#bcr_grid").length) {
                     $("#bcr_grid").remove();
+                    $("#btn_div").remove();
                 }
                 html_table = response_data[1];
-                $("#status_row").append(html_table);
+                file_name = escape(response_data[2]);
+                $("#result").append(html_table);
+                $("#btn_div").append("<div class = 'col-md-4'><br><br><button id='excel_export' type='button' class='btn btn-success' onclick='window.open(\""+file_name+"\");'>Export to Excel &nbsp&nbsp<img src='../../inc/images/Excel-icon.png' height='24' width='24'/></button></div>");
+                //$("#btn_div").append("<div class = 'col-md-4'><br><br><button id='excel_export' type='button' class='btn btn-success' onclick='window.open(\"../../util/export.xls\");'>Export to Excel &nbsp&nbsp<img src='../../inc/images/Excel-icon.png' height='24' width='24'/></button></div>");
 
                 $("#img_"+id+" img").attr("src", "../images/tick.png");
             }

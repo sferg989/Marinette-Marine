@@ -31,44 +31,7 @@
     <favorites_list name="fmg" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="login.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/login/login.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1377">
-              <caret line="81" column="81" selection-start-line="81" selection-start-column="63" selection-end-line="81" selection-end-column="81" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="login.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/login/login.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="907">
-              <caret line="62" column="25" selection-start-line="62" selection-start-column="25" selection-end-line="62" selection-end-column="25" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="inc.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/inc/inc.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="410" column="1" selection-start-line="410" selection-start-column="1" selection-end-line="410" selection-end-column="1" />
-              <folding>
-                <marker date="1485466443446" expanded="true" signature="1563:1621" ph="select id fr... master_ca" />
-                <marker date="1485466443446" expanded="true" signature="1757:1784" ph="select max($... ${$table}" />
-                <marker date="1485466443446" expanded="true" signature="2281:2374" ph="INSERT INTO master_ca... " />
-                <marker date="1485466443446" expanded="true" signature="2479:2528" ph="select id fr... master_ca" />
-                <marker date="1485466443446" expanded="true" signature="4741:4795" ph="select name master_project" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -222,6 +185,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -302,8 +267,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -466,7 +429,8 @@
       <workItem from="1485523722841" duration="57000" />
       <workItem from="1485523879243" duration="3379000" />
       <workItem from="1485530139868" duration="90000" />
-      <workItem from="1485530279577" duration="317000" />
+      <workItem from="1485530279577" duration="395000" />
+      <workItem from="1485530727686" duration="125000" />
     </task>
     <task id="LOCAL-00001" summary="processing status index">
       <created>1484232740617</created>
@@ -545,11 +509,18 @@
       <option name="project" value="LOCAL" />
       <updated>1485526423638</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="first production push.1.01">
+      <created>1485530633196</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1485530633196</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="679717000" />
+    <option name="totallyTimeSpent" value="679920000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -632,7 +603,8 @@
     <MESSAGE value="working bootstrap login finish" />
     <MESSAGE value="finished the login.html&#10;" />
     <MESSAGE value="trying to push" />
-    <option name="LAST_COMMIT_MESSAGE" value="trying to push" />
+    <MESSAGE value="first production push.1.01" />
+    <option name="LAST_COMMIT_MESSAGE" value="first production push.1.01" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -893,6 +865,23 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="184">
           <caret line="83" column="5" selection-start-line="83" selection-start-column="5" selection-end-line="83" selection-end-column="5" />
+          <folding>
+            <element signature="n#insertIntoProcessingStatusShips#0;n#!!top" expanded="false" />
+            <element signature="e#2538#4250#0#PHP" expanded="false" />
+            <element signature="e#5196#5874#0#PHP" expanded="false" />
+            <element signature="e#5875#6471#0#PHP" expanded="false" />
+            <marker date="1485468206756" expanded="true" signature="324:557" ph="insert into processing_status.ship... " />
+            <marker date="1485468206756" expanded="true" signature="792:1031" ph="insert into log" />
+            <marker date="1485468206756" expanded="true" signature="1142:1187" ph="delete from " />
+            <marker date="1485468206756" expanded="true" signature="1294:1358" ph="select statu... ship" />
+            <marker date="1485468206756" expanded="true" signature="1704:1894" ph="update proce... " />
+            <marker date="1485468206756" expanded="true" signature="2031:2095" ph="select id, n... master_project" />
+            <marker date="1485468206756" expanded="true" signature="2608:3111" ph="select ship.... steps" />
+            <marker date="1485468206756" expanded="true" signature="5253:5306" ph="select step_... wi" />
+            <marker date="1485468206756" expanded="true" signature="5500:5777" ph="..." />
+            <marker date="1485468206756" expanded="true" signature="5715:5772" ph="..." />
+            <marker date="1485468206756" expanded="true" signature="6054:6115" ph="select perio... ship" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -924,26 +913,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/login/login.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1377">
-          <caret line="81" column="81" selection-start-line="81" selection-start-column="63" selection-end-line="81" selection-end-column="81" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/header/header.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="874">
           <caret line="64" column="0" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/login/login.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="907">
-          <caret line="62" column="25" selection-start-line="62" selection-start-column="25" selection-end-line="62" selection-end-column="25" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -958,6 +931,22 @@
             <marker date="1485466443446" expanded="true" signature="2479:2528" ph="select id fr... master_ca" />
             <marker date="1485466443446" expanded="true" signature="4741:4795" ph="select name master_project" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/login/login.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="907">
+          <caret line="62" column="25" selection-start-line="62" selection-start-column="25" selection-end-line="62" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/login/login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="507">
+          <caret line="81" column="81" selection-start-line="81" selection-start-column="63" selection-end-line="81" selection-end-column="81" />
+          <folding />
         </state>
       </provider>
     </entry>

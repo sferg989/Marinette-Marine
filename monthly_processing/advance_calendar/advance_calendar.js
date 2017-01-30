@@ -2,9 +2,6 @@
  * Created by fs11239 on 12/14/2016.
  */
 $(document).ready(function() {
-    var url      = "advance_calendar.php";
-    var start_rpt_period_val = $(".start_rpt_period").val();
-    var to_rpt_period_val    = $(".to_rpt_period").val();
 
     function goBack() {
         window.location.href = '../processing_status/index.html';
@@ -23,7 +20,6 @@ $(document).ready(function() {
             }
         }
     };
-
     function performStep(action)
     {
         $.ajax({
@@ -32,7 +28,7 @@ $(document).ready(function() {
             async: false,
                 data: {
                     control         : action,
-                    rpt_period      : getUrlParameter('rpt_period'),
+                    rpt_period      : rpt_period_val,
                     code            : code.toString()
                 },
             success: function (json) {
@@ -41,9 +37,13 @@ $(document).ready(function() {
             }
         });
     }
+    var url, rpt_period_val, ship_code_val;
+    url            = "advance_calendar.php";
+    rpt_period_val = getUrlParameter("rpt_period");
+    ship_code_val  = getUrlParameter("ship_code");
 
-    $("#rpt_period_div").append(getUrlParameter('rpt_period'));
-    $("#title").append(getUrlParameter('ship_code'));
+    $("#rpt_period_div").append(rpt_period_val);
+    $("#title").append(ship_code_val);
 
     $("#title").addClass("title_font");
     $("#rpt_period_div").addClass("title_font");
@@ -81,7 +81,7 @@ $(document).ready(function() {
         url     : url,
         data: {
             control     : "step_grid",
-            rpt_period  : getUrlParameter('rpt_period')
+            rpt_period  : rpt_period_val
         },
         success: function(data) {
             dataView.beginUpdate();
@@ -96,13 +96,46 @@ $(document).ready(function() {
     $("#back_btn").click(function(){
         goBack();
     });
-    $("#mybutton").click(function() {
-        selectedIndexes = step_grid.getSelectedRows();
+    $("#submit_btn").click(function() {
+        var step        = {};
 
-        $.each(selectedIndexes, function( index, value ) {
-            var action = step_grid.getDataItem(value).action;
-            performStep(action);
-        });
+        selectedIndexes = step_grid.getSelectedRows();
+        if(selectedIndexes.length){
+            //build an object that contains all the work that needs to be done.
+            //then send that work to a worker.
+            var i = 0;
+            $.each(selectedIndexes, function( index, value ) {
+                var action          = step_grid.getDataItem(value).action;
+                var name            = step_grid.getDataItem(value).name;
+                step.ship_code      = ship_code_val;
+                step.rpt_period     = rpt_period_val;
+                step.action         = action;
+                step.name           = name;
+                step["action_" + i] = action;
+
+                //performStep(action);
+                if($("#img_"+step.action.length))
+                {
+                    $("#img_"+step.action).empty();
+                }
+                $("#status").append("<div id = \"img_"+step.action+"\"><br><img src=\"../../inc/images/ajax-loader.gif\" height=\"32\" width=\"32\"/>"+step.name+"<br></div>");
+                i++;
+            });
+            //send the count of actions to worker, because e.data.length causes errors.
+            step.count = i;
+            var worker;
+            workers     = new Worker("workers/advance_calendar.js");
+            workers.onmessage = workerDone;
+            workers.postMessage(step);
+            function workerDone(e) {
+                console.log(e.data.id+" has completed");
+                $("#img_"+e.data.id+" img").attr("src", "../images/tick.png");
+            }
+        }
+        else{
+            bootbox.alert("<h6>Please make a selection!</h6>");
+        }
+
 
     });
 })

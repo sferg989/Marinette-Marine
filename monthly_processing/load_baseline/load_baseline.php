@@ -9,6 +9,13 @@ include("../../inc/lib/php/phpExcel-1.8/classes/phpexcel.php");
  */
 $user = "fs11239";
 $debug = false;
+function removeCommanDollarSignParan($number){
+    $number_no_sign = str_replace("$", "", $number);
+    $no_comma = str_replace(",", "", $number_no_sign);
+    $no_paran = str_replace(")", "", $no_comma);
+    $make_neg = floatval(str_replace("(", "-", $no_paran));
+    return $make_neg;
+}
 function formatCurrencyNumber($number){
     if($number!="" or $number !=0){
         $value = number_format($number,2,".",",");
@@ -58,7 +65,7 @@ function checkIfTableExists($schema, $table_name){
     }
 }
 function getBCRs($table_name, $ship_code){
-    $sql = "select ship_code, ca, wp, hours, matl_dollars, bcr from ims_data_check.$table_name where ship_code = $ship_code";
+    $sql = "select ship_code, ca, wp, sum(hours) hours, sum(matl_dollars) as matl_dollars, bcr from ims_data_check.$table_name where ship_code = $ship_code group by bcr, ca, wp";
     $rs = dbCall($sql,"ims_data_check");
     $data_array = array();
     while (!$rs->EOF)
@@ -219,16 +226,15 @@ if($control=="load_bcr"){
 
     foreach ($lines as $key=>$value){
         $fields = explode("	",$value);
-        $matl_dollars = str_replace("$","",$fields[3]);
 
-        $no_comma = str_replace(",","",$matl_dollars);
+
+
         //print "\r".$no_comma."\r";
         $ca           = $fields[0];
         $wp           = $fields[1];
-        $hours        = floatval($fields[2]);
-        $matl_dollars = floatval($no_comma);
         $bcr          = $fields[4];
-
+        $hours        = removeCommanDollarSignParan($fields[2]);
+        $matl_dollars = removeCommanDollarSignParan($fields[3]);
         $sql.="(
             '$ship_code',
             '$ca',
@@ -442,16 +448,17 @@ if($control=="compare_ca"){
 
 
                 if($matl_diff!=$bcr_val){
-                    $bcr_is_wrong[$key][$act]["reason"]      = "BCR is $bcr_num is WRONG";
-                    $bcr_is_wrong[$key][$act]["cur_labor"]   = $values["cur_labor"];
-                    $bcr_is_wrong[$key][$act]["cur_matl"]    = $values["cur_matl"];
-                    $bcr_is_wrong[$key][$act]["cur_start"]   = $values["cur_start"];
-                    $bcr_is_wrong[$key][$act]["cur_finish"]  = $values["cur_finish"];
-                    $bcr_is_wrong[$key][$act]["prev_labor"]  = $values["prev_labor"];
-                    $bcr_is_wrong[$key][$act]["prev_matl"]   = $values["prev_matl"];
-                    $bcr_is_wrong[$key][$act]["prev_start"]  = $values["prev_start"];
-                    $bcr_is_wrong[$key][$act]["prev_finish"] = $values["prev_finish"];
-                    $bcr_is_wrong[$key][$act]["bcr_val"]     = $bcr_val;
+                    $bcr_is_wrong[$key][$act]["reason"]           = "BCR is $bcr_num is WRONG";
+                    $bcr_is_wrong[$key][$act]["cur_labor"]        = $values["cur_labor"];
+                    $bcr_is_wrong[$key][$act]["cur_matl"]         = $values["cur_matl"];
+                    $bcr_is_wrong[$key][$act]["cur_start"]        = $values["cur_start"];
+                    $bcr_is_wrong[$key][$act]["cur_finish"]       = $values["cur_finish"];
+                    $bcr_is_wrong[$key][$act]["prev_labor"]       = $values["prev_labor"];
+                    $bcr_is_wrong[$key][$act]["prev_matl"]        = $values["prev_matl"];
+                    $bcr_is_wrong[$key][$act]["prev_start"]       = $values["prev_start"];
+                    $bcr_is_wrong[$key][$act]["prev_finish"]      = $values["prev_finish"];
+                    $bcr_is_wrong[$key][$act]["bcr_matl_dollars"] = $bcr_val;
+                    $bcr_is_wrong[$key][$act]["bcr_diff"]         = $bcr_val - $matl_diff;
                 }
             }
             if($type =="labor")
@@ -469,6 +476,8 @@ if($control=="compare_ca"){
                     $bcr_is_wrong[$key][$act]["prev_matl"]   = $values["prev_matl"];
                     $bcr_is_wrong[$key][$act]["prev_start"]  = $values["prev_start"];
                     $bcr_is_wrong[$key][$act]["prev_finish"] = $values["prev_finish"];
+                    $bcr_is_wrong[$key][$act]["bcr_hours"]   = $bcr_val;
+                    $bcr_is_wrong[$key][$act]["bcr_diff"]    = $bcr_val-$labor_diff;
                 }
             }
         }
@@ -487,6 +496,9 @@ if($control=="compare_ca"){
             <th class = \"table_headers\">Prev Material Cost</th>	
             <th class = \"table_headers\">Prev Baseline Start</th>	
             <th class = \"table_headers\">Prev Baseline Finish</th>
+            <th class = \"table_headers\">BCR MATL Dollars</th>
+            <th class = \"table_headers\">BCR HOURS</th>
+            <th class = \"table_headers\">BCR Difference</th>
         </tr>
         ";
     foreach ($no_bcr as $key=>$value){
@@ -506,6 +518,9 @@ if($control=="compare_ca"){
                     <td class = \"table_data\">".$values["prev_matl"]."</td>	
                     <td class = \"table_data\">".$values["prev_start"]."</td>	
                     <td class = \"table_data\">".$values["prev_finish"]."</td>
+                    <td class = \"table_data\">NA</td>
+                    <td class = \"table_data\">NA</td>
+                    <td class = \"table_data\">NA</td>
                 </tr>
                 ";
         }
@@ -527,6 +542,10 @@ if($control=="compare_ca"){
                     <td class = \"table_data\">".formatCurrencyNumber($values["prev_matl"])."</td>	
                     <td class = \"table_data\">".$values["prev_start"]."</td>	
                     <td class = \"table_data\">".$values["prev_finish"]."</td>
+                    <td class = \"table_data\">".formatCurrencyNumber($values["bcr_matl_dollars"])."</td>	
+                    <td class = \"table_data\">".formatNumber($values["bcr_hours"])."</td>	
+                    <td class = \"table_data\">".formatNumber($values["bcr_diff"])."</td>	
+
                 </tr>
                 ";
         }

@@ -34,16 +34,7 @@ $z = "
 <html>
 <head>
 ";
-$z.= "
-    <script
-            src=\"https://code.jquery.com/jquery-2.2.4.min.js\"
-            integrity=\"sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=\"
-            crossorigin=\"anonymous\"></script>    
-    <script src=\"https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js\"></script>
-    <script src=\"https://npmcdn.com/bootstrap@4.0.0-alpha.2/dist/js/bootstrap.js\"></script>
-    <script src=\"inc/lib/css/bootbox.min.js\"></script>
-    <link rel=\"stylesheet\" href=\"inc/lib/css/bootstrap/css/bootstrap.css\">
-";
+$z.= ";
 $z.="</head>";
 $z.="<body>";
 $result = checkUser($username,$password);

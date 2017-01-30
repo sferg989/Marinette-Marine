@@ -62,7 +62,7 @@ $(document).ready(function() {
         step.p6Data2    = p6Dataval;
 
         if(p6Dataval=="" || p6Dataval ==undefined){
-            alert("Please Insert some data tp upload!");
+            bootbox.alert("Please Insert some data to upload!");
             return false;
         }
         var worker;
@@ -83,7 +83,8 @@ $(document).ready(function() {
         var step = {};
         var bcrDataval  = $("#bcr_data").val();
         if(bcrDataval=="" || bcrDataval ==undefined){
-            alert("Please Insert some data tp upload!");
+            bootbox.alert("Please Insert some data to upload!");
+
             return false;
         }
 
@@ -132,12 +133,16 @@ $(document).ready(function() {
 
         if(bcr_result[1]=="false")
         {
-            alert("please loac BCR's for "+rpt_period);
+
+            bootbox.alert("please loac BCR's for "+rpt_period);
+
             return false;
         }
         if(baseline_result[1]=="false")
         {
-            alert("please loac Baseline for "+rpt_period);
+
+            bootbox.alert("please loac Baseline for "+rpt_period);
+
             return false;
         }
         var worker;
@@ -155,12 +160,12 @@ $(document).ready(function() {
                 //$("#text_"+id).addClass("color : red");
                 if ($("#bcr_grid").length) {
                     $("#bcr_grid").remove();
-                    $("#btn_div").remove();
+                    $("#excel_export_btn_div").empty();
                 }
                 html_table = response_data[1];
                 file_name = escape(response_data[2]);
                 $("#result").append(html_table);
-                $("#btn_div").append("<div class = 'col-md-4'><br><br><button id='excel_export' type='button' class='btn btn-success' onclick='window.open(\""+file_name+"\");'>Export to Excel &nbsp&nbsp<img src='../../inc/images/Excel-icon.png' height='24' width='24'/></button></div>");
+                $("#excel_export_btn_div").append("<br><br><button id='excel_export' type='button' class='btn btn-success' onclick='window.open(\""+file_name+"\");'>Export to Excel &nbsp&nbsp<img src='../../inc/images/Excel-icon.png' height='24' width='24'/></button>");
                 //$("#btn_div").append("<div class = 'col-md-4'><br><br><button id='excel_export' type='button' class='btn btn-success' onclick='window.open(\"../../util/export.xls\");'>Export to Excel &nbsp&nbsp<img src='../../inc/images/Excel-icon.png' height='24' width='24'/></button></div>");
 
                 $("#img_"+id+" img").attr("src", "../images/tick.png");

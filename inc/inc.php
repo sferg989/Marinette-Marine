@@ -1,8 +1,9 @@
 <?php
 include("mmev.inc.php");
 function dbCall($sql,$schema="fmm_evms",$server="localhost"){
-    $user = "root";
-    $password = "secret";
+
+    $user     = "steve";
+    $password = "all4him";
     $db = ADONewConnection('mysql');
     $db->Connect($server, $user, $password, $schema);
 

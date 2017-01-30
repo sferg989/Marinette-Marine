@@ -12,7 +12,6 @@ extract($_REQUEST);
 set_time_limit(0);
 error_reporting(0);
 include('lib/php/adodb5/adodb.inc.php');
-
 //Global Paths
 $base_path      = "Y:/Program Management/cobra processing/";
 $g_path_to_util = "C:\\xampp\\htdocs\\fmg\\util\\";

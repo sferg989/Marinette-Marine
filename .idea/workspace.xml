@@ -2,12 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="47f822d5-caa4-4777-9772-746577f23a95" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/monthly_processing/advance_calendar/workers/advance_calendar.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/monthly_processing/advance_calendar/advance_calendar.js" afterPath="$PROJECT_DIR$/monthly_processing/advance_calendar/advance_calendar.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/monthly_processing/advance_calendar/advance_calendar.php" afterPath="$PROJECT_DIR$/monthly_processing/advance_calendar/advance_calendar.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/monthly_processing/advance_calendar/index.html" afterPath="$PROJECT_DIR$/monthly_processing/advance_calendar/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/util/backup_scripts/BAT/0473_bkup.BAT" afterPath="$PROJECT_DIR$/util/backup_scripts/BAT/0473_bkup.BAT" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/monthly_processing/advance_calendar/workers/advance_calendar.js" afterPath="$PROJECT_DIR$/monthly_processing/advance_calendar/workers/advance_calendar.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/monthly_processing/processing_status/index.html" afterPath="$PROJECT_DIR$/monthly_processing/processing_status/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/monthly_processing/processing_status/processing_status.php" afterPath="$PROJECT_DIR$/monthly_processing/processing_status/processing_status.php" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -38,34 +36,57 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="advance_calendar.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/monthly_processing/advance_calendar/advance_calendar.js">
+      <file leaf-file-name="processing_status.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/monthly_processing/processing_status/processing_status.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="725">
-              <caret line="123" column="87" selection-start-line="123" selection-start-column="87" selection-end-line="123" selection-end-column="87" />
+            <state relative-caret-position="452">
+              <caret line="77" column="36" selection-start-line="77" selection-start-column="36" selection-end-line="77" selection-end-column="36" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="advance_calendar.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/monthly_processing/advance_calendar/workers/advance_calendar.js">
+      <file leaf-file-name="processing_status.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/monthly_processing/processing_status/processing_status.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="561">
-              <caret line="17" column="29" selection-start-line="17" selection-start-column="29" selection-end-line="17" selection-end-column="29" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="advance_calendar.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/monthly_processing/advance_calendar/advance_calendar.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="732">
-              <caret line="63" column="5" selection-start-line="63" selection-start-column="5" selection-end-line="63" selection-end-column="5" />
+            <state relative-caret-position="496">
+              <caret line="189" column="19" selection-start-line="189" selection-start-column="19" selection-end-line="189" selection-end-column="19" />
               <folding>
-                <marker date="1485796401171" expanded="true" signature="1454:1541" ph="select id,st... advance_calender" />
+                <marker date="1485806155635" expanded="true" signature="324:557" ph="insert into processing_status.ship... " />
+                <marker date="1485806155635" expanded="true" signature="792:1031" ph="insert into log" />
+                <marker date="1485806155635" expanded="true" signature="1142:1187" ph="delete from " />
+                <marker date="1485806155635" expanded="true" signature="1294:1358" ph="select statu... ship" />
+                <marker date="1485806155635" expanded="true" signature="1704:1894" ph="update proce... " />
+                <marker date="1485806155635" expanded="true" signature="2031:2095" ph="select id, n... master_project" />
+                <marker date="1485806155635" expanded="true" signature="2608:3111" ph="select ship.... steps" />
+                <marker date="1485806155635" expanded="true" signature="5253:5312" ph="select step_... wi" />
+                <marker date="1485806155635" expanded="true" signature="5549:5744" ph="..." />
+                <marker date="1485806155635" expanded="true" signature="5551:5744" ph="..." />
+                <marker date="1485806155635" expanded="true" signature="5693:5740" ph="..." />
+                <marker date="1485806155635" expanded="true" signature="5727:5740" ph="..." />
+                <marker date="1485806155635" expanded="true" signature="5728:5740" ph="..." />
+                <marker date="1485806155635" expanded="true" signature="6000:6061" ph="select perio... ship" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/monthly_processing/load_baseline/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="7" column="18" selection-start-line="7" selection-start-column="18" selection-end-line="7" selection-end-column="18" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/monthly_processing/processing_status/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="307">
+              <caret line="58" column="31" selection-start-line="58" selection-start-column="31" selection-end-line="58" selection-end-column="31" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -139,11 +160,9 @@
         <option value="$PROJECT_DIR$/login/login.css" />
         <option value="$PROJECT_DIR$/home/index.html" />
         <option value="$PROJECT_DIR$/header/header.html" />
-        <option value="$PROJECT_DIR$/monthly_processing/processing_status/index.html" />
         <option value="$PROJECT_DIR$/monthly_processing/processing_status/processing_status.js" />
         <option value="$PROJECT_DIR$/login/login.php" />
         <option value="$PROJECT_DIR$/monthly_processing/cur_month_setup/cur_month_setup.php" />
-        <option value="$PROJECT_DIR$/monthly_processing/processing_status/processing_status.php" />
         <option value="$PROJECT_DIR$/login/login.html" />
         <option value="$PROJECT_DIR$/login/login.js" />
         <option value="$PROJECT_DIR$/inc/lib/js/jquery.table2excel.js" />
@@ -160,6 +179,8 @@
         <option value="$PROJECT_DIR$/monthly_processing/advance_calendar/index.html" />
         <option value="$PROJECT_DIR$/monthly_processing/advance_calendar/advance_calendar.js" />
         <option value="$PROJECT_DIR$/monthly_processing/advance_calendar/workers/advance_calendar.js" />
+        <option value="$PROJECT_DIR$/monthly_processing/processing_status/processing_status.php" />
+        <option value="$PROJECT_DIR$/monthly_processing/processing_status/index.html" />
       </list>
     </option>
   </component>
@@ -275,69 +296,7 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="load_baseline" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="fmg" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="fmg" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="monthly_processing" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="load_baseline" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="workers" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="fmg" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="fmg" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="monthly_processing" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="advance_calendar" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="fmg" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="fmg" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="monthly_processing" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="advance_calendar" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="workers" />
+              <option name="myItemId" value="processing_status" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -513,7 +472,7 @@
       <workItem from="1485535409283" duration="15625000" />
       <workItem from="1485782775427" duration="3117000" />
       <workItem from="1485787022864" duration="1287000" />
-      <workItem from="1485789116895" duration="9551000" />
+      <workItem from="1485789116895" duration="10712000" />
     </task>
     <task id="LOCAL-00001" summary="processing status index">
       <created>1484232740617</created>
@@ -641,11 +600,18 @@
       <option name="project" value="LOCAL" />
       <updated>1485796197959</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="finished advance calendar web workers">
+      <created>1485805110708</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1485805110708</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="710344000" />
+    <option name="totallyTimeSpent" value="711505000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -736,7 +702,8 @@
     <MESSAGE value="first production push.1.05" />
     <MESSAGE value="IMS Data check" />
     <MESSAGE value="IMS Data check added BCR validation" />
-    <option name="LAST_COMMIT_MESSAGE" value="IMS Data check added BCR validation" />
+    <MESSAGE value="finished advance calendar web workers" />
+    <option name="LAST_COMMIT_MESSAGE" value="finished advance calendar web workers" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -799,10 +766,7 @@
     <entry file="file://$PROJECT_DIR$/test.js" />
     <entry file="file://$PROJECT_DIR$/home/index.html" />
     <entry file="file://$PROJECT_DIR$/login/login.php" />
-    <entry file="file://$PROJECT_DIR$/monthly_processing/processing_status/processing_status.php" />
     <entry file="file://$PROJECT_DIR$/monthly_processing/cur_month_setup/cur_month_setup.php" />
-    <entry file="file://$PROJECT_DIR$/monthly_processing/processing_status/processing_status.js" />
-    <entry file="file://$PROJECT_DIR$/monthly_processing/processing_status/index.html" />
     <entry file="file://$PROJECT_DIR$/header/header.html" />
     <entry file="file://$PROJECT_DIR$/inc/lib/js/jquery.table2excel.js">
       <provider selected="true" editor-type-id="text-editor">
@@ -934,22 +898,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/monthly_processing/load_baseline/load_baseline.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="100" column="16" selection-start-line="100" selection-start-column="12" selection-end-line="100" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/monthly_processing/load_baseline/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="522">
-          <caret line="115" column="8" selection-start-line="115" selection-start-column="8" selection-end-line="115" selection-end-column="52" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/monthly_processing/advance_calendar/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="116">
@@ -962,6 +910,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/monthly_processing/advance_calendar/workers/advance_calendar.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -984,10 +940,57 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/monthly_processing/advance_calendar/workers/advance_calendar.js">
+    <entry file="file://$PROJECT_DIR$/monthly_processing/processing_status/processing_status.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="17" column="29" selection-start-line="17" selection-start-column="29" selection-end-line="17" selection-end-column="29" />
+        <state relative-caret-position="452">
+          <caret line="77" column="36" selection-start-line="77" selection-start-column="36" selection-end-line="77" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/monthly_processing/processing_status/processing_status.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="496">
+          <caret line="189" column="19" selection-start-line="189" selection-start-column="19" selection-end-line="189" selection-end-column="19" />
+          <folding>
+            <marker date="1485806155635" expanded="true" signature="324:557" ph="insert into processing_status.ship... " />
+            <marker date="1485806155635" expanded="true" signature="792:1031" ph="insert into log" />
+            <marker date="1485806155635" expanded="true" signature="1142:1187" ph="delete from " />
+            <marker date="1485806155635" expanded="true" signature="1294:1358" ph="select statu... ship" />
+            <marker date="1485806155635" expanded="true" signature="1704:1894" ph="update proce... " />
+            <marker date="1485806155635" expanded="true" signature="2031:2095" ph="select id, n... master_project" />
+            <marker date="1485806155635" expanded="true" signature="2608:3111" ph="select ship.... steps" />
+            <marker date="1485806155635" expanded="true" signature="5253:5312" ph="select step_... wi" />
+            <marker date="1485806155635" expanded="true" signature="5549:5744" ph="..." />
+            <marker date="1485806155635" expanded="true" signature="5551:5744" ph="..." />
+            <marker date="1485806155635" expanded="true" signature="5693:5740" ph="..." />
+            <marker date="1485806155635" expanded="true" signature="5727:5740" ph="..." />
+            <marker date="1485806155635" expanded="true" signature="5728:5740" ph="..." />
+            <marker date="1485806155635" expanded="true" signature="6000:6061" ph="select perio... ship" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/monthly_processing/load_baseline/load_baseline.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="64" column="44" selection-start-line="64" selection-start-column="41" selection-end-line="64" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/monthly_processing/load_baseline/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="18" selection-start-line="7" selection-start-column="18" selection-end-line="7" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/monthly_processing/processing_status/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="307">
+          <caret line="58" column="31" selection-start-line="58" selection-start-column="31" selection-end-line="58" selection-end-column="31" />
           <folding />
         </state>
       </provider>

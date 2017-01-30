@@ -173,20 +173,18 @@ if($control =="update_status")
 }
 if($control=="wi_list"){
     $data = "<ul>";
-    $sql = "select step_id, common_name from processing_status.wi";
+    $sql = "select step_id, common_name, path from processing_status.wi";
     $rs = dbCall($sql, "processing_status");
 
     while (!$rs->EOF)
     {
         $step_id     = $rs->fields["step_id"];
         $common_name = $rs->fields["common_name"];
+        $path       = $rs->fields["path"];
         $data.="<li>
-                    <img src=\"../../inc/images/Word-icon-small.png\" height=\"24\" width=\"24\"/>
                     
-                    <a href=\"file:\\\ $g_path2_wi\\$common_name.docx\" download=\"filename\">
-                    $common_name
-                    asd</li>
-                    </a>";
+                    <img src=\"../../inc/images/Word-icon-small.png\" height=\"24\" width=\"24\"/>
+                    <a onclick='window.open(\"$path\");'>$common_name</li></a>";
         $rs->MoveNext();
     }
     $data.="</ul>";

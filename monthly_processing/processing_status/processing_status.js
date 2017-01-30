@@ -4,8 +4,28 @@
 $(document).ready(function() {
     var arrayOfGrids  =[];
     var url      = "processing_status.php";
-    var rpt_period;
+    var rpt_period, defaultRPTPeriod;
+    defaultRPTPeriod = function createDefaultRPTPeriod(){
+        var dd, mm,month,year,yyyy;
+        var today = new Date();
+        dd = today.getDate();
+        mm = today.getMonth()+1; //January is 0!
+        yyyy = today.getFullYear();
+        if(dd<22){
+            mm = mm-1;
+            if(mm==0){
+                mm = 12;
+                yyyy = yyyy-1;
+            }
+        }
+        if(mm<10) {
+            mm='0'+mm
+        }
+        yyyy = yyyy.toString();
 
+        rpt_period = yyyy + mm;
+        $("#rpt_period").append("<option value="+ rpt_period +">"+rpt_period+"</option>");
+    }
     function openRowDivs()
     {
         $("#status_grids").append("<div class=\"row\">");
@@ -87,7 +107,7 @@ $(document).ready(function() {
     function createSelect2Box(filter_name) {
         var place_holder = filter_name.replace("_", "  ");
 
-        $("."+filter_name).select2({
+        $("#"+filter_name).select2({
             //minimumResultsForSearch: -1,
             width : 154,
             allowClear : true,
@@ -114,8 +134,11 @@ $(document).ready(function() {
                 cache: true
             }
         });
+
     }
     createSelect2Box("rpt_period");
+    defaultRPTPeriod();
+
     var shipStatusCols = [];
     shipStatusCols= [
         {
@@ -193,11 +216,19 @@ $(document).ready(function() {
     });
 
     $("#mybutton").click(function() {
+
         $("#status_grids").empty();
         selectedIndexes = project_grid.getSelectedRows();
+        if(selectedIndexes.length<1){
+            bootbox.alert("<h6>Please Select A Hull</h6>");
+            return false;
+        }
         var i = 1;
-        rpt_period = $(".rpt_period").val();
-
+        rpt_period = $("#rpt_period").val();
+        if(rpt_period=="" || rpt_period== undefined){
+            bootbox.alert("<h6>Please Select A Reporting Period</h6>");
+            return false;
+        }
         $.each(selectedIndexes, function( index, value ) {
             var ship_chode = project_grid.getDataItem(value).code;
             var ship_name  = project_grid.getDataItem(value).project_name;

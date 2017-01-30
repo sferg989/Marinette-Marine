@@ -3,9 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="47f822d5-caa4-4777-9772-746577f23a95" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/monthly_processing/advance_calendar/workers/advance_calendar.js" afterPath="$PROJECT_DIR$/monthly_processing/advance_calendar/workers/advance_calendar.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/monthly_processing/processing_status/index.html" afterPath="$PROJECT_DIR$/monthly_processing/processing_status/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/monthly_processing/processing_status/processing_status.php" afterPath="$PROJECT_DIR$/monthly_processing/processing_status/processing_status.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/monthly_processing/processing_status/processing_status.js" afterPath="$PROJECT_DIR$/monthly_processing/processing_status/processing_status.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -35,63 +34,7 @@
     <favorites_list name="fmg" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="processing_status.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/monthly_processing/processing_status/processing_status.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="452">
-              <caret line="77" column="36" selection-start-line="77" selection-start-column="36" selection-end-line="77" selection-end-column="36" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="processing_status.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/monthly_processing/processing_status/processing_status.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="496">
-              <caret line="189" column="19" selection-start-line="189" selection-start-column="19" selection-end-line="189" selection-end-column="19" />
-              <folding>
-                <marker date="1485806155635" expanded="true" signature="324:557" ph="insert into processing_status.ship... " />
-                <marker date="1485806155635" expanded="true" signature="792:1031" ph="insert into log" />
-                <marker date="1485806155635" expanded="true" signature="1142:1187" ph="delete from " />
-                <marker date="1485806155635" expanded="true" signature="1294:1358" ph="select statu... ship" />
-                <marker date="1485806155635" expanded="true" signature="1704:1894" ph="update proce... " />
-                <marker date="1485806155635" expanded="true" signature="2031:2095" ph="select id, n... master_project" />
-                <marker date="1485806155635" expanded="true" signature="2608:3111" ph="select ship.... steps" />
-                <marker date="1485806155635" expanded="true" signature="5253:5312" ph="select step_... wi" />
-                <marker date="1485806155635" expanded="true" signature="5549:5744" ph="..." />
-                <marker date="1485806155635" expanded="true" signature="5551:5744" ph="..." />
-                <marker date="1485806155635" expanded="true" signature="5693:5740" ph="..." />
-                <marker date="1485806155635" expanded="true" signature="5727:5740" ph="..." />
-                <marker date="1485806155635" expanded="true" signature="5728:5740" ph="..." />
-                <marker date="1485806155635" expanded="true" signature="6000:6061" ph="select perio... ship" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/monthly_processing/load_baseline/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" column="18" selection-start-line="7" selection-start-column="18" selection-end-line="7" selection-end-column="18" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/monthly_processing/processing_status/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="307">
-              <caret line="58" column="31" selection-start-line="58" selection-start-column="31" selection-end-line="58" selection-end-column="31" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -160,7 +103,6 @@
         <option value="$PROJECT_DIR$/login/login.css" />
         <option value="$PROJECT_DIR$/home/index.html" />
         <option value="$PROJECT_DIR$/header/header.html" />
-        <option value="$PROJECT_DIR$/monthly_processing/processing_status/processing_status.js" />
         <option value="$PROJECT_DIR$/login/login.php" />
         <option value="$PROJECT_DIR$/monthly_processing/cur_month_setup/cur_month_setup.php" />
         <option value="$PROJECT_DIR$/login/login.html" />
@@ -181,6 +123,7 @@
         <option value="$PROJECT_DIR$/monthly_processing/advance_calendar/workers/advance_calendar.js" />
         <option value="$PROJECT_DIR$/monthly_processing/processing_status/processing_status.php" />
         <option value="$PROJECT_DIR$/monthly_processing/processing_status/index.html" />
+        <option value="$PROJECT_DIR$/monthly_processing/processing_status/processing_status.js" />
       </list>
     </option>
   </component>
@@ -472,7 +415,7 @@
       <workItem from="1485535409283" duration="15625000" />
       <workItem from="1485782775427" duration="3117000" />
       <workItem from="1485787022864" duration="1287000" />
-      <workItem from="1485789116895" duration="10712000" />
+      <workItem from="1485789116895" duration="14491000" />
     </task>
     <task id="LOCAL-00001" summary="processing status index">
       <created>1484232740617</created>
@@ -607,11 +550,18 @@
       <option name="project" value="LOCAL" />
       <updated>1485805110708</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Fixed the WI Links.  They should work now!">
+      <created>1485806270778</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1485806270778</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="711505000" />
+    <option name="totallyTimeSpent" value="715284000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -703,7 +653,8 @@
     <MESSAGE value="IMS Data check" />
     <MESSAGE value="IMS Data check added BCR validation" />
     <MESSAGE value="finished advance calendar web workers" />
-    <option name="LAST_COMMIT_MESSAGE" value="finished advance calendar web workers" />
+    <MESSAGE value="Fixed the WI Links.  They should work now!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed the WI Links.  They should work now!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -940,18 +891,48 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/monthly_processing/load_baseline/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="96">
+          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="11" selection-end-column="80" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/monthly_processing/processing_status/processing_status.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="452">
-          <caret line="77" column="36" selection-start-line="77" selection-start-column="36" selection-end-line="77" selection-end-column="36" />
+        <state relative-caret-position="416">
+          <caret line="37" column="5" selection-start-line="37" selection-start-column="5" selection-end-line="37" selection-end-column="5" />
+          <folding>
+            <element signature="e#1722#2946#0" expanded="false" />
+            <element signature="e#2971#3205#0" expanded="false" />
+            <element signature="e#3272#3433#0" expanded="false" />
+            <element signature="e#6621#7004#0" expanded="false" />
+            <element signature="e#7044#8108#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/monthly_processing/load_baseline/load_baseline.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="309">
+          <caret line="24" column="5" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/monthly_processing/processing_status/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="439">
+          <caret line="74" column="22" selection-start-line="74" selection-start-column="22" selection-end-line="74" selection-end-column="22" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/monthly_processing/processing_status/processing_status.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="496">
-          <caret line="189" column="19" selection-start-line="189" selection-start-column="19" selection-end-line="189" selection-end-column="19" />
+        <state relative-caret-position="664">
+          <caret line="212" column="0" selection-start-line="212" selection-start-column="0" selection-end-line="213" selection-end-column="37" />
           <folding>
             <marker date="1485806155635" expanded="true" signature="324:557" ph="insert into processing_status.ship... " />
             <marker date="1485806155635" expanded="true" signature="792:1031" ph="insert into log" />
@@ -968,30 +949,6 @@
             <marker date="1485806155635" expanded="true" signature="5728:5740" ph="..." />
             <marker date="1485806155635" expanded="true" signature="6000:6061" ph="select perio... ship" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/monthly_processing/load_baseline/load_baseline.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="64" column="44" selection-start-line="64" selection-start-column="41" selection-end-line="64" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/monthly_processing/load_baseline/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="18" selection-start-line="7" selection-start-column="18" selection-end-line="7" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/monthly_processing/processing_status/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="307">
-          <caret line="58" column="31" selection-start-line="58" selection-start-column="31" selection-end-line="58" selection-end-column="31" />
-          <folding />
         </state>
       </provider>
     </entry>

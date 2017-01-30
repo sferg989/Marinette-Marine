@@ -1,5 +1,7 @@
 <?php
 include("mmev.inc.php");
+session_start();
+
 function dbCall($sql,$schema="fmm_evms",$server="localhost"){
 
     $user     = "steve";

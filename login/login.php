@@ -51,12 +51,15 @@ function checkUser($username,$password){
         session_start();
         $_SESSION["logged_in"] = "true";
         $_SESSION["user_name"] = $username;
+        $_SESSION["role"] = "PFA";
+        $_SESSION["hulls"] = "17<>19<>21";
         $msg = "login";
         return $msg;
     }
 }
 if($control =="login"){
     $msg = checkUser($user_name,$password);
+    //var_dump($_SESSION);
     die($msg);
 }
 if($control=="register"){

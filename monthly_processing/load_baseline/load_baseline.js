@@ -166,7 +166,6 @@ $(document).ready(function() {
                 file_name = escape(response_data[2]);
                 $("#result").append(html_table);
                 $("#excel_export_btn_div").append("<br><br><button id='excel_export' type='button' class='btn btn-success' onclick='window.open(\""+file_name+"\");'>Export to Excel &nbsp&nbsp<img src='../../inc/images/Excel-icon.png' height='24' width='24'/></button>");
-                //$("#btn_div").append("<div class = 'col-md-4'><br><br><button id='excel_export' type='button' class='btn btn-success' onclick='window.open(\"../../util/export.xls\");'>Export to Excel &nbsp&nbsp<img src='../../inc/images/Excel-icon.png' height='24' width='24'/></button></div>");
 
                 $("#img_"+id+" img").attr("src", "../images/tick.png");
             }

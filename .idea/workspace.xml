@@ -2,9 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="47f822d5-caa4-4777-9772-746577f23a95" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/header/menu.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/header/header.html" afterPath="$PROJECT_DIR$/header/header.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/header/header.js" afterPath="$PROJECT_DIR$/header/header.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/login/login.html" afterPath="$PROJECT_DIR$/login/login.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/login/login.js" afterPath="$PROJECT_DIR$/login/login.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/login/login.php" afterPath="$PROJECT_DIR$/login/login.php" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -36,13 +38,33 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="header.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="header.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/header/header.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="17" column="12" selection-start-line="17" selection-start-column="12" selection-end-line="17" selection-end-column="12" />
+            <state relative-caret-position="378">
+              <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="login.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/login/login.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="351">
+              <caret line="71" column="56" selection-start-line="71" selection-start-column="56" selection-end-line="71" selection-end-column="56" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="login.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/login/login.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="860">
+              <caret line="88" column="23" selection-start-line="88" selection-start-column="16" selection-end-line="88" selection-end-column="23" />
               <folding>
-                <element signature="n#style#0;n#iframe#0;n#!!top" expanded="true" />
+                <element signature="e#675#1435#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -51,13 +73,28 @@
       <file leaf-file-name="menu.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/header/menu.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="382">
-              <caret line="59" column="21" selection-start-line="59" selection-start-column="21" selection-end-line="59" selection-end-column="21" />
+            <state relative-caret-position="365">
+              <caret line="57" column="42" selection-start-line="57" selection-start-column="42" selection-end-line="57" selection-end-column="42" />
               <folding>
-                <marker date="1485875094677" expanded="true" signature="199:418" ph="select categ... menu" />
-                <marker date="1485875094677" expanded="true" signature="715:908" ph="select categ... menu" />
-                <marker date="1485875094677" expanded="true" signature="1445:1623" ph="..." />
-                <marker date="1485875094677" expanded="true" signature="1602:1623" ph="..." />
+                <marker date="1485876257839" expanded="true" signature="199:418" ph="select categ... menu" />
+                <marker date="1485876257839" expanded="true" signature="715:908" ph="select categ... menu" />
+                <marker date="1485876257839" expanded="true" signature="1445:1623" ph="..." />
+                <marker date="1485876257839" expanded="true" signature="1602:1623" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="login.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/login/login.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="507">
+              <caret line="54" column="20" selection-start-line="54" selection-start-column="20" selection-end-line="54" selection-end-column="20" />
+              <folding>
+                <element signature="n#checkifUserExists#0;n#!!top" expanded="false" />
+                <marker date="1485877274323" expanded="true" signature="342:482" ph="INSERT INTO user" />
+                <marker date="1485877274323" expanded="true" signature="614:679" ph="select user_... user" />
+                <marker date="1485877274323" expanded="true" signature="977:1064" ph="select user_... user" />
               </folding>
             </state>
           </provider>
@@ -66,8 +103,8 @@
       <file leaf-file-name="header.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/header/header.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="486">
-              <caret line="18" column="30" selection-start-line="18" selection-start-column="30" selection-end-line="18" selection-end-column="30" />
+            <state relative-caret-position="-108">
+              <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -86,7 +123,7 @@
         </entry>
       </file>
       <file leaf-file-name="copyheader.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/header/copyheader.html">
+        <entry file="file://$PROJECT_DIR$/bkup/copyheader.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="220">
               <caret line="16" column="39" selection-start-line="16" selection-start-column="39" selection-end-line="16" selection-end-column="39" />
@@ -157,8 +194,6 @@
         <option value="$PROJECT_DIR$/login/login.css" />
         <option value="$PROJECT_DIR$/home/index.html" />
         <option value="$PROJECT_DIR$/monthly_processing/cur_month_setup/cur_month_setup.php" />
-        <option value="$PROJECT_DIR$/login/login.html" />
-        <option value="$PROJECT_DIR$/login/login.js" />
         <option value="$PROJECT_DIR$/inc/lib/js/jquery.table2excel.js" />
         <option value="$PROJECT_DIR$/monthly_processing/load_baseline/workers/ca_compare.js" />
         <option value="$PROJECT_DIR$/bkup/login.php" />
@@ -180,11 +215,13 @@
         <option value="$PROJECT_DIR$/inc/inc.php" />
         <option value="$PROJECT_DIR$/global_worker/check_login.php" />
         <option value="$PROJECT_DIR$/header/workers/menu.js" />
-        <option value="$PROJECT_DIR$/login/login.php" />
         <option value="$PROJECT_DIR$/header/copyheader.html" />
         <option value="$PROJECT_DIR$/header/header.js" />
         <option value="$PROJECT_DIR$/header/menu.php" />
         <option value="$PROJECT_DIR$/header/header.html" />
+        <option value="$PROJECT_DIR$/login/login.html" />
+        <option value="$PROJECT_DIR$/login/login.js" />
+        <option value="$PROJECT_DIR$/login/login.php" />
       </list>
     </option>
   </component>
@@ -351,19 +388,19 @@
     <property name="ToolWindowDatabase Console.ShowToolbar" value="false" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\fmg\bkup" />
-      <recent name="C:\xampp\htdocs\fmg\login" />
-      <recent name="C:\xampp\htdocs\fmg\monthly_processing\cur_month_setup\workers" />
-      <recent name="C:\xampp\htdocs\fmg\menu" />
-      <recent name="C:\xampp\htdocs\fmg\dashboards\main_ev" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\fmg\header" />
       <recent name="C:\xampp\htdocs\fmg\monthly_processing\advance_calendar" />
       <recent name="C:\xampp\htdocs\fmg\monthly_processing\load_baseline\workers" />
       <recent name="C:\xampp\htdocs\fmg\monthly_processing" />
       <recent name="C:\xampp\htdocs\fmg\bac_eac_compare" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\fmg\bkup" />
+      <recent name="C:\xampp\htdocs\fmg\login" />
+      <recent name="C:\xampp\htdocs\fmg\monthly_processing\cur_month_setup\workers" />
+      <recent name="C:\xampp\htdocs\fmg\menu" />
+      <recent name="C:\xampp\htdocs\fmg\dashboards\main_ev" />
     </key>
   </component>
   <component name="RunManager">
@@ -505,7 +542,7 @@
       <workItem from="1485782775427" duration="3117000" />
       <workItem from="1485787022864" duration="1287000" />
       <workItem from="1485789116895" duration="18846000" />
-      <workItem from="1485869823340" duration="5414000" />
+      <workItem from="1485869823340" duration="7410000" />
     </task>
     <task id="LOCAL-00001" summary="processing status index">
       <created>1484232740617</created>
@@ -661,11 +698,18 @@
       <option name="project" value="LOCAL" />
       <updated>1485814332970</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="got menu working.  It is now driven to by a table">
+      <created>1485875387778</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1485875387778</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="725053000" />
+    <option name="totallyTimeSpent" value="727049000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -760,7 +804,8 @@
     <MESSAGE value="Fixed the WI Links.  They should work now!" />
     <MESSAGE value="added a default RPT period to the Processing Status" />
     <MESSAGE value="Got the Login and session variable to work" />
-    <option name="LAST_COMMIT_MESSAGE" value="Got the Login and session variable to work" />
+    <MESSAGE value="got menu working.  It is now driven to by a table" />
+    <option name="LAST_COMMIT_MESSAGE" value="got menu working.  It is now driven to by a table" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -857,13 +902,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/db.inc.php" />
-    <entry file="file://$PROJECT_DIR$/login/login.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="14" column="36" selection-start-line="14" selection-start-column="36" selection-end-line="14" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/login/login.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
@@ -972,13 +1010,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/login/login.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="3" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/inc/mmev.inc.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="175">
@@ -1037,19 +1068,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/login/login.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="99">
-          <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
-          <folding>
-            <marker date="1485872876829" expanded="true" signature="227:328" ph="INSERT INTO user" />
-            <marker date="1485872876829" expanded="true" signature="460:525" ph="select user_... user" />
-            <marker date="1485872876829" expanded="true" signature="823:910" ph="select user_... user" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/header/copyheader.html">
+    <entry file="file://$PROJECT_DIR$/bkup/copyheader.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="220">
           <caret line="16" column="39" selection-start-line="16" selection-start-column="39" selection-end-line="16" selection-end-column="39" />
@@ -1059,32 +1078,61 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/header/menu.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="382">
-          <caret line="59" column="21" selection-start-line="59" selection-start-column="21" selection-end-line="59" selection-end-column="21" />
+        <state relative-caret-position="365">
+          <caret line="57" column="42" selection-start-line="57" selection-start-column="42" selection-end-line="57" selection-end-column="42" />
           <folding>
-            <marker date="1485875094677" expanded="true" signature="199:418" ph="select categ... menu" />
-            <marker date="1485875094677" expanded="true" signature="715:908" ph="select categ... menu" />
-            <marker date="1485875094677" expanded="true" signature="1445:1623" ph="..." />
-            <marker date="1485875094677" expanded="true" signature="1602:1623" ph="..." />
+            <marker date="1485876257839" expanded="true" signature="199:418" ph="select categ... menu" />
+            <marker date="1485876257839" expanded="true" signature="715:908" ph="select categ... menu" />
+            <marker date="1485876257839" expanded="true" signature="1445:1623" ph="..." />
+            <marker date="1485876257839" expanded="true" signature="1602:1623" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/header/header.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="486">
-          <caret line="18" column="30" selection-start-line="18" selection-start-column="30" selection-end-line="18" selection-end-column="30" />
+        <state relative-caret-position="-108">
+          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/header/header.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="17" column="12" selection-start-line="17" selection-start-column="12" selection-end-line="17" selection-end-column="12" />
+        <state relative-caret-position="378">
+          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/login/login.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="860">
+          <caret line="88" column="23" selection-start-line="88" selection-start-column="16" selection-end-line="88" selection-end-column="23" />
           <folding>
-            <element signature="n#style#0;n#iframe#0;n#!!top" expanded="true" />
+            <element signature="e#675#1435#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/login/login.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="507">
+          <caret line="54" column="20" selection-start-line="54" selection-start-column="20" selection-end-line="54" selection-end-column="20" />
+          <folding>
+            <element signature="n#checkifUserExists#0;n#!!top" expanded="false" />
+            <marker date="1485877274323" expanded="true" signature="342:482" ph="INSERT INTO user" />
+            <marker date="1485877274323" expanded="true" signature="614:679" ph="select user_... user" />
+            <marker date="1485877274323" expanded="true" signature="977:1064" ph="select user_... user" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/login/login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="351">
+          <caret line="71" column="56" selection-start-line="71" selection-start-column="56" selection-end-line="71" selection-end-column="56" />
+          <folding />
         </state>
       </provider>
     </entry>

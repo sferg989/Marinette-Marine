@@ -7,9 +7,16 @@ include("../inc/inc.php");
  * Time: 1:16 PM
  */
 
-function insertNewUser($username,$password, $email,$role ){
+function insertNewUser($username,$password, $email,$role,$citizen){
     $pw = base64_encode($password);
-    $sql = "INSERT  INTO fmm_evms.user (user_name,pw, email, role) VALUES  ('$username', '$pw','$email', '$role')";
+    if($citizen =="USA Citizen"){
+        $citizen = "yes";
+    }
+    else{
+        $citizen = "no";
+    }
+    $sql = "INSERT  INTO fmm_evms.user (user_name,pw, email, role, us_citizen) 
+              VALUES  ('$username', '$pw','$email', '$role', '$citizen')";
     //print $sql;
     $junk = dbcall($sql,"fmm_evms");
     return false;
@@ -52,7 +59,7 @@ function checkUser($username,$password){
         session_start();
         $_SESSION["logged_in"] = "true";
         $_SESSION["user_name"] = $username;
-        $_SESSION["us_citizen"] = "yes";
+        $_SESSION["us_citizen"] = $us_citizen;
         $_SESSION["role"] = $role;
         $_SESSION["hulls"] = "17<>19<>21";
         $msg = "login";

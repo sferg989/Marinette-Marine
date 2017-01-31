@@ -43,12 +43,13 @@ $(function() {
         });
     });
     $("#register").click(function(){
-        var user_name, password, con_password, email, role;
+        var user_name, password, con_password, email, role, citizen;
         user_name    = $("#r_username").val();
         password     = $("#r_password").val();
         con_password = $("#r_confirm_password").val();
         email        = $("#r_email").val();
         role         = $("#role").val();
+        citizen      = $("#citizen").val();
         if(password=="" || password == undefined){
             bootbox.alert("The Passwords do not match!");
             return false;
@@ -72,6 +73,11 @@ $(function() {
             bootbox.alert("Please provide a Role!");
             return false;
         }
+        if(citizen==undefined || citizen == "")
+        {
+            bootbox.alert("Please choose a Citezenship!");
+            return false;
+        }
         $.ajax({
             type : "POST",
             url  : url,
@@ -80,6 +86,7 @@ $(function() {
                 user_name: user_name,
                 password : password,
                 email    : email,
+                citizen  : citizen,
                 role     : role
             },
             success: function (response) {

@@ -15,6 +15,10 @@
 
     <style>
         html, body, iframe { height: 95%; }
+        .navbar .nav.pull-right {
+            float: right;
+            margin-right: 98px; /*set margin this way in your custom styesheet*/
+        }
     </style>
 </head>
 <body >
@@ -27,8 +31,6 @@
         }
         return true;
     }
-
-
 </script>
 <div >
     <nav class="navbar">
@@ -38,6 +40,10 @@
             </div>
             <ul id = "menu_target" class="nav navbar-nav">
             </ul>
+            <ul class="nav pull-right">
+                <li><a onclick='window.location.href = "../login/login.html"'>Logout</a></li>
+            </ul>
+
         </div>
     </nav>
 </div>
@@ -45,7 +51,7 @@
 
 
 </body>
-</html>
+</html><!--
 <iframe name='iframe1' id="iframe1" src="../monthly_processing/processing_status/index.html"
         frameborder="0" border="0" cellspacing="0"
-        style="border-style: none;width: 100%; height: 100%;"></iframe>
+        style="border-style: none;width: 100%; height: 100%;"></iframe>-->

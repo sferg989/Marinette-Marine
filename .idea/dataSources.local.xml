@@ -6,17 +6,9 @@
     </data-source>
     <data-source name="localhost - cost@localhost" uuid="6286012a-b581-4a5e-a8c4-d54d35d92f67">
       <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" />
-      <user-name>steve</user-name>
     </data-source>
     <data-source name="localhost - processing_status@localhost" uuid="803013ae-92bd-4e91-96bf-1f4d1c111f19">
-      <database-info product="MySQL" version="5.5.5-10.1.19-MariaDB" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
-        <extra-name-characters>#@</extra-name-characters>
-        <identifier-quote-string>`</identifier-quote-string>
-      </database-info>
-      <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower" />
-      <secret-storage>master_key</secret-storage>
-      <user-name>root</user-name>
-      <resolve-scope>processing_status:</resolve-scope>
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" />
     </data-source>
   </component>
 </project>

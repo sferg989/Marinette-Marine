@@ -5,10 +5,10 @@ $(document).ready(function() {
     function navigate(url){
         window.location.href = url;
     }
-    function checkIfLoggedInandGetUserData (){
+/*    function checkIfLoggedInandGetUserData (){
         var worker,action;
         action = "login";
-        workers     = new Worker("../global_worker/check_login.js");
+        workers     = new Worker("../global_worker/worker_check_login.js");
         workers.onmessage = workerDone;
         workers.postMessage(action);
         function workerDone(e) {
@@ -26,7 +26,7 @@ $(document).ready(function() {
                 });
             }
         }
-    }
+    }*/
     function buildMenu(){
         var worker,action;
         action            = "build_menu";
@@ -41,7 +41,7 @@ $(document).ready(function() {
             }
         }
     }
-    checkIfLoggedInandGetUserData();
+    //checkIfLoggedInandGetUserData();
     buildMenu();
 });
 

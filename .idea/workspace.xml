@@ -2,8 +2,157 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="47f822d5-caa4-4777-9772-746577f23a95" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bkup/copyheader.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/header/workers/menu.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/images/1485569979_Excel.ico" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/images/Excel-icon.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/926export.xls" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/excel_exports/112export.xls" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/excel_exports/118export.xls" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/excel_exports/17export.xls" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/excel_exports/203export.xls" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/excel_exports/223export.xls" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/excel_exports/237export.xls" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/excel_exports/248export.xls" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/excel_exports/249export.xls" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/excel_exports/250export.xls" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/excel_exports/264export.xls" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/excel_exports/265export.xls" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/excel_exports/27export.xls" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/excel_exports/311export.xls" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/excel_exports/322export.xls" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/excel_exports/323export.xls" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/excel_exports/34export.xls" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/excel_exports/360export.xls" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/excel_exports/38export.xls" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/excel_exports/465export.xls" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/excel_exports/468export.xls" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/excel_exports/475export.xls" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/excel_exports/52export.xls" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/excel_exports/537export.xls" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/excel_exports/549export.xls" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/excel_exports/583export.xls" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/excel_exports/584export.xls" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/excel_exports/589export.xls" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/excel_exports/595export.xls" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/excel_exports/597export.xls" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/excel_exports/614export.xls" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/excel_exports/622export.xls" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/excel_exports/696export.xls" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/excel_exports/739export.xls" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/excel_exports/745export.xls" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/excel_exports/798export.xls" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/excel_exports/818export.xls" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/excel_exports/828export.xls" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/excel_exports/82export.xls" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/excel_exports/830export.xls" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/excel_exports/853export.xls" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/excel_exports/874export.xls" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/excel_exports/903export.xls" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/excel_exports/974export.xls" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/excel_exports/979export.xls" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/export.xls" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/wi/DI-CP001 Set Up for Current Month Processing.docx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/wi/DI-CP002 Advance Calendar with API.docx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/wi/DI-CP002 Advance Calendar.docx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/wi/DI-CP003 Setup CAM Filters and Reports.docx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/wi/DI-CP006 Update Log Analysis Spreadsheet.docx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/wi/DI-CP006 Update Log Analysis Spreadsheetr1.docx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/wi/DI-CP008 Create Cobra Log Transactions.docx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/wi/DI-CP009 Update LM PCW Spreadsheet.docx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/wi/DI-CP010 Export Actuals from Baan Updated 6.25.14.docx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/wi/DI-CP010 Export Actuals from Baan.docx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/wi/DI-CP012 Prepare P6 Material Actuals File.docx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/wi/DI-CP013 0465 Load Baseline.docx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/wi/DI-CP013 FY14 AF Load Baseline.docx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/wi/DI-CP013 Load Baseline Updated 3.5.14.docx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/wi/DI-CP016 Load Status.docx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/wi/DI-CP017 Load and Validate Codes.docx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/wi/DI-CP018 Run Preliminary Material CAM Reports.docx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/wi/DI-CP021 Update Cobra Baseline Log.docx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/wi/DI-CP023 Prepare and Load Combined Actuals.docx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/wi/DI-CP025 Run Final CAM Reports.docx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/wi/DI-CP026 Run and Validate LM files.docx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/wi/DI-CP027 Prepare Program Reports and CPRs for PM Review.docx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/wi/DI-CP029 Update EAC-BAC Spreadsheet Updated 6.25.14.docx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/wi/DI-CP029 Update EAC-BAC Spreadsheet.docx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/wi/DI-CP032 Prepare and Submit MR Log, UB Log and CAP report to LM.docx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/wi/DI-CP036 WAD Budget Reconcile.docx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/wi/DI-CP037 Load and Validate CAM Codes draft.docx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/wi/DI-CP040 Baselog Comment Template.docx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/wi/DI-CP041 CAPEx Report- PFA portion.docx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/wi/DI-CP042 Set Up CPR Format 5.docx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/wi/DI-CP043 Contract Budget Module Monthly Procedure.docx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/wi/DI-CP044 Import Baseline from Files.docx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/wi/DI-CP045 Import ETCs from Files.docx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/wi/DI-CP046 Health Check Tool.docx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/wi/DI-CP047 Import Status from Files.docx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/wi/DI-CP048 Setting Up A New Project.docx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/wi/DI-CP049 Create WBS.docx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/wi/DI-CP050 Load Codes not in P6.docx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/wi/DI-CP051 Restoring WP History.docx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/wi/DI-CP052 New Fwd Pricing Rate Chg.docx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/wi/DI-CP053 PFA-PM Format 5 Review Agenda.docx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/wi/DI-CP054 Post CPRs to the Bridge.docx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/wi/DRAFT - Bow Wave Identifier Template Work Instructions.docx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/wi/DRAFT - Corrective Action Log Work Instructions.docx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/wi/DRAFT - Identify Format 5 Top 5 Work Instructions.docx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/wi/DRAFT - Prepare CSDR Work Instructions.docx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/wi/DRAFT - Prepare Material Claims Workbook Work Instructions.docx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/wi/DRAFT - Reclass Instructions.docx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/wi/DRAFT - Submit CSDRs Work Instructions.docx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/wi/DRAFT - Verify CSDR Work Instructions.docx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/wi/DRAFT -IMS Data Check Work Instructions.docx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/wi/DRAFT -Prepare Labor Claims Workbook Work Instructions.docx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/wi/DRAFT -Resolve IMS Data Check Discrepancies Work Instructions.docx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/wi/MATT/DI-CP002 Advance Calendar with API- Working.docx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/wi/MATT/DI-CP025 Run Final CAM Reports- Updated.docx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/wi/MATT/DI-CP026 Run and Validate LM Data files- Updated.docx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/wi/MATT/DI-CP040 Baselog Comment Template- Updated.docx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/wi/MATT/Integrate Baseline Log Comments into Cobra- New.docx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/wi/Master Cobra Processing Steps Editing - New Order.xlsx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/wi/Master Cobra Processing Steps Editing.xlsx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/wi/Master Cobra Processing Steps.xlsx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/wi/Monthly Processing Steps that need Work Instructions.xlsx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/wi/OneNote Table Of Contents.onetoc2" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/wi/Peer Review of CPRs Checklist.xlsx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/wi/Peer Review of Format 5 Checklist.xlsx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/wi/Reweight Validation Step-By.pptx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/wi/Thumbs.db" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/wi/WI 611-CA-012 CAM Assignment.docx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/wi/~$-CP001 Set Up for Current Month Processing.docx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/wi/~$-CP002 Advance Calendar with API.docx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/wi/~$-CP002 Advance Calendar.docx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/wi/~$-CP006 Update Log Analysis Spreadsheetr1.docx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/wi/~$-CP008 Create Cobra Log Transactions.docx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/wi/~$-CP009 Update LM PCW Spreadsheet.docx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/global_worker/check_login_level1.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/global_worker/check_login_level2.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/jquery.table2excel.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/monthly_processing/bac_eac/bac_eac.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/monthly_processing/bac_eac/bac_eac.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/monthly_processing/bac_eac/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/monthly_processing/bac_eac/workers/compare_data.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/monthly_processing/bac_eac/workers/worker_bac_eac.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/batch_report_process/BAT/04731116-test-46.BAT" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/batch_report_process/cmd/04731116-test-12.cmd" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/reclass/BAT/04731116-test-30_reclass.BAT" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/reclass/cmd/04731116-test29_reclass.cmd" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/global_worker/check_login.js" afterPath="$PROJECT_DIR$/global_worker/worker_check_login.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/monthly_processing/bac_eac_compare/bac_eac_compare.js" afterPath="$PROJECT_DIR$/bkup/bac_eac_compare/bac_eac_compare.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/monthly_processing/bac_eac_compare/bac_eac_compare.php" afterPath="$PROJECT_DIR$/bkup/bac_eac_compare/bac_eac_compare.php" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/monthly_processing/bac_eac_compare/index.html" afterPath="$PROJECT_DIR$/bkup/bac_eac_compare/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/header/header.html" afterPath="$PROJECT_DIR$/header/header.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/header/header.js" afterPath="$PROJECT_DIR$/header/header.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/inc/lib/css/bootstrap/css/bootstrap.css" afterPath="$PROJECT_DIR$/inc/lib/css/bootstrap/css/bootstrap.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/login/login.php" afterPath="$PROJECT_DIR$/login/login.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/monthly_processing/advance_calendar/advance_calendar.php" afterPath="$PROJECT_DIR$/monthly_processing/advance_calendar/advance_calendar.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/monthly_processing/advance_calendar/index.html" afterPath="$PROJECT_DIR$/monthly_processing/advance_calendar/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/monthly_processing/cur_month_setup/index.html" afterPath="$PROJECT_DIR$/monthly_processing/cur_month_setup/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/monthly_processing/load_baseline/index.html" afterPath="$PROJECT_DIR$/monthly_processing/load_baseline/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/monthly_processing/processing_status/index.html" afterPath="$PROJECT_DIR$/monthly_processing/processing_status/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/monthly_processing/processing_status/processing_status.php" afterPath="$PROJECT_DIR$/monthly_processing/processing_status/processing_status.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/monthly_processing/update_log_analysis/index.html" afterPath="$PROJECT_DIR$/monthly_processing/update_log_analysis/index.html" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -33,7 +182,50 @@
     <favorites_list name="fmg" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/monthly_processing/bac_eac/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="477">
+              <caret line="89" column="36" selection-start-line="89" selection-start-column="36" selection-end-line="89" selection-end-column="36" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="bac_eac.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/monthly_processing/bac_eac/bac_eac.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="521">
+              <caret line="64" column="30" selection-start-line="64" selection-start-column="30" selection-end-line="64" selection-end-column="52" />
+              <folding>
+                <element signature="e#3619#5203#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="worker_bac_eac.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/monthly_processing/bac_eac/workers/worker_bac_eac.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="741">
+              <caret line="30" column="4" selection-start-line="30" selection-start-column="4" selection-end-line="30" selection-end-column="4" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="bac_eac.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/monthly_processing/bac_eac/bac_eac.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="672">
+              <caret line="32" column="1" selection-start-line="32" selection-start-column="1" selection-end-line="32" selection-end-column="1" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -68,21 +260,13 @@
     <option name="PUSH_TAGS">
       <GitPushTagMode />
     </option>
+    <push-targets>
+      <push-target-info repo="$PROJECT_DIR$" source="master" target-remote="production" target-branch="master" />
+    </push-targets>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/monthly_processing/processing_status/test.html" />
-        <option value="$PROJECT_DIR$/monthly_processing/css/monthly_processing.css" />
-        <option value="$PROJECT_DIR$/monthly_processing/cur_month_setup/index.html" />
-        <option value="$PROJECT_DIR$/monthly_processing/cur_month_setup/workers/cobra_bkup.js" />
-        <option value="$PROJECT_DIR$/monthly_processing/cur_month_setup/workers/new_folder.js" />
-        <option value="$PROJECT_DIR$/cross_hull_csv_loader.php" />
-        <option value="$PROJECT_DIR$/monthly_processing/update_log_analysis/index.html" />
-        <option value="$PROJECT_DIR$/monthly_processing/update_log_analysis/workers/workers.js" />
-        <option value="$PROJECT_DIR$/monthly_processing/update_log_analysis/update_log_analysis.js" />
-        <option value="$PROJECT_DIR$/monthly_processing/update_log_analysis/update_log_analysis.php" />
-        <option value="$PROJECT_DIR$/monthly_processing/load_baseline/workers/ims_dc.js" />
         <option value="$PROJECT_DIR$/monthly_processing/load_baseline/workers/bcr_check.js" />
         <option value="$PROJECT_DIR$/monthly_processing/load_baseline/workers/load_bcr.js" />
         <option value="$PROJECT_DIR$/monthly_processing/cur_month_setup/cur_month_setup.js" />
@@ -101,28 +285,39 @@
         <option value="$PROJECT_DIR$/db.inc.php" />
         <option value="$PROJECT_DIR$/monthly_processing/load_baseline/load_baseline.php" />
         <option value="$PROJECT_DIR$/monthly_processing/advance_calendar/workers/cobra_bkup.js" />
-        <option value="$PROJECT_DIR$/monthly_processing/advance_calendar/advance_calendar.php" />
-        <option value="$PROJECT_DIR$/monthly_processing/load_baseline/index.html" />
-        <option value="$PROJECT_DIR$/monthly_processing/advance_calendar/index.html" />
         <option value="$PROJECT_DIR$/monthly_processing/advance_calendar/advance_calendar.js" />
         <option value="$PROJECT_DIR$/monthly_processing/advance_calendar/workers/advance_calendar.js" />
-        <option value="$PROJECT_DIR$/monthly_processing/processing_status/processing_status.php" />
-        <option value="$PROJECT_DIR$/monthly_processing/processing_status/index.html" />
         <option value="$PROJECT_DIR$/monthly_processing/processing_status/processing_status.js" />
         <option value="$PROJECT_DIR$/monthly_processing/load_baseline/load_baseline.js" />
         <option value="$PROJECT_DIR$/global_worker/login_check.js" />
-        <option value="$PROJECT_DIR$/global_worker/check_login.js" />
-        <option value="$PROJECT_DIR$/inc/mmev.inc.php" />
         <option value="$PROJECT_DIR$/inc/inc.php" />
         <option value="$PROJECT_DIR$/global_worker/check_login.php" />
         <option value="$PROJECT_DIR$/header/workers/menu.js" />
         <option value="$PROJECT_DIR$/header/copyheader.html" />
-        <option value="$PROJECT_DIR$/header/header.js" />
         <option value="$PROJECT_DIR$/header/menu.php" />
-        <option value="$PROJECT_DIR$/header/header.html" />
         <option value="$PROJECT_DIR$/login/login.html" />
-        <option value="$PROJECT_DIR$/login/login.js" />
         <option value="$PROJECT_DIR$/login/login.php" />
+        <option value="$PROJECT_DIR$/login/login.js" />
+        <option value="$PROJECT_DIR$/monthly_processing/advance_calendar/advance_calendar.php" />
+        <option value="$PROJECT_DIR$/monthly_processing/processing_status/processing_status.php" />
+        <option value="$PROJECT_DIR$/header/header.js" />
+        <option value="$PROJECT_DIR$/inc/mmev.inc.php" />
+        <option value="$PROJECT_DIR$/global_worker/check_login.js" />
+        <option value="$PROJECT_DIR$/global_worker/check_login_level1.js" />
+        <option value="$PROJECT_DIR$/global_worker/check_login_level2.js" />
+        <option value="$PROJECT_DIR$/inc/lib/css/bootstrap/css/bootstrap.css" />
+        <option value="$PROJECT_DIR$/monthly_processing/update_log_analysis/index.html" />
+        <option value="$PROJECT_DIR$/monthly_processing/processing_status/index.html" />
+        <option value="$PROJECT_DIR$/monthly_processing/load_baseline/index.html" />
+        <option value="$PROJECT_DIR$/monthly_processing/cur_month_setup/index.html" />
+        <option value="$PROJECT_DIR$/monthly_processing/bac_eac_compare/index.html" />
+        <option value="$PROJECT_DIR$/monthly_processing/advance_calendar/index.html" />
+        <option value="$PROJECT_DIR$/header/header.html" />
+        <option value="$PROJECT_DIR$/monthly_processing/bac_eac/workers/bac_eac.js" />
+        <option value="$PROJECT_DIR$/monthly_processing/bac_eac/index.html" />
+        <option value="$PROJECT_DIR$/monthly_processing/bac_eac/bac_eac.js" />
+        <option value="$PROJECT_DIR$/monthly_processing/bac_eac/bac_eac.php" />
+        <option value="$PROJECT_DIR$/monthly_processing/bac_eac/workers/worker_bac_eac.js" />
       </list>
     </option>
   </component>
@@ -192,6 +387,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
@@ -211,9 +407,176 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fmg" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fmg" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="monthly_processing" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="update_log_analysis" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fmg" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fmg" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="monthly_processing" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fmg" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fmg" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="monthly_processing" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bac_eac" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fmg" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fmg" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="monthly_processing" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bac_eac" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="workers" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fmg" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fmg" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="monthly_processing" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="advance_calendar" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fmg" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fmg" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="header" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fmg" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fmg" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="header" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="workers" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fmg" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fmg" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="global_worker" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fmg" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fmg" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bkup" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fmg" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fmg" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bkup" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bac_eac_compare" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -229,19 +592,19 @@
     <property name="ToolWindowDatabase Console.ShowToolbar" value="false" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\fmg\header" />
-      <recent name="C:\xampp\htdocs\fmg\monthly_processing\advance_calendar" />
-      <recent name="C:\xampp\htdocs\fmg\monthly_processing\load_baseline\workers" />
-      <recent name="C:\xampp\htdocs\fmg\monthly_processing" />
-      <recent name="C:\xampp\htdocs\fmg\bac_eac_compare" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\fmg\bkup" />
       <recent name="C:\xampp\htdocs\fmg\login" />
       <recent name="C:\xampp\htdocs\fmg\monthly_processing\cur_month_setup\workers" />
       <recent name="C:\xampp\htdocs\fmg\menu" />
       <recent name="C:\xampp\htdocs\fmg\dashboards\main_ev" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\fmg\monthly_processing\bac_eac\workers" />
+      <recent name="C:\xampp\htdocs\fmg\monthly_processing" />
+      <recent name="C:\xampp\htdocs\fmg\header" />
+      <recent name="C:\xampp\htdocs\fmg\monthly_processing\advance_calendar" />
+      <recent name="C:\xampp\htdocs\fmg\monthly_processing\load_baseline\workers" />
     </key>
   </component>
   <component name="RunManager">
@@ -383,7 +746,12 @@
       <workItem from="1485782775427" duration="3117000" />
       <workItem from="1485787022864" duration="1287000" />
       <workItem from="1485789116895" duration="18846000" />
-      <workItem from="1485869823340" duration="8188000" />
+      <workItem from="1485869823340" duration="8335000" />
+      <workItem from="1485879597894" duration="485000" />
+      <workItem from="1485880109489" duration="118000" />
+      <workItem from="1485880243419" duration="70000" />
+      <workItem from="1485880679677" duration="3564000" />
+      <workItem from="1485890773530" duration="9496000" />
     </task>
     <task id="LOCAL-00001" summary="processing status index">
       <created>1484232740617</created>
@@ -560,11 +928,18 @@
       <option name="project" value="LOCAL" />
       <updated>1485878095908</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="Pushing to Remote.">
+      <created>1485878242759</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1485878242759</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="727827000" />
+    <option name="totallyTimeSpent" value="741707000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -662,7 +1037,8 @@
     <MESSAGE value="got menu working.  It is now driven to by a table" />
     <MESSAGE value="US Citizen is addressed.  you cannot see anything if you are not a USA Citizen" />
     <MESSAGE value="added the global worker directory" />
-    <option name="LAST_COMMIT_MESSAGE" value="added the global worker directory" />
+    <MESSAGE value="Pushing to Remote." />
+    <option name="LAST_COMMIT_MESSAGE" value="Pushing to Remote." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -671,40 +1047,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/monthly_processing/css/monthly_processing.css" />
-    <entry file="file://$PROJECT_DIR$/var_tool_decision_tree/decision_tree.js" />
-    <entry file="file://$PROJECT_DIR$/monthly_processing/cur_month_setup/workers/new_folder.js" />
-    <entry file="file://$PROJECT_DIR$/dashboards/timephase/timephase_filter.js" />
-    <entry file="file://$PROJECT_DIR$/monthly_processing/cur_month_setup/index.html" />
-    <entry file="file://$PROJECT_DIR$/bkup/cross_hull_csv_loader.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="22" column="29" selection-start-line="22" selection-start-column="29" selection-end-line="22" selection-end-column="29" />
-          <folding>
-            <marker date="1484602181293" expanded="true" signature="1076:1108" ph="insert into fmm_evms.cross_hull_${$ship (hull, `group`, soc, item, scope, bac, etc, estimate, a, target, eac)}... " />
-            <marker date="1484602181293" expanded="true" signature="1076:1197" ph="insert into fmm_evms.cross_hull_25... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/monthly_processing/update_log_analysis/workers/cobra_bkup.js" />
-    <entry file="file://$PROJECT_DIR$/monthly_processing/cur_month_setup/workers/cobra_bkup.js" />
-    <entry file="file://$PROJECT_DIR$/monthly_processing/update_log_analysis/index.html" />
-    <entry file="file://$PROJECT_DIR$/inc/processing_status.php" />
-    <entry file="file://$PROJECT_DIR$/monthly_processing/update_log_analysis/workers/workers.js" />
-    <entry file="file://$PROJECT_DIR$/bkup/timephased_import.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="75" selection-end-column="1" />
-          <folding>
-            <marker date="1481034071401" expanded="true" signature="1026:1106" ph="INSERT into timephased" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/monthly_processing/update_log_analysis/update_log_analysis.js" />
-    <entry file="file://$PROJECT_DIR$/monthly_processing/cur_month_setup/cur_month_setup.js" />
-    <entry file="file://$PROJECT_DIR$/monthly_processing/update_log_analysis/update_log_analysis.php" />
     <entry file="file://$PROJECT_DIR$/inc/lib/css/bootbox.min.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
@@ -714,7 +1056,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/test.js" />
     <entry file="file://$PROJECT_DIR$/home/index.html" />
-    <entry file="file://$PROJECT_DIR$/monthly_processing/cur_month_setup/cur_month_setup.php" />
     <entry file="file://$PROJECT_DIR$/inc/lib/js/jquery.table2excel.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
@@ -747,14 +1088,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="80">
           <caret line="19" column="20" selection-start-line="19" selection-start-column="20" selection-end-line="19" selection-end-column="20" />
-          <folding>
-            <marker date="1485782929781" expanded="true" signature="187:253" ph="INSERT INTO user" />
-            <marker date="1485782929781" expanded="true" signature="369:444" ph="select role,... evms" />
-            <marker date="1485782929781" expanded="true" signature="832:840" ph="..." />
-            <marker date="1485782929781" expanded="true" signature="942:1022" ph="..." />
-            <marker date="1485782929781" expanded="true" signature="970:1013" ph="{...}" />
-            <marker date="1485782929781" expanded="true" signature="1271:1610" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -766,13 +1099,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/monthly_processing/advance_calendar/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="116">
-          <caret line="83" column="7" selection-start-line="83" selection-start-column="7" selection-end-line="83" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/monthly_processing/advance_calendar/workers/advance_calendar.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
@@ -780,47 +1106,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/monthly_processing/advance_calendar/advance_calendar.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="725">
-          <caret line="123" column="87" selection-start-line="123" selection-start-column="87" selection-end-line="123" selection-end-column="87" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/monthly_processing/processing_status/processing_status.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="416">
           <caret line="37" column="5" selection-start-line="37" selection-start-column="5" selection-end-line="37" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/monthly_processing/processing_status/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="439">
-          <caret line="74" column="22" selection-start-line="74" selection-start-column="22" selection-end-line="74" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/monthly_processing/processing_status/processing_status.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="664">
-          <caret line="212" column="0" selection-start-line="212" selection-start-column="0" selection-end-line="213" selection-end-column="37" />
-          <folding>
-            <marker date="1485806155635" expanded="true" signature="324:557" ph="insert into processing_status.ship... " />
-            <marker date="1485806155635" expanded="true" signature="792:1031" ph="insert into log" />
-            <marker date="1485806155635" expanded="true" signature="1142:1187" ph="delete from " />
-            <marker date="1485806155635" expanded="true" signature="1294:1358" ph="select statu... ship" />
-            <marker date="1485806155635" expanded="true" signature="1704:1894" ph="update proce... " />
-            <marker date="1485806155635" expanded="true" signature="2031:2095" ph="select id, n... master_project" />
-            <marker date="1485806155635" expanded="true" signature="2608:3111" ph="select ship.... steps" />
-            <marker date="1485806155635" expanded="true" signature="5253:5312" ph="select step_... wi" />
-            <marker date="1485806155635" expanded="true" signature="5549:5744" ph="..." />
-            <marker date="1485806155635" expanded="true" signature="5551:5744" ph="..." />
-            <marker date="1485806155635" expanded="true" signature="5693:5740" ph="..." />
-            <marker date="1485806155635" expanded="true" signature="5727:5740" ph="..." />
-            <marker date="1485806155635" expanded="true" signature="5728:5740" ph="..." />
-            <marker date="1485806155635" expanded="true" signature="6000:6061" ph="select perio... ship" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -842,14 +1131,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="354">
           <caret line="106" column="32" selection-start-line="106" selection-start-column="32" selection-end-line="106" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/monthly_processing/load_baseline/load_baseline.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="3" selection-start-line="3" selection-start-column="3" selection-end-line="3" selection-end-column="3" />
         </state>
       </provider>
     </entry>
@@ -857,21 +1138,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="552">
           <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="26" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/monthly_processing/load_baseline/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/inc/mmev.inc.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -889,45 +1155,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/global_worker/check_login.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="275">
-          <caret line="11" column="33" selection-start-line="11" selection-start-column="33" selection-end-line="11" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/global_worker/check_login.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="15" column="38" selection-start-line="0" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/monthly_processing/advance_calendar/advance_calendar.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="54" selection-end-column="5" />
-          <folding>
-            <marker date="1485796401171" expanded="true" signature="1454:1541" ph="select id,st... advance_calender" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/login/login.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="74" column="57" selection-start-line="74" selection-start-column="57" selection-end-line="74" selection-end-column="57" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bkup/copyheader.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="176">
           <caret line="14" column="8" selection-start-line="14" selection-start-column="8" selection-end-line="14" selection-end-column="8" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -935,30 +1166,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="24">
           <caret line="5" column="3" selection-start-line="5" selection-start-column="3" selection-end-line="5" selection-end-column="3" />
-          <folding>
-            <element signature="e#44#87#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/header/header.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-108">
-          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/login/login.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="507">
-          <caret line="54" column="20" selection-start-line="54" selection-start-column="20" selection-end-line="54" selection-end-column="20" />
-          <folding>
-            <element signature="n#checkifUserExists#0;n#!!top" expanded="false" />
-            <marker date="1485877274323" expanded="true" signature="342:482" ph="INSERT INTO user" />
-            <marker date="1485877274323" expanded="true" signature="614:679" ph="select user_... user" />
-            <marker date="1485877274323" expanded="true" signature="977:1064" ph="select user_... user" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -975,20 +1182,288 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/bkup/bac_eac_compare/bac_eac_compare.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="273">
+          <caret line="13" column="10" selection-start-line="13" selection-start-column="10" selection-end-line="13" selection-end-column="10" />
+          <folding>
+            <marker date="1485896811150" expanded="true" signature="1750:1814" ph="select id, n... master_project" />
+            <marker date="1485896811150" expanded="true" signature="2327:2758" ph="select ship.... steps" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/monthly_processing/cur_month_setup/cur_month_setup.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/monthly_processing/load_baseline/load_baseline.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="3" selection-start-line="3" selection-start-column="3" selection-end-line="3" selection-end-column="3" />
+          <folding>
+            <marker date="1485795208150" expanded="true" signature="1682:1792" ph="select table... tables" />
+            <marker date="1485795208150" expanded="true" signature="2023:2187" ph="select ship_... ${$table_name}" />
+            <marker date="1485795208150" expanded="true" signature="2874:3023" ph="select ship_... ${$table_name}" />
+            <marker date="1485795208150" expanded="true" signature="3811:3853" ph="delete from " />
+            <marker date="1485795208150" expanded="true" signature="4701:4777" ph="select id,na... load_baseline" />
+            <marker date="1485795208150" expanded="true" signature="5543:5717" ph="INSERT INTO ims_data_check.`${$rpt_period}_baseline`... " />
+            <marker date="1485795208150" expanded="true" signature="7461:7551" ph="INSERT into ims_data_check.${$table_name}... " />
+            <marker date="1485795208150" expanded="true" signature="8832:8892" ph="select count... ${$table_name}" />
+            <marker date="1485795208150" expanded="true" signature="9152:9212" ph="select count... ${$table_name}" />
+            <marker date="1485795208150" expanded="true" signature="19123:20083" ph="..." />
+            <marker date="1485795208150" expanded="true" signature="19170:20083" ph="..." />
+            <marker date="1485795208150" expanded="true" signature="19183:20074" ph="..." />
+            <marker date="1485795208150" expanded="true" signature="20347:21347" ph="..." />
+            <marker date="1485795208150" expanded="true" signature="21650:22848" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/monthly_processing/advance_calendar/advance_calendar.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="18" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="18" />
+          <folding>
+            <marker date="1485880730224" expanded="true" signature="1455:1542" ph="select id,st... advance_calender" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/login/login.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="24" selection-start-line="15" selection-start-column="24" selection-end-line="15" selection-end-column="24" />
+          <folding>
+            <element signature="n#checkifUserExists#0;n#!!top" expanded="false" />
+            <marker date="1485880038314" expanded="true" signature="338:478" ph="INSERT INTO user" />
+            <marker date="1485880038314" expanded="true" signature="610:675" ph="select user_... user" />
+            <marker date="1485880038314" expanded="true" signature="973:1060" ph="select user_... user" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/login/login.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="860">
-          <caret line="88" column="23" selection-start-line="88" selection-start-column="16" selection-end-line="88" selection-end-column="23" />
+        <state relative-caret-position="414">
+          <caret line="81" column="26" selection-start-line="81" selection-start-column="26" selection-end-line="81" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/monthly_processing/processing_status/processing_status.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="731">
+          <caret line="168" column="28" selection-start-line="168" selection-start-column="28" selection-end-line="168" selection-end-column="28" />
           <folding>
-            <element signature="e#675#1435#0" expanded="false" />
+            <marker date="1485889993794" expanded="true" signature="324:557" ph="insert into processing_status.ship... " />
+            <marker date="1485889993794" expanded="true" signature="792:1031" ph="insert into log" />
+            <marker date="1485889993794" expanded="true" signature="1142:1187" ph="delete from " />
+            <marker date="1485889993794" expanded="true" signature="1294:1358" ph="select statu... ship" />
+            <marker date="1485889993794" expanded="true" signature="1704:1894" ph="update proce... " />
+            <marker date="1485889993794" expanded="true" signature="2031:2095" ph="select id, n... master_project" />
+            <marker date="1485889993794" expanded="true" signature="2608:3111" ph="select ship.... steps" />
+            <marker date="1485889993794" expanded="true" signature="5342:5401" ph="select step_... wi" />
+            <marker date="1485889993794" expanded="true" signature="5638:5833" ph="..." />
+            <marker date="1485889993794" expanded="true" signature="6089:6150" ph="select perio... ship" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/global_worker/worker_check_login.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="20" column="55" selection-start-line="20" selection-start-column="55" selection-end-line="20" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inc/mmev.inc.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="475">
+          <caret line="24" column="70" selection-start-line="24" selection-start-column="70" selection-end-line="24" selection-end-column="70" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/global_worker/check_login.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="7" column="18" selection-start-line="7" selection-start-column="18" selection-end-line="7" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/header/header.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="32" selection-start-line="13" selection-start-column="32" selection-end-line="13" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/global_worker/check_login_level1.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="7" column="45" selection-start-line="7" selection-start-column="45" selection-end-line="7" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inc/lib/css/bootstrap/css/bootstrap.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/login/login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="40" selection-start-line="10" selection-start-column="40" selection-end-line="10" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/global_worker/check_login_level2.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="30" selection-start-line="22" selection-start-column="30" selection-end-line="22" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/monthly_processing/advance_calendar/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="90" selection-start-line="5" selection-start-column="90" selection-end-line="5" selection-end-column="90" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/monthly_processing/cur_month_setup/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="329">
+          <caret line="28" column="4" selection-start-line="28" selection-start-column="4" selection-end-line="28" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/monthly_processing/load_baseline/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="38" selection-start-line="11" selection-start-column="38" selection-end-line="11" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/monthly_processing/processing_status/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="519">
+          <caret line="39" column="45" selection-start-line="39" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/monthly_processing/update_log_analysis/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="42" column="56" selection-start-line="42" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/header/header.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+        <state relative-caret-position="296">
+          <caret line="15" column="21" selection-start-line="15" selection-start-column="21" selection-end-line="15" selection-end-column="21" />
+          <folding>
+            <element signature="n#style#0;n#iframe#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/monthly_processing/bac_eac/workers/load_p6.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="441">
+          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bkup/bac_eac_compare/bac_eac_compare.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="25" column="33" selection-start-line="25" selection-start-column="33" selection-end-line="25" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bkup/bac_eac_compare/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="74" column="23" selection-start-line="74" selection-start-column="23" selection-end-line="74" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/monthly_processing/bac_eac/workers/compare_data.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/monthly_processing/advance_calendar/advance_calendar.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="436">
+          <caret line="106" column="0" selection-start-line="106" selection-start-column="0" selection-end-line="122" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/monthly_processing/cur_month_setup/cur_month_setup.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="383">
+          <caret line="99" column="0" selection-start-line="99" selection-start-column="0" selection-end-line="113" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/monthly_processing/bac_eac/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="477">
+          <caret line="89" column="36" selection-start-line="89" selection-start-column="36" selection-end-line="89" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/monthly_processing/bac_eac/bac_eac.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="521">
+          <caret line="64" column="30" selection-start-line="64" selection-start-column="30" selection-end-line="64" selection-end-column="52" />
+          <folding>
+            <element signature="e#3619#5203#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/monthly_processing/bac_eac/workers/worker_bac_eac.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="741">
+          <caret line="30" column="4" selection-start-line="30" selection-start-column="4" selection-end-line="30" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/monthly_processing/bac_eac/bac_eac.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="672">
+          <caret line="32" column="1" selection-start-line="32" selection-start-column="1" selection-end-line="32" selection-end-column="1" />
           <folding />
         </state>
       </provider>

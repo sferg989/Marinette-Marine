@@ -1,0 +1,58 @@
+<div id = "bcr_grid" class = "col-md-12">
+    <table  id = "example" class="table ">
+        <tr>
+            <th class = "table_headers">WBS Path</th>
+            <th class = "table_headers">ActID</th>
+            <th class = "table_headers">Reason</th>
+            <th class = "table_headers">Cur Labor Units</th>	
+            <th class = "table_headers">Cur Material Cost</th>	
+            <th class = "table_headers">Cur Baseline Start</th>
+            <th class = "table_headers">Cur Baseline Finish</th>
+            <th class = "table_headers">Prev Labor Units</th>	
+            <th class = "table_headers">Prev Material Cost</th>	
+            <th class = "table_headers">Prev Baseline Start</th>	
+            <th class = "table_headers">Prev Baseline Finish</th>
+            <th class = "table_headers">BCR MATL Dollars</th>
+            <th class = "table_headers">BCR HOURS</th>
+            <th class = "table_headers">BCR Difference</th>
+        </tr>
+        
+                 <tr class="bg-warning">
+                    <td class = "table_data">1.16.1.1.102.1.16.1.9</td>
+                    <td class = "table_data">MATL-102-999</td>
+                    <td class = "table_data">Not in Current Month Baseline</td>
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>
+                    <td class = "table_data"></td>
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data">3/7/2014</td>	
+                    <td class = "table_data">8/26/2016</td>
+                    <td class = "table_data">NA</td>
+                    <td class = "table_data">NA</td>
+                    <td class = "table_data">NA</td>
+                </tr>
+                
+                 <tr class="bg-warning">
+                    <td class = "table_data">1.16.1.1.102.301</td>
+                    <td class = "table_data">MATL-102-999</td>
+                    <td class = "table_data">Not in Previous Month Baseline</td>
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data">3/7/2014</td>
+                    <td class = "table_data">8/26/2016</td>
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>
+                    <td class = "table_data">NA</td>
+                    <td class = "table_data">NA</td>
+                    <td class = "table_data">NA</td>
+                </tr>
+                
+    
+        
+    </table>
+    </div>
+    

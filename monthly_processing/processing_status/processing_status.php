@@ -148,6 +148,7 @@ if($control =="update_status")
 {
     //this means that there is a record for this ship/step/reporting period.  we
     //need log it than update the record.
+    mail("stephen.ferguson@us.fincantieri.com", "this is a test", "THis is a test MSG");
     if($status=="false")
     {
         $status = "0";

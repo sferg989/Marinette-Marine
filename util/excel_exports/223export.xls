@@ -1,0 +1,539 @@
+<div id = "bcr_grid" class = "col-md-12">
+    <table  id = "example" class="table ">
+        <tr>
+            <th class = "table_headers">WBS Path</th>
+            <th class = "table_headers">ActID</th>
+            <th class = "table_headers">Reason</th>
+            <th class = "table_headers">Cur Labor Units</th>	
+            <th class = "table_headers">Cur Material Cost</th>	
+            <th class = "table_headers">Cur Baseline Start</th>
+            <th class = "table_headers">Cur Baseline Finish</th>
+            <th class = "table_headers">Prev Labor Units</th>	
+            <th class = "table_headers">Prev Material Cost</th>	
+            <th class = "table_headers">Prev Baseline Start</th>	
+            <th class = "table_headers">Prev Baseline Finish</th>
+        </tr>
+        
+                 <tr class="bg-danger">
+                    <td class = "table_data">1.16.1.5.512.301</td>
+                    <td class = "table_data">MATL-512-075</td>
+                    <td class = "table_data">BCR is 493 is WRONG</td>
+                    <td class = "table_data"></td>	
+                    <td class = "table_data">$0.00</td>	
+                    <td class = "table_data"></td>
+                    <td class = "table_data">1/17/2017</td>
+                    <td class = "table_data"></td>	
+                    <td class = "table_data">$8,500.00</td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data">7/14/2016</td>
+                </tr>
+                
+                 <tr class="bg-danger">
+                    <td class = "table_data">1.16.1.5.512.301</td>
+                    <td class = "table_data">MATL-512-073</td>
+                    <td class = "table_data">BCR is 493 is WRONG</td>
+                    <td class = "table_data"></td>	
+                    <td class = "table_data">$0.00</td>	
+                    <td class = "table_data"></td>
+                    <td class = "table_data">1/17/2017</td>
+                    <td class = "table_data"></td>	
+                    <td class = "table_data">$4,750.00</td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data">9/30/2016</td>
+                </tr>
+                
+                 <tr class="bg-danger">
+                    <td class = "table_data">1.16.1.5.512.301</td>
+                    <td class = "table_data">MATL-512-004</td>
+                    <td class = "table_data">BCR is 493 is WRONG</td>
+                    <td class = "table_data"></td>	
+                    <td class = "table_data">$4,377,005.50</td>	
+                    <td class = "table_data"></td>
+                    <td class = "table_data">1/30/2017</td>
+                    <td class = "table_data"></td>	
+                    <td class = "table_data">$4,258,764.00</td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data">12/7/2016</td>
+                </tr>
+                
+                 <tr class="bg-danger">
+                    <td class = "table_data">1.16.1.5.512.301</td>
+                    <td class = "table_data">MATL-512-063</td>
+                    <td class = "table_data">BCR is 493 is WRONG</td>
+                    <td class = "table_data"></td>	
+                    <td class = "table_data">$0.00</td>	
+                    <td class = "table_data"></td>
+                    <td class = "table_data">1/17/2017</td>
+                    <td class = "table_data"></td>	
+                    <td class = "table_data">$27,991.47</td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data">5/13/2016</td>
+                </tr>
+                
+                 <tr class="bg-danger">
+                    <td class = "table_data">1.16.1.9.092.546</td>
+                    <td class = "table_data">MATL-092-001</td>
+                    <td class = "table_data">BCR is 492 is WRONG</td>
+                    <td class = "table_data"></td>	
+                    <td class = "table_data">$0.00</td>	
+                    <td class = "table_data"></td>
+                    <td class = "table_data">1/17/2017</td>
+                    <td class = "table_data"></td>	
+                    <td class = "table_data">$10,000.00</td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data">9/1/2015</td>
+                </tr>
+                
+                 <tr class="bg-danger">
+                    <td class = "table_data">1.16.1.3.304.301</td>
+                    <td class = "table_data">MATL-304-003</td>
+                    <td class = "table_data">BCR is 492 is WRONG</td>
+                    <td class = "table_data"></td>	
+                    <td class = "table_data">$0.00</td>	
+                    <td class = "table_data"></td>
+                    <td class = "table_data"></td>
+                    <td class = "table_data"></td>	
+                    <td class = "table_data">$125,000.00</td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>
+                </tr>
+                
+                 <tr class="bg-danger">
+                    <td class = "table_data">1.16.1.6.651.301</td>
+                    <td class = "table_data">MATL-651-001</td>
+                    <td class = "table_data">BCR is 492 is WRONG</td>
+                    <td class = "table_data"></td>	
+                    <td class = "table_data">$0.00</td>	
+                    <td class = "table_data"></td>
+                    <td class = "table_data">1/17/2017</td>
+                    <td class = "table_data"></td>	
+                    <td class = "table_data">$65,000.00</td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data">5/20/2016</td>
+                </tr>
+                
+                 <tr class="bg-danger">
+                    <td class = "table_data">1.16.1.4.481.301</td>
+                    <td class = "table_data">MATL-481-999</td>
+                    <td class = "table_data">BCR is 492 is WRONG</td>
+                    <td class = "table_data"></td>	
+                    <td class = "table_data">$0.00</td>	
+                    <td class = "table_data"></td>
+                    <td class = "table_data"></td>
+                    <td class = "table_data"></td>	
+                    <td class = "table_data">$2,738.33</td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>
+                </tr>
+                
+                 <tr class="bg-danger">
+                    <td class = "table_data">1.16.1.5.8.625</td>
+                    <td class = "table_data">LZC</td>
+                    <td class = "table_data">BCR is 490 is WRONG</td>
+                    <td class = "table_data">0.00</td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>
+                    <td class = "table_data">1/17/2017</td>
+                    <td class = "table_data">6.00</td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data">10/17/2016</td>
+                </tr>
+                
+                 <tr class="bg-danger">
+                    <td class = "table_data">1.16.1.5.8.625</td>
+                    <td class = "table_data">LZQ</td>
+                    <td class = "table_data">BCR is 490 is WRONG</td>
+                    <td class = "table_data">0.00</td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>
+                    <td class = "table_data">1/17/2017</td>
+                    <td class = "table_data">3.00</td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data">4/18/2016</td>
+                </tr>
+                
+                 <tr class="bg-danger">
+                    <td class = "table_data">1.16.1.5.8.625</td>
+                    <td class = "table_data">LZD</td>
+                    <td class = "table_data">BCR is 490 is WRONG</td>
+                    <td class = "table_data">13.00</td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>
+                    <td class = "table_data">6/1/2017</td>
+                    <td class = "table_data">7.00</td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data">9/7/2016</td>
+                </tr>
+                
+                 <tr class="bg-danger">
+                    <td class = "table_data">1.16.1.5.8.625</td>
+                    <td class = "table_data">LYU</td>
+                    <td class = "table_data">BCR is 490 is WRONG</td>
+                    <td class = "table_data">22.00</td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>
+                    <td class = "table_data">6/30/2017</td>
+                    <td class = "table_data">6.00</td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data">1/25/2017</td>
+                </tr>
+                
+                 <tr class="bg-danger">
+                    <td class = "table_data">1.16.1.5.8.625</td>
+                    <td class = "table_data">LZF</td>
+                    <td class = "table_data">BCR is 490 is WRONG</td>
+                    <td class = "table_data">63.00</td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>
+                    <td class = "table_data">5/15/2017</td>
+                    <td class = "table_data">24.00</td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data">8/5/2016</td>
+                </tr>
+                
+                 <tr class="bg-danger">
+                    <td class = "table_data">1.16.1.5.8.625</td>
+                    <td class = "table_data">LYQ</td>
+                    <td class = "table_data">BCR is 490 is WRONG</td>
+                    <td class = "table_data">46.00</td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>
+                    <td class = "table_data">6/30/2017</td>
+                    <td class = "table_data">24.00</td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data">3/3/2017</td>
+                </tr>
+                
+                 <tr class="bg-danger">
+                    <td class = "table_data">1.16.1.5.8.625</td>
+                    <td class = "table_data">LYY</td>
+                    <td class = "table_data">BCR is 490 is WRONG</td>
+                    <td class = "table_data">113.00</td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>
+                    <td class = "table_data">6/30/2017</td>
+                    <td class = "table_data">25.00</td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data">7/7/2016</td>
+                </tr>
+                
+                 <tr class="bg-danger">
+                    <td class = "table_data">1.16.1.5.8.625</td>
+                    <td class = "table_data">LYV</td>
+                    <td class = "table_data">BCR is 490 is WRONG</td>
+                    <td class = "table_data">29.00</td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>
+                    <td class = "table_data">6/1/2017</td>
+                    <td class = "table_data">15.00</td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data">1/30/2017</td>
+                </tr>
+                
+                 <tr class="bg-danger">
+                    <td class = "table_data">1.16.1.5.8.625</td>
+                    <td class = "table_data">LYP</td>
+                    <td class = "table_data">BCR is 490 is WRONG</td>
+                    <td class = "table_data">83.00</td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>
+                    <td class = "table_data">6/30/2017</td>
+                    <td class = "table_data">35.00</td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data">8/11/2016</td>
+                </tr>
+                
+                 <tr class="bg-danger">
+                    <td class = "table_data">1.16.1.5.8.625</td>
+                    <td class = "table_data">LYR</td>
+                    <td class = "table_data">BCR is 490 is WRONG</td>
+                    <td class = "table_data">42.00</td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>
+                    <td class = "table_data">6/30/2017</td>
+                    <td class = "table_data">25.00</td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data">3/23/2017</td>
+                </tr>
+                
+                 <tr class="bg-danger">
+                    <td class = "table_data">1.16.1.5.8.625</td>
+                    <td class = "table_data">LZK</td>
+                    <td class = "table_data">BCR is 490 is WRONG</td>
+                    <td class = "table_data">64.00</td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>
+                    <td class = "table_data">3/31/2017</td>
+                    <td class = "table_data">24.00</td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data">9/4/2015</td>
+                </tr>
+                
+                 <tr class="bg-danger">
+                    <td class = "table_data">1.16.1.5.8.625</td>
+                    <td class = "table_data">LZM</td>
+                    <td class = "table_data">BCR is 490 is WRONG</td>
+                    <td class = "table_data">82.00</td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>
+                    <td class = "table_data">6/30/2017</td>
+                    <td class = "table_data">40.00</td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data">9/15/2016</td>
+                </tr>
+                
+                 <tr class="bg-danger">
+                    <td class = "table_data">1.16.1.5.8.625</td>
+                    <td class = "table_data">LZG</td>
+                    <td class = "table_data">BCR is 490 is WRONG</td>
+                    <td class = "table_data">0.00</td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>
+                    <td class = "table_data">1/17/2017</td>
+                    <td class = "table_data">16.00</td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data">10/20/2016</td>
+                </tr>
+                
+                 <tr class="bg-danger">
+                    <td class = "table_data">1.16.1.5.8.625</td>
+                    <td class = "table_data">LYS</td>
+                    <td class = "table_data">BCR is 490 is WRONG</td>
+                    <td class = "table_data">91.00</td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>
+                    <td class = "table_data">6/30/2017</td>
+                    <td class = "table_data">27.00</td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data">9/13/2016</td>
+                </tr>
+                
+                 <tr class="bg-danger">
+                    <td class = "table_data">1.16.1.5.8.625</td>
+                    <td class = "table_data">LZB</td>
+                    <td class = "table_data">BCR is 490 is WRONG</td>
+                    <td class = "table_data">26.00</td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>
+                    <td class = "table_data">6/23/2017</td>
+                    <td class = "table_data">15.00</td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data">9/30/2016</td>
+                </tr>
+                
+                 <tr class="bg-danger">
+                    <td class = "table_data">1.16.1.5.8.625</td>
+                    <td class = "table_data">LZA</td>
+                    <td class = "table_data">BCR is 490 is WRONG</td>
+                    <td class = "table_data">19.00</td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>
+                    <td class = "table_data">6/30/2017</td>
+                    <td class = "table_data">10.00</td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data">9/6/2016</td>
+                </tr>
+                
+                 <tr class="bg-danger">
+                    <td class = "table_data">1.16.1.5.8.625</td>
+                    <td class = "table_data">LYW</td>
+                    <td class = "table_data">BCR is 490 is WRONG</td>
+                    <td class = "table_data">9.00</td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>
+                    <td class = "table_data">6/30/2017</td>
+                    <td class = "table_data">6.00</td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data">9/2/2016</td>
+                </tr>
+                
+                 <tr class="bg-danger">
+                    <td class = "table_data">1.16.1.5.8.624</td>
+                    <td class = "table_data">MGT</td>
+                    <td class = "table_data">BCR is 490 is WRONG</td>
+                    <td class = "table_data">0.00</td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>
+                    <td class = "table_data">1/17/2017</td>
+                    <td class = "table_data">16.00</td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data">10/17/2016</td>
+                </tr>
+                
+                 <tr class="bg-danger">
+                    <td class = "table_data">1.16.1.5.8.624</td>
+                    <td class = "table_data">MEB</td>
+                    <td class = "table_data">BCR is 490 is WRONG</td>
+                    <td class = "table_data">0.00</td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>
+                    <td class = "table_data">1/17/2017</td>
+                    <td class = "table_data">16.00</td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data">5/27/2016</td>
+                </tr>
+                
+                 <tr class="bg-danger">
+                    <td class = "table_data">1.16.1.5.8.624</td>
+                    <td class = "table_data">MDZ</td>
+                    <td class = "table_data">BCR is 490 is WRONG</td>
+                    <td class = "table_data">0.00</td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>
+                    <td class = "table_data"></td>
+                    <td class = "table_data">16.00</td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>
+                </tr>
+                
+                 <tr class="bg-danger">
+                    <td class = "table_data">1.16.1.5.8.624</td>
+                    <td class = "table_data">MDU</td>
+                    <td class = "table_data">BCR is 490 is WRONG</td>
+                    <td class = "table_data">0.00</td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>
+                    <td class = "table_data">1/17/2017</td>
+                    <td class = "table_data">16.00</td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data">8/11/2016</td>
+                </tr>
+                
+                 <tr class="bg-danger">
+                    <td class = "table_data">1.16.1.5.8.624</td>
+                    <td class = "table_data">LEW</td>
+                    <td class = "table_data">BCR is 490 is WRONG</td>
+                    <td class = "table_data">0.00</td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>
+                    <td class = "table_data">1/17/2017</td>
+                    <td class = "table_data">9.00</td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data">9/15/2016</td>
+                </tr>
+                
+                 <tr class="bg-danger">
+                    <td class = "table_data">1.16.1.5.8.624</td>
+                    <td class = "table_data">MDS</td>
+                    <td class = "table_data">BCR is 490 is WRONG</td>
+                    <td class = "table_data">0.00</td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>
+                    <td class = "table_data">1/17/2017</td>
+                    <td class = "table_data">9.00</td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data">9/30/2016</td>
+                </tr>
+                
+                 <tr class="bg-danger">
+                    <td class = "table_data">1.16.1.5.8.624</td>
+                    <td class = "table_data">MDR</td>
+                    <td class = "table_data">BCR is 490 is WRONG</td>
+                    <td class = "table_data">0.00</td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>
+                    <td class = "table_data">1/17/2017</td>
+                    <td class = "table_data">11.00</td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data">10/20/2016</td>
+                </tr>
+                
+                 <tr class="bg-danger">
+                    <td class = "table_data">1.16.1.5.8.624</td>
+                    <td class = "table_data">MDQ</td>
+                    <td class = "table_data">BCR is 490 is WRONG</td>
+                    <td class = "table_data">0.00</td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>
+                    <td class = "table_data">1/17/2017</td>
+                    <td class = "table_data">11.00</td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data">9/30/2016</td>
+                </tr>
+                
+                 <tr class="bg-danger">
+                    <td class = "table_data">1.16.1.5.8.624</td>
+                    <td class = "table_data">MDL</td>
+                    <td class = "table_data">BCR is 490 is WRONG</td>
+                    <td class = "table_data">0.00</td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>
+                    <td class = "table_data">1/17/2017</td>
+                    <td class = "table_data">16.00</td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data">11/10/2015</td>
+                </tr>
+                
+                 <tr class="bg-danger">
+                    <td class = "table_data">1.16.1.5.8.624</td>
+                    <td class = "table_data">MDK</td>
+                    <td class = "table_data">BCR is 490 is WRONG</td>
+                    <td class = "table_data">0.00</td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>
+                    <td class = "table_data">1/17/2017</td>
+                    <td class = "table_data">3.00</td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data">11/25/2015</td>
+                </tr>
+                
+                 <tr class="bg-danger">
+                    <td class = "table_data">1.16.1.5.8.624</td>
+                    <td class = "table_data">LFC</td>
+                    <td class = "table_data">BCR is 490 is WRONG</td>
+                    <td class = "table_data">0.00</td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>
+                    <td class = "table_data">1/17/2017</td>
+                    <td class = "table_data">3.00</td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data">1/13/2016</td>
+                </tr>
+                
+                 <tr class="bg-danger">
+                    <td class = "table_data">1.16.1.5.8.624</td>
+                    <td class = "table_data">MDJ</td>
+                    <td class = "table_data">BCR is 490 is WRONG</td>
+                    <td class = "table_data">0.00</td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>
+                    <td class = "table_data">1/17/2017</td>
+                    <td class = "table_data">3.00</td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data">9/2/2016</td>
+                </tr>
+                
+    
+        
+    </table>
+    </div>
+    

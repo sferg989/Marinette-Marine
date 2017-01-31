@@ -1,0 +1,525 @@
+<div id = "bcr_grid" class = "col-md-12">
+    <table  id = "example" class="table ">
+        <tr>
+            <th class = "table_headers">WBS Path</th>
+            <th class = "table_headers">ActID</th>
+            <th class = "table_headers">Reason</th>
+            <th class = "table_headers">Cur Labor Units</th>	
+            <th class = "table_headers">Cur Material Cost</th>	
+            <th class = "table_headers">Cur Baseline Start</th>
+            <th class = "table_headers">Cur Baseline Finish</th>
+            <th class = "table_headers">Prev Labor Units</th>	
+            <th class = "table_headers">Prev Material Cost</th>	
+            <th class = "table_headers">Prev Baseline Start</th>	
+            <th class = "table_headers">Prev Baseline Finish</th>
+        </tr>
+        
+                 <tr class="bg-warning">
+                    <td class = "table_data">1.28.1.1.2.5.S1U.MFG-AF</td>
+                    <td class = "table_data">DXF</td>
+                    <td class = "table_data">Not in Current Month Baseline</td>
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>
+                    <td class = "table_data"></td>
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data">6/6/2017</td>	
+                    <td class = "table_data">6/19/2017</td>
+                </tr>
+                
+                 <tr class="bg-warning">
+                    <td class = "table_data">1.28.1.1.3.2.D1TD1.MFG-AF</td>
+                    <td class = "table_data">JKE</td>
+                    <td class = "table_data">Not in Current Month Baseline</td>
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>
+                    <td class = "table_data"></td>
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data">11/6/2017</td>	
+                    <td class = "table_data">11/10/2017</td>
+                </tr>
+                
+                 <tr class="bg-warning">
+                    <td class = "table_data">1.28.1.1.3.2.D2T.MFG-AF</td>
+                    <td class = "table_data">KLT</td>
+                    <td class = "table_data">Not in Current Month Baseline</td>
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>
+                    <td class = "table_data"></td>
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data">11/14/2017</td>	
+                    <td class = "table_data">12/13/2017</td>
+                </tr>
+                
+                 <tr class="bg-warning">
+                    <td class = "table_data">1.28.1.2.2.L.MFG-WT</td>
+                    <td class = "table_data">HGF</td>
+                    <td class = "table_data">Not in Current Month Baseline</td>
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>
+                    <td class = "table_data"></td>
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data">12/6/2017</td>	
+                    <td class = "table_data">1/15/2018</td>
+                </tr>
+                
+                 <tr class="bg-warning">
+                    <td class = "table_data">1.28.1.2.4.H.MFG-OF</td>
+                    <td class = "table_data">MLC</td>
+                    <td class = "table_data">Not in Current Month Baseline</td>
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>
+                    <td class = "table_data"></td>
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data">7/25/2018</td>	
+                    <td class = "table_data">8/28/2018</td>
+                </tr>
+                
+                 <tr class="bg-warning">
+                    <td class = "table_data">1.28.1.2.4.H.MFG-OF</td>
+                    <td class = "table_data">LYT</td>
+                    <td class = "table_data">Not in Current Month Baseline</td>
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>
+                    <td class = "table_data"></td>
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data">7/25/2018</td>	
+                    <td class = "table_data">8/28/2018</td>
+                </tr>
+                
+                 <tr class="bg-warning">
+                    <td class = "table_data">1.28.1.2.4.H.MFG-OF</td>
+                    <td class = "table_data">JBY</td>
+                    <td class = "table_data">Not in Current Month Baseline</td>
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>
+                    <td class = "table_data"></td>
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data">7/6/2018</td>	
+                    <td class = "table_data">7/24/2018</td>
+                </tr>
+                
+                 <tr class="bg-warning">
+                    <td class = "table_data">1.28.1.2.4.W.MFG-EL</td>
+                    <td class = "table_data">LDU</td>
+                    <td class = "table_data">Not in Current Month Baseline</td>
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>
+                    <td class = "table_data"></td>
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data">11/20/2017</td>	
+                    <td class = "table_data">1/10/2018</td>
+                </tr>
+                
+                 <tr class="bg-warning">
+                    <td class = "table_data">1.28.1.2.1.G.MFG-OF</td>
+                    <td class = "table_data">PCM</td>
+                    <td class = "table_data">Not in Current Month Baseline</td>
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>
+                    <td class = "table_data"></td>
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data">4/18/2018</td>	
+                    <td class = "table_data">5/22/2018</td>
+                </tr>
+                
+                 <tr class="bg-warning">
+                    <td class = "table_data">1.28.1.2.1.G.MFG-OF</td>
+                    <td class = "table_data">PCN</td>
+                    <td class = "table_data">Not in Current Month Baseline</td>
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>
+                    <td class = "table_data"></td>
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data">4/5/2018</td>	
+                    <td class = "table_data">5/9/2018</td>
+                </tr>
+                
+                 <tr class="bg-warning">
+                    <td class = "table_data">1.28.1.2.1.A.MFG-WT</td>
+                    <td class = "table_data">HGC</td>
+                    <td class = "table_data">Not in Current Month Baseline</td>
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>
+                    <td class = "table_data"></td>
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data">10/23/2017</td>	
+                    <td class = "table_data">11/14/2017</td>
+                </tr>
+                
+                 <tr class="bg-warning">
+                    <td class = "table_data">1.28.1.2.5.S.MFG-OF</td>
+                    <td class = "table_data">JCF</td>
+                    <td class = "table_data">Not in Current Month Baseline</td>
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>
+                    <td class = "table_data"></td>
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data">4/30/2018</td>	
+                    <td class = "table_data">5/31/2018</td>
+                </tr>
+                
+                 <tr class="bg-danger">
+                    <td class = "table_data">1.28.1.2.5.S.MFG-OF</td>
+                    <td class = "table_data">KEV</td>
+                    <td class = "table_data">Baseline Values Changed</td>
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data">8/23/2016</td>
+                    <td class = "table_data">9/13/2016</td>
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data">4/14/2017</td>	
+                    <td class = "table_data">5/4/2017</td>
+                </tr>
+                
+                 <tr class="bg-danger">
+                    <td class = "table_data">1.28.1.2.5.S.MFG-OF</td>
+                    <td class = "table_data">KFM</td>
+                    <td class = "table_data">Baseline Values Changed</td>
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data">8/23/2016</td>
+                    <td class = "table_data">9/6/2016</td>
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data">4/14/2017</td>	
+                    <td class = "table_data">4/27/2017</td>
+                </tr>
+                
+                 <tr class="bg-danger">
+                    <td class = "table_data">1.28.1.2.5.S.MFG-OF</td>
+                    <td class = "table_data">KNB</td>
+                    <td class = "table_data">Baseline Values Changed</td>
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data">8/23/2016</td>
+                    <td class = "table_data">9/27/2016</td>
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data">4/14/2017</td>	
+                    <td class = "table_data">5/18/2017</td>
+                </tr>
+                
+                 <tr class="bg-warning">
+                    <td class = "table_data">1.28.1.2.5.X.MFG-WT</td>
+                    <td class = "table_data">LFS</td>
+                    <td class = "table_data">Not in Current Month Baseline</td>
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>
+                    <td class = "table_data"></td>
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data">12/6/2017</td>	
+                    <td class = "table_data">12/21/2017</td>
+                </tr>
+                
+                 <tr class="bg-warning">
+                    <td class = "table_data">1.28.1.2.5.X.MFG-WT</td>
+                    <td class = "table_data">LFT</td>
+                    <td class = "table_data">Not in Current Month Baseline</td>
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>
+                    <td class = "table_data"></td>
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data">12/6/2017</td>	
+                    <td class = "table_data">12/13/2017</td>
+                </tr>
+                
+                 <tr class="bg-warning">
+                    <td class = "table_data">1.28.1.2.5.X.MFG-WT</td>
+                    <td class = "table_data">LWZ</td>
+                    <td class = "table_data">Not in Current Month Baseline</td>
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>
+                    <td class = "table_data"></td>
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data">3/19/2018</td>	
+                    <td class = "table_data">5/29/2018</td>
+                </tr>
+                
+                 <tr class="bg-warning">
+                    <td class = "table_data"></td>
+                    <td class = "table_data"></td>
+                    <td class = "table_data">Not in Current Month Baseline</td>
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>
+                    <td class = "table_data"></td>
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data">1/1/1970</td>	
+                    <td class = "table_data">1/1/1970</td>
+                </tr>
+                
+                 <tr class="bg-warning">
+                    <td class = "table_data">1.28.1</td>
+                    <td class = "table_data">Barge-10</td>
+                    <td class = "table_data">Not in Previous Month Baseline</td>
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data">1/1/1970</td>
+                    <td class = "table_data">7/10/2017</td>
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>
+                </tr>
+                
+                 <tr class="bg-warning">
+                    <td class = "table_data">1.28.1</td>
+                    <td class = "table_data">Barge-8</td>
+                    <td class = "table_data">Not in Previous Month Baseline</td>
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data">1/1/1970</td>
+                    <td class = "table_data">5/30/2017</td>
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>
+                </tr>
+                
+                 <tr class="bg-warning">
+                    <td class = "table_data">1.28.1</td>
+                    <td class = "table_data">Barge-9</td>
+                    <td class = "table_data">Not in Previous Month Baseline</td>
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data">1/1/1970</td>
+                    <td class = "table_data">1/25/2017</td>
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>
+                </tr>
+                
+                 <tr class="bg-danger">
+                    <td class = "table_data">1.28.1.1.3.1.D3SD1.MFG-AF</td>
+                    <td class = "table_data">CHS</td>
+                    <td class = "table_data">Baseline Values Changed</td>
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data">9/22/2016</td>
+                    <td class = "table_data">10/12/2016</td>
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data">7/31/2017</td>	
+                    <td class = "table_data">8/18/2017</td>
+                </tr>
+                
+                 <tr class="bg-danger">
+                    <td class = "table_data">1.28.1.1.3.1.D3SD1.MFG-AF</td>
+                    <td class = "table_data">Start-D3SD1-Fab</td>
+                    <td class = "table_data">Baseline Values Changed</td>
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data">9/22/2016</td>
+                    <td class = "table_data"></td>
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data">7/31/2017</td>	
+                    <td class = "table_data"></td>
+                </tr>
+                
+                 <tr class="bg-danger">
+                    <td class = "table_data">1.28.1.1.3.1.D3SS1.MFG-AF</td>
+                    <td class = "table_data">CJX</td>
+                    <td class = "table_data">Baseline Values Changed</td>
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data">6/30/2016</td>
+                    <td class = "table_data">8/17/2016</td>
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data">5/8/2017</td>	
+                    <td class = "table_data">6/23/2017</td>
+                </tr>
+                
+                 <tr class="bg-danger">
+                    <td class = "table_data">1.28.1.1.3.1.D3SS1.MFG-AF</td>
+                    <td class = "table_data">Start-D3SS1-Fab</td>
+                    <td class = "table_data">Baseline Values Changed</td>
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data">6/30/2016</td>
+                    <td class = "table_data"></td>
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data">5/8/2017</td>	
+                    <td class = "table_data"></td>
+                </tr>
+                
+                 <tr class="bg-danger">
+                    <td class = "table_data">1.28.1.1.3.1.D3SS2.MFG-AF</td>
+                    <td class = "table_data">ABU</td>
+                    <td class = "table_data">Baseline Values Changed</td>
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data">8/18/2016</td>
+                    <td class = "table_data">9/21/2016</td>
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data">6/26/2017</td>	
+                    <td class = "table_data">7/28/2017</td>
+                </tr>
+                
+                 <tr class="bg-danger">
+                    <td class = "table_data">1.28.1.1.3.1.D3SS2.MFG-AF</td>
+                    <td class = "table_data">Start-D3SS2-Fab</td>
+                    <td class = "table_data">Baseline Values Changed</td>
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data">8/18/2016</td>
+                    <td class = "table_data"></td>
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data">6/26/2017</td>	
+                    <td class = "table_data"></td>
+                </tr>
+                
+                 <tr class="bg-danger">
+                    <td class = "table_data">1.28.1.1.3.1.D4S.MFG-AF</td>
+                    <td class = "table_data">ADP</td>
+                    <td class = "table_data">Baseline Values Changed</td>
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data">6/30/2016</td>
+                    <td class = "table_data">7/29/2016</td>
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data">2/22/2017</td>	
+                    <td class = "table_data">3/22/2017</td>
+                </tr>
+                
+                 <tr class="bg-danger">
+                    <td class = "table_data">1.28.1.1.3.1.D4S.MFG-AF</td>
+                    <td class = "table_data">AEJ</td>
+                    <td class = "table_data">Baseline Values Changed</td>
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data">8/1/2016</td>
+                    <td class = "table_data">8/22/2016</td>
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data">3/23/2017</td>	
+                    <td class = "table_data">4/13/2017</td>
+                </tr>
+                
+                 <tr class="bg-danger">
+                    <td class = "table_data">1.28.1.1.3.1.D4S.MFG-AF</td>
+                    <td class = "table_data">AFD</td>
+                    <td class = "table_data">Baseline Values Changed</td>
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data">6/30/2016</td>
+                    <td class = "table_data">7/22/2016</td>
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data">4/14/2017</td>	
+                    <td class = "table_data">5/5/2017</td>
+                </tr>
+                
+                 <tr class="bg-danger">
+                    <td class = "table_data">1.28.1.1.3.1.D4S.MFG-AF</td>
+                    <td class = "table_data">Start-D4S-Fab</td>
+                    <td class = "table_data">Baseline Values Changed</td>
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data">6/30/2016</td>
+                    <td class = "table_data"></td>
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data">2/22/2017</td>	
+                    <td class = "table_data"></td>
+                </tr>
+                
+                 <tr class="bg-danger">
+                    <td class = "table_data">1.28.1.1.3.1.D4S.MFG-AF</td>
+                    <td class = "table_data">FCA</td>
+                    <td class = "table_data">Baseline Values Changed</td>
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data">5/25/2017</td>
+                    <td class = "table_data">6/16/2017</td>
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data">3/23/2017</td>	
+                    <td class = "table_data">4/13/2017</td>
+                </tr>
+                
+                 <tr class="bg-danger">
+                    <td class = "table_data">1.28.1.2.5.S.MFG-WT</td>
+                    <td class = "table_data">970</td>
+                    <td class = "table_data">Baseline Values Changed</td>
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data">9/14/2016</td>
+                    <td class = "table_data">10/11/2016</td>
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data">5/5/2017</td>	
+                    <td class = "table_data">6/2/2017</td>
+                </tr>
+                
+                 <tr class="bg-danger">
+                    <td class = "table_data">1.28.1.2.5.S.MFG-WT</td>
+                    <td class = "table_data">958</td>
+                    <td class = "table_data">Baseline Values Changed</td>
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data">9/7/2016</td>
+                    <td class = "table_data">10/4/2016</td>
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data">4/28/2017</td>	
+                    <td class = "table_data">5/25/2017</td>
+                </tr>
+                
+                 <tr class="bg-danger">
+                    <td class = "table_data">1.28.1.2.3.S.MFG-OF</td>
+                    <td class = "table_data">UGE</td>
+                    <td class = "table_data">Baseline Values Changed</td>
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data">8/23/2016</td>
+                    <td class = "table_data">9/8/2016</td>
+                    <td class = "table_data"></td>	
+                    <td class = "table_data"></td>	
+                    <td class = "table_data">4/14/2017</td>	
+                    <td class = "table_data">5/1/2017</td>
+                </tr>
+                
+    
+        
+    </table>
+    </div>
+    

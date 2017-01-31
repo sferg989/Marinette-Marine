@@ -1,6 +1,6 @@
 <?php
 include("../../inc/inc.php");
-include("../../inc/lib/php/phpexcel-1.8/classes/phpexcel.php");
+include("../../inc/lib/php/phpexcel-1.8/classes/PHPExcel.php");
 /**
  * Created by PhpStorm.
  * User: fs11239

@@ -12,7 +12,7 @@ function insertNewUser($username,$password, $email,$role,$citizen){
     if($citizen =="USA Citizen"){
         $citizen = "yes";
     }
-    else{
+else{
         $citizen = "no";
     }
     $sql = "INSERT  INTO fmm_evms.user (user_name,pw, email, role, us_citizen) 
@@ -79,7 +79,7 @@ if($control=="register"){
     }
     if($msg == "user_name_does_not_exist")
     {
-        insertNewUser($user_name,$password,$email,$role);
+        insertNewUser($user_name,$password,$email,$role, $citizen);
         $msg = checkUser($user_name,$password);
         die($msg);
     }

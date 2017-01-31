@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="47f822d5-caa4-4777-9772-746577f23a95" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/global_worker/check_login.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/global_worker/check_login.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bkup/copyheader.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/header/workers/menu.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -34,92 +33,7 @@
     <favorites_list name="fmg" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="header.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/header/header.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="378">
-              <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="login.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/login/login.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="860">
-              <caret line="88" column="23" selection-start-line="88" selection-start-column="16" selection-end-line="88" selection-end-column="23" />
-              <folding>
-                <element signature="e#675#1435#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="menu.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/header/menu.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="365">
-              <caret line="57" column="42" selection-start-line="57" selection-start-column="42" selection-end-line="57" selection-end-column="42" />
-              <folding>
-                <marker date="1485876257839" expanded="true" signature="199:418" ph="select categ... menu" />
-                <marker date="1485876257839" expanded="true" signature="715:908" ph="select categ... menu" />
-                <marker date="1485876257839" expanded="true" signature="1445:1623" ph="..." />
-                <marker date="1485876257839" expanded="true" signature="1602:1623" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="login.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/login/login.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="507">
-              <caret line="54" column="20" selection-start-line="54" selection-start-column="20" selection-end-line="54" selection-end-column="20" />
-              <folding>
-                <element signature="n#checkifUserExists#0;n#!!top" expanded="false" />
-                <marker date="1485877274323" expanded="true" signature="342:482" ph="INSERT INTO user" />
-                <marker date="1485877274323" expanded="true" signature="614:679" ph="select user_... user" />
-                <marker date="1485877274323" expanded="true" signature="977:1064" ph="select user_... user" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="header.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/header/header.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-108">
-              <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="menu.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/header/workers/menu.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="13" column="30" selection-start-line="13" selection-start-column="30" selection-end-line="13" selection-end-column="30" />
-              <folding>
-                <element signature="e#44#87#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="copyheader.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/bkup/copyheader.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="16" column="39" selection-start-line="16" selection-start-column="39" selection-end-line="16" selection-end-column="39" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -297,20 +211,6 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="fmg" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="fmg" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="global_worker" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
@@ -483,7 +383,7 @@
       <workItem from="1485782775427" duration="3117000" />
       <workItem from="1485787022864" duration="1287000" />
       <workItem from="1485789116895" duration="18846000" />
-      <workItem from="1485869823340" duration="8112000" />
+      <workItem from="1485869823340" duration="8188000" />
     </task>
     <task id="LOCAL-00001" summary="processing status index">
       <created>1484232740617</created>
@@ -653,11 +553,18 @@
       <option name="project" value="LOCAL" />
       <updated>1485877394165</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="added the global worker directory">
+      <created>1485878095908</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1485878095908</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="727751000" />
+    <option name="totallyTimeSpent" value="727827000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -754,7 +661,8 @@
     <MESSAGE value="Got the Login and session variable to work" />
     <MESSAGE value="got menu working.  It is now driven to by a table" />
     <MESSAGE value="US Citizen is addressed.  you cannot see anything if you are not a USA Citizen" />
-    <option name="LAST_COMMIT_MESSAGE" value="US Citizen is addressed.  you cannot see anything if you are not a USA Citizen" />
+    <MESSAGE value="added the global worker directory" />
+    <option name="LAST_COMMIT_MESSAGE" value="added the global worker directory" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1007,23 +915,28 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bkup/copyheader.html">
+    <entry file="file://$PROJECT_DIR$/login/login.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="16" column="39" selection-start-line="16" selection-start-column="39" selection-end-line="16" selection-end-column="39" />
+        <state relative-caret-position="432">
+          <caret line="74" column="57" selection-start-line="74" selection-start-column="57" selection-end-line="74" selection-end-column="57" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/header/menu.php">
+    <entry file="file://$PROJECT_DIR$/bkup/copyheader.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="365">
-          <caret line="57" column="42" selection-start-line="57" selection-start-column="42" selection-end-line="57" selection-end-column="42" />
+        <state relative-caret-position="176">
+          <caret line="14" column="8" selection-start-line="14" selection-start-column="8" selection-end-line="14" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/header/workers/menu.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="24">
+          <caret line="5" column="3" selection-start-line="5" selection-start-column="3" selection-end-line="5" selection-end-column="3" />
           <folding>
-            <marker date="1485876257839" expanded="true" signature="199:418" ph="select categ... menu" />
-            <marker date="1485876257839" expanded="true" signature="715:908" ph="select categ... menu" />
-            <marker date="1485876257839" expanded="true" signature="1445:1623" ph="..." />
-            <marker date="1485876257839" expanded="true" signature="1602:1623" ph="..." />
+            <element signature="e#44#87#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1033,16 +946,6 @@
         <state relative-caret-position="-108">
           <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/login/login.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="860">
-          <caret line="88" column="23" selection-start-line="88" selection-start-column="16" selection-end-line="88" selection-end-column="23" />
-          <folding>
-            <element signature="e#675#1435#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1059,11 +962,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/login/login.html">
+    <entry file="file://$PROJECT_DIR$/header/menu.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="74" column="57" selection-start-line="74" selection-start-column="57" selection-end-line="74" selection-end-column="57" />
-          <folding />
+        <state relative-caret-position="365">
+          <caret line="57" column="42" selection-start-line="57" selection-start-column="42" selection-end-line="57" selection-end-column="42" />
+          <folding>
+            <marker date="1485876257839" expanded="true" signature="199:418" ph="select categ... menu" />
+            <marker date="1485876257839" expanded="true" signature="715:908" ph="select categ... menu" />
+            <marker date="1485876257839" expanded="true" signature="1445:1623" ph="..." />
+            <marker date="1485876257839" expanded="true" signature="1602:1623" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/login/login.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="860">
+          <caret line="88" column="23" selection-start-line="88" selection-start-column="16" selection-end-line="88" selection-end-column="23" />
+          <folding>
+            <element signature="e#675#1435#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1072,16 +990,6 @@
         <state relative-caret-position="378">
           <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/header/workers/menu.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="13" column="30" selection-start-line="13" selection-start-column="30" selection-end-line="13" selection-end-column="30" />
-          <folding>
-            <element signature="e#44#87#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>

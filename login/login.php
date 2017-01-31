@@ -29,13 +29,14 @@ function checkifUserExists($username){
 
 }
 function checkUser($username,$password){
-    $sql    = "select user_name, role, pw from fmm_evms.user where user_name = '$username'";
+    $sql    = "select user_name, role, pw, us_citizen from fmm_evms.user where user_name = '$username'";
 
     $rs     = dbCall($sql, "fmm_evms");
     $msg = "";
-    $user_name = $rs->fields["user_name"];
-    $role = $rs->fields["role"];
-    $pw = $rs->fields["pw"];
+    $user_name  = $rs->fields["user_name"];
+    $role       = $rs->fields["role"];
+    $pw         = $rs->fields["pw"];
+    $us_citizen = $rs->fields["us_citizen"];
 
     if($user_name ==""){
         $msg = "fail";
@@ -51,7 +52,8 @@ function checkUser($username,$password){
         session_start();
         $_SESSION["logged_in"] = "true";
         $_SESSION["user_name"] = $username;
-        $_SESSION["role"] = "PFA";
+        $_SESSION["us_citizen"] = "yes";
+        $_SESSION["role"] = $role;
         $_SESSION["hulls"] = "17<>19<>21";
         $msg = "login";
         return $msg;

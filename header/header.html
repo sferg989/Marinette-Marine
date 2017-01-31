@@ -10,64 +10,42 @@
     <script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
     <script src="https://npmcdn.com/bootstrap@4.0.0-alpha.2/dist/js/bootstrap.js"></script>
     <script src="../inc/lib/css/bootbox.min.js"></script>
-    <link rel="stylesheet" href="../inc/lib/css/bootstrap/css/bootstrap.css">
-    <style>
-    html, body, iframe { height: 90%; }
-</style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="header.js"></script>
+
+    <style>
+        html, body, iframe { height: 95%; }
+    </style>
 </head>
 <body >
 <script>
-        function loadIframe(url) {
-            var $iframe = $('#iframe1');;
-            if ( $iframe.length ) {
-                $iframe.attr('src',url);
-                return false;
-            }
-            return true;
+    function loadIframe(url) {
+        var $iframe = $('#iframe1');;
+        if ( $iframe.length ) {
+            $iframe.attr('src',url);
+            return false;
         }
+        return true;
+    }
 
 
 </script>
 <div >
-<nav class="navbar">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="#">Marinette Marine EVMS</a>
+    <nav class="navbar">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Marinette Marine EVMS</a>
+            </div>
+            <ul id = "menu_target" class="nav navbar-nav">
+            </ul>
         </div>
-        <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li class="dropdown" ><a class="dropdown-toggle" data-toggle="dropdown" href="#">Dashboards<span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                    <li><a href="#" onclick="loadIframe('../dashboards/timephase/index.html')">TimePhase Dashboard</a></li>
-                    <li><a href="#" onclick="loadIframe('../dashboards/main_ev/index.html')">Main EV Dashboard</a></li>
-                </ul>
-            </li>
-            <li class="dropdown" ><a class="dropdown-toggle" data-toggle="dropdown" href="#">Processing Tools<span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                    <li><a href="#" onclick="loadIframe('../monthly_processing/processing_status/index.html')">Processing Status</a></li>
-                </ul>
-            </li>
-            <li class="dropdown" ><a class="dropdown-toggle" data-toggle="dropdown" href="#">Variance Analysis<span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                    <li><a href="#" onclick="loadIframe('../var_tool_decision_tree/index.html')">Cost Variance Decision Tree</a></li>
-                </ul>
-            </li>
-            <li class="dropdown" ><a class="dropdown-toggle" data-toggle="dropdown" href="#">Project Loaders<span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                    <li><a href="#" onclick="loadIframe('../timephased_import.php')">Timephase Loader</a></li>
-                    <li><a href="#" onclick="loadIframe('../projectdata_import.php')">Project Data Loader</a></li>
-                </ul>
-            </li>
-        </ul>
-    </div>
-</nav>
+    </nav>
 </div>
 
 
 
 </body>
 </html>
-<!--<iframe name='iframe1' id="iframe1" src="../monthly_processing/processing_status/index.html"
+<iframe name='iframe1' id="iframe1" src="../monthly_processing/processing_status/index.html"
         frameborder="0" border="0" cellspacing="0"
-        style="border-style: none;width: 100%; height: 100%;"></iframe>-->
+        style="border-style: none;width: 100%; height: 100%;"></iframe>

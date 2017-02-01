@@ -9,29 +9,7 @@ include("../../inc/lib/php/phpExcel-1.8/classes/phpexcel.php");
  */
 $user = "fs11239";
 $debug = false;
-function removeCommanDollarSignParan($number){
-    $number_no_sign = str_replace("$", "", $number);
-    $no_comma = str_replace(",", "", $number_no_sign);
-    $no_paran = str_replace(")", "", $no_comma);
-    $make_neg = floatval(str_replace("(", "-", $no_paran));
-    return $make_neg;
-}
-function formatCurrencyNumber($number){
-    if($number!="" or $number !=0){
-        $value = number_format($number,2,".",",");
-        $number = htmlentities("$".$value);
-        return $number;
-    }
-    return "";
-}
-function formatNumber($number){
-    if($number!="" or $number !=0){
-        $value = number_format($number,2,".",",");
-        $number = $value;
-        return $number;
-    }
-    return "";
-}
+$schema = "ims_data_check";
 function determineBCRTableClass($reason){
     if($reason=="Not in Current Month Baseline"){
         $class = "bg-warning";
@@ -46,24 +24,7 @@ function determineBCRTableClass($reason){
 
     return $class;
 }
-function createTableFromBase($schema,$base_table, $new_table_name){
-    $sql = "show create table $schema.$base_table";
-    $rs = dbcall($sql);
-    $create_table_stmt = $rs->fields["Create Table"];
 
-    $sql = str_replace($base_table, $new_table_name, $create_table_stmt);
-    $junk = dbCall($sql, "ims_data_check");
-}
-function checkIfTableExists($schema, $table_name){
-    $sql = "select table_name from information_schema.tables where table_schema = '$schema' and table_name = '$table_name'";
-    $rs = dbcall($sql, "information_schema");
-    $val = $rs->fields["table_name"];
-    if($val==""){
-        return "create_table";
-    }else{
-        return true;
-    }
-}
 function getBCRs($table_name, $ship_code){
     $sql = "select ship_code, ca, wp, sum(hours) hours, sum(matl_dollars) as matl_dollars, bcr from ims_data_check.$table_name where ship_code = $ship_code group by bcr, ca, wp";
     $rs = dbCall($sql,"ims_data_check");
@@ -107,12 +68,6 @@ function getPeriodBaseline($ship_code,$table_name)
     return $data_array;
 }
 
-function deleteShipFromTable($ship_code,$table_name)
-{
-    $sql = "delete from $table_name where ship_code = $ship_code";
-    //print $sql;
-    $junk = dbCall($sql,"ims_data_check");
-}
 if(strlen($code)==3)
 {
     $ship_code = "0".$code;
@@ -158,12 +113,13 @@ if($control=="step_grid")
 if($control=="load_p6_data"){
 
     $table_name   = $rpt_period . "_baseline";
-    $create_table = checkIfTableExists("ims_data_check", $table_name);
+
+    $create_table = checkIfTableExists($schema, $table_name);
     if($create_table== "create_table"){
-        createTableFromBase("ims_data_check","template_baseline", $table_name);
+        createTableFromBase($schema,"template_baseline", $table_name);
     }
-    deleteShipFromTable($ship_code,$table_name);
-    $insert_sql = "INSERT INTO ims_data_check.`".$rpt_period."_baseline` (ship_code, wbs, activity_id, activity_name, s_labor_units, s_material_cost, bl_project_start, bl_project_finish) VALUES";
+    deleteShipFromTable($ship_code,$table_name, $schema);
+    $insert_sql = "INSERT INTO $schema.`".$rpt_period."_baseline` (ship_code, wbs, activity_id, activity_name, s_labor_units, s_material_cost, bl_project_start, bl_project_finish) VALUES";
     $p6data = trim($p6data);
     $lines = explode("\n",$p6data);
     $sql = $insert_sql;
@@ -196,7 +152,7 @@ if($control=="load_p6_data"){
         ),";
             if($i==200){
                 $sql = substr($sql, 0, -1);
-                $junk = dbCall($sql,"ims_data_check");
+                $junk = dbCall($sql,$schema);
                 print $sql;
                 //die("made it");
                 $sql = $insert_sql;
@@ -207,18 +163,18 @@ if($control=="load_p6_data"){
     if($i!=200){
         $sql = substr($sql, 0, -1);
         //print $sql;
-        $junk = dbCall($sql,"ims_data_check");
+        $junk = dbCall($sql,$schema);
         $sql = $insert_sql;
     }
 }
 if($control=="load_bcr"){
     $table_name   = $rpt_period . "_bcr";
-    $create_table = checkIfTableExists("ims_data_check", $table_name);
+    $create_table = checkIfTableExists($schema, $table_name);
     if($create_table== "create_table"){
-        createTableFromBase("ims_data_check","template_bcr", $table_name);
+        createTableFromBase($schema,"template_bcr", $table_name);
     }
-    deleteShipFromTable($ship_code,$table_name);
-    $insert_sql = "INSERT into ims_data_check.$table_name (ship_code, ca, wp,hours, matl_dollars, bcr) VALUES";
+    deleteShipFromTable($ship_code,$table_name,$schema);
+    $insert_sql = "INSERT into $schema.$table_name (ship_code, ca, wp,hours, matl_dollars, bcr) VALUES";
     $bcr_data = trim($bcr_data);
     $lines = explode("\n",$bcr_data);
     $sql = $insert_sql;
@@ -245,7 +201,7 @@ if($control=="load_bcr"){
         ),";
         if($i==200){
             $sql = substr(trim($sql), 0, -1);
-            $junk = dbCall($sql,"ims_data_check");
+            $junk = dbCall($sql,$schema);
             //die("made it");
             $sql = $insert_sql;
             $i=0;
@@ -254,7 +210,7 @@ if($control=="load_bcr"){
     }
     if($i!=200){
         $sql  = substr(trim($sql), 0, -1);
-        $junk = dbCall($sql, "ims_data_check");
+        $junk = dbCall($sql, $schema);
         print $sql;
         $sql  = $insert_sql;
     }
@@ -265,12 +221,12 @@ if($control=="data_check")
     $baseline = "false";
     $bcr = "false";
     $table_name   = $rpt_period . "_baseline";
-    $create_table = checkIfTableExists("ims_data_check", $table_name);
+    $create_table = checkIfTableExists($schema, $table_name);
     if($create_table==true)
     {
         $sql = "select count(*) as count from $table_name where ship_code = $ship_code";
 
-        $rs = dbCall($sql,"ims_data_check");
+        $rs = dbCall($sql,$schema);
         $count = $rs->fields["count"];
         if($count>0){
             $baseline = "true";
@@ -280,7 +236,7 @@ if($control=="data_check")
     if($create_table==true)
     {
         $sql = "select count(*) as count from $table_name where ship_code = $ship_code";
-        $rs = dbCall($sql,"ims_data_check");
+        $rs = dbCall($sql,$schema);
         $count = $rs->fields["count"];
         if($count>0){
             $bcr = "true";

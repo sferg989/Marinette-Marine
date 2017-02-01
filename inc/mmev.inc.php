@@ -13,7 +13,8 @@ set_time_limit(0);
 error_reporting(0);
 include('lib/php/adodb5/adodb.inc.php');
 //Global Paths
-$base_path      = "Y:/Program Management/cobra processing/";
+//$g_production_base_path      = "Y:/Program Management/cobra processing/";
+$base_path      = "C:/program_management_test/cobra processing/";
 $g_path_to_util = "C:\\xampp\\htdocs\\fmg\\util\\";
 $g_path2BAT     = $g_path_to_util . "backup_scripts\\BAT\\";
 $g_path2CMD     = $g_path_to_util . "backup_scripts\\CMD\\";
@@ -32,4 +33,4 @@ $g_path2AdvanceCalendarProjectCMD = $g_path_to_util . "advance_calendar\\CMD\\";
 
 $g_path2CobraAPI = "\"program files (x86)\"\\deltek\\\"cobra 5\"\\cobra.api.exe";
 
-$g_path2_wi = "Y:\\Program Management\\Cobra Processing 5.1\\Cobra 5.1 Work Instructions";
+$g_path2_wi              = "Y:\\Program Management\\Cobra Processing 5.1\\Cobra 5.1 Work Instructions";

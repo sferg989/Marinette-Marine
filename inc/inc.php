@@ -485,3 +485,51 @@ function fixExcelDate2DigitYear($date)
     }
     return  date('Y-m-d', strtotime($date));
 }
+function removeCommanDollarSignParan($number){
+    $number_no_sign = str_replace("$", "", $number);
+    $no_comma = str_replace(",", "", $number_no_sign);
+    $no_paran = str_replace(")", "", $no_comma);
+    $make_neg = number_format(floatval(str_replace("(", "-", $no_paran)),4, ".","");
+    return $make_neg;
+}
+function formatCurrencyNumber($number){
+    if($number!="" or $number !=0){
+        $value = number_format($number,2,".",",");
+        $number = htmlentities("$".$value);
+        return $number;
+    }
+    return "";
+}
+function formatNumber($number){
+    if($number!="" or $number !=0){
+        $value = number_format($number,2,".",",");
+        $number = $value;
+        return $number;
+    }
+    return "";
+}
+function deleteShipFromTable($ship_code,$table_name, $schema)
+{
+    $sql = "delete from $schema.$table_name where ship_code = $ship_code";
+    //print $sql;
+    $junk = dbCall($sql,$schema);
+}
+function checkIfTableExists($schema, $table_name){
+    $sql = "select table_name from information_schema.tables where table_schema = '$schema' and table_name = '$table_name'";
+
+    $rs = dbcall($sql, "information_schema");
+    $val = $rs->fields["table_name"];
+    if($val==""){
+        return "create_table";
+    }else{
+        return true;
+    }
+}
+function createTableFromBase($schema,$base_table, $new_table_name){
+    $sql = "show create table $schema.$base_table";
+    $rs = dbcall($sql);
+    $create_table_stmt = $rs->fields["Create Table"];
+
+    $sql = str_replace($base_table, $new_table_name, $create_table_stmt);
+    $junk = dbCall($sql, $schema);
+}

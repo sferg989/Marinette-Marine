@@ -21,11 +21,16 @@ this.onmessage = function(e) {
 
     http.onreadystatechange = function() {//Call a function when the state changes.
         if(http.readyState == 4 && http.status == 200) {
-            var data_response = this.responseText.split("<>");
-            var html = data_response[0];
-            var excel_file = data_response[1];
+            var response_data = {};
+            if(this.responseText== undefined)
+            {
+                this.responseText = "we donts gots to know";
+            }
+            response_data.id        = "finished";
+            response_data.action    = action;
 
-            postMessage(action);
+            //postMessage({id: action, reponse : this.responseText});
+            postMessage(response_data);
         }
     }
     http.send(params);

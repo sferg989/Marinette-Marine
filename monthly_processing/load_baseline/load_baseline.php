@@ -153,7 +153,7 @@ if($control=="load_p6_data"){
             if($i==200){
                 $sql = substr($sql, 0, -1);
                 $junk = dbCall($sql,$schema);
-                print $sql;
+
                 //die("made it");
                 $sql = $insert_sql;
                 $i=0;
@@ -211,7 +211,7 @@ if($control=="load_bcr"){
     if($i!=200){
         $sql  = substr(trim($sql), 0, -1);
         $junk = dbCall($sql, $schema);
-        print $sql;
+
         $sql  = $insert_sql;
     }
     die("made it");
@@ -268,6 +268,7 @@ if($control=="compare_ca"){
                 $not_in_cur[$key][$act]["prev_matl_cost"]   = $values["s_material_cost"];
                 $not_in_cur[$key][$act]["prev_start"]       = $values["bl_project_start"];
                 $not_in_cur[$key][$act]["prev_finish"]      = $values["bl_project_finish"];
+
             }
         }
     }
@@ -298,31 +299,54 @@ if($control=="compare_ca"){
         //  print "This is the WBS ".$key."\r";
         foreach ($value as $act=>$values){
 
-            $cur_finish = $current_period_baseline[$key][$act]["bl_project_finish"];
+            $cur_finish  = $current_period_baseline[$key][$act]["bl_project_finish"];
             $prev_finish = $values["bl_project_finish"];
+            $cur_start = $current_period_baseline[$key][$act]["bl_project_start"];
+            $prev_start= $values["bl_project_start"];
+            $cur_labor = $current_period_baseline[$key][$act]["s_labor_units"];
+            $prev_labor = $values["s_labor_units"];
+            $cur_matl = $current_period_baseline[$key][$act]["s_material_cost"];
+            $prev_matl = $values["s_material_cost"];
             if($cur_finish!=$prev_finish){
                 $diffs[$key][$act]["cur_finish"]  = $cur_finish;
                 $diffs[$key][$act]["prev_finish"] = $prev_finish;
-            }
-            $cur_start = $current_period_baseline[$key][$act]["bl_project_start"];
-            $prev_start= $values["bl_project_start"];
-            if($cur_start!=$prev_start){
                 $diffs[$key][$act]["cur_start"]  = $cur_start;
-                $diffs[$key][$act]["prev_start"] = $prev_start;            
+                $diffs[$key][$act]["prev_start"] = $prev_start;
+                $diffs[$key][$act]["cur_labor"]  = $cur_labor;
+                $diffs[$key][$act]["prev_labor"] = $prev_labor;
+                $diffs[$key][$act]["cur_matl"]    = $cur_matl;
+                $diffs[$key][$act]["prev_matl"] = $prev_matl;
+
             }
 
-            $cur_labor = $current_period_baseline[$key][$act]["s_labor_units"];
-            $prev_labor = $values["s_labor_units"];
-            if($cur_labor!=$prev_labor){
+            if($cur_start!=$prev_start){
+                $diffs[$key][$act]["cur_finish"]  = $cur_finish;
+                $diffs[$key][$act]["prev_finish"] = $prev_finish;
+                $diffs[$key][$act]["cur_start"]  = $cur_start;
+                $diffs[$key][$act]["prev_start"] = $prev_start;
                 $diffs[$key][$act]["cur_labor"]  = $cur_labor;
-                $diffs[$key][$act]["prev_labor"] = $prev_labor;            
+                $diffs[$key][$act]["prev_labor"] = $prev_labor;
+                $diffs[$key][$act]["cur_matl"]    = $cur_matl;
+                $diffs[$key][$act]["prev_matl"] = $prev_matl;
             }
-            $cur_matl = $current_period_baseline[$key][$act]["s_material_cost"];
-            $prev_matl = $values["s_material_cost"];
-            //var_dump($current_period_baseline[$key][$act]);
-            //print $key."\r".$act."\r";
-            //die()
+            if($cur_labor!=$prev_labor){
+                $diffs[$key][$act]["cur_finish"]  = $cur_finish;
+                $diffs[$key][$act]["prev_finish"] = $prev_finish;
+                $diffs[$key][$act]["cur_start"]  = $cur_start;
+                $diffs[$key][$act]["prev_start"] = $prev_start;
+                $diffs[$key][$act]["cur_labor"]  = $cur_labor;
+                $diffs[$key][$act]["prev_labor"] = $prev_labor;
+                $diffs[$key][$act]["cur_matl"]    = $cur_matl;
+                $diffs[$key][$act]["prev_matl"] = $prev_matl;
+            }
+
             if($cur_matl!=$prev_matl){
+                $diffs[$key][$act]["cur_finish"]  = $cur_finish;
+                $diffs[$key][$act]["prev_finish"] = $prev_finish;
+                $diffs[$key][$act]["cur_start"]  = $cur_start;
+                $diffs[$key][$act]["prev_start"] = $prev_start;
+                $diffs[$key][$act]["cur_labor"]  = $cur_labor;
+                $diffs[$key][$act]["prev_labor"] = $prev_labor;
                 $diffs[$key][$act]["cur_matl"]    = $cur_matl;
                 $diffs[$key][$act]["prev_matl"] = $prev_matl;
             }

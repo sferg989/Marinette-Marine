@@ -104,7 +104,7 @@ $objPHPExcel->addNamedRange(
 
 // Set selection cells
 $objPHPExcel->getActiveSheet()
-    ->setCellValue('A1', 'This is the Continent:');
+    ->setCellValue('A1', 'Continent:');
 $objPHPExcel->getActiveSheet()
     ->setCellValue('B1', 'Select continent');
 $objPHPExcel->getActiveSheet()

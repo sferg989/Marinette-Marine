@@ -90,15 +90,14 @@ if($control =="bkup_after_reclass")
 }
 if($control=="global_reclass")
 {
-    $ship_code           = "04731116-test";
-
+    //$ship_code           = "04731116-test";
     reClassCobraProject($ship_code, $g_path2CobraAPI,$g_path2ReClassProjectCMD,$g_path2ReClassProjectBAT,$debug);
     die("Copy F1 Forecast to FF-Complete");
 
 }
 if($control =="batch_rpt_cost_class_check")
 {
-    $ship_code      = "04731116-test";
+    //$ship_code      = "04731116-test";
     //this is the real one.  there were not enough characters allowed to have 'class check'
     //$batch_rpt_name = $ship_code." Class Check";
 
@@ -108,7 +107,7 @@ if($control =="batch_rpt_cost_class_check")
 }
 if($control=="advance_calendar")
 {
-    $ship_code           = "04731116-test";
+    //$ship_code           = "04731116-test";
 
     $status_date_for_loe        = "0";
     $update_rates_fte           = "0";

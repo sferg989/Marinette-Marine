@@ -20,7 +20,7 @@ $g_path2BAT     = $g_path_to_util . "backup_scripts\\BAT\\";
 $g_path2CMD     = $g_path_to_util . "backup_scripts\\CMD\\";
 
 $g_path2BatrptBAT = $g_path_to_util . "batch_report_process\\BAT\\";
-$g_path2BatrptCMD = $g_path_to_util . "batch_report_process\\CMD\\";
+$g_path2BatrptCMD = $g_path_to_util .// "batch_report_process\\CMD\\";
 
 $g_path2ArhiveProjectBAT = $g_path_to_util . "archive_project\\BAT\\";
 $g_path2ArhiveProjectCMD = $g_path_to_util . "archive_project\\CMD\\";

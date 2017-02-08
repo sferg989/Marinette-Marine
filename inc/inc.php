@@ -1,5 +1,7 @@
 <?php
+
 include("mmev.inc.php");
+
 session_start();
 
 function dbCall($sql,$schema="fmm_evms",$server="localhost"){
@@ -17,6 +19,7 @@ function now()
     $timestamp = date("Y-m-d h:i:s");
     return $timestamp;
 }
+
 
 function truncateTable($schema, $table){
     $sql = "truncate table $schema.$table";
@@ -97,6 +100,7 @@ function fixCostField($dollar_amount)
     $dollar_amount = str_replace(")", "", $dollar_amount);
     return floatval($dollar_amount);
 }
+
 function insertMasterCA($pmid, $ca_name, $wbs_id, $cam="")
 {
     $sql = "INSERT INTO master_ca (pmid, name, wbs_id, cam) VALUES
@@ -104,6 +108,7 @@ function insertMasterCA($pmid, $ca_name, $wbs_id, $cam="")
       ";
     $junk = dbCall($sql, "fmm_evms");
 }
+
 function checkMasterCA($wbs_id,$ca_name)
 {
     $sql = "select id from master_ca where wbs_id = '$wbs_id'";
@@ -152,6 +157,7 @@ function createRPTPeriodfromDate($date){
     $rpt_period = "$year"."$month";
     return $rpt_period;
 }
+
 function makeNewYearDIR($ship_name,$ship_code,$new_year,$base_path)
 {
     $path = $base_path."".$ship_name."/".$ship_code."/".$ship_code." ".$new_year;
@@ -273,6 +279,7 @@ function createCobraBatchrptBATFile($bacth_report_name,$ship_code,$g_path2BAT)
     file_put_contents($path2_new_bat_file,$content_final);
     return $path2_new_bat_file;
 }
+
 function runCobraBatchReportProcess($ship_code,$batch_rpt_process_name, $g_path2CobraAPI,$g_path2CMD,$g_path2BAT,$debug=false)
 {
     $bat_file_name = createCobraBatchrptBATFile($batch_rpt_process_name, $ship_code, $g_path2BAT);
@@ -442,9 +449,11 @@ function returnPeriodData($ship_code, $start_rpt_period,$to_rpt_period)
     $cur_month  = month2digit(substr($to_rpt_period, -2));
     $dateObj            = DateTime::createFromFormat('!m', $prev_month);
     $prev_month_letters = $dateObj->format('M');
+    $prev_full_month = $dateObj->format('F');
 
     $dateObj           = DateTime::createFromFormat('!m', $cur_month);
     $cur_month_letters = $dateObj->format('M');
+    $cur_full_month = $dateObj->format('F');
 
     $data["prev_year"]          = $prev_year;
     $data["cur_year"]           = $cur_year;
@@ -455,6 +464,8 @@ function returnPeriodData($ship_code, $start_rpt_period,$to_rpt_period)
     $data["prev_month_letters"] = $prev_month_letters;
     $data["cur_month_letters"]  = $cur_month_letters;
     $data["ship_name"]          = $ship_name;
+    $data["prev_full_month"]    = $prev_full_month;
+    $data["cur_full_month"]     = $cur_full_month;
     return $data;
 }
 function checkifArray($variable){
@@ -505,6 +516,35 @@ function formatNumber($number){
         $value = number_format($number,2,".",",");
         $number = $value;
         return $number;
+    }
+    return "";
+}
+function formatNumberPHPEXCEL($number){
+    if($number!="" or $number !=0){
+
+        $value = number_format($number,0,".","");
+        $number = $value;
+        return $number;
+    }
+    return "";
+}
+function formatPercent($number){
+    if($number!="" or $number !=0){
+
+        $value = number_format($number,4,".",",");
+
+        $number = $value*100;
+
+        return $number."%";
+    }
+    return "";
+}
+function formatPercentPHPEXCEL($number){
+    if($number!="" or $number !=0){
+
+        $number = number_format($number,4,".","");
+
+        return $number."";
     }
     return "";
 }

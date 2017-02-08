@@ -80,8 +80,7 @@ $(document).ready(function() {
         var step = {};
         step.code       = code;
         step.rpt_period = rpt_period;
-        step.bcrData2    = bcrDataval;
-        step.action = "compare_data";
+        step.action = "beac_eac_detail_chart";
         step.name   = "Compare EAC BAC "
         var worker;
         if($("#img_"+step.action.length))
@@ -90,27 +89,24 @@ $(document).ready(function() {
         }
         $("#status").append("<div id = \"img_"+step.action+"\"><br><img src=\"../../inc/images/ajax-loader.gif\" height=\"32\" width=\"32\"/>"+step.name+"<br></div>");
 
-        workers     = new Worker("workers/compare_data.js");
+        workers     = new Worker("workers/worker_build_report.js");
         workers.onmessage = workerDone;
         workers.postMessage(step);
-
         function workerDone(e) {
-            e.data = e.data+"";
-            if(e.data!= ""){
-                response_data = e.data.split("<>");
-                id = response_data[0];
-                //$("#text_"+id).addClass("color : red");
-                if ($("#bac_eac_grid").length) {
-                    $("#bac_eac_grid").remove();
+            if(e.data.status =="finished"){
+                id = e.data.action;
+                if ($("#detail_grid").length) {
+                    $("#detail_grid").empty();
                     $("#excel_export_btn_div").empty();
                 }
-                html_table = response_data[1];
-                file_name = escape(response_data[2]);
-                $("#result").append(html_table);
+                html_table = e.data.html;
+                file_name = escape(e.data.excel_file);
+                $("#detail_grid").append(html_table);
                 $("#excel_export_btn_div").append("<br><br><button id='excel_export' type='button' class='btn btn-success' onclick='window.open(\""+file_name+"\");'>Export to Excel &nbsp&nbsp<img src='../../inc/images/Excel-icon.png' height='24' width='24'/></button>");
-
                 $("#img_"+id+" img").attr("src", "../images/tick.png");
             }
+
         }
+
     });
 })

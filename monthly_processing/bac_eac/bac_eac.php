@@ -1,9 +1,8 @@
 <?php
 
 include("../../inc/inc.php");
+include("../../inc/inc.bac_eac.php");
 
-include("../../inc/lib/php/phpExcel-1.8/classes/phpexcel.php");
-include("../../inc/lib/php/phpExcel-1.8/classes/phpexcel/IOFactory.php");
 
 /**
  * Created by PhpStorm.
@@ -16,329 +15,6 @@ $schema = "bac_eac";
 if(strlen($code)==3)
 {
     $ship_code = "0".$code;
-}
-function returnTableArray($ship_code){
-    $table_array = array();
-    if($ship_code>=477){
-
-        $table_array[0]["h"] = "_cpr2h_obs";
-        $table_array[0]["d"] = "_cpr2d_obs";
-        $table_array[1]["h"] = "_cpr1h";
-        $table_array[1]["d"] = "_cpr1d";
-        $table_array[2]["h"] = "_cpr2h_wbs";
-        $table_array[2]["d"] = "_cpr2d_wbs";
-    }
-    else{
-        $table_array[0]["h"] = "_pre17_cpr2h";
-        $table_array[0]["d"] = "_pre17_cpr2d";
-        $table_array[1]["h"] = "_pre17_cpr1h";
-        $table_array[1]["d"] = "_pre17_cpr1d";
-    }
-    return $table_array;
-}
-function returnTableArraylABORMATLDOLLARS($ship_code){
-    $table_array = array();
-    if($ship_code>=477){
-        $table_array[0]["l"] = "_cpr2l_obs";
-        $table_array[0]["m"] = "_cpr2m_obs";
-        $table_array[1]["l"] = "_cpr1l";
-        $table_array[1]["m"] = "_cpr1m";
-        $table_array[2]["l"] = "_cpr2l_wbs";
-        $table_array[2]["m"] = "_cpr2m_wbs";
-    }
-    else{
-        $table_array[0]["l"] = "_pre17_cpr2l";
-        $table_array[0]["m"] = "_pre17_cpr2m";
-        $table_array[1]["l"] = "_pre17_cpr1l";
-        $table_array[1]["m"] = "_pre17_cpr1m";
-    }
-    return $table_array;
-}
-function formatExcelSheet($path2xlsfile, $sheet_title)
-{
-    $objPHPExcel = PHPExcel_IOFactory::load($path2xlsfile);
-
-    $objPHPExcel->getActiveSheet()->setTitle($sheet_title);
-    $objPHPExcel->getActiveSheet()
-        ->getStyle('B4:D230')
-        ->getNumberFormat()
-        ->setFormatCode('#,##0');
-    $objPHPExcel->getActiveSheet()
-        ->getStyle('F4:H230')
-        ->getNumberFormat()
-        ->setFormatCode(PHPExcel_Style_NumberFormat::FORMAT_CURRENCY_USD);;
-    $objPHPExcel->getActiveSheet()
-        ->getStyle('E4:E230')
-        ->getNumberFormat()
-        ->setFormatCode(PHPExcel_Style_NumberFormat::FORMAT_PERCENTAGE_00);
-    $objPHPExcel->getActiveSheet()
-        ->getStyle('I4:I230')
-        ->getNumberFormat()
-        ->setFormatCode(PHPExcel_Style_NumberFormat::FORMAT_PERCENTAGE_00);
-    $objPHPExcel->getActiveSheet()->getColumnDimension('A')->setWidth(50);
-    $objPHPExcel->getActiveSheet()->getColumnDimension('B')->setWidth(15);
-    $objPHPExcel->getActiveSheet()->getColumnDimension('C')->setWidth(15);
-    $objPHPExcel->getActiveSheet()->getColumnDimension('D')->setWidth(15);
-    $objPHPExcel->getActiveSheet()->getColumnDimension('E')->setWidth(15);
-    $objPHPExcel->getActiveSheet()->getColumnDimension('F')->setWidth(15);
-    $objPHPExcel->getActiveSheet()->getColumnDimension('G')->setWidth(15);
-    $objPHPExcel->getActiveSheet()->getColumnDimension('H')->setWidth(15);
-    $objPHPExcel->getActiveSheet()->getColumnDimension('I')->setWidth(15);
-    return $objPHPExcel;
-}
-function formatExcelSheetLBR($path2xlsfile, $sheet_title){
-    $objPHPExcel  = PHPExcel_IOFactory::load($path2xlsfile);
-
-    $objPHPExcel->getActiveSheet()->setTitle($sheet_title);
-    $objPHPExcel->getActiveSheet()
-        ->getStyle('B4:D230')
-        ->getNumberFormat()
-        ->setFormatCode(PHPExcel_Style_NumberFormat::FORMAT_CURRENCY_USD);
-    $objPHPExcel->getActiveSheet()
-        ->getStyle('E4:E230')
-        ->getNumberFormat()
-        ->setFormatCode(PHPExcel_Style_NumberFormat::FORMAT_PERCENTAGE_00);
-    $objPHPExcel->getActiveSheet()
-        ->getStyle('F4:H230')
-        ->getNumberFormat()
-        ->setFormatCode(PHPExcel_Style_NumberFormat::FORMAT_CURRENCY_USD);
-    $objPHPExcel->getActiveSheet()
-        ->getStyle('I4:I230')
-        ->getNumberFormat()
-        ->setFormatCode(PHPExcel_Style_NumberFormat::FORMAT_PERCENTAGE_00);
-    $objPHPExcel->getActiveSheet()
-        ->getStyle('J4:L230')
-        ->getNumberFormat()
-        ->setFormatCode(PHPExcel_Style_NumberFormat::FORMAT_CURRENCY_USD);
-    $objPHPExcel->getActiveSheet()
-        ->getStyle('M4:M230')
-        ->getNumberFormat()
-        ->setFormatCode(PHPExcel_Style_NumberFormat::FORMAT_PERCENTAGE_00);
-    $objPHPExcel->getActiveSheet()->getColumnDimension('A')->setWidth(50);
-    $objPHPExcel->getActiveSheet()->getColumnDimension('B')->setWidth(15);
-    $objPHPExcel->getActiveSheet()->getColumnDimension('C')->setWidth(15);
-    $objPHPExcel->getActiveSheet()->getColumnDimension('D')->setWidth(15);
-    $objPHPExcel->getActiveSheet()->getColumnDimension('E')->setWidth(15);
-    $objPHPExcel->getActiveSheet()->getColumnDimension('F')->setWidth(15);
-    $objPHPExcel->getActiveSheet()->getColumnDimension('G')->setWidth(15);
-    $objPHPExcel->getActiveSheet()->getColumnDimension('H')->setWidth(15);
-    $objPHPExcel->getActiveSheet()->getColumnDimension('I')->setWidth(15);
-    $objPHPExcel->getActiveSheet()->getColumnDimension('j')->setWidth(15);
-    $objPHPExcel->getActiveSheet()->getColumnDimension('k')->setWidth(15);
-    $objPHPExcel->getActiveSheet()->getColumnDimension('l')->setWidth(15);
-    return $objPHPExcel;
-}
-function createItemArray($rpt_period, $table_array){
-
-    $table1 = $table_array["d"];
-    $table2 = $table_array["h"];
-    $data_array = array();
-
-
-    $sql = " 
-        select item, order_id from
-          (select item, order_id from ".$rpt_period.$table1." union all select item, order_id from ".$rpt_period.$table2.") s
-        where item <> 'CLASSIFICATION (When Filled In)'
-        and item <> 'f. MANAGEMENT RESERVE'
-        and item <> '9. RECONCILIATION TO CONTRACT BUDGET BASELINE'
-        and item <> 'a. VARIANCE ADJUSTMENT'
-        and item <> 'd. UNDISTRIBUTED BUDGET'
-        group by item
-        order by order_id
-        ";
-
-    $rs = dbCall($sql,"bac_eac");
-    while (!$rs->EOF)
-    {
-        $item = $rs->fields["item"];
-        $data_array[$item] = "";
-        $rs->MoveNext();
-    }
-    //AD ub AFTER THE subTOTAL  row.
-    $data_array["SUBTOTAL"] = "";
-    $data_array["d. UNDISTRIBUTED BUDGET"] = "";
-    return $data_array;
-}
-function createItemArrayLABORMTL($rpt_period, $table_array){
-
-    $table1 = $table_array["l"];
-    $table2 = $table_array["m"];
-    $union_sql = "";
-    /*Since WBS is the only group that has values in the item array, but does not have values, we want t
-       include it in the list.
-     * */
-    $ob = "order_id";
-    if(strpos($table1, "wbs")>0){
-        $union_sql = "                    
-            union all
-                  select item, order_id from ".$rpt_period."_cpr2d_wbs 
-                    union all
-                  select item, order_id from ".$rpt_period."_cpr2h_wbs ";
-        $ob = "item";
-    }
-    $data_array = array();
-    $sql = " 
-          select item, order_id from
-              (
-                  select item, order_id from ".$rpt_period.$table1." 
-                    union all
-                  select item, order_id from ".$rpt_period.$table2." 
-                    $union_sql
-              ) s
-        where item <> 'CLASSIFICATION (When Filled In)'
-        and item <> 'f. MANAGEMENT RESERVE'
-        and item <> '9. RECONCILIATION TO CONTRACT BUDGET BASELINE'
-        and item <> 'a. VARIANCE ADJUSTMENT'
-        and item <> 'd. UNDISTRIBUTED BUDGET'
-        and item <> 'f. MANAGEMENT RESERVE'
-        group by item
-        order by $ob
-        ";
-
-    $rs = dbCall($sql,"bac_eac");
-    while (!$rs->EOF)
-    {
-        $item = $rs->fields["item"];
-        $data_array[$item] = 0;
-        $rs->MoveNext();
-    }
-    //AD ub AFTER THE subTOTAL  row.
-    $data_array["SUBTOTAL"] = 0;
-    $data_array["d. UNDISTRIBUTED BUDGET"] = 0;
-    return $data_array;
-}
-function getTotalRow($prev_rpt_period,$rpt_period, $table_name, $ship_code, $sum_field)
-{
-    $data = array();
-    $sql = "        
-        select
-            cur.item,
-            sum(cur.$sum_field) cur,
-            sum(prev.$sum_field)  prev
-        from ".$prev_rpt_period.$table_name." prev 
-        inner join ".$rpt_period.$table_name." cur 
-        on prev.item = cur.item and prev.ship_code = cur.ship_code
-        where cur.ship_code = $ship_code 
-        and  cur.item <> 'CLASSIFICATION (When Filled In)'
-        and cur.item <> 'f. MANAGEMENT RESERVE'
-        ";
-    $rs = dbCall($sql, "bac_eac");
-    $prev = $rs->fields["prev"];
-    $cur = $rs->fields["cur"];
-    $data["prev"] = $prev;
-    $data["cur"] = $cur;
-    return $data;
-}
-
-function getSubTotalRow($prev_rpt_period,$rpt_period, $table_name, $ship_code, $sum_field)
-{
-    $data = array();
-    $sql = "        
-        select
-            cur.item,
-            sum(cur.$sum_field) cur,
-            sum(prev.$sum_field)  prev
-        from ".$prev_rpt_period.$table_name." prev 
-        inner join ".$rpt_period.$table_name." cur 
-        on prev.item = cur.item and prev.ship_code = cur.ship_code
-        where cur.ship_code = $ship_code 
-        and  cur.item <> 'CLASSIFICATION (When Filled In)'
-        and  cur.item <> 'd. UNDISTRIBUTED BUDGET'
-        and cur.item <> 'f. MANAGEMENT RESERVE'
-        ";
-
-    $rs = dbCall($sql, "bac_eac");
-    $prev = $rs->fields["prev"];
-    $cur = $rs->fields["cur"];
-    $data["prev"] = $prev;
-    $data["cur"] = $cur;
-    return $data;
-}
-
-function getBACEACData($rpt_period, $prev_rpt_period, $ship_code, $table_array, $field){
-    $data_array = createItemArray($rpt_period,$table_array);
-    //var_dump($data_array);
-    foreach ($table_array as $key=>$value){
-        $sql = "
-        select
-              cur.item,
-              sum(cur.$field) cur,
-              sum(prev.$field)  prev
-            from ".$prev_rpt_period.$value." prev 
-              inner join ".$rpt_period.$value." cur 
-            on prev.item = cur.item and prev.ship_code = cur.ship_code
-            where cur.ship_code = $ship_code and  cur.item <> 'CLASSIFICATION (When Filled In)'
-            group by cur.item 
-        ";
-
-        $rs = dbCall($sql,"bac_eac");
-        while (!$rs->EOF)
-        {
-            $cur  = $rs->fields["cur"];
-            $prev = $rs->fields["prev"];
-            $item = $rs->fields["item"];
-            if($item =="d. UNDISTRIBUTED BUDGET"){
-                $sub_total_data = getSubTotalRow($prev_rpt_period,$rpt_period, $value, $ship_code, $field);
-                $data_array["SUBTOTAL"]["cur_est_vac" . $key]  = $sub_total_data["cur"];
-                $data_array["SUBTOTAL"]["prev_est_vac" . $key] = $sub_total_data["prev"];
-            }
-            if(array_key_exists($item,$data_array)==true)   {
-                //print $item."<br>";
-
-                $data_array[$item]["cur_est_vac" . $key]  = $cur;
-                $data_array[$item]["prev_est_vac" . $key] = $prev;
-            }
-            $rs->MoveNext();
-        }
-        $sum_data = getTotalRow($prev_rpt_period,$rpt_period, $value, $ship_code, $field);
-        $data_array["TOTAL"]["cur_est_vac" . $key]  = $sum_data["cur"];
-        $data_array["TOTAL"]["prev_est_vac" . $key] = $sum_data["prev"];
-    }
-    //var_dump($data_array);
-    return $data_array;
-}
-function getBACEACDataLABORMTL($rpt_period, $prev_rpt_period, $ship_code, $table_array, $field){
-    $item_array = createItemArrayLABORMTL($rpt_period,$table_array);
-    $value_array = array();
-    foreach ($table_array as $key=>$value){
-        $sql = "
-        select
-              cur.item,
-              cur.$field cur,
-              prev.$field prev
-            from ".$prev_rpt_period.$value." prev 
-              inner join ".$rpt_period.$value." cur 
-            on prev.item = cur.item and prev.ship_code = cur.ship_code
-            where cur.ship_code = $ship_code and  cur.item <> 'CLASSIFICATION (When Filled In)'
-            group by cur.item 
-        ";
-
-        $rs = dbCall($sql,"bac_eac");
-        while (!$rs->EOF)
-        {
-            $cur  = $rs->fields["cur"];
-            $prev = $rs->fields["prev"];
-            $item = $rs->fields["item"];
-            if($item =="d. UNDISTRIBUTED BUDGET"){
-                $sub_total_data = getSubTotalRow($prev_rpt_period,$rpt_period, $value, $ship_code, $field);
-                $value_array["SUBTOTAL"]["cur_est_vac" . $key]  = $sub_total_data["cur"];
-                $value_array["SUBTOTAL"]["prev_est_vac" . $key] = $sub_total_data["prev"];
-            }
-            if(array_key_exists($item,$item_array)==true)   {
-
-                $value_array[$item]["cur_est_vac" . $key]  = $cur;
-                $value_array[$item]["prev_est_vac" . $key] = $prev;
-            }
-
-            $rs->MoveNext();
-        }
-        $sum_data = getTotalRow($prev_rpt_period,$rpt_period, $value, $ship_code, $field);
-        $value_array["TOTAL"]["cur_est_vac" . $key]  = $sum_data["cur"];
-        $value_array["TOTAL"]["prev_est_vac" . $key] = $sum_data["prev"];
-    }
-
-    $result = array_merge($item_array,$value_array);
-    return $result;
 }
 
 $ship_name       = getProjectNameFromCode($ship_code);
@@ -376,6 +52,7 @@ if($control =="load_data") {
         $cpr_file_array["02-02 FY14AF CPR2L WBS_Labor Only"]       = "_cpr2l_wbs";
         $cpr_file_array["02-02 FY14AF CPR2M OBS_Material and ODC"] = "_cpr2m_obs";
         $cpr_file_array["02-02 FY14AF CPR2M WBS_Material and ODC"] = "_cpr2m_wbs";
+        $cpr_file_array["CPR 2 Outsource_Outsource Only"]          = "_cpr2o";
     }
     else{
         $cpr_file_array["02-02H CPR 2 OutSource"] = "_pre17_cpr2o";
@@ -395,6 +72,13 @@ if($control =="load_data") {
 
     foreach ($cpr_file_array as $file_name => $table_name_short_name) {
 
+        if($table_name_short_name=="_cpr2o"){
+            $data_type_field = "data_type,";
+        }
+        else{
+            $data_type_field = "";
+            $data_type_value = "";
+        }
         $have_we_reached_item = false;
         $table_name           = $rpt_period . $table_name_short_name;
         $create_table         = checkIfTableExists($schema, $table_name);
@@ -406,7 +90,7 @@ if($control =="load_data") {
         deleteShipFromTable($ship_code, $table_name, $schema);
         $path2_input = $g_path2_bac_eac_reports . $file_name . ".csv";
         if(file_exists ($path2_input)==false){
-            print "could not find $path2_input";
+            print "could not find $path2_input\r";
             continue;
         }
         $handle     = fopen($path2_input, "r");
@@ -415,6 +99,7 @@ if($control =="load_data") {
             insert into $schema.$table_name (
                 ship_code,
                 item,
+                $data_type_field
                 s_cur,
                 p_cur,
                 a_cur,
@@ -457,6 +142,7 @@ if($control =="load_data") {
             $s_vac      = removeCommanDollarSignParan($data[17]);
             $est_vac    = removeCommanDollarSignParan($data[18]);
             $vac        = removeCommanDollarSignParan($data[19]);
+
             $total_test = strpos($item, "TOTAL");
             if ($item == "ITEM") {
                 $i++;
@@ -471,7 +157,21 @@ if($control =="load_data") {
                 $i++;
                 continue;
             }
+            if ($have_we_reached_item = true and $item == "DOLLARS" and $table_name_short_name=="_cpr2o") {
+                print "we made it! Dollars";
+                $data_type = "dollars";
+                $data_type_value = "'".$data_type."',";
+
+                $i++;
+                continue;
+            }
             if ($have_we_reached_item = true and $item == "HOURS") {
+                if($table_name_short_name=="_cpr2o"){
+                    print "we made it! HOURS";
+                    $data_type = "hours";
+                    $data_type_value = "'".$data_type."',";
+
+                }
                 $i++;
                 continue;
             }
@@ -496,6 +196,7 @@ if($control =="load_data") {
                 "(
                 $ship_code,
                     '$item',
+                    $data_type_value
                     $s_cur,
                     $p_cur,
                     $a_cur,
@@ -516,7 +217,6 @@ if($control =="load_data") {
             $i++;
         }
         $sql = substr($sql, 0, -1);
-
         $junk = dbCall($sql, $schema);
 
     }
@@ -753,14 +453,455 @@ if($control=="beac_eac_detail_chart"){
     /*3.  Make Summary Page
 
      * */
-    header("");
+
+    $category_array[] = "Negotiated Cost";
+    $category_array[] = "Target Profit";
+    $category_array[] = "Target Price";
+    $category_array[] = "Authorized Unpriced Work";
+    $category_array[] = "EAC Best Case";
+    $category_array[] = "EAC Worst Case";
+    $category_array[] = "EAC Most Likely";
+    $category_array[] = "Management Reserve";
+
+
+    $summary_html = "<table>
+        <tr>
+            <th colspan='5'>Summary of Changes</th>    
+        </tr>
+        <tr>
+            <td></td>    
+            <td>$cur_full_month</td>    
+            <td>$prev_full_month</td>    
+            <td>DIFF</td>    
+            <td>% Change</td>    
+        </tr>
+    ";
+    foreach ($category_array as $value){
+        $summary_html.="
+        <tr>
+            <td>$value</td>    
+            <td></td>    
+            <td></td>    
+            <td></td>    
+            <td></td>    
+        </tr>
+        ";
+    }
+    $summary_html.= "<tr></tr>";
+    $summary_html.="        
+        <tr>
+            <td>EAC</td>    
+            <td>$cur_full_month</td>    
+            <td>$prev_full_month</td>    
+            <td>DIFF</td>    
+            <td>% Change</td>    
+        </tr>";
+    $hours_data = getTotalRow($prev_rpt_period, $rpt_period, "_cpr1h", $ship_code, "est_vac");
+    $prev_eac_hours       = $hours_data["prev"];
+    $cur_eac_hours        = $hours_data["cur"];
+    $diff       = $cur_eac_hours-$prev_eac_hours;
+    $pc         = $diff/$cur_eac_hours;
+    $summary_html.="
+        <tr>
+            <td>Hours</td>    
+            <td>$cur_eac_hours</td>    
+            <td>$prev_eac_hours</td>    
+            <td>$diff</td>    
+            <td>$pc</td>    
+        </tr>
+        ";
+    $labor_d = getSubTotalRow($prev_rpt_period,$rpt_period, "_cpr2l_wbs", $ship_code, "est_vac");
+    $prev_ld       = $labor_d["prev"];
+    $cur_ld        = $labor_d["cur"];
+    $diff       = $cur_ld-$prev_ld;
+    $pc         = $diff/$cur_ld;
+    $summary_html.="
+        <tr>
+            <td>Labor Dollars</td>    
+            <td>$cur_ld</td>    
+            <td>$prev_ld</td>    
+            <td>$diff</td>    
+            <td>$pc</td>    
+        </tr>
+        ";
+    $matl_d = getSubTotalRow($prev_rpt_period,$rpt_period, "_cpr2m_wbs", $ship_code, "est_vac");
+    $prev_md       = $matl_d["prev"];
+    $cur_md        = $matl_d["cur"];
+    $diff       = $cur_md-$prev_md;
+    $pc         = $diff/$cur_md;
+    $summary_html.="
+        <tr>
+            <td>Material Dollars</td>    
+            <td>$cur_md</td>    
+            <td>$prev_md</td>    
+            <td>$diff</td>    
+            <td>$pc</td>    
+        </tr>
+        ";
+
+    $ub = getUB($prev_rpt_period,$rpt_period, "_cpr2d_obs", $ship_code, "est_vac");
+    $prev_ub       = $ub["prev"];
+    $cur_ub        = $ub["cur"];
+    $diff       = $cur_ub-$prev_ub;
+    $pc         = $diff/$cur_ub;
+    $summary_html.="
+        <tr>
+            <td>Undistributed Budget</td>    
+            <td>$cur_ub</td>    
+            <td>$prev_ub</td>    
+            <td>$diff</td>    
+            <td>$pc</td>    
+        </tr>
+        ";
+    $prev_eac_td = $prev_ld + $prev_md + $prev_ub;
+    $cur_eac_td  = $cur_ld + $cur_md + $cur_ub;
+    $diff    = $cur_eac_td - $prev_eac_td;
+    $pc      = $diff / $cur_eac_td;
+    $summary_html.="
+        <tr>
+            <td>Total Dollars</td>    
+            <td>$cur_eac_td</td>    
+            <td>$prev_eac_td</td>    
+            <td>$diff</td>    
+            <td>$pc</td>    
+        </tr>
+        <tr></tr>
+        ";
+
+    /*
+ * NEXT TABLE
+ * NEXT TABLE
+ * NEXT TABLE
+ * NEXT TABLE
+ * NEXT TABLE
+ * */
+    $summary_html.="        
+        <tr>
+            <td>BAC</td>    
+            <td>$cur_full_month</td>    
+            <td>$prev_full_month</td>    
+            <td>DIFF</td>    
+            <td>% Change</td>    
+        </tr>";
+    $hours_data = getSubTotalRow($prev_rpt_period, $rpt_period, "_cpr1h", $ship_code, "s_vac");
+    $prev_bac_hours       = $hours_data["prev"];
+    $cur_bac_hours        = $hours_data["cur"];
+    $diff       = $cur_bac_hours-$prev_bac_hours;
+    $pc         = $diff/$cur_bac_hours;
+    $summary_html.="
+        <tr>
+            <td>Hours</td>    
+            <td>$cur_bac_hours</td>    
+            <td>$prev_bac_hours</td>    
+            <td>$diff</td>    
+            <td>$pc</td>    
+        </tr>
+        ";
+    $sub_total_d = getSubTotalRow($prev_rpt_period,$rpt_period, "_cpr1d", $ship_code, "s_vac");
+    $prev_sub_d       = $sub_total_d["prev"];
+    $cur_sub_d        = $sub_total_d["cur"];
+    $diff       = $cur_sub_d-$prev_sub_d;
+    $pc         = $diff/$cur_sub_d;
+    $summary_html.="
+        <tr>
+            <td>Subtotal Dollars</td>    
+            <td>$cur_sub_d</td>    
+            <td>$prev_sub_d</td>    
+            <td>$diff</td>    
+            <td>$pc</td>    
+        </tr>
+        ";
+
+    $ub = getUB($prev_rpt_period,$rpt_period, "_cpr1d", $ship_code, "s_vac");
+    $prev_ub       = $ub["prev"];
+    $cur_ub        = $ub["cur"];
+    $diff       = $cur_ub-$prev_ub;
+    $pc         = $diff/$cur_ub;
+    $summary_html.="
+        <tr>
+            <td>Undistributed Budget</td>    
+            <td>$cur_ub</td>    
+            <td>$prev_ub</td>    
+            <td>$diff</td>    
+            <td>$pc</td>    
+        </tr>
+        ";
+
+    $prev_bac_td = $prev_sub_d + $prev_ub;
+    $cur_bac_td  = $cur_sub_d + $cur_ub;
+    $diff    = $cur_bac_td - $prev_bac_td;
+    $pc      = $diff / $cur_td;
+    $summary_html.="
+        <tr>
+            <td>Total Dollars</td>    
+            <td>$cur_bac_td</td>    
+            <td>$prev_bac_td</td>    
+            <td>$diff</td>    
+            <td>$pc</td>    
+        </tr>
+        <tr></tr>
+        ";
+    /*
+ * NEXT TABLE
+ * NEXT TABLE
+ * NEXT TABLE
+ * NEXT TABLE
+ * NEXT TABLE
+ * */
+    $summary_html.="        
+        <tr>
+            <td>VAC</td>    
+            <td>$cur_full_month</td>    
+            <td>$prev_full_month</td>    
+            <td>DIFF</td>    
+            <td>% Change</td>    
+        </tr>";
+    $cur_vac_hours  = $cur_bac_hours - $cur_eac_hours;
+    $prev_vac_hours = $prev_bac_hours - $prev_eac_hours;
+    $diff           = $cur_vac_hours - $prev_vac_hours;
+    $pc             = $diff / $cur_vac_hours;
+    $summary_html.="
+        <tr>
+            <td>HOURS</td>    
+            <td>$cur_vac_hours</td>    
+            <td>$prev_vac_hours</td>    
+            <td>$diff</td>    
+            <td>$pc</td>    
+        </tr>
+        ";
+    $cur_vac_td  = $cur_bac_td - $cur_eac_td;
+    $prev_vac_td = $prev_bac_td - $prev_eac_td;
+    $diff        = $cur_vac_td - $prev_vac_td;
+    $pc          = $diff / $cur_vac_td;
+    $summary_html.="
+        <tr>
+            <td>Dollars</td>    
+            <td>$cur_vac_td</td>    
+            <td>$prev_vac_td</td>    
+            <td>$diff</td>    
+            <td>$pc</td>    
+        </tr>
+        ";
+    /*
+* NEXT TABLE
+* NEXT TABLE
+* NEXT TABLE
+* NEXT TABLE
+* NEXT TABLE
+* */
+    $summary_html.="        
+        <tr>
+            <td>ACWP Increment</td>    
+            <td>$cur_full_month</td>    
+            <td>$prev_full_month</td>    
+            <td>DIFF</td>    
+            <td>% Change</td>    
+        </tr>";
+    $h_data   = getTotalRow($prev_rpt_period, $rpt_period, "_cpr2h_obs", $ship_code, "a_cur");
+    $prev_a_h = $h_data["prev"];
+    $cur_a_h  = $h_data["cur"];
+    $diff     = $cur_a_h - $prev_a_h;
+    $pc       = $diff / $cur_a_h;
+    $summary_html.="
+        <tr>
+            <td>Hours</td>    
+            <td>$cur_a_h</td>    
+            <td>$prev_a_h</td>    
+            <td>$diff</td>    
+            <td>$pc</td>    
+        </tr>
+        ";    
+    $a_data   = getTotalRow($prev_rpt_period, $rpt_period, "_cpr2d_obs", $ship_code, "a_cur");
+    $prev_a_d = $a_data["prev"];
+    $cur_a_d  = $a_data["cur"];
+    $diff     = $cur_a_d - $prev_a_d;
+    $pc       = $diff / $cur_a_d;
+    $summary_html.="
+        <tr>
+            <td>Total Dollars</td>    
+            <td>$cur_a_d</td>    
+            <td>$prev_a_d</td>    
+            <td>$diff</td>    
+            <td>$pc</td>    
+        </tr>
+        <tr></tr>
+        ";
+
+    /*
+* NEXT TABLE
+* NEXT TABLE
+* NEXT TABLE
+* NEXT TABLE
+* NEXT TABLE
+* */
+    $summary_html.="
+    <tr>
+            <td>Opportunity and Risk</td>    
+            <td>$cur_full_month</td>    
+            <td>$prev_full_month</td>    
+            <td>DIFF</td>    
+            <td>% Change</td>    
+        </tr>";
+    $summary_html.="
+        <tr>
+            <td>Risk</td>    
+            <td></td>    
+            <td></td>    
+            <td></td>    
+            <td></td>    
+        </tr>
+        ";
+    $summary_html.="
+        <tr>
+            <td>Factored Risk</td>    
+            <td></td>    
+            <td></td>    
+            <td></td>    
+            <td></td>    
+        </tr>
+        ";
+    $summary_html.="
+        <tr>
+            <td>Opportunity</td>    
+            <td></td>    
+            <td></td>    
+            <td></td>    
+            <td></td>    
+        </tr>
+        ";
+    $summary_html.="
+        <tr>
+            <td>Factored Opportunity</td>    
+            <td></td>    
+            <td></td>    
+            <td></td>    
+            <td></td>    
+        </tr>
+        <tr></tr>
+        ";
+
+    /*
+* NEXT TABLE
+* NEXT TABLE
+* NEXT TABLE
+* NEXT TABLE
+* NEXT TABLE
+* */
+    $summary_html.="
+    <tr>
+            <td>EAC HOURS</td>    
+            <td>$cur_full_month</td>    
+            <td>$prev_full_month</td>    
+            <td>DIFF</td>    
+            <td>% Change</td>    
+        </tr>";
+
+
+    $hours_out = getTotalOutsourceHours($prev_rpt_period,$rpt_period, "_cpr2o", $ship_code, "est_vac", "hours");
+    $prev_h_out       = $hours_out["prev"];
+    $cur_h_out        = $hours_out["cur"];
+
+    $hours_mmc = getSubTotalRow($prev_rpt_period,$rpt_period, "_cpr1h", $ship_code, "est_vac");
+    $prev_h_mmc       = $hours_mmc["prev"]-$prev_h_out;
+    $cur_h_mmc        = $hours_mmc["cur"]- $cur_h_out;
+
+    $diff       = $cur_h_mmc-$prev_h_mmc;
+    $pc         = $diff/$cur_h_mmc;
+
+    $summary_html.="
+        <tr>
+            <td>HOURS (MMC Only)</td>    
+            <td>$cur_h_mmc</td>    
+            <td>$prev_h_mmc</td>    
+            <td>$diff</td>    
+            <td>$pc</td>    
+        </tr>
+        ";
+
+
+    
+    $dollars_out = getTotalOutsourceHours($prev_rpt_period,$rpt_period, "_cpr2o", $ship_code, "est_vac", "dollars");
+    $prev_d_out       = $dollars_out["prev"];
+    $cur_d_out        = $dollars_out["cur"];
+    
+    $labor_d = getSubTotalRowNOCOM($prev_rpt_period, $rpt_period, "_cpr2l_obs", $ship_code, "est_vac");
+    $prev_ld = $labor_d["prev"]-$prev_d_out;
+    $cur_ld  = $labor_d["cur"]-$cur_d_out;
+
+    $diff       = $cur_ld-$prev_ld;
+    $pc         = $diff/$cur_ld;
+
+    $summary_html.="
+        <tr>
+            <td>Labor Dollars (NO COM)</td>    
+            <td>$cur_ld</td>    
+            <td>$prev_ld</td>    
+            <td>$diff</td>    
+            <td>$pc</td>    
+        </tr>
+        ";
+    $matl_mmc = getSubTotalRow($prev_rpt_period, $rpt_period, "_cpr2m_obs", $ship_code, "est_vac");
+    $prev_mtl = $matl_mmc["prev"];
+    $cur_mtml = $matl_mmc["cur"];
+
+    $diff = $cur_mtml - $prev_mtl;
+    $pc   = $diff / $cur_mtml;
+
+    $summary_html.="
+        <tr>
+            <td>matl (MMC Only)</td>    
+            <td>$cur_mtml</td>    
+            <td>$prev_mtl</td>    
+            <td>$diff</td>    
+            <td>$pc</td>    
+        </tr>
+        ";
+
+
+    $diff = $cur_d_out - $prev_d_out;
+    $pc   = $diff / $cur_d_out;
+
+    $summary_html.="
+        <tr>
+            <td>Outsourcing</td>    
+            <td>$cur_d_out</td>    
+            <td>$prev_d_out</td>    
+            <td>$diff</td>    
+            <td>$pc</td>    
+        </tr>
+        ";
+    $cur_matl_d = $cur_d_out+ $cur_mtml;
+    $prev_matl_d = $prev_d_out+ $prev_mtl;
+    $diff = $cur_matl_d - $prev_matl_d;
+    $pc   = $diff / $cur_matl_d;
+
+    $summary_html.="
+        <tr>
+            <td>Total Material</td>    
+            <td>$cur_matl_d</td>    
+            <td>$prev_matl_d</td>    
+            <td>$diff</td>    
+            <td>$pc</td>    
+        </tr>
+        ";
+    $summary_html.="</table>";
     //echo 'Loading file ',pathinfo($inputFileName,PATHINFO_BASENAME),' using IOFactory to identify the format<br />';
+
+    $token         = rand (0,1000);
+    $path2_export = $g_path_to_util."excel_exports/"."$token"."summary.xls";
+    $path2summary= "../../util/excel_exports/".$token."summary.xls";
+    file_put_contents($path2_export,$summary_html);
 
     $objPHPExcel    = formatExcelSheet($path, "Cost Growth");
     $matlLaborSheet = formatExcelSheetLBR($path2matlandLabor, "Labor and MATL Dollars");
+    $summarySheet   = formatExcelSheet($path2summary, "Summary");
 
     $allsheets = $matlLaborSheet->getAllSheets();
     foreach ($allsheets as $sheet) {
+        $objPHPExcel->addExternalSheet($sheet);
+    }
+    $summaryAllSheets = $summarySheet->getAllSheets();
+    foreach ($summaryAllSheets as $sheet) {
         $objPHPExcel->addExternalSheet($sheet);
     }
     //$objPHPExcel->setActiveSheetIndex(1);

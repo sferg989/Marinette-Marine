@@ -1,7 +1,7 @@
 <?php
-
 include("../../inc/inc.php");
 include("../../inc/inc.bac_eac.php");
+include("change_summary.php");
 
 
 /**
@@ -10,7 +10,7 @@ include("../../inc/inc.bac_eac.php");
  * Date: 12/1/2016
  * Time: 2:22 PM
  */
-$debug = true;
+$debug = false;
 $schema = "bac_eac";
 if(strlen($code)==3)
 {
@@ -32,196 +32,9 @@ $cur_month_letters  = $data["cur_month_letters"];
 $prev_full_month    = $data["prev_full_month"];
 $cur_full_month     = $data["cur_full_month"];
 $ship_name          = $data["ship_name"];
-$g_path2_bac_eac_reports = $base_path.$ship_name."/".$ship_code."/EAC-BAC Compare/".$ship_code."/";
+$g_path2_bac_eac_reports = $base_path.$ship_name."/BAC-EAC Compare/".$ship_code."/";
 $cpr_file_array = array();
 
-if($control =="load_data") {
-
-    $ship_code = intval($ship_code);
-    if($ship_code>=477)
-    {
-        $cpr_file_array["02-01 FY14AF CPR 1 LBR_Labor Only"]       = "_cpr1l";
-        $cpr_file_array["02-01 FY14AF CPR 1 MAT_Material and ODC"] = "_cpr1m";
-        $cpr_file_array["02-01 FY14AF CPR1 DOL"]                   = "_cpr1d";
-        $cpr_file_array["02-01 FY14AF CPR1 HRS"]                   = "_cpr1h";
-        $cpr_file_array["02-02 FY14AF CPR2D WBS"]                  = "_cpr2d_wbs";
-        $cpr_file_array["02-02FY14AFCPR2DOBSBAT"]                  = "_cpr2d_obs";
-        $cpr_file_array["02-02 FY14AF CPR2H OBS"]                  = "_cpr2h_obs";
-        $cpr_file_array["02-02 FY14AF CPR2H WBS"]                  = "_cpr2h_wbs";
-        $cpr_file_array["02-02 FY14AF CPR2L OBS_Labor Only"]       = "_cpr2l_obs";
-        $cpr_file_array["02-02 FY14AF CPR2L WBS_Labor Only"]       = "_cpr2l_wbs";
-        $cpr_file_array["02-02 FY14AF CPR2M OBS_Material and ODC"] = "_cpr2m_obs";
-        $cpr_file_array["02-02 FY14AF CPR2M WBS_Material and ODC"] = "_cpr2m_wbs";
-        $cpr_file_array["CPR 2 Outsource_Outsource Only"]          = "_cpr2o";
-    }
-    else{
-        $cpr_file_array["02-02H CPR 2 OutSource"] = "_pre17_cpr2o";
-        $cpr_file_array["02-02M CPR 2 Material"]  = "_pre17_cpr2m";
-        $cpr_file_array["02-02L CPR 2 Labor"]     = "_pre17_cpr2l";
-        $cpr_file_array["02-02D CPR 2 Dollars"]   = "_pre17_cpr2d";
-        $cpr_file_array["02-02H CPR 2 Hours"]     = "_pre17_cpr2h";
-        $cpr_file_array["02-01M CPR 1 Material"]  = "_pre17_cpr1m";
-        $cpr_file_array["02-01L CPR 1 Labor"]     = "_pre17_cpr1l";
-        $cpr_file_array["02-01H CPR 1 Hours"]     = "_pre17_cpr1h";
-        $cpr_file_array["02-01D CPR 1 Dollars"]   = "_pre17_cpr1d";
-    }
-    if(strlen($code)==3)
-    {
-        $ship_code = "0".$code;
-    }
-
-    foreach ($cpr_file_array as $file_name => $table_name_short_name) {
-
-        if($table_name_short_name=="_cpr2o"){
-            $data_type_field = "data_type,";
-        }
-        else{
-            $data_type_field = "";
-            $data_type_value = "";
-        }
-        $have_we_reached_item = false;
-        $table_name           = $rpt_period . $table_name_short_name;
-        $create_table         = checkIfTableExists($schema, $table_name);
-
-        if ($create_table == "create_table") {
-            createTableFromBase($schema, "template" . $table_name_short_name, $table_name);
-            sleep(.5);
-        }
-        deleteShipFromTable($ship_code, $table_name, $schema);
-        $path2_input = $g_path2_bac_eac_reports . $file_name . ".csv";
-        if(file_exists ($path2_input)==false){
-            print "could not find $path2_input\r";
-            continue;
-        }
-        $handle     = fopen($path2_input, "r");
-
-        $insert_sql = "
-            insert into $schema.$table_name (
-                ship_code,
-                item,
-                $data_type_field
-                s_cur,
-                p_cur,
-                a_cur,
-                sv_cur,
-                cv_cur,
-                s_cum,
-                p_cum,
-                a_cum,
-                sv_cum,
-                cv_cum,
-                adj_cv,
-                adj_sv,
-                adj_s,
-                s_vac,
-                est_vac,
-                vac) 
-                values
-            ";
-        //loop through the csv file and insert into database
-        $sql = $insert_sql;
-        /*create counter so insert 1000 rows at a time.*/
-
-        $i = 1;
-        while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
-
-            $item       = trim($data[0]);
-            $s_cur      = removeCommanDollarSignParan($data[2]);
-            $p_cur      = removeCommanDollarSignParan($data[3]);
-            $a_cur      = removeCommanDollarSignParan($data[4]);
-            $sv_cur     = removeCommanDollarSignParan($data[5]);
-            $cv_cur     = removeCommanDollarSignParan($data[6]);
-            $s_cum      = removeCommanDollarSignParan($data[7]);
-            $p_cum      = removeCommanDollarSignParan($data[8]);
-            $a_cum      = removeCommanDollarSignParan($data[9]);
-            $sv_cum     = removeCommanDollarSignParan($data[11]);
-            $cv_cum     = removeCommanDollarSignParan($data[13]);
-            $adj_cv     = removeCommanDollarSignParan($data[14]);
-            $adj_sv     = removeCommanDollarSignParan($data[14]);
-            $adj_s      = removeCommanDollarSignParan($data[16]);
-            $s_vac      = removeCommanDollarSignParan($data[17]);
-            $est_vac    = removeCommanDollarSignParan($data[18]);
-            $vac        = removeCommanDollarSignParan($data[19]);
-
-            $total_test = strpos($item, "TOTAL");
-            if ($item == "ITEM") {
-                $i++;
-                $have_we_reached_item = true;
-                continue;
-            }
-            if ($have_we_reached_item == false) {
-                $i++;
-                continue;
-            }
-            if ($have_we_reached_item = true and $item == "(1)") {
-                $i++;
-                continue;
-            }
-            if ($have_we_reached_item = true and $item == "DOLLARS" and $table_name_short_name=="_cpr2o") {
-                print "we made it! Dollars";
-                $data_type = "dollars";
-                $data_type_value = "'".$data_type."',";
-
-                $i++;
-                continue;
-            }
-            if ($have_we_reached_item = true and $item == "HOURS") {
-                if($table_name_short_name=="_cpr2o"){
-                    print "we made it! HOURS";
-                    $data_type = "hours";
-                    $data_type_value = "'".$data_type."',";
-
-                }
-                $i++;
-                continue;
-            }
-            if ($have_we_reached_item = true and $item == "LABOR Labor") {
-                $i++;
-                continue;
-            }
-            if ($have_we_reached_item = true and $item == "OUT") {
-                $i++;
-                continue;
-            }
-            if ($total_test !== false) {
-                $i++;
-                continue;
-            }
-            if ($item == "") {
-                $i++;
-                continue;
-            }
-            //print "this is the $item and the count $i\r";
-            $sql .=
-                "(
-                $ship_code,
-                    '$item',
-                    $data_type_value
-                    $s_cur,
-                    $p_cur,
-                    $a_cur,
-                    $sv_cur,
-                    $cv_cur,             
-                    $s_cum,
-                    $p_cum,
-                    $a_cum,
-                    $sv_cum,
-                    $cv_cum,
-                    $adj_cv,
-                    $adj_sv,
-                    $adj_s,
-                    $s_vac,
-                    $est_vac,
-                    $vac
-                ),";
-            $i++;
-        }
-        $sql = substr($sql, 0, -1);
-        $junk = dbCall($sql, $schema);
-
-    }
-    die();
-}
 if($control=="beac_eac_detail_chart"){
     $table_headers = "
 <table class=\"table table-sm \">
@@ -680,7 +493,7 @@ if($control=="beac_eac_detail_chart"){
             <td>$prev_vac_td</td>    
             <td>$diff</td>    
             <td>$pc</td>    
-        </tr>
+        </tr><tr></tr>
         ";
     /*
 * NEXT TABLE
@@ -778,6 +591,9 @@ if($control=="beac_eac_detail_chart"){
             <td></td>    
         </tr>
         <tr></tr>
+        <tr></tr>
+        <tr></tr>
+        <tr></tr>
         ";
 
     /*
@@ -789,7 +605,7 @@ if($control=="beac_eac_detail_chart"){
 * */
     $summary_html.="
     <tr>
-            <td>EAC HOURS</td>    
+            <td>EAC </td>    
             <td>$cur_full_month</td>    
             <td>$prev_full_month</td>    
             <td>DIFF</td>    
@@ -817,8 +633,6 @@ if($control=="beac_eac_detail_chart"){
             <td>$pc</td>    
         </tr>
         ";
-
-
     
     $dollars_out = getTotalOutsourceHours($prev_rpt_period,$rpt_period, "_cpr2o", $ship_code, "est_vac", "dollars");
     $prev_d_out       = $dollars_out["prev"];
@@ -849,7 +663,7 @@ if($control=="beac_eac_detail_chart"){
 
     $summary_html.="
         <tr>
-            <td>matl (MMC Only)</td>    
+            <td>Material Dollars </td>    
             <td>$cur_mtml</td>    
             <td>$prev_mtl</td>    
             <td>$diff</td>    
@@ -870,16 +684,249 @@ if($control=="beac_eac_detail_chart"){
             <td>$pc</td>    
         </tr>
         ";
-    $cur_matl_d = $cur_d_out+ $cur_mtml;
-    $prev_matl_d = $prev_d_out+ $prev_mtl;
-    $diff = $cur_matl_d - $prev_matl_d;
-    $pc   = $diff / $cur_matl_d;
+    $cur_matl_d  = $cur_d_out + $cur_mtml;
+    $prev_matl_d = $prev_d_out + $prev_mtl;
+    $diff        = $cur_matl_d - $prev_matl_d;
+    $pc          = $diff / $cur_matl_d;
 
     $summary_html.="
         <tr>
-            <td>Total Material</td>    
+            <td>Total \"Material\"</td>    
             <td>$cur_matl_d</td>    
             <td>$prev_matl_d</td>    
+            <td>$diff</td>    
+            <td>$pc</td>    
+        </tr>
+        <tr></tr>
+        ";
+
+    /*
+* NEXT TABLE
+* NEXT TABLE
+* NEXT TABLE
+* NEXT TABLE
+* NEXT TABLE
+* */
+    $summary_html.="
+    <tr>
+            <td>EAC HOURS</td>    
+            <td>$cur_full_month</td>    
+            <td>$prev_full_month</td>    
+            <td>DIFF</td>    
+            <td>% Change</td>    
+        </tr>";
+
+    $manufacturing_mmc       = getTotalHoursByOBS($prev_rpt_period, $rpt_period, "_cpr2h_obs", $ship_code, "est_vac", "600 Manufacturing");
+    $prev_600mmc             = $manufacturing_mmc["prev"];
+    $cur_600mmc              = $manufacturing_mmc["cur"];
+    $cur_mmc_manufacuring_h  = $cur_600mmc - $cur_h_out;
+    $prev_mmc_manufacuring_h = $prev_600mmc - $prev_h_out;
+
+
+    $diff = $cur_mmc_manufacuring_h - $prev_mmc_manufacuring_h;
+    $pc   = $diff / $cur_mmc_manufacuring_h;
+
+    $summary_html.="
+        <tr>
+            <td>Manufacturing (MMC Only)</td>    
+            <td>$cur_mmc_manufacuring_h</td>    
+            <td>$prev_mmc_manufacuring_h</td>    
+            <td>$diff</td>    
+            <td>$pc</td>    
+        </tr>
+        ";
+    $manufacturing_mmc       = getTotalHoursByOBS($prev_rpt_period, $rpt_period, "_cpr2h_obs", $ship_code, "est_vac", "620 Manufacturing Supervision");
+    $prev_620mmc_h             = $manufacturing_mmc["prev"];
+    $cur_620mmc_h              = $manufacturing_mmc["cur"];
+
+    $diff = $cur_620mmc_h - $prev_620mmc_h;
+    $pc   = $diff / $cur_620mmc_h;
+
+    $summary_html.="
+        <tr>
+            <td>Supervision (MMC Only)</td>    
+            <td>$cur_620mmc_h</td>    
+            <td>$prev_620mmc_h</td>    
+            <td>$diff</td>    
+            <td>$pc</td>    
+        </tr>
+        ";
+    $manufacturing_mmc         = getTotalHoursByOBS($prev_rpt_period, $rpt_period, "_cpr2h_obs", $ship_code, "est_vac", "500 Engineering");
+    $prev_500mmc_h             = $manufacturing_mmc["prev"];
+    $cur_500mmc_h              = $manufacturing_mmc["cur"];
+
+    $diff = $cur_500mmc_h - $prev_500mmc_h;
+    $pc   = $diff / $cur_500mmc_h;
+
+    $summary_html.="
+        <tr>
+            <td>Engineering (MMC Only)</td>    
+            <td>$cur_500mmc_h</td>    
+            <td>$prev_500mmc_h</td>    
+            <td>$diff</td>    
+            <td>$pc</td>    
+        </tr>
+        ";
+    $other_mmc_h         = getTotalHoursByMMCOtherSalary($prev_rpt_period,$rpt_period,"_cpr2h_obs", $ship_code, "est_vac");
+    $prev_other_mmc_h             = $other_mmc_h["prev"];
+    $cur_other_mmc_h              = $other_mmc_h["cur"];
+
+    $diff = $cur_other_mmc_h - $prev_other_mmc_h;
+    $pc   = $diff / $cur_other_mmc_h;
+
+    $summary_html.="
+        <tr>
+            <td>Other Salary (MMC Only)</td>    
+            <td>$cur_other_mmc_h</td>    
+            <td>$prev_other_mmc_h</td>    
+            <td>$diff</td>    
+            <td>$pc</td>    
+        </tr>
+        ";
+
+    $diff = $cur_h_out-$prev_h_out;
+    $pc = $diff/$cur_h_out;
+    $summary_html.="
+        <tr>
+            <td>Outsourcing </td>    
+            <td>$cur_h_out</td>    
+            <td>$prev_h_out</td>    
+            <td>$diff</td>    
+            <td>$pc</td>    
+        </tr><tr></tr>
+        ";
+    /*
+* NEXT TABLE
+* NEXT TABLE
+* NEXT TABLE
+* NEXT TABLE
+* NEXT TABLE
+* */
+    $summary_html.="
+        <tr>
+            <td>EAC Dollars</td>    
+            <td>$cur_full_month</td>    
+            <td>$prev_full_month</td>    
+            <td>DIFF</td>    
+            <td>% Change</td>    
+        </tr>
+        ";
+    $diff        = $cur_ld - $prev_ld;
+    $pc          = $diff / $cur_ld;
+    $summary_html.="
+        <tr>
+            <td>Labor Dollars (NO COM)</td>    
+            <td>$cur_ld</td>    
+            <td>$prev_ld</td>    
+            <td>$diff</td>    
+            <td>$pc</td>    
+        </tr>
+        ";
+    $diff        = $cur_md - $prev_md;
+    $pc          = $diff / $cur_md;
+    $summary_html.="
+        <tr>
+            <td>Material Dollars</td>    
+            <td>$cur_md</td>    
+            <td>$prev_md</td>    
+            <td>$diff</td>    
+            <td>$pc</td>    
+        </tr>
+        ";
+    $diff        = $cur_d_out - $prev_d_out;
+    $pc          = $diff / $cur_d_out;
+    $summary_html.="
+        <tr>
+            <td>Outsourcing</td>    
+            <td>$cur_d_out</td>    
+            <td>$prev_d_out</td>    
+            <td>$diff</td>    
+            <td>$pc</td>    
+        </tr>
+        ";
+    $diff        = $cur_matl_d - $prev_matl_d;
+    $pc          = $diff / $cur_matl_d;
+    $summary_html.="
+        <tr>
+            <td>Total \"Material\"</td>    
+            <td>$cur_matl_d</td>    
+            <td>$prev_matl_d</td>    
+            <td>$diff</td>    
+            <td>$pc</td>    
+        </tr>
+        <tr></tr>
+        ";
+    /*
+* NEXT TABLE
+* NEXT TABLE
+* NEXT TABLE
+* NEXT TABLE
+* NEXT TABLE
+* */
+    $summary_html.="
+    <tr>
+            <td>ACWP Increment</td>    
+            <td>$cur_full_month</td>    
+            <td>$prev_full_month</td>    
+            <td>DIFF</td>    
+            <td>% Change</td>    
+        </tr>";
+    $manufacturing_mmc = getTotalHoursByOBS($prev_rpt_period, $rpt_period, "_cpr2h_obs", $ship_code, "a_cur", "600 Manufacturing");
+    $prev_600mmc_ah    = $manufacturing_mmc["prev"];
+    $cur_600mmc_ah     = $manufacturing_mmc["cur"];
+    $diff       = $cur_600mmc_ah-$prev_600mmc_ah;
+    $pc         = $diff/$cur_600mmc_ah;
+    $summary_html.="
+        <tr>
+            <td>Manufacturing (MMC ONLY)</td>    
+            <td>$cur_600mmc_ah</td>    
+            <td>$prev_600mmc_ah</td>    
+            <td>$diff</td>    
+            <td>$pc</td>    
+        </tr>
+        ";
+
+    $manufacturing_mmc = getTotalHoursByOBS($prev_rpt_period, $rpt_period, "_cpr2h_obs", $ship_code, "a_cur", "620 Manufacturing Supervision");
+    $prev_620mmc_ah     = $manufacturing_mmc["prev"];
+    $cur_620mmc_ah      = $manufacturing_mmc["cur"];
+    $diff              = $cur_620mmc_ah - $prev_620mmc_ah;
+    $pc                = $diff / $cur_620mmc_ah;
+    $summary_html.="
+        <tr>
+            <td>Supervision (MMC ONLY)</td>    
+            <td>$cur_620mmc_ah</td>    
+            <td>$prev_620mmc_ah</td>    
+            <td>$diff</td>    
+            <td>$pc</td>    
+        </tr>
+        ";
+    
+    $manufacturing_mmc = getTotalHoursByOBS($prev_rpt_period, $rpt_period, "_cpr2h_obs", $ship_code, "a_cur", "500 Engineering");
+    $prev_500mmc_ah     = $manufacturing_mmc["prev"];
+    $cur_500mmc_ah      = $manufacturing_mmc["cur"];
+    $diff              = $cur_500mmc_ah - $prev_500mmc_ah;
+    $pc                = $diff / $cur_500mmc_ah;
+    $summary_html.="
+        <tr>
+            <td>Engineering (MMC ONLY)</td>    
+            <td>$cur_500mmc_ah</td>    
+            <td>$prev_500mmc_ah</td>    
+            <td>$diff</td>    
+            <td>$pc</td>    
+        </tr>
+        ";
+    $other_mmc_ah         = getTotalHoursByMMCOtherSalary($prev_rpt_period,$rpt_period,"_cpr2h_obs", $ship_code, "a_cur");
+    $prev_other_mmc_ah             = $other_mmc_ah["prev"];
+    $cur_other_mmc_ah              = $other_mmc_ah["cur"];
+
+    $diff = $cur_other_mmc_ah - $prev_other_mmc_ah;
+    $pc   = $diff / $cur_other_mmc_ah;
+
+    $summary_html.="
+        <tr>
+            <td>Other Salary (MMC Only)</td>    
+            <td>$cur_other_mmc_ah</td>    
+            <td>$prev_other_mmc_ah</td>    
             <td>$diff</td>    
             <td>$pc</td>    
         </tr>
@@ -887,14 +934,118 @@ if($control=="beac_eac_detail_chart"){
     $summary_html.="</table>";
     //echo 'Loading file ',pathinfo($inputFileName,PATHINFO_BASENAME),' using IOFactory to identify the format<br />';
 
+    /*
+* NEXT TABLE
+* NEXT TABLE
+* NEXT TABLE
+* NEXT TABLE
+* NEXT TABLE
+* */
+    $summary_html.="
+    <tr>
+            <td>ETC CHANGE</td>    
+            <td>$cur_full_month</td>    
+            <td>$prev_full_month</td>    
+            <td>DIFF</td>    
+            <td>% Change</td>    
+        </tr>";
+    /*MANUFACTURING ETC*/
+    $manufacturing_mmc_acum = getTotalHoursByOBS($prev_rpt_period, $rpt_period, "_cpr2h_obs", $ship_code, "a_cum", "600 Manufacturing");
+    $prev_600mmc_acum       = $manufacturing_mmc_acum["prev"];
+    $cur_600mmc_acum        = $manufacturing_mmc_acum["cur"];
+
+    $cur_mmc_manufacuring_etc  = $cur_600mmc - $cur_600mmc_acum- $cur_h_out;
+    $prev_mmc_manufacuring_etc = $prev_600mmc - $prev_600mmc_acum- $prev_h_out;
+
+    $diff              = $cur_mmc_manufacuring_etc - $prev_mmc_manufacuring_etc;
+    $pc                = $diff / $cur_mmc_manufacuring_etc;
+    $summary_html.="
+        <tr>
+            <td>Manufacturing (MMC ONLY)</td>    
+            <td>$cur_mmc_manufacuring_etc</td>    
+            <td>$prev_mmc_manufacuring_etc</td>    
+            <td>$diff</td>    
+            <td>$pc</td>    
+        </tr>
+        ";
+    $sup_mmc_acum = getTotalHoursByOBS($prev_rpt_period, $rpt_period, "_cpr2h_obs", $ship_code, "a_cum", "620 Manufacturing Supervision");
+    $prev_620mmc_acum       = $sup_mmc_acum["prev"];
+    $cur_620mmc_acum        = $sup_mmc_acum["cur"];
+
+    $cur_mmc_sup_etc = $cur_620mmc_h - $cur_620mmc_acum;
+    $prev_mmc_sup_etc= $prev_620mmc_h- $prev_620mmc_acum;
+
+    $diff              = $cur_mmc_sup_etc - $prev_mmc_sup_etc;
+    $pc                = $diff / $cur_mmc_sup_etc;
+    $summary_html.="
+        <tr>
+            <td>SUPERVISION (MMC ONLY)</td>    
+            <td>$cur_mmc_sup_etc</td>    
+            <td>$prev_mmc_sup_etc</td>    
+            <td>$diff</td>    
+            <td>$pc</td>    
+        </tr>
+        ";
+    $eng_mmc_acum = getTotalHoursByOBS($prev_rpt_period, $rpt_period, "_cpr2h_obs", $ship_code, "a_cum", "500 Engineering");
+    $prev_500mmc_acum       = $eng_mmc_acum["prev"];
+    $cur_500mmc_acum        = $eng_mmc_acum["cur"];
+
+    $cur_mmc_sup_etc = $cur_500mmc_h - $cur_500mmc_acum;
+    $prev_mmc_sup_etc= $prev_500mmc_h- $prev_500mmc_acum;
+
+    $diff              = $cur_mmc_sup_etc - $prev_mmc_sup_etc;
+    $pc                = $diff / $cur_mmc_sup_etc;
+    $summary_html.="
+        <tr>
+            <td>ENGINEERING (MMC ONLY)</td>    
+            <td>$cur_mmc_sup_etc</td>    
+            <td>$prev_mmc_sup_etc</td>    
+            <td>$diff</td>    
+            <td>$pc</td>    
+        </tr>
+        ";
+    $other_mmc_acum      = getTotalHoursByMMCOtherSalary($prev_rpt_period, $rpt_period, "_cpr2h_obs", $ship_code, "a_cum");
+    $prev_other_mmc_acum = $other_mmc_acum["prev"];
+    $cur_other_mmc_acum  = $other_mmc_acum["cur"];
+    $cur_etc_other       = $cur_other_mmc_h - $cur_other_mmc_acum;
+    $prev_etc_other      = $prev_other_mmc_h - $prev_other_mmc_acum;
+    $diff              = $cur_etc_other - $prev_etc_other;
+    $pc                = $diff / $cur_etc_other;
+    $summary_html.="
+        <tr>
+            <td>OTHER SALARY (MMC ONLY)</td>    
+            <td>$cur_etc_other</td>    
+            <td>$prev_etc_other</td>    
+            <td>$diff</td>    
+            <td>$pc</td>    
+        </tr>
+        ";
+    $diff = $cur_h_out - $prev_h_out;
+    $pc   = $diff / $cur_h_out;
+    $summary_html.="
+        <tr>
+            <td>OUTSOURCING </td>    
+            <td>$cur_h_out</td>    
+            <td>$prev_h_out</td>    
+            <td>$diff</td>    
+            <td>$pc</td>    
+        </tr>
+        ";
     $token         = rand (0,1000);
     $path2_export = $g_path_to_util."excel_exports/"."$token"."summary.xls";
     $path2summary= "../../util/excel_exports/".$token."summary.xls";
     file_put_contents($path2_export,$summary_html);
 
-    $objPHPExcel    = formatExcelSheet($path, "Cost Growth");
-    $matlLaborSheet = formatExcelSheetLBR($path2matlandLabor, "Labor and MATL Dollars");
-    $summarySheet   = formatExcelSheet($path2summary, "Summary");
+    $change_summary_html = produceChangeSummaryHTML($ship_code, $rpt_period,$prev_rpt_period);
+    $token         = rand (0,1000);
+    $path2_export = $g_path_to_util."excel_exports/"."$token"."change_sum.xls";
+    $path2Change_summary= "../../util/excel_exports/".$token."change_sum.xls";
+    file_put_contents($path2_export,$change_summary_html);
+
+    $objPHPExcel        = formatExcelSheet($path, "Cost Growth");
+    $matlLaborSheet     = formatExcelSheetLBR($path2matlandLabor, "Labor and MATL Dollars");
+    $summarySheet       = formatExcelSheet($path2summary, "Summary");
+    $changeSummarySheet = formatExcelSheet($path2Change_summary, "Change Summary");
 
     $allsheets = $matlLaborSheet->getAllSheets();
     foreach ($allsheets as $sheet) {
@@ -904,7 +1055,11 @@ if($control=="beac_eac_detail_chart"){
     foreach ($summaryAllSheets as $sheet) {
         $objPHPExcel->addExternalSheet($sheet);
     }
-    //$objPHPExcel->setActiveSheetIndex(1);
+    $changesummaryAllSheets = $changeSummarySheet->getAllSheets();
+    foreach ($changesummaryAllSheets as $sheet) {
+        $objPHPExcel->addExternalSheet($sheet);
+    }
+    $objPHPExcel->setActiveSheetIndex(3);
     $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
 
     $objWriter->save($path);

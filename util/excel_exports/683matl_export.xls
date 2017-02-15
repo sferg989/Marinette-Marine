@@ -28,1002 +28,526 @@
 
     
             <tr>
-                <td>600 Manufacturing</td>
-                <td>67363483</td>
-                <td>65992036</td>
-                <td>1371447</td>
-                <td>0.0204</td>
-                <td>2347039</td>
-                <td>2347039</td>
+                <td>180 SECURITY</td>
+                <td>29471</td>
+                <td>29471</td>
                 <td>0</td>
                 <td></td>
-                <td>69710522</td>
-                <td>68339075</td>
-                <td>1371447</td>
-                <td>0.0197</td>
-                
-            </tr>
-            <tr>
-                <td>620 Manufacturing Supervision</td>
-                <td>5099029</td>
-                <td>5397692</td>
-                <td>-298663</td>
-                <td>-0.0586</td>
-                <td>2469579</td>
-                <td>2469579</td>
-                <td>0</td>
-                <td></td>
-                <td>7568608</td>
-                <td>7867271</td>
-                <td>-298663</td>
-                <td>-0.0395</td>
-                
-            </tr>
-            <tr>
-                <td>650 Production Planning & Control</td>
-                <td>2817636</td>
-                <td>2873694</td>
-                <td>-56058</td>
-                <td>-0.0199</td>
                 <td></td>
                 <td></td>
                 <td>0</td>
                 <td></td>
-                <td>2817636</td>
-                <td>2873694</td>
-                <td>-56058</td>
-                <td>-0.0199</td>
+                <td>29471</td>
+                <td>29471</td>
+                <td>0</td>
+                <td></td>
                 
             </tr>
             <tr>
-                <td>500 Engineering</td>
-                <td>3086802</td>
-                <td>3193414</td>
-                <td>-106612</td>
-                <td>-0.0345</td>
+                <td>600 MANUFACTURING</td>
+                <td>77406739</td>
+                <td>77137228</td>
+                <td>269511</td>
+                <td>0.0035</td>
+                <td>3340811</td>
+                <td>3333250</td>
+                <td>7561</td>
+                <td>0.0023</td>
+                <td>80747550</td>
+                <td>80470478</td>
+                <td>277072</td>
+                <td>0.0034</td>
+                
+            </tr>
+            <tr>
+                <td>620 MANUFACTURING SUPERVISION</td>
+                <td>8157376</td>
+                <td>8627457</td>
+                <td>-470081</td>
+                <td>-0.0576</td>
+                <td>1431666</td>
+                <td>1395951</td>
+                <td>35715</td>
+                <td>0.0249</td>
+                <td>9589042</td>
+                <td>10023408</td>
+                <td>-434366</td>
+                <td>-0.0453</td>
+                
+            </tr>
+            <tr>
+                <td>500 ENGINEERING</td>
+                <td>5417278</td>
+                <td>5477497</td>
+                <td>-60219</td>
+                <td>-0.0111</td>
                 <td>328000</td>
                 <td>328000</td>
                 <td>0</td>
                 <td></td>
-                <td>3414802</td>
-                <td>3521414</td>
-                <td>-106612</td>
-                <td>-0.0312</td>
+                <td>5745278</td>
+                <td>5805497</td>
+                <td>-60219</td>
+                <td>-0.0105</td>
                 
             </tr>
             <tr>
-                <td>300 Purchasing</td>
-                <td>691043</td>
-                <td>732828</td>
-                <td>-41785</td>
-                <td>-0.0605</td>
-                <td>87649140</td>
-                <td>87207327</td>
-                <td>441813</td>
-                <td>0.0050</td>
-                <td>88340183</td>
-                <td>87940155</td>
-                <td>400028</td>
+                <td>611 PROGRAM MANAGEMENT</td>
+                <td>768134</td>
+                <td>813262</td>
+                <td>-45128</td>
+                <td>-0.0588</td>
+                <td>160245</td>
+                <td>166031</td>
+                <td>-5786</td>
+                <td>-0.0361</td>
+                <td>928379</td>
+                <td>979293</td>
+                <td>-50914</td>
+                <td>-0.0548</td>
+                
+            </tr>
+            <tr>
+                <td>310 INTEGRATED LOGISTICS SUPPORT</td>
+                <td>741513</td>
+                <td>735253</td>
+                <td>6260</td>
+                <td>0.0084</td>
+                <td>771674</td>
+                <td>788171</td>
+                <td>-16497</td>
+                <td>-0.0214</td>
+                <td>1513187</td>
+                <td>1523424</td>
+                <td>-10237</td>
+                <td>-0.0068</td>
+                
+            </tr>
+            <tr>
+                <td>300 PURCHASING</td>
+                <td>937116</td>
+                <td>946776</td>
+                <td>-9660</td>
+                <td>-0.0103</td>
+                <td>87367111</td>
+                <td>87282407</td>
+                <td>84704</td>
+                <td>0.0010</td>
+                <td>88304227</td>
+                <td>88229183</td>
+                <td>75044</td>
+                <td>0.0008</td>
+                
+            </tr>
+            <tr>
+                <td>800 CONTRACTS</td>
+                <td>310990</td>
+                <td>324066</td>
+                <td>-13076</td>
+                <td>-0.0420</td>
+                <td></td>
+                <td></td>
+                <td>0</td>
+                <td></td>
+                <td>310990</td>
+                <td>324066</td>
+                <td>-13076</td>
+                <td>-0.0420</td>
+                
+            </tr>
+            <tr>
+                <td>546 QUALITY CONTROL</td>
+                <td>549987</td>
+                <td>565172</td>
+                <td>-15185</td>
+                <td>-0.0276</td>
+                <td>176357</td>
+                <td>176357</td>
+                <td>0</td>
+                <td></td>
+                <td>726344</td>
+                <td>741529</td>
+                <td>-15185</td>
+                <td>-0.0209</td>
+                
+            </tr>
+            <tr>
+                <td>650 PLANNING</td>
+                <td>2947260</td>
+                <td>2744390</td>
+                <td>202870</td>
+                <td>0.0688</td>
+                <td></td>
+                <td></td>
+                <td>0</td>
+                <td></td>
+                <td>2947260</td>
+                <td>2744390</td>
+                <td>202870</td>
+                <td>0.0688</td>
+                
+            </tr>
+            <tr>
+                <td>b. COST OF MONEY</td>
+                <td>913877</td>
+                <td>917462</td>
+                <td>-3585</td>
+                <td>-0.0039</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td></td>
+                <td>913877</td>
+                <td>917462</td>
+                <td>-3585</td>
+                <td>-0.0039</td>
+                
+            </tr>
+            <tr>
+                <td>c. GENERAL AND ADMINISTRATIVE</td>
+                <td>13007866</td>
+                <td>13037444</td>
+                <td>-29578</td>
+                <td>-0.0023</td>
+                <td>30258</td>
+                <td>31428</td>
+                <td>-1170</td>
+                <td>-0.0387</td>
+                <td>13038124</td>
+                <td>13068872</td>
+                <td>-30748</td>
+                <td>-0.0024</td>
+                
+            </tr>
+            <tr>
+                <td>SUBTOTAL</td>
+                <td>111187607</td>
+                <td>111355478</td>
+                <td>-167871</td>
+                <td>-0.0015</td>
+                <td>93606122</td>
+                <td>93501595</td>
+                <td>104527</td>
+                <td>0.0011</td>
+                <td>204793729</td>
+                <td>204857073</td>
+                <td>-63344</td>
+                <td>-0.0003</td>
+                
+            </tr>
+            <tr>
+                <td>d. UNDISTRIBUTED BUDGET</td>
+                <td>38404</td>
+                <td>38404</td>
+                <td>0</td>
+                <td></td>
+                <td>38404</td>
+                <td>38404</td>
+                <td>0</td>
+                <td></td>
+                <td>76808</td>
+                <td>76808</td>
+                <td>0</td>
+                <td></td>
+                
+            </tr>
+            <tr>
+                <td>TOTAL</td>
+                <td>111226011</td>
+                <td>111393882</td>
+                <td>-167871</td>
+                <td>-0.0015</td>
+                <td>93644526</td>
+                <td>93539999</td>
+                <td>104527</td>
+                <td>0.0011</td>
+                <td>204870537</td>
+                <td>204933881</td>
+                <td>-63344</td>
+                <td>-0.0003</td>
+                
+            </tr><tr></tr><tr></tr></table>
+    <table class="table table-sm ">
+        <tr>
+            <td>BAC EAC Comparison</td>
+            <td  colspan="12">ESTIMATE AT COMPLETE</td>
+        </tr>
+        <tr>
+            <td>Month End</td>
+            <td colspan="4">LABOR DOLLARS</td>
+            <td colspan="4">MATERIAL Dollars</td>             
+            <td colspan="4">TOTAL Dollars</td>             
+        </tr>
+        <tr>
+            <td>By Oragization</td>
+            <td>December</td>
+            <td>November</td>
+            <td>Diff</td>
+            <td>% Change</td>            
+            <td>December</td>
+            <td>November</td>
+            <td>Diff</td>
+            <td>% Change</td>            
+            <td>December</td>
+            <td>November</td>
+            <td>Diff</td>
+            <td>% Change</td>
+        </tr>    
+
+    
+            <tr>
+                <td>1.16.1.1 CWBS Group 100:  Structure</td>
+                <td>18070098</td>
+                <td>18004475</td>
+                <td>65623</td>
+                <td>0.0036</td>
+                <td>15032932</td>
+                <td>15032932</td>
+                <td>0</td>
+                <td></td>
+                <td>33103030</td>
+                <td>33037407</td>
+                <td>65623</td>
+                <td>0.0020</td>
+                
+            </tr>
+            <tr>
+                <td>1.16.1.2 CWBS Group 200:  Propulsion Systems</td>
+                <td>9189956</td>
+                <td>9148378</td>
+                <td>41578</td>
                 <td>0.0045</td>
+                <td>10531478</td>
+                <td>10520954</td>
+                <td>10524</td>
+                <td>0.0010</td>
+                <td>19721434</td>
+                <td>19669332</td>
+                <td>52102</td>
+                <td>0.0026</td>
                 
             </tr>
             <tr>
-                <td>611 Program Management</td>
-                <td>1311192</td>
-                <td>1353892</td>
-                <td>-42700</td>
-                <td>-0.0326</td>
-                <td>1068357</td>
-                <td>1067373</td>
-                <td>984</td>
-                <td>0.0009</td>
-                <td>2379549</td>
-                <td>2421265</td>
-                <td>-41716</td>
-                <td>-0.0175</td>
-                
-            </tr>
-            <tr>
-                <td>200 Finance</td>
-                <td>221329</td>
-                <td>223598</td>
-                <td>-2269</td>
-                <td>-0.0103</td>
-                <td></td>
-                <td></td>
+                <td>1.16.1.3 CWBS Group 300:  Electrical Systems</td>
+                <td>12627518</td>
+                <td>12576258</td>
+                <td>51260</td>
+                <td>0.0041</td>
+                <td>14178494</td>
+                <td>14178494</td>
                 <td>0</td>
                 <td></td>
-                <td>221329</td>
-                <td>223598</td>
-                <td>-2269</td>
-                <td>-0.0103</td>
-                
-            </tr>
-            <tr>
-                <td>546 Quality Assurance</td>
-                <td>686745</td>
-                <td>696368</td>
-                <td>-9623</td>
-                <td>-0.0140</td>
-                <td>333467</td>
-                <td>333467</td>
-                <td>0</td>
-                <td></td>
-                <td>1020212</td>
-                <td>1029835</td>
-                <td>-9623</td>
-                <td>-0.0094</td>
-                
-            </tr>
-            <tr>
-                <td>800 Contracts</td>
-                <td>212364</td>
-                <td>220943</td>
-                <td>-8579</td>
-                <td>-0.0404</td>
-                <td></td>
-                <td></td>
-                <td>0</td>
-                <td></td>
-                <td>212364</td>
-                <td>220943</td>
-                <td>-8579</td>
-                <td>-0.0404</td>
-                
-            </tr>
-            <tr>
-                <td>b. COST OF MONEY</td>
-                <td>708852</td>
-                <td>717627</td>
-                <td>-8775</td>
-                <td>-0.0124</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td></td>
-                <td>708852</td>
-                <td>717627</td>
-                <td>-8775</td>
-                <td>-0.0124</td>
-                
-            </tr>
-            <tr>
-                <td>c. GENERAL AND ADMINISTRATIVE</td>
-                <td>12695305</td>
-                <td>12825683</td>
-                <td>-130378</td>
-                <td>-0.0103</td>
-                <td>38119</td>
-                <td>38149</td>
-                <td>-30</td>
-                <td>-0.0008</td>
-                <td>12733424</td>
-                <td>12863832</td>
-                <td>-130408</td>
-                <td>-0.0102</td>
-                
-            </tr>
-            <tr>
-                <td>SUBTOTAL</td>
-                <td>94893780</td>
-                <td>94227775</td>
-                <td>666005</td>
-                <td>0.0070</td>
-                <td>94233701</td>
-                <td>93790934</td>
-                <td>442767</td>
-                <td>0.0047</td>
-                <td>189127481</td>
-                <td>188018709</td>
-                <td>1108772</td>
-                <td>0.0059</td>
-                
-            </tr>
-            <tr>
-                <td>d. UNDISTRIBUTED BUDGET</td>
-                <td>12782286</td>
-                <td>12922832</td>
-                <td>-140546</td>
-                <td>-0.0110</td>
-                <td>12782286</td>
-                <td>12922832</td>
-                <td>-140546</td>
-                <td>-0.0110</td>
-                <td>25564572</td>
-                <td>25845664</td>
-                <td>-281092</td>
-                <td>-0.0110</td>
-                
-            </tr>
-            <tr>
-                <td>TOTAL</td>
-                <td>107676066</td>
-                <td>107150607</td>
-                <td>525459</td>
-                <td>0.0049</td>
-                <td>107015987</td>
-                <td>106713766</td>
-                <td>302221</td>
-                <td>0.0028</td>
-                <td>214692053</td>
-                <td>213864373</td>
-                <td>827680</td>
-                <td>0.0039</td>
-                
-            </tr><tr></tr><tr></tr></table>
-    <table class="table table-sm ">
-        <tr>
-            <td>BAC EAC Comparison</td>
-            <td  colspan="12">ESTIMATE AT COMPLETE</td>
-        </tr>
-        <tr>
-            <td>Month End</td>
-            <td colspan="4">LABOR DOLLARS</td>
-            <td colspan="4">MATERIAL Dollars</td>             
-            <td colspan="4">TOTAL Dollars</td>             
-        </tr>
-        <tr>
-            <td>By Oragization</td>
-            <td>December</td>
-            <td>November</td>
-            <td>Diff</td>
-            <td>% Change</td>            
-            <td>December</td>
-            <td>November</td>
-            <td>Diff</td>
-            <td>% Change</td>            
-            <td>December</td>
-            <td>November</td>
-            <td>Diff</td>
-            <td>% Change</td>
-        </tr>    
-
-    
-            <tr>
-                <td>SWBS Group 100: Structure</td>
-                <td>15897241</td>
-                <td>15251396</td>
-                <td>645845</td>
-                <td>0.0406</td>
-                <td>15412383</td>
-                <td>15346074</td>
-                <td>66309</td>
-                <td>0.0043</td>
-                <td>31309624</td>
-                <td>30597470</td>
-                <td>712154</td>
-                <td>0.0227</td>
-                
-            </tr>
-            <tr>
-                <td>SWBS Group 200: Propulsion Systems</td>
-                <td>7545411</td>
-                <td>7024062</td>
-                <td>521349</td>
-                <td>0.0691</td>
-                <td>11336345</td>
-                <td>11314590</td>
-                <td>21755</td>
+                <td>26806012</td>
+                <td>26754752</td>
+                <td>51260</td>
                 <td>0.0019</td>
-                <td>18881756</td>
-                <td>18338652</td>
-                <td>543104</td>
-                <td>0.0288</td>
                 
             </tr>
             <tr>
-                <td>SWBS Group 300: Electrical Systems</td>
-                <td>11553333</td>
-                <td>13295562</td>
-                <td>-1742229</td>
-                <td>-0.1508</td>
-                <td>13979756</td>
-                <td>13920761</td>
-                <td>58995</td>
-                <td>0.0042</td>
-                <td>25533089</td>
-                <td>27216323</td>
-                <td>-1683234</td>
-                <td>-0.0659</td>
-                
-            </tr>
-            <tr>
-                <td>SWBS Group 400: Command and Surveillance Systems</td>
-                <td>1187995</td>
-                <td>1491699</td>
-                <td>-303704</td>
-                <td>-0.2556</td>
-                <td>3314320</td>
-                <td>3314320</td>
-                <td>0</td>
-                <td></td>
-                <td>4502315</td>
-                <td>4806019</td>
-                <td>-303704</td>
-                <td>-0.0675</td>
-                
-            </tr>
-            <tr>
-                <td>SWBS Group 500: Auxiliary Systems</td>
-                <td>12342385</td>
-                <td>10104700</td>
-                <td>2237685</td>
-                <td>0.1813</td>
-                <td>27961508</td>
-                <td>27978019</td>
-                <td>-16511</td>
-                <td>-0.0006</td>
-                <td>40303893</td>
-                <td>38082719</td>
-                <td>2221174</td>
-                <td>0.0551</td>
-                
-            </tr>
-            <tr>
-                <td>SWBS Group 600: Outfitting and Furnishings</td>
-                <td>5223317</td>
-                <td>5141093</td>
-                <td>82224</td>
-                <td>0.0157</td>
-                <td>14323173</td>
-                <td>14015242</td>
-                <td>307931</td>
-                <td>0.0215</td>
-                <td>19546490</td>
-                <td>19156335</td>
-                <td>390155</td>
-                <td>0.0200</td>
-                
-            </tr>
-            <tr>
-                <td>SWBS Group 700: Weapons Systems</td>
-                <td>90447</td>
-                <td>89382</td>
-                <td>1065</td>
-                <td>0.0118</td>
-                <td>396139</td>
-                <td>396139</td>
-                <td>0</td>
-                <td></td>
-                <td>486586</td>
-                <td>485521</td>
-                <td>1065</td>
-                <td>0.0022</td>
-                
-            </tr>
-            <tr>
-                <td>SWBS Group 800: Engineering and Integration</td>
-                <td>3036321</td>
-                <td>3143130</td>
-                <td>-106809</td>
-                <td>-0.0352</td>
-                <td>145000</td>
-                <td>145000</td>
-                <td>0</td>
-                <td></td>
-                <td>3181321</td>
-                <td>3288130</td>
-                <td>-106809</td>
-                <td>-0.0336</td>
-                
-            </tr>
-            <tr>
-                <td>SWBS Group 900: Production Support</td>
-                <td>20050653</td>
-                <td>20471313</td>
-                <td>-420660</td>
-                <td>-0.0210</td>
-                <td>4919122</td>
-                <td>4915788</td>
-                <td>3334</td>
-                <td>0.0007</td>
-                <td>24969775</td>
-                <td>25387101</td>
-                <td>-417326</td>
-                <td>-0.0167</td>
-                
-            </tr>
-            <tr>
-                <td>Integrated Logistic Support</td>
-                <td>863682</td>
-                <td>873680</td>
-                <td>-9998</td>
-                <td>-0.0116</td>
-                <td>866757</td>
-                <td>865803</td>
-                <td>954</td>
-                <td>0.0011</td>
-                <td>1730439</td>
-                <td>1739483</td>
-                <td>-9044</td>
-                <td>-0.0052</td>
-                
-            </tr>
-            <tr>
-                <td>Program Management</td>
-                <td>3698839</td>
-                <td>3798446</td>
-                <td>-99607</td>
-                <td>-0.0269</td>
-                <td>1541079</td>
-                <td>1541049</td>
-                <td>30</td>
+                <td>1.16.1.4 CWBS Group 400:  Command & Surveillance Systems</td>
+                <td>992006</td>
+                <td>1001172</td>
+                <td>-9166</td>
+                <td>-0.0092</td>
+                <td>3363262</td>
+                <td>3363250</td>
+                <td>12</td>
                 <td>0.0000</td>
-                <td>5239918</td>
-                <td>5339495</td>
-                <td>-99577</td>
-                <td>-0.0190</td>
+                <td>4355268</td>
+                <td>4364422</td>
+                <td>-9154</td>
+                <td>-0.0021</td>
+                
+            </tr>
+            <tr>
+                <td>1.16.1.5 CWBS Group 500:  Auxiliary Systems</td>
+                <td>15823735</td>
+                <td>15609305</td>
+                <td>214430</td>
+                <td>0.0136</td>
+                <td>25781618</td>
+                <td>25936712</td>
+                <td>-155094</td>
+                <td>-0.0060</td>
+                <td>41605353</td>
+                <td>41546017</td>
+                <td>59336</td>
+                <td>0.0014</td>
+                
+            </tr>
+            <tr>
+                <td>1.16.1.6 CWBS Group 600:  Outfitting and Furnishings</td>
+                <td>10596667</td>
+                <td>10622997</td>
+                <td>-26330</td>
+                <td>-0.0025</td>
+                <td>13738053</td>
+                <td>13508954</td>
+                <td>229099</td>
+                <td>0.0167</td>
+                <td>24334720</td>
+                <td>24131951</td>
+                <td>202769</td>
+                <td>0.0083</td>
+                
+            </tr>
+            <tr>
+                <td>1.16.1.7 CWBS Group 700:  Weapons Systems</td>
+                <td>85950</td>
+                <td>75944</td>
+                <td>10006</td>
+                <td>0.1164</td>
+                <td>303741</td>
+                <td>303577</td>
+                <td>164</td>
+                <td>0.0005</td>
+                <td>389691</td>
+                <td>379521</td>
+                <td>10170</td>
+                <td>0.0261</td>
+                
+            </tr>
+            <tr>
+                <td>1.16.1.8 CWBS Group 800:  Engineering and Integration</td>
+                <td>5361544</td>
+                <td>5421792</td>
+                <td>-60248</td>
+                <td>-0.0112</td>
+                <td>1503085</td>
+                <td>1503085</td>
+                <td>0</td>
+                <td></td>
+                <td>6864629</td>
+                <td>6924877</td>
+                <td>-60248</td>
+                <td>-0.0088</td>
+                
+            </tr>
+            <tr>
+                <td>1.16.1.9 CWBS Group 900:  Production Support</td>
+                <td>19721021</td>
+                <td>20293810</td>
+                <td>-572789</td>
+                <td>-0.0290</td>
+                <td>6134136</td>
+                <td>6090859</td>
+                <td>43277</td>
+                <td>0.0071</td>
+                <td>25855157</td>
+                <td>26384669</td>
+                <td>-529512</td>
+                <td>-0.0205</td>
+                
+            </tr>
+            <tr>
+                <td>1.16.2.1 ILS Support and Material</td>
+                <td>741513</td>
+                <td>735253</td>
+                <td>6260</td>
+                <td>0.0084</td>
+                <td>771674</td>
+                <td>788171</td>
+                <td>-16497</td>
+                <td>-0.0214</td>
+                <td>1513187</td>
+                <td>1523424</td>
+                <td>-10237</td>
+                <td>-0.0068</td>
+                
+            </tr>
+            <tr>
+                <td>1.16.3.2 Program Management Support and Material</td>
+                <td>4055855</td>
+                <td>3911188</td>
+                <td>144667</td>
+                <td>0.0357</td>
+                <td>2237392</td>
+                <td>2243178</td>
+                <td>-5786</td>
+                <td>-0.0026</td>
+                <td>6293247</td>
+                <td>6154366</td>
+                <td>138881</td>
+                <td>0.0221</td>
                 
             </tr>
             <tr>
                 <td>b. COST OF MONEY</td>
-                <td>708852</td>
-                <td>717627</td>
-                <td>-8775</td>
-                <td>-0.0124</td>
+                <td>913877</td>
+                <td>917462</td>
+                <td>-3585</td>
+                <td>-0.0039</td>
                 <td>0</td>
                 <td>0</td>
                 <td>0</td>
                 <td></td>
-                <td>708852</td>
-                <td>717627</td>
-                <td>-8775</td>
-                <td>-0.0124</td>
+                <td>913877</td>
+                <td>917462</td>
+                <td>-3585</td>
+                <td>-0.0039</td>
                 
             </tr>
             <tr>
                 <td>c. GENERAL AND ADMINISTRATIVE</td>
-                <td>12695305</td>
-                <td>12825683</td>
-                <td>-130378</td>
-                <td>-0.0103</td>
-                <td>38119</td>
-                <td>38149</td>
-                <td>-30</td>
-                <td>-0.0008</td>
-                <td>12733424</td>
-                <td>12863832</td>
-                <td>-130408</td>
-                <td>-0.0102</td>
+                <td>13007866</td>
+                <td>13037444</td>
+                <td>-29578</td>
+                <td>-0.0023</td>
+                <td>30258</td>
+                <td>31428</td>
+                <td>-1170</td>
+                <td>-0.0387</td>
+                <td>13038124</td>
+                <td>13068872</td>
+                <td>-30748</td>
+                <td>-0.0024</td>
                 
             </tr>
             <tr>
                 <td>SUBTOTAL</td>
-                <td>94893781</td>
-                <td>94227773</td>
-                <td>666008</td>
-                <td>0.0070</td>
-                <td>94233701</td>
-                <td>93790934</td>
-                <td>442767</td>
-                <td>0.0047</td>
-                <td>189127482</td>
-                <td>188018707</td>
-                <td>1108775</td>
-                <td>0.0059</td>
+                <td>111187606</td>
+                <td>111355478</td>
+                <td>-167872</td>
+                <td>-0.0015</td>
+                <td>93606123</td>
+                <td>93501594</td>
+                <td>104529</td>
+                <td>0.0011</td>
+                <td>204793729</td>
+                <td>204857072</td>
+                <td>-63343</td>
+                <td>-0.0003</td>
                 
             </tr>
             <tr>
                 <td>d. UNDISTRIBUTED BUDGET</td>
-                <td>12782286</td>
-                <td>12922832</td>
-                <td>-140546</td>
-                <td>-0.0110</td>
-                <td>12782286</td>
-                <td>12922832</td>
-                <td>-140546</td>
-                <td>-0.0110</td>
-                <td>25564572</td>
-                <td>25845664</td>
-                <td>-281092</td>
-                <td>-0.0110</td>
+                <td>38404</td>
+                <td>38404</td>
+                <td>0</td>
+                <td></td>
+                <td>38404</td>
+                <td>38404</td>
+                <td>0</td>
+                <td></td>
+                <td>76808</td>
+                <td>76808</td>
+                <td>0</td>
+                <td></td>
                 
             </tr>
             <tr>
                 <td>TOTAL</td>
-                <td>107676067</td>
-                <td>107150605</td>
-                <td>525462</td>
-                <td>0.0049</td>
-                <td>107015987</td>
-                <td>106713766</td>
-                <td>302221</td>
-                <td>0.0028</td>
-                <td>214692054</td>
-                <td>213864371</td>
-                <td>827683</td>
-                <td>0.0039</td>
-                
-            </tr><tr></tr><tr></tr></table>
-    <table class="table table-sm ">
-        <tr>
-            <td>BAC EAC Comparison</td>
-            <td  colspan="12">ESTIMATE AT COMPLETE</td>
-        </tr>
-        <tr>
-            <td>Month End</td>
-            <td colspan="4">LABOR DOLLARS</td>
-            <td colspan="4">MATERIAL Dollars</td>             
-            <td colspan="4">TOTAL Dollars</td>             
-        </tr>
-        <tr>
-            <td>By Oragization</td>
-            <td>December</td>
-            <td>November</td>
-            <td>Diff</td>
-            <td>% Change</td>            
-            <td>December</td>
-            <td>November</td>
-            <td>Diff</td>
-            <td>% Change</td>            
-            <td>December</td>
-            <td>November</td>
-            <td>Diff</td>
-            <td>% Change</td>
-        </tr>    
-
-    
-            <tr>
-                <td>1.28.1.1.1 Lower Hull Units</td>
-                <td>8789018</td>
-                <td>8686949</td>
-                <td>102069</td>
-                <td>0.0116</td>
-                <td></td>
-                <td></td>
-                <td>0</td>
-                <td></td>
-                <td>8789018</td>
-                <td>8686949</td>
-                <td>102069</td>
-                <td>0.0116</td>
-                
-            </tr>
-            <tr>
-                <td>1.28.1.1.2 Upper Hull Units</td>
-                <td>8598340</td>
-                <td>8692365</td>
-                <td>-94025</td>
-                <td>-0.0109</td>
-                <td></td>
-                <td></td>
-                <td>0</td>
-                <td></td>
-                <td>8598340</td>
-                <td>8692365</td>
-                <td>-94025</td>
-                <td>-0.0109</td>
-                
-            </tr>
-            <tr>
-                <td>1.28.1.1.3 Deckhouse Units</td>
-                <td>6116306</td>
-                <td>5222585</td>
-                <td>893721</td>
-                <td>0.1461</td>
-                <td></td>
-                <td></td>
-                <td>0</td>
-                <td></td>
-                <td>6116306</td>
-                <td>5222585</td>
-                <td>893721</td>
-                <td>0.1461</td>
-                
-            </tr>
-            <tr>
-                <td>1.28.1.2.1 Accommodation Zones</td>
-                <td>963684</td>
-                <td>952074</td>
-                <td>11610</td>
-                <td>0.0120</td>
-                <td></td>
-                <td></td>
-                <td>0</td>
-                <td></td>
-                <td>963684</td>
-                <td>952074</td>
-                <td>11610</td>
-                <td>0.0120</td>
-                
-            </tr>
-            <tr>
-                <td>1.28.1.2.2 Electronic Zones</td>
-                <td>498925</td>
-                <td>521202</td>
-                <td>-22277</td>
-                <td>-0.0446</td>
-                <td></td>
-                <td></td>
-                <td>0</td>
-                <td></td>
-                <td>498925</td>
-                <td>521202</td>
-                <td>-22277</td>
-                <td>-0.0446</td>
-                
-            </tr>
-            <tr>
-                <td>1.28.1.2.3 Machinery Zones</td>
-                <td>3693008</td>
-                <td>3635855</td>
-                <td>57153</td>
-                <td>0.0155</td>
-                <td></td>
-                <td></td>
-                <td>0</td>
-                <td></td>
-                <td>3693008</td>
-                <td>3635855</td>
-                <td>57153</td>
-                <td>0.0155</td>
-                
-            </tr>
-            <tr>
-                <td>1.28.1.2.4 Mission Zones</td>
-                <td>1350745</td>
-                <td>1349560</td>
-                <td>1185</td>
-                <td>0.0009</td>
-                <td></td>
-                <td></td>
-                <td>0</td>
-                <td></td>
-                <td>1350745</td>
-                <td>1349560</td>
-                <td>1185</td>
-                <td>0.0009</td>
-                
-            </tr>
-            <tr>
-                <td>1.28.1.2.5 Shipwide Zones</td>
-                <td>24766717</td>
-                <td>24352976</td>
-                <td>413741</td>
-                <td>0.0167</td>
-                <td></td>
-                <td></td>
-                <td>0</td>
-                <td></td>
-                <td>24766717</td>
-                <td>24352976</td>
-                <td>413741</td>
-                <td>0.0167</td>
-                
-            </tr>
-            <tr>
-                <td>1.28.1.3 Surface Preparation and Coating</td>
-                <td>3763352</td>
-                <td>3678101</td>
-                <td>85251</td>
-                <td>0.0227</td>
-                <td></td>
-                <td></td>
-                <td>0</td>
-                <td></td>
-                <td>3763352</td>
-                <td>3678101</td>
-                <td>85251</td>
-                <td>0.0227</td>
-                
-            </tr>
-            <tr>
-                <td>1.28.1.4.0 Miscellaneous</td>
-                <td></td>
-                <td></td>
-                <td>0</td>
-                <td></td>
-                <td>2188995</td>
-                <td>2185661</td>
-                <td>3334</td>
-                <td>0.0015</td>
-                <td>2188995</td>
-                <td>2185661</td>
-                <td>3334</td>
-                <td>0.0015</td>
-                
-            </tr>
-            <tr>
-                <td>1.28.1.4.1 Structure</td>
-                <td></td>
-                <td></td>
-                <td>0</td>
-                <td></td>
-                <td>15412383</td>
-                <td>15346074</td>
-                <td>66309</td>
-                <td>0.0043</td>
-                <td>15412383</td>
-                <td>15346074</td>
-                <td>66309</td>
-                <td>0.0043</td>
-                
-            </tr>
-            <tr>
-                <td>1.28.1.4.2 Propulsion Systems</td>
-                <td></td>
-                <td></td>
-                <td>0</td>
-                <td></td>
-                <td>11336345</td>
-                <td>11314590</td>
-                <td>21755</td>
-                <td>0.0019</td>
-                <td>11336345</td>
-                <td>11314590</td>
-                <td>21755</td>
-                <td>0.0019</td>
-                
-            </tr>
-            <tr>
-                <td>1.28.1.4.3 Electrical Systems</td>
-                <td></td>
-                <td></td>
-                <td>0</td>
-                <td></td>
-                <td>13979756</td>
-                <td>13920761</td>
-                <td>58995</td>
-                <td>0.0042</td>
-                <td>13979756</td>
-                <td>13920761</td>
-                <td>58995</td>
-                <td>0.0042</td>
-                
-            </tr>
-            <tr>
-                <td>1.28.1.4.4 Command & Surveillance Systems</td>
-                <td></td>
-                <td></td>
-                <td>0</td>
-                <td></td>
-                <td>3314320</td>
-                <td>3314320</td>
-                <td>0</td>
-                <td></td>
-                <td>3314320</td>
-                <td>3314320</td>
-                <td>0</td>
-                <td></td>
-                
-            </tr>
-            <tr>
-                <td>1.28.1.4.5 Auxiliary Systems</td>
-                <td></td>
-                <td></td>
-                <td>0</td>
-                <td></td>
-                <td>27961508</td>
-                <td>27978019</td>
-                <td>-16511</td>
-                <td>-0.0006</td>
-                <td>27961508</td>
-                <td>27978019</td>
-                <td>-16511</td>
-                <td>-0.0006</td>
-                
-            </tr>
-            <tr>
-                <td>1.28.1.4.6 Outfit and Furnishings</td>
-                <td></td>
-                <td></td>
-                <td>0</td>
-                <td></td>
-                <td>14323173</td>
-                <td>14015242</td>
-                <td>307931</td>
-                <td>0.0215</td>
-                <td>14323173</td>
-                <td>14015242</td>
-                <td>307931</td>
-                <td>0.0215</td>
-                
-            </tr>
-            <tr>
-                <td>1.28.1.4.7 Weapon Systems</td>
-                <td></td>
-                <td></td>
-                <td>0</td>
-                <td></td>
-                <td>396139</td>
-                <td>396139</td>
-                <td>0</td>
-                <td></td>
-                <td>396139</td>
-                <td>396139</td>
-                <td>0</td>
-                <td></td>
-                
-            </tr>
-            <tr>
-                <td>1.28.1.4.9 Production Support</td>
-                <td></td>
-                <td></td>
-                <td>0</td>
-                <td></td>
-                <td>3908245</td>
-                <td>3908245</td>
-                <td>0</td>
-                <td></td>
-                <td>3908245</td>
-                <td>3908245</td>
-                <td>0</td>
-                <td></td>
-                
-            </tr>
-            <tr>
-                <td>1.28.1.5 Total Ship Integration/Engineering</td>
-                <td>310356</td>
-                <td>343687</td>
-                <td>-33331</td>
-                <td>-0.1074</td>
-                <td></td>
-                <td></td>
-                <td>0</td>
-                <td></td>
-                <td>310356</td>
-                <td>343687</td>
-                <td>-33331</td>
-                <td>-0.1074</td>
-                
-            </tr>
-            <tr>
-                <td>1.28.1.6 Ship Assembly and Support Services</td>
-                <td>13982794</td>
-                <td>14358239</td>
-                <td>-375445</td>
-                <td>-0.0269</td>
-                <td>328000</td>
-                <td>328000</td>
-                <td>0</td>
-                <td></td>
-                <td>14310794</td>
-                <td>14686239</td>
-                <td>-375445</td>
-                <td>-0.0262</td>
-                
-            </tr>
-            <tr>
-                <td>1.28.2 Systems Engineering</td>
-                <td>2716069</td>
-                <td>2789548</td>
-                <td>-73479</td>
-                <td>-0.0271</td>
-                <td></td>
-                <td></td>
-                <td>0</td>
-                <td></td>
-                <td>2716069</td>
-                <td>2789548</td>
-                <td>-73479</td>
-                <td>-0.0271</td>
-                
-            </tr>
-            <tr>
-                <td>1.28.3.1 Program Management</td>
-                <td>5076626</td>
-                <td>5227642</td>
-                <td>-151016</td>
-                <td>-0.0297</td>
-                <td>201600</td>
-                <td>201570</td>
-                <td>30</td>
-                <td>0.0001</td>
-                <td>5278226</td>
-                <td>5429212</td>
-                <td>-150986</td>
-                <td>-0.0286</td>
-                
-            </tr>
-            <tr>
-                <td>1.28.3.2 Integrated Logistics Support Management</td>
-                <td>815240</td>
-                <td>825239</td>
-                <td>-9999</td>
-                <td>-0.0123</td>
-                <td></td>
-                <td></td>
-                <td>0</td>
-                <td></td>
-                <td>815240</td>
-                <td>825239</td>
-                <td>-9999</td>
-                <td>-0.0123</td>
-                
-            </tr>
-            <tr>
-                <td>1.28.5 Training</td>
-                <td>48442</td>
-                <td>48442</td>
-                <td>0</td>
-                <td></td>
-                <td>845118</td>
-                <td>844164</td>
-                <td>954</td>
+                <td>111226010</td>
+                <td>111393882</td>
+                <td>-167872</td>
+                <td>-0.0015</td>
+                <td>93644527</td>
+                <td>93539998</td>
+                <td>104529</td>
                 <td>0.0011</td>
-                <td>893560</td>
-                <td>892606</td>
-                <td>954</td>
-                <td>0.0011</td>
-                
-            </tr>
-            <tr>
-                <td>b. COST OF MONEY</td>
-                <td>708852</td>
-                <td>717627</td>
-                <td>-8775</td>
-                <td>-0.0124</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td></td>
-                <td>708852</td>
-                <td>717627</td>
-                <td>-8775</td>
-                <td>-0.0124</td>
-                
-            </tr>
-            <tr>
-                <td>c. GENERAL AND ADMINISTRATIVE</td>
-                <td>12695305</td>
-                <td>12825683</td>
-                <td>-130378</td>
-                <td>-0.0103</td>
-                <td>38119</td>
-                <td>38149</td>
-                <td>-30</td>
-                <td>-0.0008</td>
-                <td>12733424</td>
-                <td>12863832</td>
-                <td>-130408</td>
-                <td>-0.0102</td>
-                
-            </tr>
-            <tr>
-                <td>SUBTOTAL</td>
-                <td>94893779</td>
-                <td>94227774</td>
-                <td>666005</td>
-                <td>0.0070</td>
-                <td>94233701</td>
-                <td>93790934</td>
-                <td>442767</td>
-                <td>0.0047</td>
-                <td>189127480</td>
-                <td>188018708</td>
-                <td>1108772</td>
-                <td>0.0059</td>
-                
-            </tr>
-            <tr>
-                <td>d. UNDISTRIBUTED BUDGET</td>
-                <td>12782286</td>
-                <td>12922832</td>
-                <td>-140546</td>
-                <td>-0.0110</td>
-                <td>12782286</td>
-                <td>12922832</td>
-                <td>-140546</td>
-                <td>-0.0110</td>
-                <td>25564572</td>
-                <td>25845664</td>
-                <td>-281092</td>
-                <td>-0.0110</td>
-                
-            </tr>
-            <tr>
-                <td>TOTAL</td>
-                <td>107676065</td>
-                <td>107150606</td>
-                <td>525459</td>
-                <td>0.0049</td>
-                <td>107015987</td>
-                <td>106713766</td>
-                <td>302221</td>
-                <td>0.0028</td>
-                <td>214692052</td>
-                <td>213864372</td>
-                <td>827680</td>
-                <td>0.0039</td>
+                <td>204870537</td>
+                <td>204933880</td>
+                <td>-63343</td>
+                <td>-0.0003</td>
                 
             </tr><tr></tr><tr></tr></table>

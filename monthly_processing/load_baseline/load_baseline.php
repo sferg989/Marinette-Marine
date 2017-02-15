@@ -45,25 +45,59 @@ function getBCRs($table_name, $ship_code){
     }
     return $data_array;
 }
+function checkDateValues($start, $finish){
+    $test = true;
+    if($start=="0000-00-00" and $finish=="0000-00-00"){
+        $test = true;
+        return $test;
+    }
+    if($start=="0000-00-00" and $finish!="0000-00-00"){
+
+        $test = false;
+        return $test;
+    }
+    if($start!="0000-00-00" and $finish=="0000-00-00"){
+        $test = false;
+        return $test;
+    }
+    return $test;
+}
 function getPeriodBaseline($ship_code,$table_name)
 {
     $wc= "";
-    //$wc = " and wbs = '1.28.1.2.3.M.MFG-OF'";
+    //$wc = " and wbs = '1.16.1' and activity_id = 'IMP-AC-G0402'";
 
-    $sql = "select ship_code,wbs,activity_id,s_labor_units,s_material_cost,bl_project_start,bl_project_finish from $table_name where ship_code = $ship_code
+    $sql = "select ship_code,wbs,activity_id,s_labor_units,s_material_cost,bl_project_start,bl_project_finish 
+              from $table_name 
+              where ship_code = $ship_code
+              and activity_id not like '%svt-%'
      $wc";
     //print $sql;
     $rs = dbCall($sql,"ims_data_check");
     $data_array = array();
+
     while (!$rs->EOF)
     {
+
+        $start  = $rs->fields["bl_project_start"];
+        $finish = $rs->fields["bl_project_finish"];
         $wbs            = $rs->fields["wbs"];
         $activity_id    = $rs->fields["activity_id"];
-        $data_array[$wbs][$activity_id]["s_labor_units"]        = $rs->fields["s_labor_units"];
-        $data_array[$wbs][$activity_id]["s_material_cost"]      = $rs->fields["s_material_cost"];
-        $data_array[$wbs][$activity_id]["bl_project_start"]     = date("n/j/Y",strtotime($rs->fields["bl_project_start"]));
-        $data_array[$wbs][$activity_id]["bl_project_finish"]    = date("n/j/Y",strtotime($rs->fields["bl_project_finish"]));
-        $rs->MoveNext();
+        $date_check = checkDateValues($start, $finish);
+        if($date_check==false){
+
+            $rs->MoveNext();
+        }
+        else
+        {
+            $data_array[$wbs][$activity_id]["s_labor_units"]        = $rs->fields["s_labor_units"];
+            $data_array[$wbs][$activity_id]["s_material_cost"]      = $rs->fields["s_material_cost"];
+
+            $data_array[$wbs][$activity_id]["bl_project_start"]     = date("n/j/Y",strtotime($start));
+            $data_array[$wbs][$activity_id]["bl_project_finish"]    = date("n/j/Y",strtotime($finish));
+
+            $rs->MoveNext();
+        }
     }
     return $data_array;
 }
@@ -88,28 +122,6 @@ $ship_name          = $data["ship_name"];
 
 $path2_cobra_dir    = $base_path."".$ship_name."/".$ship_code ;
 
-if($control=="step_grid")
-{
-    $data = "[";
-    $sql = "select id,name, action from processing_status.load_baseline order by `order`";
-    //print $sql;
-    $rs = dbCall($sql);
-    while (!$rs->EOF)
-    {
-        $id     = $rs->fields["id"];
-        $name   = $rs->fields["name"];
-        $action = $rs->fields["action"];
-        $data.="{
-            \"id\"      :$id,
-            \"name\"    :\"$name\",
-            \"action\"  :\"$action\"
-        },";
-        $rs->MoveNext();
-    }
-    $data = substr($data, 0, -1);
-    $data.="]";
-    die($data);
-}
 if($control=="load_p6_data"){
 
     $table_name   = $rpt_period . "_baseline";
@@ -264,14 +276,17 @@ if($control=="compare_ca"){
         foreach ($value as $act=>$values){
             $cur  = isset($current_period_baseline[$key][$act]);
             if($cur==false){
+                $start = $values["bl_project_finish"];
+                $finish = $values["bl_project_start"];
                 $not_in_cur[$key][$act]["prev_labor_units"] = $values["s_labor_units"];
-                $not_in_cur[$key][$act]["prev_matl_cost"]   = $values["s_material_cost"];
+                $not_in_cur[$key][$act]["prev_matl_cost"]   = $start;
                 $not_in_cur[$key][$act]["prev_start"]       = $values["bl_project_start"];
-                $not_in_cur[$key][$act]["prev_finish"]      = $values["bl_project_finish"];
+                $not_in_cur[$key][$act]["prev_finish"]      = $finish;
 
             }
         }
     }
+
     //check if all CA's are in Previous Baseline
     foreach ($current_period_baseline as $key=>$value){
         //  print "This is the WBS ".$key."\r";
@@ -394,7 +409,6 @@ if($control=="compare_ca"){
             }
         }
     }
-    //var_dump($diffs);
     foreach ($diffs as $key=>$value){
         //  print "This is the WBS ".$key."\r";
         foreach ($value as $act=>$values){
@@ -462,6 +476,7 @@ if($control=="compare_ca"){
             }
         }
     }
+
     $data = "<div id = \"bcr_grid\" class = \"col-md-12\">
     <table  id = \"example\" class=\"table \">
         <tr>

@@ -252,7 +252,7 @@ $(document).ready(function() {
         getWIList()
     });
     $("#wi_btn_close").click(function() {
-        $("#wi_list").empty();
+        $("#wi_list").remove();
     })
 
 });

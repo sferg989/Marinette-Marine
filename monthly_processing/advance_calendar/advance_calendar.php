@@ -58,7 +58,8 @@ if($control=="step_grid")
     die($data);
 }
 
-if($control =="bkup")
+
+if($control=="bkup_reclass_report")
 {
     if(file_exists($path2CobraBkup)==false)
     {
@@ -66,19 +67,18 @@ if($control =="bkup")
         die();
     }
     copyProjectFromCobra($ship_code,$path2CobraBkup, $g_path2CobraAPI,$g_path2CMD,$g_path2BAT, "before_month_end_processing_begins",$debug);
-    die("Cobra Backup-Complete");
+
+    $ship_code      = "04731216-test";
+    reClassCobraProject($ship_code, $g_path2CobraAPI,$g_path2ReClassProjectCMD,$g_path2ReClassProjectBAT,$debug);
+
+    //this is the real one.  there were not enough characters allowed to have 'class check'
+    //$batch_rpt_name = $ship_code." Class Check";
+    $batch_rpt_name = $ship_code." Class";
+    runCobraBatchReportProcess($ship_code,$batch_rpt_name, $g_path2CobraAPI,$g_path2BatrptCMD,$g_path2BatrptBAT,$debug);
+    die("BKUP-Reclass-Report have completed");
 }
-if($control =="bkup_after_calendar_advance")
-{
-    if(file_exists($path2CobraBkup)==false)
-    {
-        print "This Directory ".$path2CobraBkup." Does not exist!!  Go Back and Create this months Processing Folders!";
-        die();
-    }
-    copyProjectFromCobra($ship_code,$path2CobraBkup, $g_path2CobraAPI,$g_path2CMD,$g_path2BAT, "bkup_after_calendar_advance",$debug);
-    die("Cobra Backup-Complete");
-}
-if($control =="bkup_after_reclass")
+
+if($control=="bkup_advance_bkup")
 {
     if(file_exists($path2CobraBkup)==false)
     {
@@ -86,29 +86,8 @@ if($control =="bkup_after_reclass")
         die();
     }
     copyProjectFromCobra($ship_code,$path2CobraBkup, $g_path2CobraAPI,$g_path2CMD,$g_path2BAT, "bkup_after_reclass",$debug);
-    die("Cobra Backup-Complete");
-}
-if($control=="global_reclass")
-{
-    //$ship_code           = "04731116-test";
-    reClassCobraProject($ship_code, $g_path2CobraAPI,$g_path2ReClassProjectCMD,$g_path2ReClassProjectBAT,$debug);
-    die("Copy F1 Forecast to FF-Complete");
 
-}
-if($control =="batch_rpt_cost_class_check")
-{
-    //$ship_code      = "04731116-test";
-    //this is the real one.  there were not enough characters allowed to have 'class check'
-    //$batch_rpt_name = $ship_code." Class Check";
-
-    $batch_rpt_name = $ship_code." Class";
-    runCobraBatchReportProcess($ship_code,$batch_rpt_name, $g_path2CobraAPI,$g_path2BatrptCMD,$g_path2BatrptBAT,$debug);
-    die("batch Reports-Complete");
-}
-if($control=="advance_calendar")
-{
-    //$ship_code           = "04731116-test";
-
+    $ship_code      = "04731216-test";
     $status_date_for_loe        = "0";
     $update_rates_fte           = "0";
     $sync_calendar              = "1";
@@ -116,7 +95,14 @@ if($control=="advance_calendar")
     $update_eac                 = "0";
 
     advanceCalendarCobraProject($ship_code,$g_path2CobraAPI,$g_path2AdvanceCalendarProjectCMD,$g_path2AdvanceCalendarProjectBAT,$status_date_for_loe,$update_rates_fte,$sync_calendar,$rolling_wave_skip, $update_eac,$debug);
-    die("Calendar Advance-Complete");
+
+    if(file_exists($path2CobraBkup)==false)
+    {
+        print "This Directory ".$path2CobraBkup." Does not exist!!  Go Back and Create this months Processing Folders!";
+        die();
+    }
+    copyProjectFromCobra($ship_code,$path2CobraBkup, $g_path2CobraAPI,$g_path2CMD,$g_path2BAT, "bkup_after_calendar_advance",$debug);
+    die("bkup-advance-bkup has completed");
 }
 
 

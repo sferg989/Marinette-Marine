@@ -140,9 +140,7 @@ $(document).ready(function() {
         }
         if(baseline_result[1]=="false")
         {
-
             bootbox.alert("please loac Baseline for "+rpt_period);
-
             return false;
         }
         var worker;

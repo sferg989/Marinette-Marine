@@ -13,14 +13,14 @@ set_time_limit(0);
 error_reporting(0);
 include('lib/php/adodb5/adodb.inc.php');
 //Global Paths
-//$g_production_base_path      = "Y:/Program Management/cobra processing/";
+//$base_path      = "Y:/Program Management/cobra processing/";
 $base_path      = "C:/program_management_test/cobra processing/";
 $g_path_to_util = "C:\\xampp\\htdocs\\fmg\\util\\";
 $g_path2BAT     = $g_path_to_util . "backup_scripts\\BAT\\";
 $g_path2CMD     = $g_path_to_util . "backup_scripts\\CMD\\";
 
 $g_path2BatrptBAT = $g_path_to_util . "batch_report_process\\BAT\\";
-$g_path2BatrptCMD = $g_path_to_util .// "batch_report_process\\CMD\\";
+$g_path2BatrptCMD = $g_path_to_util . "batch_report_process\\CMD\\";
 
 $g_path2ArhiveProjectBAT = $g_path_to_util . "archive_project\\BAT\\";
 $g_path2ArhiveProjectCMD = $g_path_to_util . "archive_project\\CMD\\";

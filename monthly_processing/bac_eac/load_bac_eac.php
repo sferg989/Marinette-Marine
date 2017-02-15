@@ -28,13 +28,18 @@ $cur_month_letters  = $data["cur_month_letters"];
 $prev_full_month    = $data["prev_full_month"];
 $cur_full_month     = $data["cur_full_month"];
 $ship_name          = $data["ship_name"];
-$g_path2_bac_eac_reports = $base_path.$ship_name."/BAC-EAC Compare/".$ship_code."/";
+//0485
+//$g_path2_bac_eac_reports = $base_path.$ship_name."/BAC-EAC Compare/".$ship_code."/";
+//everything else
+$g_path2_bac_eac_reports = $base_path.$ship_name."/".$ship_code."/EAC-BAC Compare/".$ship_code."/";
+
 $cpr_file_array = array();
 
 if($control =="load_data") {
-    $batch_rpt_name = $ship_code." Class";
-    $batch_rpt_name = "csv0485BACEAC";
-    runCobraBatchReportProcess($ship_code,$batch_rpt_name, $g_path2CobraAPI,$g_path2BatrptCMD,$g_path2BatrptBAT,$debug);
+    //$batch_rpt_name = $ship_code." Class";
+
+    $batch_rpt_name = "csv".$ship_code."BACEAC";
+    //runCobraBatchReportProcess($ship_code,$batch_rpt_name, $g_path2CobraAPI,$g_path2BatrptCMD,$g_path2BatrptBAT,$debug);
 
     $ship_code = intval($ship_code);
     if($ship_code>=477)
@@ -51,18 +56,19 @@ if($control =="load_data") {
         $cpr_file_array["02-02 FY14AF CPR2L WBS_Labor Only"]       = "_cpr2l_wbs";
         $cpr_file_array["02-02 FY14AF CPR2M OBS_Material and ODC"] = "_cpr2m_obs";
         $cpr_file_array["02-02 FY14AF CPR2M WBS_Material and ODC"] = "_cpr2m_wbs";
-        $cpr_file_array["02-02H CPR 2 OutSource_Outsource Only"]          = "_cpr2o";
+        $cpr_file_array["02-02H CPR 2 OutSource_Outsource Only"]   = "_cpr2o";
     }
     else{
-        $cpr_file_array["02-02H CPR 2 OutSource"] = "_pre17_cpr2o";
-        $cpr_file_array["02-02M CPR 2 Material"]  = "_pre17_cpr2m";
-        $cpr_file_array["02-02L CPR 2 Labor"]     = "_pre17_cpr2l";
-        $cpr_file_array["02-02D CPR 2 Dollars"]   = "_pre17_cpr2d";
-        $cpr_file_array["02-02H CPR 2 Hours"]     = "_pre17_cpr2h";
-        $cpr_file_array["02-01M CPR 1 Material"]  = "_pre17_cpr1m";
-        $cpr_file_array["02-01L CPR 1 Labor"]     = "_pre17_cpr1l";
-        $cpr_file_array["02-01H CPR 1 Hours"]     = "_pre17_cpr1h";
-        $cpr_file_array["02-01D CPR 1 Dollars"]   = "_pre17_cpr1d";
+        $cpr_file_array["02-02H CPR 2 OutSource"]                 = "_pre17_cpr2o";
+        $cpr_file_array["02-02M CPR 2 Material_Material and ODC"] = "_pre17_cpr2m";
+        $cpr_file_array["02-02L CPR 2 Labor_Labor Only"]          = "_pre17_cpr2l";
+        $cpr_file_array["02-02D CPR 2 Dollars"]                   = "_pre17_cpr2d";
+        $cpr_file_array["02-02H CPR 2 Hours"]                     = "_pre17_cpr2h";
+        $cpr_file_array["02-01M CPR 1 Material_Material and ODC"] = "_pre17_cpr1m";
+        $cpr_file_array["02-01L CPR 1 Labor_Labor Only"]          = "_pre17_cpr1l";
+        $cpr_file_array["02-01H CPR 1 Hours"]                     = "_pre17_cpr1h";
+        $cpr_file_array["02-01D CPR 1 Dollars"]                   = "_pre17_cpr1d";
+        $cpr_file_array["02-02D CPR 2 Dollars_Outsource Only"]    = "_pre17_cpr2do";
     }
     if(strlen($code)==3)
     {
@@ -71,7 +77,7 @@ if($control =="load_data") {
 
     foreach ($cpr_file_array as $file_name => $table_name_short_name) {
 
-        if($table_name_short_name=="_cpr2o"){
+        if($table_name_short_name=="_cpr2o" or $table_name_short_name=="_pre17_cpr2o"){
             $data_type_field = "data_type,";
         }
         else{
@@ -165,11 +171,14 @@ if($control =="load_data") {
                 continue;
             }
             if ($have_we_reached_item = true and $item == "HOURS") {
-                if($table_name_short_name=="_cpr2o"){
-                    print "we made it! HOURS";
+                if($table_name_short_name=="_cpr2o" or $table_name_short_name=="_pre17_cpr2o"){
                     $data_type = "hours";
+                    /*pre 17 outsource and MMC are co mingled, so the first number is MMC,
+                    the 2nd is OUTsouce*/
+                    if($table_name_short_name=="_pre17_cpr2o")  {
+                        $data_type = "MMC";
+                    }
                     $data_type_value = "'".$data_type."',";
-
                 }
                 $i++;
                 continue;
@@ -179,7 +188,10 @@ if($control =="load_data") {
                 continue;
             }
             if ($have_we_reached_item = true and $item == "OUT") {
-                $i++;
+                if($table_name_short_name=="_pre17_cpr2o")  {
+                    $data_type = "OUT";
+                }
+                $data_type_value = "'".$data_type."',";                $i++;
                 continue;
             }
             if ($total_test !== false) {

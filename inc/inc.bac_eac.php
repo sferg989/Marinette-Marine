@@ -146,6 +146,55 @@ function formatExcelSheet($path2xlsfile, $sheet_title)
     $objPHPExcel->getActiveSheet()->getColumnDimension('I')->setWidth(15);
     return $objPHPExcel;
 }
+function phpExcelCurrency($range, $objPHPExcel){
+    $objPHPExcel->getActiveSheet()
+        ->getStyle($range)
+        ->getNumberFormat()
+        ->setFormatCode(PHPExcel_Style_NumberFormat::FORMAT_CURRENCY_USD);
+}
+function phpExcelFormatPercentage($range, $objPHPExcel){
+    $objPHPExcel->getActiveSheet()
+        ->getStyle($range)
+        ->getNumberFormat()
+        ->setFormatCode(PHPExcel_Style_NumberFormat::FORMAT_PERCENTAGE_00);
+}
+function phpExcelFormatHours($range,$objPHPExcel){
+    $objPHPExcel->getActiveSheet()
+        ->getStyle($range)
+        ->getNumberFormat()
+        ->setFormatCode('#,##0');
+}
+function phpExcelFormatDecimal($range,$objPHPExcel){
+    $objPHPExcel->getActiveSheet()
+        ->getStyle($range)
+        ->getNumberFormat()
+        ->setFormatCode('#,##0');
+}
+function formatExcelSheetChangeSummary($path2xlsfile, $sheet_title)
+{
+    $objPHPExcel = PHPExcel_IOFactory::load($path2xlsfile);
+
+    $objPHPExcel->getActiveSheet()->setTitle($sheet_title);
+
+    phpExcelCurrency("B6:C6", $objPHPExcel);
+    phpExcelCurrency("B9:B11", $objPHPExcel);
+    phpExcelCurrency("B28:C45", $objPHPExcel);
+    phpExcelCurrency("B51", $objPHPExcel);
+
+    phpExcelFormatHours("B14:C23",$objPHPExcel);
+
+    $objPHPExcel->getActiveSheet()->getColumnDimension('A')->setWidth(50);
+    $objPHPExcel->getActiveSheet()->getColumnDimension('B')->setWidth(15);
+    $objPHPExcel->getActiveSheet()->getColumnDimension('C')->setWidth(15);
+    $objPHPExcel->getActiveSheet()->getColumnDimension('D')->setWidth(15);
+    $objPHPExcel->getActiveSheet()->getColumnDimension('E')->setWidth(15);
+    $objPHPExcel->getActiveSheet()->getColumnDimension('F')->setWidth(15);
+    $objPHPExcel->getActiveSheet()->getColumnDimension('G')->setWidth(15);
+    $objPHPExcel->getActiveSheet()->getColumnDimension('H')->setWidth(15);
+    $objPHPExcel->getActiveSheet()->getColumnDimension('I')->setWidth(15);
+    return $objPHPExcel;
+}
+
 function formatExcelSheetLBR($path2xlsfile, $sheet_title){
     $objPHPExcel  = PHPExcel_IOFactory::load($path2xlsfile);
 
@@ -490,7 +539,7 @@ function getTotalHoursByOBS($prev_rpt_period,$rpt_period,$table_name, $ship_code
         prev.item = '$obs'
         and prev.ship_code = '$ship_code'
         ";
-
+    //print $sql;
     $rs     = dbCall($sql, "bac_eac");
     $prev   = $rs->fields["prev"];
     $cur    = $rs->fields["cur"];
@@ -554,10 +603,12 @@ function getTotalHoursByMMCOtherSalaryPRE17($prev_rpt_period,$rpt_period,$table_
     $rs     = dbCall($sql, "bac_eac");
     $prev   = $rs->fields["prev"];
     $cur    = $rs->fields["cur"];
+
     $table_name    = getCorrespondingTable($ship_code, "_cpr2o");
-    $out_h         = getTotalOutsourceHoursBYOBS($prev_rpt_period, $rpt_period, $table_name, $ship_code, "est_vac", "OUT", "546 QUALITY CONTROL");
+    $out_h         = getTotalOutsourceHoursBYOBS($prev_rpt_period, $rpt_period, $table_name, $ship_code, $sum_field, "OUT", "546 QUALITY CONTROL");
     $prev_546out_h = $out_h["prev"];
     $cur_546out_h  = $out_h["cur"];
+
     $data["prev"]   = $prev-$prev_546out_h;
     $data["cur"]    = $cur-$cur_546out_h;
     return $data;
@@ -648,25 +699,25 @@ function getLaborDollarsandHoursEACDiff($prev_rpt_period,$rpt_period, $ship_code
     else{
         $table_name = "_pre17_cpr2h";
     }
-    $diff["hours"] = getEACDiff($prev_rpt_period,$rpt_period, $table_name, $ship_code, $item);
+    $diff["hours"] = getEACDiff($prev_rpt_period,$rpt_period, $table_name, $ship_code, $item, "est_vac");
 
 
     if($ship_code>=477){
-        $table_name = "_cpr2d_obs";
+        $table_name = "_cpr2h_obs";
     }
     else{
-        $table_name = "_pre17_cpr2d";
+        $table_name = "_pre17_cpr2h";
     }
-    $diff["d"] = getEACDiff($prev_rpt_period,$rpt_period, $table_name, $ship_code, $item);
+    $diff["d"] = getEACDiff($prev_rpt_period,$rpt_period, $table_name, $ship_code, $item, "s_vac");
     return $diff;
 }
-function getEACDiff($prev_rpt_period,$rpt_period, $table_name, $ship_code, $item)
+function getEACDiff($prev_rpt_period,$rpt_period, $table_name, $ship_code, $item, $field_name)
 {
     $sql = "        
         select
             cur.item,
-            sum(cur.est_vac) cur,
-            sum(prev.est_vac)  prev
+            sum(cur.$field_name) cur,
+            sum(prev.$field_name)  prev
         from ".$prev_rpt_period.$table_name." prev 
         inner join ".$rpt_period.$table_name." cur 
         on prev.item = cur.item and prev.ship_code = cur.ship_code
@@ -716,24 +767,27 @@ function getMATLEACDIFF($prev_rpt_period,$rpt_period,$ship_code)
         and cur.item <> 'b. COST OF MONEY'
         and cur.item <> '9. RECONCILIATION TO CONTRACT BUDGET BASELINE'
         and cur.item <> 'a. VARIANCE ADJUSTMENT'
-        and cur.item <> 'c. GENERAL AND ADMINISTRATIVE'
+        -- and cur.item <> 'c. GENERAL AND ADMINISTRATIVE'
         group by item order by prev.order_id
         ";
     $rs = dbCall($sql,"bac_eac");
     $total_d = 0;
+    $total_bac_change = 0;
     while (!$rs->EOF)
     {
         $item = $rs->fields["item"];
-        $d = getMaterialDollarsEACDiff($prev_rpt_period,$rpt_period, $ship_code, $item);
+        $d = getMaterialDollarsEACDiff($prev_rpt_period,$rpt_period, $ship_code, $item, "est_vac");
+        $bac_change = getMaterialDollarsEACDiff($prev_rpt_period,$rpt_period, $ship_code, $item, "s_vac");
         $html.= "
             <tr>
                 <td>$item</td>
                 <td>$d</td>
-                <td></td>
+                <td>$bac_change</td>
                 <td></td>
             </tr>
         ";
         $total_d+=$d;
+        $total_bac_change+=$bac_change;
         $rs->MoveNext();
     }
     $html.="<tr></tr>";
@@ -741,7 +795,7 @@ function getMATLEACDIFF($prev_rpt_period,$rpt_period,$ship_code)
                 <tr>
                 <td>Month End $rpt_period Material EAC Changes</td>
                 <td>$total_d</td>
-                <td></td>
+                <td>$total_bac_change</td>
                 <td></td>
             </tr>
     ";
@@ -756,7 +810,7 @@ function getMATLEACDIFF($prev_rpt_period,$rpt_period,$ship_code)
     ";
     return $html;
 }
-function getMaterialDollarsEACDiff($prev_rpt_period,$rpt_period, $ship_code, $item)
+function getMaterialDollarsEACDiff($prev_rpt_period,$rpt_period, $ship_code, $item, $field)
 {
     if($ship_code>=477){
         $table_name = "_cpr1m";
@@ -767,8 +821,8 @@ function getMaterialDollarsEACDiff($prev_rpt_period,$rpt_period, $ship_code, $it
     $sql = "        
         select
             cur.item,
-            sum(cur.est_vac) cur,
-            sum(prev.est_vac)  prev
+            sum(cur.$field) cur,
+            sum(prev.$field)  prev
         from ".$prev_rpt_period.$table_name." prev 
         inner join ".$rpt_period.$table_name." cur 
         on prev.item = cur.item and prev.ship_code = cur.ship_code
@@ -807,8 +861,178 @@ function getTotalOutsourceHoursBYOBS($prev_rpt_period,$rpt_period, $table_name, 
     $data["cur"]  = $cur;
     return $data;
 }
+function getSPI($prev_rpt_period,$rpt_period, $table_name, $ship_code){
 
-function buildCurCumSpiCpi(){
+    $s = getSubTotalRow($prev_rpt_period,$rpt_period, $table_name, $ship_code, "s_cur");
+
+    $s_cur = $s["cur"];
+    $s_prev = $s["prev"];
+    $p = getSubTotalRow($prev_rpt_period,$rpt_period, $table_name, $ship_code, "p_cur");
+    $p_cur = $p["cur"];
+    $p_prev = $p["prev"];
+    $data["cur"] = ($p_cur/$s_cur);
+    $data["prev"] = ($p_prev/$s_prev);
+    return $data;
+}
+function getSPICUM($prev_rpt_period,$rpt_period, $table_name, $ship_code){
+
+    $s = getSubTotalRow($prev_rpt_period,$rpt_period, $table_name, $ship_code, "s_cum");
+    $s_cur = $s["cur"];
+    $s_prev = $s["prev"];
+    $p = getSubTotalRow($prev_rpt_period,$rpt_period, $table_name, $ship_code, "p_cum");
+    $p_cur = $p["cur"];
+    $p_prev = $p["prev"];
+    $data["cur"] = ($p_cur/$s_cur);
+    $data["prev"] = ($p_prev/$s_prev);
+    return $data;
+}
+function getCPI($prev_rpt_period,$rpt_period, $table_name, $ship_code){
+
+    $s = getSubTotalRow($prev_rpt_period,$rpt_period, $table_name, $ship_code, "a_cur");
+
+    $s_cur = $s["cur"];
+    $s_prev = $s["prev"];
+    $p = getSubTotalRow($prev_rpt_period,$rpt_period, $table_name, $ship_code, "p_cur");
+    $p_cur = $p["cur"];
+    $p_prev = $p["prev"];
+    $data["cur"] = ($p_cur/$s_cur);
+    $data["prev"] = ($p_prev/$s_prev);
+
+    return $data;
+}
+function getCPICUM($prev_rpt_period,$rpt_period, $table_name, $ship_code){
+
+    $s = getSubTotalRow($prev_rpt_period,$rpt_period, $table_name, $ship_code, "a_cum");
+
+    $s_cur = $s["cur"];
+    $s_prev = $s["prev"];
+    $p = getSubTotalRow($prev_rpt_period,$rpt_period, $table_name, $ship_code, "p_cum");
+    $p_cur = $p["cur"];
+    $p_prev = $p["prev"];
+    $data["cur"] = ($p_cur/$s_cur);
+    $data["prev"] = ($p_prev/$s_prev);
+
+    return $data;
+}
+function buildSPIIndexTR($ship_code, $rpt_period,$prev_rpt_period){
+
+    $table_name = getCorrespondingTable($ship_code, "_cpr1d");
+    $spi = getSPI($prev_rpt_period,$rpt_period, $table_name, $ship_code);
+    $cur_spi = $spi["cur"];
+    $cum_spi = $spi["prev"];
+
+    $table_name = getCorrespondingTable($ship_code, "_cpr1l");
+    $spi = getSPI($prev_rpt_period,$rpt_period, $table_name, $ship_code);
+    $cur_spi_l = $spi["cur"];
+    $cum_spi_l = $spi["prev"];
+
+    $table_name = getCorrespondingTable($ship_code, "_cpr1m");
+    $spi = getSPI($prev_rpt_period,$rpt_period, $table_name, $ship_code);
+    $cur_spi_m = $spi["cur"];
+    $cum_spi_m = $spi["prev"];
+
+    $html ="<tr>
+            <td>CUR SPI</td>
+            <td>$cur_spi</td>
+            <td>$cum_spi</td>
+            <td>$cur_spi_l</td>
+            <td>$cum_spi_l</td>
+            <td>$cur_spi_m</td>
+            <td>$cum_spi_m</td>
+          </tr>        
+            ";
+    return $html;
+}
+function buildSPICUMIndexTR($ship_code, $rpt_period,$prev_rpt_period){
+
+    $table_name = getCorrespondingTable($ship_code, "_cpr1d");
+    $spi = getSPICUM($prev_rpt_period,$rpt_period, $table_name, $ship_code);
+    $cur_spi = $spi["cur"];
+    $cum_spi = $spi["prev"];
+
+    $table_name = getCorrespondingTable($ship_code, "_cpr1l");
+    $spi = getSPICUM($prev_rpt_period,$rpt_period, $table_name, $ship_code);
+    $cur_spi_l = $spi["cur"];
+    $cum_spi_l = $spi["prev"];
+
+    $table_name = getCorrespondingTable($ship_code, "_cpr1m");
+    $spi = getSPICUM($prev_rpt_period,$rpt_period, $table_name, $ship_code);
+    $cur_spi_m = $spi["cur"];
+    $cum_spi_m = $spi["prev"];
+
+    $html ="<tr>
+            <td>CUR SPI</td>
+            <td>$cur_spi</td>
+            <td>$cum_spi</td>
+            <td>$cur_spi_l</td>
+            <td>$cum_spi_l</td>
+            <td>$cur_spi_m</td>
+            <td>$cum_spi_m</td>
+          </tr>        
+            ";
+    return $html;
+}
+function buildCPIIndexTR($ship_code, $rpt_period,$prev_rpt_period){
+    $table_name = getCorrespondingTable($ship_code, "_cpr1d");
+    $cpi = getCPI($prev_rpt_period,$rpt_period, $table_name, $ship_code);
+    $cur_cpi = $cpi["cur"];
+    $cum_cpi = $cpi["prev"];
+
+    $table_name = getCorrespondingTable($ship_code, "_cpr1l");
+    $cpi = getCPI($prev_rpt_period,$rpt_period, $table_name, $ship_code);
+    $cur_cpi_l = $cpi["cur"];
+    $cum_cpi_l = $cpi["prev"];
+
+    $table_name = getCorrespondingTable($ship_code, "_cpr1m");
+    $cpi = getCPI($prev_rpt_period,$rpt_period, $table_name, $ship_code);
+    $cur_cpi_m = $cpi["cur"];
+    $cum_cpi_m = $cpi["prev"];
+
+    $html ="
+        <tr>
+            <td>CUR CPI</td>
+            <td>$cur_cpi</td>
+            <td>$cum_cpi</td>
+            <td>$cur_cpi_l</td>
+            <td>$cum_cpi_l</td>
+            <td>$cur_cpi_m</td>
+            <td>$cum_cpi_m</td>
+        </tr>
+            ";
+    return $html;
+}
+function buildCPICUMIndexTR($ship_code, $rpt_period,$prev_rpt_period){
+    $table_name = getCorrespondingTable($ship_code, "_cpr1d");
+    $cpi = getCPICUM($prev_rpt_period,$rpt_period, $table_name, $ship_code);
+    $cur_cpi = $cpi["cur"];
+    $cum_cpi = $cpi["prev"];
+
+    $table_name = getCorrespondingTable($ship_code, "_cpr1l");
+    $cpi = getCPICUM($prev_rpt_period,$rpt_period, $table_name, $ship_code);
+    $cur_cpi_l = $cpi["cur"];
+    $cum_cpi_l = $cpi["prev"];
+
+    $table_name = getCorrespondingTable($ship_code, "_cpr1m");
+    $cpi = getCPICUM($prev_rpt_period,$rpt_period, $table_name, $ship_code);
+    $cur_cpi_m = $cpi["cur"];
+    $cum_cpi_m = $cpi["prev"];
+
+    $html ="
+        <tr>
+            <td>CUM CPI</td>
+            <td>$cur_cpi</td>
+            <td>$cum_cpi</td>
+            <td>$cur_cpi_l</td>
+            <td>$cum_cpi_l</td>
+            <td>$cur_cpi_m</td>
+            <td>$cum_cpi_m</td>
+        </tr>
+            ";
+    return $html;
+}
+
+function buildCurCumSpiCpi($ship_code, $rpt_period, $prev_rpt_period){
+
     $html = "";
     $html.="
     <table>
@@ -827,47 +1051,18 @@ function buildCurCumSpiCpi(){
             <td >Current</td>
             <td >previous</td>
         </tr>
-        <tr>
-            <td>CUR SPI</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>        
-        <tr>
-            <td>CUR CPI</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>        
-        <tr>
-            <td>CUM SPI</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>        
-        <tr>
-            <td>CUM CPI</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-    </table>
     ";
+    $html.=buildSPIIndexTR($ship_code, $rpt_period,$prev_rpt_period);
+    $html.=buildCPIIndexTR($ship_code, $rpt_period,$prev_rpt_period);
+    $html.=buildSPICUMIndexTR($ship_code, $rpt_period,$prev_rpt_period);
+    $html.=buildCPICUMIndexTR($ship_code, $rpt_period,$prev_rpt_period);
+
+    $html.="</table>";
     return $html;
 }
-function  returnBACEACTableParts($field, $prev,$cur,$diff,$pc){
+function  returnBACEACTableParts($field, $prev= 0,$cur= 0){
+    $diff = $cur-$prev;
+    $pc = $diff/$cur;
     $html ="        
         <tr>
             <td>$field</td>    
@@ -875,6 +1070,18 @@ function  returnBACEACTableParts($field, $prev,$cur,$diff,$pc){
             <td>$prev</td>    
             <td>$diff</td>    
             <td>$pc</td>    
+        </tr>";
+    return $html;
+}
+function  returnBACEACTableHeaders($field, $prev_full_month, $cur_full_month){
+
+    $html ="        
+        <tr>
+            <td>$field</td>    
+            <td>$cur_full_month</td>    
+            <td>$prev_full_month</td>    
+            <td>DIFF</td>    
+            <td>% Change</td>    
         </tr>";
     return $html;
 }

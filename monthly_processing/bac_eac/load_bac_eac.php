@@ -39,7 +39,7 @@ if($control =="load_data") {
     //$batch_rpt_name = $ship_code." Class";
 
     $batch_rpt_name = "csv".$ship_code."BACEAC";
-    //runCobraBatchReportProcess($ship_code,$batch_rpt_name, $g_path2CobraAPI,$g_path2BatrptCMD,$g_path2BatrptBAT,$debug);
+    runCobraBatchReportProcess($ship_code,$batch_rpt_name, $g_path2CobraAPI,$g_path2BatrptCMD,$g_path2BatrptBAT,$debug);
 
     $ship_code = intval($ship_code);
     if($ship_code>=477)
@@ -56,7 +56,7 @@ if($control =="load_data") {
         $cpr_file_array["02-02 FY14AF CPR2L WBS_Labor Only"]       = "_cpr2l_wbs";
         $cpr_file_array["02-02 FY14AF CPR2M OBS_Material and ODC"] = "_cpr2m_obs";
         $cpr_file_array["02-02 FY14AF CPR2M WBS_Material and ODC"] = "_cpr2m_wbs";
-        $cpr_file_array["02-02H CPR 2 OutSource_Outsource Only"]   = "_cpr2o";
+        $cpr_file_array["CPR 2 Outsource_Outsource Only"]   = "_cpr2o";
     }
     else{
         $cpr_file_array["02-02H CPR 2 OutSource"]                 = "_pre17_cpr2o";

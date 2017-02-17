@@ -283,6 +283,7 @@ function createCobraBatchrptBATFile($bacth_report_name,$ship_code,$g_path2BAT)
 function runCobraBatchReportProcess($ship_code,$batch_rpt_process_name, $g_path2CobraAPI,$g_path2CMD,$g_path2BAT,$debug=false)
 {
     $bat_file_name = createCobraBatchrptBATFile($batch_rpt_process_name, $ship_code, $g_path2BAT);
+    sleep(.5);
     $cmd_file      = createCobraBatchrptCMDFile($ship_code, $g_path2CobraAPI, $g_path2CMD, $bat_file_name);
     if($debug==false)
     {

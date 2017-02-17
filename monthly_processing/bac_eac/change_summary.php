@@ -85,7 +85,7 @@ function produceChangeSummaryHTML($ship_code, $rpt_period,$prev_rpt_period, $shi
     <tr>
             <td>LABOR EAC Changes</td>
             <td>HOURS</td>
-            <td>DOLLARS</td>
+            <td>BAC HOURS</td>
             <td>NOTES</td>
     </tr>";
     $diff_html = getLABOREACDIFF($prev_rpt_period,$rpt_period,$ship_code);
@@ -94,9 +94,9 @@ function produceChangeSummaryHTML($ship_code, $rpt_period,$prev_rpt_period, $shi
     $html.="<tr></tr>";
     $html.="
     <tr>
-            <td>Material EAC Changes</td>
-            <td>Dollars</td>
-            <td></td>
+            <td>Material Changes</td>
+            <td>EAC Change</td>
+            <td>Budget Change</td>
             <td>NOTES</td>
     </tr>";
     $html.="<tr></tr>";
@@ -123,7 +123,7 @@ function produceChangeSummaryHTML($ship_code, $rpt_period,$prev_rpt_period, $shi
 
     $html.="<tr></tr>";
     $html.="<tr></tr>";
-    $ev_html = buildCurCumSpiCpi();
+    $ev_html = buildCurCumSpiCpi($ship_code, $rpt_period, $prev_rpt_period);
     $html.=$ev_html;
     $html.="</table>";
     return $html;

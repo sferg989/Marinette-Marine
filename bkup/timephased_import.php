@@ -34,6 +34,7 @@ if ($_FILES[csv][size] > 0) {
     $sql = $insert_sql;
     /*create counter so insert 1000 rows at a time.*/
     $i=0;
+
     while (($data = fgetcsv($handle, 1000, ",")) !== FALSE)
     {
         $wbs_id   = $data[0];

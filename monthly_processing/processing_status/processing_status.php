@@ -88,7 +88,10 @@ if($control=="project_grid")
 }
 if($control=="status_grid")
 {
-
+    $wc = "where st.url is not NULL and st.url <> ''";
+    if($all_tools == "true"){
+        $wc = "";
+    }
     $data = "[";
     $sql = "
 
@@ -104,7 +107,8 @@ if($control=="status_grid")
           timeline
         from processing_status.steps  st left join processing_status.ship ship
           on st.id = ship.step_id and ship.ship_code = $ship_code and ship.period = $rpt_period   
-        where st.url is not NULL and st.url <> ''
+        $wc
+        
         order by step_id
   ";
     //print $sql;
@@ -148,7 +152,7 @@ if($control =="update_status")
 {
     //this means that there is a record for this ship/step/reporting period.  we
     //need log it than update the record.
-    mail("stephen.ferguson@us.fincantieri.com", "this is a test", "THis is a test MSG");
+    //mail("stephen.ferguson@us.fincantieri.com", "this is a test", "THis is a test MSG");
     if($status=="false")
     {
         $status = "0";
@@ -172,22 +176,27 @@ if($control =="update_status")
     }
 
 }
-if($control=="wi_list"){
-    $data = "<ul>";
-    $sql = "select step_id, common_name, path from processing_status.wi";
-    $rs = dbCall($sql, "processing_status");
 
-    while (!$rs->EOF)
-    {
-        $step_id     = $rs->fields["step_id"];
-        $common_name = $rs->fields["common_name"];
-        $path       = $rs->fields["path"];
-        $data.="<li>
-                    
+if($control=="wi_list_dir_scan"){
+    $data = "<table id ='wi_table'><ul>";
+    $directory =$g_path2_wi_localhost;
+    $i= 1;
+    foreach (scandir($directory) as $file) {
+        if ('.' === $file) continue;
+        if ('..' === $file) continue;
+        $file_name = trim(substr($file, 0, -5));
+        $path = "../../util/wi/".$file;
+
+            $data.="<tr><td>
+                <li>
                     <img src=\"../../inc/images/Word-icon-small.png\" height=\"24\" width=\"24\"/>
-                    <a onclick='window.open(\"$path\");'>$common_name</li></a>";
-        $rs->MoveNext();
+                    <a href = \"#\" onclick='window.open(\"$path\");'>$file_name
+                </li></a></td></tr>";
+
+
+        $i++;
     }
+
     $data.="</ul>";
     die($data);
 }

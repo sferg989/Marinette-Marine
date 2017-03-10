@@ -55,16 +55,21 @@ BOOTBOX
                     <button type="button" id = "wi_btn" class="btn btn-info" data-toggle="modal" data-target="#myModal">Open Work Instructions</button>
                 <!-- The Modal -->
                     <!-- Modal -->
-                    <div class="modal fade" id="myModal" role="dialog">
-                        <div class="modal-dialog">
+                    <div width class="modal fade" id="myModal" role="dialog">
+                        <div class="modal-dialog ">
 
                             <!-- Modal content-->
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                                     <h4 class="modal-title">Work Instruction List</h4>
+                                    <div class="inner-addon right-addon">
+                                        <i class="glyphicon glyphicon-search"></i>
+                                        <input type="text" class="form-control" id="filterInput" placeholder="Search for WI" />
+                                    </div>
+                                    <!--<input type="text" id="filterInput" placeholder="Search for WI..">-->
                                 </div>
-                                <div id = "wi_list" class="modal-body">
+                                <div id = "wi_list" class="modal-body ativa-scroll">
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" id = "wi_btn_close" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -91,6 +96,13 @@ BOOTBOX
         <div class = "col-md-3">
             <br><br>
             <button class ="btn btn-success" type="button" id="mybutton">Submit</button>
+        </div>
+        <div class = "col-md-3">
+            <br><br>
+            <div class="checkbox">
+                <input id = "active_pages" type="checkbox" >
+                <label for ="active_pages">All Tools</label>
+            </div>
         </div>
     </div>
     <div id="status_grids"></div>

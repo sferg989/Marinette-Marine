@@ -130,7 +130,7 @@ if($control =="load_data") {
         $i = 1;
         while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
 
-            $item       = trim($data[0]);
+            $item       = addslashes(trim($data[0]));
             $s_cur      = removeCommanDollarSignParan($data[2]);
             $p_cur      = removeCommanDollarSignParan($data[3]);
             $a_cur      = removeCommanDollarSignParan($data[4]);

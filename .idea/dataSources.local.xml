@@ -3,6 +3,7 @@
   <component name="dataSourceStorageLocal">
     <data-source name="localhost - fmm_evms@localhost" uuid="08e0cc48-623e-489c-958a-e24f4db78143">
       <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" />
+      <user-name>steve</user-name>
     </data-source>
     <data-source name="localhost - cost@localhost" uuid="6286012a-b581-4a5e-a8c4-d54d35d92f67">
       <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" />

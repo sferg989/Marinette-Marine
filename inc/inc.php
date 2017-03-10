@@ -1,7 +1,6 @@
 <?php
 
 include("mmev.inc.php");
-
 session_start();
 
 function dbCall($sql,$schema="fmm_evms",$server="localhost"){
@@ -19,7 +18,6 @@ function now()
     $timestamp = date("Y-m-d h:i:s");
     return $timestamp;
 }
-
 
 function truncateTable($schema, $table){
     $sql = "truncate table $schema.$table";
@@ -312,8 +310,8 @@ function createArchiveBatFile($ship_code,$prev_2digit_month,$prev_2digit_year,$p
     $project2copy = $ship_code;
 
 
-    //$arhive_project_name = $ship_code."".$cur_2digit_month."".$cur_2digit_year;
-    $arhive_project_name = $ship_code.""."-test";
+    $arhive_project_name = $ship_code."".$prev_2digit_month."".$prev_2digit_year;
+    //$arhive_project_name = $ship_code.""."-test";
 
     $project_description = $ship_code." ".$prev_month_letters." ".$prev_year." Archive";
 
@@ -497,6 +495,15 @@ function fixExcelDate2DigitYear($date)
     }
     return  date('Y-m-d', strtotime($date));
 }
+function fixExcelDateMySQL($date)
+{
+    //print "THis is the date. ".$date."<br>";
+    if($date=="")
+    {
+        return "0000-00-00";
+    }
+    return  date('Y-m-d', strtotime($date));
+}
 function removeCommanDollarSignParan($number){
     $number_no_sign = str_replace("$", "", $number);
     $no_comma = str_replace(",", "", $number_no_sign);
@@ -519,6 +526,15 @@ function formatNumber($number){
         return $number;
     }
     return "";
+}
+function formatNumber4decNoComma($number){
+    $no_comma = floatval(str_replace(",", "", $number));
+
+    $value    = number_format($no_comma, 4, ".", "");
+    if($value ==""){
+        $value = 0;
+    }
+    return $value;
 }
 function formatNumberPHPEXCEL($number){
     if($number!="" or $number !=0){
@@ -573,4 +589,11 @@ function createTableFromBase($schema,$base_table, $new_table_name){
 
     $sql = str_replace($base_table, $new_table_name, $create_table_stmt);
     $junk = dbCall($sql, $schema);
+}
+function clearDirectory($path2directory){
+    $files = glob($path2directory."/*"); // get all file names
+    foreach($files as $file){ // iterate files
+        if(is_file($file))
+            unlink($file); // delete file
+    }
 }

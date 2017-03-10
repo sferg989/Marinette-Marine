@@ -30,7 +30,11 @@ $g_path2ReClassProjectCMD = $g_path_to_util . "reclass\\CMD\\";
 
 $g_path2AdvanceCalendarProjectBAT = $g_path_to_util . "advance_calendar\\BAT\\";
 $g_path2AdvanceCalendarProjectCMD = $g_path_to_util . "advance_calendar\\CMD\\";
+$g_path2weeklyPerformanceCSV      = $g_path_to_util . "csv_weekly_performance_report\\";
 
 $g_path2CobraAPI = "\"program files (x86)\"\\deltek\\\"cobra 5\"\\cobra.api.exe";
 
-$g_path2_wi              = "Y:\\Program Management\\Cobra Processing 5.1\\Cobra 5.1 Work Instructions";
+$g_path2_wi           = "Y:\\Program Management\\Cobra Processing 5.1\\Cobra 5.1 Work Instructions";
+$g_path2_wi_localhost = $g_path_to_util."wi";
+
+$g_path2_baan_work           = "A:\\PFA_Committed_PO";

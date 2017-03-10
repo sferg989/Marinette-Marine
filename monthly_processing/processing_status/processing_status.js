@@ -54,7 +54,7 @@ $(document).ready(function() {
             }
         });
     }
-    function initGrid(index, control, ship_code, rptPeriod)
+    function initGrid(index, control, ship_code, rptPeriod,activepages_cb)
     {
         var dataView = new Slick.Data.DataView();
         var grid = new Slick.Grid('#' + index, dataView, shipStatusCols, options);
@@ -63,9 +63,10 @@ $(document).ready(function() {
             dataType: "json",
             url     : url,
             data: {
-                control   : control,
-                ship_code : ship_code,
-                rpt_period: rptPeriod
+                control     : control,
+                ship_code   : ship_code,
+                all_tools: activepages_cb,
+                rpt_period  : rptPeriod
             },
             success: function(data) {
                 dataView.beginUpdate();
@@ -92,7 +93,7 @@ $(document).ready(function() {
         $.ajax({
             url     : url,
             data: {
-                control   : "wi_list"
+                control   : "wi_list_dir_scan"
             },
             success : function (data) {
                 $("#wi_list").append(data);
@@ -100,10 +101,35 @@ $(document).ready(function() {
         });
     }
     function myStepLink(row, cell, value, columnDef, dataContext) {
+        if(dataContext.url ==""){
+            return "<p class = 'coming_soon'>"+value+" (comming soon!)</p>";
+        }
         var link_paran = "<a href="+dataContext.url+"?ship_code="+dataContext.code+"&rpt_period="+rpt_period+">"+value+"</a>";
         return link_paran;
     }
+    function filterWIList() {
+        // Declare variables
+        var input, filter, table, tr, td, i;
+        input  = document.getElementById("filterInput");
+        filter = input.value.toUpperCase();
+        table  = document.getElementById("wi_table");
+        tr     = table.getElementsByTagName("tr");
 
+        // Loop through all table rows, and hide those who don't match the search query
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[0];
+            if (td) {
+                if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+    function ajustamodal() {
+        $(".ativa-scroll").css({"height":300,"overflow-y":"auto"});
+    }
     function createSelect2Box(filter_name) {
         var place_holder = filter_name.replace("_", "  ");
 
@@ -155,13 +181,15 @@ $(document).ready(function() {
         },{
             id       : "wi",
             name     : "Work Instruction",
+            minWidth           : 300,
+            maxWidth           : 500,
             formatter: myStepLink,
             field    : "wi"
-        },{
+        }/*,{
             id   : "timeline",
-            name : "timeline",
+            name : "Timeline",
             field: "timeline"
-        },{
+        }*/,{
             id    : "pfa_notes",
             name  : "PFA Notes",
             editor: Slick.Editors.Text,
@@ -216,6 +244,7 @@ $(document).ready(function() {
     });
 
     $("#mybutton").click(function() {
+        var activepages_cb = $('#active_pages').is(':checked')
 
         $("#status_grids").empty();
         selectedIndexes = project_grid.getSelectedRows();
@@ -243,16 +272,20 @@ $(document).ready(function() {
                 createRowElement(ship_chode,ship_name);
                 closeRowDiv();
             }
-            initGrid(ship_chode, "status_grid", ship_chode, rpt_period);
+            initGrid(ship_chode, "status_grid", ship_chode, rpt_period,activepages_cb);
             i++;
         });
 
     });
     $("#wi_btn").click(function(){
+        ajustamodal();
         getWIList()
     });
     $("#wi_btn_close").click(function() {
-        $("#wi_list").remove();
-    })
+        $("#wi_table").remove();
+    });
 
+    $("#filterInput").keyup(function() {
+        filterWIList();
+    });
 });

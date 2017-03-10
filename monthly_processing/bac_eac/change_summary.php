@@ -37,10 +37,10 @@ function produceChangeSummaryHTML($ship_code, $rpt_period,$prev_rpt_period, $shi
         </tr>        
 ";
     $table_name = getCorrespondingTable($ship_code, "_cpr2d_obs");
-    $mr = getMR($prev_rpt_period,$rpt_period, $table_name, $ship_code, "s_vac");
-    $prev_mr = $mr["prev"];
-    $cur_mr = $mr["cur"];
-    $diff_mr = $cur_mr- $prev_mr;
+    $mr         = getMR($prev_rpt_period, $rpt_period, $table_name, $ship_code, "s_vac");
+    $prev_mr    = $mr["prev"];
+    $cur_mr     = $mr["cur"];
+    $diff_mr    = $cur_mr - $prev_mr;
     $html.= "
         <tr>
             <td>Management Reserve</td>
@@ -58,10 +58,10 @@ function produceChangeSummaryHTML($ship_code, $rpt_period,$prev_rpt_period, $shi
             <td>NOTES</td>
     </tr>";
     $table_name = getCorrespondingTable($ship_code, "_cpr2d_obs");
-    $ub = getUB($prev_rpt_period,$rpt_period, $table_name, $ship_code, "est_vac");
-    $prev_ub       = $ub["prev"];
-    $cur_ub        = $ub["cur"];
-    $diff       = $cur_ub-$prev_ub;
+    $ub         = getUB($prev_rpt_period, $rpt_period, $table_name, $ship_code, "est_vac");
+    $prev_ub    = $ub["prev"];
+    $cur_ub     = $ub["cur"];
+    $diff       = $cur_ub - $prev_ub;
 
     $html.="
         <tr>

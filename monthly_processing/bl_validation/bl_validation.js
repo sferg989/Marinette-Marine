@@ -8,7 +8,7 @@ $(document).ready(function() {
     function goBack() {
         window.history.back();
     }
-    function checkifBCRAndBaselineLoaded(ship_code, rpt_period)
+    function checkIFDataIsLoaded(ship_code, rpt_period)
     {
         var data_check = {};
         data_check = $.ajax({
@@ -42,22 +42,21 @@ $(document).ready(function() {
 
     $("#rpt_period_div").append(rpt_period);
     $("#title").append(code);
-
     $("#rpt_period_div").addClass("title_font");
     $("#title").addClass("title_font");
-
 
     $("#back_btn").click(function(){
         goBack();
     });
 
-    $("#mybutton").click(function() {
+    $("#load_p6_bl_labor").click(function() {
         var step        = {};
-        var p6Dataval   = $('#p6data').val();
-
+        var p6Dataval   = $('#p6_bl_labor').val();
+        bootbox.alert("this worked");
+        return false;
         step.code       = code;
-        step.action     = "load_p6_data";
-        step.name       = "Load P6 Data";
+        step.action     = "load_p6_bl_data";
+        step.name       = "Load P6 Baseline Data";
         step.rpt_period = rpt_period;
         step.p6Data2    = p6Dataval;
 
@@ -71,7 +70,7 @@ $(document).ready(function() {
             $("#img_"+step.action).empty();
         }
         $("#status").append("<div id = \"img_"+step.action+"\"><br><img src=\"../../inc/images/ajax-loader.gif\" height=\"32\" width=\"32\"/>"+step.name+"<br></div>");
-        workers     = new Worker("workers/load_p6.js");
+        workers     = new Worker("workers/load_p6_bl_data.js");
         workers.onmessage = workerDone;
         workers.postMessage(step);
         function workerDone(e) {
@@ -79,19 +78,18 @@ $(document).ready(function() {
             $("#img_"+e.data.id+" img").attr("src", "../images/tick.png");
         }
     });
-    $("#load_bcrs").click(function() {
+    $("#load_p6_timephased").click(function() {
         var step = {};
-        var bcrDataval  = $("#bcr_data").val();
+        var bcrDataval  = $("#p6_timephased_data").val();
         if(bcrDataval=="" || bcrDataval ==undefined){
             bootbox.alert("Please Insert some data to upload!");
-
             return false;
         }
 
         step.code       = code;
         step.rpt_period = rpt_period;
         step.bcrData2    = bcrDataval;
-        step.action = "load_bcr";
+        step.action = "load_p6_time";
         step.name   = "Load BCR's"
         var worker;
         if($("#img_"+step.action.length))
@@ -110,12 +108,12 @@ $(document).ready(function() {
         }
     });
 
-    $("#ims_dc").click(function() {
+    $("#bl_valid_check").click(function() {
         var step = {};
         var data_check;
         step.code       = code;
         step.rpt_period = rpt_period;
-        step.action = "compare_ca";
+        step.action = "p6Data_check";
         if($("#img_"+step.action.length))
         {
             $("#img_"+step.action).remove();
@@ -168,7 +166,6 @@ $(document).ready(function() {
                 $("#img_"+id+" img").attr("src", "../images/tick.png");
             }
             //console.log(e.data);
-
         }
     });
 

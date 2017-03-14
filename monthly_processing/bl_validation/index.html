@@ -1,0 +1,147 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+
+    <script
+            src="https://code.jquery.com/jquery-2.2.4.min.js"
+            integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+            crossorigin="anonymous"></script>
+    <script src="../../inc/lib/js/tether-1.3.3/dist/js/tether.min.js"></script>
+    <script src="../../inc/lib/css/bootstrap/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="../../inc/lib/css/bootstrap/css/bootstrap.css">
+    <script src="../../inc/lib/css/bootbox.min.js"></script>
+
+    <script src="../../global_worker/check_login_level2.js"></script>
+    <script src="bl_validation.js"></script>
+
+    <style>
+        .alt-grid [class*="col-"] {padding-left:15;padding-right:15}
+        .alt-grid .row {margin-left:15;margin-right:15}
+
+        /* container adjusted */
+        .alt-grid .container {width:96%;max-width:none;padding:0;}
+        .cell-title {
+            font-weight: 900;
+        }
+        .title_font {
+            font-size: 25px;
+            font-family : "Helvetica ";
+        }
+        .in_que {
+            font-size: 25px;
+            font-family : "Helvetica";
+            color : blue;
+        }
+        .processing {
+            font-size: 25px;
+            font-family : "Helvetica ";
+            color : red;
+        }
+        .complete {
+            font-size: 25px;
+            font-family : "Helvetica ";
+            color : green;
+        }
+        .table_headers {
+            text-align: center;
+        }
+        .table_data {
+            text-align: right;
+            font-weight: bold;
+        }
+        .status_font {
+            font-weight: 900;
+            color : red;
+        }
+        .slick-viewport {
+            overflow-x: hidden !important;
+        }
+        .cell-effort-driven {
+            text-align: center;
+        }
+        .cell-selection {
+            border-right-color: silver;
+            border-right-style: solid;
+            background: #f5f5f5;
+            color: gray;
+            text-align: right;
+            font-size: 5px;
+        }
+
+        .slick-row.ui-widget-content, .slick-cell {
+            color: #333;
+            font-size: 12px;
+            height: 60px;
+            padding: 0;
+            white-space: normal;
+        }
+        .slick-row.selected .cell-selection {
+            background-color: transparent; /* show default selected row background */
+        }
+        [class^="slickgrid_"],
+        [class^="slickgrid_"] div {
+            -webkit-box-sizing: content-box;
+            -moz-box-sizing: content-box;
+            box-sizing: content-box;
+        }
+    </style>
+
+</head>
+<body class="alt-grid">
+<!--<div id = "filters">-->
+<br>
+<br>
+<div class="container">
+        <div class="row">
+            <div class="col-md-1">
+                <button id="back_btn" type="button" class="btn btn-info">Back</button>
+            </div>
+            <div class="col-md-3">
+                <h6><div id = "rpt_period_div">Reporting Period- </div></h6>
+            </div>
+            <div class="col-md-3">
+                <h6><div id = "title">Baseline Validation</div></h6>
+            </div>
+        </div>
+    <br><br>
+    <div class="row">
+        <div class="col-md-9">
+            <h6>Copy/Paste P6 Labor Validation Data</h6>
+            <div id = "text_arrea_p6">
+                <textarea id = "p6_bl_labor" class="form-control" placeholer="Copy Data from P6 17AF Labor \Validation"></textarea>
+            </div>
+            <h6>Copy/Paste P6 Labor BCWS CUM Data</h6>
+            <div id = "text_area_p6_timephase">
+                <textarea id = "p6_timephased_data" class="form-control" placeholer="Copy Data from P6 17AF Labor cumBCWS Validation"></textarea>
+            </div>
+        </div>
+        <div id = "status" class = "col-md-2"></div>
+    </div>
+    <div id = "btn_div" class="row">
+        <div class = "col-md-2">
+            <br>
+            <br>
+            <button id="load_p6_bl_labor" type="button" class="btn btn-warning">Load P6 Baseline Validation</button>
+        </div>
+        <div class = "col-md-2">
+            <br>
+            <br>
+            <button id="load_p6_timephased" type="button" class="btn btn-warning">LOAD P6 Timephased</button>
+        </div>
+        <div class = "col-md-3">
+            <br>
+            <br>
+            <button id="bl_valid_check" type="button" class="btn btn-success">Run Baseline Validation</button>
+        </div>
+        <div id = "excel_export_btn_div" class = "col-md-3">
+        </div>
+    </div>
+</div>
+
+
+<div id="result"></div>
+
+</body>
+
+
+</html>

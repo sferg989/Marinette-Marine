@@ -112,23 +112,5 @@ $(document).ready(function() {
                 $("#img_"+e.data.id+" img").attr("src", "../images/tick.png");
             }
         });
-        $.each(selectedIndexes, function( index, value ) {
-/*            workers.action = new Worker('workers/cobra_bkup.js');
-
-            //var worker = new Worker('workers/cobra_bkup.js');
-            workers.action.postMessage(step);
-            workers.action.onmessage = function(e) {
-                msg = e.data;
-                if(msg=="finished")
-                {
-                    $("#img_"+step.action+" img").attr("src", "../images/tick.png");
-                }
-            }*/
-
-            //$("#"+step.action).addClass("complete");
-            //performStep(step);
-            //
-        });
-
     });
 })

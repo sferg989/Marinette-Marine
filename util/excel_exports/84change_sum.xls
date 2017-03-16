@@ -1,0 +1,132 @@
+<table>
+        <tr>
+            <td colspan='4'></td>
+        </tr>
+        <tr>
+            <td>EAC CHANGES</td>
+            <td>Current</td>
+            <td>Change</td>
+            <td>NOTES</td>
+        </tr>        
+        <tr>
+            <td>Best Case</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>        
+        <tr>
+            <td>Worst Case</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Most Likely</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>        
+
+        <tr>
+            <td>Management Reserve</td>
+            <td>3244990.0000</td>
+            <td>-30615</td>
+            <td></td>
+        </tr>
+<tr></tr>
+    <tr>
+            <td>UB Changes</td>
+            <td>Dollars</td>
+            <td>PCW/MOD</td>
+            <td>NOTES</td>
+    </tr>
+        <tr>
+            <td>Beginning UB</td>    
+            <td>12922832.0000</td>    
+            <td></td>    
+            <td></td>    
+        </tr>
+        <tr></tr>
+        <tr>
+            <td>Ending UB</td>    
+            <td>12782286.0000</td>    
+            <td></td>    
+            <td></td>    
+        </tr>
+        <tr></tr>
+    <tr>
+            <td>LABOR EAC Changes</td>
+            <td>HOURS</td>
+            <td>DOLLARS</td>
+            <td>NOTES</td>
+    </tr>
+            <tr>
+                <td>600 Manufacturing</td>
+                <td>20121</td>
+                <td>1371447</td>
+                <td></td>
+            </tr>
+        
+            <tr>
+                <td>620 Manufacturing Supervision</td>
+                <td>-5525</td>
+                <td>-298663</td>
+                <td></td>
+            </tr>
+        
+            <tr>
+                <td>650 Production Planning & Control</td>
+                <td>-946</td>
+                <td>-56058</td>
+                <td></td>
+            </tr>
+        
+            <tr>
+                <td>500 Engineering</td>
+                <td>-2417</td>
+                <td>-106612</td>
+                <td></td>
+            </tr>
+        
+            <tr>
+                <td>300 Purchasing</td>
+                <td>-822</td>
+                <td>400027</td>
+                <td></td>
+            </tr>
+        
+            <tr>
+                <td>611 Program Management</td>
+                <td>-860</td>
+                <td>-41717</td>
+                <td></td>
+            </tr>
+        
+            <tr>
+                <td>200 Finance</td>
+                <td>-39</td>
+                <td>-2269</td>
+                <td></td>
+            </tr>
+        
+            <tr>
+                <td>546 Quality Assurance</td>
+                <td>-191</td>
+                <td>-9623</td>
+                <td></td>
+            </tr>
+        
+            <tr>
+                <td>800 Contracts</td>
+                <td>-159</td>
+                <td>-8579</td>
+                <td></td>
+            </tr>
+        
+                <tr>
+                <td>TOTAL</td>
+                <td>9162</td>
+                <td>1247953</td>
+                <td>**NO G&A or COM in DOLLARS</td>
+            </tr>
+    </table>

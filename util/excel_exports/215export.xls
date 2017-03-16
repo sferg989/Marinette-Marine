@@ -1,0 +1,24 @@
+<div id = "bcr_grid" class = "col-md-12">
+    <table  id = "example" class="table ">
+        <tr>
+            <th class = "table_headers">WBS Path</th>
+            <th class = "table_headers">ActID</th>
+            <th class = "table_headers">Reason</th>
+            <th class = "table_headers">Cur Labor Units</th>	
+            <th class = "table_headers">Cur Material Cost</th>	
+            <th class = "table_headers">Cur Baseline Start</th>
+            <th class = "table_headers">Cur Baseline Finish</th>
+            <th class = "table_headers">Prev Labor Units</th>	
+            <th class = "table_headers">Prev Material Cost</th>	
+            <th class = "table_headers">Prev Baseline Start</th>	
+            <th class = "table_headers">Prev Baseline Finish</th>
+            <th class = "table_headers">BCR MATL Dollars</th>
+            <th class = "table_headers">BCR HOURS</th>
+            <th class = "table_headers">BCR Difference</th>
+        </tr>
+        
+    
+        
+    </table>
+    </div>
+    

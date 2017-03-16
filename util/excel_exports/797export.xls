@@ -1,0 +1,296 @@
+<div id = "bcr_grid" class = "col-md-12">
+    <table  id = "example" class="table ">
+        <tr>
+            <th class = "table_headers">WBS Path</th>
+            <th class = "table_headers">ActID</th>
+            <th class = "table_headers">Reason</th>
+            <th class = "table_headers">Cur Labor Units</th>	
+            <th class = "table_headers">Cur Material Cost</th>	
+            <th class = "table_headers">Cur Baseline Start</th>
+            <th class = "table_headers">Cur Baseline Finish</th>
+            <th class = "table_headers">Prev Labor Units</th>	
+            <th class = "table_headers">Prev Material Cost</th>	
+            <th class = "table_headers">Prev Baseline Start</th>	
+            <th class = "table_headers">Prev Baseline Finish</th>
+            <th class = "table_headers">BCR MATL Dollars</th>
+            <th class = "table_headers">BCR HOURS</th>
+            <th class = "table_headers">BCR Difference</th>
+        </tr>
+        
+                 <tr class="bg-danger">
+                    <td class = "table_data">1.16.1</td>
+                    <td class = "table_data">IMP-SA-G04</td>
+                    <td class = "table_data">Baseline Values Changed</td>
+                    <td class = "table_data">0</td>	
+                    <td class = "table_data">0.0000</td>	
+                    <td class = "table_data">1/1/1970</td>
+                    <td class = "table_data">7/5/2017</td>
+                    <td class = "table_data">0</td>	
+                    <td class = "table_data">0.0000</td>	
+                    <td class = "table_data">1/1/1970</td>	
+                    <td class = "table_data">6/5/2017</td>
+                    <td class = "table_data">NA</td>
+                    <td class = "table_data">NA</td>
+                    <td class = "table_data">NA</td>
+                </tr>
+                
+                 <tr class="bg-danger">
+                    <td class = "table_data">1.16.1</td>
+                    <td class = "table_data">IMP-SA-G01</td>
+                    <td class = "table_data">Baseline Values Changed</td>
+                    <td class = "table_data">0</td>	
+                    <td class = "table_data">0.0000</td>	
+                    <td class = "table_data">1/1/1970</td>
+                    <td class = "table_data">5/16/2017</td>
+                    <td class = "table_data">0</td>	
+                    <td class = "table_data">0.0000</td>	
+                    <td class = "table_data">1/1/1970</td>	
+                    <td class = "table_data">4/14/2017</td>
+                    <td class = "table_data">NA</td>
+                    <td class = "table_data">NA</td>
+                    <td class = "table_data">NA</td>
+                </tr>
+                
+                 <tr class="bg-danger">
+                    <td class = "table_data">1.16.1</td>
+                    <td class = "table_data">IMP-SA-G02</td>
+                    <td class = "table_data">Baseline Values Changed</td>
+                    <td class = "table_data">0</td>	
+                    <td class = "table_data">0.0000</td>	
+                    <td class = "table_data">1/1/1970</td>
+                    <td class = "table_data">5/30/2017</td>
+                    <td class = "table_data">0</td>	
+                    <td class = "table_data">0.0000</td>	
+                    <td class = "table_data">1/1/1970</td>	
+                    <td class = "table_data">4/28/2017</td>
+                    <td class = "table_data">NA</td>
+                    <td class = "table_data">NA</td>
+                    <td class = "table_data">NA</td>
+                </tr>
+                
+                 <tr class="bg-danger">
+                    <td class = "table_data">1.16.1</td>
+                    <td class = "table_data">IMP-AC-G0402</td>
+                    <td class = "table_data">Baseline Values Changed</td>
+                    <td class = "table_data">0</td>	
+                    <td class = "table_data">0.0000</td>	
+                    <td class = "table_data">1/1/1970</td>
+                    <td class = "table_data">8/1/2017</td>
+                    <td class = "table_data">0</td>	
+                    <td class = "table_data">0.0000</td>	
+                    <td class = "table_data">1/1/1970</td>	
+                    <td class = "table_data">6/30/2017</td>
+                    <td class = "table_data">NA</td>
+                    <td class = "table_data">NA</td>
+                    <td class = "table_data">NA</td>
+                </tr>
+                
+                 <tr class="bg-danger">
+                    <td class = "table_data">1.16.1</td>
+                    <td class = "table_data">IMP-AC-G0202</td>
+                    <td class = "table_data">Baseline Values Changed</td>
+                    <td class = "table_data">0</td>	
+                    <td class = "table_data">0.0000</td>	
+                    <td class = "table_data">1/1/1970</td>
+                    <td class = "table_data">6/27/2017</td>
+                    <td class = "table_data">0</td>	
+                    <td class = "table_data">0.0000</td>	
+                    <td class = "table_data">1/1/1970</td>	
+                    <td class = "table_data">5/26/2017</td>
+                    <td class = "table_data">NA</td>
+                    <td class = "table_data">NA</td>
+                    <td class = "table_data">NA</td>
+                </tr>
+                
+                 <tr class="bg-danger">
+                    <td class = "table_data">1.16.1</td>
+                    <td class = "table_data">IMP-AC-G0302</td>
+                    <td class = "table_data">Baseline Values Changed</td>
+                    <td class = "table_data">0</td>	
+                    <td class = "table_data">0.0000</td>	
+                    <td class = "table_data">1/1/1970</td>
+                    <td class = "table_data">7/5/2017</td>
+                    <td class = "table_data">0</td>	
+                    <td class = "table_data">0.0000</td>	
+                    <td class = "table_data">1/1/1970</td>	
+                    <td class = "table_data">6/5/2017</td>
+                    <td class = "table_data">NA</td>
+                    <td class = "table_data">NA</td>
+                    <td class = "table_data">NA</td>
+                </tr>
+                
+                 <tr class="bg-danger">
+                    <td class = "table_data">1.16.1</td>
+                    <td class = "table_data">IMP-AC-G0401</td>
+                    <td class = "table_data">Baseline Values Changed</td>
+                    <td class = "table_data">0</td>	
+                    <td class = "table_data">0.0000</td>	
+                    <td class = "table_data">6/28/2017</td>
+                    <td class = "table_data">1/1/1970</td>
+                    <td class = "table_data">0</td>	
+                    <td class = "table_data">0.0000</td>	
+                    <td class = "table_data">5/30/2017</td>	
+                    <td class = "table_data">1/1/1970</td>
+                    <td class = "table_data">NA</td>
+                    <td class = "table_data">NA</td>
+                    <td class = "table_data">NA</td>
+                </tr>
+                
+                 <tr class="bg-danger">
+                    <td class = "table_data">1.16.1</td>
+                    <td class = "table_data">IMP-AC-G0102</td>
+                    <td class = "table_data">Baseline Values Changed</td>
+                    <td class = "table_data">0</td>	
+                    <td class = "table_data">0.0000</td>	
+                    <td class = "table_data">5/16/2017</td>
+                    <td class = "table_data">1/1/1970</td>
+                    <td class = "table_data">0</td>	
+                    <td class = "table_data">0.0000</td>	
+                    <td class = "table_data">4/3/2017</td>	
+                    <td class = "table_data">1/1/1970</td>
+                    <td class = "table_data">NA</td>
+                    <td class = "table_data">NA</td>
+                    <td class = "table_data">NA</td>
+                </tr>
+                
+                 <tr class="bg-danger">
+                    <td class = "table_data">1.16.1</td>
+                    <td class = "table_data">IMP-AC-G0201</td>
+                    <td class = "table_data">Baseline Values Changed</td>
+                    <td class = "table_data">0</td>	
+                    <td class = "table_data">0.0000</td>	
+                    <td class = "table_data">5/16/2017</td>
+                    <td class = "table_data">1/1/1970</td>
+                    <td class = "table_data">0</td>	
+                    <td class = "table_data">0.0000</td>	
+                    <td class = "table_data">4/17/2017</td>	
+                    <td class = "table_data">1/1/1970</td>
+                    <td class = "table_data">NA</td>
+                    <td class = "table_data">NA</td>
+                    <td class = "table_data">NA</td>
+                </tr>
+                
+                 <tr class="bg-danger">
+                    <td class = "table_data">1.16.1</td>
+                    <td class = "table_data">IMP-AC-G0103</td>
+                    <td class = "table_data">Baseline Values Changed</td>
+                    <td class = "table_data">0</td>	
+                    <td class = "table_data">0.0000</td>	
+                    <td class = "table_data">1/1/1970</td>
+                    <td class = "table_data">5/16/2017</td>
+                    <td class = "table_data">0</td>	
+                    <td class = "table_data">0.0000</td>	
+                    <td class = "table_data">1/1/1970</td>	
+                    <td class = "table_data">4/17/2017</td>
+                    <td class = "table_data">NA</td>
+                    <td class = "table_data">NA</td>
+                    <td class = "table_data">NA</td>
+                </tr>
+                
+                 <tr class="bg-danger">
+                    <td class = "table_data">1.16.1</td>
+                    <td class = "table_data">IMP-SA-G05</td>
+                    <td class = "table_data">Baseline Values Changed</td>
+                    <td class = "table_data">0</td>	
+                    <td class = "table_data">0.0000</td>	
+                    <td class = "table_data">1/1/1970</td>
+                    <td class = "table_data">4/10/2017</td>
+                    <td class = "table_data">0</td>	
+                    <td class = "table_data">0.0000</td>	
+                    <td class = "table_data">1/1/1970</td>	
+                    <td class = "table_data">2/24/2017</td>
+                    <td class = "table_data">NA</td>
+                    <td class = "table_data">NA</td>
+                    <td class = "table_data">NA</td>
+                </tr>
+                
+                 <tr class="bg-danger">
+                    <td class = "table_data">1.16.1</td>
+                    <td class = "table_data">IMP-AC-G0501</td>
+                    <td class = "table_data">Baseline Values Changed</td>
+                    <td class = "table_data">0</td>	
+                    <td class = "table_data">0.0000</td>	
+                    <td class = "table_data">1/1/1970</td>
+                    <td class = "table_data">4/10/2017</td>
+                    <td class = "table_data">0</td>	
+                    <td class = "table_data">0.0000</td>	
+                    <td class = "table_data">1/1/1970</td>	
+                    <td class = "table_data">2/24/2017</td>
+                    <td class = "table_data">NA</td>
+                    <td class = "table_data">NA</td>
+                    <td class = "table_data">NA</td>
+                </tr>
+                
+                 <tr class="bg-danger">
+                    <td class = "table_data">1.16.1</td>
+                    <td class = "table_data">IMP-KE-H</td>
+                    <td class = "table_data">Baseline Values Changed</td>
+                    <td class = "table_data">0</td>	
+                    <td class = "table_data">0.0000</td>	
+                    <td class = "table_data">1/1/1970</td>
+                    <td class = "table_data">8/29/2017</td>
+                    <td class = "table_data">0</td>	
+                    <td class = "table_data">0.0000</td>	
+                    <td class = "table_data">1/1/1970</td>	
+                    <td class = "table_data">7/31/2017</td>
+                    <td class = "table_data">NA</td>
+                    <td class = "table_data">NA</td>
+                    <td class = "table_data">NA</td>
+                </tr>
+                
+                 <tr class="bg-danger">
+                    <td class = "table_data">1.16.1</td>
+                    <td class = "table_data">IMP-SA-H01</td>
+                    <td class = "table_data">Baseline Values Changed</td>
+                    <td class = "table_data">0</td>	
+                    <td class = "table_data">0.0000</td>	
+                    <td class = "table_data">8/2/2017</td>
+                    <td class = "table_data">1/1/1970</td>
+                    <td class = "table_data">0</td>	
+                    <td class = "table_data">0.0000</td>	
+                    <td class = "table_data">7/3/2017</td>	
+                    <td class = "table_data">1/1/1970</td>
+                    <td class = "table_data">NA</td>
+                    <td class = "table_data">NA</td>
+                    <td class = "table_data">NA</td>
+                </tr>
+                
+                 <tr class="bg-danger">
+                    <td class = "table_data">1.16.1</td>
+                    <td class = "table_data">SVT-Margin-Delivery</td>
+                    <td class = "table_data">Baseline Values Changed</td>
+                    <td class = "table_data">0</td>	
+                    <td class = "table_data">0.0000</td>	
+                    <td class = "table_data">8/2/2017</td>
+                    <td class = "table_data">8/29/2017</td>
+                    <td class = "table_data">0</td>	
+                    <td class = "table_data">0.0000</td>	
+                    <td class = "table_data">7/3/2017</td>	
+                    <td class = "table_data">7/31/2017</td>
+                    <td class = "table_data">NA</td>
+                    <td class = "table_data">NA</td>
+                    <td class = "table_data">NA</td>
+                </tr>
+                
+                 <tr class="bg-danger">
+                    <td class = "table_data">1.16.1</td>
+                    <td class = "table_data">IMP-KE-G</td>
+                    <td class = "table_data">Baseline Values Changed</td>
+                    <td class = "table_data">0</td>	
+                    <td class = "table_data">0.0000</td>	
+                    <td class = "table_data">1/1/1970</td>
+                    <td class = "table_data">8/1/2017</td>
+                    <td class = "table_data">0</td>	
+                    <td class = "table_data">0.0000</td>	
+                    <td class = "table_data">1/1/1970</td>	
+                    <td class = "table_data">6/30/2017</td>
+                    <td class = "table_data">NA</td>
+                    <td class = "table_data">NA</td>
+                    <td class = "table_data">NA</td>
+                </tr>
+                
+    
+        
+    </table>
+    </div>
+    

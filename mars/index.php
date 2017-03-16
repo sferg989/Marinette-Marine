@@ -1,7 +1,7 @@
 <?php
 include("../inc/inc.php");
-include("../inc/lib/php/phpExcel-1.8/classes/phpexcel.php");
-include("../inc/lib/php/phpExcel-1.8/classes/phpexcel/IOFactory.php");
+include("../inc/inc.PHPExcel.php");
+include("inc.insert_data.php");
 /**
  * Created by PhpStorm.
  * User: fs11239
@@ -9,9 +9,21 @@ include("../inc/lib/php/phpExcel-1.8/classes/phpexcel/IOFactory.php");
  * Time: 4:02 PM
  */
 $files = array();
-$rel_path2_reports = "../util/csv_baan_rpt";
-$directory = $g_path2_baan_work;
+
+
+function insertData($table_name, $path2file,$period){
+    if($table_name=="open_po"){
+        insertOpenPO($path2file, $period);
+    }
+    if($table_name=="committed_po"){
+        insertCommittedPO($path2file, $period);
+    }
+    if($table_name=="gl_detail"){
+        insertGLdetail($path2file, $period);
+    }
+}
 function getListOfFileNamesInDirectory($directory){
+    //print $directory;
     foreach (scandir($directory) as $file) {
         if ('.' === $file) continue;
         if ('..' === $file) continue;
@@ -20,20 +32,39 @@ function getListOfFileNamesInDirectory($directory){
     }
     return $files;
 }
-function saveListOfFileNamesPHPExcel($file_name_array,$path2xlsfile,$rel_path2_desitnation){
+
+function saveListOfFileNamesPHPExcel($file_name_array,$directory2Copy,$rel_path2_desitnation, $period, $table_name){
+
     foreach ($file_name_array as $value){
-        savePHPEXCELCSV($value,$path2xlsfile,$rel_path2_desitnation);
+        $path2XLSX    = "$directory2Copy\\$value";
+        $csv_filename = savePHPEXCELCSV($value, $path2XLSX, $rel_path2_desitnation);
+        $path2file    = "$rel_path2_desitnation\\$csv_filename";
+        insertData($table_name, $path2file, $period);
         flush();
     }
 }
-$directories_2_copy[] ="PFA_Open_PO";
-$directories_2_copy[] ="PFA_GL_Detail";
-$directories_2_copy[] ="PFA_Committed_PO";
-clearDirectory($rel_path2_reports);
 
-foreach ($directories_2_copy as $value){
-    $directory = $directory."\\".$value;
-    $file_name_name_array = getListOfFileNamesInDirectory($directory);
-
-    saveListOfFileNamesPHPExcel($file_name_name_array,$directory,$rel_path2_reports);
+function copyListOfDirectoryToCSV($g_path2_baan_work,$baan_dir_name,$rel_path2_reports, $period,$table_name){
+        $directory2Copy  = $g_path2_baan_work . $baan_dir_name;
+        $file_name_array = getListOfFileNamesInDirectory($directory2Copy);
+        deleteFromTable("mars", $table_name,"period", $period);
+        saveListOfFileNamesPHPExcel($file_name_array,$directory2Copy,$rel_path2_reports, $period, $table_name);
 }
+$rel_path2_reports = "../util/csv_pfa_open_po";
+
+$open_po_directory      = "../util/csv_PFA_Open_PO";
+$committed_po_directory = "../util/csv_PFA_Committed_PO";
+$gl_detail_directory    = "../util/csv_PFA_GL_Detail";
+
+$period = 20170313;
+
+//clearDirectory($open_po_directory);
+//copyListOfDirectoryToCSV($g_path2_baan_work,"PFA_Open_PO",$open_po_directory, $period, "open_po");
+
+//clearDirectory($committed_po_directory);
+//copyListOfDirectoryToCSV($g_path2_baan_work,"PFA_Committed_PO",$committed_po_directory, $period, "committed_po");
+
+clearDirectory($gl_detail_directory);
+copyListOfDirectoryToCSV($g_path2_baan_work,"PFA_GL_Detail",$gl_detail_directory, $period, "gl_detail");
+
+die("made it");

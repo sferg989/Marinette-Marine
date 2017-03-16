@@ -1,0 +1,302 @@
+<table>
+        <tr>
+            <td colspan='4'></td>
+        </tr>
+        <tr>
+            <td>EAC CHANGES</td>
+            <td>Current</td>
+            <td>Change</td>
+            <td>NOTES</td>
+        </tr>        
+        <tr>
+            <td>Best Case</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>        
+        <tr>
+            <td>Worst Case</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Most Likely</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>        
+
+        <tr>
+            <td>Management Reserve</td>
+            <td>4106410.0000</td>
+            <td>0</td>
+            <td></td>
+        </tr>
+<tr></tr>
+    <tr>
+            <td>UB Changes</td>
+            <td>Dollars</td>
+            <td>PCW/MOD</td>
+            <td>NOTES</td>
+    </tr>
+        <tr>
+            <td>Beginning UB</td>    
+            <td>20590915.0000</td>    
+            <td></td>    
+            <td></td>    
+        </tr>
+        <tr></tr>
+        <tr>
+            <td>Ending UB</td>    
+            <td>20590915.0000</td>    
+            <td></td>    
+            <td></td>    
+        </tr>
+        <tr></tr>
+    <tr>
+            <td>LABOR EAC Changes</td>
+            <td>HOURS</td>
+            <td>DOLLARS</td>
+            <td>NOTES</td>
+    </tr>
+            <tr>
+                <td>600 Manufacturing</td>
+                <td>6684</td>
+                <td>-2704712</td>
+                <td></td>
+            </tr>
+        
+            <tr>
+                <td>620 Manufacturing Supervision</td>
+                <td>0</td>
+                <td>-78716</td>
+                <td></td>
+            </tr>
+        
+            <tr>
+                <td>650 Production Planning & Control</td>
+                <td>-681</td>
+                <td>-71598</td>
+                <td></td>
+            </tr>
+        
+            <tr>
+                <td>500 Engineering</td>
+                <td>1472</td>
+                <td>14303</td>
+                <td></td>
+            </tr>
+        
+            <tr>
+                <td>300 Purchasing</td>
+                <td>3</td>
+                <td>315482</td>
+                <td></td>
+            </tr>
+        
+            <tr>
+                <td>611 Program Management</td>
+                <td>4</td>
+                <td>-40300</td>
+                <td></td>
+            </tr>
+        
+            <tr>
+                <td>200 Finance</td>
+                <td>32</td>
+                <td>-6676</td>
+                <td></td>
+            </tr>
+        
+            <tr>
+                <td>546 Quality Assurance</td>
+                <td>0</td>
+                <td>-40320</td>
+                <td></td>
+            </tr>
+        
+            <tr>
+                <td>800 Contracts</td>
+                <td>1</td>
+                <td>-3986</td>
+                <td></td>
+            </tr>
+        
+                <tr>
+                <td>TOTAL</td>
+                <td>7515</td>
+                <td>-2616523</td>
+                <td>**NO G&A or COM in DOLLARS</td>
+            </tr>
+    <tr></tr><tr></tr>
+    <tr>
+            <td>Material EAC Changes</td>
+            <td>Dollars</td>
+            <td></td>
+            <td>NOTES</td>
+    </tr><tr></tr>
+                <tr>
+                <td>Month End 201612 Material EAC Changes</td>
+                <td>93500365.0000</td>
+                <td></td>
+                <td></td>
+            </tr>
+    <tr></tr>
+            <tr>
+                <td>SWBS Group 100: Structure</td>
+                <td>316000</td>
+                <td></td>
+                <td></td>
+            </tr>
+        
+            <tr>
+                <td>SWBS Group 200: Propulsion Systems</td>
+                <td>0</td>
+                <td></td>
+                <td></td>
+            </tr>
+        
+            <tr>
+                <td>SWBS Group 300: Electrical Systems</td>
+                <td>0</td>
+                <td></td>
+                <td></td>
+            </tr>
+        
+            <tr>
+                <td>SWBS Group 400: Command and Surveillance Systems</td>
+                <td>27539</td>
+                <td></td>
+                <td></td>
+            </tr>
+        
+            <tr>
+                <td>SWBS Group 500: Auxiliary Systems</td>
+                <td>0</td>
+                <td></td>
+                <td></td>
+            </tr>
+        
+            <tr>
+                <td>SWBS Group 600: Outfitting and Furnishings</td>
+                <td>0</td>
+                <td></td>
+                <td></td>
+            </tr>
+        
+            <tr>
+                <td>SWBS Group 700: Weapons Systems</td>
+                <td>0</td>
+                <td></td>
+                <td></td>
+            </tr>
+        
+            <tr>
+                <td>SWBS Group 800: Engineering and Integration</td>
+                <td>0</td>
+                <td></td>
+                <td></td>
+            </tr>
+        
+            <tr>
+                <td>SWBS Group 900: Production Support</td>
+                <td>0</td>
+                <td></td>
+                <td></td>
+            </tr>
+        
+            <tr>
+                <td>Integrated Logistic Support</td>
+                <td>0</td>
+                <td></td>
+                <td></td>
+            </tr>
+        
+            <tr>
+                <td>Program Management</td>
+                <td>-3056</td>
+                <td></td>
+                <td></td>
+            </tr>
+        <tr></tr>
+                <tr>
+                <td>Month End 201701 Material EAC Changes</td>
+                <td>340483</td>
+                <td></td>
+                <td></td>
+            </tr>
+    <tr></tr>
+                <tr>
+                <td>Month End 201701 Material EAC Changes</td>
+                <td>93844419.0000</td>
+                <td></td>
+                <td></td>
+            </tr>
+    <tr></tr>
+    <tr>
+            <td>MR Walk Down </td>
+            <td>Dollars</td>
+            <td></td>
+            <td>NOTES</td>
+    </tr><tr></tr><tr></tr><tr></tr>
+    <tr>
+            <td>TOTAL</td>
+            <td>0</td>
+            <td></td>
+            <td></td>
+    </tr><tr></tr><tr></tr>
+    <table>
+        <tr>
+            <td></td>
+            <td colspan='2'>Program</td>
+            <td colspan='2'>Labor</td>
+            <td colspan='2'>Material</td>
+        </tr>        
+        <tr>
+            <td></td>
+            <td >Current</td>
+            <td >previous</td>
+            <td >Current</td>
+            <td >previous</td>
+            <td >Current</td>
+            <td >previous</td>
+        </tr>
+        <tr>
+            <td>CUR SPI</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>        
+        <tr>
+            <td>CUR CPI</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>        
+        <tr>
+            <td>CUM SPI</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>        
+        <tr>
+            <td>CUM CPI</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+    </table>

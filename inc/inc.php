@@ -139,6 +139,27 @@ function createRPTfromDate($date){
     $rpt_period = "$year"."$month";
     return $rpt_period;
 }
+function createRPTfromDateSlash($date){
+    $date_array = explode("/", $date);
+    $month = $date_array[0];
+    $day = $date_array[1];
+    $year = $date_array[2];
+    if($day<15)
+    {
+        $month = intval($month)-1;
+        if($month==0)
+        {
+            $month = 12;
+            $year = $year-1;
+        }
+    }
+    if(strlen($month)==1)
+    {
+        $month = "0".$month;
+    }
+    $rpt_period = "$year"."$month";
+    return $rpt_period;
+}
 function createRPTPeriodfromDate($date){
     $date_array = explode("-", $date);
     $day = $date_array[2];
@@ -528,9 +549,10 @@ function formatNumber($number){
     return "";
 }
 function formatNumber4decNoComma($number){
-    $no_comma = floatval(str_replace(",", "", $number));
+    //$no_comma = floatval(str_replace(",", "", $number));
+    $no_sign = floatval(str_replace("$", "", $number));
 
-    $value    = number_format($no_comma, 4, ".", "");
+    $value    = number_format($no_sign, 4, ".", "");
     if($value ==""){
         $value = 0;
     }
@@ -596,4 +618,26 @@ function clearDirectory($path2directory){
         if(is_file($file))
             unlink($file); // delete file
     }
+}
+function deleteFromTable($schema, $table,$field, $value)
+{
+    $sql = "delete from $schema.$table where $field = '$value'";
+    $junk = dbCall($sql,$schema);
+}
+function threeLetterMonth2Number($month){
+    //print $month."<br>";
+    $date_array["Jan"] = "01";
+    $date_array["Feb"] = "02";
+    $date_array["Mar"] = "03";
+    $date_array["Apr"] = "04";
+    $date_array["May"] = "05";
+    $date_array["Jun"] = "06";
+    $date_array["Jul"] = "07";
+    $date_array["Aug"] = "08";
+    $date_array["Sep"] = "09";
+    $date_array["Oct"] = "10";
+    $date_array["Nov"] = "11";
+    $date_array["Dec"] = "12";
+
+    return $date_array[$month];
 }

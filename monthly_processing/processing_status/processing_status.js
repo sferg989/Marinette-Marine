@@ -102,7 +102,7 @@ $(document).ready(function() {
     }
     function myStepLink(row, cell, value, columnDef, dataContext) {
         if(dataContext.url ==""){
-            return "<p class = 'coming_soon'>"+value+" (comming soon!)</p>";
+            return "<p class = 'coming_soon'>"+value+" (coming soon!)</p>";
         }
         var link_paran = "<a href="+dataContext.url+"?ship_code="+dataContext.code+"&rpt_period="+rpt_period+">"+value+"</a>";
         return link_paran;

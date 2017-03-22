@@ -27,6 +27,10 @@ function PHPExcelcheckifSheetNameExists($excelOBJ, $sheet_name){
 
 function savePHPEXCELCSV($file_name,$path2xlsfile,$path2_destination)
 {
+    //print $path2xlsfile."<br>";
+    if(file_exists($path2xlsfile)==false){
+        return null;
+    }
     $objPHPExcel  = loadPHPEXCELFile($path2xlsfile);
     $objWriter    = PHPExcel_IOFactory::createWriter($objPHPExcel, 'CSV');
     $sheet_exists = PHPExcelcheckifSheetNameExists($objPHPExcel, "Locked Data");
@@ -47,6 +51,28 @@ function savePHPEXCELCSV($file_name,$path2xlsfile,$path2_destination)
         $index++;
     }
     $objPHPExcel = null;
+    return $outFile;
+}
+function savePHPEXCELCSV1WorkSheetByIndex($file_name,$path2xlsfile,$path2_destination, $sheet_index)
+{
+    //print $path2_destination."<br>";
+
+    if(file_exists($path2xlsfile)==false){
+        return null;
+    }
+    $objPHPExcel  = loadPHPEXCELFile($path2xlsfile);
+    $objWriter    = PHPExcel_IOFactory::createWriter($objPHPExcel, 'CSV');
+    $objPHPExcel->setActiveSheetIndex($sheet_index);
+
+    // write out each worksheet to it's name with CSV extension
+    $objWriter->setDelimiter(',');
+    $objWriter->setSheetIndex($sheet_index);
+
+    // write out each worksheet to it's name with CSV extension
+    $outFile = "$file_name.csv";
+    $objWriter->save($path2_destination."/".$outFile);
+    $objPHPExcel = null;
+    return $outFile;
 }
 
 function PHPExcelRemoveSheetByName($objWorkSheet,$sheet_name){

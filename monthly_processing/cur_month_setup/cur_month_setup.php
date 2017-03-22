@@ -46,8 +46,8 @@ if($control=="step_grid")
     $rs = dbCall($sql);
     while (!$rs->EOF)
     {
-        $id = $rs->fields["id"];
-        $name = $rs->fields["name"];
+        $id     = $rs->fields["id"];
+        $name   = $rs->fields["name"];
         $action = $rs->fields["action"];
         $data.="{
             \"id\"      :$id,

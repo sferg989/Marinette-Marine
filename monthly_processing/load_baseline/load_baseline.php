@@ -255,8 +255,8 @@ if($control=="data_check")
         }
     }
     $checks = "bcr:$bcr,baseline:$baseline";
-    print $checks;
-    return $checks;
+
+    die($checks);
 }
 if($control=="compare_ca"){
 

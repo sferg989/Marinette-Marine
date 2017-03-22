@@ -4,7 +4,7 @@
 
 $(document).ready(function() {
 
-    var url      = "bl_validation.php";
+    var url      = "load_baseline.php";
     function goBack() {
         window.history.back();
     }
@@ -121,9 +121,12 @@ $(document).ready(function() {
             $("#img_"+step.action).remove();
         }
         step.name   = "Compare Baseline to BCR's"
+
+
         data_check = checkifBCRAndBaselineLoaded(code, rpt_period);
         var bcr, baseline, result, bcr_result,
             baseline_result,response_data,id, html_table, file_name;
+        alert("made it yes!");
 
         result          = data_check.split(",");
         bcr             = result[0];
@@ -143,6 +146,7 @@ $(document).ready(function() {
             bootbox.alert("please loac Baseline for "+rpt_period);
             return false;
         }
+        return false;
         var worker;
         $("#status").append("<div id = \"img_"+step.action+"\"><br><img src=\"../../inc/images/ajax-loader.gif\" height=\"32\" width=\"32\"/>"+step.name+"<br></div>");
 

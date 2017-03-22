@@ -1,0 +1,476 @@
+<table>
+        <tr>
+            <th colspan='5'>Summary of Changes</th>    
+        </tr>
+        <tr>
+            <td></td>    
+            <td>December</td>    
+            <td>November</td>    
+            <td>DIFF</td>    
+            <td>% Change</td>    
+        </tr>
+    
+        <tr>
+            <td>Negotiated Cost</td>    
+            <td></td>    
+            <td></td>    
+            <td></td>    
+            <td></td>    
+        </tr>
+        
+        <tr>
+            <td>Target Profit</td>    
+            <td></td>    
+            <td></td>    
+            <td></td>    
+            <td></td>    
+        </tr>
+        
+        <tr>
+            <td>Target Price</td>    
+            <td></td>    
+            <td></td>    
+            <td></td>    
+            <td></td>    
+        </tr>
+        
+        <tr>
+            <td>Authorized Unpriced Work</td>    
+            <td></td>    
+            <td></td>    
+            <td></td>    
+            <td></td>    
+        </tr>
+        
+        <tr>
+            <td>EAC Best Case</td>    
+            <td></td>    
+            <td></td>    
+            <td></td>    
+            <td></td>    
+        </tr>
+        
+        <tr>
+            <td>EAC Worst Case</td>    
+            <td></td>    
+            <td></td>    
+            <td></td>    
+            <td></td>    
+        </tr>
+        
+        <tr>
+            <td>EAC Most Likely</td>    
+            <td></td>    
+            <td></td>    
+            <td></td>    
+            <td></td>    
+        </tr>
+        
+        <tr>
+            <td>Management Reserve</td>    
+            <td></td>    
+            <td></td>    
+            <td></td>    
+            <td></td>    
+        </tr>
+        <tr></tr>        
+        <tr>
+            <td>EAC</td>    
+            <td>December</td>    
+            <td>November</td>    
+            <td>DIFF</td>    
+            <td>% Change</td>    
+        </tr>
+        <tr>
+            <td>Hours</td>    
+            <td>1322782.0000</td>    
+            <td>1328355.0000</td>    
+            <td>-5573</td>    
+            <td>-0.00421309029001</td>    
+        </tr>
+        
+        <tr>
+            <td>Labor Dollars</td>    
+            <td>88549744.0000</td>    
+            <td>88909624.0000</td>    
+            <td>-359880</td>    
+            <td>-0.0040641563006664</td>    
+        </tr>
+        
+        <tr>
+            <td>Material Dollars</td>    
+            <td>96420814.0000</td>    
+            <td>95667263.0000</td>    
+            <td>753551</td>    
+            <td>0.0078152316780898</td>    
+        </tr>
+        
+        <tr>
+            <td>Undistributed Budget</td>    
+            <td>3684121.0000</td>    
+            <td>3684121.0000</td>    
+            <td>0</td>    
+            <td>0</td>    
+        </tr>
+        
+        <tr>
+            <td>Total Dollars</td>    
+            <td>188654679</td>    
+            <td>188261008</td>    
+            <td>393671</td>    
+            <td>0.0020867279946977</td>    
+        </tr>
+        <tr></tr>
+                
+        <tr>
+            <td>BAC</td>    
+            <td>December</td>    
+            <td>November</td>    
+            <td>DIFF</td>    
+            <td>% Change</td>    
+        </tr>
+        <tr>
+            <td>Hours</td>    
+            <td>1297776.0000</td>    
+            <td>1297776.0000</td>    
+            <td>0</td>    
+            <td>0</td>    
+        </tr>
+        
+        <tr>
+            <td>Subtotal Dollars</td>    
+            <td>182126005.0000</td>    
+            <td>182126005.0000</td>    
+            <td>0</td>    
+            <td>0</td>    
+        </tr>
+        
+        <tr>
+            <td>Undistributed Budget</td>    
+            <td>3684121.0000</td>    
+            <td>3684121.0000</td>    
+            <td>0</td>    
+            <td>0</td>    
+        </tr>
+        
+        <tr>
+            <td>Total Dollars</td>    
+            <td>185810126</td>    
+            <td>185810126</td>    
+            <td>0</td>    
+            <td>0</td>    
+        </tr>
+        <tr></tr>
+                
+        <tr>
+            <td>VAC</td>    
+            <td>December</td>    
+            <td>November</td>    
+            <td>DIFF</td>    
+            <td>% Change</td>    
+        </tr>
+        <tr>
+            <td>HOURS</td>    
+            <td>-25006</td>    
+            <td>-30579</td>    
+            <td>5573</td>    
+            <td>-0.22286651203711</td>    
+        </tr>
+        
+        <tr>
+            <td>Dollars</td>    
+            <td>-2844553</td>    
+            <td>-2450882</td>    
+            <td>-393671</td>    
+            <td>0.13839467923431</td>    
+        </tr><tr></tr>
+                
+        <tr>
+            <td>ACWP Increment</td>    
+            <td>December</td>    
+            <td>November</td>    
+            <td>DIFF</td>    
+            <td>% Change</td>    
+        </tr>
+        <tr>
+            <td>Hours</td>    
+            <td>263.0000</td>    
+            <td>154.0000</td>    
+            <td>109</td>    
+            <td>0.41444866920152</td>    
+        </tr>
+        
+        <tr>
+            <td>Total Dollars</td>    
+            <td>1242960.0000</td>    
+            <td>470899.0000</td>    
+            <td>772061</td>    
+            <td>0.62114710046985</td>    
+        </tr>
+        <tr></tr>
+        
+    <tr>
+            <td>Opportunity and Risk</td>    
+            <td>December</td>    
+            <td>November</td>    
+            <td>DIFF</td>    
+            <td>% Change</td>    
+        </tr>
+        <tr>
+            <td>Risk</td>    
+            <td></td>    
+            <td></td>    
+            <td></td>    
+            <td></td>    
+        </tr>
+        
+        <tr>
+            <td>Factored Risk</td>    
+            <td></td>    
+            <td></td>    
+            <td></td>    
+            <td></td>    
+        </tr>
+        
+        <tr>
+            <td>Opportunity</td>    
+            <td></td>    
+            <td></td>    
+            <td></td>    
+            <td></td>    
+        </tr>
+        
+        <tr>
+            <td>Factored Opportunity</td>    
+            <td></td>    
+            <td></td>    
+            <td></td>    
+            <td></td>    
+        </tr>
+        <tr></tr>
+        <tr></tr>
+        <tr></tr>
+        <tr></tr>
+        
+    <tr>
+            <td>EAC </td>    
+            <td>December</td>    
+            <td>November</td>    
+            <td>DIFF</td>    
+            <td>% Change</td>    
+        </tr>
+        <tr>
+            <td>HOURS (MMC Only)</td>    
+            <td>1164227</td>    
+            <td>1169800</td>    
+            <td>-5573</td>    
+            <td>-0.0047868671659393</td>    
+        </tr>
+        
+        <tr>
+            <td>Labor Dollars (NO COM)</td>    
+            <td>87924487</td>    
+            <td>88280983</td>    
+            <td>-356496</td>    
+            <td>-0.0040545701449472</td>    
+        </tr>
+        
+        <tr>
+            <td>Material Dollars </td>    
+            <td>96420813.0000</td>    
+            <td>95667262.0000</td>    
+            <td>753551</td>    
+            <td>0.0078152317591431</td>    
+        </tr>
+        
+        <tr>
+            <td>Outsourcing</td>    
+            <td></td>    
+            <td></td>    
+            <td>0</td>    
+            <td></td>    
+        </tr>
+        
+        <tr>
+            <td>Total "Material"</td>    
+            <td>96420813</td>    
+            <td>95667262</td>    
+            <td>753551</td>    
+            <td>0.0078152317591431</td>    
+        </tr>
+        <tr></tr>
+        
+    <tr>
+            <td>EAC HOURS</td>    
+            <td>December</td>    
+            <td>November</td>    
+            <td>DIFF</td>    
+            <td>% Change</td>    
+        </tr>
+        <tr>
+            <td>Manufacturing (MMC Only)</td>    
+            <td>951611</td>    
+            <td>951603</td>    
+            <td>8</td>    
+            <td>8.4067964746099E-6</td>    
+        </tr>
+        
+        <tr>
+            <td>Supervision (MMC Only)</td>    
+            <td>92707.0000</td>    
+            <td>92707.0000</td>    
+            <td>0</td>    
+            <td>0</td>    
+        </tr>
+        
+        <tr>
+            <td>Engineering (MMC Only)</td>    
+            <td>24154.0000</td>    
+            <td>24477.0000</td>    
+            <td>-323</td>    
+            <td>-0.013372526289641</td>    
+        </tr>
+        
+        <tr>
+            <td>Other Salary (MMC Only)</td>    
+            <td>95754.0000</td>    
+            <td>101012.0000</td>    
+            <td>-5258</td>    
+            <td>-0.054911544165257</td>    
+        </tr>
+        
+        <tr>
+            <td>Outsourcing </td>    
+            <td>158555.0000</td>    
+            <td>158555.0000</td>    
+            <td>0</td>    
+            <td>0</td>    
+        </tr><tr></tr>
+        
+        <tr>
+            <td>EAC Dollars</td>    
+            <td>December</td>    
+            <td>November</td>    
+            <td>DIFF</td>    
+            <td>% Change</td>    
+        </tr>
+        
+        <tr>
+            <td>Labor Dollars (NO COM)</td>    
+            <td>87924487</td>    
+            <td>88280983</td>    
+            <td>-356496</td>    
+            <td>-0.0040545701449472</td>    
+        </tr>
+        
+        <tr>
+            <td>Material Dollars</td>    
+            <td>96420814.0000</td>    
+            <td>95667263.0000</td>    
+            <td>753551</td>    
+            <td>0.0078152316780898</td>    
+        </tr>
+        
+        <tr>
+            <td>Outsourcing</td>    
+            <td></td>    
+            <td></td>    
+            <td>0</td>    
+            <td></td>    
+        </tr>
+        
+        <tr>
+            <td>Total "Material"</td>    
+            <td>96420813</td>    
+            <td>95667262</td>    
+            <td>753551</td>    
+            <td>0.0078152317591431</td>    
+        </tr>
+        <tr></tr>
+        
+    <tr>
+            <td>ACWP Increment</td>    
+            <td>December</td>    
+            <td>November</td>    
+            <td>DIFF</td>    
+            <td>% Change</td>    
+        </tr>
+        <tr>
+            <td>Manufacturing (MMC ONLY)</td>    
+            <td>0.0000</td>    
+            <td>0.0000</td>    
+            <td>0</td>    
+            <td></td>    
+        </tr>
+        
+        <tr>
+            <td>Supervision (MMC ONLY)</td>    
+            <td>0.0000</td>    
+            <td>0.0000</td>    
+            <td>0</td>    
+            <td></td>    
+        </tr>
+        
+        <tr>
+            <td>Engineering (MMC ONLY)</td>    
+            <td>0.0000</td>    
+            <td>1.0000</td>    
+            <td>-1</td>    
+            <td></td>    
+        </tr>
+        
+        <tr>
+            <td>Other Salary (MMC Only)</td>    
+            <td>263.0000</td>    
+            <td>153.0000</td>    
+            <td>110</td>    
+            <td>0.41825095057034</td>    
+        </tr>
+        </table>
+    <tr>
+            <td>ETC CHANGE</td>    
+            <td>December</td>    
+            <td>November</td>    
+            <td>DIFF</td>    
+            <td>% Change</td>    
+        </tr>
+        <tr>
+            <td>Manufacturing (MMC ONLY)</td>    
+            <td>951611</td>    
+            <td>951603</td>    
+            <td>8</td>    
+            <td>8.4067964746099E-6</td>    
+        </tr>
+        
+        <tr>
+            <td>SUPERVISION (MMC ONLY)</td>    
+            <td>92707</td>    
+            <td>92707</td>    
+            <td>0</td>    
+            <td>0</td>    
+        </tr>
+        
+        <tr>
+            <td>ENGINEERING (MMC ONLY)</td>    
+            <td>24150</td>    
+            <td>24473</td>    
+            <td>-323</td>    
+            <td>-0.013374741200828</td>    
+        </tr>
+        
+        <tr>
+            <td>OTHER SALARY (MMC ONLY)</td>    
+            <td>94709</td>    
+            <td>100227</td>    
+            <td>-5518</td>    
+            <td>-0.058262678309348</td>    
+        </tr>
+        
+        <tr>
+            <td>OUTSOURCING </td>    
+            <td>158555.0000</td>    
+            <td>158555.0000</td>    
+            <td>0</td>    
+            <td>0</td>    
+        </tr>
+        

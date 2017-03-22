@@ -1,0 +1,1413 @@
+
+    <table class="table table-sm ">
+        <tr>
+            <td>BAC EAC Comparison</td>
+            <td  colspan="12">ESTIMATE AT COMPLETE</td>
+        </tr>
+        <tr>
+            <td>Month End</td>
+            <td colspan="4">LABOR DOLLARS</td>
+            <td colspan="4">MATERIAL Dollars</td>             
+            <td colspan="4">TOTAL Dollars</td>             
+        </tr>
+        <tr>
+            <td>By Oragization</td>
+            <td>December</td>
+            <td>November</td>
+            <td>Diff</td>
+            <td>% Change</td>            
+            <td>December</td>
+            <td>November</td>
+            <td>Diff</td>
+            <td>% Change</td>            
+            <td>December</td>
+            <td>November</td>
+            <td>Diff</td>
+            <td>% Change</td>
+        </tr>    
+
+    
+            <tr>
+                <td>600 Manufacturing</td>
+                <td>63003152</td>
+                <td>63005402</td>
+                <td>-2250</td>
+                <td>-0.0000</td>
+                <td>2782000</td>
+                <td>2782000</td>
+                <td>0</td>
+                <td></td>
+                <td>65785152</td>
+                <td>65787402</td>
+                <td>-2250</td>
+                <td>-0.0000</td>
+                
+            </tr>
+            <tr>
+                <td>620 Manufacturing Supervision</td>
+                <td>5647724</td>
+                <td>5647724</td>
+                <td>0</td>
+                <td></td>
+                <td>2500100</td>
+                <td>2500100</td>
+                <td>0</td>
+                <td></td>
+                <td>8147824</td>
+                <td>8147824</td>
+                <td>0</td>
+                <td></td>
+                
+            </tr>
+            <tr>
+                <td>650 Production Planning & Control</td>
+                <td>2881119</td>
+                <td>3031579</td>
+                <td>-150460</td>
+                <td>-0.0522</td>
+                <td></td>
+                <td></td>
+                <td>0</td>
+                <td></td>
+                <td>2881119</td>
+                <td>3031579</td>
+                <td>-150460</td>
+                <td>-0.0522</td>
+                
+            </tr>
+            <tr>
+                <td>500 Engineering</td>
+                <td>1427937</td>
+                <td>1445287</td>
+                <td>-17350</td>
+                <td>-0.0122</td>
+                <td></td>
+                <td></td>
+                <td>0</td>
+                <td></td>
+                <td>1427937</td>
+                <td>1445287</td>
+                <td>-17350</td>
+                <td>-0.0122</td>
+                
+            </tr>
+            <tr>
+                <td>300 Purchasing</td>
+                <td>652496</td>
+                <td>731618</td>
+                <td>-79122</td>
+                <td>-0.1213</td>
+                <td>89786342</td>
+                <td>89032791</td>
+                <td>753551</td>
+                <td>0.0084</td>
+                <td>90438838</td>
+                <td>89764409</td>
+                <td>674429</td>
+                <td>0.0075</td>
+                
+            </tr>
+            <tr>
+                <td>611 Program Management</td>
+                <td>756699</td>
+                <td>783726</td>
+                <td>-27027</td>
+                <td>-0.0357</td>
+                <td>988906</td>
+                <td>988906</td>
+                <td>0</td>
+                <td></td>
+                <td>1745605</td>
+                <td>1772632</td>
+                <td>-27027</td>
+                <td>-0.0155</td>
+                
+            </tr>
+            <tr>
+                <td>200 Finance</td>
+                <td>225956</td>
+                <td>237778</td>
+                <td>-11822</td>
+                <td>-0.0523</td>
+                <td></td>
+                <td></td>
+                <td>0</td>
+                <td></td>
+                <td>225956</td>
+                <td>237778</td>
+                <td>-11822</td>
+                <td>-0.0523</td>
+                
+            </tr>
+            <tr>
+                <td>546 Quality Assurance</td>
+                <td>761455</td>
+                <td>761455</td>
+                <td>0</td>
+                <td></td>
+                <td>333275</td>
+                <td>333275</td>
+                <td>0</td>
+                <td></td>
+                <td>1094730</td>
+                <td>1094730</td>
+                <td>0</td>
+                <td></td>
+                
+            </tr>
+            <tr>
+                <td>800 Contracts</td>
+                <td>212607</td>
+                <td>223249</td>
+                <td>-10642</td>
+                <td>-0.0501</td>
+                <td></td>
+                <td></td>
+                <td>0</td>
+                <td></td>
+                <td>212607</td>
+                <td>223249</td>
+                <td>-10642</td>
+                <td>-0.0501</td>
+                
+            </tr>
+            <tr>
+                <td>b. COST OF MONEY</td>
+                <td>625259</td>
+                <td>628642</td>
+                <td>-3383</td>
+                <td>-0.0054</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td></td>
+                <td>625259</td>
+                <td>628642</td>
+                <td>-3383</td>
+                <td>-0.0054</td>
+                
+            </tr>
+            <tr>
+                <td>c. GENERAL AND ADMINISTRATIVE</td>
+                <td>12355342</td>
+                <td>12413165</td>
+                <td>-57823</td>
+                <td>-0.0047</td>
+                <td>30190</td>
+                <td>30190</td>
+                <td>0</td>
+                <td></td>
+                <td>12385532</td>
+                <td>12443355</td>
+                <td>-57823</td>
+                <td>-0.0047</td>
+                
+            </tr>
+            <tr>
+                <td>SUBTOTAL</td>
+                <td>88549746</td>
+                <td>88909625</td>
+                <td>-359879</td>
+                <td>-0.0041</td>
+                <td>96420813</td>
+                <td>95667262</td>
+                <td>753551</td>
+                <td>0.0078</td>
+                <td>184970559</td>
+                <td>184576887</td>
+                <td>393672</td>
+                <td>0.0021</td>
+                
+            </tr>
+            <tr>
+                <td>d. UNDISTRIBUTED BUDGET</td>
+                <td>3684121</td>
+                <td>3684121</td>
+                <td>0</td>
+                <td></td>
+                <td>3684121</td>
+                <td>3684121</td>
+                <td>0</td>
+                <td></td>
+                <td>7368242</td>
+                <td>7368242</td>
+                <td>0</td>
+                <td></td>
+                
+            </tr>
+            <tr>
+                <td>TOTAL</td>
+                <td>92233867</td>
+                <td>92593746</td>
+                <td>-359879</td>
+                <td>-0.0039</td>
+                <td>100104934</td>
+                <td>99351383</td>
+                <td>753551</td>
+                <td>0.0075</td>
+                <td>192338801</td>
+                <td>191945129</td>
+                <td>393672</td>
+                <td>0.0020</td>
+                
+            </tr><tr></tr><tr></tr></table>
+    <table class="table table-sm ">
+        <tr>
+            <td>BAC EAC Comparison</td>
+            <td  colspan="12">ESTIMATE AT COMPLETE</td>
+        </tr>
+        <tr>
+            <td>Month End</td>
+            <td colspan="4">LABOR DOLLARS</td>
+            <td colspan="4">MATERIAL Dollars</td>             
+            <td colspan="4">TOTAL Dollars</td>             
+        </tr>
+        <tr>
+            <td>By Oragization</td>
+            <td>December</td>
+            <td>November</td>
+            <td>Diff</td>
+            <td>% Change</td>            
+            <td>December</td>
+            <td>November</td>
+            <td>Diff</td>
+            <td>% Change</td>            
+            <td>December</td>
+            <td>November</td>
+            <td>Diff</td>
+            <td>% Change</td>
+        </tr>    
+
+    
+            <tr>
+                <td>SWBS Group 100: Structure</td>
+                <td>15333243</td>
+                <td>15334392</td>
+                <td>-1149</td>
+                <td>-0.0001</td>
+                <td>15554895</td>
+                <td>15554895</td>
+                <td>0</td>
+                <td></td>
+                <td>30888138</td>
+                <td>30889287</td>
+                <td>-1149</td>
+                <td>-0.0000</td>
+                
+            </tr>
+            <tr>
+                <td>SWBS Group 200: Propulsion Systems</td>
+                <td>6501708</td>
+                <td>6501741</td>
+                <td>-33</td>
+                <td>-0.0000</td>
+                <td>11373034</td>
+                <td>11373034</td>
+                <td>0</td>
+                <td></td>
+                <td>17874742</td>
+                <td>17874775</td>
+                <td>-33</td>
+                <td>-0.0000</td>
+                
+            </tr>
+            <tr>
+                <td>SWBS Group 300: Electrical Systems</td>
+                <td>11248419</td>
+                <td>11248808</td>
+                <td>-389</td>
+                <td>-0.0000</td>
+                <td>13765450</td>
+                <td>13705381</td>
+                <td>60069</td>
+                <td>0.0044</td>
+                <td>25013869</td>
+                <td>24954189</td>
+                <td>59680</td>
+                <td>0.0024</td>
+                
+            </tr>
+            <tr>
+                <td>SWBS Group 400: Command and Surveillance Systems</td>
+                <td>1140533</td>
+                <td>1140429</td>
+                <td>104</td>
+                <td>0.0001</td>
+                <td>3442343</td>
+                <td>3442343</td>
+                <td>0</td>
+                <td></td>
+                <td>4582876</td>
+                <td>4582772</td>
+                <td>104</td>
+                <td>0.0000</td>
+                
+            </tr>
+            <tr>
+                <td>SWBS Group 500: Auxiliary Systems</td>
+                <td>9437079</td>
+                <td>9436887</td>
+                <td>192</td>
+                <td>0.0000</td>
+                <td>30802150</td>
+                <td>30734150</td>
+                <td>68000</td>
+                <td>0.0022</td>
+                <td>40239229</td>
+                <td>40171037</td>
+                <td>68192</td>
+                <td>0.0017</td>
+                
+            </tr>
+            <tr>
+                <td>SWBS Group 600: Outfitting and Furnishings</td>
+                <td>5400980</td>
+                <td>5401954</td>
+                <td>-974</td>
+                <td>-0.0002</td>
+                <td>13579734</td>
+                <td>12965034</td>
+                <td>614700</td>
+                <td>0.0453</td>
+                <td>18980714</td>
+                <td>18366988</td>
+                <td>613726</td>
+                <td>0.0323</td>
+                
+            </tr>
+            <tr>
+                <td>SWBS Group 700: Weapons Systems</td>
+                <td>95096</td>
+                <td>95096</td>
+                <td>0</td>
+                <td></td>
+                <td>326582</td>
+                <td>315800</td>
+                <td>10782</td>
+                <td>0.0330</td>
+                <td>421678</td>
+                <td>410896</td>
+                <td>10782</td>
+                <td>0.0256</td>
+                
+            </tr>
+            <tr>
+                <td>SWBS Group 800: Engineering and Integration</td>
+                <td>1438180</td>
+                <td>1455530</td>
+                <td>-17350</td>
+                <td>-0.0121</td>
+                <td>188902</td>
+                <td>188902</td>
+                <td>0</td>
+                <td></td>
+                <td>1627082</td>
+                <td>1644432</td>
+                <td>-17350</td>
+                <td>-0.0107</td>
+                
+            </tr>
+            <tr>
+                <td>SWBS Group 900: Production Support</td>
+                <td>20897527</td>
+                <td>20976650</td>
+                <td>-79123</td>
+                <td>-0.0038</td>
+                <td>5668628</td>
+                <td>5668628</td>
+                <td>0</td>
+                <td></td>
+                <td>26566155</td>
+                <td>26645278</td>
+                <td>-79123</td>
+                <td>-0.0030</td>
+                
+            </tr>
+            <tr>
+                <td>Integrated Logistic Support</td>
+                <td>506775</td>
+                <td>509604</td>
+                <td>-2829</td>
+                <td>-0.0056</td>
+                <td>830173</td>
+                <td>830173</td>
+                <td>0</td>
+                <td></td>
+                <td>1336948</td>
+                <td>1339777</td>
+                <td>-2829</td>
+                <td>-0.0021</td>
+                
+            </tr>
+            <tr>
+                <td>Program Management</td>
+                <td>3569606</td>
+                <td>3766728</td>
+                <td>-197122</td>
+                <td>-0.0552</td>
+                <td>858733</td>
+                <td>858733</td>
+                <td>0</td>
+                <td></td>
+                <td>4428339</td>
+                <td>4625461</td>
+                <td>-197122</td>
+                <td>-0.0445</td>
+                
+            </tr>
+            <tr>
+                <td>b. COST OF MONEY</td>
+                <td>625259</td>
+                <td>628642</td>
+                <td>-3383</td>
+                <td>-0.0054</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td></td>
+                <td>625259</td>
+                <td>628642</td>
+                <td>-3383</td>
+                <td>-0.0054</td>
+                
+            </tr>
+            <tr>
+                <td>c. GENERAL AND ADMINISTRATIVE</td>
+                <td>12355342</td>
+                <td>12413165</td>
+                <td>-57823</td>
+                <td>-0.0047</td>
+                <td>30190</td>
+                <td>30190</td>
+                <td>0</td>
+                <td></td>
+                <td>12385532</td>
+                <td>12443355</td>
+                <td>-57823</td>
+                <td>-0.0047</td>
+                
+            </tr>
+            <tr>
+                <td>SUBTOTAL</td>
+                <td>88549747</td>
+                <td>88909626</td>
+                <td>-359879</td>
+                <td>-0.0041</td>
+                <td>96420814</td>
+                <td>95667263</td>
+                <td>753551</td>
+                <td>0.0078</td>
+                <td>184970561</td>
+                <td>184576889</td>
+                <td>393672</td>
+                <td>0.0021</td>
+                
+            </tr>
+            <tr>
+                <td>d. UNDISTRIBUTED BUDGET</td>
+                <td>3684121</td>
+                <td>3684121</td>
+                <td>0</td>
+                <td></td>
+                <td>3684121</td>
+                <td>3684121</td>
+                <td>0</td>
+                <td></td>
+                <td>7368242</td>
+                <td>7368242</td>
+                <td>0</td>
+                <td></td>
+                
+            </tr>
+            <tr>
+                <td>TOTAL</td>
+                <td>92233868</td>
+                <td>92593747</td>
+                <td>-359879</td>
+                <td>-0.0039</td>
+                <td>100104935</td>
+                <td>99351384</td>
+                <td>753551</td>
+                <td>0.0075</td>
+                <td>192338803</td>
+                <td>191945131</td>
+                <td>393672</td>
+                <td>0.0020</td>
+                
+            </tr><tr></tr><tr></tr></table>
+    <table class="table table-sm ">
+        <tr>
+            <td>BAC EAC Comparison</td>
+            <td  colspan="12">ESTIMATE AT COMPLETE</td>
+        </tr>
+        <tr>
+            <td>Month End</td>
+            <td colspan="4">LABOR DOLLARS</td>
+            <td colspan="4">MATERIAL Dollars</td>             
+            <td colspan="4">TOTAL Dollars</td>             
+        </tr>
+        <tr>
+            <td>By Oragization</td>
+            <td>December</td>
+            <td>November</td>
+            <td>Diff</td>
+            <td>% Change</td>            
+            <td>December</td>
+            <td>November</td>
+            <td>Diff</td>
+            <td>% Change</td>            
+            <td>December</td>
+            <td>November</td>
+            <td>Diff</td>
+            <td>% Change</td>
+        </tr>    
+
+    
+            <tr>
+                <td>1.28.1.1.1 Lower Hull Units</td>
+                <td></td>
+                <td></td>
+                <td>0</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>0</td>
+                <td></td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td></td>
+                
+            </tr>
+            <tr>
+                <td>1.28.1.1.2 Upper Hull Units</td>
+                <td></td>
+                <td></td>
+                <td>0</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>0</td>
+                <td></td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td></td>
+                
+            </tr>
+            <tr>
+                <td>1.28.1.1.3 Deckhouse Units</td>
+                <td></td>
+                <td></td>
+                <td>0</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>0</td>
+                <td></td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td></td>
+                
+            </tr>
+            <tr>
+                <td>1.28.1.2.1 Accommodation Zones</td>
+                <td></td>
+                <td></td>
+                <td>0</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>0</td>
+                <td></td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td></td>
+                
+            </tr>
+            <tr>
+                <td>1.28.1.2.2 Electronic Zones</td>
+                <td></td>
+                <td></td>
+                <td>0</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>0</td>
+                <td></td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td></td>
+                
+            </tr>
+            <tr>
+                <td>1.28.1.2.3 Machinery Zones</td>
+                <td></td>
+                <td></td>
+                <td>0</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>0</td>
+                <td></td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td></td>
+                
+            </tr>
+            <tr>
+                <td>1.28.1.2.4 Mission Zones</td>
+                <td></td>
+                <td></td>
+                <td>0</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>0</td>
+                <td></td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td></td>
+                
+            </tr>
+            <tr>
+                <td>1.28.1.2.5 Shipwide Zones</td>
+                <td></td>
+                <td></td>
+                <td>0</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>0</td>
+                <td></td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td></td>
+                
+            </tr>
+            <tr>
+                <td>1.28.1.3 Surface Preparation and Coating</td>
+                <td></td>
+                <td></td>
+                <td>0</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>0</td>
+                <td></td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td></td>
+                
+            </tr>
+            <tr>
+                <td>1.28.1.4.0 Miscellaneous</td>
+                <td></td>
+                <td></td>
+                <td>0</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>0</td>
+                <td></td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td></td>
+                
+            </tr>
+            <tr>
+                <td>1.28.1.4.1 Structure</td>
+                <td></td>
+                <td></td>
+                <td>0</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>0</td>
+                <td></td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td></td>
+                
+            </tr>
+            <tr>
+                <td>1.28.1.4.2 Propulsion Systems</td>
+                <td></td>
+                <td></td>
+                <td>0</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>0</td>
+                <td></td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td></td>
+                
+            </tr>
+            <tr>
+                <td>1.28.1.4.3 Electrical Systems</td>
+                <td></td>
+                <td></td>
+                <td>0</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>0</td>
+                <td></td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td></td>
+                
+            </tr>
+            <tr>
+                <td>1.28.1.4.4 Command & Surveillance Systems</td>
+                <td></td>
+                <td></td>
+                <td>0</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>0</td>
+                <td></td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td></td>
+                
+            </tr>
+            <tr>
+                <td>1.28.1.4.5 Auxiliary Systems</td>
+                <td></td>
+                <td></td>
+                <td>0</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>0</td>
+                <td></td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td></td>
+                
+            </tr>
+            <tr>
+                <td>1.28.1.4.6 Outfit and Furnishings</td>
+                <td></td>
+                <td></td>
+                <td>0</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>0</td>
+                <td></td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td></td>
+                
+            </tr>
+            <tr>
+                <td>1.28.1.4.7 Weapon Systems</td>
+                <td></td>
+                <td></td>
+                <td>0</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>0</td>
+                <td></td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td></td>
+                
+            </tr>
+            <tr>
+                <td>1.28.1.4.9 Production Support</td>
+                <td></td>
+                <td></td>
+                <td>0</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>0</td>
+                <td></td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td></td>
+                
+            </tr>
+            <tr>
+                <td>1.28.1.5 Total Ship Integration/Engineering</td>
+                <td></td>
+                <td></td>
+                <td>0</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>0</td>
+                <td></td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td></td>
+                
+            </tr>
+            <tr>
+                <td>1.28.1.6 Ship Assembly and Support Services</td>
+                <td></td>
+                <td></td>
+                <td>0</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>0</td>
+                <td></td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td></td>
+                
+            </tr>
+            <tr>
+                <td>1.28.2 Systems Engineering</td>
+                <td></td>
+                <td></td>
+                <td>0</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>0</td>
+                <td></td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td></td>
+                
+            </tr>
+            <tr>
+                <td>1.28.3.1 Program Management</td>
+                <td></td>
+                <td></td>
+                <td>0</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>0</td>
+                <td></td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td></td>
+                
+            </tr>
+            <tr>
+                <td>1.28.3.2 Integrated Logistics Support Management</td>
+                <td></td>
+                <td></td>
+                <td>0</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>0</td>
+                <td></td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td></td>
+                
+            </tr>
+            <tr>
+                <td>1.28.5 Training</td>
+                <td></td>
+                <td></td>
+                <td>0</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>0</td>
+                <td></td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td></td>
+                
+            </tr>
+            <tr>
+                <td>1.34.1.1.1 Lower Hull Units</td>
+                <td>8882222</td>
+                <td>8882313</td>
+                <td>-91</td>
+                <td>-0.0000</td>
+                <td></td>
+                <td></td>
+                <td>0</td>
+                <td></td>
+                <td>8882222</td>
+                <td>8882313</td>
+                <td>-91</td>
+                <td>-0.0000</td>
+                
+            </tr>
+            <tr>
+                <td>1.34.1.1.2 Upper Hull Units</td>
+                <td>9274608</td>
+                <td>9275575</td>
+                <td>-967</td>
+                <td>-0.0001</td>
+                <td></td>
+                <td></td>
+                <td>0</td>
+                <td></td>
+                <td>9274608</td>
+                <td>9275575</td>
+                <td>-967</td>
+                <td>-0.0001</td>
+                
+            </tr>
+            <tr>
+                <td>1.34.1.1.3 Deckhouse Untis</td>
+                <td>5009048</td>
+                <td>5009273</td>
+                <td>-225</td>
+                <td>-0.0000</td>
+                <td></td>
+                <td></td>
+                <td>0</td>
+                <td></td>
+                <td>5009048</td>
+                <td>5009273</td>
+                <td>-225</td>
+                <td>-0.0000</td>
+                
+            </tr>
+            <tr>
+                <td>1.34.1.2.1 Accomodation Zones</td>
+                <td>844223</td>
+                <td>844223</td>
+                <td>0</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>0</td>
+                <td></td>
+                <td>844223</td>
+                <td>844223</td>
+                <td>0</td>
+                <td></td>
+                
+            </tr>
+            <tr>
+                <td>1.34.1.2.2 Electrical Zones</td>
+                <td>436133</td>
+                <td>436117</td>
+                <td>16</td>
+                <td>0.0000</td>
+                <td></td>
+                <td></td>
+                <td>0</td>
+                <td></td>
+                <td>436133</td>
+                <td>436117</td>
+                <td>16</td>
+                <td>0.0000</td>
+                
+            </tr>
+            <tr>
+                <td>1.34.1.2.3 Machinery Zones</td>
+                <td>3309592</td>
+                <td>3309602</td>
+                <td>-10</td>
+                <td>-0.0000</td>
+                <td></td>
+                <td></td>
+                <td>0</td>
+                <td></td>
+                <td>3309592</td>
+                <td>3309602</td>
+                <td>-10</td>
+                <td>-0.0000</td>
+                
+            </tr>
+            <tr>
+                <td>1.34.1.2.4 Mission Zones</td>
+                <td>1199069</td>
+                <td>1199353</td>
+                <td>-284</td>
+                <td>-0.0002</td>
+                <td></td>
+                <td></td>
+                <td>0</td>
+                <td></td>
+                <td>1199069</td>
+                <td>1199353</td>
+                <td>-284</td>
+                <td>-0.0002</td>
+                
+            </tr>
+            <tr>
+                <td>1.34.1.2.5 Shipwide Zones</td>
+                <td>20919002</td>
+                <td>20918811</td>
+                <td>191</td>
+                <td>0.0000</td>
+                <td></td>
+                <td></td>
+                <td>0</td>
+                <td></td>
+                <td>20919002</td>
+                <td>20918811</td>
+                <td>191</td>
+                <td>0.0000</td>
+                
+            </tr>
+            <tr>
+                <td>1.34.1.3 Surface Preparation and Coating</td>
+                <td>3828628</td>
+                <td>3829509</td>
+                <td>-881</td>
+                <td>-0.0002</td>
+                <td></td>
+                <td></td>
+                <td>0</td>
+                <td></td>
+                <td>3828628</td>
+                <td>3829509</td>
+                <td>-881</td>
+                <td>-0.0002</td>
+                
+            </tr>
+            <tr>
+                <td>1.34.1.4.0 Miscellaneous</td>
+                <td></td>
+                <td></td>
+                <td>0</td>
+                <td></td>
+                <td>1567844</td>
+                <td>1567844</td>
+                <td>0</td>
+                <td></td>
+                <td>1567844</td>
+                <td>1567844</td>
+                <td>0</td>
+                <td></td>
+                
+            </tr>
+            <tr>
+                <td>1.34.1.4.1 Structure</td>
+                <td></td>
+                <td></td>
+                <td>0</td>
+                <td></td>
+                <td>15554895</td>
+                <td>15554895</td>
+                <td>0</td>
+                <td></td>
+                <td>15554895</td>
+                <td>15554895</td>
+                <td>0</td>
+                <td></td>
+                
+            </tr>
+            <tr>
+                <td>1.34.1.4.2 Propulsion Systems</td>
+                <td></td>
+                <td></td>
+                <td>0</td>
+                <td></td>
+                <td>11373034</td>
+                <td>11373034</td>
+                <td>0</td>
+                <td></td>
+                <td>11373034</td>
+                <td>11373034</td>
+                <td>0</td>
+                <td></td>
+                
+            </tr>
+            <tr>
+                <td>1.34.1.4.3 Electrical Systems</td>
+                <td></td>
+                <td></td>
+                <td>0</td>
+                <td></td>
+                <td>13765450</td>
+                <td>13705381</td>
+                <td>60069</td>
+                <td>0.0044</td>
+                <td>13765450</td>
+                <td>13705381</td>
+                <td>60069</td>
+                <td>0.0044</td>
+                
+            </tr>
+            <tr>
+                <td>1.34.1.4.4 Command & Surveillance Systems</td>
+                <td></td>
+                <td></td>
+                <td>0</td>
+                <td></td>
+                <td>3442343</td>
+                <td>3442343</td>
+                <td>0</td>
+                <td></td>
+                <td>3442343</td>
+                <td>3442343</td>
+                <td>0</td>
+                <td></td>
+                
+            </tr>
+            <tr>
+                <td>1.34.1.4.5 Auxiliary Systems</td>
+                <td></td>
+                <td></td>
+                <td>0</td>
+                <td></td>
+                <td>30802150</td>
+                <td>30734150</td>
+                <td>68000</td>
+                <td>0.0022</td>
+                <td>30802150</td>
+                <td>30734150</td>
+                <td>68000</td>
+                <td>0.0022</td>
+                
+            </tr>
+            <tr>
+                <td>1.34.1.4.6 Outfit and Furnishings</td>
+                <td></td>
+                <td></td>
+                <td>0</td>
+                <td></td>
+                <td>13579734</td>
+                <td>12965034</td>
+                <td>614700</td>
+                <td>0.0453</td>
+                <td>13579734</td>
+                <td>12965034</td>
+                <td>614700</td>
+                <td>0.0453</td>
+                
+            </tr>
+            <tr>
+                <td>1.34.1.4.7 Weapon Systems</td>
+                <td></td>
+                <td></td>
+                <td>0</td>
+                <td></td>
+                <td>528582</td>
+                <td>517800</td>
+                <td>10782</td>
+                <td>0.0204</td>
+                <td>528582</td>
+                <td>517800</td>
+                <td>10782</td>
+                <td>0.0204</td>
+                
+            </tr>
+            <tr>
+                <td>1.34.1.4.9 Production Support</td>
+                <td></td>
+                <td></td>
+                <td>0</td>
+                <td></td>
+                <td>4810700</td>
+                <td>4810700</td>
+                <td>0</td>
+                <td></td>
+                <td>4810700</td>
+                <td>4810700</td>
+                <td>0</td>
+                <td></td>
+                
+            </tr>
+            <tr>
+                <td>1.34.1.5 Total Ship Integration/Engineering</td>
+                <td>231072</td>
+                <td>231072</td>
+                <td>0</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>0</td>
+                <td></td>
+                <td>231072</td>
+                <td>231072</td>
+                <td>0</td>
+                <td></td>
+                
+            </tr>
+            <tr>
+                <td>1.34.1.6 Ship Assembly and Support Services</td>
+                <td>14948349</td>
+                <td>14948349</td>
+                <td>0</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>0</td>
+                <td></td>
+                <td>14948349</td>
+                <td>14948349</td>
+                <td>0</td>
+                <td></td>
+                
+            </tr>
+            <tr>
+                <td>1.34.2 Systems Engineering</td>
+                <td>1196865</td>
+                <td>1214215</td>
+                <td>-17350</td>
+                <td>-0.0145</td>
+                <td></td>
+                <td></td>
+                <td>0</td>
+                <td></td>
+                <td>1196865</td>
+                <td>1214215</td>
+                <td>-17350</td>
+                <td>-0.0145</td>
+                
+            </tr>
+            <tr>
+                <td>1.34.3.1 Project Management Support</td>
+                <td>4983557</td>
+                <td>5259802</td>
+                <td>-276245</td>
+                <td>-0.0554</td>
+                <td>158733</td>
+                <td>158733</td>
+                <td>0</td>
+                <td></td>
+                <td>5142290</td>
+                <td>5418535</td>
+                <td>-276245</td>
+                <td>-0.0537</td>
+                
+            </tr>
+            <tr>
+                <td>1.34.3.2 Integrated Logistics Support Management</td>
+                <td>470047</td>
+                <td>472875</td>
+                <td>-2828</td>
+                <td>-0.0060</td>
+                <td></td>
+                <td></td>
+                <td>0</td>
+                <td></td>
+                <td>470047</td>
+                <td>472875</td>
+                <td>-2828</td>
+                <td>-0.0060</td>
+                
+            </tr>
+            <tr>
+                <td>1.34.5 Training</td>
+                <td>36728</td>
+                <td>36728</td>
+                <td>0</td>
+                <td></td>
+                <td>807159</td>
+                <td>807159</td>
+                <td>0</td>
+                <td></td>
+                <td>843887</td>
+                <td>843887</td>
+                <td>0</td>
+                <td></td>
+                
+            </tr>
+            <tr>
+                <td>b. COST OF MONEY</td>
+                <td>625259</td>
+                <td>628642</td>
+                <td>-3383</td>
+                <td>-0.0054</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td></td>
+                <td>625259</td>
+                <td>628642</td>
+                <td>-3383</td>
+                <td>-0.0054</td>
+                
+            </tr>
+            <tr>
+                <td>c. GENERAL AND ADMINISTRATIVE</td>
+                <td>12355342</td>
+                <td>12413165</td>
+                <td>-57823</td>
+                <td>-0.0047</td>
+                <td>30190</td>
+                <td>30190</td>
+                <td>0</td>
+                <td></td>
+                <td>12385532</td>
+                <td>12443355</td>
+                <td>-57823</td>
+                <td>-0.0047</td>
+                
+            </tr>
+            <tr>
+                <td>SUBTOTAL</td>
+                <td>88549744</td>
+                <td>88909624</td>
+                <td>-359880</td>
+                <td>-0.0041</td>
+                <td>96420814</td>
+                <td>95667263</td>
+                <td>753551</td>
+                <td>0.0078</td>
+                <td>184970558</td>
+                <td>184576887</td>
+                <td>393671</td>
+                <td>0.0021</td>
+                
+            </tr>
+            <tr>
+                <td>d. UNDISTRIBUTED BUDGET</td>
+                <td>3684121</td>
+                <td>3684121</td>
+                <td>0</td>
+                <td></td>
+                <td>3684121</td>
+                <td>3684121</td>
+                <td>0</td>
+                <td></td>
+                <td>7368242</td>
+                <td>7368242</td>
+                <td>0</td>
+                <td></td>
+                
+            </tr>
+            <tr>
+                <td>TOTAL</td>
+                <td>92233865</td>
+                <td>92593745</td>
+                <td>-359880</td>
+                <td>-0.0039</td>
+                <td>100104935</td>
+                <td>99351384</td>
+                <td>753551</td>
+                <td>0.0075</td>
+                <td>192338800</td>
+                <td>191945129</td>
+                <td>393671</td>
+                <td>0.0020</td>
+                
+            </tr><tr></tr><tr></tr></table>

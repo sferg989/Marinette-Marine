@@ -68,7 +68,7 @@ if($control=="load_p6_bl_data"){
         createTableFromBase($schema,"template_p6_bl_labor", $table_name);
     }
     deleteShipFromTable($ship_code,$table_name, $schema);
-    $insert_sql = "insert into $schema.$table_name (ship_code, ca, wp, bl_labor, date) values ";
+    $insert_sql = "insert into $schema.$table_name (ship_code, ca, wp, bl_labor) values ";
 
     $p6data = trim($p6data);
     $lines = explode("\n",$p6data);
@@ -100,7 +100,7 @@ if($control=="load_p6_bl_data"){
     }
     if($i!=500){
         $sql = substr($sql, 0, -1);
-        //print $sql;
+        print $sql;
         $junk = dbCall($sql,$schema);
         $sql = $insert_sql;
     }
@@ -141,8 +141,9 @@ if($control=="load_p6_time"){
     die("made it");
 }
 if($control=="load_cobra_data"){
+
     $batch_rpt_name = "csv".$ship_code."BLValid";
-    //runCobraBatchReportProcess($ship_code,$batch_rpt_name, $g_path2CobraAPI,$g_path2BatrptCMD,$g_path2BatrptBAT,$debug);
+    runCobraBatchReportProcess($ship_code,$batch_rpt_name, $g_path2CobraAPI,$g_path2BatrptCMD,$g_path2BatrptBAT,$debug);
 
     loadPCSBL($rpt_period, $schema, $ship_code, $pcs_bl_file_name, $path2_destination, $path2xlsfile, $g_path_to_util, $g_path2CobraAPI, $g_path2BatrptCMD, $g_path2BatrptBAT, $debug);
     loadTimePhaseFutureCheck($rpt_period, $schema, $ship_code, $time_phased_file_name, $path2_destination, $path2xlsfile, $g_path_to_util, $g_path2CobraAPI, $g_path2BatrptCMD, $g_path2BatrptBAT, $debug);

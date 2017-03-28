@@ -90,7 +90,7 @@ function insertFortisXML($xml_array){
             $i=0;
         }
         $date                = fixExcelDate($value["DATE"]);
-        $rpt_period          = createRPTPeriodfromDate($date);
+        $rpt_period          = createRPTfromDate($date);
         $bcr                 = $value["BCR"];
         $part                = checkifArray($value["PART"]);
         $rev                 = checkifArray($value["REV"]);
@@ -154,7 +154,6 @@ function insertFortisXML($xml_array){
         $denial_confirmed    = checkifArray($value["DENIAL_CONFIRMED"]);
         $volume_name         = $value["Volume-Name"];
         $file_name           = $value["File-Name"];
-        print $notes ."\r";
 
         $sql.="
          (
@@ -279,7 +278,7 @@ if($control=="step_grid")
     die($data);
 }
 if($control=="load_xml"){
-    $path2_fortis_export = $path2_cobra_dir . "/" . $ship_code . " Fortis Export/" . $ship_code . "Fortis.xml";
+    $path2_fortis_export = $path2_cobra_dir . "/" . $ship_code . " Fortis Export/" . $ship_code . " Fortis.xml";
 
     $xml        = simplexml_load_file($path2_fortis_export);
     //print $xml;

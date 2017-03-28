@@ -13,6 +13,17 @@ function dbCall($sql,$schema="fmm_evms",$server="localhost"){
     $result = $db->Execute($sql);
     return $result;
 }
+function dbCallCobra($sql){
+
+    $db = ADONewConnection('odbc_mssql');
+
+    $dsn = "Driver={SQL Server};Server=mmcsqlapp;Database=Cobra51;";
+//declare the SQL statement that will query the database
+    $db->Connect($dsn);
+    $db->SetFetchMode(3);
+    $result = $db->Execute($sql);
+    return $result;
+}
 function now()
 {
     $timestamp = date("Y-m-d h:i:s");
@@ -120,16 +131,18 @@ function checkMasterCA($wbs_id,$ca_name)
     }
 }
 function createRPTfromDate($date){
-    $date_array = explode("-", $date);
-    $day = $date_array[2];
+    $date_array = explode("-", trim($date));
+
+    $day = intval($date_array[2]);
     $month = $date_array[1];
     $year = $date_array[0];
-    if($day<15)
+    if($day<22)
     {
-        $month = intval($date_array[1])-1;
+        $month = intval($month)-1;
         if($month==0)
         {
             $month = 12;
+            $year = $year-1;
         }
     }
     if(strlen($month)==1)

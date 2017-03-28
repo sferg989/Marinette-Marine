@@ -177,7 +177,7 @@ if($control=="status_valid_check"){
     $cost_set_list[] = "ETC";
 
     $batch_rpt_name = "csv".$ship_code."StatusValid";
-    //runCobraBatchReportProcess($ship_code,$batch_rpt_name, $g_path2CobraAPI,$g_path2BatrptCMD,$g_path2BatrptBAT,$debug);
+    runCobraBatchReportProcess($ship_code,$batch_rpt_name, $g_path2CobraAPI,$g_path2BatrptCMD,$g_path2BatrptBAT,$debug);
 
     foreach ($cost_set_list as $value){
         $status_labor_table.= validatePCS2P6StatusLabor($schema, $rpt_period, $ship_code, $value);

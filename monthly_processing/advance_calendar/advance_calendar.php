@@ -72,8 +72,8 @@ if($control=="bkup_reclass_report")
     reClassCobraProject($ship_code, $g_path2CobraAPI,$g_path2ReClassProjectCMD,$g_path2ReClassProjectBAT,$debug);
 
     //this is the real one.  there were not enough characters allowed to have 'class check'
-    //$batch_rpt_name = $ship_code." Class Check";
-    $batch_rpt_name = $ship_code." Class";
+    $batch_rpt_name = $ship_code." Class Check";
+    //$batch_rpt_name = $ship_code." Class";
     runCobraBatchReportProcess($ship_code,$batch_rpt_name, $g_path2CobraAPI,$g_path2BatrptCMD,$g_path2BatrptBAT,$debug);
     die("BKUP-Reclass-Report have completed");
 }

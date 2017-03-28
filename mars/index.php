@@ -69,8 +69,34 @@ $period = 201703;
 
 //clearDirectory($gl_detail_directory);
 //copyListOfDirectoryToCSV($g_path2_baan_work,"PFA_GL_Detail",$gl_detail_directory, $period, "gl_detail");
-print $g_path2_mar_file;
-die("made it");
+
+$sql = "Select wp,ca1, c6, pmt from dbo.CAWP where program = '0467' AND WP > ''";
+//print $sql;
+$rs = dbCallCobra($sql);
+$html = "<table>";
+while (!$rs->EOF)
+{
+    $wp  = $rs->fields["wp"];
+    $ca  = $rs->fields["ca1"];
+    $c6  = $rs->fields["c6"];
+    $pmt = $rs->fields["pmt"];
+    $html.="
+    <tr> 
+        <td>$wp</td>
+        <td>$ca</td>
+        <td>$c6</td>
+        <td>$pmt</td>
+    </tr> 
+    ";
+
+    $rs->MoveNext();
+}
+$html.="</table>";
+die($html);
+
+//execute the SQL statement and return records
+
+
 $mars_file = loadPHPEXCELFile($g_path2_mar_file);
 // Find the last cell in the second spreadsheet
 $mars_file->setActiveSheetIndex(7);

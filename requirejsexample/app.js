@@ -59,6 +59,14 @@ require([
     var url = "lib/php/requirejs.php";
 
     grid.createGrid("coolgrid",url, ajax_data_options ,grid1_columns, grid1_options);
-    //bootbox.alert("this is really cool");
+    var grid_object = $("#coolgrid").val();
+    grid_object.onCellChange .subscribe(function(e, args){
+    var status     = args.item.step_status;
+    var step_id    = args.item.id;
+    var code       = args.item.code;
+    var rpt_period = args.item.rpt_period;
+    var comment_id = args.item.comment_id;
+    var pfa_notes  = args.item.pfa_notes;
 
+});
 });

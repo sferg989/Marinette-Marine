@@ -97,6 +97,7 @@ $(document).ready(function() {
         step.rpt_period = rpt_period;
         var selectedIndexes = step_grid.getSelectedRows(),count = selectedIndexes.length;
         var n, worker;
+        $("#status").empty();
         $.each(selectedIndexes, function(index, value ) {
             step.action = step_grid.getDataItem(value).action;
             step.name   = step_grid.getDataItem(value).name;
@@ -107,7 +108,8 @@ $(document).ready(function() {
             workers.postMessage(step);
 
             function workerDone(e) {
-                    console.log(e.data.id+" has completed");
+
+                console.log(e.data.id+" has completed");
                 $("#img_"+e.data.id+" img").attr("src", "../images/tick.png");
             }
         });

@@ -1,8 +1,9 @@
 define(['slickgrid', 'slickdataview'], function(){
+
     var createGrid = function (div_name,url,ajax_data_object,shipStatusCols, options)
     {
         var dataView = new Slick.Data.DataView();
-        var grid = new Slick.Grid('#'+div_name, dataView, shipStatusCols, options);
+        grid = new Slick.Grid('#'+div_name, dataView, shipStatusCols, options);
         $.ajax({
             dataType: "json",
             url     : url,

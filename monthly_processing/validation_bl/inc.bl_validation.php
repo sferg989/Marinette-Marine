@@ -221,7 +221,7 @@ function validatePCS2P6BLLabor($schema, $rpt_period, $ship_code){
     }
     if($i<1){
         $data_table.="
-            <tr class = 'table_data'>
+            <tr class = 'table_headers'>
                 <td colspan='5'>There are no Records to Display</td>
             </tr>
             ";
@@ -247,7 +247,7 @@ function validateTPP6TP($schema, $rpt_period, $ship_code){
   ";
     $rs = dbCall($sql,$schema);
     $data_table = "<table class = 'table table-sm'>
-            <tr class = 'table_headers'><th colspan = 5>Validate Timephase</th></tr>
+            <tr class = 'table_headers'><th colspan = 6>Validate Timephase</th></tr>
             <tr class = 'table_headers'>
                 <th >RPT Period</th>
                 <th>CA</th>
@@ -261,15 +261,15 @@ function validateTPP6TP($schema, $rpt_period, $ship_code){
     {
         $ca          = $rs->fields["ca"];
         $wp          = $rs->fields["wp"];
-        $rpt_period          = $rs->fields["date"];
+        $date        = $rs->fields["date"];
         $p6_labor    = formatNumber($rs->fields["p6_labor"]);
         $cobra_labor = formatNumber($rs->fields["cobra_labor"]);
         $diff        = formatNumber($p6_labor - $cobra_labor);
 
-        if($diff>.5){
+        if($diff>.99 and $date < $rpt_period){
             $data_table.="
             <tr class = 'table_data'>
-                <td>$rpt_period</td>
+                <td>$date</td>
                 <td>$ca</td>
                 <td>$wp</td>
                 <td>$p6_labor</td>
@@ -284,8 +284,8 @@ function validateTPP6TP($schema, $rpt_period, $ship_code){
     }
     if($i<1){
         $data_table.="
-            <tr class = 'table_data'>
-                <td colspan='5'>There are no Records to Display</td>
+            <tr class = 'table_headers'>
+                <td colspan='6'>There are no Records to Display</td>
             </tr>
             ";
     }
@@ -309,6 +309,7 @@ function validateHistoryCheck($schema, $prev_rpt_period,$cur_rpt_period, $ship_c
             on cur.date = prev.date AND
             cur.cost_set = prev.cost_set AND
             cur.type = prev.type
+            and cur.ship_code = prev.ship_code
         where cur.ship_code = $ship_code
           group by cur.date, cur.type, cur.cost_set
         order by cur.date
@@ -317,10 +318,11 @@ function validateHistoryCheck($schema, $prev_rpt_period,$cur_rpt_period, $ship_c
     $rs = dbCall($sql,$schema);
     $data_table = "
         <table class = 'table table-sm'>
-            <tr class = 'table_headers'><th colspan = 5>History Check</th></tr>
+            <tr class = 'table_headers'><th colspan = 6>History Check</th></tr>
             <tr class = 'table_headers'>
                 <th>Type</th>
                 <th>RPT Period</th>
+                <th>Cost Set</th>
                 <th>Cur</th>
                 <th>Prev</th>
                 <th>DIFF</th>
@@ -354,7 +356,7 @@ function validateHistoryCheck($schema, $prev_rpt_period,$cur_rpt_period, $ship_c
     if($i<1){
         $data_table.="
             <tr class = 'table_data'>
-                <td colspan='5' class='table_headers'>There are no Records to Display</td>
+                <td colspan='6' class='table_headers'>There are no Records to Display</td>
             </tr>
             ";
     }

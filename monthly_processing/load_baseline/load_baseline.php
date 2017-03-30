@@ -478,7 +478,7 @@ if($control=="compare_ca"){
     }
 
     $data = "<div id = \"bcr_grid\" class = \"col-md-12\">
-    <table  id = \"example\" class=\"table \">
+    <table  id = \"example\" class=\"table table-sm\">
         <tr>
             <th class = \"table_headers\">WBS Path</th>
             <th class = \"table_headers\">ActID</th>

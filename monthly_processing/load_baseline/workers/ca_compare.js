@@ -12,7 +12,7 @@ this.onmessage = function(e) {
     var rpt_period = e.data.rpt_period;
     var http       = new XMLHttpRequest();
 
-    var url = "../bl_validation.php";
+    var url = "../load_baseline.php";
     var params = "control="+action+"&rpt_period="+rpt_period+"&code="+code+"";
     http.open("POST", url, true);
 

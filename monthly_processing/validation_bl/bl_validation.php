@@ -100,7 +100,7 @@ if($control=="load_p6_bl_data"){
     }
     if($i!=500){
         $sql = substr($sql, 0, -1);
-        print $sql;
+
         $junk = dbCall($sql,$schema);
         $sql = $insert_sql;
     }

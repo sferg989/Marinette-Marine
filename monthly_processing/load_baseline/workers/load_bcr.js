@@ -13,7 +13,7 @@ this.onmessage = function(e) {
     var data       = escape(e.data.bcrData2);
     var http       = new XMLHttpRequest();
 
-    var url = "../bl_validation.php";
+    var url = "../load_baseline.php";
     var params = "control="+action+"&bcr_data="+data+"&rpt_period="+rpt_period+"&code="+code+"";
     http.open("POST", url, true);
 

@@ -231,5 +231,3 @@ if($filter =="rpt_period")
     }";
     die($data);
 }
-
-

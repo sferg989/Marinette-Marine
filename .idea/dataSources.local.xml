@@ -4,12 +4,15 @@
     <data-source name="localhost - fmm_evms@localhost" uuid="08e0cc48-623e-489c-958a-e24f4db78143">
       <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" />
       <user-name>steve</user-name>
+      <introspection-schemas>*:fmm_evms</introspection-schemas>
     </data-source>
     <data-source name="localhost - cost@localhost" uuid="6286012a-b581-4a5e-a8c4-d54d35d92f67">
       <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" />
+      <introspection-schemas>*:cost</introspection-schemas>
     </data-source>
     <data-source name="localhost - processing_status@localhost" uuid="803013ae-92bd-4e91-96bf-1f4d1c111f19">
       <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" />
+      <introspection-schemas>*:processing_status</introspection-schemas>
     </data-source>
   </component>
 </project>

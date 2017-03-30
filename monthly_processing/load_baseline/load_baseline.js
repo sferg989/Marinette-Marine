@@ -54,7 +54,6 @@ $(document).ready(function() {
     $("#mybutton").click(function() {
         var step        = {};
         var p6Dataval   = $('#p6data').val();
-
         step.code       = code;
         step.action     = "load_p6_data";
         step.name       = "Load P6 Data";
@@ -126,7 +125,6 @@ $(document).ready(function() {
         data_check = checkifBCRAndBaselineLoaded(code, rpt_period);
         var bcr, baseline, result, bcr_result,
             baseline_result,response_data,id, html_table, file_name;
-        alert("made it yes!");
 
         result          = data_check.split(",");
         bcr             = result[0];
@@ -136,9 +134,7 @@ $(document).ready(function() {
 
         if(bcr_result[1]=="false")
         {
-
             bootbox.alert("please loac BCR's for "+rpt_period);
-
             return false;
         }
         if(baseline_result[1]=="false")
@@ -146,7 +142,6 @@ $(document).ready(function() {
             bootbox.alert("please loac Baseline for "+rpt_period);
             return false;
         }
-        return false;
         var worker;
         $("#status").append("<div id = \"img_"+step.action+"\"><br><img src=\"../../inc/images/ajax-loader.gif\" height=\"32\" width=\"32\"/>"+step.name+"<br></div>");
 

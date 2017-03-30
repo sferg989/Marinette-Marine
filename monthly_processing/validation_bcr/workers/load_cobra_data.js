@@ -6,15 +6,14 @@ self.addEventListener('message', function(e) {
 
 }, false);
 this.onmessage = function(e) {
-    var action     = e.data.action;
-    var name       = e.data.name;
-    var code       = e.data.code;
-    var rpt_period = e.data.rpt_period;
-    var data     = escape(e.data.p6Data2);
-    var http = new XMLHttpRequest();
 
-    var url = "../load_baseline.php";
-    var params = "control="+action+"&p6data="+data+"&rpt_period="+rpt_period+"&code="+code+"";
+    var code       = e.data.code;
+    var action     = e.data.action;
+    var rpt_period = e.data.rpt_period;
+    var http       = new XMLHttpRequest();
+
+    var url = "../bcr_validation.php";
+    var params = "control="+action+"&rpt_period="+rpt_period+"&code="+code+"";
     http.open("POST", url, true);
 
 //Send the proper header information along with the request
@@ -22,7 +21,14 @@ this.onmessage = function(e) {
 
     http.onreadystatechange = function() {//Call a function when the state changes.
         if(http.readyState == 4 && http.status == 200) {
-            postMessage({id: action});
+            var data = {};
+            var data_response = this.responseText.split("<>");
+            data.bl_table = data_response[0];
+            data.tp_table = data_response[1];
+            data.hc_table = data_response[2];
+            data.id= action;
+
+            postMessage(data);
         }
     }
     http.send(params);

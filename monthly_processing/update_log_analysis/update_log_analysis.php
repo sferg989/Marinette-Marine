@@ -278,17 +278,17 @@ if($control=="step_grid")
     die($data);
 }
 if($control=="load_xml"){
-    $path2_fortis_export = $path2_cobra_dir . "/" . $ship_code . " Fortis Export/" . $ship_code . " Fortis.xml";
+    $path2_fortis_export = $path2_cobra_dir . "/" . $ship_code . " Fortis Export/" . $ship_code . "Fortis.xml";
 
     $xml        = simplexml_load_file($path2_fortis_export);
     //print $xml;
     //die("made it");
     $json       = json_encode($xml);
     $xml_array  = json_decode($json, TRUE);
-    //print $path2_fortis_export;
-    //var_dump($xml);
+    print $path2_fortis_export;
+    var_dump($xml);
 
-    truncateTable("processing_status", "fortis_xml");
+    deleteShipFromTable($ship_code,"fortis_xml", "processing_status");
     insertFortisXML($xml_array["NEW_Baseline_Change_Request"]);
 
     die("made it");

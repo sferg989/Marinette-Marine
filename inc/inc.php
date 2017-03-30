@@ -562,8 +562,8 @@ function formatNumber($number){
     return "";
 }
 function formatNumber4decNoComma($number){
-    //$no_comma = floatval(str_replace(",", "", $number));
-    $no_sign = floatval(str_replace("$", "", $number));
+    $no_comma = floatval(str_replace(",", "", $number));
+    $no_sign = floatval(str_replace("$", "", $no_comma));
 
     $value    = number_format($no_sign, 4, ".", "");
     if($value ==""){

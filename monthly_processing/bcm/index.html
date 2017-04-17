@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Budget Change Matrix</title>
+    <link rel="stylesheet" href="../../inc/lib/css/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="../../inc/lib/js/SlickGrid-master/examples/examples.css">
+
+    <link rel="stylesheet" href="../../inc/lib/js/SlickGrid-master/slick.grid.css">
+    <link rel="stylesheet" href="../../inc/lib/js/SlickGrid-master/css/smoothness/jquery-ui-1.8.16.custom.css">
+    <link rel="stylesheet" href="../../inc/lib/js/SlickGrid-master/controls/slick.columnpicker.css">
+    <script src="../../inc/lib/js/tether-1.3.3/dist/js/tether.min.js"></script>
+
+<style>
+    [class^="slickgrid_"],
+    [class^="slickgrid_"] div {
+        -webkit-box-sizing: content-box;
+        -moz-box-sizing: content-box;
+        box-sizing: content-box;
+    }
+
+</style>
+
+
+<style>
+    @import url("//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc2/css/bootstrap-glyphicons.css");
+
+
+    /* container adjusted */
+    .alt-grid .container {width:98%;height:50%;max-width:none;padding:0}
+    body {overflow-x: hidden;}
+
+    .btn-warning {
+        color: black;
+    }
+    .slick-cell, .slick-headerrow-column {
+        position: absolute;
+        border: 1px solid transparent;
+        border-right: 1px dotted silver;
+        border-bottom-color: silver;
+        overflow: hidden;
+        -o-text-overflow: ellipsis;
+        text-overflow: ellipsis;
+        vertical-align: middle;
+        z-index: 1;
+        padding: 1px 2px 2px 1px;
+        margin: 0;
+        /*white-space: nowrap;*/
+        cursor: default;
+    }
+    .showNegRed{
+        text-align: right;
+        color: red;
+    }
+    .showPosBlack{
+        text-align: right;
+    }
+    #bcm .slick-row.active .slick-cell {
+        background-color: #7FDBFF;
+        font-weight: bold;
+    }
+    .slick-viewport { overflow-x: auto !important; overflow-y: auto !important; }
+    .title_font {
+        font-size: 15px;
+        font-family : "Helvetica ";
+    }
+</style>
+<title>Budget Chaneg Matrix</title>
+</head>
+<body class="alt-grid">
+<!--<div id = "filters">-->
+
+<div class="container" >
+    <div class="row">
+        <div class="col-md-1">
+            <button id="back_btn" type="button" class="btn btn-info btn-sm">Back</button>
+        </div>
+        <div class="col-md-2">
+            <h6><div id = "rpt_period_div">Reporting Period- </div></h6>
+        </div>
+        <div class="col-md-2">
+            <h6><div id = "title">BCR Validation - </div></h6>
+        </div>
+
+        <div class="col-md-2">
+            <button id="load_cobra_data" type="button" class="btn btn-warning btn-sm">
+                <img src="../../images/Cobra.ico"/>
+                Load Cobra Data
+            </button>
+        </div>
+        <div class="col-md-1" id = "status_cobra"></div>
+        <div class="col-md-1" id = "status"></div>
+    </div>
+    <br>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div id = "bcm"></div>
+        </div>
+    </div>
+    <br>
+
+</div>
+</body>
+
+<script src="../../inc/lib/js/require.js" data-main="main.js" ></script>
+
+<script src="../../require.config.js"></script>
+
+</html>

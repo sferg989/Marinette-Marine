@@ -112,7 +112,7 @@ function loadTimePhaseFutureCheck($rpt_period, $schema, $ship_code, $time_phased
     if($i !=500)
     {
         $sql = substr($sql, 0, -1);
-        print $sql;
+
         $junk = dbCall($sql, $schema);
     }
 }
@@ -170,21 +170,7 @@ function loadHistoryCheck($rpt_period, $schema, $ship_code, $hc_file_name, $path
     }
 }
 
-function validatePCS2P6BLLabor($schema, $rpt_period, $ship_code){
-    $cobra_table_name   = $rpt_period."_pcs_bl_labor";
-    $p6_table_name      = $rpt_period."_p6_bl_labor";
-    $sql = "
-        select 
-            p6.ca,
-            p6.wp,
-            p6.bl_labor p6_labor,
-            sum(cob.bl_labor) cobra_labor
-        from $schema.`$p6_table_name` p6
-        LEFT join $schema.`$cobra_table_name` cob
-        on p6.ca=cob.ca and p6.wp = cob.wp
-        where p6.ship_code=$ship_code group by p6.ca,p6.wp
-  ";
-    $rs = dbCall($sql,$schema);
+function returnTableFromRS($rs){
     $data_table = "<table class = 'table table-sm'>
             <tr ><th colspan = 5 class = 'table_headers'>Baseline Labor</th></tr>
             <tr class = 'table_headers'>
@@ -202,7 +188,7 @@ function validatePCS2P6BLLabor($schema, $rpt_period, $ship_code){
         $wp          = $rs->fields["wp"];
         $p6_labor    = formatNumber($rs->fields["p6_labor"]);
         $cobra_labor = formatNumber($rs->fields["cobra_labor"]);
-        $diff = formatNumber($p6_labor-$cobra_labor);
+        $diff        = formatNumber($p6_labor - $cobra_labor);
 
         if($diff>1){
             $data_table.="
@@ -229,23 +215,65 @@ function validatePCS2P6BLLabor($schema, $rpt_period, $ship_code){
     $data_table.= "</table>";
     return $data_table;
 }
+function validatePCS2P6BLLabor($schema, $rpt_period, $ship_code){
+    /*Material*/
+    $data_table = "";
+    if($ship_code<477){
 
-function validateTPP6TP($schema, $rpt_period, $ship_code){
-    $cobra_table_name   = $rpt_period."_tp_check";
-    $p6_table_name      = $rpt_period."_p6_tp_check";
-    $sql = "
-        select
+        $cobra_table_name = $rpt_period . "_cost";
+        $p6_table_name    = $rpt_period . "_p6_bl_labor";
+        $sql = "
+        select 
             p6.ca,
-            p6.date,
             p6.wp,
-            cob.val cobra_labor,
-            p6.val p6_labor
-        from $schema.`$p6_table_name` p6
-        LEFT JOIN $schema.`$cobra_table_name` cob
-        on p6.ca=cob.ca and p6.wp = cob.wp and p6.date = cob.date
-        where p6.ship_code=$ship_code order by p6.date
-  ";
-    $rs = dbCall($sql,$schema);
+            p6.bl_labor p6_labor,
+            cob.bac cobra_labor
+        from bl_validation.`$p6_table_name` p6
+        LEFT join cost2.`$cobra_table_name` cob
+        on p6.ca=cob.ca and p6.wp = cob.wp
+        where p6.ship_code=$ship_code and cob.wp like '%matl%'group by p6.ca,p6.wp
+        ";
+
+        $rs = dbCall($sql,$schema);
+        $data_table.= returnTableFromRS($rs);
+        /*Labor*/
+        $sql = "
+        select 
+            p6.ca,
+            p6.wp,
+            p6.bl_labor p6_labor,
+            cob.bac_hours cobra_labor
+        from bl_validation.`$p6_table_name` p6
+        LEFT join cost2.`$cobra_table_name` cob
+        on p6.ca=cob.ca and p6.wp = cob.wp
+        where p6.ship_code=$ship_code and cob.wp not like '%matl%'group by p6.ca,p6.wp
+      ";
+        $rs = dbCall($sql,$schema);
+        $data_table.= returnTableFromRS($rs);
+        return $data_table;
+    }
+    else{
+        $cobra_table_name = $rpt_period . "_pcs_bl_labor";
+        $p6_table_name    = $rpt_period . "_p6_bl_labor";
+        $sql = "
+        select 
+            p6.ca,
+            p6.wp,
+            p6.bl_labor p6_labor,
+            sum(cob.bl_labor) cobra_labor
+        from bl_validation.`$p6_table_name` p6
+        LEFT join bl_validation.`$cobra_table_name` cob
+        on p6.ca=cob.ca and p6.wp = cob.wp
+        where p6.ship_code=$ship_code group by p6.ca,p6.wp
+        ";
+
+        $rs = dbCall($sql,"bl_validation");
+        $data_table = returnTableFromRS($rs);
+        return $data_table;
+    }
+
+}
+function returnTPDataTableFromRs($rs, $rpt_period){
     $data_table = "<table class = 'table table-sm'>
             <tr class = 'table_headers'><th colspan = 6>Validate Timephase</th></tr>
             <tr class = 'table_headers'>
@@ -266,7 +294,7 @@ function validateTPP6TP($schema, $rpt_period, $ship_code){
         $cobra_labor = formatNumber($rs->fields["cobra_labor"]);
         $diff        = formatNumber($p6_labor - $cobra_labor);
 
-        if($diff>.99 and $date < $rpt_period){
+        if($diff>.9 and $date < $rpt_period){
             $data_table.="
             <tr class = 'table_data'>
                 <td>$date</td>
@@ -290,6 +318,26 @@ function validateTPP6TP($schema, $rpt_period, $ship_code){
             ";
     }
     $data_table.= "</table>";
+    return $data_table;
+}
+function validateTPP6TP($schema, $rpt_period, $ship_code){
+    $cobra_table_name   = $rpt_period."_tp_check";
+    $p6_table_name      = $rpt_period."_p6_tp_check";
+    $sql = "
+        select
+            p6.ca,
+            p6.date,
+            p6.wp,
+            sum(cob.val) cobra_labor,
+            sum(p6.val) p6_labor
+        from $schema.`$p6_table_name` p6
+        LEFT JOIN $schema.`$cobra_table_name` cob
+        on p6.ca=cob.ca and p6.wp = cob.wp and p6.date = cob.date
+        where p6.ship_code=$ship_code group by cob.ca, cob.wp, cob.date order by p6.date
+  ";
+    //print $sql;
+    $rs = dbCall($sql,$schema);
+    $data_table = returnTPDataTableFromRs($rs, $rpt_period);
     return $data_table;
 }
 

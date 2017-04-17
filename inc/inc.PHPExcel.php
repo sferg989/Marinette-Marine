@@ -60,6 +60,7 @@ function savePHPEXCELCSV1WorkSheetByIndex($file_name,$path2xlsfile,$path2_destin
     if(file_exists($path2xlsfile)==false){
         return null;
     }
+
     $objPHPExcel  = loadPHPEXCELFile($path2xlsfile);
     $objWriter    = PHPExcel_IOFactory::createWriter($objPHPExcel, 'CSV');
     $objPHPExcel->setActiveSheetIndex($sheet_index);

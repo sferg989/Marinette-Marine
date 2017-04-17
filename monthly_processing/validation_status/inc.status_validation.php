@@ -7,8 +7,7 @@
  */
 include("../../inc/inc.PHPExcel.php");
 
-function loadPCSStatus($rpt_period, $schema, $ship_code, $pcs_bl_file_name, $path2_destination, $path2xlsfile, $g_path_to_util, $g_path2CobraAPI, $g_path2BatrptCMD, $g_path2BatrptBAT, $debug){
-
+function loadPCSStatus($rpt_period, $schema, $ship_code, $pcs_bl_file_name, $path2_destination, $path2xlsfile, $g_path_to_util){
 
     $table_name   = $rpt_period."_pcs_status_labor";
 
@@ -65,7 +64,7 @@ function loadPCSStatus($rpt_period, $schema, $ship_code, $pcs_bl_file_name, $pat
         $junk = dbCall($sql, $schema);
     }
 }
-function loadTimePhaseETC($rpt_period, $schema, $ship_code, $time_phased_file_name, $path2_destination, $path2xlsfile, $g_path_to_util, $g_path2CobraAPI, $g_path2BatrptCMD, $g_path2BatrptBAT, $debug){
+function loadTimePhaseETC($rpt_period, $schema, $ship_code, $time_phased_file_name, $path2_destination, $path2xlsfile, $g_path_to_util){
     $table_name   = $rpt_period."_tp_check";
 
     $create_table = checkIfTableExists($schema, $table_name);

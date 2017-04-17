@@ -81,14 +81,19 @@ if($control=="load_p6_bl_data"){
         $fields   = explode("	", $value);
         $ca       = addslashes(trim($fields[0]));
         $wp       = addslashes(trim($fields[1]));
-        $bl_labor = formatNumber4decNoComma($fields[2]);
+        if($ship_code>=477){
+            $bl_labor = formatNumber4decNoComma(trim($fields[2]));
+        }
+        else{
+            $bl_labor = formatNumber4decNoComma(trim($fields[4]));
+        }
 
         $ship_code = intval($ship_code);
         $sql.="(
             $ship_code,
             '$ca',
             '$wp',
-            '$bl_labor'
+            $bl_labor
         ),";
             if($i==500){
                 $sql = substr($sql, 0, -1);
@@ -100,7 +105,7 @@ if($control=="load_p6_bl_data"){
     }
     if($i!=500){
         $sql = substr($sql, 0, -1);
-
+        print $sql;
         $junk = dbCall($sql,$schema);
         $sql = $insert_sql;
     }
@@ -145,7 +150,19 @@ if($control=="load_cobra_data"){
     $batch_rpt_name = "csv".$ship_code."BLValid";
     runCobraBatchReportProcess($ship_code,$batch_rpt_name, $g_path2CobraAPI,$g_path2BatrptCMD,$g_path2BatrptBAT,$debug);
 
-    loadPCSBL($rpt_period, $schema, $ship_code, $pcs_bl_file_name, $path2_destination, $path2xlsfile, $g_path_to_util, $g_path2CobraAPI, $g_path2BatrptCMD, $g_path2BatrptBAT, $debug);
+    if($ship_code<477){
+        $table_name   = $rpt_period . "_cost";
+        $create_table = checkIfTableExists("cost2", $table_name);
+        if($create_table== "create_table"){
+            createTableFromBase("cost2","template_cost", $table_name);
+        }
+        deleteShipFromTable($ship_code,$table_name, $schema);
+        insertCobraCostData($ship_code, "cost2", $table_name);
+        die("made it");
+    }
+    else{
+        loadPCSBL($rpt_period, $schema, $ship_code, $pcs_bl_file_name, $path2_destination, $path2xlsfile, $g_path_to_util, $g_path2CobraAPI, $g_path2BatrptCMD, $g_path2BatrptBAT, $debug);
+    }
     loadTimePhaseFutureCheck($rpt_period, $schema, $ship_code, $time_phased_file_name, $path2_destination, $path2xlsfile, $g_path_to_util, $g_path2CobraAPI, $g_path2BatrptCMD, $g_path2BatrptBAT, $debug);
     loadHistoryCheck($rpt_period, $schema, $ship_code, $hc_file_name, $path2_destination, $path2xlsfile, $g_path_to_util, $g_path2CobraAPI, $g_path2BatrptCMD, $g_path2BatrptBAT, $debug);
 }
@@ -158,11 +175,10 @@ if($control=="bl_valid_check"){
 }
 if($control=="data_check"){
     $baseline = "false";
-    $bcr = "false";
+    $bcr      = "false";
     $table_array["p6_pcs_table_name"]      = $rpt_period . "_p6_bl_labor";
     $table_array["p6_tp_table_name"]       = $rpt_period . "_p6_tp_check";
     $table_array["tp_cobra_table_name"]    = $rpt_period . "_tp_check";
-    $table_array["pcs_cobra_table_name"]   = $rpt_period . "_pcs_bl_labor";
     $table_array["hc_cobra_table_name"]    = $rpt_period . "_hc_check";
     $msg = "";
     foreach ($table_array as $key=>$table_name){

@@ -121,7 +121,7 @@ function loadCSVSintoCrossHullTable($path2file){
         $prev_etc         = formatNumber4decNoComma($data[39]);
         $prev_eac         = formatNumber4decNoComma($data[40]);
         $eac_growth       = formatNumber4decNoComma($data[41]);
-        $period           = "20170304";
+        $period           = "20170401";
         $sql.=
             "(
                 $project,
@@ -190,7 +190,13 @@ function loadCSVSintoCrossHullTable($path2file){
 }
 
 $rel_path2_reports = "../util/csv_weekly_performance_report";
-$directory = $base_path."Weekly Performance Reports/2017-03-04";
+$directory = $base_path."Weekly Performance Reports/2017-04-01";
+
+//$directory = "http://sharepoint/mfg/Performance Summary Reports/Document Library7/20170401";
+print $directory;
+print "<br>";
+
+
 if (! is_dir($directory)) {
     exit('Invalid diretory path');
 }
@@ -224,7 +230,7 @@ foreach (scandir($g_path2weeklyPerformanceCSV) as $file) {
     $csvfiles[] = $file;
 
 }
-deleteSummaryTable(20170304);
+deleteSummaryTable(20170401);
 foreach ($csvfiles as $key=>$value){
     $path2xlsfile = $g_path2weeklyPerformanceCSV . "/$value";
     $file_name    = substr($value, 0, -5);

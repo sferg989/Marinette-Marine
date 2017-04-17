@@ -560,12 +560,27 @@ function formatNumber($number){
         return $number;
     }
     return "";
+}function formatNumberNoComma($number){
+    if($number!="" or $number !=0){
+        $value = number_format($number,2,".","");
+        $number = $value;
+        return $number;
+    }
+    return 0;
 }
 function formatNumber4decNoComma($number){
-    $no_comma = floatval(str_replace(",", "", $number));
-    $no_sign = floatval(str_replace("$", "", $no_comma));
+    $no_comma = str_replace(",", "", $number);
+    $no_sign = str_replace("$", "", $no_comma);
 
     $value    = number_format($no_sign, 4, ".", "");
+    if($value ==""){
+        $value = 0;
+    }
+    return $value;
+}
+function formatNumber4decCobra($number){
+
+    $value    = number_format($number, 4, ".", "");
     if($value ==""){
         $value = 0;
     }
@@ -608,7 +623,7 @@ function deleteShipFromTable($ship_code,$table_name, $schema)
 }
 function checkIfTableExists($schema, $table_name){
     $sql = "select table_name from information_schema.tables where table_schema = '$schema' and table_name = '$table_name'";
-
+    //print $sql;
     $rs = dbcall($sql, "information_schema");
     $val = $rs->fields["table_name"];
     if($val==""){
@@ -653,4 +668,25 @@ function threeLetterMonth2Number($month){
     $date_array["Dec"] = "12";
 
     return $date_array[$month];
+}
+function insertCobraCurData($ship_code, $rpt_period, $schema){
+    $table_name   = $rpt_period . "_stage";
+    $create_table = checkIfTableExists("cost2", $table_name);
+    if($create_table== "create_table"){
+        createTableFromBase("cost2","template_cost", $table_name);
+    }
+    deleteShipFromTable($ship_code,$table_name, $schema);
+
+}
+
+
+function getListOfFileNamesInDirectory($directory){
+    //print $directory;
+    foreach (scandir($directory) as $file) {
+        if ('.' === $file) continue;
+        if ('..' === $file) continue;
+
+        $files[] = $file;
+    }
+    return $files;
 }

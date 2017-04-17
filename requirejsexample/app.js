@@ -6,7 +6,6 @@ require.config({
     paths: {
         // jQuery & jQuery UI
         jquery       : "https://ajax.googleapis.com/ajax/libs/jquery/1.12.1/jquery.min",
-
         jqueryui     : '../inc/lib/js/SlickGrid-master/lib/jquery-ui-1.8.16.custom.min',
         dragevent    : '../inc/lib/js/SlickGrid-master/lib/jquery.event.drag-2.2',
         dropevent    : '../inc/lib/js/SlickGrid-master/lib/jquery.event.drop-2.2',

@@ -25,16 +25,6 @@ function insertData($table_name, $path2file,$period){
         insertGLdetail($path2file, $period);
     }
 }
-function getListOfFileNamesInDirectory($directory){
-    //print $directory;
-    foreach (scandir($directory) as $file) {
-        if ('.' === $file) continue;
-        if ('..' === $file) continue;
-
-        $files[] = $file;
-    }
-    return $files;
-}
 
 function saveListOfFileNamesPHPExcel($file_name_array,$directory2Copy,$rel_path2_desitnation, $period, $table_name)
 {
@@ -64,12 +54,12 @@ $period = 201703;
 //clearDirectory($open_po_directory);
 //copyListOfDirectoryToCSV($g_path2_baan_work,"PFA_Open_PO",$open_po_directory, $period, "open_po");
 
-//clearDirectory($committed_po_directory);
-//copyListOfDirectoryToCSV($g_path2_baan_work,"PFA_Committed_PO",$committed_po_directory, $period, "committed_po");
+clearDirectory($committed_po_directory);
+copyListOfDirectoryToCSV($g_path2_baan_work,"PFA_Committed_PO",$committed_po_directory, $period, "committed_po");
 
 //clearDirectory($gl_detail_directory);
 //copyListOfDirectoryToCSV($g_path2_baan_work,"PFA_GL_Detail",$gl_detail_directory, $period, "gl_detail");
-
+/*
 $sql = "Select wp,ca1, c6, pmt from dbo.CAWP where program = '0467' AND WP > ''";
 //print $sql;
 $rs = dbCallCobra($sql);
@@ -101,5 +91,5 @@ $mars_file = loadPHPEXCELFile($g_path2_mar_file);
 // Find the last cell in the second spreadsheet
 $mars_file->setActiveSheetIndex(7);
 $findEndDataRow = $mars_file->getActiveSheet->getHighestRow();
-print "This is the end ".$findEndDataRow;
+print "This is the end ".$findEndDataRow;*/
 die("made it");

@@ -91,17 +91,17 @@ function insertFortisXML($xml_array){
         }
         $date                = fixExcelDate($value["DATE"]);
         $rpt_period          = createRPTfromDate($date);
-        $bcr                 = $value["BCR"];
+        $bcr                 = intval($value["BCR"]);
         $part                = checkifArray($value["PART"]);
         $rev                 = checkifArray($value["REV"]);
         $ship_code           = $value["PROJECT"];
         $project_name        = $value["PROJECT_NAME"];
-        $change_type         = $value["CHANGE_TYPE"];
+        $change_type         = checkifArray($value["CHANGE_TYPE"]);
         $change_no           = checkifArray($value["CHANGE_NO"]);
-        $auth_status         = $value["AUTH_STATUS"];
+        $auth_status         = checkifArray($value["AUTH_STATUS"]);
         $auth_no             = checkifArray($value["AUTH_NO"]);
         $initiator           = $value["INITIATOR"];
-        $department          = $value["DEPARTMENT"];
+        $department          = intval($value["DEPARTMENT"]);
         $impact              = $value["IMPACT"];
         $justification       = $snip = str_replace("\r", '', addslashes($value["JUSTIFICATION"]));
         $baan_implementation = checkifArray($value["BAAN_IMPLEMENTATION"]);
@@ -143,7 +143,7 @@ function insertFortisXML($xml_array){
         $db                  = $value["MATL_TOTAL"];
         $sent_on             = checkifArray($value["SENT_ON"]);
         $notes               = checkifArray($value["NOTES"]);
-        $approval_log        = $value["APPROVAL_LOG"];
+        $approval_log        = checkifArray($value["APPROVAL_LOG"]);
         $approval_level      = $value["Approval_Level"];
         $modified_by         = $value["Modified_By"];
         $modified_date       = fixExcelDateTime($value["Modified_Date"]);
@@ -169,7 +169,7 @@ function insertFortisXML($xml_array){
              '$auth_status',
              '$auth_no',
              '$initiator',
-             '$department',
+             $department,
              '$impact',
              '$justification',
              '$baan_implementation',
@@ -278,15 +278,15 @@ if($control=="step_grid")
     die($data);
 }
 if($control=="load_xml"){
-    $path2_fortis_export = $path2_cobra_dir . "/" . $ship_code . " Fortis Export/" . $ship_code . "Fortis.xml";
+
+    $path2_fortis_export = $path2_cobra_dir . "/" . $ship_code . " Fortis Export/" . $ship_code . "fortis.xml";
 
     $xml        = simplexml_load_file($path2_fortis_export);
     //print $xml;
     //die("made it");
     $json       = json_encode($xml);
     $xml_array  = json_decode($json, TRUE);
-    print $path2_fortis_export;
-    var_dump($xml);
+    //print $path2_fortis_export;
 
     deleteShipFromTable($ship_code,"fortis_xml", "processing_status");
     insertFortisXML($xml_array["NEW_Baseline_Change_Request"]);

@@ -1,0 +1,78 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+
+    <script
+            src="https://code.jquery.com/jquery-2.2.4.min.js"
+            integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+            crossorigin="anonymous"></script>
+    <script src="../../inc/lib/js/tether-1.3.3/dist/js/tether.min.js"></script>
+    <script src="../../inc/lib/css/bootstrap/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="../../inc/lib/css/bootstrap/css/bootstrap.css">
+    <script src="../../inc/lib/css/bootbox.min.js"></script>
+    <link rel="stylesheet" href="../../inc/lib/js/select2-4.0.3/dist/css/select2.min.css">
+    <script src="../../inc/lib/js/select2-4.0.3/dist/js/select2.full.min.js"></script>
+    <script src="../../global_worker/check_login_level2.js"></script>
+
+    <script src="bcr_validation.js"></script>
+
+    <style>
+        @import url("//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc2/css/bootstrap-glyphicons.css");
+
+        .alt-grid [class*="col-"] {padding-left:15;padding-right:15}
+        .alt-grid .row {margin-left:15;margin-right:15}
+
+        /* container adjusted */
+        .alt-grid .container {width:98%;max-width:none;padding:0;}
+        body {overflow-x: hidden;}
+
+        .btn-warning {
+            color: black;
+        }
+    </style>
+
+</head>
+<body class="alt-grid">
+<!--<div id = "filters">-->
+<br>
+<br>
+<div class="container">
+        <div class="row">
+            <div class="col-md-1">
+                <button id="back_btn" type="button" class="btn btn-info">Back</button>
+            </div>
+            <div class="col-md-2">
+                <h6><div id = "rpt_period_div">Reporting Period- </div></h6>
+            </div>
+            <div class="col-md-2">
+                <h6><div id = "title">BCR Validation - </div></h6>
+            </div>
+            <div class="col-md-2">
+                <label for="rpt_period">
+                    <h6>RPT Period</h6>
+                </label>
+                <select id = "rpt_period" class="rpt_period" placeholder = "RPT Period">
+                </select>
+            </div>
+            <div class="col-md-2">
+                <button id="load_cobra_data" type="button" class="btn btn-warning">
+                    Load Cobra Data
+                    <i class="glyphicon glyphicon-upload"></i>
+                </button>
+            </div>
+            <div class="col-md-1" id = "status_cobra"></div>
+            <div class="col-md-1" id = "status"></div>
+        </div>
+    <br>
+    <br>
+
+<div class="row">
+    <div class="col-md-1">
+        <div id = "log_analysis_grid"></div>
+    </div>
+</div>
+</div>
+</body>
+
+
+</html>

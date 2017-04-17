@@ -13,10 +13,11 @@
   $.extend(true, window, {
     "Slick": {
       "Formatters": {
-        "PercentComplete": PercentCompleteFormatter,
-        "PercentCompleteBar": PercentCompleteBarFormatter,
-        "YesNo": YesNoFormatter,
-        "Checkmark": CheckmarkFormatter
+          "PercentComplete"   : PercentCompleteFormatter,
+          "PercentCompleteBar": PercentCompleteBarFormatter,
+          "YesNo"             : YesNoFormatter,
+          "Checkmark"         : CheckmarkFormatter,
+          "Currency"          : CurrencyFormatter
       }
     }
   });
@@ -56,4 +57,17 @@
   function CheckmarkFormatter(row, cell, value, columnDef, dataContext) {
     return value ? "<img src='../images/tick.png'>" : "";
   }
+    function CurrencyFormatter(row, cell, value, columnDef, dataContext) {
+
+        if (value === null || value === "") {
+            return "$" + Number();
+
+        } else if(value<0){
+            return "$(" + Number(value).toFixed(2)+")";
+        }else{
+            return "$" + Number(value).toFixed(2);
+
+        }
+
+    }
 })(jQuery);

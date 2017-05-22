@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <title>Budget Change Matrix</title>
     <link rel="stylesheet" href="../../inc/lib/css/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="../../inc/lib/js/SlickGrid-master/controls/slick.pager.css">
     <link rel="stylesheet" href="../../inc/lib/js/SlickGrid-master/examples/examples.css">
-
     <link rel="stylesheet" href="../../inc/lib/js/SlickGrid-master/slick.grid.css">
     <link rel="stylesheet" href="../../inc/lib/js/SlickGrid-master/css/smoothness/jquery-ui-1.8.16.custom.css">
     <link rel="stylesheet" href="../../inc/lib/js/SlickGrid-master/controls/slick.columnpicker.css">
@@ -23,7 +23,6 @@
 
 
 <style>
-    @import url("//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc2/css/bootstrap-glyphicons.css");
 
 
     /* container adjusted */
@@ -59,10 +58,43 @@
         background-color: #7FDBFF;
         font-weight: bold;
     }
-    .slick-viewport { overflow-x: auto !important; overflow-y: auto !important; }
+
+    .slick-viewport {
+        overflow-x: hidden !important;
+    }
     .title_font {
         font-size: 15px;
         font-family : "Helvetica ";
+    }
+    #bcm {
+        background: white;
+        outline: 0;
+        border: 1px solid gray;
+    }
+    .custom_btnwdth {
+        width: 100px !important;
+        height: 25px !important;
+        font-weight: bold;
+        font-size:xx-small
+    }
+    .loading-indicator {
+        display: inline-block;
+        padding: 12px;
+        background: white;
+        -opacity: 0.5;
+        color: black;
+        font-weight: bold;
+        z-index: 9999;
+        border: 1px solid red;
+        -moz-border-radius: 10px;
+        -webkit-border-radius: 10px;
+        -moz-box-shadow: 0 0 5px red;
+        -webkit-box-shadow: 0px 0px 5px red;
+        -text-shadow: 1px 1px 1px white;
+    }
+    .loading-indicator label {
+        padding-left: 20px;
+        background: url('../../inc/lib/js/SlickGrid-master/images/ajax-loader-small.gif') no-repeat center left;
     }
 </style>
 <title>Budget Chaneg Matrix</title>
@@ -75,6 +107,11 @@
         <div class="col-md-1">
             <button id="back_btn" type="button" class="btn btn-info btn-sm">Back</button>
         </div>
+        <div class="col-md-1">
+            <button id="load_cobra_data" type="button" class="btn btn-warning custom_btnwdth">
+                Load Cobra Data
+            </button>
+        </div>
         <div class="col-md-2">
             <h6><div id = "rpt_period_div">Reporting Period- </div></h6>
         </div>
@@ -82,21 +119,32 @@
             <h6><div id = "title">BCR Validation - </div></h6>
         </div>
 
-        <div class="col-md-2">
-            <button id="load_cobra_data" type="button" class="btn btn-warning btn-sm">
-                <img src="../../images/Cobra.ico"/>
-                Load Cobra Data
-            </button>
-        </div>
+
         <div class="col-md-1" id = "status_cobra"></div>
         <div class="col-md-1" id = "status"></div>
-    </div>
-    <br>
-
-    <div class="row">
-        <div class="col-md-12">
-            <div id = "bcm"></div>
+        <div id = "bcm_select" class="col-md-2">
+                <select  id = "bcm_filter" class="form-control">
+                    <option value = "all_bcrs" selected>All BCR's</option>
+                    <option value = "all" >ALl Activities</option>
+                    <option value = "multiple_ca">BCR's affecting same CA</option>
+                    <option value = "no_ca">Not assigned To CA</option>
+                </select>
         </div>
+    </div>
+
+    </div>
+    <div class="row">
+
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            <div id="my_grid_div">
+                <div id = "my_pager" style="width:100%;height:20px;"></div>
+                <div id = "bcm" style="width:100%;"></div>
+            </div>
+        </div>
+        <div class="col-md-1"></div>
+
+
     </div>
     <br>
 

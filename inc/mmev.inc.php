@@ -37,5 +37,7 @@ $g_path2CobraAPI = "\"program files (x86)\"\\deltek\\\"cobra 5\"\\cobra.api.exe"
 $g_path2_wi           = "Y:\\Program Management\\Cobra Processing 5.1\\Cobra 5.1 Work Instructions";
 $g_path2_wi_localhost = $g_path_to_util."wi";
 
+$g_path2_ceac           = "Y:/File Transfer Folder/CEAC-20170429";
+
 $g_path2_baan_work       = "A:\\";
 $g_path2_outsourcing_dir = $base_path . "Outsourcing Data";

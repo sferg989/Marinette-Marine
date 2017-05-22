@@ -1,11 +1,12 @@
 <?php
+include("../../inc/inc.PHPExcel.php");
+
 /**
  * Created by PhpStorm.
  * User: fs11239
  * Date: 3/15/2017
  * Time: 9:01 AM
  */
-include("../../inc/inc.PHPExcel.php");
 
 function loadPCSBL($rpt_period, $schema, $ship_code, $pcs_bl_file_name, $path2_destination, $path2xlsfile, $g_path_to_util, $g_path2CobraAPI, $g_path2BatrptCMD, $g_path2BatrptBAT, $debug){
     $table_name   = $rpt_period."_pcs_bl_labor";
@@ -56,62 +57,6 @@ function loadPCSBL($rpt_period, $schema, $ship_code, $pcs_bl_file_name, $path2_d
     {
         $sql = substr($sql, 0, -1);
         //print $sql;
-
-        $junk = dbCall($sql, $schema);
-    }
-}
-function loadTimePhaseFutureCheck($rpt_period, $schema, $ship_code, $time_phased_file_name, $path2_destination, $path2xlsfile, $g_path_to_util, $g_path2CobraAPI, $g_path2BatrptCMD, $g_path2BatrptBAT, $debug){
-    $table_name   = $rpt_period."_tp_check";
-
-    $create_table = checkIfTableExists($schema, $table_name);
-    if($create_table== "create_table"){
-        createTableFromBase($schema,"template_tp_check", $table_name);
-    }
-    deleteShipFromTable($ship_code,$table_name, $schema);
-    $insert_sql = "insert into $schema.$table_name (ship_code,ca, wp,date, val) values ";
-
-    $batch_rpt_name = "csv".$ship_code."BLValid";
-    //runCobraBatchReportProcess($ship_code,$batch_rpt_name, $g_path2CobraAPI,$g_path2BatrptCMD,$g_path2BatrptBAT,$debug);
-
-    $new_csv_file_name = $ship_code."tp_check";
-    $path2_source_xls = $path2xlsfile."/$time_phased_file_name";
-
-    savePHPEXCELCSV1WorkSheetByIndex($new_csv_file_name,$path2_source_xls,$path2_destination, 3);
-    $sql = $insert_sql;
-    $real_path2_new_CSV = $g_path_to_util."\\csv_bl_validation\\".$new_csv_file_name.".csv";
-    $handle = fopen($real_path2_new_CSV,"r");
-    fgetcsv($handle);
-    $i=0;
-    while (($data = fgetcsv($handle)) !== FALSE)
-    {
-        $ca         = addslashes(trim($data[0]));
-        $wp         = addslashes(trim($data[1]));
-        $date       = addslashes(trim($data[4]));
-        $rpt_period = createRPTfromDateSlash($date);
-        $val        = formatNumber4decNoComma($data[5]);
-
-        $sql.=
-            "(
-                $ship_code,
-                '$ca',
-                '$wp',
-                $rpt_period,
-                $val
-            ),";
-        if($i == 500)
-        {
-            $sql = substr($sql, 0, -1);
-            $junk = dbCall($sql, $schema);
-            $i=0;
-            //clear out the sql stmt.
-            $sql = $insert_sql;
-        }
-        $i++;
-    }
-    //only insert remaining lines if the total number is not divisble by 1000.
-    if($i !=500)
-    {
-        $sql = substr($sql, 0, -1);
 
         $junk = dbCall($sql, $schema);
     }
@@ -385,7 +330,7 @@ function validateHistoryCheck($schema, $prev_rpt_period,$cur_rpt_period, $ship_c
         $prev     = formatNumber($rs->fields["prev"]);
         $diff     = formatNumber($cur - $prev);
 
-        if($diff>1 and $date<=$cur_rpt_period){
+        if($diff>1 and $date<=$cur_rpt_period and $cost_set=="Budget"){
             $data_table.="
             <tr class = 'table_data'>
                 <td>$type</td>
@@ -411,3 +356,60 @@ function validateHistoryCheck($schema, $prev_rpt_period,$cur_rpt_period, $ship_c
     $data_table.= "</table>";
     return $data_table;
 }
+function loadTimePhaseFutureCheckNoCobra($rpt_period, $schema, $ship_code, $time_phased_file_name, $path2_destination, $path2xlsfile, $g_path_to_util, $g_path2CobraAPI, $g_path2BatrptCMD, $g_path2BatrptBAT, $debug){
+    $table_name   = $rpt_period."_tp_check";
+
+    $create_table = checkIfTableExists($schema, $table_name);
+    if($create_table== "create_table"){
+        createTableFromBase($schema,"template_tp_check", $table_name);
+    }
+    deleteShipFromTable($ship_code,$table_name, $schema);
+    $insert_sql = "insert into $schema.$table_name (ship_code,ca, wp,date, val) values ";
+
+    $batch_rpt_name = "csv".$ship_code."BLValid";
+    runCobraBatchReportProcess($ship_code,$batch_rpt_name, $g_path2CobraAPI,$g_path2BatrptCMD,$g_path2BatrptBAT,$debug);
+
+    $new_csv_file_name = $ship_code."tp_check";
+    $path2_source_xls = $path2xlsfile."/$time_phased_file_name";
+
+    savePHPEXCELCSV1WorkSheetByIndex($new_csv_file_name,$path2_source_xls,$path2_destination, 3);
+    $sql = $insert_sql;
+    $real_path2_new_CSV = $g_path_to_util."\\csv_bl_validation\\".$new_csv_file_name.".csv";
+    $handle = fopen($real_path2_new_CSV,"r");
+    fgetcsv($handle);
+    $i=0;
+    while (($data = fgetcsv($handle)) !== FALSE)
+    {
+        $ca         = addslashes(trim($data[0]));
+        $wp         = addslashes(trim($data[1]));
+        $date       = addslashes(trim($data[4]));
+        $rpt_period = createRPTfromDateSlash($date);
+        $val        = formatNumber4decNoComma($data[5]);
+
+        $sql.=
+            "(
+                $ship_code,
+                '$ca',
+                '$wp',
+                $rpt_period,
+                $val
+            ),";
+        if($i == 500)
+        {
+            $sql = substr($sql, 0, -1);
+            $junk = dbCall($sql, $schema);
+            $i=0;
+            //clear out the sql stmt.
+            $sql = $insert_sql;
+        }
+        $i++;
+    }
+    //only insert remaining lines if the total number is not divisble by 1000.
+    if($i !=500)
+    {
+        $sql = substr($sql, 0, -1);
+
+        $junk = dbCall($sql, $schema);
+    }
+}
+

@@ -35,8 +35,6 @@ function loadPCSStatus($rpt_period, $schema, $ship_code, $pcs_bl_file_name, $pat
         $cost_set   = addslashes(trim($data[3]));
         $val        = formatNumber4decNoComma($data[5]);
 
-
-
         $sql.=
             "(
                 $ship_code,
@@ -116,10 +114,10 @@ function loadTimePhaseETC($rpt_period, $schema, $ship_code, $time_phased_file_na
     {
         //print $sql;
         $sql = substr($sql, 0, -1);
-
         $junk = dbCall($sql, $schema);
     }
 }
+
 function validatePCS2P6StatusLabor($schema, $rpt_period, $ship_code, $cost_set){
     $cobra_table_name   = $rpt_period."_pcs_status_labor";
     $p6_table_name      = $rpt_period."_p6_status_labor";

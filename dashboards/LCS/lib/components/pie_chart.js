@@ -7,13 +7,15 @@ define(["./btn_group", "jsCharts"], function(btnGroup){
 
     var getCurPieData = function(){
         //btnGroup.testMethod();
-        //var varSet = btnGroup.getPieChartMetric();
+        //var varSet = btnGroup.testMethod();
+        //console.log(varSet);
+
         $.ajax({
             url: "lib/php/lcs.charts.php",
             method: 'GET',
             dataType: 'json',
             data : {
-                control    : "VASR"
+                control    : "CV"
             },
             success: function (d) {
                 chartData = {
@@ -30,15 +32,15 @@ define(["./btn_group", "jsCharts"], function(btnGroup){
         });
     }
     var getTrendPieData = function(){
-        var varSet     = btnGroup.getPieChartMetric();
-        var numPeriods = btnGroup.getPieChartPeriod();
+        //var varSet     = btnGroup.getPieChartMetric();
+        //var numPeriods = btnGroup.getPieChartPeriod();
         $.ajax({
             url: "lib/php/lcs.charts.php",
             method: 'GET',
             dataType: 'json',
             data : {
-                num_periods: numPeriods,
-                control    : varSet
+                num_periods: 3,
+                control    : "CV"
             },
             success: function (d) {
                 chartData = {
@@ -58,7 +60,7 @@ define(["./btn_group", "jsCharts"], function(btnGroup){
 
     // Set a callback to run when the Google Visualization API is loaded.
     return {
-        drawCurPieChart   : getCurPieData,
-        drawTrendPieChart: getTrendPieData
+        drawCurPieChart   : getCurPieData(),
+        drawTrendPieChart: getTrendPieData()
     };
 })

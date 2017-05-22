@@ -1,14 +1,12 @@
 <?php
 include('../../../../inc/inc.php');
 function processJustification($justification){
-    $justificationv1 = trim($justification);
-        $justificationv2 = str_replace("\'", " ", $justificationv1);
-        /*$justificationv4 = str_replace("
-        ", " ", $justificationv3);
-        */
-        $justificationv3 = str_replace("\"", " ", $justificationv2);
-
-        return $justificationv3;
+    $justification = trim($justification);
+    $justification = str_replace("\"", "'", $justification);
+    $justification = str_replace("\t", '', $justification); // remove tabs
+    $justification = str_replace("\n", '', $justification); // remove new lines
+    $justification = str_replace("\r", '', $justification);
+    return $justification;
 }
 function getBCRSInAPeriod($rpt_period){
     $table_name = $rpt_period."_bcr";
@@ -81,10 +79,10 @@ if($control=="log_analysis")
         $ub            = formatNumber4decNoComma($rs->fields["ub"]);
 
         $data .= "{
-            \"id\"          :$id,
-            \"bcr\"         :$bcr,
-            \"pcw\"         :\"$pcw\",
-            \"auth_no\"     :\"$auth_no\",
+            \"id\"              :$id,
+            \"bcr\"             :$bcr,
+            \"pcw\"             :\"$pcw\",
+            \"auth_no\"         :\"$auth_no\",
             \"justification\"   :\"$justification\",
             \"db\"              :$db,
             \"mr\"              :$mr,

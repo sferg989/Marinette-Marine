@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LCS Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="../../inc/lib/css/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="../../inc/lib/js/SlickGrid-master/examples/examples.css">
+    <link rel="stylesheet" href="../../inc/lib/js/SlickGrid-master/slick.grid.css">
+    <link rel="stylesheet" href="../../inc/lib/js/SlickGrid-master/css/smoothness/jquery-ui-1.8.16.custom.css">
+    <link rel="stylesheet" href="../../inc/lib/js/SlickGrid-master/controls/slick.columnpicker.css">
+    <link rel="stylesheet" href="../../inc/lib/js/SlickGrid-master/controls/slick.pager.css">
+    <script src="../../inc/lib/js/tether-1.3.3/dist/js/tether.min.js"></script>
+
+<style>
+    [class^="slickgrid_"],
+    [class^="slickgrid_"] div {
+        -webkit-box-sizing: content-box;
+        -moz-box-sizing: content-box;
+        box-sizing: content-box;
+    }
+
+
+
+    /* container adjusted */
+    .alt-grid .container {width:98%;height:50%;max-width:none;padding:0}
+    body {overflow-x: hidden;}
+
+    .btn-warning {
+        color: black;
+    }
+    .slick-cell, .slick-headerrow-column {
+        position: absolute;
+        border: 1px solid transparent;
+        border-right: 1px dotted silver;
+        border-bottom-color: silver;
+        overflow: hidden;
+        -o-text-overflow: ellipsis;
+        text-overflow: ellipsis;
+        vertical-align: middle;
+        z-index: 1;
+        padding: 1px 2px 2px 1px;
+        margin: 0;
+        /*white-space: nowrap;*/
+        cursor: default;
+    }
+    .showNegRed{
+        text-align: right;
+        color: red;
+        font-weight: bold;
+    }
+    .showPosBlack{
+        text-align: right;
+        font-weight: bold;
+    }
+    #lcs_grid .slick-row.active .slick-cell {
+        background-color: #7FDBFF;
+        font-weight: bold;
+    }
+    #wo_grid, #wo_grid div {
+    .box-sizing('content-box');
+    }
+    .slick-viewport { overflow-x: auto !important; overflow-y: auto !important; }
+    .title_font {
+        font-size: 15px;
+        font-family : "Helvetica ";
+    }
+</style>
+</head>
+<body class="alt-grid">
+<!--<div id = "filters">-->
+
+<div class="container" >
+    <div class="row">
+        <div class="col-md-1">
+            <button id="back_btn" type="button" class="btn btn-info btn-sm">Back</button>
+        </div>
+        <div class="col-md-3">
+            <h6><div id = "rpt_period_div"></div></h6>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div id = "top_row_charts">
+            <div class="col-md-12">
+                <div id = "lcs_grid"></div>
+            </div>
+
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-3">
+            <div id="time_period" class="btn-group " role="group" aria-label="g1">
+                <button type="button"name="tp_options" class="btn btn-primary active btn-xxs" id="3">3 Months</button>
+                <button type="button"name="tp_options" class="btn btn-primary btn-xxs" id="6">6 Months</button>
+                <button type="button"name="tp_options" class="btn btn-primary btn-xxs" id="12">12 Months</button>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div id = "chart_radio">
+                <div id="chart_type" class="btn-group small">
+                    <button type="button"name="metric_options" class="btn btn-primary active btn-xxs" id="EV">EV</button>
+                    <button type="button"name="metric_options" class="btn btn-primary btn-xxs" id="VARS">SV/CV</button>
+                    <button type="button"name="metric_options" class="btn btn-primary btn-xxs" id="ev_index">CPI/SPI/TCPI</button>
+                </div>
+            </div>
+        </div>
+        <div id = "wo_label" class="col-md-2">
+            <span id = "wo_date"></span>
+        </div>
+        <div id = "wo_grid_select_box" class="col-md-2">
+            <select  id = "selectBox" class="form-control">
+                <option value = "cv_cum_unfav" selected>CV CUM Unfavorable</option>
+                <option value = "cv_cum_fav" >CV CUM Favorable</option>
+                <option value = "sv_cum_unfav">SV CUM  Unfavorable</option>
+                <option value = "sv_cum_fav" >SV CUM Favorable</option>
+                <option value = "cv_cur_unfav" >CV CUR Unfavorable</option>
+                <option value = "cv_cur_fav" >CV CUR Favorable</option>
+                <option value = "sv_cur_unfav" >SV CUR Unfavorable</option>
+                <option value = "sv_cur_fav" >SV CUR Favorable</option>
+            </select>
+        </div>
+        <div id="top5_grid_type" class="col-md-2">
+            <select  id = "selectBox_hours" class="form-control">
+                <option value = "dollars" selected>Dollars</option>
+                <option value = "hours" >Hours</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="row">
+        <div id = "var_line" class="col-md-6">
+            <canvas id="var_chart" class="chart chart-line" ></canvas>
+        </div>
+        <div id="my_grid_div"class="col-md-6">
+<!--
+            <div id = "my_pager" style="width:100%;height:20px;"></div>
+-->
+            <div id = "wo_grid" style="width:100%;"></div>
+        </div>
+    </div>
+</div>
+</body>
+
+<script src="../../inc/lib/js/require.js" data-main="main.js" ></script>
+
+<script src="../../require.config.js"></script>
+
+</html>

@@ -68,7 +68,7 @@ if($control=="bkup_reclass_report")
     }
     copyProjectFromCobra($ship_code,$path2CobraBkup, $g_path2CobraAPI,$g_path2CMD,$g_path2BAT, "before_month_end_processing_begins",$debug);
 
-    //$ship_code      = "04731216-test";
+
     reClassCobraProject($ship_code, $g_path2CobraAPI,$g_path2ReClassProjectCMD,$g_path2ReClassProjectBAT,$debug);
 
     //this is the real one.  there were not enough characters allowed to have 'class check'
@@ -87,7 +87,6 @@ if($control=="bkup_advance_bkup")
     }
     copyProjectFromCobra($ship_code,$path2CobraBkup, $g_path2CobraAPI,$g_path2CMD,$g_path2BAT, "bkup_after_reclass",$debug);
 
-    //$ship_code      = "04731216-test";
     $status_date_for_loe        = "0";
     $update_rates_fte           = "0";
     $sync_calendar              = "1";

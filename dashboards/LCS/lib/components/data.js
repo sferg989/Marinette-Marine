@@ -2,13 +2,13 @@
  * Created by fs11239 on 2/23/2017.
  */
 define(function(){
-    var getData = function (url, ajax_data_object, gridDataView) {
+    var getGridData = function (url, ajax_data_object, gridDataView) {
         $.ajax({
             dataType: "json",
             url     : url,
             data    : ajax_data_object,
             success: function(data) {
-                var groups = _(data).groupBy('level');
+/*                var groups = _(data).groupBy('level');
                 var out = _(groups).map(function(g, key) {
                     return {
                         id   : "LCS ROLL up",
@@ -21,7 +21,9 @@ define(function(){
                         ub    : _(g).reduce(function (m, x) {return m + x.ub;}, 0)
                     };
                 });
-                data.push(out[0]);
+                data.push(out[0]);*/
+                //console.log(data);
+                //_.sortBy(data, function(o) { return o.start.dateTime; })
                 //console.log("from the Ajax",data);
                 return data;
 
@@ -33,8 +35,29 @@ define(function(){
         });
 
     }
+    var getChartData = function (numPeriods, chartType, rpt_period,updateChartCallBack){
+
+        $.ajax({
+            url     : "lib/php/lcs.charts.php",
+            method  : 'GET',
+            dataType: 'json',
+            data : {
+                num_periods: numPeriods,
+                control    : chartType,
+                rpt_period : rpt_period,
+
+            },
+            success: function (data) {
+                return data;
+            }
+        }).done(function (data){
+            updateChartCallBack(data);
+            return data;
+        });;
+    }
     return {
-        getData  : getData
+        getGridData     : getGridData,
+        getChartData: getChartData
     };
 })/**
  * Created by fs11239 on 4/11/2017.

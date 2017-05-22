@@ -1,19 +1,52 @@
 <?php
 include('../../../../inc/inc.php');
+function findDrillLevel($field){
+    print $field;
+    if($field=="ship_code"){
+        print "this is the".$field;
+
+        $drill_level = "c3";
+    }
+    if($field=="c3"){
+        $drill_level = "ca";
+    }
+    if($field=="ca"){
+        $drill_level = "wp";
+    }
+    return $drill_level;
+}
+function changegridName2FieldName($grid_name){
+    if($grid_name=="Hull"){
+        $field_name = "ship_code";
+    }
+    else if($grid_name=="WBS"){
+        $field_name = "c3";
+    }
+    else{
+        $field_name = $grid_name;
+    }
+    return $field_name;
+}
+function returnTableName($cur_level){
+    if($cur_level=="ship_code"){
+        $table_suffix  = "_ship";
+        $schema = "lcs_log";
+    }
+    else {
+        $table_suffix  = "_ship";
+        $schema = "cost2";
+    }
+    $data["table_suffix"] = $table_suffix;
+    $data["schema"] = $schema;
+}
 
 if($control=="lcs_grid")
 {
-    //var_dump($_REQUEST);
-    //print json_decode($metaData);
-    $wc = "";
-    foreach ($metaData as $key=>$value){
-        $gb = "$key,";
-        $wc.="$key = '$value' and ";
-    }
-    $gb = substr($gb, 0, -1);
-    $wc = substr($wc, 0, -4);
-    //print $gb."<br>";
-    //print $wc."<br>";
+
+
+    $rpt_period = currentRPTPeriod();
+    $rpt_period = getPreviousRPTPeriod($rpt_period);
+
     $data = "[";
     $table_name = $rpt_period."_ship";
 
@@ -41,41 +74,40 @@ if($control=="lcs_grid")
             eac_h,
             est_price 
             from lcs_log.$table_name
-  ";
+            order by ship_code
+    ";
     $i=0;
-    if($level==""){
-        $level = "program";
-    }
-    $rs = dbCall($sql, "processing_status");
+    //print $sql;
+
+    $rs = dbCall($sql, "lcs_log");
     while (!$rs->EOF)
     {
-        //die("made it");
-
 
         $ship_code = $rs->fields["ship_code"];
         $bcr = $rs->fields["bcr"];
-        $s   = $rs->fields["a"];
+        $s   = $rs->fields["s"];
         $p   = formatNumber4decNoComma($rs->fields["p"]);
-        $a   = formatNumber4decNoComma($rs->fields["s"]);
-        $db  = formatNumber4decNoComma($rs->fields["db"]);
+        $a   = formatNumber4decNoComma($rs->fields["a"]);
         $mr  = formatNumber4decNoComma($rs->fields["mr"]);
         $ub  = formatNumber4decNoComma($rs->fields["ub"]);
+        $bac  = formatNumber4decNoComma($rs->fields["bac"]);
+        $eac  = formatNumber4decNoComma($rs->fields["eac"]);
         $sv   = $p-$s;
         $cv   = $p-$a;
 
         $data .= "{
-    \"level\"          :\"$level\",
-    \"id\"          :\"$i\",
-    \"Hull\"          :\"$ship_code\",
-    \"s\"         :$s,
-    \"p\"         :$p,
-    \"a\"         :$a,
-    \"sv\"         :$sv,
-    \"cv\"         :$cv,
-    \"db\"              :$db,
-    \"mr\"              :$mr,
-    \"ub\"              :$ub
-        },";
+            \"id\"   :\"$i\",
+            \"Hull\":\"$ship_code\",
+            \"s\"   :$s,
+            \"p\"   :$p,
+            \"a\"   :$a,
+            \"bac\" :$bac,
+            \"eac\" :$eac,
+            \"sv\"  :$sv,
+            \"cv\"  :$cv,
+            \"mr\"  :$mr,
+            \"ub\"  :$ub
+            },";
         $i++;
         $rs->MoveNext();
     }
@@ -84,6 +116,9 @@ if($control=="lcs_grid")
     $data.="]";
 
     die($data);
+}
+if($control=="chart_grid"){
+
 }
 
 

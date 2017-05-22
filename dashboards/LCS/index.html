@@ -73,33 +73,11 @@
         </div>
 
     </div>
-    <div class="row">
-        <div class="col-md-6">Place Holder</div>
 
-        <div   class="col-md-3">
-            <div id="var_type" role="group"  class="btn-group">
-                <button type="button" name="var_options" class="btn btn-primary active" id="cv">CV</button>
-                <button type="button" name="var_options" class="btn btn-primary" id="sv">SV</button>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div id = "var_trend" role="group"  class="btn-group">
-                    <button type="button" name="period_options"  class="btn btn-primary active" id="3m">3 months</button>
-                    <button type="button" name="period_options" class="btn btn-primary" id="6m">6 months</button>
-                    <button type="button" name="period_options" class="btn btn-primary" id="12m">12 months</button>
-            </div>
-        </div>
-    </div>
     <div class="row">
         <div id = "top_row_charts">
-            <div class="col-md-6">
+            <div class="col-md-12">
                 <div id = "lcs_grid"></div>
-            </div>
-            <div class="col-md-3">
-                <canvas id = "pi_var_chart"></canvas>
-            </div>
-            <div class="col-md-3">
-                <canvas id = "pi_var_trend_chart"></canvas>
             </div>
         </div>
     </div>
@@ -107,23 +85,29 @@
     <div class="row">
         <div class="col-md-3">
             <div id="time_period" class="btn-group " role="group" aria-label="g1">
-                <button type="button"name="tp_options" class="btn btn-primary active" id="3">3 Months</button>
-                <button type="button"name="tp_options" class="btn btn-primary" id="6">6 Months</button>
-                <button type="button"name="tp_options" class="btn btn-primary" id="12">12 Months</button>
+                <button type="button"name="tp_options" class="btn btn-primary active btn-xxs" id="3">3 Months</button>
+                <button type="button"name="tp_options" class="btn btn-primary btn-xxs" id="6">6 Months</button>
+                <button type="button"name="tp_options" class="btn btn-primary btn-xxs" id="12">12 Months</button>
             </div>
         </div>
         <div class="col-md-3">
             <div id = "chart_radio">
                 <div id="chart_type" class="btn-group small">
-                    <button type="button"name="metric_options" class="btn btn-primary active" id="EV">EV</button>
-                    <button type="button"name="metric_options" class="btn btn-primary" id="VARS">VARS</button>
+                    <button type="button"name="metric_options" class="btn btn-primary active btn-xxs" id="EV">EV</button>
+                    <button type="button"name="metric_options" class="btn btn-primary btn-xxs" id="VARS">SV/CV</button>
+                    <button type="button"name="metric_options" class="btn btn-primary btn-xxs" id="ev_index">CPI/SPI/TCPI</button>
                 </div>
             </div>
         </div>
     </div>
     <div class="row">
-        <div id = "var_line" class="col-md-12">
-            <canvas id = "var_chart"></canvas>
+        <div id = "var_line" class="col-md-6">
+            <canvas id = "var_chart" width =800 height=300></canvas>
+<!--
+            <canvas id="var_chart" class="chart chart-line" ></canvas>
+-->
+
+
         </div>
     </div>
 </div>

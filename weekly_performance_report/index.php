@@ -10,9 +10,9 @@ include("../inc/inc.PHPExcel.php");
  * Time: 1:16 PM
  */
 
-function deleteTotalLines($field)
+function deleteTotalLines($field, $table_name)
 {
-    $sql = "delete from weekly_performance_report.summary where $field like '%total%'";
+    $sql = "delete from weekly_performance_report.$table_name where $field like '%total%'";
     $junk = dbCall($sql,"weekly_performance_report");
 }
 function deleteSummaryTable($period)
@@ -22,17 +22,18 @@ function deleteSummaryTable($period)
     print $sql;
 }
 
-function loadCSVSintoCrossHullTable($path2file){
+function loadCSVSintoCrossHullTable($path2file, $table_name){
     $handle = fopen($path2file,"r");
     //remove headers from the file.
     //loop through the csv file and insert into database
     $insert_sql = "
-        insert into weekly_performance_report.summary (
+        insert into weekly_performance_report.$table_name (
                 project,
                 provider,
                 clin,
                 effort,
                 activity,
+                ca,
                 ecp_rea,
                 swbs,
                 `group`,
@@ -79,49 +80,52 @@ function loadCSVSintoCrossHullTable($path2file){
     fgetcsv($handle);
     while (($data = fgetcsv($handle)) !== FALSE)
     {
-        $project          = intval($data[0]);
-        $provider         = intval($data[1]);
-        $clin             = intval($data[2]);
-        $effort           = trim($data[3]);
-        $activity         = addslashes(trim($data[4]));
-        $ecp_rea          = $data[5];
-        $swbs             = $data[6];
-        $group            = $data[7];
-        $soc              = intval($data[8]);
-        $owning_org       = $data[9];
-        $rsrc             = $data[10];
-        $planning_unit    = $data[11];
-        $sequence         = $data[12];
-        $fm               = $data[13];
-        $wo               = intval($data[14]);
-        $item             = trim($data[15]);
-        $op               = $data[16];
-        $scope            = addslashes(trim($data[17]));
-        $task             = intval($data[18]);
-        $progress         = formatNumber4decNoComma($data[19]);
-        $bac              = formatNumber4decNoComma($data[20]);
-        $estimate         = formatNumber4decNoComma($data[21]);
-        $p2bac            = formatNumber4decNoComma($data[22]);
-        $p2est            = formatNumber4decNoComma($data[23]);
-        $a                = formatNumber4decNoComma($data[24]);
-        $etc              = formatNumber4decNoComma($data[25]);
-        $target           = formatNumber4decNoComma($data[26]);
-        $provider_target  = formatNumber4decNoComma($data[27]);
-        $provider_a       = formatNumber4decNoComma($data[28]);
-        $eac              = formatNumber4decNoComma($data[29]);
-        $bac_cpi          = formatNumber4decNoComma($data[30]);
-        $est_cpi          = formatNumber4decNoComma($data[31]);
-        $bl_start         = fixExcelDateMySQL($data[32]);
-        $bl_finish        = fixExcelDateMySQL($data[33]);
-        $f_start          = fixExcelDateMySQL($data[34]);
-        $f_finish         = fixExcelDateMySQL($data[35]);
-        $parent_operation = trim($data[36]);
-        $prev_a           = formatNumber4decNoComma($data[37]);
-        $prev_provider_a  = formatNumber4decNoComma($data[38]);
-        $prev_etc         = formatNumber4decNoComma($data[39]);
-        $prev_eac         = formatNumber4decNoComma($data[40]);
-        $eac_growth       = formatNumber4decNoComma($data[41]);
-        $period           = "20170401";
+
+            $project     = intval($data[0]);
+            $provider    = intval($data[1]);
+            $clin        = intval($data[2]);
+            $effort      = trim($data[3]);
+            $activity    = addslashes(trim($data[4]));
+            $ca          = addslashes(trim($data[5]));
+            $ecp_rea     = $data[6];
+            $change_code = $data[7];
+            $swbs             = $data[8];
+            $group            = $data[9];
+            $soc              = intval($data[10]);
+            $owning_org       = $data[11];
+            $rsrc             = $data[12];
+            $planning_unit    = $data[13];
+            $sequence         = $data[14];
+            $fm               = $data[15];
+            $wo               = intval($data[16]);
+            $item             = trim($data[17]);
+            $op               = $data[18];
+            $scope            = addslashes(trim($data[19]));
+            $task             = intval($data[20]);
+            $progress         = formatNumber4decNoComma($data[21]);
+            $bac              = formatNumber4decNoComma($data[22]);
+            $estimate         = formatNumber4decNoComma($data[23]);
+            $p2bac            = formatNumber4decNoComma($data[24]);
+            $p2est            = formatNumber4decNoComma($data[25]);
+            $a                = formatNumber4decNoComma($data[26]);
+            $etc              = formatNumber4decNoComma($data[27]);
+            $target           = formatNumber4decNoComma($data[28]);
+            $provider_target  = formatNumber4decNoComma($data[29]);
+            $provider_a       = formatNumber4decNoComma($data[30]);
+            $eac              = formatNumber4decNoComma($data[31]);
+            $bac_cpi          = formatNumber4decNoComma($data[32]);
+            $est_cpi          = formatNumber4decNoComma($data[33]);
+            $bl_start         = fixExcelDateMySQL($data[34]);
+            $bl_finish        = fixExcelDateMySQL($data[35]);
+            $f_start          = fixExcelDateMySQL($data[36]);
+            $f_finish         = fixExcelDateMySQL($data[37]);
+            $parent_operation = trim($data[38]);
+            $prev_a           = formatNumber4decNoComma($data[39]);
+            $prev_provider_a  = formatNumber4decNoComma($data[40]);
+            $prev_etc         = formatNumber4decNoComma($data[41]);
+            $prev_eac         = formatNumber4decNoComma($data[42]);
+            $eac_growth       = formatNumber4decNoComma($data[43]);
+            $period           = 20170429;
         $sql.=
             "(
                 $project,
@@ -129,6 +133,7 @@ function loadCSVSintoCrossHullTable($path2file){
                 $clin,
                 '$effort',
                 '$activity',
+                '$ca',
                 '$ecp_rea',
                 '$swbs',
                 '$group',
@@ -189,14 +194,11 @@ function loadCSVSintoCrossHullTable($path2file){
     }
 }
 
-$rel_path2_reports = "../util/csv_weekly_performance_report";
-$directory = $base_path."Weekly Performance Reports/2017-04-01";
-
-//$directory = "http://sharepoint/mfg/Performance Summary Reports/Document Library7/20170401";
+$rel_path2_reports      = "../util/csv_weekly_performance_report";
+$g_path2_perform_report = "D:\\";
+$current_week           = "20170429";
+$directory              = "$g_path2_perform_report$current_week";
 print $directory;
-print "<br>";
-
-
 if (! is_dir($directory)) {
     exit('Invalid diretory path');
 }
@@ -222,7 +224,7 @@ foreach ($files as $key=>$value){
 
 /*Loop through the UTIL CSV files and load them all into the table.
 */
-$csvfiles = array();
+$csvfiles =     array();
 foreach (scandir($g_path2weeklyPerformanceCSV) as $file) {
     if ('.' === $file) continue;
     if ('..' === $file) continue;
@@ -230,12 +232,20 @@ foreach (scandir($g_path2weeklyPerformanceCSV) as $file) {
     $csvfiles[] = $file;
 
 }
-deleteSummaryTable(20170401);
+
+$table_name   = "z_".$current_week;
+$create_table = checkIfTableExists("weekly_performance_report", $table_name);
+if($create_table== "create_table"){
+    createTableFromBase("weekly_performance_report","template_summary", $table_name);
+}
 foreach ($csvfiles as $key=>$value){
     $path2xlsfile = $g_path2weeklyPerformanceCSV . "/$value";
     $file_name    = substr($value, 0, -5);
     print $value."<br>";
-    loadCSVSintoCrossHullTable($path2xlsfile);
+    loadCSVSintoCrossHullTable($path2xlsfile, $table_name);
 }
 deleteTotalLines("effort");
 deleteTotalLines("provider");
+deleteTotalLines("owning_org");
+clearDirectory($rel_path2_reports);
+

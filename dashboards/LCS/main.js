@@ -17,18 +17,13 @@ require([
         $("#back_btn").click(function(){
             goBack();
         });
-        var lcs_grid_cols = gridColumns.getMetaCols(0);
+        var lcs_grid_cols = gridColumns.dataCols;
 
-        var dataCols      = gridColumns.dataCols;
-        for (i = 0; i < dataCols.length; i++) {
-            lcs_grid_cols.push(dataCols[i]);
-        }
 
         var lcs_grid_options = gridOptions.gridOptions;
 
         var rpt_period = getUrl.getUrlParam("rpt_period");
-        var code       = getUrl.getUrlParam("code");
-        titleUpdate.updateTitle(code, rpt_period);
+        titleUpdate.updateTitle(rpt_period);
 
         var ajax_data_options        = {};
         ajax_data_options.control    = "lcs_grid";
@@ -36,7 +31,6 @@ require([
         var url = "lib/php/lcs.grid.php";
 
         grid.createGrid("lcs_grid",url, ajax_data_options ,lcs_grid_cols, lcs_grid_options);
-
     });
 
 

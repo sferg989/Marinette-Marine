@@ -5,8 +5,9 @@
  * Date: 4/13/2017
  * Time: 10:59 AM
  */
+include("inc.PHPExcel.php.php");
 
-function loadCOBRABCRLOG($ship_code, $rpt_period, $table_name){
+function loadCOBRABCRLOGCurrentPeriod($ship_code, $rpt_period, $table_name){
     $year = intval(substr($rpt_period, 0, 4));
     $month = month2digit(substr($rpt_period, -2));
     $day  = getMonthEndDay($rpt_period);

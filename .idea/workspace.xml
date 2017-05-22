@@ -2,352 +2,405 @@
 <project version="4">
   <component name="BookmarkManager">
     <bookmark url="file://$PROJECT_DIR$/monthly_processing/processing_status/index.html" line="104" />
+    <bookmark url="file://$PROJECT_DIR$/dashboards/LCS.v.2/lib/components/grid.js" line="0" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="47f822d5-caa4-4777-9772-746577f23a95" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/images/Cobra.ico" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master.zip" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/css/smoothness/images/ui-bg_flat_0_aaaaaa_40x100.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/css/smoothness/images/ui-bg_flat_75_ffffff_40x100.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/css/smoothness/images/ui-bg_glass_55_fbf9ee_1x400.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/css/smoothness/images/ui-bg_glass_65_ffffff_1x400.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/css/smoothness/images/ui-bg_glass_75_dadada_1x400.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/css/smoothness/images/ui-bg_glass_75_e6e6e6_1x400.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/css/smoothness/images/ui-bg_glass_95_fef1ec_1x400.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/css/smoothness/images/ui-bg_highlight-soft_75_cccccc_1x100.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/css/smoothness/images/ui-icons_222222_256x240.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/css/smoothness/images/ui-icons_2e83ff_256x240.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/css/smoothness/images/ui-icons_454545_256x240.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/css/smoothness/images/ui-icons_888888_256x240.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/css/smoothness/images/ui-icons_cd0a0a_256x240.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/images/actions.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/images/ajax-loader-small.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/images/arrow_redo.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/images/arrow_right_peppermint.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/images/arrow_right_spearmint.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/images/arrow_undo.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/images/bullet_blue.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/images/bullet_star.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/images/bullet_toggle_minus.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/images/bullet_toggle_plus.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/images/calendar.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/images/collapse.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/images/comment_yellow.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/images/down.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/images/drag-handle.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/images/editor-helper-bg.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/images/expand.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/images/header-bg.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/images/header-columns-bg.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/images/header-columns-over-bg.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/images/help.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/images/info.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/images/listview.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/images/pencil.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/images/row-over-bg.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/images/sort-asc.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/images/sort-asc.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/images/sort-desc.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/images/sort-desc.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/images/stripes.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/images/tag_red.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/images/tick.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/images/user_identity.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/images/user_identity_plus.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/blade.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/php.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bkup/validation_bcr/bcr_validation.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dashboards/LCS/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dashboards/LCS/lib/components/btn_group.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dashboards/LCS/lib/components/createSlickGrid.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dashboards/LCS/lib/components/data.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dashboards/LCS/lib/components/get_url.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dashboards/LCS/lib/components/grid_columns.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dashboards/LCS/lib/components/line_chart.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dashboards/LCS/lib/components/pie_chart.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dashboards/LCS/lib/components/title_update.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dashboards/LCS/lib/php/lcs.charts.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dashboards/LCS/lib/php/lcs.grid.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dashboards/LCS/main.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/inc.cobra.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/Chart.bundle.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/Chart.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/Chart.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/LICENSE.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/samples/animation/progress-bar.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/samples/bar/bar-horizontal.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/samples/bar/bar-multi-axis.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/samples/bar/bar-stacked-group.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/samples/bar/bar-stacked.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/samples/bar/bar.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/samples/bubble.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/samples/combo-bar-line.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/samples/data_labelling.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/samples/doughnut.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/samples/legend/pointstyle.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/samples/legend/positions.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/samples/line/different-point-sizes.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/samples/line/interpolation-modes.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/samples/line/line-multi-axis.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/samples/line/line-skip-points.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/samples/line/line-stacked-area.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/samples/line/line-stepped.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/samples/line/line-styles.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/samples/line/line.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/samples/line/point-styles.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/samples/pie.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/samples/polar-area.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/samples/radar/radar-skip-points.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/samples/radar/radar.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/samples/scales/display-settings.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/samples/scales/filtering-labels.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/samples/scales/gridlines.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/samples/scales/line-non-numeric-y.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/samples/scales/linear/min-max-settings.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/samples/scales/linear/step-size.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/samples/scales/linear/suggested-min-max-settings.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/samples/scales/logarithmic/line-logarithmic.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/samples/scales/logarithmic/scatter-logX.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/samples/scales/multiline-labels.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/samples/scales/time/combo-time-scale.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/samples/scales/time/line-time-point-data.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/samples/scales/time/line-time-scale.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/samples/scatter/scatter-multi-axis.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/samples/scatter/scatter.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/samples/tooltips/dataPoints-customTooltips.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/samples/tooltips/interaction-modes.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/samples/tooltips/line-customTooltips.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/samples/tooltips/pie-customTooltips.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/samples/tooltips/position-modes.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/samples/tooltips/tooltip-callbacks.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/samples/utils.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/.gitignore" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/LICENSE" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/README.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/jquery-getscrollbarwidth/.bower.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/jquery-getscrollbarwidth/README.markdown" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/jquery-getscrollbarwidth/example.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/jquery-getscrollbarwidth/jquery.getscrollbarwidth.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/.bower.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/.gitignore" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/MIT-LICENSE.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/build/minimize.bat" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/build/minimize.cs" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/controls/slick.columnpicker.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/controls/slick.columnpicker.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/controls/slick.pager.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/controls/slick.pager.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/css/smoothness/jquery-ui-1.8.16.custom.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/examples/example-checkbox-row-select.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/examples/example-colspan.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/examples/example-composite-editor-item-details.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/examples/example-custom-column-value-extractor.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/examples/example-explicit-initialization.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/examples/example-grouping.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/examples/example-header-row.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/examples/example-multi-column-sort.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/examples/example-optimizing-dataview.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/examples/example-plugin-headerbuttons.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/examples/example-plugin-headermenu.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/examples/example-spreadsheet.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/examples/example1-simple.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/examples/example10-async-post-render.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/examples/example11-autoheight.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/examples/example12-fillbrowser.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/examples/example13-getItem-sorting.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/examples/example14-highlighting.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/examples/example2-formatters.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/examples/example3-editing.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/examples/example3a-compound-editors.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/examples/example3b-editing-with-undo.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/examples/example4-model.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/examples/example5-collapsing.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/examples/example6-ajax-loading.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/examples/example7-events.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/examples/example8-alternative-display.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/examples/example9-row-reordering.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/examples/examples.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/examples/slick-default-theme.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/examples/slick.compositeeditor.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/lib/firebugx.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/lib/jquery-1.7.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/lib/jquery-ui-1.8.16.custom.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/lib/jquery.event.drag-2.0.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/lib/jquery.event.drop-2.0.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/lib/jquery.jsonp-1.1.0.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/lib/jquery.simulate.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/lib/jquery.sparkline.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/lib/qunit.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/lib/qunit.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/plugins/slick.autotooltips.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/plugins/slick.cellcopymanager.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/plugins/slick.cellrangedecorator.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/plugins/slick.cellrangeselector.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/plugins/slick.cellselectionmodel.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/plugins/slick.checkboxselectcolumn.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/plugins/slick.headerbuttons.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/plugins/slick.headerbuttons.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/plugins/slick.headermenu.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/plugins/slick.headermenu.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/plugins/slick.rowmovemanager.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/plugins/slick.rowselectionmodel.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/slick.core.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/slick.dataview.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/slick.editors.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/slick.formatters.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/slick.grid.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/slick.grid.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/slick.groupitemmetadataprovider.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/slick.remotemodel.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/tests/dataview/dataview.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/tests/dataview/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/tests/grid/grid.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/tests/grid/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/tests/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/tests/model benchmarks.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/bower_components/slickgrid/tests/scrolling benchmarks.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/example/slickgrid-totals-plugin.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/example/styles.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/src/TotalsDataView.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/src/TotalsPlugin.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/slickgrid-totals-plugin-master/src/TotalsPlugin.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/load_all_periods_cost.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/load_first_period_cost.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/monthly_processing/bcm/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/monthly_processing/bcm/lib/components/createSlickGrid.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/monthly_processing/bcm/lib/components/get_url.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/monthly_processing/bcm/lib/components/grid_columns.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/monthly_processing/bcm/lib/components/grid_options.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/monthly_processing/bcm/lib/components/title_update.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/monthly_processing/bcm/lib/php/bcm.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/monthly_processing/bcm/lib/workers/load_cobra_data.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/monthly_processing/bcm/main.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/monthly_processing/log_analysis/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/monthly_processing/log_analysis/lib/components/createSlickGrid.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/monthly_processing/log_analysis/lib/components/get_url.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/monthly_processing/log_analysis/lib/components/grid_columns.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/monthly_processing/log_analysis/lib/components/grid_options.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/monthly_processing/log_analysis/lib/components/line_chart.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/monthly_processing/log_analysis/lib/components/title_update.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/monthly_processing/log_analysis/lib/php/bcr_validation.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/monthly_processing/log_analysis/lib/php/log_analysis.charts.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/monthly_processing/log_analysis/lib/php/log_analysis.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/monthly_processing/log_analysis/lib/workers/load_cobra_data.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/monthly_processing/log_analysis/main.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/monthly_processing/prepare_actuals/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/monthly_processing/prepare_actuals/lib/components/get_url.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/monthly_processing/prepare_actuals/lib/components/grid_columns.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/monthly_processing/prepare_actuals/lib/components/grid_options.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/monthly_processing/prepare_actuals/lib/components/title_update.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/monthly_processing/prepare_actuals/lib/php/prepare_actuals.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/monthly_processing/prepare_actuals/lib/workers/prepare_actuals.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/monthly_processing/prepare_actuals/main.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/require.config.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/batch_report_process/BAT/0475-32.BAT" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/batch_report_process/BAT/0475-81.BAT" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/batch_report_process/BAT/0475-98.BAT" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/batch_report_process/BAT/0479-69.BAT" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/batch_report_process/cmd/0475-61.cmd" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/batch_report_process/cmd/0475-88.cmd" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/batch_report_process/cmd/0475-97.cmd" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/batch_report_process/cmd/0479-100.cmd" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/csv_PFA_Committed_PO/467_Committed_PO467_Committed PO.xlsx.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/csv_PFA_Committed_PO/469_Committed_PO469_Committed PO.xlsx.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/csv_PFA_Committed_PO/471_Committed_PO471_Committed PO.xlsx.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/csv_PFA_Committed_PO/473_Committed_PO473_Committed PO.xlsx.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/csv_PFA_Committed_PO/475_Committed_PO475_Committed PO.xlsx.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/csv_PFA_Committed_PO/477_Committed_PO477_Committed PO.xlsx.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/csv_PFA_Committed_PO/479_Committed_PO479_Committed PO.xlsx.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/csv_PFA_Committed_PO/481_Committed_PO481_Committed PO.xlsx.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/csv_PFA_Committed_PO/483_Committed_PO483_Committed PO.xlsx.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/csv_PFA_Committed_PO/485_Committed_PO485_Committed PO.xlsx.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/csv_bl_validation/0475hc_check.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/csv_bl_validation/0475tp_check.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/csv_outsource/0477.ace.xlsx.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/csv_outsource/0479.ace.xlsx.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/csv_outsource/0481.ace.xlsx.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/csv_status_validation/0479pcs_status_validation.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/csv_status_validation/0479tp_check.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/csv_weekly_performance_report/04_01_17_Mfg0479 - EVMS - LCS.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/csv_weekly_performance_report/04_01_17_Mfg0481 - EVMS - LCS.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/csv_weekly_performance_report/04_01_17_Mfg0483 - EVMS - LCS.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/csv_weekly_performance_report/04_01_17_Mfg0485 - EVMS - LCS.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/csv_weekly_performance_report/04_01_17_Salaried0479 - EVMS - LCS.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/csv_weekly_performance_report/04_01_17_Salaried0481 - EVMS - LCS.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/csv_weekly_performance_report/04_01_17_Salaried0483 - EVMS - LCS.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/csv_weekly_performance_report/04_01_17_Salaried0485 - EVMS - LCS.csv" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cost_report/cost_report.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cost_report/cost_report.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cost_report/index.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/firstApp/app.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/firstApp/index.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/firstApp/lib/components/grid_columns.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/firstApp/lib/components/lineChart.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/firstApp/lib/php/requirejs.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/monthly_processing/validation_bcr/bcr_validation.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/requirejsexample/lib/underscore.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/util/csv_weekly_performance_report/02_25_170465 NRE - EVMS - LCS.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/util/csv_weekly_performance_report/02_25_17_Mfg0465 - EVMS - LCS.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/util/csv_weekly_performance_report/02_25_17_Mfg0466 - EVMS - LCS.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/util/csv_weekly_performance_report/02_25_17_Mfg0467 - EVMS - LCS.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/util/csv_weekly_performance_report/02_25_17_Mfg0468 - EVMS - LCS.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/util/csv_weekly_performance_report/02_25_17_Mfg0469 - EVMS - LCS.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/util/csv_weekly_performance_report/02_25_17_Mfg0470 - EVMS - LCS.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/util/csv_weekly_performance_report/02_25_17_Mfg0471 - EVMS - LCS.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/util/csv_weekly_performance_report/02_25_17_Mfg0472 - EVMS - LCS.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/util/csv_weekly_performance_report/02_25_17_Mfg0473 - EVMS - LCS.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/util/csv_weekly_performance_report/02_25_17_Mfg0474 - EVMS - LCS.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/util/csv_weekly_performance_report/02_25_17_Mfg0475 - EVMS - LCS.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/util/csv_weekly_performance_report/02_25_17_Mfg0476 - EVMS - LCS.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/util/csv_weekly_performance_report/02_25_17_Mfg0477 - EVMS - LCS.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/util/csv_weekly_performance_report/02_25_17_Mfg0478 - EVMS - LCS.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/util/csv_weekly_performance_report/02_25_17_Mfg0479 - EVMS - LCS.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/util/csv_weekly_performance_report/02_25_17_Mfg0480 - EVMS - LCS.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/util/csv_weekly_performance_report/02_25_17_Mfg0481 - EVMS - LCS.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/util/csv_weekly_performance_report/02_25_17_Mfg0482 - EVMS - LCS.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/util/csv_weekly_performance_report/02_25_17_Mfg0483 - EVMS - LCS.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/util/csv_weekly_performance_report/02_25_17_Mfg0485 - EVMS - LCS.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/util/csv_weekly_performance_report/02_25_17_Salaried0465 - EVMS - LCS.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/util/csv_weekly_performance_report/02_25_17_Salaried0466 - EVMS - LCS.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/util/csv_weekly_performance_report/02_25_17_Salaried0467 - EVMS - LCS.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/util/csv_weekly_performance_report/02_25_17_Salaried0468 - EVMS - LCS.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/util/csv_weekly_performance_report/02_25_17_Salaried0469 - EVMS - LCS.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/util/csv_weekly_performance_report/02_25_17_Salaried0470 - EVMS - LCS.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/util/csv_weekly_performance_report/02_25_17_Salaried0471 - EVMS - LCS.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/util/csv_weekly_performance_report/02_25_17_Salaried0472 - EVMS - LCS.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/util/csv_weekly_performance_report/02_25_17_Salaried0473 - EVMS - LCS.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/util/csv_weekly_performance_report/02_25_17_Salaried0474 - EVMS - LCS.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/util/csv_weekly_performance_report/02_25_17_Salaried0475 - EVMS - LCS.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/util/csv_weekly_performance_report/02_25_17_Salaried0476 - EVMS - LCS.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/util/csv_weekly_performance_report/02_25_17_Salaried0477 - EVMS - LCS.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/util/csv_weekly_performance_report/02_25_17_Salaried0478 - EVMS - LCS.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/util/csv_weekly_performance_report/02_25_17_Salaried0479 - EVMS - LCS.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/util/csv_weekly_performance_report/02_25_17_Salaried0480 - EVMS - LCS.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/util/csv_weekly_performance_report/02_25_17_Salaried0481 - EVMS - LCS.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/util/csv_weekly_performance_report/02_25_17_Salaried0482 - EVMS - LCS.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/util/csv_weekly_performance_report/02_25_17_Salaried0483 - EVMS - LCS.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/util/csv_weekly_performance_report/02_25_17_Salaried0485 - EVMS - LCS.csv" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/firstApp/lib/components/createSlickGrid.js" afterPath="$PROJECT_DIR$/monthly_processing/prepare_actuals/lib/components/createSlickGrid.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/firstApp/lib/components/grid_options.js" afterPath="$PROJECT_DIR$/dashboards/LCS/lib/components/grid_options.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/firstApp/lib/require.js" afterPath="$PROJECT_DIR$/inc/lib/js/require.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/firstApp/lib/underscore.js" afterPath="$PROJECT_DIR$/inc/lib/js/underscore.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/monthly_processing/validation_bcr/bcr_validation.js" afterPath="$PROJECT_DIR$/bkup/validation_bcr/bcr_validation.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/monthly_processing/validation_bcr/index.html" afterPath="$PROJECT_DIR$/bkup/validation_bcr/index.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/monthly_processing/validation_bcr/workers/load_cobra_data.js" afterPath="$PROJECT_DIR$/bkup/validation_bcr/workers/load_cobra_data.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/images/hierarchical-structure.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/images/obsd.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/images/obsdgreen.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/images/obsh.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/images/wbsd16.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/images/wbsd24black.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/images/wbsd24green.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/images/wbsh16.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/images/wbsh24.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/CEAC/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/CEAC/lib/components/data.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/CEAC/lib/components/grid_columns.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/CEAC/lib/components/grid_options.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/CEAC/lib/components/title_update.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/CEAC/lib/php/ceac_loader.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/CEAC/lib/workers/load_ceac_data.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/CEAC/main.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cost_loader/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cost_loader/lib/components/data.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cost_loader/lib/components/grid_columns.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cost_loader/lib/components/grid_options.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cost_loader/lib/components/title_update.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cost_loader/lib/php/cost_loader.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cost_loader/lib/workers/load_cobra_data.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cost_loader/lib/workers/load_cobra_data_tp.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cost_loader/main.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cross_hull/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cross_hull/lib/components/data.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cross_hull/lib/components/grid_columns.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cross_hull/lib/components/grid_options.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cross_hull/lib/components/title_update.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cross_hull/lib/php/grid.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cross_hull/main.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dashboards/LCS.v.2/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dashboards/LCS.v.2/lib/components/data_repo.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dashboards/LCS.v.2/lib/components/get_url.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dashboards/LCS.v.2/lib/components/grid.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dashboards/LCS.v.2/lib/components/grid_cols.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dashboards/LCS.v.2/lib/components/grid_opt.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dashboards/LCS.v.2/lib/components/line_chart.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dashboards/LCS.v.2/lib/components/title_update.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dashboards/LCS.v.2/lib/php/lcs.charts.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dashboards/LCS.v.2/lib/php/lcs.grid.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dashboards/LCS.v.2/main.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dashboards/LCSWO/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dashboards/LCSWO/lib/components/btn_group.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dashboards/LCSWO/lib/components/createSlickGrid.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dashboards/LCSWO/lib/components/data.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dashboards/LCSWO/lib/components/get_url.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dashboards/LCSWO/lib/components/grid_columns.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dashboards/LCSWO/lib/components/grid_options.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dashboards/LCSWO/lib/components/line_chart.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dashboards/LCSWO/lib/components/title_update.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dashboards/LCSWO/lib/php/lcs.charts.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dashboards/LCSWO/lib/php/lcs.grid.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dashboards/LCSWO/main.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/drill/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/drill/lib/components/data.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/drill/lib/components/grid_columns.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/drill/lib/components/grid_options.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/drill/lib/components/title_update.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/drill/lib/php/grid.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/drill/main.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/custom_components/createSlickGrid.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/custom_components/get_url.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/custom_components/jsonexcelexport.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/SlickGrid-master/plugins/slick.columngroup.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/js/jquery-migrate-1.4.1.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/php/spreadsheet-reader-master/spreadsheet-reader-master/.gitignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/php/spreadsheet-reader-master/spreadsheet-reader-master/CHANGELOG.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/php/spreadsheet-reader-master/spreadsheet-reader-master/LICENSE.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/php/spreadsheet-reader-master/spreadsheet-reader-master/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/php/spreadsheet-reader-master/spreadsheet-reader-master/SpreadsheetReader.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/php/spreadsheet-reader-master/spreadsheet-reader-master/SpreadsheetReader_CSV.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/php/spreadsheet-reader-master/spreadsheet-reader-master/SpreadsheetReader_ODS.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/php/spreadsheet-reader-master/spreadsheet-reader-master/SpreadsheetReader_XLS.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/php/spreadsheet-reader-master/spreadsheet-reader-master/SpreadsheetReader_XLSX.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/php/spreadsheet-reader-master/spreadsheet-reader-master/composer.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/php/spreadsheet-reader-master/spreadsheet-reader-master/php-excel-reader/excel_reader2.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inc/lib/php/spreadsheet-reader-master/spreadsheet-reader-master/test.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jsLearning/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jsLearning/lib/components/data.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jsLearning/lib/components/grid_columns.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jsLearning/lib/components/grid_options.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jsLearning/lib/components/title_update.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jsLearning/lib/php/grid.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jsLearning/main.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/level1.require.config.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/load_fiscalcalendar.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/monthly_processing/bcm/lib/components/data.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/monthly_processing/log_analysis/lib/components/data.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pmo_cross_hull/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pmo_cross_hull/lib/components/data.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pmo_cross_hull/lib/components/grid_columns.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pmo_cross_hull/lib/components/grid_options.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pmo_cross_hull/lib/components/title_update.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pmo_cross_hull/lib/php/grid.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pmo_cross_hull/main.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/batch_report_process/BAT/0465-10.BAT" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/batch_report_process/BAT/0467-91.BAT" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/batch_report_process/BAT/0469-51.BAT" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/batch_report_process/BAT/0471-45.BAT" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/batch_report_process/BAT/0471-76.BAT" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/batch_report_process/BAT/0473-16.BAT" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/batch_report_process/BAT/0475-14.BAT" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/batch_report_process/BAT/0475-84.BAT" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/batch_report_process/BAT/0477-20.BAT" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/batch_report_process/BAT/0477-30.BAT" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/batch_report_process/BAT/0477-70.BAT" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/batch_report_process/BAT/0479-1.BAT" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/batch_report_process/BAT/0479-11.BAT" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/batch_report_process/BAT/0479-24.BAT" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/batch_report_process/BAT/0479-30.BAT" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/batch_report_process/BAT/0479-31.BAT" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/batch_report_process/BAT/0479-32.BAT" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/batch_report_process/BAT/0479-34.BAT" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/batch_report_process/BAT/0479-46.BAT" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/batch_report_process/BAT/0479-68.BAT" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/batch_report_process/BAT/0479-72.BAT" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/batch_report_process/BAT/0481-50.BAT" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/batch_report_process/BAT/0481-64.BAT" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/batch_report_process/BAT/0483-34.BAT" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/batch_report_process/BAT/0483-46.BAT" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/batch_report_process/BAT/0485-33.BAT" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/batch_report_process/cmd/0465-58.cmd" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/batch_report_process/cmd/0467-88.cmd" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/batch_report_process/cmd/0469-15.cmd" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/batch_report_process/cmd/0471-31.cmd" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/batch_report_process/cmd/0471-7.cmd" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/batch_report_process/cmd/0473-95.cmd" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/batch_report_process/cmd/0475-32.cmd" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/batch_report_process/cmd/0475-75.cmd" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/batch_report_process/cmd/0477-56.cmd" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/batch_report_process/cmd/0477-75.cmd" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/batch_report_process/cmd/0477-89.cmd" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/batch_report_process/cmd/0479-20.cmd" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/batch_report_process/cmd/0479-22.cmd" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/batch_report_process/cmd/0479-42.cmd" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/batch_report_process/cmd/0479-43.cmd" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/batch_report_process/cmd/0479-48.cmd" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/batch_report_process/cmd/0479-87.cmd" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/batch_report_process/cmd/0479-88.cmd" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/batch_report_process/cmd/0479-90.cmd" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/batch_report_process/cmd/0479-92.cmd" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/batch_report_process/cmd/0479-97.cmd" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/batch_report_process/cmd/0481-13.cmd" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/batch_report_process/cmd/0481-39.cmd" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/batch_report_process/cmd/0483-6.cmd" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/batch_report_process/cmd/0483-97.cmd" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/batch_report_process/cmd/0485-27.cmd" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/backup_scripts/02_25_170465 NRE - EVMS - LCS.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/backup_scripts/02_25_17_Mfg0465 - EVMS - LCS.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/backup_scripts/02_25_17_Mfg0466 - EVMS - LCS.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/backup_scripts/02_25_17_Mfg0467 - EVMS - LCS.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/backup_scripts/02_25_17_Mfg0468 - EVMS - LCS.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/backup_scripts/02_25_17_Mfg0469 - EVMS - LCS.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/backup_scripts/02_25_17_Mfg0470 - EVMS - LCS.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/backup_scripts/02_25_17_Mfg0471 - EVMS - LCS.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/backup_scripts/02_25_17_Mfg0472 - EVMS - LCS.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/backup_scripts/02_25_17_Mfg0473 - EVMS - LCS.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/backup_scripts/02_25_17_Mfg0474 - EVMS - LCS.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/backup_scripts/02_25_17_Mfg0475 - EVMS - LCS.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/backup_scripts/02_25_17_Mfg0476 - EVMS - LCS.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/backup_scripts/02_25_17_Mfg0477 - EVMS - LCS.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/backup_scripts/02_25_17_Mfg0478 - EVMS - LCS.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/backup_scripts/02_25_17_Mfg0479 - EVMS - LCS.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/backup_scripts/02_25_17_Mfg0480 - EVMS - LCS.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/backup_scripts/02_25_17_Mfg0481 - EVMS - LCS.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/backup_scripts/02_25_17_Mfg0482 - EVMS - LCS.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/backup_scripts/02_25_17_Mfg0483 - EVMS - LCS.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/backup_scripts/02_25_17_Mfg0485 - EVMS - LCS.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/backup_scripts/02_25_17_Salaried0465 - EVMS - LCS.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/backup_scripts/02_25_17_Salaried0466 - EVMS - LCS.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/backup_scripts/02_25_17_Salaried0467 - EVMS - LCS.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/backup_scripts/02_25_17_Salaried0468 - EVMS - LCS.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/backup_scripts/02_25_17_Salaried0469 - EVMS - LCS.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/backup_scripts/02_25_17_Salaried0470 - EVMS - LCS.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/backup_scripts/02_25_17_Salaried0471 - EVMS - LCS.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/backup_scripts/02_25_17_Salaried0472 - EVMS - LCS.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/backup_scripts/02_25_17_Salaried0473 - EVMS - LCS.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/backup_scripts/02_25_17_Salaried0474 - EVMS - LCS.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/backup_scripts/02_25_17_Salaried0475 - EVMS - LCS.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/backup_scripts/02_25_17_Salaried0476 - EVMS - LCS.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/backup_scripts/02_25_17_Salaried0477 - EVMS - LCS.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/backup_scripts/02_25_17_Salaried0478 - EVMS - LCS.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/backup_scripts/02_25_17_Salaried0479 - EVMS - LCS.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/backup_scripts/02_25_17_Salaried0480 - EVMS - LCS.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/backup_scripts/02_25_17_Salaried0481 - EVMS - LCS.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/backup_scripts/02_25_17_Salaried0482 - EVMS - LCS.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/backup_scripts/02_25_17_Salaried0483 - EVMS - LCS.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/backup_scripts/02_25_17_Salaried0485 - EVMS - LCS.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/backup_scripts/04672017 February Completed Prod Orders.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/backup_scripts/04692017 February Completed Prod Orders.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/backup_scripts/04712017 February Completed Prod Orders.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/backup_scripts/04732017 February Completed Prod Orders.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/backup_scripts/04752017 February Completed Prod Orders.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/backup_scripts/04772017 February Completed Prod Orders.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/backup_scripts/04792017 February Completed Prod Orders.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/backup_scripts/04812017 February Completed Prod Orders.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/backup_scripts/04832017 February Completed Prod Orders.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/backup_scripts/Locked_Data0465 - EVMS - LCS.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/backup_scripts/Locked_Data0467 - EVMS - LCS.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/backup_scripts/Locked_Data0469 - EVMS - LCS.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/backup_scripts/Locked_Data0471 - EVMS - LCS.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/backup_scripts/Locked_Data0473 - EVMS - LCS.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/backup_scripts/Locked_Data0475 - EVMS - LCS.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/backup_scripts/Locked_Data0477 - EVMS - LCS.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/backup_scripts/Locked_Data0479 - EVMS - LCS.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/backup_scripts/Locked_Data0481 - EVMS - LCS.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/backup_scripts/Locked_Data0483 - EVMS - LCS.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/backup_scripts/Locked_Data0485 - EVMS - LCS.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/BAT/0473-24.BAT" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/BAT/0473-8.BAT" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/BAT/0473-89.BAT" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/BAT/04731116-test-15.BAT" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/BAT/04731116-test-16.BAT" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/BAT/04731116-test-2.BAT" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/BAT/04731116-test-22.BAT" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/BAT/04731116-test-26.BAT" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/BAT/04731116-test-3.BAT" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/BAT/04731116-test-43.BAT" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/BAT/04731116-test-46.BAT" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/BAT/04731116-test-52.BAT" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/BAT/04731116-test-60.BAT" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/BAT/04731116-test-62.BAT" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/BAT/04731116-test-67.BAT" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/BAT/04731116-test-74.BAT" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/BAT/04731116-test-8.BAT" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/BAT/04731116-test-90.BAT" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/BAT/04731116-test-93.BAT" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/BAT/04731116-test-95.BAT" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/BAT/04731116-test-97.BAT" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/BAT/04731116-test-98.BAT" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/BAT/0475-32.BAT" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/BAT/0475-81.BAT" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/BAT/0475-98.BAT" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/BAT/0477-49.BAT" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/BAT/0479-39.BAT" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/BAT/0479-66.BAT" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/BAT/0479-86.BAT" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/BAT/0481-17.BAT" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/BAT/0481-20.BAT" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/BAT/0481-21.BAT" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/BAT/0481-23.BAT" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/BAT/0481-28.BAT" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/BAT/0481-3.BAT" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/BAT/0481-30.BAT" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/BAT/0481-31.BAT" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/BAT/0481-35.BAT" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/BAT/0481-38.BAT" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/BAT/0481-45.BAT" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/BAT/0481-60.BAT" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/BAT/0481-69.BAT" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/BAT/0481-70.BAT" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/BAT/0481-77.BAT" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/BAT/0481-82.BAT" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/BAT/0481-84.BAT" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/BAT/0481-86.BAT" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/BAT/0481-9.BAT" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/BAT/0481-96.BAT" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/BAT/0483-17.BAT" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/BAT/0483-19.BAT" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/BAT/0483-57.BAT" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/BAT/0483-77.BAT" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/BAT/0485-100.BAT" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/BAT/0485-34.BAT" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/BAT/0485-75.BAT" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/cmd/0473-1.cmd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/cmd/0473-36.cmd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/cmd/0473-96.cmd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/cmd/04731116-test-10.cmd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/cmd/04731116-test-12.cmd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/cmd/04731116-test-13.cmd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/cmd/04731116-test-23.cmd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/cmd/04731116-test-24.cmd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/cmd/04731116-test-30.cmd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/cmd/04731116-test-45.cmd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/cmd/04731116-test-49.cmd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/cmd/04731116-test-53.cmd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/cmd/04731116-test-57.cmd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/cmd/04731116-test-60.cmd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/cmd/04731116-test-65.cmd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/cmd/04731116-test-67.cmd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/cmd/04731116-test-72.cmd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/cmd/04731116-test-75.cmd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/cmd/04731116-test-78.cmd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/cmd/04731116-test-80.cmd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/cmd/04731116-test-87.cmd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/cmd/04731116-test-88.cmd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/cmd/04731116-test-89.cmd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/cmd/04731116-test-9.cmd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/cmd/0475-61.cmd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/cmd/0475-88.cmd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/cmd/0475-97.cmd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/cmd/0477-12.cmd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/cmd/0479-100.cmd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/cmd/0479-4.cmd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/cmd/0479-52.cmd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/cmd/0479-86.cmd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/cmd/0481-0.cmd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/cmd/0481-14.cmd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/cmd/0481-15.cmd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/cmd/0481-17.cmd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/cmd/0481-26.cmd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/cmd/0481-43.cmd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/cmd/0481-49.cmd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/cmd/0481-55.cmd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/cmd/0481-58.cmd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/cmd/0481-59.cmd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/cmd/0481-69.cmd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/cmd/0481-72.cmd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/cmd/0481-73.cmd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/cmd/0481-81.cmd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/cmd/0481-82.cmd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/cmd/0481-85.cmd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/cmd/0481-87.cmd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/cmd/0481-93.cmd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/cmd/0481-95.cmd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/cmd/0481-96.cmd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/cmd/0483-15.cmd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/cmd/0483-70.cmd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/cmd/0483-83.cmd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/cmd/0483-94.cmd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/cmd/0485-12.cmd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/cmd/0485-39.cmd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/batch_report_process/cmd/0485-99.cmd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/csv_PFA_Committed_PO/467_Committed_PO467_Committed PO.xlsx.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/csv_PFA_Committed_PO/469_Committed_PO469_Committed PO.xlsx.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/csv_PFA_Committed_PO/471_Committed_PO471_Committed PO.xlsx.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/csv_PFA_Committed_PO/473_Committed_PO473_Committed PO.xlsx.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/csv_PFA_Committed_PO/475_Committed_PO475_Committed PO.xlsx.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/csv_PFA_Committed_PO/477_Committed_PO477_Committed PO.xlsx.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/csv_PFA_Committed_PO/479_Committed_PO479_Committed PO.xlsx.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/csv_PFA_Committed_PO/481_Committed_PO481_Committed PO.xlsx.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/csv_PFA_Committed_PO/483_Committed_PO483_Committed PO.xlsx.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/csv_PFA_Committed_PO/485_Committed_PO485_Committed PO.xlsx.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/csv_bl_validation/0475hc_check.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/csv_bl_validation/0475tp_check.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/csv_outsource/0477.ace.xlsx.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/csv_outsource/0479.ace.xlsx.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/csv_outsource/0481.ace.xlsx.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/csv_weekly_performance_report/04_01_17_Mfg0479 - EVMS - LCS.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/csv_weekly_performance_report/04_01_17_Mfg0481 - EVMS - LCS.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/csv_weekly_performance_report/04_01_17_Mfg0483 - EVMS - LCS.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/csv_weekly_performance_report/04_01_17_Mfg0485 - EVMS - LCS.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/csv_weekly_performance_report/04_01_17_Salaried0479 - EVMS - LCS.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/csv_weekly_performance_report/04_01_17_Salaried0481 - EVMS - LCS.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/csv_weekly_performance_report/04_01_17_Salaried0483 - EVMS - LCS.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util/csv_weekly_performance_report/04_01_17_Salaried0485 - EVMS - LCS.csv" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/load_all_periods_cost.php" afterPath="$PROJECT_DIR$/cost_loader/lib/php/inc.cost_loader.php" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/monthly_processing/log_analysis/lib/components/line_chart.js" afterPath="$PROJECT_DIR$/bkup/line_chart.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/monthly_processing/log_analysis/lib/php/log_analysis.charts.php" afterPath="$PROJECT_DIR$/bkup/log_analysis.charts.php" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/monthly_processing/log_analysis/lib/workers/load_cobra_data.js" afterPath="$PROJECT_DIR$/monthly_processing/log_analysis/lib/workers/log_analysis.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dashboards/LCS/index.html" afterPath="$PROJECT_DIR$/dashboards/LCS/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dashboards/LCS/lib/components/btn_group.js" afterPath="$PROJECT_DIR$/dashboards/LCS/lib/components/btn_group.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dashboards/LCS/lib/components/createSlickGrid.js" afterPath="$PROJECT_DIR$/dashboards/LCS/lib/components/createSlickGrid.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dashboards/LCS/lib/components/data.js" afterPath="$PROJECT_DIR$/dashboards/LCS/lib/components/data.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dashboards/LCS/lib/components/grid_columns.js" afterPath="$PROJECT_DIR$/dashboards/LCS/lib/components/grid_columns.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dashboards/LCS/lib/components/line_chart.js" afterPath="$PROJECT_DIR$/dashboards/LCS/lib/components/line_chart.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dashboards/LCS/lib/components/pie_chart.js" afterPath="$PROJECT_DIR$/dashboards/LCS/lib/components/pie_chart.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dashboards/LCS/lib/components/title_update.js" afterPath="$PROJECT_DIR$/dashboards/LCS/lib/components/title_update.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dashboards/LCS/lib/php/lcs.charts.php" afterPath="$PROJECT_DIR$/dashboards/LCS/lib/php/lcs.charts.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dashboards/LCS/lib/php/lcs.grid.php" afterPath="$PROJECT_DIR$/dashboards/LCS/lib/php/lcs.grid.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dashboards/LCS/main.js" afterPath="$PROJECT_DIR$/dashboards/LCS/main.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/inc/inc.PHPExcel.php" afterPath="$PROJECT_DIR$/inc/inc.PHPExcel.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/inc/inc.cobra.php" afterPath="$PROJECT_DIR$/inc/inc.cobra.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/inc/inc.php" afterPath="$PROJECT_DIR$/inc/inc.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/inc/lib/js/Chart.bundle.js" afterPath="$PROJECT_DIR$/inc/lib/js/Chart.bundle.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/inc/lib/js/SlickGrid-master/slick.formatters.js" afterPath="$PROJECT_DIR$/inc/lib/js/SlickGrid-master/slick.formatters.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/inc/lib/js/SlickGrid-master/examples/examples.css" afterPath="$PROJECT_DIR$/inc/lib/js/SlickGrid-master/examples/examples.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/inc/mmev.inc.php" afterPath="$PROJECT_DIR$/inc/mmev.inc.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mars/index.php" afterPath="$PROJECT_DIR$/mars/index.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/monthly_processing/update_log_analysis/index.html" afterPath="$PROJECT_DIR$/monthly_processing/update_log_analysis/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/monthly_processing/advance_calendar/advance_calendar.php" afterPath="$PROJECT_DIR$/monthly_processing/advance_calendar/advance_calendar.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/monthly_processing/bcm/index.html" afterPath="$PROJECT_DIR$/monthly_processing/bcm/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/monthly_processing/bcm/lib/components/createSlickGrid.js" afterPath="$PROJECT_DIR$/monthly_processing/bcm/lib/components/createSlickGrid.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/monthly_processing/bcm/lib/components/grid_columns.js" afterPath="$PROJECT_DIR$/monthly_processing/bcm/lib/components/grid_columns.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/monthly_processing/bcm/lib/php/bcm.php" afterPath="$PROJECT_DIR$/monthly_processing/bcm/lib/php/bcm.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/monthly_processing/bcm/main.js" afterPath="$PROJECT_DIR$/monthly_processing/bcm/main.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/monthly_processing/log_analysis/index.html" afterPath="$PROJECT_DIR$/monthly_processing/log_analysis/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/monthly_processing/log_analysis/lib/components/createSlickGrid.js" afterPath="$PROJECT_DIR$/monthly_processing/log_analysis/lib/components/createSlickGrid.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/monthly_processing/log_analysis/lib/components/grid_options.js" afterPath="$PROJECT_DIR$/monthly_processing/log_analysis/lib/components/grid_options.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/monthly_processing/log_analysis/lib/php/bcr_validation.php" afterPath="$PROJECT_DIR$/monthly_processing/log_analysis/lib/php/bcr_validation.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/monthly_processing/log_analysis/lib/php/log_analysis.php" afterPath="$PROJECT_DIR$/monthly_processing/log_analysis/lib/php/log_analysis.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/monthly_processing/log_analysis/main.js" afterPath="$PROJECT_DIR$/monthly_processing/log_analysis/main.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/monthly_processing/processing_status/processing_status.php" afterPath="$PROJECT_DIR$/monthly_processing/processing_status/processing_status.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/monthly_processing/update_log_analysis/update_log_analysis.php" afterPath="$PROJECT_DIR$/monthly_processing/update_log_analysis/update_log_analysis.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/monthly_processing/validation_bl/bl_validation.php" afterPath="$PROJECT_DIR$/monthly_processing/validation_bl/bl_validation.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/monthly_processing/validation_bl/inc.bl_validation.php" afterPath="$PROJECT_DIR$/monthly_processing/validation_bl/inc.bl_validation.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/monthly_processing/validation_status/inc.status_validation.php" afterPath="$PROJECT_DIR$/monthly_processing/validation_status/inc.status_validation.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/monthly_processing/validation_status/index.html" afterPath="$PROJECT_DIR$/monthly_processing/validation_status/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/monthly_processing/validation_status/status_validation.php" afterPath="$PROJECT_DIR$/monthly_processing/validation_status/status_validation.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/requirejsexample/app.js" afterPath="$PROJECT_DIR$/requirejsexample/app.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/require.config.js" afterPath="$PROJECT_DIR$/require.config.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/util/batch_report_process/BAT/0479-69.BAT" afterPath="$PROJECT_DIR$/util/batch_report_process/BAT/0479-69.BAT" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/util/batch_report_process/BAT/0479-88.BAT" afterPath="$PROJECT_DIR$/util/batch_report_process/BAT/0479-88.BAT" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/util/batch_report_process/cmd/0479-29.cmd" afterPath="$PROJECT_DIR$/util/batch_report_process/cmd/0479-29.cmd" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/util/csv_status_validation/0479pcs_status_validation.csv" afterPath="$PROJECT_DIR$/util/csv_status_validation/0479pcs_status_validation.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/util/csv_status_validation/0479tp_check.csv" afterPath="$PROJECT_DIR$/util/csv_status_validation/0479tp_check.csv" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/weekly_performance_report/index.php" afterPath="$PROJECT_DIR$/weekly_performance_report/index.php" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -379,7 +432,65 @@
     <favorites_list name="fmg" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="grid.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/jsLearning/lib/php/grid.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="10" column="16" lean-forward="false" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="16" />
+              <folding>
+                <marker date="1494446137070" expanded="true" signature="320:404" ph="select ${$fi... ${$table_name}" />
+                <marker date="1494446137070" expanded="true" signature="670:795" ph="select ship_... ${$table_name}" />
+                <marker date="1494446137070" expanded="true" signature="1726:1893" ph="..." />
+                <marker date="1494446137070" expanded="true" signature="1735:1888" ph="..." />
+                <marker date="1494446137070" expanded="true" signature="1909:1975" ph="select `grou... cross_hull_group" />
+                <marker date="1494446137070" expanded="true" signature="2603:2889" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/jsLearning/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1224">
+              <caret line="72" column="10" lean-forward="false" selection-start-line="72" selection-start-column="10" selection-end-line="72" selection-end-column="10" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="data.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/jsLearning/lib/components/data.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="7" column="29" lean-forward="false" selection-start-line="7" selection-start-column="29" selection-end-line="7" selection-end-column="29" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/jsLearning/main.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="336">
+              <caret line="17" column="28" lean-forward="true" selection-start-line="17" selection-start-column="28" selection-end-line="17" selection-end-column="28" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="createSlickGrid.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/monthly_processing/bcm/lib/components/createSlickGrid.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="765">
+              <caret line="45" column="34" lean-forward="false" selection-start-line="45" selection-start-column="34" selection-end-line="45" selection-end-column="34" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -392,64 +503,68 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>pre.</find>
-      <find>prev.</find>
-      <find>pc_comp</find>
-      <find>returnCurInsertSQL</find>
-      <find>descr</find>
-      <find>desc</find>
-      <find>eac_dof</find>
-      <find>loadPCSStatus</find>
-      <find>getStageInsertSQL</find>
-      <find>insert</find>
-      <find>0</find>
-      <find>loadLCSProgramData</find>
-      <find>loadb</find>
-      <find>bcrlo</find>
-      <find>getMonthEndDay</find>
-      <find>bcr</find>
-      <find>//</find>
-      <find>insertCobraCostDataStage</find>
-      <find>$prev_table_name</find>
-      <find>prev_ta</find>
-      <find>getPreviousRPTPeriod</find>
-      <find>month2digit</find>
-      <find>insertCobraCostDataCur</find>
-      <find>getmonth</find>
-      <find>insertCobraCostData</find>
-      <find>;</find>
-      <find>die</find>
-      <find>loadCOBRABCRLOG</find>
-      <find>ship_code</find>
-      <find>bcr_l</find>
+      <find>loadcobrabcrlog</find>
+      <find>loading-indicator</find>
+      <find>loadCOBRABCRLOGCurrentPeriod</find>
+      <find>append</find>
+      <find>timephase</find>
+      <find>validateTPP6TP</find>
+      <find>log_analysis_grid</find>
+      <find>sp</find>
+      <find>loadingIndicator</find>
+      <find>fade</find>
+      <find>woGridDataView</find>
+      <find>getWOData</find>
+      <find>updateWODate</find>
+      <find>load</find>
+      <find>simplexml_load_file</find>
+      <find>$path2_fortis_export</find>
+      <find>$path2_cobra_dir</find>
+      <find>insertFortisXML</find>
+      <find>'% - ace%' or descr like '% - bay%'</find>
+      <find>createRPTfromDate</find>
+      <find>cur</find>
+      <find>returnCurVal</find>
+      <find>returncurval</find>
+      <find>a_hours_prev</find>
+      <find>processJustification</find>
+      <find>snip</find>
+      <find>pc</find>
+      <find>gridDataViewCallBack</find>
+      <find>excel</find>
+      <find>bcm_select</find>
     </findStrings>
     <replaceStrings>
-      <replace>,,</replace>
-      <replace>30</replace>
-      <replace>',</replace>
-      <replace>formatNumber4dec</replace>
-      <replace>fixExcelDateMySQL</replace>
-      <replace>$</replace>
-      <replace>8</replace>
-      <replace>/</replace>
-      <replace>\\</replace>
-      <replace>[&quot;</replace>
-      <replace>$table_array[&quot;</replace>
-      <replace>formatNumber4decNoComma</replace>
-      <replace>../../</replace>
-      <replace>50</replace>
-      <replace>180</replace>
-      <replace>,</replace>
-      <replace>[$ship_code.&quot;0116&quot;]</replace>
-      <replace>;</replace>
-      <replace>\&quot;</replace>
-      <replace>name=&quot;var_options&quot; class=&quot;b</replace>
-      <replace>300</replace>
-      <replace>400</replace>
-      <replace>]</replace>
-      <replace>_prev</replace>
       <replace>`desc`</replace>
       <replace>&quot;;</replace>
+      <replace>../</replace>
+      <replace>rptGridObj</replace>
+      <replace>ajaxDataObj</replace>
+      <replace>9</replace>
+      <replace>25</replace>
+      <replace>period, $field, $table_type</replace>
+      <replace>&quot;.f</replace>
+      <replace>formatNumber4decNoComma(getShipValByGROUPandDataType</replace>
+      <replace>))</replace>
+      <replace>\</replace>
+      <replace>hours</replace>
+      <replace>ca</replace>
+      <replace>));</replace>
+      <replace>5</replace>
+      <replace>wp</replace>
+      <replace>item</replace>
+      <replace>scope</replace>
+      <replace>rsrc</replace>
+      <replace>//formatter:</replace>
+      <replace>cpi</replace>
+      <replace>tcpi</replace>
+      <replace>//var round = value.toFixed(2);</replace>
+      <replace>'</replace>
+      <replace>cur</replace>
+      <replace>}]</replace>
+      <replace>minWidth: 15,</replace>
+      <replace>grid</replace>
+      <replace>justification</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -465,57 +580,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/monthly_processing/log_analysis/lib/components/test.js" />
-        <option value="$PROJECT_DIR$/monthly_processing/log_analysis/lib/components/title_update.js" />
-        <option value="$PROJECT_DIR$/monthly_processing/log_analysis/lib/php/log_analysis.php" />
-        <option value="$PROJECT_DIR$/monthly_processing/bcm/main.js" />
-        <option value="$PROJECT_DIR$/monthly_processing/bcm/lib/php/bcr_validation.php" />
-        <option value="$PROJECT_DIR$/monthly_processing/bcm/lib/components/grid_options.js" />
-        <option value="$PROJECT_DIR$/monthly_processing/log_analysis/main.js" />
-        <option value="$PROJECT_DIR$/monthly_processing/log_analysis/index.html" />
-        <option value="$PROJECT_DIR$/monthly_processing/log_analysis/lib/components/line_chart.js" />
-        <option value="$PROJECT_DIR$/monthly_processing/bcm/lib/workers/load_cobra_data.js" />
-        <option value="$PROJECT_DIR$/monthly_processing/log_analysis/lib/components/createSlickGrid.js" />
-        <option value="$PROJECT_DIR$/monthly_processing/log_analysis/lib/php/log_analysis.charts.php" />
-        <option value="$PROJECT_DIR$/monthly_processing/bcm/index.html" />
-        <option value="$PROJECT_DIR$/monthly_processing/bcm/lib/components/grid_columns.js" />
-        <option value="$PROJECT_DIR$/monthly_processing/bcm/lib/components/get_url.js" />
-        <option value="$PROJECT_DIR$/dashboards/LCS/lib/components/radio_event.js" />
-        <option value="$PROJECT_DIR$/dashboards/LCS/lib/components/pic_chart.js" />
-        <option value="$PROJECT_DIR$/require.config.js" />
-        <option value="$PROJECT_DIR$/monthly_processing/cur_month_setup/cur_month_setup.js" />
-        <option value="$PROJECT_DIR$/monthly_processing/prepare_actuals/inde.html" />
-        <option value="$PROJECT_DIR$/monthly_processing/prepare_actuals/main.js" />
-        <option value="$PROJECT_DIR$/monthly_processing/prepare_actuals/lib/components/createSlickGrid.js" />
-        <option value="$PROJECT_DIR$/inc/inc.PHPExcel.php" />
-        <option value="$PROJECT_DIR$/mars/index.php" />
+        <option value="$PROJECT_DIR$/wkly_perform_report/lib/components/grid_options.js" />
+        <option value="$PROJECT_DIR$/wkly_perform_report/main.js" />
+        <option value="$PROJECT_DIR$/load_fiscalcalendar.php" />
         <option value="$PROJECT_DIR$/weekly_performance_report/index.php" />
-        <option value="$PROJECT_DIR$/monthly_processing/prepare_actuals/lib/php/prepare_actuals.php" />
-        <option value="$PROJECT_DIR$/dashboards/LCS/lib/components/btn_group.js" />
-        <option value="$PROJECT_DIR$/dashboards/LCS/lib/components/pie_chart.js" />
-        <option value="$PROJECT_DIR$/dashboards/LCS/lib/components/grid_options.js" />
-        <option value="$PROJECT_DIR$/dashboards/LCS/main.js" />
-        <option value="$PROJECT_DIR$/dashboards/LCS/lib/components/grid_columns.js" />
-        <option value="$PROJECT_DIR$/dashboards/LCS/lib/components/data.js" />
-        <option value="$PROJECT_DIR$/dashboards/LCS/lib/php/lcs.grid.php" />
-        <option value="$PROJECT_DIR$/dashboards/LCS/index.html" />
-        <option value="$PROJECT_DIR$/dashboards/LCS/lib/components/title_update.js" />
+        <option value="$PROJECT_DIR$/monthly_processing/validation_bl/bl_validation.php" />
         <option value="$PROJECT_DIR$/dashboards/LCS/lib/components/createSlickGrid.js" />
-        <option value="$PROJECT_DIR$/dashboards/LCS/lib/components/get_url.js" />
+        <option value="$PROJECT_DIR$/dashboards/LCS/index.html" />
+        <option value="$PROJECT_DIR$/dashboards/LCS/lib/components/btn_group.js" />
         <option value="$PROJECT_DIR$/dashboards/LCS/lib/components/line_chart.js" />
-        <option value="$PROJECT_DIR$/dashboards/LCS/lib/php/lcs.charts.php" />
-        <option value="$PROJECT_DIR$/monthly_processing/validation_status/inc.status_validation.php" />
-        <option value="$PROJECT_DIR$/monthly_processing/validation_status/status_validation.php" />
-        <option value="$PROJECT_DIR$/monthly_processing/log_analysis/lib/workers/load_cobra_data.js" />
-        <option value="$PROJECT_DIR$/monthly_processing/log_analysis/lib/php/bcr_validation.php" />
-        <option value="$PROJECT_DIR$/monthly_processing/log_analysis/lib/php/load_previous_cost.php" />
-        <option value="$PROJECT_DIR$/load_first_period_cost.php" />
+        <option value="$PROJECT_DIR$/dashboards/LCSWO/lib/components/line_chart.js" />
+        <option value="$PROJECT_DIR$/dashboards/LCSWO/lib/components/title_update.js" />
         <option value="$PROJECT_DIR$/inc/inc.php" />
-        <option value="$PROJECT_DIR$/inc/inc.cobra.php" />
-        <option value="$PROJECT_DIR$/inc/mmev.inc.php" />
-        <option value="$PROJECT_DIR$/monthly_processing/bcm/lib/components/createSlickGrid.js" />
+        <option value="$PROJECT_DIR$/dashboards/LCSWO/lib/components/btn_group.js" />
+        <option value="$PROJECT_DIR$/dashboards/LCSWO/main.js" />
+        <option value="$PROJECT_DIR$/dashboards/LCSWO/lib/components/grid_options.js" />
+        <option value="$PROJECT_DIR$/dashboards/LCSWO/lib/php/lcs.grid.php" />
+        <option value="$PROJECT_DIR$/dashboards/LCSWO/lib/components/grid_columns.js" />
+        <option value="$PROJECT_DIR$/level1.require.config.js" />
+        <option value="$PROJECT_DIR$/monthly_processing/bcm/main.js" />
+        <option value="$PROJECT_DIR$/monthly_processing/bcm/lib/components/grid_columns.js" />
         <option value="$PROJECT_DIR$/monthly_processing/bcm/lib/php/bcm.php" />
-        <option value="$PROJECT_DIR$/load_all_periods_cost.php" />
+        <option value="$PROJECT_DIR$/inc/lib/js/spinJS.js" />
+        <option value="$PROJECT_DIR$/monthly_processing/bcm/lib/components/data.js" />
+        <option value="$PROJECT_DIR$/require.config.js" />
+        <option value="$PROJECT_DIR$/inc/inc.cobra.php" />
+        <option value="$PROJECT_DIR$/monthly_processing/bcm/index.html" />
+        <option value="$PROJECT_DIR$/monthly_processing/bcm/lib/components/createSlickGrid.js" />
+        <option value="$PROJECT_DIR$/monthly_processing/validation_status/status_validation.php" />
+        <option value="$PROJECT_DIR$/monthly_processing/validation_status/index.html" />
+        <option value="$PROJECT_DIR$/monthly_processing/validation_status/inc.status_validation.php" />
+        <option value="$PROJECT_DIR$/CEAC/lib/php/ceac_loader.php" />
+        <option value="$PROJECT_DIR$/pmo_cross_hull/main.js" />
+        <option value="$PROJECT_DIR$/monthly_processing/log_analysis/lib/components/data.js" />
+        <option value="$PROJECT_DIR$/monthly_processing/log_analysis/lib/php/bcr_validation.php" />
+        <option value="$PROJECT_DIR$/inc/mmev.inc.php" />
+        <option value="$PROJECT_DIR$/monthly_processing/log_analysis/main.js" />
+        <option value="$PROJECT_DIR$/monthly_processing/log_analysis/lib/components/createSlickGrid.js" />
+        <option value="$PROJECT_DIR$/monthly_processing/log_analysis/index.html" />
+        <option value="$PROJECT_DIR$/monthly_processing/log_analysis/lib/components/grid_options.js" />
+        <option value="$PROJECT_DIR$/dashboards/LCSWO/lib/components/spinner.js" />
+        <option value="$PROJECT_DIR$/dashboards/LCSWO/index.html" />
+        <option value="$PROJECT_DIR$/dashboards/LCSWO/lib/components/createSlickGrid.js" />
+        <option value="$PROJECT_DIR$/dashboards/LCSWO/lib/components/data.js" />
+        <option value="$PROJECT_DIR$/cost_loader/lib/php/inc.cost_loader.php" />
+        <option value="$PROJECT_DIR$/monthly_processing/update_log_analysis/update_log_analysis.php" />
+        <option value="$PROJECT_DIR$/monthly_processing/log_analysis/lib/php/log_analysis.php" />
+        <option value="$PROJECT_DIR$/observer_example/main.js" />
+        <option value="$PROJECT_DIR$/jsLearning/lib/components/grid_columns.js" />
+        <option value="$PROJECT_DIR$/jsLearning/lib/components/data.js" />
+        <option value="$PROJECT_DIR$/jsLearning/index.html" />
+        <option value="$PROJECT_DIR$/jsLearning/main.js" />
       </list>
     </option>
   </component>
@@ -564,7 +679,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -577,63 +692,9 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="fmg" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="fmg" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="monthly_processing" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="fmg" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="fmg" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="monthly_processing" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bcm" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="fmg" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="fmg" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="monthly_processing" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bcm" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lib" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -641,27 +702,29 @@
     <property name="js.eslint.eslintPackage" value="" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Language Defaults" />
+    <property name="settings.editor.selected.configurable" value="web-ide.project.structure" />
     <property name="last_opened_file_path" value="B:/fmg" />
     <property name="com.intellij.database.dataSource.DataSourceTemplate" value="localhost" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="ToolWindowDatabase Console.ShowToolbar" value="false" />
-    <property name="two.files.diff.last.used.folder" value="B:/fmg" />
+    <property name="two.files.diff.last.used.folder" value="B:/fmg2" />
+    <property name="two.files.diff.last.used.file" value="B:/fmg/load_fiscalcalendar.php" />
+    <property name="jsx.switch.disabled" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\fmg\bkup" />
+      <recent name="C:\xampp\htdocs\fmg\CEAC\lib\php" />
+      <recent name="C:\xampp\htdocs\fmg\cost_loader\lib\components" />
+      <recent name="C:\xampp\htdocs\fmg\inc\custom_components" />
+      <recent name="C:\xampp\htdocs\fmg" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\fmg" />
-      <recent name="C:\xampp\htdocs\fmg\monthly_processing\prepare_actuals" />
-      <recent name="C:\xampp\htdocs\fmg\dashboards\LCS\lib\components" />
-      <recent name="C:\xampp\htdocs\fmg\dashboards" />
-      <recent name="C:\xampp\htdocs\fmg\monthly_processing\bcm\lib\php" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\fmg" />
-      <recent name="C:\xampp\htdocs\fmg\inc\lib\js" />
-      <recent name="C:\xampp\htdocs\fmg\bkup" />
-      <recent name="C:\xampp\htdocs\fmg\monthly_processing\log_analysis" />
-      <recent name="C:\xampp\htdocs\fmg\requirejsexample\lib\components" />
+      <recent name="C:\xampp\htdocs\fmg\dashboards\LCSWO\lib\components" />
+      <recent name="C:\xampp\htdocs\fmg\monthly_processing\log_analysis\lib\components" />
+      <recent name="C:\xampp\htdocs\fmg\wkly_perform_report\lib\php" />
+      <recent name="C:\xampp\htdocs\fmg\CEAC" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -676,7 +739,11 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="PHPUnit.fmg">
+    <configuration default="false" name="fmg" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner directory="$PROJECT_DIR$" />
+      <method />
+    </configuration>
     <configuration default="true" type="CodeceptionConfigurationType" factoryName="Codeception">
       <PhpTestRunnerSettings />
       <method />
@@ -744,6 +811,14 @@
       <recursive>false</recursive>
       <method />
     </configuration>
+    <list size="1">
+      <item index="0" class="java.lang.String" itemvalue="PHPUnit.fmg" />
+    </list>
+    <recent_temporary>
+      <list size="1">
+        <item index="0" class="java.lang.String" itemvalue="PHPUnit.fmg" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
@@ -922,7 +997,64 @@
       <workItem from="1492000095990" duration="2874000" />
       <workItem from="1492089782711" duration="811000" />
       <workItem from="1492090626204" duration="13253000" />
-      <workItem from="1492431755228" duration="10104000" />
+      <workItem from="1492431755228" duration="13022000" />
+      <workItem from="1492459355985" duration="3683000" />
+      <workItem from="1492521021053" duration="14164000" />
+      <workItem from="1492544331619" duration="5108000" />
+      <workItem from="1492606746309" duration="23630000" />
+      <workItem from="1492693163364" duration="12051000" />
+      <workItem from="1492780540267" duration="7982000" />
+      <workItem from="1493049403270" duration="9870000" />
+      <workItem from="1493063986763" duration="3266000" />
+      <workItem from="1493145632602" duration="4796000" />
+      <workItem from="1493231345788" duration="2892000" />
+      <workItem from="1493237005459" duration="1792000" />
+      <workItem from="1493240102219" duration="150000" />
+      <workItem from="1493299371779" duration="80000" />
+      <workItem from="1493299652988" duration="1750000" />
+      <workItem from="1493316707338" duration="5636000" />
+      <workItem from="1493387006512" duration="12974000" />
+      <workItem from="1493652961885" duration="501000" />
+      <workItem from="1493655504988" duration="5279000" />
+      <workItem from="1493728789827" duration="1587000" />
+      <workItem from="1493736036858" duration="2633000" />
+      <workItem from="1493754112280" duration="1737000" />
+      <workItem from="1493756014286" duration="1347000" />
+      <workItem from="1493757632991" duration="2362000" />
+      <workItem from="1493817877059" duration="20706000" />
+      <workItem from="1493989766516" duration="33000" />
+      <workItem from="1493989909857" duration="961000" />
+      <workItem from="1493991244228" duration="104000" />
+      <workItem from="1493991565655" duration="126000" />
+      <workItem from="1493991766529" duration="3927000" />
+      <workItem from="1494001308711" duration="19000" />
+      <workItem from="1494001388691" duration="10358000" />
+      <workItem from="1494251097745" duration="6940000" />
+      <workItem from="1494272944793" duration="3123000" />
+      <workItem from="1494340906535" duration="6371000" />
+      <workItem from="1494419784021" duration="21503000" />
+      <workItem from="1494505852795" duration="11605000" />
+      <workItem from="1494528625004" duration="12000" />
+      <workItem from="1494528668555" duration="25000" />
+      <workItem from="1494530149009" duration="6268000" />
+      <workItem from="1494538575053" duration="2821000" />
+      <workItem from="1494595266776" duration="20511000" />
+      <workItem from="1494852689556" duration="8641000" />
+      <workItem from="1494863519486" duration="12972000" />
+      <workItem from="1494937716625" duration="19770000" />
+      <workItem from="1495025887852" duration="10980000" />
+      <workItem from="1495112742093" duration="1862000" />
+      <workItem from="1495120566582" duration="4236000" />
+      <workItem from="1495133811158" duration="2640000" />
+      <workItem from="1495138047898" duration="2918000" />
+      <workItem from="1495198505598" duration="6315000" />
+      <workItem from="1495221678327" duration="2145000" />
+      <workItem from="1495224647965" duration="14000" />
+      <workItem from="1495224863804" duration="99000" />
+      <workItem from="1495225017903" duration="1957000" />
+      <workItem from="1495457883608" duration="2264000" />
+      <workItem from="1495461246096" duration="160000" />
+      <workItem from="1495461431323" duration="2318000" />
     </task>
     <task id="LOCAL-00001" summary="processing status index">
       <created>1484232740617</created>
@@ -1204,11 +1336,18 @@
       <option name="project" value="LOCAL" />
       <updated>1490883979243</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="working April 17">
+      <created>1492454641862</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1492454641862</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1407717000" />
+    <option name="totallyTimeSpent" value="1732066000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1222,51 +1361,28 @@
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.225" sideWeight="0.49638802" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1953125" sideWeight="0.49638802" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32946146" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32946146" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32946146" sideWeight="0.5" order="11" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32916668" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.6357069" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19010417" sideWeight="0.503612" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5706914" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5706914" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Command Line Tools Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32920536" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32920536" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3368532" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Command Line Tools Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3284055" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32920536" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3368532" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4751848" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.49947202" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
-    <layout-to-restore>
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32946146" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5706914" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32946146" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Command Line Tools Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32920536" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32920536" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.6357069" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3368532" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1734375" sideWeight="0.49638802" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32916668" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3284055" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19010417" sideWeight="0.503612" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="processedProjectFiles" value="true" />
@@ -1315,492 +1431,341 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="89" />
+      <breakpoints>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/dashboards/LCS/lib/php/lcs.grid.php</url>
+          <line>119</line>
+          <option name="timeStamp" value="97" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="116" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/dashboards/main_ev/dashboard_chart.php">
+    <entry file="file://$PROJECT_DIR$/monthly_processing/validation_status/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="13" column="33" lean-forward="true" selection-start-line="13" selection-start-column="33" selection-end-line="13" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dashboards/main_ev/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="68" lean-forward="true" selection-start-line="7" selection-start-column="68" selection-end-line="7" selection-end-column="68" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/monthly_processing/log_analysis/lib/components/line_chart.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="21" lean-forward="false" selection-start-line="0" selection-start-column="9" selection-end-line="0" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/monthly_processing/bcm/lib/components/grid_options.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="13" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/monthly_processing/processing_status/processing_status.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/monthly_processing/cur_month_setup/cur_month_setup.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="371">
-          <caret line="101" column="26" lean-forward="true" selection-start-line="101" selection-start-column="26" selection-end-line="101" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/monthly_processing/prepare_actuals/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="16" lean-forward="false" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/monthly_processing/prepare_actuals/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="648">
-          <caret line="27" column="55" lean-forward="false" selection-start-line="27" selection-start-column="55" selection-end-line="27" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/monthly_processing/prepare_actuals/lib/components/grid_columns.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-17">
-          <caret line="5" column="5" lean-forward="true" selection-start-line="5" selection-start-column="5" selection-end-line="5" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/monthly_processing/prepare_actuals/lib/components/grid_options.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="34" lean-forward="true" selection-start-line="13" selection-start-column="34" selection-end-line="13" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/monthly_processing/prepare_actuals/lib/components/createSlickGrid.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="13" lean-forward="true" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/weekly_performance_report/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="529">
-          <caret line="232" column="29" lean-forward="true" selection-start-line="232" selection-start-column="29" selection-end-line="232" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mars/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="748">
-          <caret line="44" column="1" lean-forward="true" selection-start-line="44" selection-start-column="1" selection-end-line="44" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/inc/inc.PHPExcel.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1113">
-          <caret line="53" column="20" lean-forward="false" selection-start-line="53" selection-start-column="20" selection-end-line="53" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mars/inc.insert_data.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="49" column="44" lean-forward="false" selection-start-line="49" selection-start-column="44" selection-end-line="49" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/monthly_processing/prepare_actuals/lib/php/prepare_actuals.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="310">
-          <caret line="62" column="27" lean-forward="false" selection-start-line="62" selection-start-column="27" selection-end-line="62" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/require.config.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="16" lean-forward="false" selection-start-line="9" selection-start-column="8" selection-end-line="9" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dashboards/LCS/lib/components/btn_group.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="826">
-          <caret line="62" column="36" lean-forward="true" selection-start-line="62" selection-start-column="36" selection-end-line="62" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dashboards/LCS/lib/components/pie_chart.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="11" column="41" lean-forward="false" selection-start-line="11" selection-start-column="41" selection-end-line="11" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/monthly_processing/processing_status/processing_status.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4437">
-          <caret line="261" column="59" lean-forward="false" selection-start-line="261" selection-start-column="59" selection-end-line="261" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dashboards/LCS/lib/components/grid_options.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="13" column="35" lean-forward="false" selection-start-line="13" selection-start-column="35" selection-end-line="13" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dashboards/LCS/lib/php/lcs.grid.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="19" column="12" lean-forward="true" selection-start-line="19" selection-start-column="12" selection-end-line="19" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dashboards/LCS/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="67" lean-forward="false" selection-start-line="9" selection-start-column="67" selection-end-line="9" selection-end-column="67" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dashboards/LCS/lib/components/grid_columns.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="576">
-          <caret line="98" column="22" lean-forward="false" selection-start-line="98" selection-start-column="22" selection-end-line="98" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dashboards/LCS/lib/components/data.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="23" column="34" lean-forward="false" selection-start-line="23" selection-start-column="34" selection-end-line="23" selection-end-column="34" />
-          <folding>
-            <element signature="e#1345#1388#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dashboards/LCS/lib/components/title_update.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="53" lean-forward="false" selection-start-line="4" selection-start-column="43" selection-end-line="4" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dashboards/LCS/lib/components/get_url.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="18" lean-forward="false" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dashboards/LCS/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="31" lean-forward="false" selection-start-line="5" selection-start-column="31" selection-end-line="5" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dashboards/LCS/lib/components/line_chart.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="27" lean-forward="false" selection-start-line="15" selection-start-column="27" selection-end-line="15" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dashboards/LCS/lib/php/lcs.charts.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1564">
-          <caret line="143" column="20" lean-forward="false" selection-start-line="143" selection-start-column="20" selection-end-line="143" selection-end-column="20" />
-          <folding>
-            <element signature="n#createPeriodArray#0;n#!!top" expanded="false" />
-            <element signature="e#1980#3475#0#PHP" expanded="false" />
-            <marker date="1491972399244" expanded="true" signature="316:703" ph="SELECT ${$va... ${$value}_bcr" />
-            <marker date="1491972399244" expanded="true" signature="316:725" ph="SELECT ${$va... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/monthly_processing/validation_bl/bl_validation.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2601">
-          <caret line="153" column="0" lean-forward="false" selection-start-line="153" selection-start-column="0" selection-end-line="158" selection-end-column="61" />
-          <folding>
-            <marker date="1490907110322" expanded="true" signature="805:937" ph="insert into ${$table_name}... " />
-            <marker date="1490907110322" expanded="true" signature="2446:2514" ph="insert into ${$schema}.${$table_name}... " />
-            <marker date="1490907110322" expanded="true" signature="6742:6802" ph="select count... ${$table_name}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bkup/validation_bcr/bcr_validation.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2057">
-          <caret line="121" column="1" lean-forward="false" selection-start-line="121" selection-start-column="1" selection-end-line="121" selection-end-column="1" />
-          <folding>
-            <marker date="1491225623388" expanded="true" signature="261:311" ph="select month... calendar" />
-            <marker date="1491225623388" expanded="true" signature="643:1084" ph="select PROGR... BASELOG" />
-            <marker date="1491225623388" expanded="true" signature="1146:1333" ph="insert into bcr_log.${$table_name}... " />
-            <marker date="1491225623388" expanded="true" signature="3330:3399" ph="select rpt_p... calendar" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dashboards/LCS/lib/components/createSlickGrid.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="663">
-          <caret line="74" column="2" lean-forward="false" selection-start-line="74" selection-start-column="2" selection-end-line="74" selection-end-column="2" />
-          <folding>
-            <element signature="e#1214#2623#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/monthly_processing/log_analysis/lib/workers/load_cobra_data.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="23" column="26" lean-forward="false" selection-start-line="23" selection-start-column="26" selection-end-line="23" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/monthly_processing/log_analysis/lib/php/log_analysis.charts.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1491485516980" expanded="true" signature="316:703" ph="SELECT ${$va... ${$value}_bcr" />
-            <marker date="1491485516980" expanded="true" signature="316:725" ph="SELECT ${$va... " />
-          </folding>
+        <state relative-caret-position="17">
+          <caret line="31" column="9" lean-forward="false" selection-start-line="31" selection-start-column="9" selection-end-line="31" selection-end-column="9" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/monthly_processing/validation_status/inc.status_validation.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="n#loadPCSStatus#0;n#!!top" expanded="false" />
-            <marker date="1492096897375" expanded="true" signature="579:658" ph="insert into ${$schema}.${$table_name}... " />
-            <marker date="1492096897375" expanded="true" signature="2472:2539" ph="insert into ${$schema}.${$table_name}... " />
-            <marker date="1492096897375" expanded="true" signature="4129:4542" ph="select p6.co... ${$p6_table_name}" />
-            <marker date="1492096897375" expanded="true" signature="4649:4981" ph="..." />
-            <marker date="1492096897375" expanded="true" signature="4779:4976" ph="..." />
-            <marker date="1492096897375" expanded="true" signature="5400:5603" ph="..." />
-            <marker date="1492096897375" expanded="true" signature="5753:5864" ph="..." />
-            <marker date="1492096897375" expanded="true" signature="6128:6466" ph="select p6.ca... ${$p6_table_name}" />
-            <marker date="1492096897375" expanded="true" signature="6554:6881" ph="..." />
-            <marker date="1492096897375" expanded="true" signature="6680:6880" ph="..." />
-            <marker date="1492096897375" expanded="true" signature="7332:7549" ph="..." />
-            <marker date="1492096897375" expanded="true" signature="7699:7810" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/load_first_period_cost.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21">
-          <caret line="391" column="5" lean-forward="true" selection-start-line="391" selection-start-column="5" selection-end-line="391" selection-end-column="5" />
-          <folding>
-            <element signature="n#getStageInsertSQL#0;n#!!top" expanded="false" />
-            <element signature="n#insertCobraCostDataStage#0;n#!!top" expanded="false" />
-            <element signature="n#returnCurInsertSQL#0;n#!!top" expanded="false" />
-            <element signature="n#insertCobraCostData#0;n#!!top" expanded="false" />
-            <marker date="1492442546285" expanded="true" signature="229:527" ph="insert into ${$schema}.${$table_name}... " />
-            <marker date="1492442546285" expanded="true" signature="659:978" ph="select PROGR... CAWP" />
-            <marker date="1492442546285" expanded="true" signature="3131:3625" ph="insert into ${$schema}.${$cur_table_name}... " />
-            <marker date="1492442546285" expanded="true" signature="3781:4771" ph="select stage... ${$stage_table_name}" />
-            <marker date="1492442546285" expanded="true" signature="4793:5312" ph="select stage... ${$stage_table_name}" />
-            <marker date="1492442546285" expanded="true" signature="9838:10319" ph="select PROGR... program" />
-            <marker date="1492442546285" expanded="true" signature="10410:10847" ph="INSERT into ${$schema}.${$table_name}... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cost_report/cost_report.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="23" lean-forward="true" selection-start-line="8" selection-start-column="23" selection-end-line="8" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/monthly_processing/log_analysis/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21">
-          <caret line="18" column="21" lean-forward="false" selection-start-line="18" selection-start-column="21" selection-end-line="18" selection-end-column="21" />
-          <folding />
+        <state relative-caret-position="391">
+          <caret line="204" column="24" lean-forward="false" selection-start-line="204" selection-start-column="24" selection-end-line="204" selection-end-column="24" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/monthly_processing/validation_status/status_validation.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="590">
-          <caret line="206" column="39" lean-forward="false" selection-start-line="206" selection-start-column="39" selection-end-line="206" selection-end-column="39" />
-          <folding>
-            <element signature="e#5033#5486#0#PHP" expanded="false" />
-            <marker date="1492096897343" expanded="true" signature="813:945" ph="insert into ${$table_name}... " />
-            <marker date="1492096897343" expanded="true" signature="2427:2500" ph="insert into ${$schema}.${$table_name}... " />
-            <marker date="1492096897343" expanded="true" signature="6533:6593" ph="select count... ${$table_name}" />
-          </folding>
+        <state relative-caret-position="0">
+          <caret line="23" column="1" lean-forward="false" selection-start-line="23" selection-start-column="1" selection-end-line="23" selection-end-column="1" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/monthly_processing/bcm/index.html">
+    <entry file="file://$PROJECT_DIR$/pmo_cross_hull/lib/components/grid_columns.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="386">
-          <caret line="85" column="39" lean-forward="false" selection-start-line="85" selection-start-column="24" selection-end-line="85" selection-end-column="39" />
-          <folding />
+        <state relative-caret-position="731">
+          <caret line="49" column="41" lean-forward="true" selection-start-line="49" selection-start-column="41" selection-end-line="49" selection-end-column="41" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/inc/inc.cobra.php">
+    <entry file="file://$PROJECT_DIR$/pmo_cross_hull/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="366" column="40" lean-forward="false" selection-start-line="366" selection-start-column="40" selection-end-line="366" selection-end-column="40" />
-          <folding>
-            <element signature="e#6#91#0#PHP" expanded="true" />
-            <element signature="n#loadCOBRABCRLOG#0;n#!!top" expanded="false" />
-            <element signature="n#getStageInsertSQL#0;n#!!top" expanded="false" />
-            <element signature="n#insertCobraCostDataStage#0;n#!!top" expanded="false" />
-            <element signature="n#returnCurVal#0;n#!!top" expanded="false" />
-            <element signature="n#returnCurInsertSQL#0;n#!!top" expanded="false" />
-            <element signature="e#5715#5756#0#PHP" expanded="false" />
-            <element signature="n#loadLCSProgramData#0;n#!!top" expanded="false" />
-            <marker date="1492453110709" expanded="true" signature="367:808" ph="select PROGR... BASELOG" />
-            <marker date="1492453110709" expanded="true" signature="870:1057" ph="insert into bcr_log.${$table_name}... " />
-            <marker date="1492453110709" expanded="true" signature="2194:2283" ph="insert into ${$schema}.${$table_name}... " />
-            <marker date="1492453110709" expanded="true" signature="2194:2492" ph="insert into ${$schema}.${$table_name}... " />
-            <marker date="1492453110709" expanded="true" signature="2610:2928" ph="select PROGR... CAWP" />
-            <marker date="1492453110709" expanded="true" signature="5081:5575" ph="insert into ${$schema}.${$cur_table_name}... " />
-            <marker date="1492453110709" expanded="false" signature="5774:6768" ph="select stage... ${$stage_table_name}" />
-            <marker date="1492453110709" expanded="true" signature="11468:11952" ph="select PROGR... program" />
-            <marker date="1492453110709" expanded="true" signature="12043:12481" ph="INSERT into ${$schema}.${$table_name}... " />
-          </folding>
+        <state relative-caret-position="490">
+          <caret line="42" column="29" lean-forward="true" selection-start-line="42" selection-start-column="29" selection-end-line="42" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bkup/line_chart.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/monthly_processing/log_analysis/lib/components/get_url.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/monthly_processing/log_analysis/lib/components/data.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/monthly_processing/log_analysis/lib/components/grid_columns.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="969">
+          <caret line="57" column="27" lean-forward="false" selection-start-line="57" selection-start-column="27" selection-end-line="57" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/monthly_processing/log_analysis/lib/components/title_update.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="31" lean-forward="false" selection-start-line="3" selection-start-column="31" selection-end-line="3" selection-end-column="31" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/monthly_processing/log_analysis/lib/php/bcr_validation.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="64">
-          <caret line="11" column="15" lean-forward="true" selection-start-line="11" selection-start-column="15" selection-end-line="11" selection-end-column="15" />
-          <folding>
-            <element signature="n#getMonthEndDay#0;n#!!top" expanded="false" />
-            <marker date="1492113453797" expanded="true" signature="319:369" ph="select month... calendar" />
-            <marker date="1492113453797" expanded="true" signature="1476:1545" ph="select rpt_p... calendar" />
-          </folding>
+        <state relative-caret-position="408">
+          <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/monthly_processing/bcm/lib/workers/load_cobra_data.js">
+    <entry file="file://$PROJECT_DIR$/inc/mmev.inc.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="30" lean-forward="true" selection-start-line="7" selection-start-column="30" selection-end-line="7" selection-end-column="30" />
-          <folding />
+        <state relative-caret-position="255">
+          <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/monthly_processing/bcm/lib/components/grid_columns.js">
+    <entry file="file://$PROJECT_DIR$/monthly_processing/log_analysis/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1377">
+          <caret line="81" column="31" lean-forward="false" selection-start-line="81" selection-start-column="31" selection-end-line="81" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/monthly_processing/bcm/lib/components/grid_options.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="18" column="2" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="18" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dashboards/LCSWO/lib/components/spinner.js" />
+    <entry file="file://$PROJECT_DIR$/dashboards/LCSWO/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="488">
+          <caret line="66" column="5" lean-forward="true" selection-start-line="66" selection-start-column="5" selection-end-line="66" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dashboards/LCSWO/lib/components/createSlickGrid.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="20">
+          <caret line="2" column="17" lean-forward="true" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dashboards/LCSWO/lib/components/data.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="257">
+          <caret line="31" column="42" lean-forward="true" selection-start-line="31" selection-start-column="42" selection-end-line="31" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dashboards/LCSWO/lib/components/title_update.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="39" lean-forward="true" selection-start-line="20" selection-start-column="39" selection-end-line="20" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/weekly_performance_report/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="20" column="53" lean-forward="false" selection-start-line="20" selection-start-column="53" selection-end-line="20" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/monthly_processing/log_analysis/lib/components/createSlickGrid.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="5" lean-forward="false" selection-start-line="9" selection-start-column="5" selection-end-line="9" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/monthly_processing/log_analysis/lib/components/grid_options.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="6" lean-forward="false" selection-start-line="17" selection-start-column="6" selection-end-line="17" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/monthly_processing/log_analysis/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="55">
+          <caret line="15" column="40" lean-forward="false" selection-start-line="15" selection-start-column="40" selection-end-line="15" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/weekly_performance_report/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/monthly_processing/update_log_analysis/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inc/inc.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2380">
+          <caret line="140" column="24" lean-forward="false" selection-start-line="140" selection-start-column="24" selection-end-line="140" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cost_loader/lib/php/inc.cost_loader.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4709">
+          <caret line="325" column="40" lean-forward="false" selection-start-line="325" selection-start-column="40" selection-end-line="325" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cost_loader/lib/php/cost_loader.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="21" lean-forward="false" selection-start-line="12" selection-start-column="21" selection-end-line="12" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/monthly_processing/update_log_analysis/update_log_analysis.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="952">
+          <caret line="279" column="25" lean-forward="false" selection-start-line="279" selection-start-column="25" selection-end-line="279" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/monthly_processing/log_analysis/lib/php/log_analysis.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dashboards/LCSWO/lib/php/lcs.grid.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1105">
+          <caret line="264" column="22" lean-forward="true" selection-start-line="264" selection-start-column="22" selection-end-line="264" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/monthly_processing/update_log_analysis/update_log_analysis.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="888">
+          <caret line="100" column="57" lean-forward="false" selection-start-line="100" selection-start-column="57" selection-end-line="100" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/observer_example/main.js" />
+    <entry file="file://$PROJECT_DIR$/observer_example/lib/php/grid.php" />
+    <entry file="file://$PROJECT_DIR$/observer_example/lib/components/title_update.js" />
+    <entry file="file://$PROJECT_DIR$/observer_example/lib/components/grid_options.js" />
+    <entry file="file://$PROJECT_DIR$/observer_example/lib/components/grid_columns.js" />
+    <entry file="file://$PROJECT_DIR$/observer_example/lib/components/data.js" />
+    <entry file="file://$PROJECT_DIR$/monthly_processing/bcm/lib/php/bcm.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="249">
+          <caret line="165" column="25" lean-forward="true" selection-start-line="165" selection-start-column="25" selection-end-line="165" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jsLearning/lib/components/title_update.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pmo_cross_hull/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jsLearning/lib/php/grid.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="16" lean-forward="false" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="16" />
+          <folding>
+            <marker date="1494446137070" expanded="true" signature="320:404" ph="select ${$fi... ${$table_name}" />
+            <marker date="1494446137070" expanded="true" signature="670:795" ph="select ship_... ${$table_name}" />
+            <marker date="1494446137070" expanded="true" signature="1726:1893" ph="..." />
+            <marker date="1494446137070" expanded="true" signature="1735:1888" ph="..." />
+            <marker date="1494446137070" expanded="true" signature="1909:1975" ph="select `grou... cross_hull_group" />
+            <marker date="1494446137070" expanded="true" signature="2603:2889" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jsLearning/lib/components/grid_options.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jsLearning/lib/components/data.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="29" lean-forward="false" selection-start-line="7" selection-start-column="29" selection-end-line="7" selection-end-column="29" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/load_all_periods_cost.php">
+    <entry file="file://$PROJECT_DIR$/jsLearning/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="619">
-          <caret line="586" column="0" lean-forward="false" selection-start-line="586" selection-start-column="0" selection-end-line="586" selection-end-column="0" />
-          <folding>
-            <element signature="n#getStageInsertSQL#0;n#!!top" expanded="false" />
-            <element signature="n#returnCurVal#0;n#!!top" expanded="false" />
-            <element signature="n#returnCurInsertSQL#0;n#!!top" expanded="false" />
-            <element signature="n#insertCobraCostDataCur#0;n#!!top" expanded="false" />
-            <element signature="n#loadLCSProgramData#0;n#!!top" expanded="false" />
-            <element signature="n#getRPTFORSHIPCODE#0;n#!!top" expanded="false" />
-            <marker date="1492452768820" expanded="true" signature="439:883" ph="select PROGR... BASELOG" />
-            <marker date="1492452768820" expanded="true" signature="960:1147" ph="insert into bcr_log.${$table_name}... " />
-            <marker date="1492452768820" expanded="true" signature="2284:2582" ph="insert into ${$schema}.${$table_name}... " />
-            <marker date="1492452768820" expanded="true" signature="2714:3033" ph="select PROGR... CAWP" />
-            <marker date="1492452768820" expanded="true" signature="5186:5680" ph="insert into ${$schema}.${$cur_table_name}... " />
-            <marker date="1492452768820" expanded="true" signature="5836:6826" ph="select stage... ${$stage_table_name}" />
-            <marker date="1492452768820" expanded="true" signature="10340:10824" ph="select PROGR... program" />
-            <marker date="1492452768820" expanded="true" signature="10915:11352" ph="INSERT into ${$schema}.${$table_name}... " />
-            <marker date="1492452768820" expanded="true" signature="17528:17578" ph="select month... calendar" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/monthly_processing/bcm/lib/php/bcm.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="31" column="33" lean-forward="true" selection-start-line="31" selection-start-column="33" selection-end-line="31" selection-end-column="33" />
-          <folding>
-            <marker date="1492454291083" expanded="true" signature="297:2190" ph="select s.shi... ship_code" />
-            <marker date="1492454291083" expanded="true" signature="387:931" ph="select prev.... ${$prev_table}" />
-            <marker date="1492454291083" expanded="true" signature="980:1488" ph="select prev.... ${$cur_table}" />
-            <marker date="1492454291083" expanded="true" signature="1527:2029" ph="select cur.s... ${$cur_table}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/monthly_processing/bcm/lib/components/createSlickGrid.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="8" column="26" lean-forward="true" selection-start-line="8" selection-start-column="26" selection-end-line="8" selection-end-column="26" />
+        <state relative-caret-position="1224">
+          <caret line="72" column="10" lean-forward="false" selection-start-line="72" selection-start-column="10" selection-end-line="72" selection-end-column="10" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/monthly_processing/bcm/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="395">
-          <caret line="36" column="44" lean-forward="false" selection-start-line="36" selection-start-column="44" selection-end-line="36" selection-end-column="44" />
+        <state relative-caret-position="108">
+          <caret line="8" column="36" lean-forward="true" selection-start-line="8" selection-start-column="36" selection-end-line="8" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/monthly_processing/bcm/lib/components/get_url.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="2" lean-forward="true" selection-start-line="22" selection-start-column="2" selection-end-line="22" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/monthly_processing/bcm/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="124" column="0" lean-forward="false" selection-start-line="124" selection-start-column="0" selection-end-line="124" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jsLearning/lib/components/grid_columns.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="3" lean-forward="true" selection-start-line="0" selection-start-column="3" selection-end-line="0" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/monthly_processing/bcm/lib/components/createSlickGrid.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="765">
+          <caret line="45" column="34" lean-forward="false" selection-start-line="45" selection-start-column="34" selection-end-line="45" selection-end-column="34" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/inc/inc.php">
+    <entry file="file://$PROJECT_DIR$/jsLearning/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="249">
-          <caret line="451" column="0" lean-forward="true" selection-start-line="451" selection-start-column="0" selection-end-line="451" selection-end-column="0" />
-          <folding>
-            <marker date="1492445317493" expanded="true" signature="1893:1951" ph="select id fr... master_ca" />
-            <marker date="1492445317493" expanded="true" signature="2087:2114" ph="select max($... ${$table}" />
-            <marker date="1492445317493" expanded="true" signature="2612:2705" ph="INSERT INTO master_ca... " />
-            <marker date="1492445317493" expanded="true" signature="2811:2860" ph="select id fr... master_ca" />
-            <marker date="1492445317493" expanded="true" signature="5561:5615" ph="select name master_project" />
-            <marker date="1492445317493" expanded="true" signature="19487:19537" ph="delete from " />
-            <marker date="1492445317493" expanded="true" signature="19667:19777" ph="select table... tables" />
-            <marker date="1492445317493" expanded="true" signature="20581:20631" ph="delete from " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/inc/mmev.inc.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="24" column="25" lean-forward="false" selection-start-line="24" selection-start-column="25" selection-end-line="24" selection-end-column="25" />
+        <state relative-caret-position="336">
+          <caret line="17" column="28" lean-forward="true" selection-start-line="17" selection-start-column="28" selection-end-line="17" selection-end-column="28" />
           <folding />
         </state>
       </provider>

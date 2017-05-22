@@ -23,7 +23,6 @@ function getMonthEndDay($rpt_period){
     return $day;
 }
 
-
 if($control=="load_cobra_data"){
     $schema = "cost2";
     insertCobraCostData($ship_code, $schema, $rpt_period);
@@ -34,7 +33,7 @@ if($control=="load_cobra_data"){
         createTableFromBase("bcr_log","template_bcr", $table_name);
     }
     deleteShipFromTable($ship_code,$table_name, "bcr_log");
-    loadCOBRABCRLOG($ship_code, $rpt_period, $table_name);
+    loadCOBRABCRLOGCurrentPeriod($ship_code, $rpt_period, $table_name);
 
     $schema = "lcs_log";
     $table_name   = $rpt_period . "_ship";

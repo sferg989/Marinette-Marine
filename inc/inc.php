@@ -468,6 +468,22 @@ function getPreviousRPTPeriod($rpt_period)
     return $prev_period;
 
 }
+function getNextRPTPeriod($rpt_period){
+    $year = intval(substr($rpt_period, 0, 4));
+    $month = month2digit(substr($rpt_period, -2));
+    if($month=="12")
+    {
+        $new_year = $year+1;
+        $new_month = "01";
+    }
+    else{
+        $new_year = $year;
+        $new_month = intval($month)+1;
+        $new_month = month2digit($new_month);
+    }
+    $next_period = $new_year."".$new_month;
+    return $next_period;
+}
 function returnPeriodData($ship_code, $start_rpt_period,$to_rpt_period)
 {
     $ship_name = getProjectNameFromCode($ship_code);
@@ -689,4 +705,388 @@ function getListOfFileNamesInDirectory($directory){
         $files[] = $file;
     }
     return $files;
+}
+function currentRPTPeriod(){
+    $day = date("d");
+    $month = intval(date("m"));
+    $year = date("Y");
+
+    if($day>22)
+    {
+        $month = $month;
+    }
+    else{
+        $month = $month-1;
+    }
+
+    if($month == 0){
+        $year = $year-1;
+        $month = 12;
+    }
+    $month = month2digit($month);
+    $rpt_period = "$year"."$month";
+    return $rpt_period;
+}
+function returnSOCName($soc){
+    $name = "";
+    switch ($soc) {
+        case 1:
+            $name = "Fab/Subassembly";
+        break;
+        case 2:
+            $name = "Module/Construct";
+        break;
+        case 3:
+            $name = "Blast/Paint";
+        break;
+        case 4:
+            $name = "Post Paint Preoutfit";
+        break;
+        case 5:
+            $name = "Module Erect";
+        break;
+        case 6:
+            $name = "ship compl- Pre launch";
+        break;
+        case 7:
+            $name = "Launch";
+        break;
+        case 8:
+            $name = "Ship compl - post Launch";
+        break;
+        case 9:
+            $name = "Shipboard Testing";
+        break;
+        case 10:
+            $name = "Gigs";
+        break;
+        case 11:
+            $name = "SW Work LOE";
+        break;
+            case 17:
+            $name = "Change Discrete";
+        break;
+
+        default:
+    }
+    return $name;
+}
+
+function eacColor($eac,$tcpi,$cpi, $cum_cv, $vac,$most_likely,$percent_complete,$percent_spent,$bac, $best_case)
+{
+    //this function will perform 5 test to determine the color of the eac.
+    //will return an array,
+    // 1st element will be the background color
+    //2nd element will be the color of the font
+
+    $red            = getColorCode('red');
+    $yellow         = getColorCode('yellow');
+    $green          = getColorCode('lime');
+
+    //handle conditions where there is no performance
+    if($percent_complete=='100' or $percent_complete=='0')
+    {
+        $color = "white";
+        $font = 'black';
+
+        $bg_and_font = array($color, $font);
+    }
+    else
+    {
+        $i = 1;
+        $passed = 0;
+        //TEST NO. 1 TCPI, CPI-- |((TCPIeac - CPIcum) * 100)|
+        $test_1 = abs(($tcpi -$cpi) * 100);
+        if($test_1 <= 5)
+        {
+            $passed = $i;
+        }
+        //TEST No. 2-- |(((EAC - MOST LIKELY) / EAC) * 100)|
+        $test_2 = abs((($eac - $most_likely)/$eac)*100);
+        if ($test_2<=5)
+        {
+            $passed = $passed + $i;
+        }
+        //TEST NO.  3-- |(((Percent Complete)/ Percent Spent) - (BAC/EAC)) * 100)|
+        $test_3 = abs((($percent_complete/$percent_spent)-($bac/$eac))* 100);
+        if ($test_3<=5)
+        {
+            $passed = $passed + $i;
+        }
+        //TEST NO. 4-- Comparison    (Both CVcum and VAC are <0 and CVcum > VAC) or (Both CVcum and VAC are >0 and CVcum < VAC)
+        if(($cum_cv<0 and $vac<0 and $cum_cv>$vac) or ($cum_cv>0 and $vac>0 and $cum_cv<$vac))
+        {
+            $passed = $passed + $i;
+        }
+        //TEST NO. 5 =  EAC > BEST CASE
+        if($eac>=$best_case) $passed = $passed + 1;
+
+        //evaluate passed and assign default bg and font color for meatball/eac
+        if($passed>=4) $bg_and_font = array($green, 'black');
+        if($passed==3) $bg_and_font = array($yellow, 'black');
+        if($passed<3) $bg_and_font = array($red, 'white');
+
+        //if you are normally green, but fail test 5, you are yellow. and if you are yellow and fail test 5 you are RED.
+        if($passed>=4 and $eac<$best_case)
+        {
+            $color = "$yellow";
+            $font = 'black';
+
+            $bg_and_font = array($color, $font);
+        }
+
+        if($passed==3 and $eac<$best_case)
+        {
+            $color = "$red";
+            $font = 'white';
+
+            $bg_and_font = array($color, $font);
+        }
+    }
+    return $bg_and_font;
+}
+
+function getColorCode($common_name_for_color)
+{
+    //purpose: to unify Premier's color scheme
+    /*
+        $red    = getColorCode('red');
+        $yellow = getColorCode('yellow');
+        $green  = getColorCode('lime');
+        $blue   = getColorCode('royal blue');
+        $white  = getColorCode('white');
+        $black  = getColorCode('black');
+    */
+
+    $color = strtolower($common_name_for_color);
+
+    //standard colors
+    //these colors are commented out in the 'other colors' section
+    if($color=='red') $color_code = '#FF0000';
+    if($color=='yellow') $color_code = '#FFFF00';
+    if($color=='lime') $color_code = '#00FF00'; //our green
+    if($color=='white') $color_code = '#FFFFFF';
+    if($color=='royal blue') $color_code = '#0182FF'; //our blue
+    if($color=='black') $color_code = '#000000';
+
+    //other colors
+    //"*TITLE01*"   "REDS"
+    if($color=='indian red') $color_code = "#CD5C5C";
+    if($color=='light coral') $color_code = "#F08080";
+    if($color=='salmon') $color_code = "#FA8072";
+    if($color=='dark salmon') $color_code = "#E9967A";
+    if($color=='light salmon') $color_code = "#FFA07A";
+    if($color=='crimson') $color_code = "#DC143C";
+    //if($color=='red') $color_code = "#FF0000";
+    if($color=='fire brick') $color_code = "#B22222";
+    if($color=='dark red') $color_code = "#8B0000";
+
+    //"*TITLE02*"   "PINKS"
+    if($color=='pink') $color_code = "#FFC0CB";
+    if($color=='light pink') $color_code = "#FFB6C1";
+    if($color=='hot pink') $color_code = "#FF69B4";
+    if($color=='deep pink') $color_code = "#FF1493";
+    if($color=='medium violet red') $color_code = "#C71585";
+    if($color=='pale violet red') $color_code = "#DB7093";
+
+    //"*TITLE03*"   "ORANGES"
+    if($color=='light salmon') $color_code = "#FFA07A";
+    if($color=='coral') $color_code = "#FF7F50";
+    if($color=='tomato') $color_code = "#FF6347";
+    if($color=='orange red') $color_code = "#FF4500";
+    if($color=='dark orange') $color_code = "#FF8C00";
+    if($color=='orange') $color_code = "#FFA500";
+
+    //"*TITLE04*"   "YELLOWS"
+    if($color=='gold') $color_code = "#FFD700";
+    //if($color=='yellow') $color_code = "#FFFF00";
+    if($color=='light yellow') $color_code = "#FFFFE0";
+    if($color=='lemon chiffon') $color_code = "#FFFACD";
+    if($color=='light goldenrod yellow') $color_code = "#FAFAD2";
+    if($color=='papaya whip') $color_code = "#FFEFD5";
+    if($color=='moccasin') $color_code = "#FFE4B5";
+    if($color=='peach puff') $color_code = "#FFDAB9";
+    if($color=='pale goldenrod') $color_code = "#EEE8AA";
+    if($color=='khaki') $color_code = "#F0E68C";
+    if($color=='dark khaki') $color_code = "#BDB76B";
+
+    //"*TITLE05*"    "PURPLES"
+    if($color=='lavender') $color_code = "#E6E6FA";
+    if($color=='thistle') $color_code = "#D8BFD8";
+    if($color=='plum') $color_code = "#DDA0DD";
+    if($color=='violet') $color_code = "#EE82EE";
+    if($color=='orchid') $color_code = "#DA70D6";
+    if($color=='fuchsia') $color_code = "#FF00FF";
+    if($color=='magenta') $color_code = "#FF00FF";
+    if($color=='medium orchid') $color_code = "#BA55D3";
+    if($color=='medium purple') $color_code = "#9370DB";
+    if($color=='blue violet') $color_code = "#8A2BE2";
+    if($color=='dark violet') $color_code = "#9400D3";
+    if($color=='dark orchid') $color_code = "#9932CC";
+    if($color=='dark magenta') $color_code = "#8B008B";
+    if($color=='purple') $color_code = "#800080";
+    if($color=='indigo') $color_code = "#4B0082";
+    if($color=='slate blue') $color_code = "#6A5ACD";
+    if($color=='dark slate blue') $color_code = "#483D8B";
+
+    //"*TITLE06*"   "GREENS"
+    if($color=='green yellow') $color_code = "#ADFF2F";
+    if($color=='chartreuse') $color_code = "#7FFF00";
+    if($color=='lawn green') $color_code = "#7CFC00";
+    //if($color=='lime') $color_code = "#00FF00";
+    if($color=='lime green') $color_code = "#32CD32";
+    if($color=='pale green') $color_code = "#98FB98";
+    if($color=='lightgreen') $color_code = "#90EE90";
+    if($color=='medium spring green') $color_code = "#00FA9A";
+    if($color=='spring green') $color_code = "#00FF7F";
+    if($color=='medium sea green') $color_code = "#3CB371";
+    if($color=='sea green') $color_code = "#2E8B57";
+    if($color=='forest green') $color_code = "#228B22";
+    if($color=='green') $color_code = "#008000";
+    if($color=='dark green') $color_code = "#006400";
+    if($color=='yellow green') $color_code = "#9ACD32";
+    if($color=='olive drab') $color_code = "#6B8E23";
+    if($color=='olive') $color_code = "#808000";
+    if($color=='dark olive green') $color_code = "#556B2F";
+    if($color=='medium aquamarine') $color_code = "#66CDAA";
+    if($color=='dark sea green') $color_code = "#8FBC8F";
+    if($color=='light sea green') $color_code = "#20B2AA";
+    if($color=='dark cyan') $color_code = "#008B8B";
+    if($color=='teal') $color_code = "#008080";
+
+    //"*TITLE07*"   "BLUES"
+    if($color=='aqua') $color_code = "#00FFFF";
+    if($color=='cyan') $color_code = "#00FFFF";
+    if($color=='light cyan') $color_code = "#E0FFFF";
+    if($color=='pale turquoise') $color_code = "#AFEEEE";
+    if($color=='aquamarine') $color_code = "#7FFFD4";
+    if($color=='turquoise') $color_code = "#40E0D0";
+    if($color=='medium turquoise') $color_code = "#48D1CC";
+    if($color=='dark turquoise') $color_code = "#00CED1";
+    if($color=='cadet blue') $color_code = "#5F9EA0";
+    if($color=='steel blue') $color_code = "#4682B4";
+    if($color=='light steel blue') $color_code = "#B0C4DE";
+    if($color=='powder blue') $color_code = "#B0E0E6";
+    if($color=='light blue') $color_code = "#ADD8E6";
+    if($color=='sky blue') $color_code = "#87CEEB";
+    if($color=='light sky blue') $color_code = "#87CEFA";
+    if($color=='deep sky blue') $color_code = "#00BFFF";
+    if($color=='dodger blue') $color_code = "#1E90FF";
+    if($color=='cornflower blue') $color_code = "#6495ED";
+    if($color=='medium slate blue') $color_code = "#7B68EE";
+    if($color=='royal blue') $color_code = "#4169E1";
+    if($color=='blue') $color_code = "#0000FF";
+    if($color=='medium blue') $color_code = "#0000CD";
+    if($color=='dark blue') $color_code = "#00008B";
+    if($color=='navy') $color_code = "#000080";
+    if($color=='midnight blue') $color_code = "#191970";
+    //if($color=='royal blue') $color_code = "#0182FF";
+
+    //"*TITLE08*"   "BROWNS"
+    if($color=='cornsilk') $color_code = "#FFF8DC";
+    if($color=='blanched almond') $color_code = "#FFEBCD";
+    if($color=='bisque') $color_code = "#FFE4C4";
+    if($color=='navajo white') $color_code = "#FFDEAD";
+    if($color=='wheat') $color_code = "#F5DEB3";
+    if($color=='burly wood') $color_code = "#DEB887";
+    if($color=='tan') $color_code = "#D2B48C";
+    if($color=='rosy brown') $color_code = "#BC8F8F";
+    if($color=='sandy brown') $color_code = "#F4A460";
+    if($color=='goldenrod') $color_code = "#DAA520";
+    if($color=='dark goldenrod') $color_code = "#B8860B";
+    if($color=='peru') $color_code = "#CD853F";
+    if($color=='chocolate') $color_code = "#D2691E";
+    if($color=='saddle brown') $color_code = "#8B4513";
+    if($color=='sienna') $color_code = "#A0522D";
+    if($color=='brown') $color_code = "#A52A2A";
+    if($color=='maroon') $color_code = "#800000";
+
+    //"*TITLE09*"   "WHITES"
+    //if($color=='white') $color_code = "#FFFFFF";
+    if($color=='snow') $color_code = "#FFFAFA";
+    if($color=='honeydew') $color_code = "#F0FFF0";
+    if($color=='mint cream') $color_code = "#F5FFFA";
+    if($color=='azure') $color_code = "#F0FFFF";
+    if($color=='alice blue') $color_code = "#F0F8FF";
+    if($color=='ghost white') $color_code = "#F8F8FF";
+    if($color=='white smoke') $color_code = "#F5F5F5";
+    if($color=='seashell') $color_code = "#FFF5EE";
+    if($color=='beige') $color_code = "#F5F5DC";
+    if($color=='old lace') $color_code = "#FDF5E6";
+    if($color=='floral white') $color_code = "#FFFAF0";
+    if($color=='ivory') $color_code = "#FFFFF0";
+    if($color=='antique white') $color_code = "#FAEBD7";
+    if($color=='linen') $color_code = "#FAF0E6";
+    if($color=='lavender blush') $color_code = "#FFF0F5";
+    if($color=='misty rose') $color_code = "#FFE4E1";
+
+    //"*TITLE10*"   "GREYS"
+    if($color=='gainsboro') $color_code = "#DCDCDC";
+    if($color=='gray80') $color_code = "#CCCCCC";
+    if($color=='light grey') $color_code = "#D3D3D3";
+    if($color=='silver') $color_code = "#C0C0C0";
+    if($color=='dark gray') $color_code = "#A9A9A9";
+    if($color=='gray') $color_code = "#808080";
+    if($color=='dim gray') $color_code = "#696969";
+    if($color=='dim gray rev') $color_code = "#969696"; // pp window
+    if($color=='gray88') $color_code = "#E0E0E0"; // pp window
+    if($color=='gray91') $color_code = "#E8E8E8";
+    if($color=='steady gray') $color_code = "#E9E9E9";
+    if($color=='light slate gray') $color_code = "#778899";
+    if($color=='slate gray') $color_code = "#708090";
+    if($color=='dark slate gray') $color_code = "#2F4F4F";
+    //if($color=='black') $color_code = "#000000";
+
+    return $color_code;
+}
+function cpispiColors($the_value,$type='',$return_font_color_also=false)
+{
+    $red    = getColorCode('red');
+    $yellow = getColorCode('yellow');
+    $green  = getColorCode('lime');
+    $blue   = getColorCode('royal blue');
+    $white  = getColorCode('white');
+    $black  = getColorCode('black');
+
+    if(strtolower($type)=='tcpi')
+    {
+        //if($the_value <=.89) {$bgcolor='#0182ff'; $font_color='#ffffff';}
+        if($the_value <=.89) {$bgcolor=$red; $font_color=$white;}
+        if($the_value>=.90 and $the_value<=.95) {$bgcolor=$yellow; $font_color=$black;}
+        if($the_value>=.96 and $the_value<=1.05) {$bgcolor=$green; $font_color=$black;}
+        if($the_value>=1.06) {$bgcolor=$red; $font_color=$white;}
+    }
+    else if(strtolower($type)=='tcpi_cpi_relationship')
+    {
+        if($the_value<-11) {$bgcolor=$red; $font_color=$white;}
+        if($the_value>=-11 and $the_value<-5) {$bgcolor=$yellow; $font_color=$black;}
+        if($the_value>=-5 and $the_value<=5) {$bgcolor=$green; $font_color=$black;}
+        if($the_value>5 and $the_value<=11) {$bgcolor=$yellow; $font_color=$black;}
+        if($the_value>11) {$bgcolor=$red; $font_color=$white;}
+    }
+    else
+    {
+        if($the_value <= .89) {$bgcolor=$red; $font_color=$white;}
+        if($the_value>=.90 and $the_value<=.95) {$bgcolor=$yellow; $font_color=$black;}
+        if($the_value>=.96 and $the_value<=1.05) {$bgcolor=$green; $font_color=$black;}
+        if($the_value>=1.06) {$bgcolor=$blue; $font_color=$white;}
+    }
+    if($bgcolor=='') $bgcolor=$green;
+    if($font_color=='') $font_color = $black;
+
+    //handle conditions where there is no performance
+    if((number_format(abs($the_value),2)=='0.00' and strtolower($type)!='tcpi_cpi_relationship') or (abs($the_value)==100 and strtolower($type)=='tcpi_cpi_relationship'))
+    {
+        $bgcolor='white';
+        $font_color = $black;
+    }
+
+    if($return_font_color_also==false)
+    {
+        return $bgcolor;
+    }
+    else
+    {
+        return array($bgcolor,$font_color);
+    }
 }

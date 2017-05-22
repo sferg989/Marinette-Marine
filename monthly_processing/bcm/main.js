@@ -36,21 +36,18 @@ require([
                 console.log(e.data.id+" has completed");
                 $("#img_"+e.data.id+" img").attr("src", "../images/tick.png");
             }
-
         });
-        var log_analysis_grid_columns = gridColumns.cols;
-        var grid1_options             = gridOptions.gridOptions;
-
-        var rpt_period                = getUrl.getUrlParam("rpt_period");
-        var code                      = getUrl.getUrlParam("ship_code");
+        var bcm_cols      = gridColumns.cols;
+        var grid1_options = gridOptions.gridOptions;
+        var rpt_period    = getUrl.getUrlParam("rpt_period");
+        var code          = getUrl.getUrlParam("ship_code");
         titleUpdate.updateTitle(code, rpt_period);
 
         var ajax_data_options        = {};
         ajax_data_options.control    = "bcm";
         ajax_data_options.rpt_period = rpt_period;
         ajax_data_options.ship_code  = code;
-        var url                      = "lib/php/bcm.php";
-        grid.createGrid("bcm",url, ajax_data_options ,log_analysis_grid_columns, grid1_options);
+        grid.createGrid("bcm",ajax_data_options ,bcm_cols, grid1_options);
 
     });
 

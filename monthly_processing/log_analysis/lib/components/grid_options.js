@@ -10,7 +10,7 @@ define(function(){
         enableCellNavigation: true,
         editable            : true,
         forceFitColumns     : true,
-        autoHeight          : false,
+        autoHeight          : true,
         sort                : true
     };
     return {

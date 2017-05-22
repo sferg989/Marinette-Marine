@@ -108,7 +108,8 @@ if($control=="status_grid")
         from processing_status.steps  st left join processing_status.ship ship
           on st.id = ship.step_id and ship.ship_code = $ship_code and ship.period = $rpt_period   
         $wc
-        
+          group by st.id
+      
         order by step_id
   ";
     //print $sql;

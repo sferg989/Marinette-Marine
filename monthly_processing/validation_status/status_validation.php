@@ -169,7 +169,7 @@ if($control=="load_cobra_data"){
     $batch_rpt_name = "csv".$ship_code."StatusValid";
     runCobraBatchReportProcess($ship_code,$batch_rpt_name, $g_path2CobraAPI,$g_path2BatrptCMD,$g_path2BatrptBAT,$debug);
     loadPCSStatus($rpt_period, $schema, $ship_code, $pcs_status_file_name, $path2_destination, $path2xlsfile, $g_path_to_util);
-    loadTimePhaseETC($rpt_period, $schema, $ship_code, $time_phased_file_name, $path2_destination, $path2xlsfile);
+    loadTimePhaseETC($rpt_period, $schema, $ship_code, $time_phased_file_name, $path2_destination, $path2xlsfile, $g_path_to_util);
 }
 if($control=="status_valid_check"){
     $status_labor_table = "";
@@ -186,8 +186,7 @@ if($control=="status_valid_check"){
     die($status_labor_table."<>".$tp_data_table);
 }
 if($control=="data_check"){
-    $baseline = "false";
-    $bcr = "false";
+
     $table_array["p6_pcs_table_name"]      = $rpt_period . "_p6_status_labor";
     $table_array["p6_tp_table_name"]       = $rpt_period . "_p6_tp_check";
     $table_array["tp_cobra_table_name"]    = $rpt_period . "_tp_check";

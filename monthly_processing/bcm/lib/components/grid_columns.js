@@ -46,20 +46,20 @@ define([],function(){
         },{
             id      : "wp",
             name    : "WP",
-            minWidth: 30,
-            maxWidth: 40,
+            minWidth: 40,
+            maxWidth: 400,
             field   : "wp"
         },{
             id       : "prevh",
             formatter: myNumberFormatter,
             name     : "Prev H",
-            minWidth: 60,
+            minWidth: 15,
             maxWidth: 120,
             field    : "prevh"
         },{
             id       : "curh",
             name     : "CUR H",
-            minWidth: 60,
+            minWidth: 15,
             maxWidth: 180,
             formatter: myNumberFormatter,
             field    : "curh"
@@ -67,39 +67,39 @@ define([],function(){
             id       : "change_h",
             formatter: myNumberFormatter,
             name     : "Hours Delta",
-            minWidth: 60,
+            minWidth: 15,
             maxWidth: 180,
             field    : "change_h"
         },{
             id      : "prevbac",
             name    : "Prev $",
-            minWidth: 60,
+            minWidth: 15,
             maxWidth: 180,
             formatter: myCurrencyFormatter,
             field   : "prevbac"
         },{
             id      : "curbac",
-            minWidth: 60,
+            minWidth: 15,
             maxWidth: 180,
             formatter: myCurrencyFormatter,
             name    : "Cur $",
             field : "curbac"
         },{
             id      : "change_d",
-            minWidth: 60,
+            minWidth: 15,
             maxWidth: 180,
             formatter: myCurrencyFormatter,
             name    : "$ Delta ",
             field   : "change_d"
         },{
             id      : "desc",
-            minWidth: 60,
+            minWidth: 15,
             maxWidth: 180,
             name    : "BCR",
             field   : "desc"
         },{
             id      : "bcrh",
-            minWidth: 60,
+            minWidth: 15,
             maxWidth: 180,
             formatter: myNumberFormatter,
             name    : "BCR H",
@@ -107,7 +107,7 @@ define([],function(){
             hasTotal: true
         },{
             id      : "bcrd",
-            minWidth: 60,
+            minWidth: 15,
             maxWidth: 180,
             formatter: myCurrencyFormatter,
             name    : "BCR $",
@@ -115,14 +115,14 @@ define([],function(){
             hasTotal: true
         },{
             id      : "bcrh_change",
-            minWidth: 60,
+            minWidth: 15,
             maxWidth: 180,
             formatter: myNumberFormatter,
             name    : "BCR H DIFF",
             field   : "bcrh_change"
         },{
             id      : "bcrd_change",
-            minWidth: 60,
+            minWidth: 15,
             maxWidth: 180,
             formatter: myCurrencyFormatter,
             name    : "BCR $ DIFF",

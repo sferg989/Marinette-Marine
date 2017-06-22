@@ -245,4 +245,3 @@ function validateTPP6TP($schema, $rpt_period, $ship_code){
     $data_table.= "</table>";
     return $data_table;
 }
-

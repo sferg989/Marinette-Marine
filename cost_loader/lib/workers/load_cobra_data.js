@@ -7,13 +7,13 @@ self.addEventListener('message', function(e) {
 }, false);
 this.onmessage = function(e) {
 
-    var code       = e.data.code;
-    var action     = e.data.action;
-    var rpt_period = e.data.rpt_period;
-    var http       = new XMLHttpRequest();
+    var code            = e.data.code;
+    var action          = e.data.action;
+    var rpt_period_list = e.data.rptPeriods;
+    var http            = new XMLHttpRequest();
 
     var url = "../php/cost_loader.php";
-    var params = "control="+action+"&rpt_period="+rpt_period+"&code="+code+"";
+    var params = "control="+action+"&rpt_period_list="+rpt_period_list+"&code="+code+"";
     http.open("POST", url, true);
 
 //Send the proper header information along with the request

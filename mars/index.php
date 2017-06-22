@@ -25,7 +25,6 @@ function insertData($table_name, $path2file,$period){
         insertGLdetail($path2file, $period);
     }
 }
-
 function saveListOfFileNamesPHPExcel($file_name_array,$directory2Copy,$rel_path2_desitnation, $period, $table_name)
 {
 
@@ -49,16 +48,17 @@ $open_po_directory      = "../util/csv_PFA_Open_PO";
 $committed_po_directory = "../util/csv_PFA_Committed_PO";
 $gl_detail_directory    = "../util/csv_PFA_GL_Detail";
 
-$period = 201703;
+$period = 201705;
 
-//clearDirectory($open_po_directory);
-//copyListOfDirectoryToCSV($g_path2_baan_work,"PFA_Open_PO",$open_po_directory, $period, "open_po");
+clearDirectory($open_po_directory);
+copyListOfDirectoryToCSV($g_path2_baan_work,"PFA_Open_PO",$open_po_directory, $period, "open_po");
 
 clearDirectory($committed_po_directory);
 copyListOfDirectoryToCSV($g_path2_baan_work,"PFA_Committed_PO",$committed_po_directory, $period, "committed_po");
 
-//clearDirectory($gl_detail_directory);
-//copyListOfDirectoryToCSV($g_path2_baan_work,"PFA_GL_Detail",$gl_detail_directory, $period, "gl_detail");
+clearDirectory($gl_detail_directory);
+copyListOfDirectoryToCSV($g_path2_baan_work,"PFA_GL_Detail",$gl_detail_directory, $period, "gl_detail");
+
 /*
 $sql = "Select wp,ca1, c6, pmt from dbo.CAWP where program = '0467' AND WP > ''";
 //print $sql;
@@ -81,15 +81,13 @@ while (!$rs->EOF)
 
     $rs->MoveNext();
 }
-$html.="</table>";
-die($html);
+$html.="</table>";*/
 
 //execute the SQL statement and return records
-
 
 $mars_file = loadPHPEXCELFile($g_path2_mar_file);
 // Find the last cell in the second spreadsheet
 $mars_file->setActiveSheetIndex(7);
 $findEndDataRow = $mars_file->getActiveSheet->getHighestRow();
-print "This is the end ".$findEndDataRow;*/
+print "This is the end ".$findEndDataRow;
 die("made it");

@@ -1,6 +1,7 @@
 <?php
 include("../../inc/inc.php");
 include("inc.bl_validation.php");
+include("../../inc/inc.cobra.php");
 
 /**
  * Created by PhpStorm.
@@ -16,7 +17,8 @@ function findBudgetValuesByColumnIndex($ship_code, $lines, $col_index,$col_title
         $fields   = explode("	", $value);
         $ca       = addslashes(trim($fields[0]));
         $wp       = addslashes(trim($fields[1]));
-        $val    = intval($fields[$col_index]);
+        $val      = formatNumber4decNoComma(trim($fields[$col_index]));
+        //print $col_title." ".$fields[$col_index]." Col Index ".$col_index." \r";
         if($val!=0){
             insertTimephasedRecord($ship_code,$ca,$wp,$val,$col_title, $schema,$table_name);
         }
@@ -30,8 +32,6 @@ function insertTimephasedRecord($ship_code,$ca,$wp,$s_labor_units,$date,$schema,
             values($ship_code,'$ca','$wp',$date,$s_labor_units)
         ";
     $junk = dbCall($insert_sql,$schema);
-    //print $insert_sql;
-
 }
 if(strlen($code)==3)
 {
@@ -82,10 +82,15 @@ if($control=="load_p6_bl_data"){
         $ca       = addslashes(trim($fields[0]));
         $wp       = addslashes(trim($fields[1]));
         if($ship_code>=477){
-            $bl_labor = formatNumber4decNoComma(trim($fields[2]));
+            $val = formatNumber4decNoComma(trim($fields[2]));
         }
         else{
-            $bl_labor = formatNumber4decNoComma(trim($fields[4]));
+            $type = stripos($wp, "MATL");
+            if($type===false){
+                $val= formatNumber4decNoComma(trim($fields[2]));
+            }else{
+                $val= formatNumber4decNoComma(trim($fields[3]));
+            }
         }
 
         $ship_code = intval($ship_code);
@@ -93,7 +98,7 @@ if($control=="load_p6_bl_data"){
             $ship_code,
             '$ca',
             '$wp',
-            $bl_labor
+            $val
         ),";
             if($i==500){
                 $sql = substr($sql, 0, -1);
@@ -126,15 +131,19 @@ if($control=="load_p6_time"){
      * lines is the row.
      * fields = each row is an array
      * */
-    $field_names   = explode("	", $lines[0]);
-    $count = count($field_names);
+    $field_names    = explode("	", $lines[0]);
+    $count          = count($field_names);
     //print "this is the $count <br>";
-    for ($i=4;$i<=$count;$i++){
+    $col_count = 4;
+    if($ship_code<477){
+        $col_count = 5;
+    }
+    for ($i=$col_count;$i<=$count;$i++){
         $col_title = $field_names[$i];
 
         $date_array = explode("-", $col_title);
-        $result = array_filter($date_array);
-        $result = array_values($result);
+        $result     = array_filter($date_array);
+        $result     = array_values($result);
 
         $month = threeLetterMonth2Number($result[0]);
         $year  = "20" . $result[1];
@@ -157,13 +166,16 @@ if($control=="load_cobra_data"){
             createTableFromBase("cost2","template_cost", $table_name);
         }
         deleteShipFromTable($ship_code,$table_name, $schema);
-        insertCobraCostData($ship_code, "cost2", $table_name);
+        insertCobraCostData($ship_code, "cost2", $rpt_period);
     }
     else{
         loadPCSBL($rpt_period, $schema, $ship_code, $pcs_bl_file_name, $path2_destination, $path2xlsfile, $g_path_to_util, $g_path2CobraAPI, $g_path2BatrptCMD, $g_path2BatrptBAT, $debug);
     }
-    loadTimePhaseFutureCheckNoCobra($rpt_period, $schema, $ship_code, $time_phased_file_name, $path2_destination, $path2xlsfile, $g_path_to_util, $g_path2CobraAPI, $g_path2BatrptCMD, $g_path2BatrptBAT, $debug);
+    loadTimePhaseFutureCheckNoCobra($rpt_period, $schema, $ship_code, $time_phased_file_name, $path2_destination, $path2xlsfile, $g_path_to_util);
     loadHistoryCheck($rpt_period, $schema, $ship_code, $hc_file_name, $path2_destination, $path2xlsfile, $g_path_to_util, $g_path2CobraAPI, $g_path2BatrptCMD, $g_path2BatrptBAT, $debug);
+    if($ship_code<477){
+        loadTimePhaseFutureCheckNoCobraMaterialOnly($rpt_period, $schema, $ship_code, $path2_destination, $path2xlsfile, $g_path_to_util);
+    }
 }
 if($control=="bl_valid_check"){
     $bl_labor_table = validatePCS2P6BLLabor($schema, $rpt_period, $ship_code);

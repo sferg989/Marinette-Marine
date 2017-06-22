@@ -9,8 +9,7 @@ ini_set('display_startup_errors', TRUE);
 if($control=="load_ceac_updates")
 {
 
-    //truncateTable("ceac", "`20170429`");
-
+    //truncateTable("ceac", "`20170429`");`
     //$ceac_file_name_array["other_clins"] = "CEAC-2017-20170429 - Other Clins.xlsx";
     //$ceac_file_name_array["less_50"]     = "CEAC-2017-20170429 - Production - less than 50.xlsx";
     $ceac_file_name_array["prod"]        = "CEAC-2017-20170429 - Production.xlsx";

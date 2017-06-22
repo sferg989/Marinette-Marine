@@ -81,7 +81,7 @@ function insertFortisXML($xml_array){
     $sql = $insert_sql;
     foreach ($xml_array as $key=>$value)
     {
-        if($i == 200)
+        if($i == 50)
         {
             $sql = substr($sql, 0, -1);
             $junk = dbCall($sql,"processing_status");
@@ -225,7 +225,7 @@ function insertFortisXML($xml_array){
              ),";
         $i++;
     }
-    if($i!=200)
+    if($i!=50)
     {
         $sql = substr($sql, 0, -1);
         //print $sql;
@@ -288,7 +288,8 @@ if($control=="load_xml"){
     $xml_array  = json_decode($json, TRUE);
     print $path2_fortis_export;
 
-    deleteShipFromTable($ship_code,"fortis_xml", "processing_status");
+    //deleteShipFromTable($ship_code,"fortis_xml", "processing_status");
+    truncateTable("processing_status", "fortis_xml");
     insertFortisXML($xml_array["NEW_Baseline_Change_Request"]);
 
     die("made it");

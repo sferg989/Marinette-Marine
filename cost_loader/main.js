@@ -6,8 +6,9 @@ require([
     "lib/components/grid_columns",
     "lib/components/data",
     "lib/components/title_update",
-    "slickCheckColumn"
-    ], function(grid,gridOptions,getUrl, gridColumns,dataService, titleUpdate) {
+    "bootbox",
+    "slickCheckColumn",
+    ], function(grid,gridOptions,getUrl, gridColumns,dataService, titleUpdate, bootBox) {
 $( document ).ready(function() {
     function gridDataViewCallBack(data){
         shipGridObj.dataView.beginUpdate();
@@ -40,20 +41,24 @@ $( document ).ready(function() {
     $("#load_cobra_data").click(function(){
         var step = {};
         var selectedIndexes = shipGridObj.grid.getSelectedRows(),count = selectedIndexes.length;
-        var n, worker;
+        if(count<1){
+            bootBox.alert("Please select a Hull or Period!");
+        }
+        var n, worker, selectedRPTS, rptPeriods;
         $.each(selectedIndexes, function(index, value ) {
             step.action = "load_cobra_data";
             step.code = shipGridObj.grid.getDataItem(value).ship_code;
             step.name   = shipGridObj.grid.getDataItem(value).name;
-            //console.log(step.action,step.name);
-            var selectedRPTS = rptGridObj.grid.getSelectedRows(),count = selectedRPTS.length;
+            selectedRPTS = rptGridObj.grid.getSelectedRows();
+            var rptPeriods = [];
             $.each(selectedRPTS,function(i, val){
-                step.rpt_period = rptGridObj.grid.getDataItem(val).rpt_period;
-                console.log(step);
-                workers     = new Worker("lib/workers/load_cobra_data.js");
-                workers.onmessage = workerDone;
-                workers.postMessage(step);
+                rptPeriods[i] = rptGridObj.grid.getDataItem(val).rpt_period
             });
+            step.rptPeriods = rptPeriods.join();
+            workers           = new Worker("lib/workers/load_cobra_data.js");
+            workers.onmessage = workerDone;
+            workers.postMessage(step);
+
             $("#status").append("<br><div class=\"row\"><div class=\"col-md-1\" id = \"img_"+step.code+"\"><img src=\"../inc/images/ajax-loader.gif\" height=\"32\" width=\"32\"/></div><div class=\"col-md-2\" id = \""+step.action+"\">"+step.name+"</div></div><br>");
 
             function workerDone(e) {

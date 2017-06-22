@@ -1,21 +1,80 @@
 define(["./data",
+    "lib/components/grid_columns",
+    "lib/components/grid_options",
     'slickgrid',
     'slickdataview',
     "slickRowSelection",
     "slickAutoToolTips",
-    "slickPager"], function(dataRepo){
+    "slickPager",
+    "slickCheckColumn"
+], function(dataRepo,gridColumns,gridOptions){
 
-    var dataView = new Slick.Data.DataView();
-    dataView.setPagingOptions({
-        pageSize: 20,
-    });
+
+
     var loadingIndicator = null;
+    var createBCRGrid = function (div_name,ajax_data_object,shipStatusCols, options){
+        var dataView = new Slick.Data.DataView();
 
+        var grid = new Slick.Grid('#'+div_name, dataView, shipStatusCols, options);
+
+        function gridDataView(data){
+            dataView.beginUpdate();
+            dataView.setItems(data);
+            dataView.endUpdate();
+            dataView.refresh();
+            grid.render();
+            grid.updateRowCount();
+
+        }
+        dataRepo.getGridData(ajax_data_object, gridDataView);
+        grid.setSelectionModel(new Slick.RowSelectionModel({
+            selectActiveRow: true
+        }));
+
+    }
+    var createLogExcelGrid = function (div_name,ajax_data_object,shipStatusCols, options){
+        var dataView = new Slick.Data.DataView();
+        var checkboxSelector = new Slick.CheckboxSelectColumn({
+            cssClass: "slick-cell-checkboxsel"
+        });
+        var logExcelCols  = gridColumns.logExcelCols;
+
+        var grid1_options = gridOptions.gridOptions;
+        logExcelCols.unshift(checkboxSelector.getColumnDefinition());
+        var grid = new Slick.Grid('#'+div_name, dataView,logExcelCols,grid1_options);
+
+        grid.registerPlugin(new Slick.AutoTooltips({
+            enableForCells      : true,
+            enableForHeaderCells: false,
+            maxToolTipLength    : null
+        }));
+        grid.registerPlugin(checkboxSelector);
+
+        function gridDataView(data){
+            dataView.beginUpdate();
+            dataView.setItems(data);
+            dataView.endUpdate();
+            dataView.refresh();
+            grid.render();
+            grid.updateRowCount();
+        }
+        //console.log(ajax_data_object);
+        dataRepo.getGridData(ajax_data_object, gridDataView);
+        grid.setSelectionModel(new Slick.RowSelectionModel({
+            selectActiveRow: true
+        }));
+        grid.registerPlugin(checkboxSelector);
+        return grid;
+    }
 
     var createGrid = function (div_name,ajax_data_object,shipStatusCols, options)
     {
+        var dataView = new Slick.Data.DataView();
+        dataView.setPagingOptions({
+            inlineFilters            : true,
+            pageSize: 25
+        });
         var grid = new Slick.Grid('#'+div_name, dataView, shipStatusCols, options);
-
         grid.registerPlugin(new Slick.AutoTooltips({
             enableForCells      : true,
             enableForHeaderCells: false,
@@ -45,7 +104,7 @@ define(["./data",
             grid.render();
             grid.updateRowCount();
             count = grid.getData().getPagingInfo().totalRows;
-            console.log(count);
+
             loadingIndicator.fadeOut();
         }
         $("#bcm_filter").change(function() {
@@ -70,7 +129,9 @@ define(["./data",
                 .css("top", $g.position().top + $g.height() / 2 - loadingIndicator.height() / 2)
                 .css("left", $g.position().left + $g.width() / 2 - loadingIndicator.width() / 2);
         }
+
         loadingIndicator.show();
+
         dataRepo.getGridData(ajax_data_object, gridDataView);
 
         var pager = new Slick.Controls.Pager(dataView, grid, $("#my_pager"));
@@ -97,6 +158,8 @@ define(["./data",
     }
 
     return {
-        createGrid: createGrid
+        createGrid   : createGrid,
+        createBCRGrid: createBCRGrid,
+        createLogExcelGrid: createLogExcelGrid
     };
 })

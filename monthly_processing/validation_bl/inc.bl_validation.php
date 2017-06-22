@@ -1,10 +1,9 @@
 <?php
-include("../../inc/inc.PHPExcel.php");
 
 /**
  * Created by PhpStorm.
  * User: fs11239
- * Date: 3/15/2017
+ * Date: 3/15/2017`
  * Time: 9:01 AM
  */
 
@@ -115,9 +114,9 @@ function loadHistoryCheck($rpt_period, $schema, $ship_code, $hc_file_name, $path
     }
 }
 
-function returnTableFromRS($rs){
+function returnTableFromRS($rs, $table_name){
     $data_table = "<table class = 'table table-sm'>
-            <tr ><th colspan = 5 class = 'table_headers'>Baseline Labor</th></tr>
+            <tr ><th colspan = 5 class = 'table_headers'>$table_name</th></tr>
             <tr class = 'table_headers'>
                 <th>CA</th>
                 <th>WP</th>
@@ -131,11 +130,11 @@ function returnTableFromRS($rs){
     {
         $ca          = $rs->fields["ca"];
         $wp          = $rs->fields["wp"];
-        $p6_labor    = formatNumber($rs->fields["p6_labor"]);
-        $cobra_labor = formatNumber($rs->fields["cobra_labor"]);
+        $p6_labor    = formatNumber4decNoComma($rs->fields["p6_labor"]);
+        $cobra_labor = formatNumber4decNoComma($rs->fields["cobra_labor"]);
         $diff        = formatNumber($p6_labor - $cobra_labor);
 
-        if($diff>1){
+        if($diff>1 or $diff < -1){
             $data_table.="
             <tr align=\"center\" class = 'table_data'>
                 <td>$ca</td>
@@ -178,9 +177,9 @@ function validatePCS2P6BLLabor($schema, $rpt_period, $ship_code){
         on p6.ca=cob.ca and p6.wp = cob.wp
         where p6.ship_code=$ship_code and cob.wp like '%matl%'group by p6.ca,p6.wp
         ";
-
+        //print $sql;
         $rs = dbCall($sql,$schema);
-        $data_table.= returnTableFromRS($rs);
+        $data_table.= returnTableFromRS($rs, "Budgeted Material Cost");
         /*Labor*/
         $sql = "
         select 
@@ -194,7 +193,7 @@ function validatePCS2P6BLLabor($schema, $rpt_period, $ship_code){
         where p6.ship_code=$ship_code and cob.wp not like '%matl%'group by p6.ca,p6.wp
       ";
         $rs = dbCall($sql,$schema);
-        $data_table.= returnTableFromRS($rs);
+        $data_table.= returnTableFromRS($rs, "Budgeted Labor Units");
         return $data_table;
     }
     else{
@@ -213,7 +212,7 @@ function validatePCS2P6BLLabor($schema, $rpt_period, $ship_code){
         ";
 
         $rs = dbCall($sql,"bl_validation");
-        $data_table = returnTableFromRS($rs);
+        $data_table = returnTableFromRS($rs, "Budgeted Labor Units");
         return $data_table;
     }
 
@@ -235,12 +234,13 @@ function returnTPDataTableFromRs($rs, $rpt_period){
         $ca          = $rs->fields["ca"];
         $wp          = $rs->fields["wp"];
         $date        = $rs->fields["date"];
-        $p6_labor    = formatNumber($rs->fields["p6_labor"]);
-        $cobra_labor = formatNumber($rs->fields["cobra_labor"]);
-        $diff        = formatNumber($p6_labor - $cobra_labor);
+        $p6_labor    = formatNumber4decNoComma($rs->fields["p6_labor"]);
+        $cobra_labor = formatNumber4decNoComma($rs->fields["cobra_labor"]);
+        $diff        = formatNumber4decNoComma($p6_labor - $cobra_labor);
 
-        if($diff>.9 and $date < $rpt_period){
-            $data_table.="
+        if($diff>.9 or $diff < -.9){
+            if($date < $rpt_period){
+                $data_table.="
             <tr class = 'table_data'>
                 <td>$date</td>
                 <td>$ca</td>
@@ -250,7 +250,8 @@ function returnTPDataTableFromRs($rs, $rpt_period){
                 <td>$diff</td>
             </tr>
             ";
-            $i++;
+                $i++;
+            }
         }
 
         $rs->MoveNext();
@@ -277,8 +278,8 @@ function validateTPP6TP($schema, $rpt_period, $ship_code){
             sum(p6.val) p6_labor
         from $schema.`$p6_table_name` p6
         LEFT JOIN $schema.`$cobra_table_name` cob
-        on p6.ca=cob.ca and p6.wp = cob.wp and p6.date = cob.date
-        where p6.ship_code=$ship_code group by cob.ca, cob.wp, cob.date order by p6.date
+        on p6.ship_code = cob.ship_code and p6.ca=cob.ca and p6.wp = cob.wp and p6.date = cob.date
+        where p6.ship_code=$ship_code group by p6.ca, p6.wp, p6.date order by p6.date
   ";
     //print $sql;
     $rs = dbCall($sql,$schema);
@@ -356,7 +357,7 @@ function validateHistoryCheck($schema, $prev_rpt_period,$cur_rpt_period, $ship_c
     $data_table.= "</table>";
     return $data_table;
 }
-function loadTimePhaseFutureCheckNoCobra($rpt_period, $schema, $ship_code, $time_phased_file_name, $path2_destination, $path2xlsfile, $g_path_to_util, $g_path2CobraAPI, $g_path2BatrptCMD, $g_path2BatrptBAT, $debug){
+function loadTimePhaseFutureCheckNoCobra($rpt_period, $schema, $ship_code, $time_phased_file_name, $path2_destination, $path2xlsfile, $g_path_to_util){
     $table_name   = $rpt_period."_tp_check";
 
     $create_table = checkIfTableExists($schema, $table_name);
@@ -365,9 +366,6 @@ function loadTimePhaseFutureCheckNoCobra($rpt_period, $schema, $ship_code, $time
     }
     deleteShipFromTable($ship_code,$table_name, $schema);
     $insert_sql = "insert into $schema.$table_name (ship_code,ca, wp,date, val) values ";
-
-    $batch_rpt_name = "csv".$ship_code."BLValid";
-    runCobraBatchReportProcess($ship_code,$batch_rpt_name, $g_path2CobraAPI,$g_path2BatrptCMD,$g_path2BatrptBAT,$debug);
 
     $new_csv_file_name = $ship_code."tp_check";
     $path2_source_xls = $path2xlsfile."/$time_phased_file_name";
@@ -398,6 +396,54 @@ function loadTimePhaseFutureCheckNoCobra($rpt_period, $schema, $ship_code, $time
         {
             $sql = substr($sql, 0, -1);
             $junk = dbCall($sql, $schema);
+            $i=0;
+            //clear out the sql stmt.
+            $sql = $insert_sql;
+        }
+        $i++;
+    }
+    //only insert remaining lines if the total number is not divisble by 1000.
+    if($i !=500)
+    {
+        $sql = substr($sql, 0, -1);
+
+        $junk = dbCall($sql, $schema);
+    }
+}
+function loadTimePhaseFutureCheckNoCobraMaterialOnly($rpt_period, $schema, $ship_code, $path2_destination, $path2xlsfile, $g_path_to_util){
+    $table_name   = $rpt_period."_tp_check";
+    $insert_sql = "insert into $schema.$table_name (ship_code,ca, wp,date, val) values ";
+
+    $new_csv_file_name = $ship_code."tp_check_material";
+    $path2_source_xls = $path2xlsfile."/Time-phasedMaterialCHK_Material and ODC.xls";
+
+    savePHPEXCELCSV1WorkSheetByIndex($new_csv_file_name,$path2_source_xls,$path2_destination, 3);
+    $sql = $insert_sql;
+    $real_path2_new_CSV = $g_path_to_util."\\csv_bl_validation\\".$new_csv_file_name.".csv";
+    $handle = fopen($real_path2_new_CSV,"r");
+    fgetcsv($handle);
+    $i=0;
+    while (($data = fgetcsv($handle)) !== FALSE)
+    {
+        $ca         = addslashes(trim($data[0]));
+        $wp         = addslashes(trim($data[1]));
+        $date       = addslashes(trim($data[3]));
+        $rpt_period = createRPTfromDateSlash($date);
+        $val        = formatNumber4decNoComma(trim($data[4]));
+
+        $sql.=
+            "(
+                $ship_code,
+                '$ca',
+                '$wp',
+                $rpt_period,
+                $val
+            ),";
+        if($i == 500)
+        {
+            $sql = substr($sql, 0, -1);
+            $junk = dbCall($sql, $schema);
+            print $sql;
             $i=0;
             //clear out the sql stmt.
             $sql = $insert_sql;

@@ -287,6 +287,14 @@ function copyProjectFromCobra($ship_code,$copy_dest, $g_path2CobraAPI,$g_path2CM
 
 }
 
+function execInBackground($cmd) {
+    if (substr(php_uname(), 0, 7) == "Windows"){
+        pclose(popen("start /B ". $cmd, "r"));
+    }
+    else {
+        exec($cmd . " > /dev/null &");
+    }
+}
 function createCobraBatchrptCMDFile($ship_code,$path2CobraAPI,$g_path2CMD,$bat_file_name)
 {
     $token              = rand(0, 100);
@@ -494,15 +502,15 @@ function returnPeriodData($ship_code, $start_rpt_period,$to_rpt_period)
     $cur_year_last2  = substr($cur_year, -2);
 
 
-    $prev_month = month2digit(substr($start_rpt_period, -2));
-    $cur_month  = month2digit(substr($to_rpt_period, -2));
+    $prev_month         = month2digit(substr($start_rpt_period, -2));
+    $cur_month          = month2digit(substr($to_rpt_period, -2));
     $dateObj            = DateTime::createFromFormat('!m', $prev_month);
     $prev_month_letters = $dateObj->format('M');
-    $prev_full_month = $dateObj->format('F');
+    $prev_full_month    = $dateObj->format('F');
 
     $dateObj           = DateTime::createFromFormat('!m', $cur_month);
     $cur_month_letters = $dateObj->format('M');
-    $cur_full_month = $dateObj->format('F');
+    $cur_full_month    = $dateObj->format('F');
 
     $data["prev_year"]          = $prev_year;
     $data["cur_year"]           = $cur_year;
@@ -1089,4 +1097,49 @@ function cpispiColors($the_value,$type='',$return_font_color_also=false)
     {
         return array($bgcolor,$font_color);
     }
+}
+function processJustification($justification){
+    $justification = trim($justification);
+    $justification = str_replace("\"", "'", $justification);
+    $justification = str_replace("\t", '', $justification); // remove tabs
+    $justification = str_replace("\n", '', $justification); // remove new lines
+    $justification = str_replace("\r", '', $justification);
+    return $justification;
+}
+function getMonthEndDay($rpt_period){
+    $sql = "select month_end from fmm_evms.calendar where rpt_period = $rpt_period";
+    $rs  = dbCall($sql, "fmm_evms");
+
+    $day = $rs->fields["month_end"];
+    return $day;
+}
+function createSQLUtilCMDFile($ship_code,$path2CobraAPI,$g_path2CMD,$g_path2BAT)
+{
+    $content            = file_get_contents($g_path2CMD . "COBRASQLUtilTemplate.cmd");
+    $new_cmd_file_name  = $g_path2CMD . "" . $ship_code . "_sqlUtil.cmd";
+    print $new_cmd_file_name;
+    $path2_new_bat_file = $g_path2BAT. $ship_code . "_sqlUtil.BAT";
+    $content_cobra_api  = str_replace("####", $path2CobraAPI, $content);
+    $content_final      = str_replace("****", $path2_new_bat_file, $content_cobra_api);
+    file_put_contents($new_cmd_file_name,$content_final);
+    return $new_cmd_file_name;
+}
+function createSQLUtilBatFile($sql,$ship_code, $g_path2BAT)
+{
+    $content                   = file_get_contents($g_path2BAT . "COBRASQLUtilTemplate.bat");
+    $sql_command     = str_replace("####", $sql, $content);
+    $path2_new_bat_file        = $g_path2BAT . $ship_code . "_sqlUtil.BAT";
+    file_put_contents($path2_new_bat_file,$sql_command);
+    return $path2_new_bat_file;
+}
+function runSQLCommandUtil($ship_code,$sql, $g_path2CobraAPI,$g_path2CMD,$g_path2BAT,$debug=false)
+{
+    createSQLUtilBatFile($sql,$ship_code, $g_path2BAT);
+    $cmd_file   = createSQLUtilCMDFile($ship_code,$g_path2CobraAPI,$g_path2CMD,$g_path2BAT);
+    if($debug==false)
+    {
+        print $cmd_file;
+        exec($cmd_file);
+    }
+
 }

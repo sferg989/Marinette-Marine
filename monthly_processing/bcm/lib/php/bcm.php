@@ -1,6 +1,49 @@
 <?php
 include('../../../../inc/inc.php');
+function processJustification2($justification){
+    $justification = trim($justification);
+    $justification = str_replace('2', "", $justification);
+    $justification = str_replace("&", " and ", $justification);
+    $justification = str_replace("\\", " and ", $justification);
+    $justification = str_replace("\"", "'", $justification);
+    $justification = str_replace("\t", '', $justification); // remove tabs
+    $justification = str_replace("\n", '', $justification); // remove new lines
+    $justification = str_replace("\r", '', $justification);
+    return $justification;
+}
+function getFirstBCRByHulLWC($hull){
+    switch ($hull) {
+        case "0469":
+            $wc = "bcr > 927";
+        break;
+        case "0471":
+            $wc = "bcr > 778";
+        break;
+        case "0473":
+            $wc = "bcr > 519";
+        break;
+        case "0475":
+            $wc = "bcr > 482";
+        break;
+        case "0477":
+            $wc = "bcr > 415";
+        break;
+        case "0479":
+            $wc = "bcr > 349";
+        break;
+        case "0481":
+            $wc = "bcr > 229";
+        break;
+        case "0483":
+            $wc = "bcr > 79";
+        break;
+        case "0485":
+            $wc = "bcr >37";
+        break;
 
+    }
+    return $wc;
+}
 function checkVal($bcrh_change, $bcrd_change){
     $printval = true;
     if($bcrh_change>1){
@@ -16,6 +59,96 @@ function checkVal($bcrh_change, $bcrd_change){
         $printval = true;
     }
     return $printval;
+}
+function getActualBCRVALIntegrated($cur_bcr_table, $ship_code, $bcr){
+    $sql = "
+select sum(amount) amt,
+            debit,
+            credit
+from (
+      select
+            ship_code,
+            debit,
+            credit,
+            `desc`,
+            amount
+            from $cur_bcr_table bcr 
+            where ship_code = $ship_code
+                  and bcr.ca <> '' order by `desc`
+      ) 
+     s where s.desc like '%$bcr%' group by s.ship_code, s.debit
+";
+    //print $sql;
+    $rs         = dbCall($sql);
+    $count      = $rs->RecordCount();
+    $type_array = array();
+    if($count>1)
+    {
+        $i=0;
+        while (!$rs->EOF){
+            $actual_amt             = $rs->fields["amt"];
+            $debit                  = $rs->fields["debit"];
+            $credit                 = $rs->fields["credit"];
+            $type_array[$i]["debit"]  = $debit;
+            $type_array[$i]["credit"] = $credit;
+            $type_array[$i]["amt"]    = $actual_amt;
+            $i++;
+            $rs->MoveNext();
+        }
+
+        //  var_dump($type_array[0]);
+        $debit_field1    = $type_array[0]["debit"];
+        $credit_field1   = $type_array[0]["credit"];
+        $debit_field2    = $type_array[1]["debit"];
+        $credit_field2   = $type_array[1]["credit"];
+        $debit_fieldval  = $type_array[0]["amt"];
+        $credit_fieldval = $type_array[1]["amt"];
+        /*
+        print $debit_fieldval;
+        print $credit_fieldval;*/
+        /*which value is bigger?*/
+        $highes_val = max($debit_fieldval, $credit_fieldval);
+
+        if($highes_val==$debit_fieldval){
+
+            $amt = $debit_fieldval-$credit_fieldval;
+            $data_array["debit"]    = $debit_field1;
+            $data_array["credit"]   = $credit_field1;
+            $data_array["amt"]      = $amt;
+        }
+        if($highes_val==$credit_fieldval){
+
+            $amt = $credit_fieldval-$debit_fieldval;
+          //  print $amt;
+            $data_array["credit"]  = $credit_field2;
+            $data_array["debit"]   = $debit_field2;
+            $data_array["amt"]      = $amt;
+        }
+        //var_dump($data_array);
+        return $data_array;
+
+/*        if($debit_field1==$credit_field2){
+            if($debit_fieldval == $credit_fieldval){
+                return 0;
+            }
+            $data_array["amt"] = $debit_fieldval- $credit_fieldval;
+        }
+        else{
+
+        }*/
+
+
+    }
+    $actual_amt = $rs->fields["amt"];
+    $debit      = $rs->fields["debit"];
+    $credit     = $rs->fields["credit"];
+
+    $data_array["debit"]    = $debit;
+    $data_array["credit"]   = $credit;
+    $data_array["amt"]      = $actual_amt;
+    //print $actual_amt;
+    return $data_array;
+
 }
 function returnSQL($filter_val,$ship_code, $prev_table,$cur_table, $cur_bcr_table){
     if($filter_val=="all"){
@@ -82,7 +215,7 @@ function returnSQL($filter_val,$ship_code, $prev_table,$cur_table, $cur_bcr_tabl
             where s.ship_code = $ship_code
             and s.wp <> ''
         group by 
-        s.ship_code, s.ca, s.wp
+        s.ship_code, s.ca, s.wp order by s.`desc`
         ";
     }
     if($filter_val=="all_bcrs"){
@@ -100,8 +233,9 @@ function returnSQL($filter_val,$ship_code, $prev_table,$cur_table, $cur_bcr_tabl
             credit,
             hours,
             amount
-            from $cur_bcr_table bcr where ship_code = $ship_code order by `desc`
+            from $cur_bcr_table bcr where ship_code = $ship_code and bcr.ca <> '' order by `desc`
         ";
+    //print $sql;
     }
     if($filter_val=="no_ca"){
         $sql = "
@@ -122,6 +256,7 @@ function returnSQL($filter_val,$ship_code, $prev_table,$cur_table, $cur_bcr_tabl
             and bcr.ca = ''
             order by `desc`
         ";
+        //print $sql;
     }
     if($filter_val=="multiple_ca"){
         $sql = "
@@ -141,10 +276,27 @@ function returnSQL($filter_val,$ship_code, $prev_table,$cur_table, $cur_bcr_tabl
             from $cur_bcr_table bcr where bcr.ship_code = $ship_code 
             and `desc` like '%and%' order by `desc`
         ";
+        //print $sql;
     }
     return $sql;
 
 }
+
+if(strlen($code)==3)
+{
+    $ship_code = "0".$code;
+}
+$prev_rpt_period    = getPreviousRPTPeriod($rpt_period);
+$data               = returnPeriodData($ship_code, $prev_rpt_period,$rpt_period);
+$cur_year           = $data["cur_year"];
+$cur_year_last2     = $data["cur_year_last2"];
+$cur_month          = $data["cur_month"];
+$cur_month_letters  = $data["cur_month_letters"];
+$ship_name          = $data["ship_name"];
+
+$path2_cobra_dir    = $base_path . "" . $ship_name . "/" . $ship_code ;
+$cur_month_dir      = $path2_cobra_dir."/".$ship_code." ".$cur_year."/".$ship_code." ".$cur_month.".".$cur_year_last2." Cobra Processing";
+
 if($control=="bcm")
 {
     $prev_rpt_period = getPreviousRPTPeriod($rpt_period);
@@ -207,6 +359,137 @@ if($control=="bcm")
     $data = substr($data, 0, -1);
     $data.="]";
 
+    die($data);
+}
+
+if($control=="bcr"){
+    $bcr_wc = getFirstBCRByHulLWC($ship_code);
+    $cur_bcr_table   = "bcr_log.`".$rpt_period . "_bcr`";
+    $sql = "
+     select 
+     ship_code,
+     bcr, 
+     mr,
+     ub,
+     db 
+     from 
+     processing_status.fortis_xml where ship_code = $ship_code  and $bcr_wc order by bcr";
+    $data = "[";
+
+    $rs = dbCall($sql, "processing_status");
+    //var_dump($rs);
+    $id = 1;
+    while (!$rs->EOF)
+    {
+        //die("made it");
+        $fortismr   = 0;
+        $ub         = 0;
+        $db         = 0;
+        $fortis_db  = 0;
+        $actual_val = 0;
+        $bcr_val    = 0;
+        $delta      = 0;
+        $bcr            = $rs->fields["bcr"];
+        $data_array     = getActualBCRVALIntegrated($cur_bcr_table, $ship_code, $bcr);
+        $actual_val     = $data_array["amt"];
+
+        $debit_field    = $data_array["debit"];
+        $credit_field   = $data_array["credit"];
+        //print $debit_field;
+        $debit_field_val = -$actual_val;
+        $credit_field_val= $actual_val;
+
+        $fortismr         = $rs->fields["mr"];
+        $fortis_ub         = $rs->fields["ub"];
+        $fortis_db         = $rs->fields["db"];
+
+        if($debit_field=="UB"){
+
+            if($fortis_ub==0 and $fortismr!=0){
+                $fortis_ub = $debit_field_val;
+            }
+            $ub_diff =$fortis_ub- $debit_field_val;
+            $delta = $ub_diff;
+            $ub =$debit_field_val;
+            if($credit_field =="DB"){
+                $db = $credit_field_val;
+            }
+        }
+        if($debit_field=="DB"){
+            //print "this worked".$debit_field_val;
+            //print " Yess $credit_field ";
+            if($credit_field =="UB"){
+                $db = $debit_field_val;
+                $ub = $credit_field_val;
+            }
+            if($fortis_ub ==0 and $fortis_db==0){
+                $delta= $actual_val-$fortismr;
+            }
+        }
+        //print $db;
+        $data .= "{
+            \"id\"             :$id,
+            \"bcr\"            :\"$bcr\",
+            \"mr\"             :\"$fortismr\",
+            \"ub\"             :\"$ub\",
+            \"fortis_ub\"      :\"$fortis_ub\",
+            \"db\"             :\"$db\",
+            \"fortis_db\"      :\"$fortis_db\",
+            \"change\"         :\"$actual_val\",
+            \"bcr_val\"        :\"$bcr_val\",
+            \"bcr_delta\"      :\"$delta\"
+        },";
+        $id++;
+        $rs->MoveNext();
+    }
+    $data = substr($data, 0, -1);
+    $data.="]";
+    die($data);
+}
+
+if($control=="log_analysis"){
+
+    $path2file           = "$cur_month_dir/".$ship_code."LogAnalysis.xlsx";
+
+    require('../../../../inc/lib/php/spreadsheet-reader-master/spreadsheet-reader-master/SpreadsheetReader.php');
+    $i = 0;
+    $sql = $insert_sql;
+    $Reader = new SpreadsheetReader($path2file);
+    $data = "[";
+    foreach ($Reader as $Row)
+    {
+        $log_rpt_period = addslashes(trim($Row[0]));
+        $bcr        = addslashes(trim($Row[2]));
+        $pcw        = addslashes(trim($Row[4]));
+        $mod        = addslashes(trim($Row[5]));
+        $desc       = processJustification2(addslashes(trim($Row[7])));
+        $auw        = addslashes(trim($Row[8]));
+        $auw_fee    = addslashes(trim($Row[9]));
+        $db         = formatNumber4decNoComma(trim($Row[10]));
+        $mr         = formatNumber4decNoComma(trim($Row[11]));
+        $ub         = formatNumber4decNoComma(trim($Row[12]));
+        if($rpt_period==$log_rpt_period and $mr!=0){
+            $data .= "{
+            \"id\"             :$i,
+            \"rpt_period\"     :\"$rpt_period\",
+            \"pcw\"            :\"$pcw\",
+            \"mod\"            :\"$mod\",
+            \"desc\"           :\"$desc\",
+            \"auw\"            :\"$auw\",
+            \"auw_fee\"        :\"$auw_fee\",
+            \"bcr\"            :\"$bcr\",
+            \"mr\"             :$mr,
+            \"ub\"             :$ub,
+            \"db\"             :$db
+        },";
+        }
+        else{
+            continue;
+        }
+        $i++;
+    }
+    $data = substr($data, 0, -1);
+    $data.="]";
     die($data);
 }
 

@@ -107,7 +107,8 @@ function getStageInsertSQL($table_name, $schema){
         a_hours,
         bac_hours,
         eac_hours,
-        pc) values
+        pc,
+        ssd, sfd, asd, afd, esd, efd, lsd, lfd) values
  ";
     return $insert_sql;
 }
@@ -120,6 +121,7 @@ function insertCobraCostDataStage($ship_code, $schema, $table_name, $ship_code_w
         C2,
         C3,
         WP,
+        ssd, sfd, asd, afd, esd, efd, lsd, lfd,
         DESCRIP,
         BCWS,
         BCWP,
@@ -158,6 +160,14 @@ function insertCobraCostDataStage($ship_code, $schema, $table_name, $ship_code_w
         $bac_hours = formatNumber4decCobra($rs->fields["BAC_HRS"]);
         $eac_hours = formatNumber4decCobra($rs->fields["EAC_HRS"]);
         $pc        = formatNumber4decCobra($rs->fields["PC_COMP"]);
+        $ssd       = fixExcelDateMySQL($rs->fields["ssd"]);
+        $sfd       = fixExcelDateMySQL($rs->fields["sfd"]);
+        $asd       = fixExcelDateMySQL($rs->fields["asd"]);
+        $afd       = fixExcelDateMySQL($rs->fields["afd"]);
+        $esd       = fixExcelDateMySQL($rs->fields["esd"]);
+        $efd       = fixExcelDateMySQL($rs->fields["efd"]);
+        $lsd       = fixExcelDateMySQL($rs->fields["lsd"]);
+        $lfd       = fixExcelDateMySQL($rs->fields["lfd"]);
 
         $sql.="(
             $ship_code,
@@ -177,7 +187,8 @@ function insertCobraCostDataStage($ship_code, $schema, $table_name, $ship_code_w
             $a_hours,
             $bac_hours,
             $eac_hours,
-            $pc),";
+            $pc,
+            '$ssd', '$sfd', '$asd', '$afd', '$esd', '$efd', '$lsd', '$lfd'),";
         if($i==500){
             $sql = substr($sql, 0, -1);
             $junk = dbCall($sql,$schema);
@@ -244,7 +255,8 @@ function returnCurInsertSQL($schema, $cur_table_name){
         sv_cum_h,
         sv_cur_h,
         vac_h,
-        pc) values
+        pc,ssd, sfd, asd, afd, esd, efd, lsd, lfd
+) values
  ";
     return $insert_sql;
 }
@@ -278,7 +290,8 @@ function insertCobraCostDataCur($ship_code, $schema, $stage_table_name, $cur_tab
             stage.bac_hours,
             prev.eac_hours eac_hours_prev,
             stage.eac_hours,
-            stage.pc
+            stage.pc,
+            stage.ssd, stage.sfd, stage.asd, stage.afd, stage.esd, stage.efd, stage.lsd, stage.lfd
         from cost2.".$stage_table_name." stage
         left join
         $schema.$prev_table_name prev on
@@ -330,17 +343,25 @@ function insertCobraCostDataCur($ship_code, $schema, $stage_table_name, $cur_tab
         $eac_hours      = formatNumber4decCobra($rs->fields["eac_hours"]);
         $eac_hours_prev = formatNumber4decCobra($rs->fields["eac_hours_prev"]);
         $eac_hours_diff = returnCurVal($eac_hours, $eac_hours_prev);
-        $pc             = formatNumber4decCobra($rs->fields["pc"]);
-        $cv_cum         = formatNumber4decCobra($p-$a);
-        $cv_cur         = formatNumber4decCobra($p_cur-$a_cur);
-        $sv_cum         = formatNumber4decCobra($p-$s);
-        $sv_cur         = formatNumber4decCobra($p_cur-$s_cur);
-        $vac            = formatNumber4decCobra($bac-$eac);
-        $cv_cum_h         = formatNumber4decCobra($p_hours-$a_hours);
-        $cv_cur_h         = formatNumber4decCobra($p_hours_cur-$a_hours_cur);
-        $sv_cum_h         = formatNumber4decCobra($p_hours-$s_hours);
-        $sv_cur_h         = formatNumber4decCobra($p_hours_cur-$s_hours_cur);
-        $vac_h            = formatNumber4decCobra($bac_hours-$eac_hours);
+        $pc         = formatNumber4decCobra($rs->fields["pc"]);
+        $cv_cum     = formatNumber4decCobra($p - $a);
+        $cv_cur     = formatNumber4decCobra($p_cur - $a_cur);
+        $sv_cum     = formatNumber4decCobra($p - $s);
+        $sv_cur     = formatNumber4decCobra($p_cur - $s_cur);
+        $vac        = formatNumber4decCobra($bac - $eac);
+        $cv_cum_h = formatNumber4decCobra($p_hours - $a_hours);
+        $cv_cur_h = formatNumber4decCobra($p_hours_cur - $a_hours_cur);
+        $sv_cum_h = formatNumber4decCobra($p_hours - $s_hours);
+        $sv_cur_h = formatNumber4decCobra($p_hours_cur - $s_hours_cur);
+        $vac_h = formatNumber4decCobra($bac_hours - $eac_hours);
+        $ssd = fixExcelDateMySQL($rs->fields["ssd"]);
+        $sfd = fixExcelDateMySQL($rs->fields["sfd"]);
+        $asd = fixExcelDateMySQL($rs->fields["asd"]);
+        $afd = fixExcelDateMySQL($rs->fields["afd"]);
+        $esd = fixExcelDateMySQL($rs->fields["esd"]);
+        $efd = fixExcelDateMySQL($rs->fields["efd"]);
+        $lsd = fixExcelDateMySQL($rs->fields["lsd"]);
+        $lfd = fixExcelDateMySQL($rs->fields["lfd"]);
 
         $sql.="(
             $ship_code,
@@ -380,7 +401,8 @@ function insertCobraCostDataCur($ship_code, $schema, $stage_table_name, $cur_tab
             $sv_cum_h,
             $sv_cur_h,
             $vac_h,
-            $pc),";
+            $pc,
+'$ssd', '$sfd', '$asd', '$afd', '$esd', '$efd', '$lsd', '$lfd'),";
 
         if($i==500){
             $sql = substr($sql, 0, -1);
@@ -392,6 +414,7 @@ function insertCobraCostDataCur($ship_code, $schema, $stage_table_name, $cur_tab
         $rs->MoveNext();
     }
     if($i!=500){
+        print $sql;
         $sql = substr($sql, 0, -1);
 
         $junk = dbCall($sql,$schema);
@@ -608,11 +631,4 @@ function insertCobraCostData( $ship_code, $schema, $rpt_period, $ship_code_wc){
     }
     deleteShipFromTable($ship_code,$table_name, "bcr_log");
     loadCOBRABCRLOG($ship_code, $rpt_period, $table_name, $ship_code_wc);
-}
-function getMonthEndDay($rpt_period){
-    $sql = "select month_end from calendar where rpt_period = $rpt_period";
-    $rs  = dbCall($sql, "fmm_evms");
-
-    $day = $rs->fields["month_end"];
-    return $day;
 }

@@ -1,13 +1,6 @@
 <?php
 include('../../../../inc/inc.php');
-function processJustification($justification){
-    $justification = trim($justification);
-    $justification = str_replace("\"", "'", $justification);
-    $justification = str_replace("\t", '', $justification); // remove tabs
-    $justification = str_replace("\n", '', $justification); // remove new lines
-    $justification = str_replace("\r", '', $justification);
-    return $justification;
-}
+
 function getBCRSInAPeriod($rpt_period){
     $table_name = $rpt_period."_bcr";
 
@@ -51,7 +44,7 @@ if($control=="log_analysis")
         id,
         bcr,
         case when change_no is not null
-            then concat(change_type, ' - ', change_no) 
+        then concat(change_type, ' - ', change_no) 
         else null end as pcw,        
         auth_no,
         justification,
@@ -59,9 +52,10 @@ if($control=="log_analysis")
         mr,
         ub
     from processing_status.fortis_xml
-    where ship_code = $ship_code  $bcr_wc
-    order by bcr
-  ";
+    where ship_code = $ship_code
+    order by bcr desc
+    ";
+
 
     $rs = dbCall($sql, "processing_status");
     while (!$rs->EOF)

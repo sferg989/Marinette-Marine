@@ -5,6 +5,7 @@
     <title>Log Analysis</title>
     <link rel="stylesheet" href="../../inc/lib/css/bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="../../inc/lib/js/SlickGrid-master/examples/examples.css">
+    <link rel="stylesheet" href="../../inc/lib/js/SlickGrid-master/controls/slick.pager.css">
 
     <link rel="stylesheet" href="../../inc/lib/js/SlickGrid-master/slick.grid.css">
     <link rel="stylesheet" href="../../inc/lib/js/SlickGrid-master/css/smoothness/jquery-ui-1.8.16.custom.css">
@@ -18,8 +19,6 @@
         -moz-box-sizing: content-box;
         box-sizing: content-box;
     }
-
-    @import url("//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc2/css/bootstrap-glyphicons.css");
 
 
     /* container adjusted */
@@ -60,6 +59,25 @@
         font-size: 15px;
         font-family : "Helvetica ";
     }
+    .loading-indicator {
+        display: inline-block;
+        padding: 12px;
+        background: white;
+        -opacity: 0.5;
+        color: black;
+        font-weight: bold;
+        z-index: 9999;
+        border: 1px solid red;
+        -moz-border-radius: 10px;
+        -webkit-border-radius: 10px;
+        -moz-box-shadow: 0 0 5px red;
+        -webkit-box-shadow: 0px 0px 5px red;
+        -text-shadow: 1px 1px 1px white;
+    }
+    loading-indicator label {
+             padding-left: 20px;
+             background: url('../../inc/lib/js/SlickGrid-master/images/ajax-loader-small.gif') no-repeat center left;
+         }
 </style>
 </head>
 <body class="alt-grid">
@@ -88,11 +106,12 @@
     <br>
 
     <div class="row">
-        <div class="col-md-12">
-            <div id = "log_analysis_grid"></div>
+        <div class="col-md-10">
+        <div id = "my_pager" style="width:100%;height:20px;"></div>
+        <div id = "log_analysis_grid" style="width:100%;"></div>
         </div>
-    </div>
     <br>
+</div>
 </div>
 </body>
 

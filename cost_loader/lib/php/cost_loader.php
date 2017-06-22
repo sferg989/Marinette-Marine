@@ -48,30 +48,29 @@ if($control=="rpt_periods")
     die($data);
 }
 if($control=="load_cobra_data"){
+    $rpt_period_array = explode(",", $rpt_period_list);
     if(strlen($code)==3)
     {
         $ship_code = "0".$code;
     }
+    foreach ($rpt_period_array as $rpt_period){
+        $year = intval(substr($rpt_period, 2, 2));
+        $month = month2digit(substr($rpt_period, -2));
+        $ship_code_wc = "$ship_code$month$year";
 
-    $year = intval(substr($rpt_period, 2, 2));
-    $month = month2digit(substr($rpt_period, -2));
-    $ship_code_wc = "$ship_code$month$year";
-
-    $schema = "cost2";
-    $cur_rpt_period = currentRPTPeriod();
-    if($rpt_period==$cur_rpt_period){
-        $ship_code_wc = $ship_code;
-        if($ship_code=="0471"){
-            $ship_code_wc = "0471-";
+        $schema = "cost2";
+        $cur_rpt_period = currentRPTPeriod();
+        if($rpt_period==$cur_rpt_period){
+            $ship_code_wc = $ship_code;
+            if($ship_code=="0471"){
+                $ship_code_wc = "0471-";
+            }
         }
+        if($rpt_period>$cur_rpt_period){
+            return false;
+        }
+        insertCobraCostData($code, $schema, $rpt_period,$ship_code_wc);
     }
-    if($rpt_period>$cur_rpt_period){
-        return false;
-    }
-
-
-    insertCobraCostData($code, $schema, $rpt_period,$ship_code_wc);
-
 }
 if($control=="load_cur_period_tp"){
     if(strlen($code)==3)
@@ -90,4 +89,3 @@ if($control=="load_cur_period_tp"){
     die(" made it".$ship_code);
 
 }
-

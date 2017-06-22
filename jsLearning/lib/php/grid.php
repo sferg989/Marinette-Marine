@@ -13,6 +13,7 @@ function getShipValByGROUPandDataType($ship_code, $group, $rpt_period,$field="s_
 
 
 $rpt_period = currentRPTPeriod();
+$rpt_period = getPreviousRPTPeriod($rpt_period);
 
 if($control=="project_grid")
 {

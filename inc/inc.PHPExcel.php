@@ -5,12 +5,18 @@
  * Date: 3/10/2017
  * Time: 1:51 PM
  */
-include("lib/php/phpExcel-1.8/classes/phpexcel.php");
-include("lib/php/phpExcel-1.8/classes/phpexcel/IOFactory.php");
+include("lib/php/phpExcel-1.8/classes/PHPExcel.php");
+//include("lib/php/phpExcel-1.8/classes/phpexcel/IOFactory.php");
 
 function loadPHPEXCELFile($path2xlsfile)
 {
-    $objPHPExcel = PHPExcel_IOFactory::load($path2xlsfile);
+    print "<br>".$path2xlsfile."<br>";
+    $inputFileType = PHPExcel_IOFactory::identify($path2xlsfile);
+    print $inputFileType;
+    $objReader = PHPExcel_IOFactory::createReader($inputFileType);
+    $objPHPExcel = $objReader->load($path2xlsfile);
+
+    //$objPHPExcel = PHPExcel_IOFactory::load($path2xlsfile);
     return $objPHPExcel;
 }
 
@@ -60,11 +66,14 @@ function PHPExcelcheckifSheetNameExists($excelOBJ, $sheet_name){
 
 function savePHPEXCELCSV($file_name,$path2xlsfile,$path2_destination)
 {
-    //print $path2xlsfile."<br>";
+    print "<br>".$path2xlsfile."<br>";
     if(file_exists($path2xlsfile)==false){
+        die("could not find the file");
         return null;
     }
+
     $objPHPExcel  = loadPHPEXCELFile($path2xlsfile);
+
     $objWriter    = PHPExcel_IOFactory::createWriter($objPHPExcel, 'CSV');
     $sheet_exists = PHPExcelcheckifSheetNameExists($objPHPExcel, "Locked Data");
     if($sheet_exists==true){

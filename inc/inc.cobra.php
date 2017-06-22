@@ -5,12 +5,13 @@
  * Date: 4/13/2017
  * Time: 10:59 AM
  */
-include("inc.PHPExcel.php.php");
+include("inc.PHPExcel.php");
 
 function loadCOBRABCRLOGCurrentPeriod($ship_code, $rpt_period, $table_name){
     $year = intval(substr($rpt_period, 0, 4));
     $month = month2digit(substr($rpt_period, -2));
     $day  = getMonthEndDay($rpt_period);
+
     if($day<5){
         $month = $month+1;
     }
@@ -512,3 +513,12 @@ function loadLCSProgramData($ship_code, $table_name){
     }
 }
 
+function getNextRefno($ship_code){
+    //$ship_code = "0".$ship_code;
+    $sql = "select max(refno) as max from BASELOG where PROGRAM = '$ship_code'";
+    //print $sql;
+    $rs = dbCallCobra($sql);
+    $max = $rs->fields["max"] +1;
+    return $max;
+
+}

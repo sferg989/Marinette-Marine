@@ -19,6 +19,9 @@ $g_path_to_util = "C:\\xampp\\htdocs\\fmg\\util\\";
 $g_path2BAT     = $g_path_to_util . "backup_scripts\\BAT\\";
 $g_path2CMD     = $g_path_to_util . "backup_scripts\\CMD\\";
 
+$g_path2BATSQLUtil     = $g_path_to_util . "sql_util\\BAT\\";
+$g_path2CMDSQLUtil     = $g_path_to_util . "sql_util\\CMD\\";
+
 $g_path2BatrptBAT = $g_path_to_util . "batch_report_process\\BAT\\";
 $g_path2BatrptCMD = $g_path_to_util . "batch_report_process\\CMD\\";
 
@@ -41,3 +44,4 @@ $g_path2_ceac           = "Y:/File Transfer Folder/CEAC-20170429";
 
 $g_path2_baan_work       = "A:\\";
 $g_path2_outsourcing_dir = $base_path . "Outsourcing Data";
+$g_path2_spreadsheetReader = "spreadsheet-reader-master/spreadsheet-reader-master/SpreadsheetReader.php";

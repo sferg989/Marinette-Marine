@@ -42,6 +42,7 @@ $rs = dbcallCobra($sql);
  */
 
 //loadFiscalCalendar();
+//insertCalendar(202001, 30);
 $g_path2_perform_report          = "D:\\";
 foreach (scandir($g_path2_perform_report) as $file) {
     if ('.' === $file) continue;

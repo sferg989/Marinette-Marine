@@ -16,9 +16,12 @@ require.config({
         select2      : '../inc/lib/js/select2-4.0.3/dist/js/select2.full',
         bootstrapJS  : '../inc/lib/css/bootstrap/js/bootstrap',
         bootbox      : '../inc/lib/css/bootbox.min',
+        orbJS       : '../inc/lib/JS/orbJS/orb',
+
         //select2      : "https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.full",
         // SlickGrid
         slickcore             : "../inc/lib/js/SlickGrid-master/slick.core",
+        slickPager            : "../inc/lib/js/SlickGrid-master/controls/slick.pager",
         slickgrid             : "../inc/lib/js/SlickGrid-master/slick.grid",
         slickdataview         : "../inc/lib/js/SlickGrid-master/slick.dataview",
         slickCheckColumn      : "../inc/lib/js/SlickGrid-master/plugins/slick.checkboxselectcolumn",
@@ -42,6 +45,7 @@ require.config({
         dragevent        : ['jquery'],
         dropevent        : ['jquery'],
         slickCheckColumn : ["slickgrid", 'slickColumnPicker'],
+        slickPager       : ['jquery'],
         slickAutoToolTips: ['jquery'],
         slickEditors     : ['jquery'],
         slickRowSelection: ['jquery'],

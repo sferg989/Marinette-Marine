@@ -20,8 +20,6 @@ define(function(){
         });
 
     }
-
-
     return {
         getGridData     : getGridData
     };

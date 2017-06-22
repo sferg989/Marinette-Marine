@@ -15,13 +15,7 @@ if(strlen($ship_code)==3)
 {
     $ship_code = "0".$ship_code;
 }
-function getMonthEndDay($rpt_period){
-    $sql = "select month_end from calendar where rpt_period = $rpt_period";
-    $rs  = dbCall($sql, "fmm_evms");
 
-    $day = $rs->fields["month_end"];
-    return $day;
-}
 
 if($control=="load_cobra_data"){
     $schema = "cost2";

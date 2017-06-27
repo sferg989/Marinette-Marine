@@ -73,7 +73,6 @@ function savePHPEXCELCSV($file_name,$path2xlsfile,$path2_destination)
     }
 
     $objPHPExcel  = loadPHPEXCELFile($path2xlsfile);
-
     $objWriter    = PHPExcel_IOFactory::createWriter($objPHPExcel, 'CSV');
     $sheet_exists = PHPExcelcheckifSheetNameExists($objPHPExcel, "Locked Data");
     if($sheet_exists==true){
@@ -95,6 +94,7 @@ function savePHPEXCELCSV($file_name,$path2xlsfile,$path2_destination)
     $objPHPExcel = null;
     return $outFile;
 }
+
 function savePHPEXCELCSV1WorkSheetByIndex($file_name,$path2xlsfile,$path2_destination, $sheet_index)
 {
     print $path2_destination."<br>";
@@ -141,6 +141,7 @@ function savePHPEXCELCSV1WorkSheetByIndex2007($file_name,$path2xlsfile,$path2_de
 
 function PHPExcelRemoveSheetByName($objWorkSheet,$sheet_name){
     $objWorkSheet->setActiveSheetIndexByName($sheet_name);
+
     $sheetIndex = $objWorkSheet->getActiveSheetIndex();
     $objWorkSheet->removeSheetByIndex($sheetIndex);
 }

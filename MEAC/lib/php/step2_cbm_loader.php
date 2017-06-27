@@ -27,7 +27,7 @@ function copyListOfDirectoryToCSV($directory2Copy,$rel_path2_reports){
 }
 
 $rel_path2_reports = "../../../util/csv_cbm";
-$directory2Copy =$base_path."ebom";
+//$directory2Copy =$base_path."ebom";
 $directory2Copy ="C:/evms/cbm";
 truncateTable("meac", "cbm");
 print $directory2Copy;

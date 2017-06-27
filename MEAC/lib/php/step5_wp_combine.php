@@ -8,19 +8,31 @@ include("inc.insert_data.php");
  * Time: 4:02 PM
  */
 $files = array();
-//truncateTable("meac", "wp_gl_detail");
-//truncateTable("meac", "wp_open_po");
-//truncateTable("meac", "wp_open_buy");
-//truncateTable("meac", "wp_ebom");
-//truncateTable("meac", "wp_committed_po");
-//truncateTable("meac", "swbs_gl_summary");
+truncateTable("meac", "wp_gl_detail");
+truncateTable("meac", "wp_open_po");
+truncateTable("meac", "wp_committed_po");
+truncateTable("meac", "wp_open_buy");
+truncateTable("meac", "wp_ebom");
+truncateTable("meac", "swbs_gl_summary");
 
-//insertGLdetailWITHWP();
-//insertOpenPOWithWP();
-//insertOpenBuyWithWP();
-//insertEBOMWP();
-//insertCommittedPOWP();
-insertSWBSSummary(483);
+insertGLdetailWITHWP();
+insertOpenPOWithWP();
+insertCommittedPOWP();
+insertOpenBuyWithWP();
+insertEBOMWP();
+$array = array();
+$array[] = 469;
+$array[] = 471;
+$array[] = 473;
+$array[] = 475;
+$array[] = 477;
+$array[] = 479;
+$array[] = 481;
+$array[] = 483;
+$array[] = 485;
+foreach ($array as $value){
+    insertSWBSSummary($value);
+}
 
 /*
 $rpt_period = 201705;

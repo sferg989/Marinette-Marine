@@ -6,43 +6,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="47f822d5-caa4-4777-9772-746577f23a95" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/util/csv_PFA_Committed_PO/479_Committed_PO479_Committed PO.xlsx.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/util/csv_PFA_Committed_PO/481_Committed_PO481_Committed PO.xlsx.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/util/csv_PFA_Committed_PO/483_Committed_PO483_Committed PO.xlsx.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/util/csv_PFA_Committed_PO/485_Committed_PO485_Committed PO.xlsx.csv" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MEAC/.idea/workspace.xml" afterPath="$PROJECT_DIR$/MEAC/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MEAC/lib/php/inc.insert_data.php" afterPath="$PROJECT_DIR$/MEAC/lib/php/inc.insert_data.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MEAC/lib/php/step1_gl_openPO_comitted_loader.php" afterPath="$PROJECT_DIR$/MEAC/lib/php/step1_gl_openPO_comitted_loader.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MEAC/lib/php/step2_cbm_loader.php" afterPath="$PROJECT_DIR$/MEAC/lib/php/step2_cbm_loader.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MEAC/lib/php/step5_wp_combine.php" afterPath="$PROJECT_DIR$/MEAC/lib/php/step5_wp_combine.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MEAC/pivot.html" afterPath="$PROJECT_DIR$/MEAC/pivot.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/inc/inc.PHPExcel.php" afterPath="$PROJECT_DIR$/inc/inc.PHPExcel.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/util/csv_PFA_Committed_PO/467_Committed_PO467_Committed PO.xlsx.csv" afterPath="$PROJECT_DIR$/util/csv_PFA_Committed_PO/467_Committed_PO467_Committed PO.xlsx.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/util/csv_PFA_Committed_PO/469_Committed_PO469_Committed PO.xlsx.csv" afterPath="$PROJECT_DIR$/util/csv_PFA_Committed_PO/469_Committed_PO469_Committed PO.xlsx.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/util/csv_PFA_Committed_PO/471_Committed_PO471_Committed PO.xlsx.csv" afterPath="$PROJECT_DIR$/util/csv_PFA_Committed_PO/471_Committed_PO471_Committed PO.xlsx.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/util/csv_PFA_Committed_PO/473_Committed_PO473_Committed PO.xlsx.csv" afterPath="$PROJECT_DIR$/util/csv_PFA_Committed_PO/473_Committed_PO473_Committed PO.xlsx.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/util/csv_PFA_Committed_PO/475_Committed_PO475_Committed PO.xlsx.csv" afterPath="$PROJECT_DIR$/util/csv_PFA_Committed_PO/475_Committed_PO475_Committed PO.xlsx.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/util/csv_PFA_Committed_PO/477_Committed_PO477_Committed PO.xlsx.csv" afterPath="$PROJECT_DIR$/util/csv_PFA_Committed_PO/477_Committed_PO477_Committed PO.xlsx.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/util/csv_PFA_GL_Detail/0467_GL_Detail0467_GL Detail.xlsx.csv" afterPath="$PROJECT_DIR$/util/csv_PFA_GL_Detail/0467_GL_Detail0467_GL Detail.xlsx.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/util/csv_PFA_GL_Detail/0469_GL_Detail0469_GL Detail.xlsx.csv" afterPath="$PROJECT_DIR$/util/csv_PFA_GL_Detail/0469_GL_Detail0469_GL Detail.xlsx.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/util/csv_PFA_GL_Detail/0471_GL_Detail0471_GL Detail.xlsx.csv" afterPath="$PROJECT_DIR$/util/csv_PFA_GL_Detail/0471_GL_Detail0471_GL Detail.xlsx.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/util/csv_PFA_GL_Detail/0473_GL_Detail0473_GL Detail.xlsx.csv" afterPath="$PROJECT_DIR$/util/csv_PFA_GL_Detail/0473_GL_Detail0473_GL Detail.xlsx.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/util/csv_PFA_GL_Detail/0475_GL_Detail0475_GL Detail.xlsx.csv" afterPath="$PROJECT_DIR$/util/csv_PFA_GL_Detail/0475_GL_Detail0475_GL Detail.xlsx.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/util/csv_PFA_GL_Detail/0477_GL_Detail0477_GL Detail.xlsx.csv" afterPath="$PROJECT_DIR$/util/csv_PFA_GL_Detail/0477_GL_Detail0477_GL Detail.xlsx.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/util/csv_PFA_GL_Detail/0479_GL_Detail0479_GL Detail.xlsx.csv" afterPath="$PROJECT_DIR$/util/csv_PFA_GL_Detail/0479_GL_Detail0479_GL Detail.xlsx.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/util/csv_PFA_GL_Detail/0481_GL_Detail0481_GL Detail.xlsx.csv" afterPath="$PROJECT_DIR$/util/csv_PFA_GL_Detail/0481_GL_Detail0481_GL Detail.xlsx.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/util/csv_PFA_GL_Detail/0483_GL_Detail0483_GL Detail.xlsx.csv" afterPath="$PROJECT_DIR$/util/csv_PFA_GL_Detail/0483_GL_Detail0483_GL Detail.xlsx.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/util/csv_PFA_Open_PO/467_Open_PO467_Open PO.xlsx.csv" afterPath="$PROJECT_DIR$/util/csv_PFA_Open_PO/467_Open_PO467_Open PO.xlsx.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/util/csv_PFA_Open_PO/469_Open_PO469_Open PO.xlsx.csv" afterPath="$PROJECT_DIR$/util/csv_PFA_Open_PO/469_Open_PO469_Open PO.xlsx.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/util/csv_PFA_Open_PO/471_Open_PO471_Open PO.xlsx.csv" afterPath="$PROJECT_DIR$/util/csv_PFA_Open_PO/471_Open_PO471_Open PO.xlsx.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/util/csv_PFA_Open_PO/473_Open_PO473_Open PO.xlsx.csv" afterPath="$PROJECT_DIR$/util/csv_PFA_Open_PO/473_Open_PO473_Open PO.xlsx.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/util/csv_PFA_Open_PO/475_Open_PO475_Open PO.xlsx.csv" afterPath="$PROJECT_DIR$/util/csv_PFA_Open_PO/475_Open_PO475_Open PO.xlsx.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/util/csv_PFA_Open_PO/477_Open_PO477_Open PO.xlsx.csv" afterPath="$PROJECT_DIR$/util/csv_PFA_Open_PO/477_Open_PO477_Open PO.xlsx.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/util/csv_PFA_Open_PO/479_Open_PO479_Open PO.xlsx.csv" afterPath="$PROJECT_DIR$/util/csv_PFA_Open_PO/479_Open_PO479_Open PO.xlsx.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/util/csv_PFA_Open_PO/481_Open_PO481_Open PO.xlsx.csv" afterPath="$PROJECT_DIR$/util/csv_PFA_Open_PO/481_Open_PO481_Open PO.xlsx.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/util/csv_PFA_Open_PO/483_Open_PO483_Open PO.xlsx.csv" afterPath="$PROJECT_DIR$/util/csv_PFA_Open_PO/483_Open_PO483_Open PO.xlsx.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/util/csv_PFA_Open_PO/485_Open_PO485_Open PO.xlsx.csv" afterPath="$PROJECT_DIR$/util/csv_PFA_Open_PO/485_Open_PO485_Open PO.xlsx.csv" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -77,77 +44,9 @@
       <file leaf-file-name="step5_wp_combine.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/MEAC/lib/php/step5_wp_combine.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="593">
-              <caret line="33" column="30" lean-forward="true" selection-start-line="33" selection-start-column="30" selection-end-line="33" selection-end-column="30" />
+            <state relative-caret-position="253">
+              <caret line="17" column="25" lean-forward="true" selection-start-line="17" selection-start-column="25" selection-end-line="17" selection-end-column="25" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="inc.insert_data.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/MEAC/lib/php/inc.insert_data.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="646">
-              <caret line="1613" column="22" lean-forward="true" selection-start-line="1613" selection-start-column="22" selection-end-line="1613" selection-end-column="22" />
-              <folding>
-                <element signature="n#calcETC#0;n#!!top" expanded="false" />
-                <element signature="n#insertSWBSSummaryOPENBUY#0;n#!!top" expanded="false" />
-                <element signature="n#insertTargetCost#0;n#!!top" expanded="false" />
-                <marker date="1498587889104" expanded="true" signature="993:1459" ph="insert into mars.open_po... " />
-                <marker date="1498587889104" expanded="true" signature="3983:4431" ph="insert into mars.committed_po... " />
-                <marker date="1498587889104" expanded="true" signature="7053:7352" ph="INSERT INTO gl_detail" />
-                <marker date="1498587889104" expanded="true" signature="9410:9760" ph="insert into meac.ebom... " />
-                <marker date="1498587889104" expanded="true" signature="12086:12148" ph="insert into meac.cbm... " />
-                <marker date="1498587889104" expanded="true" signature="13225:13670" ph="insert into mars.open_buy... " />
-                <marker date="1498587889104" expanded="true" signature="16093:17003" ph="INSERT INTO wp_gl_detail" />
-                <marker date="1498587889104" expanded="true" signature="16448:16990" ph="SELECT gl.pr... gl_detail" />
-                <marker date="1498587889104" expanded="true" signature="17070:18004" ph="INSERT INTO wp_gl_detail" />
-                <marker date="1498587889104" expanded="true" signature="17425:17998" ph="SELECT gl.pr... gl_detail" />
-                <marker date="1498587889104" expanded="true" signature="18104:18615" ph="insert into meac.wp_open_po... " />
-                <marker date="1498587889104" expanded="true" signature="18636:19282" ph="select po.pr... open_po" />
-                <marker date="1498587889104" expanded="true" signature="22044:22555" ph="insert into meac.wp_open_po... " />
-                <marker date="1498587889104" expanded="true" signature="22574:23176" ph="select po.pr... open_po" />
-                <marker date="1498587889104" expanded="true" signature="25917:27230" ph="insert into meac.wp_open_buy... " />
-                <marker date="1498587889104" expanded="true" signature="26502:27220" ph="select ob.pr... open_buy" />
-                <marker date="1498587889104" expanded="true" signature="27284:28625" ph="insert into meac.wp_open_buy... " />
-                <marker date="1498587889104" expanded="true" signature="27869:28615" ph="select ob.pr... open_buy" />
-                <marker date="1498587889104" expanded="true" signature="28718:29126" ph="insert into meac.wp_ebom... " />
-                <marker date="1498587889104" expanded="true" signature="29159:29742" ph="select ebom.... ebom" />
-                <marker date="1498587889104" expanded="true" signature="31953:32532" ph="select ebom.... ebom" />
-                <marker date="1498587889104" expanded="true" signature="34738:35166" ph="insert into meac.wp_committed_po... " />
-                <marker date="1498587889104" expanded="true" signature="35198:35755" ph="select proj committed_po" />
-                <marker date="1498587889104" expanded="true" signature="38173:38726" ph="select proj committed_po" />
-                <marker date="1498587889104" expanded="true" signature="41089:41413" ph="INSERT INTO ${$table_name}" />
-                <marker date="1498587889104" expanded="true" signature="41467:42346" ph="select cost.... 201705_cost" />
-                <marker date="1498587889104" expanded="true" signature="41524:41615" ph="select c1 fr... 201705_cost" />
-                <marker date="1498587889104" expanded="true" signature="41781:41866" ph="select sum(p... wp_open_po" />
-                <marker date="1498587889104" expanded="true" signature="41889:41978" ph="select sum(i... wp_open_buy" />
-                <marker date="1498587889104" expanded="true" signature="42006:42094" ph="select sum(e... wp_open_buy" />
-                <marker date="1498587889104" expanded="true" signature="44241:44852" ph="insert into meac.swbs_gl_summary... " />
-                <marker date="1498587889104" expanded="true" signature="46735:49313" ph="select open_... wp_open_po" />
-                <marker date="1498587889104" expanded="true" signature="47380:47491" ph="select item_... wp_open_buy" />
-                <marker date="1498587889104" expanded="true" signature="47530:47638" ph="select sum(p... wp_open_po" />
-                <marker date="1498587889104" expanded="true" signature="47674:47812" ph="select sum(i... wp_gl_detail" />
-                <marker date="1498587889104" expanded="true" signature="47838:47973" ph="select sum(c... wp_committed_po" />
-                <marker date="1498587889104" expanded="true" signature="48000:48134" ph="select avg(u... wp_committed_po" />
-                <marker date="1498587889104" expanded="true" signature="48163:48282" ph="select unit_... wp_committed_po" />
-                <marker date="1498587889104" expanded="true" signature="48314:48459" ph="select conca... wp_committed_po" />
-                <marker date="1498587889104" expanded="true" signature="48496:48623" ph="select sum(c... wp_committed_po" />
-                <marker date="1498587889104" expanded="true" signature="53367:56021" ph="select gl.sh... wp_gl_detail" />
-                <marker date="1498587889104" expanded="true" signature="53986:54087" ph="select item_... wp_open_buy" />
-                <marker date="1498587889104" expanded="true" signature="54126:54224" ph="select sum(p... wp_open_po" />
-                <marker date="1498587889104" expanded="true" signature="54260:54388" ph="select sum(i... wp_gl_detail" />
-                <marker date="1498587889104" expanded="true" signature="54414:54539" ph="select sum(c... wp_committed_po" />
-                <marker date="1498587889104" expanded="true" signature="54566:54690" ph="select avg(u... wp_committed_po" />
-                <marker date="1498587889104" expanded="true" signature="54719:54833" ph="select unit_... wp_committed_po" />
-                <marker date="1498587889104" expanded="true" signature="54865:55005" ph="select conca... wp_committed_po" />
-                <marker date="1498587889104" expanded="true" signature="55042:55169" ph="select sum(c... wp_committed_po" />
-                <marker date="1498587889104" expanded="true" signature="55196:55344" ph="select sum(q... wp_gl_detail" />
-                <marker date="1498587889104" expanded="true" signature="60418:62458" ph="select open_... wp_open_buy" />
-                <marker date="1498587889104" expanded="true" signature="61336:61456" ph="select unit_... wp_committed_po" />
-                <marker date="1498587889104" expanded="true" signature="61492:61638" ph="select conca... wp_committed_po" />
-                <marker date="1498587889104" expanded="true" signature="66968:67065" ph="INSERT into meac.target_cost... " />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -165,16 +64,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>getUrl</find>
-      <find>:\&quot;</find>
-      <find>insertMEACDataNoCommodity</find>
-      <find>pas</find>
-      <find>ebom</find>
-      <find>',</find>
-      <find>]</find>
-      <find>= $</find>
-      <find>&quot;$</find>
-      <find>create</find>
       <find>orb</find>
       <find>num_transfers</find>
       <find>PHPExcelRemoveSheetByName</find>
@@ -191,10 +80,20 @@
       <find>insertOpenPO</find>
       <find>insertCommittedPO</find>
       <find>insertGLdetail</find>
-      <find>commit_qty</find>
       <find>die</find>
       <find>transfer</find>
       <find>transfers</find>
+      <find>vendo</find>
+      <find>unit</find>
+      <find>e.uom</find>
+      <find>noun1</find>
+      <find>commit_amt</find>
+      <find>pending_amt</find>
+      <find>commit_qty</find>
+      <find>buyer</find>
+      <find>buyer_id</find>
+      <find>gl_qty</find>
+      <find>qt</find>
     </findStrings>
     <replaceStrings>
       <replace>wp</replace>
@@ -295,9 +194,9 @@
         <option value="$PROJECT_DIR$/inc/inc.PHPExcel.php" />
         <option value="$PROJECT_DIR$/MEAC/lib/php/step0_target_cost_loader.php" />
         <option value="$PROJECT_DIR$/inc/mmev.inc.php" />
+        <option value="$PROJECT_DIR$/MEAC/lib/php/step5_wp_combine.php" />
         <option value="$PROJECT_DIR$/MEAC/lib/php/step1_gl_openPO_comitted_loader.php" />
         <option value="$PROJECT_DIR$/MEAC/lib/php/inc.insert_data.php" />
-        <option value="$PROJECT_DIR$/MEAC/lib/php/step5_wp_combine.php" />
       </list>
     </option>
   </component>
@@ -356,6 +255,60 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="fmg" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fmg" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fmg" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MEAC" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fmg" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fmg" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MEAC" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lib" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fmg" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fmg" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MEAC" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lib" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="php" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -771,7 +724,7 @@
       <workItem from="1498231966658" duration="8623000" />
       <workItem from="1498246655856" duration="1521000" />
       <workItem from="1498482497463" duration="891000" />
-      <workItem from="1498568050943" duration="7866000" />
+      <workItem from="1498568050943" duration="11263000" />
     </task>
     <task id="LOCAL-00001" summary="processing status index">
       <created>1484232740617</created>
@@ -1088,11 +1041,18 @@
       <option name="project" value="LOCAL" />
       <updated>1498165574893</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="All of the data should be matched">
+      <created>1498588341298</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1498588341298</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2016246000" />
+    <option name="totallyTimeSpent" value="2019643000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1570,84 +1530,85 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MEAC/lib/php/step1_gl_openPO_comitted_loader.php">
+    <entry file="file://$PROJECT_DIR$/MEAC/lib/php/inc.insert_data.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="20" column="14" lean-forward="true" selection-start-line="20" selection-start-column="14" selection-end-line="20" selection-end-column="14" />
-          <folding />
+        <state relative-caret-position="315">
+          <caret line="1858" column="26" lean-forward="true" selection-start-line="1858" selection-start-column="26" selection-end-line="1858" selection-end-column="26" />
+          <folding>
+            <element signature="n#insertSWBSSummaryOPENPO#0;n#!!top" expanded="false" />
+            <element signature="n#insertSWBSSummaryOPENBUY#0;n#!!top" expanded="false" />
+            <element signature="n#insertTargetCost#0;n#!!top" expanded="false" />
+            <marker date="1498591579588" expanded="true" signature="993:1459" ph="insert into mars.open_po... " />
+            <marker date="1498591579588" expanded="true" signature="3983:4431" ph="insert into mars.committed_po... " />
+            <marker date="1498591579588" expanded="true" signature="7053:7352" ph="INSERT INTO gl_detail" />
+            <marker date="1498591579588" expanded="true" signature="9410:9760" ph="insert into meac.ebom... " />
+            <marker date="1498591579588" expanded="true" signature="12086:12148" ph="insert into meac.cbm... " />
+            <marker date="1498591579588" expanded="true" signature="13225:13670" ph="insert into mars.open_buy... " />
+            <marker date="1498591579588" expanded="true" signature="16093:17003" ph="INSERT INTO wp_gl_detail" />
+            <marker date="1498591579588" expanded="true" signature="16448:16990" ph="SELECT gl.pr... gl_detail" />
+            <marker date="1498591579588" expanded="true" signature="17070:18004" ph="INSERT INTO wp_gl_detail" />
+            <marker date="1498591579588" expanded="true" signature="17425:17998" ph="SELECT gl.pr... gl_detail" />
+            <marker date="1498591579588" expanded="true" signature="18104:18615" ph="insert into meac.wp_open_po... " />
+            <marker date="1498591579588" expanded="true" signature="18636:19282" ph="select po.pr... open_po" />
+            <marker date="1498591579588" expanded="true" signature="22044:22555" ph="insert into meac.wp_open_po... " />
+            <marker date="1498591579588" expanded="true" signature="22574:23176" ph="select po.pr... open_po" />
+            <marker date="1498591579588" expanded="true" signature="25917:27230" ph="insert into meac.wp_open_buy... " />
+            <marker date="1498591579588" expanded="true" signature="26502:27220" ph="select ob.pr... open_buy" />
+            <marker date="1498591579588" expanded="true" signature="27284:28625" ph="insert into meac.wp_open_buy... " />
+            <marker date="1498591579588" expanded="true" signature="27869:28615" ph="select ob.pr... open_buy" />
+            <marker date="1498591579588" expanded="true" signature="28718:29126" ph="insert into meac.wp_ebom... " />
+            <marker date="1498591579588" expanded="true" signature="29159:29742" ph="select ebom.... ebom" />
+            <marker date="1498591579588" expanded="true" signature="31953:32532" ph="select ebom.... ebom" />
+            <marker date="1498591579588" expanded="true" signature="34738:35166" ph="insert into meac.wp_committed_po... " />
+            <marker date="1498591579588" expanded="true" signature="35198:35755" ph="select proj committed_po" />
+            <marker date="1498591579588" expanded="true" signature="38173:38726" ph="select proj committed_po" />
+            <marker date="1498591579588" expanded="true" signature="41089:41413" ph="INSERT INTO ${$table_name}" />
+            <marker date="1498591579588" expanded="true" signature="41467:42346" ph="select cost.... 201705_cost" />
+            <marker date="1498591579588" expanded="true" signature="41524:41615" ph="select c1 fr... 201705_cost" />
+            <marker date="1498591579588" expanded="true" signature="41781:41866" ph="select sum(p... wp_open_po" />
+            <marker date="1498591579588" expanded="true" signature="41889:41978" ph="select sum(i... wp_open_buy" />
+            <marker date="1498591579588" expanded="true" signature="42006:42094" ph="select sum(e... wp_open_buy" />
+            <marker date="1498591579588" expanded="true" signature="44241:44838" ph="insert into meac.swbs_gl_summary... " />
+            <marker date="1498591579588" expanded="true" signature="46685:49294" ph="select open_... wp_open_po" />
+            <marker date="1498591579588" expanded="true" signature="47361:47472" ph="select item_... wp_open_buy" />
+            <marker date="1498591579588" expanded="true" signature="47511:47619" ph="select sum(p... wp_open_po" />
+            <marker date="1498591579588" expanded="true" signature="47655:47793" ph="select sum(i... wp_gl_detail" />
+            <marker date="1498591579588" expanded="true" signature="47819:47954" ph="select sum(c... wp_committed_po" />
+            <marker date="1498591579588" expanded="true" signature="47981:48115" ph="select avg(u... wp_committed_po" />
+            <marker date="1498591579588" expanded="true" signature="48144:48263" ph="select unit_... wp_committed_po" />
+            <marker date="1498591579588" expanded="true" signature="48295:48440" ph="select conca... wp_committed_po" />
+            <marker date="1498591579588" expanded="true" signature="48477:48604" ph="select sum(c... wp_committed_po" />
+            <marker date="1498591579588" expanded="true" signature="53277:56088" ph="select gl.sh... wp_gl_detail" />
+            <marker date="1498591579588" expanded="true" signature="53906:54007" ph="select item_... wp_open_buy" />
+            <marker date="1498591579588" expanded="true" signature="54046:54144" ph="select sum(p... wp_open_po" />
+            <marker date="1498591579588" expanded="true" signature="54180:54308" ph="select sum(i... wp_gl_detail" />
+            <marker date="1498591579588" expanded="true" signature="54334:54459" ph="select sum(c... wp_committed_po" />
+            <marker date="1498591579588" expanded="true" signature="54486:54610" ph="select avg(u... wp_committed_po" />
+            <marker date="1498591579588" expanded="true" signature="54639:54753" ph="select unit_... wp_committed_po" />
+            <marker date="1498591579588" expanded="true" signature="54785:54925" ph="select conca... wp_committed_po" />
+            <marker date="1498591579588" expanded="true" signature="54962:55089" ph="select sum(c... wp_committed_po" />
+            <marker date="1498591579588" expanded="true" signature="55116:55230" ph="select sum(q... wp_gl_detail" />
+            <marker date="1498591579588" expanded="true" signature="55253:55397" ph="select sum(q... wp_gl_detail" />
+            <marker date="1498591579588" expanded="true" signature="60632:62680" ph="select open_... wp_open_buy" />
+            <marker date="1498591579588" expanded="true" signature="61558:61678" ph="select unit_... wp_committed_po" />
+            <marker date="1498591579588" expanded="true" signature="61714:61860" ph="select conca... wp_committed_po" />
+            <marker date="1498591579588" expanded="true" signature="67120:67217" ph="INSERT into meac.target_cost... " />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MEAC/lib/php/inc.insert_data.php">
+    <entry file="file://$PROJECT_DIR$/MEAC/lib/php/step1_gl_openPO_comitted_loader.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="646">
-          <caret line="1613" column="22" lean-forward="true" selection-start-line="1613" selection-start-column="22" selection-end-line="1613" selection-end-column="22" />
-          <folding>
-            <element signature="n#calcETC#0;n#!!top" expanded="false" />
-            <element signature="n#insertSWBSSummaryOPENBUY#0;n#!!top" expanded="false" />
-            <element signature="n#insertTargetCost#0;n#!!top" expanded="false" />
-            <marker date="1498587889104" expanded="true" signature="993:1459" ph="insert into mars.open_po... " />
-            <marker date="1498587889104" expanded="true" signature="3983:4431" ph="insert into mars.committed_po... " />
-            <marker date="1498587889104" expanded="true" signature="7053:7352" ph="INSERT INTO gl_detail" />
-            <marker date="1498587889104" expanded="true" signature="9410:9760" ph="insert into meac.ebom... " />
-            <marker date="1498587889104" expanded="true" signature="12086:12148" ph="insert into meac.cbm... " />
-            <marker date="1498587889104" expanded="true" signature="13225:13670" ph="insert into mars.open_buy... " />
-            <marker date="1498587889104" expanded="true" signature="16093:17003" ph="INSERT INTO wp_gl_detail" />
-            <marker date="1498587889104" expanded="true" signature="16448:16990" ph="SELECT gl.pr... gl_detail" />
-            <marker date="1498587889104" expanded="true" signature="17070:18004" ph="INSERT INTO wp_gl_detail" />
-            <marker date="1498587889104" expanded="true" signature="17425:17998" ph="SELECT gl.pr... gl_detail" />
-            <marker date="1498587889104" expanded="true" signature="18104:18615" ph="insert into meac.wp_open_po... " />
-            <marker date="1498587889104" expanded="true" signature="18636:19282" ph="select po.pr... open_po" />
-            <marker date="1498587889104" expanded="true" signature="22044:22555" ph="insert into meac.wp_open_po... " />
-            <marker date="1498587889104" expanded="true" signature="22574:23176" ph="select po.pr... open_po" />
-            <marker date="1498587889104" expanded="true" signature="25917:27230" ph="insert into meac.wp_open_buy... " />
-            <marker date="1498587889104" expanded="true" signature="26502:27220" ph="select ob.pr... open_buy" />
-            <marker date="1498587889104" expanded="true" signature="27284:28625" ph="insert into meac.wp_open_buy... " />
-            <marker date="1498587889104" expanded="true" signature="27869:28615" ph="select ob.pr... open_buy" />
-            <marker date="1498587889104" expanded="true" signature="28718:29126" ph="insert into meac.wp_ebom... " />
-            <marker date="1498587889104" expanded="true" signature="29159:29742" ph="select ebom.... ebom" />
-            <marker date="1498587889104" expanded="true" signature="31953:32532" ph="select ebom.... ebom" />
-            <marker date="1498587889104" expanded="true" signature="34738:35166" ph="insert into meac.wp_committed_po... " />
-            <marker date="1498587889104" expanded="true" signature="35198:35755" ph="select proj committed_po" />
-            <marker date="1498587889104" expanded="true" signature="38173:38726" ph="select proj committed_po" />
-            <marker date="1498587889104" expanded="true" signature="41089:41413" ph="INSERT INTO ${$table_name}" />
-            <marker date="1498587889104" expanded="true" signature="41467:42346" ph="select cost.... 201705_cost" />
-            <marker date="1498587889104" expanded="true" signature="41524:41615" ph="select c1 fr... 201705_cost" />
-            <marker date="1498587889104" expanded="true" signature="41781:41866" ph="select sum(p... wp_open_po" />
-            <marker date="1498587889104" expanded="true" signature="41889:41978" ph="select sum(i... wp_open_buy" />
-            <marker date="1498587889104" expanded="true" signature="42006:42094" ph="select sum(e... wp_open_buy" />
-            <marker date="1498587889104" expanded="true" signature="44241:44852" ph="insert into meac.swbs_gl_summary... " />
-            <marker date="1498587889104" expanded="true" signature="46735:49313" ph="select open_... wp_open_po" />
-            <marker date="1498587889104" expanded="true" signature="47380:47491" ph="select item_... wp_open_buy" />
-            <marker date="1498587889104" expanded="true" signature="47530:47638" ph="select sum(p... wp_open_po" />
-            <marker date="1498587889104" expanded="true" signature="47674:47812" ph="select sum(i... wp_gl_detail" />
-            <marker date="1498587889104" expanded="true" signature="47838:47973" ph="select sum(c... wp_committed_po" />
-            <marker date="1498587889104" expanded="true" signature="48000:48134" ph="select avg(u... wp_committed_po" />
-            <marker date="1498587889104" expanded="true" signature="48163:48282" ph="select unit_... wp_committed_po" />
-            <marker date="1498587889104" expanded="true" signature="48314:48459" ph="select conca... wp_committed_po" />
-            <marker date="1498587889104" expanded="true" signature="48496:48623" ph="select sum(c... wp_committed_po" />
-            <marker date="1498587889104" expanded="true" signature="53367:56021" ph="select gl.sh... wp_gl_detail" />
-            <marker date="1498587889104" expanded="true" signature="53986:54087" ph="select item_... wp_open_buy" />
-            <marker date="1498587889104" expanded="true" signature="54126:54224" ph="select sum(p... wp_open_po" />
-            <marker date="1498587889104" expanded="true" signature="54260:54388" ph="select sum(i... wp_gl_detail" />
-            <marker date="1498587889104" expanded="true" signature="54414:54539" ph="select sum(c... wp_committed_po" />
-            <marker date="1498587889104" expanded="true" signature="54566:54690" ph="select avg(u... wp_committed_po" />
-            <marker date="1498587889104" expanded="true" signature="54719:54833" ph="select unit_... wp_committed_po" />
-            <marker date="1498587889104" expanded="true" signature="54865:55005" ph="select conca... wp_committed_po" />
-            <marker date="1498587889104" expanded="true" signature="55042:55169" ph="select sum(c... wp_committed_po" />
-            <marker date="1498587889104" expanded="true" signature="55196:55344" ph="select sum(q... wp_gl_detail" />
-            <marker date="1498587889104" expanded="true" signature="60418:62458" ph="select open_... wp_open_buy" />
-            <marker date="1498587889104" expanded="true" signature="61336:61456" ph="select unit_... wp_committed_po" />
-            <marker date="1498587889104" expanded="true" signature="61492:61638" ph="select conca... wp_committed_po" />
-            <marker date="1498587889104" expanded="true" signature="66968:67065" ph="INSERT into meac.target_cost... " />
-          </folding>
+        <state relative-caret-position="233">
+          <caret line="18" column="31" lean-forward="false" selection-start-line="18" selection-start-column="31" selection-end-line="18" selection-end-column="31" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/MEAC/lib/php/step5_wp_combine.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="593">
-          <caret line="33" column="30" lean-forward="true" selection-start-line="33" selection-start-column="30" selection-end-line="33" selection-end-column="30" />
+        <state relative-caret-position="253">
+          <caret line="17" column="25" lean-forward="true" selection-start-line="17" selection-start-column="25" selection-end-line="17" selection-end-column="25" />
           <folding />
         </state>
       </provider>

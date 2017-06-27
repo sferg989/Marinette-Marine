@@ -8,18 +8,19 @@ include("inc.insert_data.php");
  * Time: 4:02 PM
  */
 $files = array();
-truncateTable("meac", "wp_gl_detail");
+//truncateTable("meac", "wp_gl_detail");
 truncateTable("meac", "wp_open_po");
 truncateTable("meac", "wp_committed_po");
-truncateTable("meac", "wp_open_buy");
-truncateTable("meac", "wp_ebom");
-truncateTable("meac", "swbs_gl_summary");
+//truncateTable("meac", "wp_open_buy");
+//truncateTable("meac", "wp_ebom");
+//truncateTable("meac", "swbs_gl_summary");
 
-insertGLdetailWITHWP();
+//insertGLdetailWITHWP();
 insertOpenPOWithWP();
 insertCommittedPOWP();
-insertOpenBuyWithWP();
-insertEBOMWP();
+//insertOpenBuyWithWP();
+//insertEBOMWP();
+
 $array = array();
 $array[] = 469;
 $array[] = 471;

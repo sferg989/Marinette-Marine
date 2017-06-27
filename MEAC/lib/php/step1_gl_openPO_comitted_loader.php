@@ -28,7 +28,7 @@ function copyListOfDirectoryToCSV($g_path2_baan_work,$baan_dir_name,$rel_path2_r
         $file_name_array = getListOfFileNamesInDirectory($directory2Copy);
         saveListOfFileNamesPHPExcel($file_name_array,$directory2Copy,$rel_path2_reports,$table_name);
 }
-truncateTable("mars", "gl_detail");
+//truncateTable("mars", "gl_detail");
 truncateTable("mars", "committed_po");
 truncateTable("mars", "open_po");
 
@@ -37,11 +37,12 @@ $open_po_directory      = "../../../util/csv_PFA_Open_PO";
 $committed_po_directory = "../../../util/csv_PFA_Committed_PO";
 $gl_detail_directory    = "../../../util/csv_PFA_GL_Detail";
 
-/*clearDirectory($open_po_directory);
+clearDirectory($open_po_directory);
 copyListOfDirectoryToCSV($g_path2_baan_work,"PFA_Open_PO",$open_po_directory, "open_po");
 
 clearDirectory($committed_po_directory);
-copyListOfDirectoryToCSV($g_path2_baan_work,"PFA_Committed_PO",$committed_po_directory, "committed_po");*/
+copyListOfDirectoryToCSV($g_path2_baan_work,"PFA_Committed_PO",$committed_po_directory, "committed_po");
 
+/*
 clearDirectory($gl_detail_directory);
-copyListOfDirectoryToCSV($g_path2_baan_work,"PFA_GL_Detail",$gl_detail_directory, "gl_detail");
+copyListOfDirectoryToCSV($g_path2_baan_work,"PFA_GL_Detail",$gl_detail_directory, "gl_detail");*/

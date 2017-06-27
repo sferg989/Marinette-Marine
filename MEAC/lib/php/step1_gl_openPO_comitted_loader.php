@@ -43,6 +43,6 @@ copyListOfDirectoryToCSV($g_path2_baan_work,"PFA_Open_PO",$open_po_directory, "o
 clearDirectory($committed_po_directory);
 copyListOfDirectoryToCSV($g_path2_baan_work,"PFA_Committed_PO",$committed_po_directory, "committed_po");
 
-/*
+
 clearDirectory($gl_detail_directory);
-copyListOfDirectoryToCSV($g_path2_baan_work,"PFA_GL_Detail",$gl_detail_directory, "gl_detail");*/
+copyListOfDirectoryToCSV($g_path2_baan_work,"PFA_GL_Detail",$gl_detail_directory, "gl_detail");

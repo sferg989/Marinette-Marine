@@ -18,7 +18,6 @@ require([
         titleUpdate.updateTitle(code, rpt_period);
 
 
-
     });
 
 

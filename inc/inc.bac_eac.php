@@ -146,30 +146,7 @@ function formatExcelSheet($path2xlsfile, $sheet_title)
     $objPHPExcel->getActiveSheet()->getColumnDimension('I')->setWidth(15);
     return $objPHPExcel;
 }
-function phpExcelCurrency($range, $objPHPExcel){
-    $objPHPExcel->getActiveSheet()
-        ->getStyle($range)
-        ->getNumberFormat()
-        ->setFormatCode(PHPExcel_Style_NumberFormat::FORMAT_CURRENCY_USD);
-}
-function phpExcelFormatPercentage($range, $objPHPExcel){
-    $objPHPExcel->getActiveSheet()
-        ->getStyle($range)
-        ->getNumberFormat()
-        ->setFormatCode(PHPExcel_Style_NumberFormat::FORMAT_PERCENTAGE_00);
-}
-function phpExcelFormatHours($range,$objPHPExcel){
-    $objPHPExcel->getActiveSheet()
-        ->getStyle($range)
-        ->getNumberFormat()
-        ->setFormatCode('#,##0');
-}
-function phpExcelFormatDecimal($range,$objPHPExcel){
-    $objPHPExcel->getActiveSheet()
-        ->getStyle($range)
-        ->getNumberFormat()
-        ->setFormatCode('#,##0');
-}
+
 function formatExcelSheetChangeSummary($path2xlsfile, $sheet_title)
 {
     $objPHPExcel = PHPExcel_IOFactory::load($path2xlsfile);
@@ -340,7 +317,6 @@ function getTotalRow($prev_rpt_period,$rpt_period, $table_name, $ship_code, $sum
     $data["cur"] = $cur;
     return $data;
 }
-
 
 function getSubTotalRow($prev_rpt_period,$rpt_period, $table_name, $ship_code, $sum_field)
 {

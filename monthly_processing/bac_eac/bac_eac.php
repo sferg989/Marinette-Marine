@@ -1,6 +1,7 @@
 <?php
 include("../../inc/inc.php");
 include("../../inc/inc.bac_eac.php");
+include("../../inc/inc.PHPExcel.phpphp");
 include("change_summary.php");
 include("eac_change_summary.php");
 

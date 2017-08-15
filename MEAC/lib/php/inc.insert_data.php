@@ -7,6 +7,20 @@
  */
 function processDescription($desc){
     $desc = str_replace(",", " and ", trim($desc));
+    $desc = str_replace("\"", " and ", trim($desc));
+    $desc = str_replace('"', "", $desc);
+    $desc = str_replace('
+    ', "", $desc);
+    $desc = str_replace("'", "", $desc);
+    $desc = str_replace(array("\n\r", "\n", "\r"), " ", $desc);
+    $desc = str_replace("", "", $desc);
+    $desc = str_replace("/", "", $desc);
+    $desc = str_replace("#", "Num ", $desc);
+    return $desc;
+}
+function processDescriptionAgain($desc){
+    $desc = str_replace("\"", " and ", trim($desc));
+    $desc = str_replace(",", " and ", trim($desc));
     $desc = str_replace("'", "", $desc);
     $desc = str_replace("/", "", $desc);
     return $desc;
@@ -60,7 +74,8 @@ function insertOpenPO($path2file){
             payment_terms,
             ledger_acct,
             clin,
-            effort
+            effort,
+            ecp_rea 
     ) VALUES 
        ";
     $sql = $insert_sql;
@@ -90,6 +105,7 @@ function insertOpenPO($path2file){
         $ledger_acct   = intval($data[17]);
         $clin          = addslashes(trim($data[18]));
         $effort        = addslashes(trim($data[19]));
+        $ecp_rea       = trim($data[20]);
 
         $sql.=
             "(
@@ -112,7 +128,8 @@ function insertOpenPO($path2file){
                 $payment_terms,
                 $ledger_acct,
                 '$clin',
-                '$effort'
+                '$effort',
+                '$ecp_rea'
                 ),";
         if($i == 500)
         {
@@ -234,7 +251,8 @@ function insertGLdetail($path2file){
     print $path2file;
     $path_exploded_array = explode("\\", $path2file);
     $file_name           = $path_exploded_array[1];
-    $proj = substr($file_name, 0,4);
+    //$proj = substr($file_name, 0,4);
+    $proj = substr($file_name, 5,4);
 
 
     $handle = fopen($path2file,"r");
@@ -257,7 +275,8 @@ INSERT  INTO mars.gl_detail (
         integr_amt,
         clin,
         effort,
-        proj) 
+        proj, 
+        ecp_rea) 
         values
        ";
     $sql = $insert_sql;
@@ -282,6 +301,7 @@ INSERT  INTO mars.gl_detail (
         $integr_amt  = formatNumber4decNoComma($data[12]);
         $clin        = addslashes(trim($data[13]));
         $effort      = addslashes(trim($data[14]));
+        $ecp_rea      = addslashes(trim($data[15]));
         $proj        = intval($proj);
 
         $sql.=
@@ -301,9 +321,10 @@ INSERT  INTO mars.gl_detail (
                 $integr_amt,
                 '$clin',
                 '$effort',
-                $proj
+                $proj,
+                '$ecp_rea'
                 ),";
-        if($i == 500)
+        if($i == 1000)
         {
             $sql = substr($sql, 0, -1);
             $junk = dbCall($sql, "mars");
@@ -314,7 +335,7 @@ INSERT  INTO mars.gl_detail (
         $i++;
     }
     //only insert remaining lines if the total number is not divisble by 1000.
-    if($i !=500)
+    if($i !=1000)
     {
         $sql = substr($sql, 0, -1);
         $junk = dbCall($sql, "mars");
@@ -391,7 +412,7 @@ function insertEBOM($path2file){
         if($i == 500)
         {
             $sql = substr($sql, 0, -1);
-            $junk = dbCall($sql, "mars");
+            $junk = dbCall($sql, "meac");
             print $sql;
             $i=0;
             //clear out the sql stmt.
@@ -403,7 +424,7 @@ function insertEBOM($path2file){
     if($i !=500)
     {
         $sql = substr($sql, 0, -1);
-        $junk = dbCall($sql, "mars");
+        $junk = dbCall($sql, "meac");
     }
 }
 function insertCBM($path2file){
@@ -446,6 +467,56 @@ function insertCBM($path2file){
     }
     //only insert remaining lines if the total number is not divisble by 1000.
     if($i !=500)
+    {
+        $sql = substr($sql, 0, -1);
+        $junk = dbCall($sql, "meac");
+    }
+}
+function insertETCLOADFILE($path2file){
+    print $path2file;
+
+    $handle = fopen($path2file,"r");
+    //remove headers from the file.
+    //loop through the csv file and insert into database
+    $insert_sql = "insert into meac.swbs_gl_summary_stage (ship_code, wp, swbs, swbs_group, item, etc, category) values ";
+
+    $sql = $insert_sql;
+    /*create counter so insert 1000 rows at a time.*/
+    $i=0;
+    /*skip header*/
+    fgetcsv($handle);
+    while (($data = fgetcsv($handle)) !== FALSE)
+    {
+        $ship_code  = intval($data[0]);
+        $item       = trim($data[1]);
+        $swbs       = substr(trim($data[3]), 5, 3);
+        $swbs       = checkSWBSLength($swbs);
+        $swbs_group = substr($swbs, 0, 1);
+        $swbs_group .="00";
+        $etc       = formatNumber4decNoComma($data[2]);
+        $wp        = trim($data[3]);
+
+        $sql.= "(                                                 
+        $ship_code,
+        '$wp',
+        '$swbs',
+        '$swbs_group',
+        '$item',
+        $etc,
+        'Load File Entry'),";
+        if($i == 1000)
+        {
+            $sql  = substr($sql, 0, -1);
+            $junk = dbCall($sql, "meac");
+            print $sql;
+            $i=0;
+            //clear out the sql stmt.
+            $sql = $insert_sql;
+        }
+        $i++;
+    }
+    //only insert remaining lines if the total number is not divisble by 1000.
+    if($i !=1000)
     {
         $sql = substr($sql, 0, -1);
         $junk = dbCall($sql, "meac");
@@ -507,7 +578,9 @@ function insertOpenBuy($path2file){
         $last_mod           = fixExcelDateMySQL($data[18]);
         $last_price         = formatNumber4decNoComma($data[19]);
         $expected_amt       = formatNumber4decNoComma($data[20]);
-
+        if($ship_code=="Total"){
+            continue;
+        }
         $sql.= " (
     '$program',
     $ship_code,
@@ -574,7 +647,8 @@ function insertGLdetailWITHWP(){
         date,
         integr_amt,
         clin,
-        effort
+        effort,
+        ecp_rea
         )(
     SELECT
         gl.proj,
@@ -587,21 +661,24 @@ function insertGLdetailWITHWP(){
         line,
         description,
         `order`,
-        pos,
+        gl.pos,
         cust_supp,
-        qty,
+        gl.qty,
         unit,
         amt,
         date,
         integr_amt,
         clin,
-        effort
+        effort,
+        ecp_rea
     FROM mars.gl_detail gl LEFT JOIN meac.cbm cbm
       ON cbm.ship_code = gl.proj
       AND cbm.material = gl.item
-      where cbm.wp is not null and gl.description not like '%total%'
+      where cbm.wp is not null 
       
     )";
+    //$sql = "and gl.description not like '%total%'";
+
     $junk = dbCall($insert_sql,"meac");
     $insert_sql = "
     INSERT  INTO meac.wp_gl_detail (
@@ -623,7 +700,8 @@ function insertGLdetailWITHWP(){
         date,
         integr_amt,
         clin,
-        effort
+        effort,
+        ecp_rea
         )(
     SELECT
         gl.proj,
@@ -636,15 +714,16 @@ function insertGLdetailWITHWP(){
         line,
         description,
         `order`,
-        pos,
+        gl.pos,
         cust_supp,
-        qty,
+        gl.qty,
         unit,
         amt,
         date,
         integr_amt,
         clin,
-        effort
+        effort,
+        ecp_rea
     FROM mars.gl_detail gl LEFT JOIN meac.cbm cbm
       ON cbm.ship_code = gl.proj
       AND cbm.material = gl.item
@@ -676,7 +755,8 @@ function insertOpenPOWithWP(){
             payment_terms,
             ledger_acct,
             clin,
-            effort) VALUES ";
+            effort,
+            ecp_rea) VALUES ";
     $sql = "
     select
             po.proj,
@@ -700,7 +780,8 @@ function insertOpenPOWithWP(){
             payment_terms,
             ledger_acct,
             clin,
-            effort
+            effort,
+            ecp_rea
         from mars.open_po po left join meac.cbm cbm on
         po.proj = cbm.ship_code
         and po.item = cbm.material
@@ -734,6 +815,7 @@ function insertOpenPOWithWP(){
         $ledger_acct   = intval($rs->fields["ledger_acct"]);
         $clin          = addslashes(trim($rs->fields["clin"]));
         $effort        = addslashes(trim($rs->fields["effort"]));
+        $ecp_rea        = addslashes(trim($rs->fields["ecp_rea"]));
 
         $sql.=
             "(
@@ -758,7 +840,8 @@ function insertOpenPOWithWP(){
                 $payment_terms,
                 $ledger_acct,
                 '$clin',
-                '$effort'
+                '$effort',
+                '$ecp_rea'
                 ),";
         if($i == 500)
         {
@@ -808,7 +891,8 @@ function insertOpenPOWithWP(){
             payment_terms,
             ledger_acct,
             clin,
-            effort) VALUES ";
+            effort,
+            ecp_rea) VALUES ";
     $sql = "
   select
             po.proj,
@@ -831,7 +915,8 @@ function insertOpenPOWithWP(){
             payment_terms,
             ledger_acct,
             clin,
-            effort
+            effort,
+            ecp_rea
 from mars.open_po po left join meac.cbm cbm on
   po.proj = cbm.ship_code
   and po.item = cbm.material
@@ -866,6 +951,7 @@ from mars.open_po po left join meac.cbm cbm on
         $ledger_acct   = intval($rs->fields["ledger_acct"]);
         $clin          = addslashes(trim($rs->fields["clin"]));
         $effort        = addslashes(trim($rs->fields["effort"]));
+        $ecp_rea        = addslashes(trim($rs->fields["ecp_rea"]));
 
         $sql.=
             "(
@@ -890,7 +976,8 @@ from mars.open_po po left join meac.cbm cbm on
                 $payment_terms,
                 $ledger_acct,
                 '$clin',
-                '$effort'
+                '$effort',
+                '$ecp_rea'
                 ),";
         if($i == 500)
         {
@@ -914,9 +1001,9 @@ from mars.open_po po left join meac.cbm cbm on
     /************/
     /************/
 }
-function insertOpenBuyWithWP(){
-    $sql = "
-    insert into meac.wp_open_buy(
+
+function returnOpenBuyInsert(){
+    $insert_sql = "insert into meac.wp_open_buy(
             program,
             ship_code,
             wp,
@@ -940,7 +1027,47 @@ function insertOpenBuyWithWP(){
             last_mod,
             last_price,
             expected_amt
-        )(
+        ) VALUES ";
+    return $insert_sql;
+}
+function insertOpenBuyValues($program,$ship_code,$wp,$cbm_material,$buyer,$swbs,
+                             $item,$spn,$description,$origrinal_smos_qty,$remain_smos_qty,
+                             $yard_due_date,$lead_time,$plan_order_date,$uom,$item_on_hand,
+                             $item_on_order,$item_shortage,$on_hold,$entered_on,$last_mod,
+                             $last_price,$expected_amt){
+    $sql =
+        "(
+                '$program',
+                $ship_code,
+                '$wp',
+                '$cbm_material',
+                '$buyer',
+                '$swbs',
+                '$item',
+                '$spn',
+                '$description',
+                $origrinal_smos_qty,
+                $remain_smos_qty,
+                '$yard_due_date',
+                $lead_time,
+                '$plan_order_date',
+                '$uom',
+                $item_on_hand,
+                $item_on_order,
+                $item_shortage,
+                '$on_hold',
+                '$entered_on',
+                '$last_mod',
+                $last_price,
+                $expected_amt
+            ),";
+    return $sql;
+}
+function insertOpenBuyWithWP(){
+    //$ship_code_wc = "and ob.ship_code = 485";
+    $ob = "order by ob.ship_code";
+    $gb = "group by ob.ship_code,cbm.wp, ob.item ";
+    $sql = "
         select
             ob.program,
             ob.ship_code,
@@ -967,37 +1094,72 @@ function insertOpenBuyWithWP(){
             expected_amt
         from mars.open_buy ob left join meac.cbm cbm
         on ob.ship_code = cbm.ship_code
-        and ob.item = cbm.material
-        where wp is not null
-        )
-";
-    $junk = dbCall($sql,"meac");
+        and ob.item = cbm.material 
+        where wp is not null  $ship_code_wc
+        $gb $ob
+    ";
+    $rs= dbCall($sql, "meac");
+    print $sql;
+    $sql = returnOpenBuyInsert();
+    $i=0;
+    while (!$rs->EOF)
+    {
+        $program            = $rs->fields["program"];
+        $ship_code          = $rs->fields["ship_code"];
+        $wp                 = $rs->fields["wp"];
+        $cbm_material       = trim($rs->fields["cbm_material"]);
+        $buyer              = trim($rs->fields["buyer"]);
+        $swbs               = $rs->fields["swbs"];
+        $item               = trim($rs->fields["item"]);
+        $spn                = trim($rs->fields["spn"]);
+        $description        = processDescription($rs->fields["description"]);
+        $origrinal_smos_qty = formatNumber4decNoComma($rs->fields["origrinal_smos_qty"]);
+        $remain_smos_qty    = formatNumber4decNoComma($rs->fields["remain_smos_qty"]);
+        $yard_due_date      = $rs->fields["yard_due_date"];
+        $lead_time          = formatNumber4decNoComma($rs->fields["lead_time"]);
+        $plan_order_date    = $rs->fields["plan_order_date"];
+        $uom                = $rs->fields["uom"];
+        $item_on_hand       = formatNumber4decNoComma($rs->fields["item_on_hand"]);
+        $item_on_order      = formatNumber4decNoComma($rs->fields["item_on_order"]);
+        $item_shortage      = formatNumber4decNoComma($rs->fields["item_shortage"]);
+        $on_hold            = trim($rs->fields["on_hold"]);
+        $entered_on         = $rs->fields["entered_on"];
+        $last_mod           = $rs->fields["last_mod"];
+        $last_price         = formatNumber4decNoComma($rs->fields["last_price"]);
+        $expected_amt       = formatNumber4decNoComma($rs->fields["expected_amt"]);
+
+        $sql.= insertOpenBuyValues($program,$ship_code,$wp,$cbm_material,$buyer,$swbs,
+            $item,$spn,$description,$origrinal_smos_qty,$remain_smos_qty,
+            $yard_due_date,$lead_time,$plan_order_date,$uom,$item_on_hand,
+            $item_on_order,$item_shortage,$on_hold,$entered_on,$last_mod,
+            $last_price,$expected_amt);
+        if($i == 1000)
+        {
+            $sql = substr($sql, 0, -1);
+            $junk = dbCall($sql, "meac");
+            $i=0;
+            //clear out the sql stmt.
+            $sql = returnOpenBuyInsert();
+        }
+        $i++;
+        $rs->MoveNext();
+    }
+    //only insert remaining lines if the total number is not divisble by 1000.
+    if($i !=1000)
+    {
+
+        $sql = substr($sql, 0, -1);
+        $junk = dbCall($sql, "meac");
+    }
+    //print $sql;
+    //die("made it");
+    /*
+     * DEFAULT TO COMMODITY
+     * DEFAULT TO COMMODITY
+     * DEFAULT TO COMMODITY
+     * DEFAULT TO COMMODITY
+     * */
     $sql = "
-    insert into meac.wp_open_buy(
-            program,
-            ship_code,
-            wp,
-            cbm_material,
-            buyer,
-            swbs,
-            item,
-            spn,
-            description,
-            origrinal_smos_qty,
-            remain_smos_qty,
-            yard_due_date,
-            lead_time,
-            plan_order_date,
-            uom,
-            item_on_hand,
-            item_on_order,
-            item_shortage,
-            on_hold,
-            entered_on,
-            last_mod,
-            last_price,
-            expected_amt
-        )(
         select
             ob.program,
             ob.ship_code,
@@ -1025,10 +1187,60 @@ function insertOpenBuyWithWP(){
         from mars.open_buy ob left join meac.cbm cbm
         on ob.ship_code = cbm.ship_code
         and ob.item = cbm.material
-        where wp is null
-        )
-";
-    $junk = dbCall($sql,"meac");
+        where wp is null  $ship_code_wc
+        $gb $ob
+    ";
+    $rs= dbCall($sql, "meac");
+    $sql = returnOpenBuyInsert();
+    $i=0;
+    while (!$rs->EOF)
+    {
+        $program            = $rs->fields["program"];
+        $ship_code          = $rs->fields["ship_code"];
+        $wp                 = $rs->fields["wp"];
+        $cbm_material       = $rs->fields["cbm_material"];
+        $buyer              = trim($rs->fields["buyer"]);
+        $swbs               = $rs->fields["swbs"];
+        $item               = $rs->fields["item"];
+        $spn                = $rs->fields["spn"];
+        $description        = processDescription($rs->fields["description"]);
+        $origrinal_smos_qty = formatNumber4decNoComma($rs->fields["origrinal_smos_qty"]);
+        $remain_smos_qty    = formatNumber4decNoComma($rs->fields["remain_smos_qty"]);
+        $yard_due_date      = $rs->fields["yard_due_date"];
+        $lead_time          = formatNumber4decNoComma($rs->fields["lead_time"]);
+        $plan_order_date    = $rs->fields["plan_order_date"];
+        $uom                = $rs->fields["uom"];
+        $item_on_hand       = formatNumber4decNoComma($rs->fields["item_on_hand"]);
+        $item_on_order      = formatNumber4decNoComma($rs->fields["item_on_order"]);
+        $item_shortage      = formatNumber4decNoComma($rs->fields["item_shortage"]);
+        $on_hold            = trim($rs->fields["on_hold"]);
+        $entered_on         = $rs->fields["entered_on"];
+        $last_mod           = $rs->fields["last_mod"];
+        $last_price         = formatNumber4decNoComma($rs->fields["last_price"]);
+        $expected_amt       = formatNumber4decNoComma($rs->fields["expected_amt"]);
+
+        $sql.= insertOpenBuyValues($program,$ship_code,$wp,$cbm_material,$buyer,$swbs,
+            $item,$spn,$description,$origrinal_smos_qty,$remain_smos_qty,
+            $yard_due_date,$lead_time,$plan_order_date,$uom,$item_on_hand,
+            $item_on_order,$item_shortage,$on_hold,$entered_on,$last_mod,
+            $last_price,$expected_amt);
+        if($i == 1000)
+        {
+            $sql = substr($sql, 0, -1);
+            $junk = dbCall($sql, "meac");
+            $i=0;
+            //clear out the sql stmt.
+            $sql = returnOpenBuyInsert();
+        }
+        $i++;
+        $rs->MoveNext();
+    }
+    //only insert remaining lines if the total number is not divisble by 1000.
+    if($i !=1000)
+    {
+        $sql = substr($sql, 0, -1);
+        $junk = dbCall($sql, "meac");
+    }
 }
 function insertEBOMWP(){
     $insert_sql = "
@@ -1583,11 +1795,12 @@ function insertMEACDataNoCommodity($table_name){
         $junk = dbCall($sql, "meac");
     }
 }
-function returnInsertSQLSWBSSum(){
+function returnInsertSQLSWBSSum($table_name){
     $insert_sql = "
-    insert into meac.swbs_gl_summary (
+    insert into meac.$table_name(
     program,
     ship_code,
+    category,
     swbs_group,
     swbs,
     wp,
@@ -1621,12 +1834,22 @@ function returnInsertSQLSWBSSum(){
     var_target_cost,
     gl_qty,
     var_ebom,
-    c_unit_price) VALUES 
+    c_unit_price,
+    document,
+    clin,
+    effort,
+    ecp_rea,
+    po_data,
+    tc,
+    item_group_description,
+    change_date,
+    change_reason
+    ) VALUES 
 ";
     return $insert_sql;
 }
 
-function createInsertValuesString($program, $ship_code, $swbs_group, $swbs,
+function createInsertValuesString($program, $ship_code, $category,$swbs_group, $swbs,
                                   $wp, $spn, $item, $item_group, $description,
                                   $unit, $noun1, $transfers, $c_amt, $last_unit_price,
                                   $gl_int_amt, $ebom, $ebom_on_hand, $ebom_issued,
@@ -1634,11 +1857,14 @@ function createInsertValuesString($program, $ship_code, $swbs_group, $swbs,
                                   $open_buy_item_shortage, $etc, $eac, $uncommitted,
                                   $target_qty, $target_unit_price, $target_ext_cost,
                                   $vendor_name, $vendor_id, $buyer, $c_qty,
-                                  $var_target_qty, $var_target_cost, $gl_qty, $var_ebom, $c_unit_price){
+                                  $var_target_qty, $var_target_cost, $gl_qty, $var_ebom,
+                                  $c_unit_price, $document, $ecp_rea,$clin, $effort, $po_data, $tc,
+                                  $item_group_description, $change_date,$change_reason){
     $sql =
         "(
             '$program',
             $ship_code,
+            '$category',
             $swbs_group,
             $swbs,
             '$wp',
@@ -1665,64 +1891,98 @@ function createInsertValuesString($program, $ship_code, $swbs_group, $swbs,
             $target_unit_price,
             $target_ext_cost,
             '$vendor_name',
-            '$vendor_id',
+            $vendor_id,
             '$buyer',
             $c_qty,
             $var_target_qty,
             $var_target_cost,
             $gl_qty,
             $var_ebom,
-            $c_unit_price),";
+            $c_unit_price,
+            '$document',
+            '$clin',
+            '$effort',
+            '$ecp_rea',
+            '$po_data',
+            '$tc',
+            '$item_group_description',
+            '$change_date',
+            '$change_reason'
+            ),";
     return $sql;
+}
+function calcVarEBOM($ebom, $c_qty, $category, $description){
+
+    $var_ebom  = formatNumber4decNoComma($ebom - $c_qty);
+
+    if($category=="Vendor Service"){
+        $var_ebom = 0;
+    }
+    if(stripos($description, "PROGRESS PAY")!==false){
+        $var_ebom = 0;
+    }
+    return $var_ebom;
 }
 function insertSWBSSummaryOPENPO($ship_code)
 {
-    $insert_sql = returnInsertSQLSWBSSum();
+    $ob = "open_po.ship_code, open_po.wp, open_po.item";
+    $gb = "open_po.ship_code, open_po.wp, open_po.item";
+    $insert_sql = returnInsertSQLSWBSSum("swbs_gl_summary_stage");
     $sql = "
-        select
-            open_po.ship_code,
-            open_po.wp,
-            case when CHAR_LENGTH(open_po.swbs) = 3 then concat(left(open_po.swbs,1),'00') 
-              ELSE '000' end as swbs_group,
-            open_po.swbs,
-            e.spn,f
-            open_po.item,
-            e.item_group,
-            e.noun1,
-            open_po.description,
-            e.uom as unit,
-            e.ebom,
-            e.issued ebom_issued,
-            e.on_hand ebom_onhand,
-            tc.ext_cost target_ext_cost,
-            tc.qty target_qty,
-            tc.unit_cost target_unit_cost,
-            gl.cust_supp as vendor_name,
-            open_po.vendor as vendor_id,
-            (select item_shortage from wp_open_buy ob where ob.ship_code=open_po.ship_code and ob.item=open_po.item  limit 1) open_buy_item_shortage,
-            (select sum(pending_amnt) from wp_open_po opo where opo.ship_code=open_po.ship_code and opo.item=open_po.item) open_po_pending_amt,
-            (select sum(integr_amt) from wp_gl_detail gl2 where gl2.ship_code=open_po.ship_code and gl2.item=open_po.item and gl2.document like '%INV%') transfers,
-            (select sum(commit_amnt) from wp_committed_po c where c.ship_code=open_po.ship_code and c.item=open_po.item group by c.ship_code, c.item) commit_amt,
-            (select avg(unit_price) from wp_committed_po c where c.ship_code=open_po.ship_code and c.item=open_po.item group by c.ship_code, c.item) c_unit_price,
-            (select unit_price from wp_committed_po c where c.item=open_po.item and unit_price > 0 order by c.ship_code desc limit 1) last_unit_price,
-            (select concat(unit_price,' - ',c.ship_code) from wp_committed_po c where c.item=open_po.item and unit_price > 0 order by c.ship_code desc limit 1) last_unit_price_ship,
-            (select sum(committed_qty) from wp_committed_po c where c.ship_code=gl.ship_code and c.item=gl.item group by c.ship_code, c.item) commit_qty,
-            0 as gl_qty,
-            0 as int_amt,
-            case when open_buy.buyer is null
-              then left(gl.`order`,2)
-            else NULL end as buyer
-        from wp_open_po open_po
-        left join wp_ebom e
-          on e.ship_code = open_po.ship_code and e.material =open_po.item
-        left join wp_gl_detail gl
-          on open_po.ship_code = gl.ship_code and open_po.item= gl.item
-        left join meac.target_cost tc 
-          on tc.item=open_po.item
-        left join wp_open_buy open_buy
-            on open_po.ship_code = open_buy.ship_code and open_po.item= open_buy.item
-        where gl.ship_code is null
-          and open_po.ship_code = $ship_code
+                select
+                    open_po.ship_code,
+                    open_po.wp,
+                    cat.category,
+                    case when CHAR_LENGTH(open_po.swbs) = 3 then concat(left(open_po.swbs,1),'00') 
+                      ELSE '000' end as swbs_group,
+                    open_po.swbs,
+                    e.spn,
+                    open_po.item,
+                    e.item_group,
+                    (select ig.description from meac.item_group ig where ig.item_group= e.item_group limit 1) item_group_description,
+                    e.noun1,
+                    open_po.description,
+                    e.uom as unit,
+                    e.ebom,
+                    e.issued ebom_issued,
+                    e.on_hand ebom_onhand,
+                    concat(open_po.po, ' - ', open_po.line) po_data,
+                    (SELECT GROUP_CONCAT(DISTINCT CONCAT(`origins`, ' - ')) FROM meac.k2_efdb k2 where k2.item= open_po.item and k2.ship_code= open_po.ship_code ) tc,
+                    (select ext_cost from target_cost tc where tc.item=open_po.item  limit 1) target_ext_cost,
+                    (select ci.date from meac.change_item ci where ci.ship_code=open_po.ship_code and ci.item=open_po.item  order by ci.date DESC limit 1) change_date,
+                    (select ci.description from meac.change_item ci where ci.ship_code=open_po.ship_code and ci.item=open_po.item  order by ci.date DESC limit 1) change_reason,
+                    (select qty from target_cost tc where tc.item=open_po.item  limit 1) target_qty,
+                    (select unit_cost  from target_cost tc where tc.item=open_po.item  limit 1) target_unit_cost,
+                    (SELECT vendor FROM meac.po_data po_data where open_po.vendor=po_data.vendor_id  limit 1) vendor_name,
+                    gl.document as document,
+                    open_po.vendor as vendor_id,
+                    (select item_shortage from wp_open_buy ob where ob.ship_code=open_po.ship_code and ob.item=open_po.item  limit 1) open_buy_item_shortage,
+                    (select sum(pending_amnt) from wp_open_po opo where opo.ship_code=open_po.ship_code and opo.item=open_po.item) open_po_pending_amt,
+                    (select sum(integr_amt) from wp_gl_detail gl2 where gl2.ship_code=open_po.ship_code and gl2.item=open_po.item and gl2.document like '%INV%') transfers,
+                    (select sum(commit_amnt) from wp_committed_po c where c.ship_code=open_po.ship_code and c.item=open_po.item group by c.ship_code, c.item) commit_amt,
+                    (select avg(unit_price) from wp_committed_po c where c.ship_code=open_po.ship_code and c.item=open_po.item group by c.ship_code, c.item) c_unit_price,
+                    (select unit_price from wp_committed_po c where c.item=open_po.item and unit_price > 0 order by c.ship_code desc limit 1) last_unit_price,
+                    (select c.ship_code from wp_committed_po c where c.item=open_po.item and unit_price > 0 order by c.ship_code desc limit 1) last_unit_price_ship,
+                    (select sum(committed_qty) from wp_committed_po c where c.ship_code=gl.ship_code and c.item=gl.item group by c.ship_code, c.item) commit_qty,
+                    0 as gl_qty,
+                    0 as int_amt,
+                    open_po.ecp_rea,
+                    open_po.clin,
+                    open_po.effort,
+                    (SELECT GROUP_CONCAT(DISTINCT CONCAT(`buyer`)) FROM meac.po_data po_data where po_data.po= open_po.po) buyer
+                from wp_open_po open_po
+                left join wp_ebom e
+                  on e.ship_code = open_po.ship_code and e.material =open_po.item
+                left join wp_gl_detail gl
+                  on open_po.ship_code = gl.ship_code and open_po.item= gl.item
+                left join wp_open_buy open_buy
+                    on open_po.ship_code = open_buy.ship_code and open_po.item= open_buy.item
+                left join meac.category cat
+                    on open_po.item= cat.item
+                where gl.ship_code is null
+                  and open_po.ship_code = $ship_code
+                group by $gb
+                order by $ob
 ";
     $i=0;
 
@@ -1731,6 +1991,7 @@ function insertSWBSSummaryOPENPO($ship_code)
     while (!$rs->EOF) {
         $program                = "LCS";
         $ship_code              = $rs->fields["ship_code"];
+        $category               = $rs->fields["category"];
         $wp                     = $rs->fields["wp"];
         $swbs_group             = $rs->fields["swbs_group"];
         $swbs                   = $rs->fields["swbs"];
@@ -1738,8 +1999,15 @@ function insertSWBSSummaryOPENPO($ship_code)
         $item                   = $rs->fields["item"];
         $item_group             = $rs->fields["item_group"];
         $noun1                  = $rs->fields["noun1"];
+        $ecp_rea                = $rs->fields["ecp_rea"];
+        $clin                   = $rs->fields["clin"];
+        $effort                 = $rs->fields["effort"];
+        $tc                     = $rs->fields["tc"];
+        $item_group_description = $rs->fields["item_group_description"];
         $description            = processDescription($rs->fields["description"]);
-        $unit                   = $rs->fields["uom"];
+        $unit                   = $rs->fields["unit"];
+        $change_date            = fixExcelDateMySQL($rs->fields["change_date"]);
+        $change_reason          = processDescription($rs->fields["change_reason"]);
         $ebom                   = formatNumber4decNoComma($rs->fields["ebom"]);
         $ebom_issued            = formatNumber4decNoComma($rs->fields["ebom_issued"]);
         $ebom_on_hand           = formatNumber4decNoComma($rs->fields["ebom_onhand"]);
@@ -1757,23 +2025,28 @@ function insertSWBSSummaryOPENPO($ship_code)
         $eac                    = formatNumber4decNoComma($gl_int_amt + $etc + $open_po_pending_amt);
         $uncommitted            = formatNumber4decNoComma($eac - $gl_int_amt - $open_po_pending_amt);
         $c_unit_price           = formatNumber4decNoComma($rs->fields["c_unit_price"]);
-        $vendor_name            = $rs->fields["vendor_name"];
-        $vendor_id              = $rs->fields["vendor_id"];
-        $buyer                  = $rs->fields["buyer"];
+        $vendor_name            = processDescription($rs->fields["vendor_name"]);
+        $vendor_id              = intval($rs->fields["vendor_id"]);
+        $buyer                  = trim($rs->fields["buyer"]);
+        $document               = $rs->fields["document"];
+        $po_data                = $rs->fields["po_data"];
+
         $c_qty                  = formatNumber4decNoComma($rs->fields["commit_qty"]);
+
         $gl_qty                 = formatNumber4decNoComma($rs->fields["gl_qty"]);
         $var_target_qty         = formatNumber4decNoComma($ebom - $target_qty);
         $var_target_cost        = formatNumber4decNoComma($c_unit_price - $target_unit_price);
-        $var_ebom               = formatNumber4decNoComma($ebom - $ebom_issued);
-
-        $sql.=createInsertValuesString($program, $ship_code, $swbs_group, $swbs,
+        $var_ebom               = calcVarEBOM($ebom, $c_qty, $category, $description);
+        $sql.=createInsertValuesString($program, $ship_code,$category, $swbs_group, $swbs,
             $wp, $spn, $item, $item_group, $description,
             $unit, $noun1, $transfers, $c_amt, $last_unit_price,
             $gl_int_amt, $ebom, $ebom_on_hand, $ebom_issued,
             $last_unit_price_ship, $open_po_pending_amt,
             $open_buy_item_shortage, $etc, $eac, $uncommitted,
             $target_qty, $target_unit_price, $target_ext_cost,$vendor_name, $vendor_id, $buyer,
-            $c_qty, $var_target_qty, $var_target_cost, $gl_qty, $var_ebom,$c_unit_price);
+            $c_qty, $var_target_qty, $var_target_cost, $gl_qty, $var_ebom,
+            $c_unit_price, $document, $ecp_rea,$clin,
+            $effort, $po_data, $tc,$item_group_description, $change_date,$change_reason );
         if($i == 1000)
         {
             $sql = substr($sql, 0, -1);
@@ -1795,62 +2068,72 @@ function insertSWBSSummaryOPENPO($ship_code)
 
 }
 function insertSWBSGLSUM($ship_code){
-    $insert_sql = returnInsertSQLSWBSSum();
-
+    $insert_sql = returnInsertSQLSWBSSum("swbs_gl_summary_stage");
+    $ob = "gl.ship_code, gl.wp, gl.item";
+    $gb = "gl.ship_code, gl.wp, gl.item";
     $sql = "
-   select
+    select
             gl.ship_code,
             gl.wp,
+            cat.category,
             case when CHAR_LENGTH(gl.swbs) = 3 then concat(left(gl.swbs,1),'00') ELSE
               '000' end as swbs_group,
             gl.swbs,
             e.spn,
             gl.item,
             e.item_group,
+            (select ig.description from meac.item_group ig where ig.item_group= e.item_group limit 1) item_group_description,
             e.noun1,
             gl.description,
             gl.unit,
             e.ebom,
             e.issued ebom_issued,
             e.on_hand ebom_onhand,
-            tc.ext_cost target_ext_cost,
-            tc.qty target_qty,
-            tc.unit_cost target_unit_cost,
+            (select ext_cost from meac.target_cost tc where tc.item=gl.item  limit 1) target_ext_cost,
+            (select qty from meac.target_cost tc where tc.item=gl.item  limit 1) target_qty,
+            (select unit_cost  from meac.target_cost tc where tc.item=gl.item  limit 1) target_unit_cost,
             gl.cust_supp as vendor_name,
-            wpc.vendor as vendor_id,
-            (select item_shortage from wp_open_buy ob where ob.ship_code=gl.ship_code and ob.item=gl.item  limit 1) open_buy_item_shortage,
-            (select sum(pending_amnt) from wp_open_po opo where opo.ship_code=gl.ship_code and opo.item=gl.item) open_po_pending_amt,
-            (select sum(integr_amt) from wp_gl_detail gl2 where gl2.ship_code=gl.ship_code and gl2.item=gl.item and gl2.document like '%INV%') transfers,
-            (select sum(commit_amnt) from wp_committed_po c where c.ship_code=gl.ship_code and c.item=gl.item group by c.ship_code, c.item) commit_amt,
-            (select avg(unit_price) from wp_committed_po c where c.ship_code=gl.ship_code and c.item=gl.item group by c.ship_code, c.item) c_unit_price,
-            (select unit_price from wp_committed_po c where c.item=gl.item and unit_price > 0 order by c.ship_code desc limit 1) last_unit_price,
-            (select concat(unit_price,' - ',c.ship_code) from wp_committed_po c where c.item=gl.item and unit_price > 0 order by c.ship_code desc limit 1) last_unit_price_ship,
-            (select sum(committed_qty) from wp_committed_po c where c.ship_code=gl.ship_code and c.item=gl.item group by c.ship_code, c.item) commit_qty,
-            (select sum(qty) from wp_gl_detail gl2 where gl2.ship_code=gl.ship_code and gl2.item=gl.item and gl2.integr_amt > 0) gl_qty,
-            (select sum(qty) from wp_gl_detail gl2 where gl2.ship_code=gl.ship_code and gl2.item=gl.item and gl2.document like '%INV%' and gl2.integr_amt < 0) gl_qty_transfers_off,
+            gl.document as document,
+            (SELECT GROUP_CONCAT(DISTINCT CONCAT(`order`, '-', pos)) FROM meac.wp_gl_detail gl2 where gl2.item= gl.item and gl2.ship_code= gl.ship_code ) po_data,
+            (SELECT GROUP_CONCAT(DISTINCT CONCAT(`origins`, ' - ')) FROM meac.k2_efdb k2 where k2.item= gl.item and k2.ship_code= gl.ship_code ) tc,
+            (select ci.date from meac.change_item ci where ci.ship_code=gl.ship_code and ci.item=gl.item  order by ci.date DESC limit 1) change_date,
+            (select ci.description from meac.change_item ci where ci.ship_code=gl.ship_code and ci.item=gl.item  order by ci.date DESC limit 1) change_reason,
+            (select vendor from meac.wp_committed_po wpc where wpc.ship_code=gl.ship_code and wpc.item = gl.item limit 1) vendor_id,
+            (select item_shortage from meac.wp_open_buy ob where ob.ship_code=gl.ship_code and ob.item=gl.item  limit 1) open_buy_item_shortage,
+            (select sum(pending_amnt) from meac.wp_open_po opo where opo.ship_code=gl.ship_code and opo.item=gl.item) open_po_pending_amt,
+            (select sum(integr_amt) from meac.wp_gl_detail gl2 where gl2.ship_code=gl.ship_code and gl2.item=gl.item and gl2.document like '%INV%') transfers,
+            (select sum(commit_amnt) from meac.wp_committed_po c where c.ship_code=gl.ship_code and c.item=gl.item group by c.ship_code, c.item) commit_amt,
+            (select avg(unit_price) from meac.wp_committed_po c where c.ship_code=gl.ship_code and c.item=gl.item group by c.ship_code, c.item) c_unit_price,
+            (select unit_price from meac.wp_committed_po c where c.item=gl.item and unit_price > 0 order by c.ship_code desc limit 1) last_unit_price,
+            (select c.ship_code from meac.wp_committed_po c where c.item=gl.item and unit_price > 0 order by c.ship_code desc limit 1) last_unit_price_ship,
+            (select sum(committed_qty) from meac.wp_committed_po c where c.ship_code=gl.ship_code and c.item=gl.item group by c.ship_code, c.item) commit_qty,
+            (select sum(qty) from meac.wp_gl_detail gl2 where gl2.ship_code=gl.ship_code and gl2.item=gl.item and gl2.document like '%PUR%' and gl2.integr_amt < 0) gl_pur_qty_off,
+            (select sum(qty) from meac.wp_gl_detail gl2 where gl2.ship_code=gl.ship_code and gl2.item=gl.item and gl2.document like '%PUR%' and gl2.integr_amt > 0) gl_pur_qty_on,
+            (select sum(qty) from meac.wp_gl_detail gl2 where gl2.ship_code=gl.ship_code and gl2.item=gl.item and gl2.document like '%INV%' and gl2.integr_amt < 0) gl_qty_transfers_off,
+            (select sum(qty) from meac.wp_gl_detail gl2 where gl2.ship_code=gl.ship_code and gl2.item=gl.item and gl2.document like '%INV%' and gl2.integr_amt > 0) gl_qty_transfers_on,
             sum(gl.integr_amt) int_amt,
-            case when open_buy.buyer is null
-              then left(gl.`order`,2)
-            else left(wpc.po, 2) end as buyer
-        from wp_gl_detail gl
-        left join wp_ebom e
+            (SELECT GROUP_CONCAT(DISTINCT CONCAT(`buyer`)) FROM meac.po_data po_data where po_data.po= gl.`order`) buyer,
+            gl.ecp_rea as ecp_rea,
+            gl.clin as clin,
+            gl.effort as effort
+        from meac.wp_gl_detail gl
+        left join meac.wp_ebom e
                 on e.ship_code = gl.ship_code and e.material= gl.item
-        left join wp_committed_po wpc
-                on wpc.ship_code = gl.ship_code and wpc.item= gl.item
-        left join meac.target_cost tc on
-            tc.item=gl.item
-        left join wp_open_buy open_buy
+        left join meac.wp_open_buy open_buy
             on gl.ship_code = open_buy.ship_code and gl.item= open_buy.item
-         where gl.ship_code = $ship_code
-        group by gl.ship_code, gl.item
-";
+        left join meac.category cat
+            on gl.item= cat.item
+        where gl.ship_code = $ship_code 
+        group by $gb
+        order by $ob 
+      ";
     $i=0;
-    //print $sql;
     $rs= dbCall($sql, "meac");
     $sql = $insert_sql;
     while (!$rs->EOF) {
         $program                 = "LCS";
         $ship_code               = $rs->fields["ship_code"];
+        $category                = $rs->fields["category"];
         $wp                      = $rs->fields["wp"];
         $swbs_group              = $rs->fields["swbs_group"];
         $swbs                    = $rs->fields["swbs"];
@@ -1858,13 +2141,21 @@ function insertSWBSGLSUM($ship_code){
         $item                    = $rs->fields["item"];
         $item_group              = $rs->fields["item_group"];
         $noun1                   = $rs->fields["noun1"];
+        $tc                      = $rs->fields["tc"];
+        $item_group_description  = $rs->fields["item_group_description"];
         $description             = processDescription($rs->fields["description"]);
         $unit                    = $rs->fields["unit"];
+        $change_date            = fixExcelDateMySQL($rs->fields["change_date"]);
+        $change_reason           = processDescription($rs->fields["change_reason"]);
         $ebom                    = formatNumber4decNoComma($rs->fields["ebom"]);
         $ebom_issued             = formatNumber4decNoComma($rs->fields["ebom_issued"]);
         $ebom_on_hand            = formatNumber4decNoComma($rs->fields["ebom_onhand"]);
         $transfers               = formatNumber4decNoComma($rs->fields["transfers"]);
         $last_unit_price_ship    = $rs->fields["last_unit_price_ship"];
+        $ecp_rea                 = $rs->fields["ecp_rea"];
+        $clin                    = $rs->fields["clin"];
+        $effort                  = $rs->fields["effort"];
+        $po_data                 = addslashes($rs->fields["po_data"]);
         $open_buy_item_shortage  = formatNumber4decNoComma($rs->fields["open_buy_item_shortage"]);
         $open_po_pending_amt     = formatNumber4decNoComma($rs->fields["open_po_pending_amt"]);
         $c_amt                   = formatNumber4decNoComma($rs->fields["commit_amt"]);
@@ -1877,45 +2168,55 @@ function insertSWBSGLSUM($ship_code){
         $eac                     = formatNumber4decNoComma($gl_int_amt + $etc + $open_po_pending_amt);
         $uncommitted             = formatNumber4decNoComma($eac - $gl_int_amt - $open_po_pending_amt);
         $c_unit_price            = formatNumber4decNoComma($rs->fields["c_unit_price"]);
-        $vendor_name             = $rs->fields["vendor_name"];
-        $vendor_id               = $rs->fields["vendor_id"];
-        $buyer                   = $rs->fields["buyer"];
+        $vendor_name             = processDescription($rs->fields["vendor_name"]);
+        $vendor_id               = intval($rs->fields["vendor_id"]);
+        $buyer                   = trim($rs->fields["buyer"]);
+        $document                = $rs->fields["document"];
         $c_qty                   = formatNumber4decNoComma($rs->fields["commit_qty"]);
-        $gl_qty_withtransfers_on = formatNumber4decNoComma($rs->fields["gl_qty"]);
-        $gl_qty_transfers_off    = formatNumber4decNoComma($rs->fields["gl_qty_transfers_ff"]);
-        $gl_qty                  = $gl_qty_withtransfers_on - $gl_qty_transfers_off;
-        $var_target_qty          = formatNumber4decNoComma($ebom - $target_qty);
-        $var_target_cost         = formatNumber4decNoComma($c_unit_price - $target_unit_price);
-        $var_ebom                = formatNumber4decNoComma($ebom - $ebom_issued);
 
-        $sql.=createInsertValuesString($program, $ship_code, $swbs_group, $swbs,
-            $wp, $spn, $item, $item_group, $description,
-            $unit, $noun1, $transfers, $c_amt, $last_unit_price,
-            $gl_int_amt, $ebom, $ebom_on_hand, $ebom_issued,
-            $last_unit_price_ship, $open_po_pending_amt,
-            $open_buy_item_shortage, $etc, $eac, $uncommitted,
-            $target_qty, $target_unit_price, $target_ext_cost,$vendor_name,
-            $vendor_id, $buyer,$c_qty, $var_target_qty,
-            $var_target_cost, $gl_qty, $var_ebom, $c_unit_price);
-        if($i == 1000)
+        $gl_pur_qty_off          = formatNumber4decNoComma($rs->fields["gl_pur_qty_off"]);
+        $gl_pur_qty_on           = formatNumber4decNoComma($rs->fields["gl_pur_qty_on"]);
+        $gl_qty_transfers_off    = formatNumber4decNoComma($rs->fields["gl_qty_transfers_off"]);
+        $gl_qty_transfers_on     = formatNumber4decNoComma($rs->fields["gl_qty_transfers_on"]);
+
+        $gl_qty          = $gl_pur_qty_on - $gl_pur_qty_off + $gl_qty_transfers_on - $gl_qty_transfers_off;
+        $c_qty           = $c_qty + $gl_qty_transfers_on - $gl_qty_transfers_off;
+
+        $var_target_qty  = formatNumber4decNoComma($ebom - $target_qty);
+        $var_target_cost = formatNumber4decNoComma($c_unit_price - $target_unit_price);
+        $var_ebom        = calcVarEBOM($ebom, $c_qty, $category, $description);
+
+        $sql.=createInsertValuesString($program, $ship_code,$category,$swbs_group, $swbs,
+        $wp, $spn, $item, $item_group, $description,
+        $unit, $noun1, $transfers, $c_amt, $last_unit_price,
+        $gl_int_amt, $ebom, $ebom_on_hand, $ebom_issued,
+        $last_unit_price_ship, $open_po_pending_amt,
+        $open_buy_item_shortage, $etc, $eac, $uncommitted,
+        $target_qty, $target_unit_price, $target_ext_cost,$vendor_name,
+        $vendor_id, $buyer,$c_qty, $var_target_qty,
+        $var_target_cost, $gl_qty, $var_ebom,
+        $c_unit_price, $document, $ecp_rea,$clin,
+        $effort, $po_data, $tc,$item_group_description, $change_date, $change_reason);
+
+        if($i == 500)
         {
-            $sql = substr($sql, 0, -1);
-            $junk = dbCall($sql, "meac");
-            $i=0;
-            //clear out the sql stmt.
-            $sql = $insert_sql;
+        $sql = substr($sql, 0, -1);
+        $junk = dbCall($sql, "meac");
+        $i=0;
+        //clear out the sql stmt.
+        $sql = $insert_sql;
         }
         $i++;
         $rs->MoveNext();
 
     }
+
     //only insert remaining lines if the total number is not divisble by 1000.
-    if($i !=1000)
+    if($i !=500)
     {
         $sql = substr($sql, 0, -1);
         $junk = dbCall($sql, "meac");
     }
-
 }
 function calcETC($last_unit_price, $bid_price, $open_buy_item_shortage){
     if($last_unit_price==0){
@@ -1928,17 +2229,19 @@ function calcETC($last_unit_price, $bid_price, $open_buy_item_shortage){
 }
 function insertSWBSSummaryOPENBUY($ship_code)
 {
-    $insert_sql = returnInsertSQLSWBSSum();
-
+    $insert_sql = returnInsertSQLSWBSSum("swbs_gl_summary_stage");
+    $ob = "open_buy.ship_code, open_buy.wp, open_buy.item";
     $sql = "
             select open_buy.ship_code,
                 open_buy.wp,
+                cat.category,
                 case when CHAR_LENGTH(open_buy.swbs) = 3 then concat(left(open_buy.swbs,1),'00') ELSE
                   '000' end as swbs_group,
                 open_buy.swbs,
                 e.spn,
                 open_buy.item,
                 e.item_group,
+               (select ig.description from meac.item_group ig where ig.item_group= e.item_group limit 1) item_group_description,
                 e.noun1,
                 open_buy.description,
                 e.uom as unit,
@@ -1946,21 +2249,25 @@ function insertSWBSSummaryOPENBUY($ship_code)
                 e.issued ebom_issued,
                 e.on_hand ebom_onhand,
                 open_buy.item_shortage open_buy_item_shortage,
-                tc.ext_cost target_ext_cost,
-                tc.qty target_qty,
-                tc.unit_cost target_unit_cost,
+                (SELECT GROUP_CONCAT(DISTINCT CONCAT(`origins`, ' - ')) FROM meac.k2_efdb k2 where k2.item= open_buy.item and k2.ship_code= open_buy.ship_code ) tc,
+                (select ext_cost from target_cost tc where tc.item=open_buy.item  limit 1) target_ext_cost,
+                (select qty from target_cost tc where tc.item=open_buy.item  limit 1) target_qty,
+                (select unit_cost  from target_cost tc where tc.item=open_buy.item  limit 1) target_unit_cost,
                 0 as open_po_pending_amt,
                 0 as num_transfers,
                 0 commit_amt,
                 0 c_unit_price,
+                '' as document,
                 '' as vendor_name,
                 '' as vendor_id,
                 (select unit_price from wp_committed_po c where c.item=open_buy.item and unit_price > 0 order by c.ship_code desc limit 1) last_unit_price,
-                (select concat(unit_price,' - ',c.ship_code) from wp_committed_po c where c.item=open_buy.item and unit_price > 0 order by c.ship_code desc limit 1) last_unit_price_ship,
+                (select ci.date from meac.change_item ci where ci.ship_code=open_buy.ship_code and ci.item=open_buy.item  order by ci.date DESC limit 1) change_date,
+                (select ci.description from meac.change_item ci where ci.ship_code=open_buy.ship_code and ci.item=open_buy.item  order by ci.date DESC limit 1) change_reason,
+                (select c.ship_code from wp_committed_po c where c.item=open_buy.item and unit_price > 0 order by c.ship_code desc limit 1) last_unit_price_ship,
                 0 as  commit_qty,
                 0 as gl_qty,
                 0 as int_amt,
-                open_buy.buyer buyer
+                (select buyer from master_buyer mb where open_buy.buyer = mb.id) buyer
             from wp_open_buy open_buy
             left join wp_ebom e
               on e.ship_code = open_buy.ship_code and e.material =open_buy.item
@@ -1968,13 +2275,14 @@ function insertSWBSSummaryOPENBUY($ship_code)
               on open_buy.ship_code = gl.ship_code and open_buy.item= gl.item
             left join wp_open_po open_po
               on open_po.ship_code = open_buy.ship_code and open_po.item= open_buy.item
-            left join meac.target_cost tc on
-                tc.item=open_buy.item
+            left join meac.category cat
+              on open_buy.item= cat.item
             where
               gl.ship_code is null and
                 open_po.ship_code is null
               -- and open_buy.wp = 'MATL-551-011'
               and open_buy.ship_code = $ship_code
+              order by $ob
 ";
     $i=0;
     //print $sql;
@@ -1983,6 +2291,7 @@ function insertSWBSSummaryOPENBUY($ship_code)
     while (!$rs->EOF) {
         $program                = "LCS";
         $ship_code              = $rs->fields["ship_code"];
+        $category               = $rs->fields["category"];
         $wp                     = $rs->fields["wp"];
         $swbs_group             = $rs->fields["swbs_group"];
         $swbs                   = $rs->fields["swbs"];
@@ -1990,8 +2299,12 @@ function insertSWBSSummaryOPENBUY($ship_code)
         $item                   = $rs->fields["item"];
         $item_group             = $rs->fields["item_group"];
         $noun1                  = $rs->fields["noun1"];
+        $tc                     = $rs->fields["tc"];
+        $item_group_description = $rs->fields["item_group_description"];
         $description            = processDescription($rs->fields["description"]);
         $unit                   = $rs->fields["unit"];
+        $change_date            = fixExcelDateMySQL($rs->fields["change_date"]);
+        $change_reason          = processDescription($rs->fields["change_reason"]);
         $ebom                   = formatNumber4decNoComma($rs->fields["ebom"]);
         $ebom_issued            = formatNumber4decNoComma($rs->fields["ebom_issued"]);
         $ebom_on_hand           = formatNumber4decNoComma($rs->fields["ebom_onhand"]);
@@ -2009,16 +2322,21 @@ function insertSWBSSummaryOPENBUY($ship_code)
         $eac                    = formatNumber4decNoComma($gl_int_amt + $etc +$open_po_pending_amt);
         $uncommitted            = formatNumber4decNoComma($eac - $gl_int_amt - $open_po_pending_amt);
         $c_unit_price           = formatNumber4decNoComma($rs->fields["c_unit_price"]);
-        $vendor_name            = $rs->fields["vendor_name"];
-        $vendor_id              = $rs->fields["vendor_id"];
-        $buyer                  = $rs->fields["buyer"];
+        $vendor_name            = processDescription($rs->fields["vendor_name"]);
+        $vendor_id              = intval($rs->fields["vendor_id"]);
+        $buyer                  = trim($rs->fields["buyer"]);
+        $document               = $rs->fields["document"];
+        $ecp_rea                = "";
+        $clin                   = "";
+        $effort                 = "";;
+        $po_data                = "";;
         $c_qty                  = formatNumber4decNoComma($rs->fields["commit_qty"]);
         $gl_qty                 = formatNumber4decNoComma($rs->fields["gl_qty"]);
         $var_target_qty         = formatNumber4decNoComma($ebom - $target_qty);
         $var_target_cost        = formatNumber4decNoComma($c_unit_price - $target_unit_price);
-        $var_ebom               = formatNumber4decNoComma($ebom - $ebom_issued);
+        $var_ebom               = calcVarEBOM($ebom, $c_qty, $category, $description);
 
-        $sql.=createInsertValuesString($program, $ship_code, $swbs_group, $swbs,
+        $sql.=createInsertValuesString($program, $ship_code, $category,$swbs_group, $swbs,
             $wp, $spn, $item, $item_group, $description,
             $unit, $noun1, $transfers, $c_amt, $last_unit_price,
             $gl_int_amt, $ebom, $ebom_on_hand, $ebom_issued,
@@ -2026,7 +2344,9 @@ function insertSWBSSummaryOPENBUY($ship_code)
             $open_buy_item_shortage, $etc, $eac, $uncommitted,
             $target_qty, $target_unit_price, $target_ext_cost,$vendor_name,
             $vendor_id, $buyer,$c_qty, $var_target_qty,
-            $var_target_cost, $gl_qty, $var_ebom, $c_unit_price);
+            $var_target_cost, $gl_qty, $var_ebom,
+            $c_unit_price, $document,$ecp_rea, $clin, $effort,
+            $po_data, $tc,$item_group_description, $change_date,$change_reason);
         if($i == 1000)
         {
             $sql = substr($sql, 0, -1);
@@ -2048,10 +2368,193 @@ function insertSWBSSummaryOPENBUY($ship_code)
     }
 
 }
-function insertSWBSSummary($ship_code){
+
+function insertJournalEntries($ship_code){
+    if(strlen($ship_code)==3)
+    {
+        $program = "0".$ship_code;
+    }
+    $insert_sql = "
+        insert into meac.swbs_gl_summary_stage (program, ship_code, category, swbs_group, swbs, wp, gl_int_amt) VALUES 
+        ";
+    $sql = "
+select CAWPID, ea from
+  (select
+     cawpid,
+     sum(DIRECT) ea
+   from TPHASE where
+     PROGRAM = '$program'
+     and CLASS = 'ea'
+     and CAWPID in (select CAWPID from CAWP where CAWP.PROGRAM = '$program' and wp LIKE '%matl%')
+   group BY PROGRAM, CAWPID)
+  s where s.ea <> 0
+    ";
+    $rs = dbCallCobra($sql);
+    $sql = $insert_sql;
+
+    while (!$rs->EOF)
+    {
+        $cawpid     = addslashes(trim($rs->fields["CAWPID"]));
+        $gl_int_amt = formatNumber4decNoComma(trim($rs->fields["ea"]));
+        $wp         = getWPFromCAWPID($program, $cawpid);
+        $swbs       = substr($wp, 5, 3);
+        $swbs_group = substr($wp, 5, 1);
+        $swbs_group .= "00";
+        if (stripos($wp, 'matl') !== false) {
+            $sql.= "('LCS', $ship_code, 'Journal', '$swbs_group', '$swbs', '$wp', $gl_int_amt),";
+        }
+        $rs->MoveNext();
+    }
+    $sql = substr($sql, 0, -1);
+    $junk = dbCall($sql, "meac");
+}
+function insertSWBSSummaryStaging($ship_code){
     insertSWBSSummaryOPENPO($ship_code);
     insertSWBSGLSUM($ship_code);
     insertSWBSSummaryOPENBUY($ship_code);
+    insertGlChargesNoPartNumAlloc($ship_code);
+    insertGlChargesNoPartNum($ship_code);
+    insertJournalEntries($ship_code);
+}
+
+function insertSWBSSummary($value){
+    $insert_sql= returnInsertSQLSWBSSum("swbs_gl_summary");
+    $sql = "
+    select
+        program,
+        ship_code,
+        category,
+        max(swbs_group) swbs_group,
+        max(swbs) swbs,
+        wp,
+        spn,
+        item,
+        item_group,
+        description,
+        unit,
+        noun1,
+        transfers,
+        c_amt,
+        c_unit_price,
+        last_unit_price,
+        gl_int_amt,
+        ebom,
+        ebom_on_hand,
+        ebom_issued,
+        last_unit_price_ship,
+        open_po_pending_amt,
+        open_buy_item_shortage,
+        sum(etc) etc,
+        eac,
+        uncommitted,
+        target_qty,
+        target_unit_price,
+        target_ext_cost,
+        vendor_name,
+        vendor_id,
+        var_target_cost,
+        c_qty,
+        var_target_qty,
+        buyer,
+        gl_qty,
+        var_ebom,
+        document,
+        clin,
+        effort,
+        ecp_rea,
+        po_data,
+        tc,
+        item_group_description,
+        change_date,
+        change_reason
+        from swbs_gl_summary_stage 
+        where ship_code = $value
+        group  by ship_code, wp, item -- limit 4500, 500
+    ";
+    $rs = dbCall($sql, "meac");
+    $sql = $insert_sql;
+    $i=0;
+    while (!$rs->EOF) {
+        $program                = $rs->fields["program"];
+        $ship_code              = $rs->fields["ship_code"];
+        $category               = $rs->fields["category"];
+        $swbs_group             = intval($rs->fields["swbs_group"]);
+        $swbs                   = intval($rs->fields["swbs"]);
+        $wp                     = $rs->fields["wp"];
+        $spn                    = $rs->fields["spn"];
+        $item                   = $rs->fields["item"];
+        $item_group             = $rs->fields["item_group"];
+        $description            = $rs->fields["description"];
+        $unit                   = $rs->fields["unit"];
+        $noun1                  = $rs->fields["noun1"];
+        $transfers              = formatNumber4decNoComma($rs->fields["transfers"]);
+        $c_amt                  = formatNumber4decNoComma($rs->fields["c_amt"]);
+        $c_unit_price           = formatNumber4decNoComma($rs->fields["c_unit_price"]);
+        $last_unit_price        = formatNumber4decNoComma($rs->fields["last_unit_price"]);
+        $gl_int_amt             = formatNumber4decNoComma($rs->fields["gl_int_amt"]);
+        $ebom                   = formatNumber4decNoComma($rs->fields["ebom"]);
+        $ebom_on_hand           = formatNumber4decNoComma($rs->fields["ebom_on_hand"]);
+        $ebom_issued            = formatNumber4decNoComma($rs->fields["ebom_issued"]);
+        $last_unit_price_ship   = $rs->fields["last_unit_price_ship"];
+        $open_po_pending_amt    = formatNumber4decNoComma($rs->fields["open_po_pending_amt"]);
+        $open_buy_item_shortage = formatNumber4decNoComma($rs->fields["open_buy_item_shortage"]);
+        $etc                    = formatNumber4decNoComma($rs->fields["etc"]);
+        $eac                    = formatNumber4decNoComma($rs->fields["eac"]);
+        $uncommitted            = formatNumber4decNoComma($rs->fields["uncommitted"]);
+        $target_qty             = formatNumber4decNoComma($rs->fields["target_qty"]);
+        $target_unit_price      = formatNumber4decNoComma($rs->fields["target_unit_price"]);
+        $target_ext_cost        = formatNumber4decNoComma($rs->fields["target_ext_cost"]);
+        $vendor_name            = $rs->fields["vendor_name"];
+        $vendor_id              = intval($rs->fields["vendor_id"]);
+        $var_target_cost        = formatNumber4decNoComma($rs->fields["var_target_cost"]);
+        $c_qty                  = formatNumber4decNoComma($rs->fields["c_qty"]);
+        $var_target_qty         = formatNumber4decNoComma($rs->fields["var_target_qty"]);
+        $buyer                  = str_replace("
+        ","",trim($rs->fields["buyer"]));
+        $gl_qty                 = formatNumber4decNoComma($rs->fields["gl_qty"]);
+        $var_ebom               = formatNumber4decNoComma($rs->fields["var_ebom"]);
+        $document               = $rs->fields["document"];
+        $clin                   = $rs->fields["clin"];
+        $effort                 = $rs->fields["effort"];
+        $ecp_rea                = $rs->fields["ecp_rea"];
+        $po_data                = $rs->fields["po_data"];
+        $tc                     = $rs->fields["tc"];
+        $item_group_description = processDescription($rs->fields["item_group_description"]);
+        $change_date            = fixExcelDateMySQL($rs->fields["change_date"]);
+        $change_reason          = $rs->fields["change_reason"];
+
+        $sql.=createInsertValuesString($program, $ship_code,$category,$swbs_group, $swbs,
+            $wp, $spn, $item, $item_group, $description,
+            $unit, $noun1, $transfers, $c_amt, $last_unit_price,
+            $gl_int_amt, $ebom, $ebom_on_hand, $ebom_issued,
+            $last_unit_price_ship, $open_po_pending_amt,
+            $open_buy_item_shortage, $etc, $eac, $uncommitted,
+            $target_qty, $target_unit_price, $target_ext_cost,$vendor_name,
+            $vendor_id, $buyer,$c_qty, $var_target_qty,
+            $var_target_cost, $gl_qty, $var_ebom,
+            $c_unit_price, $document, $ecp_rea,$clin,
+            $effort, $po_data, $tc,$item_group_description, $change_date, $change_reason);
+
+        if($i == 500)
+        {
+            $sql = substr($sql, 0, -1);
+            $junk = dbCall($sql, "meac");
+            $i=0;
+            //clear out the sql stmt.
+            $sql = $insert_sql;
+        }
+        $i++;
+        $rs->MoveNext();
+
+    }
+
+    //only insert remaining lines if the total number is not divisble by 1000.
+    if($i !=500)
+    {
+        $sql = substr($sql, 0, -1);
+        $junk = dbCall($sql, "meac");
+    }
+    print $sql;
 }
 
 function insertTargetCost($path2file){
@@ -2106,4 +2609,260 @@ function insertTargetCost($path2file){
         $sql = substr($sql, 0, -1);
         $junk = dbCall($sql, "meac");
     }
+}
+
+function returnAllocInsertSQL(){
+    $sql = "
+insert into swbs_gl_summary_stage (ship_code, wp, category, swbs_group, swbs, item, description, unit,vendor_name, gl_qty,gl_int_amt) VALUES";
+    return $sql;
+}
+
+function createInsertValuesStringAllocations($program, $ship_code, $category,$swbs_group, $swbs,
+                                             $wp, $item, $description,$unit, $gl_int_amt,$vendor_name, $gl_qty){
+    $sql =
+        "(
+        '$program',
+        $ship_code,
+        '$wp',
+        '$category',
+        '$swbs_group',
+        '$swbs',
+        '$item',
+        '$description',
+        '$unit',
+        '$vendor_name',
+        $gl_qty,
+        $gl_int_amt
+),";
+    return $sql;
+}
+function insertGlChargesNoPartNumAlloc($ship_code)
+{
+    $insert_sql = returnAllocInsertSQL();
+    $sql = "
+           select
+            gl.ship_code,
+            gl.wp,
+            case when description like '%alloc%' and description like '%shoc%' then 'Shock Allocations'
+              else 'Allocations' end as category,
+            case when CHAR_LENGTH(gl.swbs) = 3 then concat(left(gl.swbs,1),'00') ELSE
+              '000' end as swbs_group,
+            gl.swbs,
+            gl.item,
+            gl.description,
+            gl.unit,
+            gl.cust_supp as vendor_name,
+            gl.qty as  gl_qty,
+            gl.integr_amt int_amt
+        from wp_gl_detail gl
+        where gl.ship_code = $ship_code
+        and description like '%alloc%' and item = ''
+        ";
+    $i=0;
+    //print $sql;
+    $rs= dbCall($sql, "meac");
+    $sql = $insert_sql;
+    while (!$rs->EOF) {
+        $program     = "LCS";
+        $ship_code   = $rs->fields["ship_code"];
+        $wp          = $rs->fields["wp"];
+        $category    = $rs->fields["category"];
+        $swbs_group  = $rs->fields["swbs_group"];
+        $swbs        = $rs->fields["swbs"];
+        $item        = $rs->fields["item"];
+        $description = processDescription($rs->fields["description"]);
+        $unit        = $rs->fields["unit"];
+        $vendor_name = $rs->fields["vendor_name"];
+        $gl_qty      = formatNumber4decNoComma($rs->fields["gl_qty"]);
+        $gl_int_amt  = formatNumber4decNoComma($rs->fields["int_amt"]);
+        $sql.=createInsertValuesStringAllocations($program, $ship_code, $category,$swbs_group, $swbs,
+            $wp, $item, $description,$unit, $gl_int_amt,$vendor_name, $gl_qty);
+        if($i == 1000)
+        {
+            $sql = substr($sql, 0, -1);
+            $junk = dbCall($sql, "meac");
+            $i=0;
+            //clear out the sql stmt.
+            $sql = $insert_sql;
+        }
+        $i++;
+        $rs->MoveNext();
+
+    }
+    //only insert remaining lines if the total number is not divisble by 1000.
+    if($i !=1000)
+    {
+        $sql = substr($sql, 0, -1);
+        $junk = dbCall($sql, "meac");
+    }
+
+}
+
+function returnOtherNOPartNumInsertSQL(){
+    $sql = "
+    insert into swbs_gl_summary_stage (ship_code, wp, category, swbs_group, swbs, item, description, unit,vendor_name, gl_qty,gl_int_amt) VALUES";
+    return $sql;
+}
+
+function createInsertValuesStringNOPartNum($program, $ship_code, $category,$swbs_group, $swbs,
+                                           $wp, $item, $description,$unit, $gl_int_amt,$vendor_name, $gl_qty){
+    $sql =
+        "(
+        '$program',
+        $ship_code,
+        '$wp',
+        '$category',
+        '$swbs_group',
+        '$swbs',
+        '$item',
+        '$description',
+        '$unit',
+        '$vendor_name',
+        $gl_qty,
+        $gl_int_amt
+),";
+    return $sql;
+}
+function insertGlChargesNoPartNum($ship_code)
+{
+    $insert_sql = returnOtherNOPartNumInsertSQL();
+    $sql = "
+         select
+            gl.ship_code,
+            gl.wp,
+            left(document, 3) as category,
+           case when CHAR_LENGTH(gl.swbs) = 3 then concat(left(gl.swbs,1),'00') ELSE
+              '000' end as swbs_group,
+            gl.swbs,
+            gl.item,
+            gl.description,
+            gl.unit,
+            gl.cust_supp as vendor_name,
+            gl.qty as  gl_qty,
+            gl.integr_amt int_amt
+        from wp_gl_detail gl
+        where gl.ship_code = $ship_code
+        and description not like '%alloc%' and item = ''
+        ";
+    $i=0;
+    //print $sql;
+    $rs= dbCall($sql, "meac");
+    $sql = $insert_sql;
+    while (!$rs->EOF) {
+        $program     = "LCS";
+        $ship_code   = $rs->fields["ship_code"];
+        $wp          = $rs->fields["wp"];
+        $category    = $rs->fields["category"];
+        $swbs_group  = $rs->fields["swbs_group"];
+        $swbs        = $rs->fields["swbs"];
+        $item        = $rs->fields["item"];
+        $description = processDescription($rs->fields["description"]);
+        $unit        = $rs->fields["unit"];
+        $vendor_name = $rs->fields["vendor_name"];
+        $gl_qty      = formatNumber4decNoComma($rs->fields["gl_qty"]);
+        $gl_int_amt  = formatNumber4decNoComma($rs->fields["int_amt"]);
+        $sql.=createInsertValuesStringNOPartNum($program, $ship_code, $category,$swbs_group, $swbs,
+            $wp, $item, $description,$unit, $gl_int_amt,$vendor_name, $gl_qty);
+        if($i == 1000)
+        {
+            $sql = substr($sql, 0, -1);
+            $junk = dbCall($sql, "meac");
+            $i=0;
+            //clear out the sql stmt.
+            $sql = $insert_sql;
+        }
+        $i++;
+        $rs->MoveNext();
+    }
+    //only insert remaining lines if the total number is not divisble by 1000.
+    if($i !=1000)
+    {
+        $sql = substr($sql, 0, -1);
+        $junk = dbCall($sql, "meac");
+    }
+}
+function returnMeacSQL($wc="", $gb=""){
+    $sql = "
+    select 
+        program,
+        ship_code,
+        swbs_group,
+        category,
+        swbs,
+        wp,
+        spn,
+        item,
+        item_group,
+        description,
+        unit,
+        noun1,
+        transfers,
+        c_amt,
+        c_unit_price,
+        last_unit_price,
+        sum(gl_int_amt) gl_int_amt,
+        sum(ebom) ebom,
+        sum(ebom_on_hand) ebom_on_hand,
+        sum(ebom_issued) ebom_issued,
+        last_unit_price_ship,
+        sum(open_po_pending_amt) open_po_pending_amt,
+        sum(open_buy_item_shortage) open_buy_item_shortage,
+        sum(etc) etc,
+        sum(eac) eac,
+        uncommitted,
+        target_qty,
+        target_unit_price,
+        target_ext_cost,
+        vendor_name,
+        vendor_id,
+        var_target_cost,
+        c_qty,
+        var_target_qty,
+        buyer,
+        sum(gl_qty) gl_qty,
+        sum(var_ebom) var_ebom
+    from meac.swbs_gl_summary $wc $gb 
+    ";
+    return $sql;
+}
+
+function getFieldNamesForSQL($wc="", $gb=""){
+    $sql = "select field_name  from field_list order by default_order";
+    $rs = dbCall($sql,"meac");
+    $sql = "select ";
+    while (!$rs->EOF)
+    {
+        $field_name = $rs->fields["field_name"];
+        $sql.="$field_name,";
+        $rs->MoveNext();
+    }
+
+    $sql = substr($sql, 0, -1);
+    $limit  = "";
+    $sql .= " from meac.swbs_gl_summary $wc $gb $limit";
+    return $sql;
+}
+function correctShockOpenBuyItemShortage($ship_code){
+    $sql = "
+        update mars.open_buy
+            set item_shortage = 0
+        where
+          ship_code = $ship_code and
+          item in (
+                select
+                  item
+                from
+                    (
+                      select
+                        proj,
+                        item,
+                        sum(pending_qty) sum
+                      from mars.open_po
+                      where item in
+                        (select item from mars.open_buy where spn = '-S00')
+                        and proj = $ship_code
+                    group by proj, item) s
+                where s.sum =0 and s.proj = $ship_code)
+    ";
+    $junk = dbCall($sql, "mars");
 }

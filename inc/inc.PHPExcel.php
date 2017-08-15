@@ -7,7 +7,30 @@
  */
 include("lib/php/phpExcel-1.8/classes/PHPExcel.php");
 //include("lib/php/phpExcel-1.8/classes/phpexcel/IOFactory.php");
-
+function phpExcelCurrency($range, $objPHPExcel){
+    $objPHPExcel->getActiveSheet()
+        ->getStyle($range)
+        ->getNumberFormat()
+        ->setFormatCode(PHPExcel_Style_NumberFormat::FORMAT_CURRENCY_USD);
+}
+function phpExcelFormatPercentage($range, $objPHPExcel){
+    $objPHPExcel->getActiveSheet()
+        ->getStyle($range)
+        ->getNumberFormat()
+        ->setFormatCode(PHPExcel_Style_NumberFormat::FORMAT_PERCENTAGE_00);
+}
+function phpExcelFormatHours($range,$objPHPExcel){
+    $objPHPExcel->getActiveSheet()
+        ->getStyle($range)
+        ->getNumberFormat()
+        ->setFormatCode('#,##0');
+}
+function phpExcelFormatDecimal($range,$objPHPExcel){
+    $objPHPExcel->getActiveSheet()
+        ->getStyle($range)
+        ->getNumberFormat()
+        ->setFormatCode('#,##0');
+}
 function loadPHPEXCELFile($path2xlsfile)
 {
     print "<br>".$path2xlsfile."<br>";

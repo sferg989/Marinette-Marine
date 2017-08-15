@@ -522,3 +522,15 @@ function getNextRefno($ship_code){
     return $max;
 
 }
+function getCAWPID($ship_code, $wp){
+    $sql = "select CAWPID from cawp where program = '$ship_code' and wp = '$wp'";
+    $rs = dbCallCobra($sql);
+    $cawpid = $rs->fields["CAWPID"];
+    return $cawpid;
+}
+function getWPFromCAWPID($ship_code, $cawpid){
+    $sql = "select WP from cawp where program = '$ship_code' and CAWPID = $cawpid";
+    $rs = dbCallCobra($sql);
+    $wp = $rs->fields["WP"];
+    return $wp;
+}

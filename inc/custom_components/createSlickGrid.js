@@ -10,7 +10,6 @@ define([
         var gridObject = {};
         gridObject.dataView = new Slick.Data.DataView();
         gridObject.grid     = new Slick.Grid('#' + div_name, gridObject.dataView, cols, options);
-
         return gridObject
     }
 

@@ -1,7 +1,7 @@
 <?php
-
 include("mmev.inc.php");
-session_start();
+
+//session_start();
 
 function dbCall($sql,$schema="fmm_evms",$server="localhost"){
 
@@ -24,6 +24,29 @@ function dbCallCobra($sql){
     $result = $db->Execute($sql);
     return $result;
 }
+function dbCallBaan($sql){
+
+    $db = ADONewConnection('odbc_mssql');
+
+    $dsn = "Driver={SQL Server};Server=mmc-baan02;Database=baandb;";
+//declare the SQL statement that will query the database
+    $db->Connect($dsn);
+    $db->SetFetchMode(3);
+    $result = $db->Execute($sql);
+    return $result;
+}
+function dbCallFortis($sql){
+
+    $db = ADONewConnection('odbc_mssql');
+
+    $dsn = "Driver={SQL Server};Server=mmcsqlapp;Database=Marinette_Marine;";
+//declare the SQL statement that will query the database
+    $db->Connect($dsn);
+    $db->SetFetchMode(3);
+    $result = $db->Execute($sql);
+    return $result;
+}
+
 function now()
 {
     $timestamp = date("Y-m-d h:i:s");
@@ -1143,3 +1166,13 @@ function runSQLCommandUtil($ship_code,$sql, $g_path2CobraAPI,$g_path2CMD,$g_path
     }
 
 }
+function duplicateTable($source_table, $source_schema, $destination_table,$destination_schema){
+
+    $sql    = "CREATE TABLE $destination_schema.$destination_table LIKE $source_schema.$source_table";
+    $junk   = dbCall($sql);
+
+    $sql = "INSERT $destination_schema.$destination_table SELECT * FROM $source_schema.$source_table";
+    $rs = dbCall($sql);
+
+}
+

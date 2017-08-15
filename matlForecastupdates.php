@@ -30,19 +30,26 @@ function getTotalNumberofForecastRecords($ship_code, $cawpid){
     $count         = $rs->fields["count"];
     return $count;
 }
-function getCAWPID($ship_code, $wp){
-    $sql = "select CAWPID from cawp where program = '$ship_code' and wp = '$wp'";
-    $rs = dbCallCobra($sql);
-    $cawpid = $rs->fields["CAWPID"];
-    return $cawpid;
+function checkIFForecastRecordExists($ship_code, $cawpid){
+    $sql = "
+    select count(*) count 
+    from TPHASE 
+    where PROGRAM = '$ship_code' 
+    and CLASS = 'Forecast' 
+    and CAWPID = $cawpid 
+    GROUP BY PROGRAM, CAWPID;
+    ";
+    $rs     = dbCallCobra($sql);
+    $count  = $rs->fields["count"];
+    return $count;
 }
 
-$path2file =  "C:/evms/matl_updates/0483matlupdates.xlsx";
+$path2file =  "C:/evms/matl_updates/0481matlupdates.xlsx";
 require('inc/lib/php/spreadsheet-reader-master/spreadsheet-reader-master/SpreadsheetReader.php');
 
-$ship_code       = '0483spfMATL';
+$ship_code       = '0481';
 $Reader = new SpreadsheetReader($path2file);
-$i = 0;
+
 foreach ($Reader as $Row)
 {
     if($i<2){
@@ -66,12 +73,27 @@ foreach ($Reader as $Row)
     print "new EAC".$spread_val."<br>";
     $i++;
     print "Next item <br>";
-    $sql_updateCAWP = "update cawp set eac = $new_eac, EAC_NONLAB = $new_eac where PROGRAM = '$ship_code' and wp = '$wp'";
+    $record_count =checkIFForecastRecordExists($ship_code, $cawpid);
+    if($record_count<1){
+        //get the rest of the periods for this WP
+        //insert all the records for each period between the next month, and the end of the last month.
 
+
+
+    }
+    $sql_updateCAWP = "update cawp set eac = $new_eac, EAC_NONLAB = $new_eac where PROGRAM = '$ship_code' and wp = '$wp'";
+    //check for Forecast record exists
     $sql_updateTPHASE= "update tphase set DIRECT = $spread_val where program = '$ship_code' and CAWPID in ($cawpid) and CLASS = 'Forecast'";
 
     runSQLCommandUtil($ship_code,$sql_updateCAWP, $g_path2CobraAPI,$g_path2CMDSQLUtil,$g_path2BATSQLUtil);
     runSQLCommandUtil($ship_code,$sql_updateTPHASE, $g_path2CobraAPI,$g_path2CMDSQLUtil,$g_path2BATSQLUtil);
 
 }
+
+//$sql = "update tphase set DIRECT = 11872.6 where program = '0481' and CAWPID in (-115375244) and CLASS = 'Forecast'";
+//runSQLCommandUtil($ship_code,$sql, $g_path2CobraAPI,$g_path2CMDSQLUtil,$g_path2BATSQLUtil);
+
+//$sql = "insert into TPHASE (PROGRAM, CAWPID, CECODE, CLASS, DF_DATE, DIRECT) values ('0481', -115375244, 'MATL', 'Forecast', '2017-07-29 00:00:00.000',9574)";
+//runSQLCommandUtil($ship_code,$sql, $g_path2CobraAPI,$g_path2CMDSQLUtil,$g_path2BATSQLUtil);
+
 die("made it");

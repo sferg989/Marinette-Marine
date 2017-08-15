@@ -15,26 +15,304 @@ define(["slickEditors"],
         }
         return x1 + x2;
     }
+    function defaultFormat(row, cell, value, columnDef, dataContext){
+        return value;
+    }
     function myCurrencyFormatter(row, cell, value, columnDef, dataContext) {
         if(value <0){
             var absval = Math.abs(value).toFixed(2)
             var withcommas = addCommas(absval);
             return "<p class='showNegRed'>$(" + withcommas+")</p>";
         }
-        else{
+        else if(value>0){
 
             var withcommas = addCommas(Math.round(parseFloat(value)*100)/100);
             return "<p class='showPosBlack'>$ " + withcommas+"</p>";
+        }
+        else{
+            return "<p class='showPosBlack'>$ 0</p>";
+        }
+    }
+    function myNumFormatter(row, cell, value, columnDef, dataContext) {
+        if(value <0){
+            var absval = Math.abs(value).toFixed(2)
+            return "<p class='showNegRed'>(" + absval+")</p>";
+        }
+        else{
+
+            var withcommas = addCommas(Math.round(parseFloat(value)*100)/100);
+            return "<p class='showPosBlack'>" + withcommas+"</p>";
         }
     }
     function glLink(row, cell, value, columnDef, dataContext) {
 
         var link_paran = "<a href='#' onclick=window.open('gl_detail.html?ship_code="+dataContext.ship_code+"&wp="+dataContext.wp+"')>"+value+"</a>";
-        //var link_paran = "<a href=gl_detail.html?ship_code="+dataContext.ship_code+"&wp="+dataContext.wp+">"+value+"</a>";
         return link_paran;
     }
+    function determineFormatter(field){
+        switch (field)
+        {
+            case "gl_int_amt":
+            case "c_unit_price":
+            case "open_po_pending_amt":
+            case "etc":
+            case "eac":
+            case "uncommitted":
+            case "target_unit_price":
+            case "target_ext_cost":
+            case "var_target_cost":
+                return myCurrencyFormatter
+                break;
+            case "ebom":
+            case "ebom_on_hand":
+            case "ebom_issued":
+            case "open_buy_item_shortage":
+            case "target_qty":
+            case "target_qty":
+            case "c_qty":
+            case "var_target_qty":
+            case "gl_qty":
+            case "var_ebom":
+                return myNumFormatter
+                break;
+            case "wp":
+                return glLink;
+                break;
+            default:
+                return defaultFormat;
+                break;
+        }
+    }
+    var findDrillLevel = function (cur_level) {
+        var colObj = {};
 
-
+        if(cur_level =="program"){
+            colObj.index = 1;
+            colObj.name = "ship_code";
+            return colObj;
+        }
+        if(cur_level =="ship_code"){
+            colObj.index = 2
+            colObj.name = "category";;
+            return colObj;
+        }
+        if(cur_level =="category"){
+            colObj.index = 3
+            colObj.name = "swbs_group";;
+            return colObj;
+        }
+        if(cur_level =="swbs_group"){
+            colObj.index = 4
+            colObj.name = "swbs";;
+            return colObj;
+        }
+        if(cur_level =="swbs"){
+            colObj.index = 5
+            colObj.name = "wp";;
+            return colObj;
+        }
+        if(cur_level =="wp"){
+            colObj.index = 6
+            colObj.name = "item";;
+            return colObj;
+        }
+        else{
+            return "undefined";
+        }
+    }
+    var getColModelfromDrillLevel = function (drill_level) {
+        switch (drill_level) {
+            case 0:
+                var lcs_meta_cols = [{
+                    id      : "program",
+                    name    : "Program",
+                    field   : "program"
+                }];
+                break;
+            case 1:
+                var lcs_meta_cols= [{
+                    id      : "program",
+                    name    : "Program",
+                    field   : "program"
+                },{
+                    id      : "ship_code",
+                    name    : "Hull",
+                    field   : "ship_code"
+                }]
+                break;
+            case 2:
+                var lcs_meta_cols= [{
+                    id      : "program",
+                    name    : "Program",
+                    field   : "program"
+                },{
+                    id      : "ship_code",
+                    name    : "Hull",
+                    field   : "ship_code"
+                },{
+                    id      : "category",
+                    name    : "category",
+                    field   : "category"
+                }]
+                break;
+            case 3:
+                var lcs_meta_cols= [{
+                    id      : "program",
+                    name    : "Program",
+                    field   : "program"
+                },{
+                    id      : "ship_code",
+                    name    : "ship_code",
+                    field   : "ship_code"
+                },{
+                    id      : "category",
+                    name    : "category",
+                    field   : "category"
+                },{
+                    id      : "swbs_group",
+                    name    : "SWBS Group",
+                    field   : "swbs_group"
+                }]
+                break;
+            case 4:
+                var lcs_meta_cols= [{
+                    id      : "program",
+                    name    : "Program",
+                    field   : "program"
+                },{
+                    id      : "ship_code",
+                    name    : "Hull",
+                    field   : "ship_code"
+                },{
+                    id      : "category",
+                    name    : "category",
+                    field   : "category"
+                },{
+                    id      : "swbs_group",
+                    name    : "SWBS Group",
+                    field   : "swbs_group"
+                },{
+                    id      : "swbs",
+                    name    : "SWBS",
+                    field   : "swbs"
+                }]
+                break;
+            case 5:
+                var lcs_meta_cols= [{
+                    id      : "program",
+                    name    : "Program",
+                    field   : "program"
+                },{
+                    id      : "ship_code",
+                    name    : "Hull",
+                    field   : "ship_code"
+                },{
+                    id      : "category",
+                    name    : "category",
+                    field   : "category"
+                },{
+                    id      : "swbs_group",
+                    name    : "SWBS Group",
+                    field   : "swbs_group"
+                },{
+                    id      : "swbs",
+                    name    : "SWBS",
+                    field   : "swbs"
+                },{
+                    id      : "wp",
+                    name    : "WP",
+                    field   : "wp"
+                }]
+                break;
+            case 6:
+                var lcs_meta_cols= [{
+                    id      : "program",
+                    name    : "Program",
+                    field   : "program"
+                },{
+                    id      : "ship_code",
+                    name    : "Hull",
+                    field   : "ship_code"
+                },{
+                    id      : "category",
+                    name    : "category",
+                    field   : "category"
+                },{
+                    id      : "swbs_group",
+                    name    : "SWBS Group",
+                    field   : "swbs_group"
+                },{
+                    id      : "swbs",
+                    name    : "SWBS",
+                    field   : "swbs"
+                },{
+                    id      : "wp",
+                    name    : "WP",
+                    field   : "wp"
+                },{
+                    id      : "item",
+                    name    : "Item",
+                    field   : "item"
+                }]
+                break;
+        }
+        return lcs_meta_cols;
+    }
+    var GenerateColsFromFieldList = function (field_set_name, setGridColsCB){
+        $.ajax({
+            url     : "lib/php/meac_grid.php",
+            data: {
+                control       : "get_col_definition",
+                field_set_name: field_set_name
+            },
+            success : function (data) {
+                //console.log(data);
+                var list = data.split(",")
+                //console.log(list);
+                var columnModal = [];
+                for (i = 0; i < list.length; i++) {
+                    var parts = list[i].split("-");
+                    var formater = determineFormatter(parts[0]);
+                    var col =
+                        {
+                            id      : parts[0],
+                            name    : parts[1],
+                            field   : parts[0],
+                            formatter : formater
+                        }
+                    columnModal.push(col);
+                }
+                setGridColsCB(columnModal);
+            }
+        });
+    }
+    var GenerateDataColsFromFieldList = function (field_set_name, newColsOBJ, setGridColsCB){
+        $.ajax({
+            url     : "lib/php/meac_grid.php",
+            data: {
+                control       : "get_data_col_definition",
+                field_set_name: field_set_name
+            },
+            success : function (data) {
+                //console.log(data);
+                var list = data.split(",")
+                //console.log(list);
+                for (i = 0; i < list.length; i++) {
+                    var parts = list[i].split("-");
+                    var formater = determineFormatter(parts[0]);
+                    var col = {
+                            id      : parts[0],
+                            name    : parts[1],
+                            field   : parts[0],
+                            formatter : formater
+                    }
+                    newColsOBJ.push(col);
+                }
+                //console.log(newColsOBJ);
+                setGridColsCB(newColsOBJ);
+            }
+        });
+    }
     var cols = [
     {
         id      : "wp",
@@ -155,7 +433,11 @@ define(["slickEditors"],
         field    : "i_amt"
     }];
     return {
-        cols    : cols,
-        glCols  : glCols
+        cols                     : cols,
+        glCols                   : glCols,
+        GenerateColsFromFieldList: GenerateColsFromFieldList,
+        findDrillLevel           : findDrillLevel,
+        getColModelfromDrillLevel : getColModelfromDrillLevel,
+        GenerateDataColsFromFieldList : GenerateDataColsFromFieldList
     };
 })

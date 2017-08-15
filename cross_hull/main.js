@@ -23,10 +23,11 @@ $( document ).ready(function() {
         shipGridObj.grid.render();
 
     }
+
+    var height = $(window).height();
     function excelExportCallBack(d){
         window.open(d);
     }
-    var height = $(window).height();
     $("#rptGrid").height(height*.9);
     function goBack() {
         window.history.back();

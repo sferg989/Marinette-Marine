@@ -426,63 +426,70 @@ SELECT	DISTINCT
 }
 function returnBaanOpenPOSQL($ship_code){
     $sql = "
-SELECT	distinct a.t_cprj as ship_code,
-		CASE
-			WHEN convert(INT,a.t_pacn) <> 0 THEN substring(a.t_pacn,2,3)
-			ELSE d.t_cpcp
-		END as swbs,
-		a.t_item as item,
-		CASE
-			WHEN ltrim(rtrim(a.t_cprj)) <> '' THEN c.t_dsca
-			ELSE e.t_dsca
-		END as description,
-		c.t_n1at as noun_1,
-		c.t_n2at as noun_2,
-		CASE
-			WHEN ltrim(rtrim(a.t_cprj)) <> '      ' THEN
-				CASE
-					WHEN ltrim(rtrim(c.t_csel)) = 'NR' THEN 'NRE'
-					ELSE ''
-				END
-			ELSE
-				CASE
-					WHEN ltrim(rtrim(e.t_csel)) = 'NR' THEN 'NRE'
-					ELSE ''
-				END
-		END as nre,
-		a.t_suno as vendor,
-		a.t_orno as po,
-		a.t_pono as line,
-		a.t_pric as unit_price,
-		a.t_oqua as order_qty,
-		a.t_dqua as delivered_qty,
-		CASE
-			WHEN a.t_dqua <> 0 THEN a.t_bqua
-			ELSE a.t_oqua
-		END as pending_qty,
-		CASE
-			WHEN a.t_dqua <> 0 THEN a.t_bqua * a.t_pric
-			ELSE a.t_oqua * a.t_pric
-		END as pending_amt,
-		CASE
-			WHEN a.t_ddtc <> a.t_ddtd and a.t_ddtd <> '1753-01-01 00:00:00.000' THEN a.t_ddtd
-			ELSE
-				CASE
-					WHEN a.t_ddta <> a.t_ddtc and a.t_ddtc <> '1753-01-01 00:00:00.000' THEN a.t_ddtc
-					ELSE a.t_ddta
-				END
-		END as delv_date,
-		b.t_cpay as payment_terms,
-		a.t_pacn as ledger_account
-FROM	ttdpur041490 a
-		left join ttdpur040490 b on b.t_orno = a.t_orno
-		left join ttipcs021490 c on c.t_cprj = a.t_cprj and c.t_item = a.t_item
-		left join ttdpur045490 d on (d.t_orno = a.t_orno and d.t_pono = a.t_pono)
-		left join ttiitm001490 e on e.t_item = a.t_item
-		where 
-		a.t_cprj like '%$ship_code%'
-ORDER BY
-		a.t_cprj, a.t_item";
+        SELECT distinct  a.t_cprj as ship_code,
+                CASE
+                    WHEN convert(INT,a.t_pacn) <> 0 THEN substring(a.t_pacn,2,3)
+                    ELSE d.t_cpcp
+                END as swbs,
+                a.t_item as item,
+                CASE
+                    WHEN ltrim(rtrim(a.t_cprj)) <> '' THEN c.t_dsca
+                    ELSE e.t_dsca
+                END as description,
+                c.t_n1at as noun_1,
+                c.t_n2at as noun_2,
+                CASE
+                    WHEN ltrim(rtrim(a.t_cprj)) <> '      ' THEN
+                        CASE
+                            WHEN ltrim(rtrim(c.t_csel)) = 'NR' THEN 'NRE'
+                            ELSE ''
+                        END
+                    ELSE
+                        CASE
+                            WHEN ltrim(rtrim(e.t_csel)) = 'NR' THEN 'NRE'
+                            ELSE ''
+                        END
+                END as nre,
+                a.t_suno as vendor,
+                a.t_orno as po,
+                a.t_pono as line,
+                a.t_pric as unit_price,
+                a.t_oqua as order_qty,
+                a.t_dqua as delivered_qty,
+                CASE
+                    WHEN a.t_dqua <> 0 THEN a.t_bqua
+                    ELSE a.t_oqua
+                END as pending_qty,
+                CASE
+                    WHEN a.t_dqua <> 0 THEN a.t_bqua * a.t_pric
+                    ELSE a.t_oqua * a.t_pric
+                END as pending_amt,
+                CASE
+                    WHEN a.t_ddtc <> a.t_ddtd and a.t_ddtd <> '1753-01-01 00:00:00.000' THEN a.t_ddtd
+                    ELSE
+                        CASE
+                            WHEN a.t_ddta <> a.t_ddtc and a.t_ddtc <> '1753-01-01 00:00:00.000' THEN a.t_ddtc
+                            ELSE a.t_ddta
+                        END
+                END as delv_date,
+                b.t_cpay as payment_terms,
+                a.t_pacn as ledger_account,
+                (select
+                    top 1 LTRIM(RTRIM(bc.t_bitm)) as Activity
+                    from ttipcs950490 as ab
+                    left join ttipcs952490 as bc on ab.t_bdgt = bc.t_bdgt
+                where ab.t_cprj =a.t_cprj and bc.t_bdgt = ab.t_bdgt and bc.t_item = a.t_item ) wp
+        FROM	ttdpur041490 a
+                left join ttdpur040490 b on b.t_orno = a.t_orno
+                left join ttipcs021490 c on c.t_cprj = a.t_cprj and c.t_item = a.t_item
+                left join ttdpur045490 d on (d.t_orno = a.t_orno and d.t_pono = a.t_pono)
+                left join ttiitm001490 e on e.t_item = a.t_item
+                where 
+                a.t_cprj like '%$ship_code%'
+                AND		((a.t_dqua <> 0 AND a.t_bqua <> 0)
+  		        OR (a.t_dqua = 0 AND a.t_oqua <> 0))
+        ORDER BY
+                a.t_cprj, a.t_item";
     return $sql;
 }
 function loadBaanBuyerIDList(){
@@ -530,7 +537,7 @@ function loadBaanBuyerIDList(){
 }
 function returnGlDetailBaanSQL($wc=""){
     $sql = "
-    SELECT	distinct  a.t_dim1 as ship_code,
+    SELECT  a.t_dim1 as ship_code,
         a.t_leac as ledger_acct,
         a.t_otyp as transaction_type,
         a.t_odoc as document,
@@ -622,18 +629,19 @@ function returnGlDetailBaanSQL($wc=""){
     left join ttfacp200490 g on g.t_ttyp = a.t_ctyp and g.t_ninv = a.t_cinv and g.t_line = 0 and g.t_tdoc = '' and g.t_docn = 0 and g.t_lino = 0
     WHERE ltrim(rtrim(a.t_leac)) BETWEEN '4000' AND '4999'
       $wc
-    ORDER BY a.t_leac, a.t_odoc, a.t_olin
+        AND		a.t_fyer BETWEEN 2008 and 2017
+        AND		d.t_tedt BETWEEN '01/01/2008' and '07/29/2017'
+        ORDER BY a.t_leac, a.t_odoc, a.t_olin
     ";
-    /*print $sql;
-    die();
-    */return $sql;
+    print $sql;
+    return $sql;
 }
 function insertOpenBuyReport($ship_code){
     $i=0;
-    $sql = returnBaanOpenBuySQL($ship_code);
-    $rs = dbCallBaan($sql);
+    $sql        = returnBaanOpenBuySQL($ship_code);
+    $rs         = dbCallBaan($sql);
     $insert_sql = returnOpenBuyInsertSQL();
-    $sql = $insert_sql;
+    $sql        = $insert_sql;
     $program = "LCS";
     while (!$rs->EOF)
     {
@@ -657,9 +665,7 @@ function insertOpenBuyReport($ship_code){
         $last_mod           = fixExcelDateMySQL($rs->fields["last_mod"]);
         $last_price         = formatNumber4decNoComma($rs->fields["last_price"]);
         $expected_amt       = formatNumber4decNoComma($rs->fields["expected_amt"]);
-        $stock              = formatNumber4decNoComma($rs->fields["stock"]);
-        $on_order_qty       = formatNumber4decNoComma($rs->fields["on_order_qty"]);
-        $remaining_qty      = formatNumber4decNoComma($rs->fields["remaining_qty"]);
+
 
         $sql.= " (
             '$program',
@@ -732,10 +738,11 @@ function returnOpenBuyInsertSQL(){
 
 function returnOpenPOInsertSQL(){
     $insert_sql = "
-        insert into meac.open_po (
+        insert into meac.wp_baan_open_po (
             ship_code,
             swbs,
             item,
+            wp,
             description,
             noun_1,
             noun_2,
@@ -769,6 +776,7 @@ function insertOpenPOReport($ship_code){
     {
         $ship_code     = intval($rs->fields["ship_code"]);
         $swbs          = intval($rs->fields["swbs"]);
+        $wp          = intval($rs->fields["wp"]);
         $item          = addslashes(trim($rs->fields["item"]));
         $description   = addslashes(trim($rs->fields["description"]));
         $noun_1        = addslashes(trim($rs->fields["noun_1"]));
@@ -794,6 +802,7 @@ function insertOpenPOReport($ship_code){
                 $ship_code,
                 $swbs,
                 '$item',
+                '$wp',
                 '$description',
                 '$noun_1',
                 '$noun_2',
@@ -813,7 +822,7 @@ function insertOpenPOReport($ship_code){
                 '$effort',
                 '$ecp_rea'
                 ),";
-        if($i == 1000)
+        if($i == 500)
         {
             $sql = substr($sql, 0, -1);
             $junk = dbCall($sql, "meac");
@@ -826,7 +835,7 @@ function insertOpenPOReport($ship_code){
         $rs->MoveNext();
     }
     //only insert remaining lines if the total number is not divisble by 1000.
-    if($i !=1000)
+    if($i !=500)
     {
         $sql = substr($sql, 0, -1);
         $junk = dbCall($sql, "meac");
@@ -835,7 +844,9 @@ function insertOpenPOReport($ship_code){
 
 function returnGlDetailInsertSQL(){
     $insert_sql = "
-        INSERT  INTO meac.gl_detail (
+        INSERT  INTO meac.baan_gl_detail (
+            program, 
+            ship_code, 
             ldger_acct,
             document,
             line,
@@ -851,7 +862,6 @@ function returnGlDetailInsertSQL(){
             integr_amt,
             clin,
             effort,
-            ship_code, 
             ecp_rea) 
             values
            ";
@@ -879,26 +889,29 @@ function loadGlDetailBaan($ship_code="", $rpt_period=""){
     $i=0;
     while (!$rs->EOF)
     {
-        $ldger_acct  = intval($rs->fields["ledger_acct"]);
-        $document    = addslashes(trim($rs->fields["document"]));
-        $line        = intval($rs->fields["line"]);
-        $item        = addslashes(trim($rs->fields["item"]));
-        $description = addslashes(trim($rs->fields["description"]));
-        $order       = intval($rs->fields["order2"]);
-        $pos         = intval($rs->fields["line"]);
-        $cust_supp   = addslashes(trim($rs->fields["cust_supp"]));
-        $qty         = formatNumber4decNoComma($rs->fields["qty"]);
-        $unit        = addslashes(trim($rs->fields["unit"]));
-        $amt         = formatNumber4decNoComma($rs->fields["amt"]);
-        $date        = fixExcelDateMySQL($rs->fields["date"]);
-        $integr_amt  = formatNumber4decNoComma($rs->fields["integr_amt"]);
-        $clin        = addslashes(trim($rs->fields["clin"]));
-        $effort      = addslashes(trim($rs->fields["effort"]));
-        $ecp_rea     = addslashes(trim($rs->fields["ecp_rea"]));
-        $ship_code   = intval($rs->fields["ship_code"]);
+        $ldger_acct       = intval($rs->fields["ledger_acct"]);
+        $transaction_type = trim($rs->fields["transaction_type"]);
+        $document         = $transaction_type . "  " . addslashes(trim($rs->fields["document"]));
+        $line             = intval($rs->fields["line"]);
+        $item             = addslashes(trim($rs->fields["item"]));
+        $description      = addslashes(trim($rs->fields["description"]));
+        $order            = intval($rs->fields["order2"]);
+        $pos              = intval($rs->fields["position"]);
+        $cust_supp        = addslashes(trim($rs->fields["cust_supp"]));
+        $qty              = formatNumber4decNoComma($rs->fields["qty"]);
+        $unit             = addslashes(trim($rs->fields["unit"]));
+        $amt              = formatNumber4decNoComma($rs->fields["amt"]);
+        $date             = fixExcelDateMySQL($rs->fields["date"]);
+        $integr_amt       = formatNumber4decNoComma($rs->fields["integr_amt"]);
+        $clin             = addslashes(trim($rs->fields["clin"]));
+        $effort           = addslashes(trim($rs->fields["effort"]));
+        $ecp_rea          = addslashes(trim($rs->fields["ecp_rea"]));
+        $ship_code        = intval($rs->fields["ship_code"]);
 
         $sql.=
             "(
+                'LCS',
+                $ship_code,
                 $ldger_acct,
                 '$document',
                 $line,
@@ -914,10 +927,9 @@ function loadGlDetailBaan($ship_code="", $rpt_period=""){
                 $integr_amt,
                 '$clin',
                 '$effort',
-                $ship_code,
                 '$ecp_rea'
                 ),";
-        if($i == 1000)
+        if($i == 500)
         {
             $sql = substr($sql, 0, -1);
             $junk = dbCall($sql, "meac");
@@ -929,7 +941,7 @@ function loadGlDetailBaan($ship_code="", $rpt_period=""){
         $rs->MoveNext();
     }
     //only insert remaining lines if the total number is not divisble by 1000.
-    if($i !=1000)
+    if($i !=500)
     {
         $sql = substr($sql, 0, -1);
         $junk = dbCall($sql, "meac");
@@ -1070,7 +1082,7 @@ function loadFortisPOData($ship_code= ""){
 
 function loadResponsibleBuyer($ship_code){
     $sql = "
-         select t_cprj, t_buyr, t_item  from ttipcs021490 where t_cprj like '%$ship_code%'
+         select DISTINCT t_cprj, t_buyr, t_item  from ttipcs021490 where t_cprj like '%$ship_code%'
     ";
     $rs = dbCallBaan($sql);
     $insert_sql= "insert into buyer_reponsible (ship_code, buyer_id,item) VALUES";
@@ -1088,7 +1100,7 @@ function loadResponsibleBuyer($ship_code){
                 $buyer,
                 '$item'
                 ),";
-        if($i == 2000)
+        if($i == 500)
         {
             $sql = substr($sql, 0, -1);
             $junk = dbCall($sql, "meac");
@@ -1101,12 +1113,11 @@ function loadResponsibleBuyer($ship_code){
         $rs->MoveNext();
     }
     //only insert remaining lines if the total number is not divisble by 1000.
-    if($i !=2000)
+    if($i!=500)
     {
         $sql = substr($sql, 0, -1);
         $junk = dbCall($sql, "meac");
     }
-    print $sql;
 }
 function returnBaanEFDBSQL($ship_code){
     $sql = "
@@ -1198,6 +1209,180 @@ function loadEFDBChangeBAAN($ship_code){
     }
     //only insert remaining lines if the total number is not divisble by 1000.
     if($i !=1000)
+    {
+        $sql = substr($sql, 0, -1);
+        $junk = dbCall($sql, "meac");
+    }
+}
+function insertCBMFromBaan($ship_code){
+
+    $sql ="select 
+        b.t_cprj as Project,
+        LTRIM(RTRIM(a.t_bitm)) as Activity,
+        c.t_prip as Budget,
+        c.t_aamt as Assigned_Amount,
+        a.t_pono as Position,
+        a.t_item as Item,
+        d.t_prip as Price,
+        a.t_qana as Qty
+        from ttipcs952490 as a
+        join ttipcs950490 as b on a.t_bdgt = b.t_bdgt
+        join ttipcs951490 as c on a.t_bdgt = c.t_bdgt and LTRIM(RTRIM(a.t_bitm)) = LTRIM(RTRIM(c.t_bitm))
+        join ttipcs951490 as d on a.t_bdgt = d.t_bdgt and LTRIM(RTRIM(a.t_item)) = LTRIM(RTRIM(d.t_bitm))
+        Where b.t_cprj like '%$ship_code%'
+    Order by 1, 2, 3, 6";
+    print $sql;
+    $rs = dbCallBaan($sql);
+
+    $insert_sql = " insert into meac.cbm (program, ship_code, wp, material, budget, assigned_amt, price, qty, pos) values ";
+    $i=0;
+    $sql = $insert_sql;
+    while (!$rs->EOF)
+    {
+        $ship_code  = intval($rs->fields["Project"]);
+        $wp         = trim($rs->fields["Activity"]);
+        $budget     = formatNumber4decNoComma($rs->fields["Budget"]);
+        $assign_amt = formatNumber4decNoComma($rs->fields["Assigned_Amount"]);
+        $pos        = formatNumber4decNoComma($rs->fields["Position"]);
+        $item       = trim($rs->fields["Item"]);
+        $price      = formatNumber4decNoComma($rs->fields["Price"]);
+        $qty        = formatNumber4decNoComma($rs->fields["Qty"]);
+
+        $sql.= "(                                                 
+        'LCS',
+        $ship_code,
+        '$wp',
+        '$item',
+        $budget,
+        $assign_amt,
+        $price,
+        $qty,
+        $pos
+        ),";
+        if($i == 1000)
+        {
+            $sql = substr($sql, 0, -1);
+            $junk = dbCall($sql, "meac");
+
+            $i=0;
+            //clear out the sql stmt.
+            $sql = $insert_sql;
+        }
+        $i++;
+        $rs->MoveNext();
+    }
+    //only insert remaining lines if the total number is not divisble by 1000.
+    if($i !=1000)
+    {
+        $sql = substr($sql, 0, -1);
+        print $sql;
+        $junk = dbCall($sql, "meac");
+    }
+}
+function returnEBOMBaanSQL($ship_code){
+
+    $sql = "
+          SELECT 
+            a.t_cprj as ship_code,
+            a.t_item as item,
+            b.t_n1at as noun1,
+            b.t_n2at as noun2,
+            b.t_n3at as noun3,
+            b.t_dsca as description,
+            b.t_citg as item_group,
+            b.t_cpcp as swbs,
+            CASE
+                WHEN b.t_cprj <> '' and b.t_item <> '' THEN b.t_dfit
+                ELSE ''
+            END as spn,
+            CASE
+                WHEN b.t_cprj <> '' and b.t_item <> '' THEN b.t_cuni
+                ELSE c.t_cuni
+            END as uom,
+            a.t_qana as ebom,
+          (select 
+              top 1 LTRIM(RTRIM(bc.t_bitm)) as Activity
+              from ttipcs950490 as ab
+                    left join ttipcs952490 as bc on ab.t_bdgt = bc.t_bdgt
+                    where ab.t_cprj =a.t_cprj and bc.t_bdgt = ab.t_bdgt and bc.t_item = a.t_item ) wp
+          FROM	ttiitm901490 a
+            LEFT JOIN ttipcs021490 b on b.t_cprj = a.t_cprj and b.t_item = a.t_item
+            LEFT JOIN ttiitm001490 c on c.t_item = a.t_item
+            LEFT JOIN ttifct020490 d on a.t_cprj = d.t_cprj and a.t_item = d.t_item
+          WHERE	a.t_cprj like '%$ship_code%'
+            and a.t_qana <> '0'
+            order by a.t_cprj, a.t_item";
+    return $sql;
+
+}
+function insertEbomValSQL($program,$ship_code,$item,$spn,$uom,
+                          $item_group,$swbs,$ebom,$noun1,$noun2,$noun3,$description, $wp){
+    $sql = "(
+        '$program',
+        $ship_code,
+        '$item',
+        '$spn',
+        '$uom',
+        '$item_group',
+        $swbs,
+        $ebom,
+        '$noun1',
+        '$noun2',
+        '$noun3',
+        '$description',
+        '$wp'),";
+    return $sql;
+}
+function loadBaanEbom($ship_code){
+    $sql = returnEBOMBaanSQL($ship_code);
+    $rs = dbCallBaan($sql);
+    $insert_sql = "
+            INSERT  into meac.wp_baan_ebom (program,
+            ship_code,
+            item,
+            spn,
+            uom,
+            item_group,
+            swbs,
+            ebom,
+            noun1,
+            noun2,
+            noun3,
+            description,
+            wp
+            ) VALUES
+    ";
+    $sql = $insert_sql;
+    $i = 0;
+    while (!$rs->EOF) {
+        $program     = "LCS";
+        $ship_code   = intval($rs->fields["ship_code"]);
+        $item        = trim($rs->fields["item"]);
+        $noun1       = trim($rs->fields["noun1"]);
+        $noun2       = trim($rs->fields["noun2"]);
+        $noun3       = trim($rs->fields["noun3"]);
+        $description = processDescription3(trim($rs->fields["description"]));
+        $item_group  = trim($rs->fields["item_group"]);
+        $swbs        = intval($rs->fields["swbs"]);
+        $spn         = trim($rs->fields["spn"]);
+        $uom         = trim($rs->fields["uom"]);
+        $wp          = trim($rs->fields["wp"]);
+        $ebom        = formatNumber4decNoComma($rs->fields["ebom"]);
+
+        $sql.=insertEbomValSQL($program,$ship_code,$item,$spn,$uom,
+            $item_group,$swbs,$ebom,$noun1,$noun2,$noun3,$description,$wp);
+        if($i == 500)
+        {
+            $sql = substr($sql, 0, -1);
+            $junk = dbCall($sql, "meac");
+            $i=0;
+            //clear out the sql stmt.
+            $sql = $insert_sql;
+        }
+        $i++;
+        $rs->MoveNext();
+    }
+    if($i !=500)
     {
         $sql = substr($sql, 0, -1);
         $junk = dbCall($sql, "meac");

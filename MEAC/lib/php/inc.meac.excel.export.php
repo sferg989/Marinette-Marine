@@ -59,8 +59,9 @@ function buildSWBSDetailTabs($ship_code, $swbs_group,$objPHPExcel,  $sheet_index
 ";
     $rs = dbCall($sql,"meac");
 
-    $i=2;
+    $i=7;
     $objPHPExcel->setActiveSheetIndex($sheet_index);
+    $sheet = $objPHPExcel->getActiveSheet();
     while (!$rs->EOF)
     {
         $swbs                   = $rs->fields["swbs"];
@@ -71,14 +72,19 @@ function buildSWBSDetailTabs($ship_code, $swbs_group,$objPHPExcel,  $sheet_index
         $c_amt                  = $rs->fields["c_amt"];
         $etc                    = $rs->fields["etc"];
         $eac                    = $rs->fields["eac"];
+        $col_letter = "A";
+        $sheet->SetCellValue($col_letter++.$i, $swbs);
+        $sheet->SetCellValue($col_letter++.$i, $item_group_description);
+        $sheet->SetCellValue($col_letter++.$i, $buyer);
+        phpExcelCurrencySheet($col_letter.$i, $sheet);
+        $sheet->SetCellValue($col_letter++.$i, $gl);
+        phpExcelCurrencySheet($col_letter.$i, $sheet);
+        $sheet->SetCellValue($col_letter++.$i, $open_po);
+        phpExcelCurrencySheet($col_letter.$i, $sheet);
+        $sheet->SetCellValue($col_letter++.$i, $etc);
+        phpExcelCurrencySheet($col_letter.$i, $sheet);
+        $sheet->SetCellValue($col_letter++.$i, $eac);
 
-        $objPHPExcel->getActiveSheet()->SetCellValue("A".$i, $swbs);
-        $objPHPExcel->getActiveSheet()->SetCellValue("B".$i, $item_group_description);
-        $objPHPExcel->getActiveSheet()->SetCellValue("C".$i, $buyer);
-        $objPHPExcel->getActiveSheet()->SetCellValue("D".$i, $gl);
-        $objPHPExcel->getActiveSheet()->SetCellValue("E".$i, $open_po);
-        $objPHPExcel->getActiveSheet()->SetCellValue("F".$i, $etc);
-        $objPHPExcel->getActiveSheet()->SetCellValue("F".$i, $eac);
         $i++;
         $rs->MoveNext();
     }
@@ -86,17 +92,32 @@ function buildSWBSDetailTabs($ship_code, $swbs_group,$objPHPExcel,  $sheet_index
 }
 function setSwbsTabTieldHeaders($objPHPExcel, $i){
     $swbs_detail_tab_headers = array();
-    $swbs_detail_tab_headers["A"] ="SWBS";
-    $swbs_detail_tab_headers["B"] ="ITEM GROUP Description";
-    $swbs_detail_tab_headers["C"] ="Buyers Responsible";
-    $swbs_detail_tab_headers["D"] ="Gl Actuals";
-    $swbs_detail_tab_headers["E"] ="Open PO";
-    $swbs_detail_tab_headers["F"] ="ETC";
-    $swbs_detail_tab_headers["G"] ="EAC";
+    $col_letter = "A";
+    $swbs_detail_tab_headers[$col_letter++] ="SWBS";
+    $swbs_detail_tab_headers[$col_letter++] ="ITEM GROUP Description";
+    $swbs_detail_tab_headers[$col_letter++] ="Buyers Responsible";
+    $swbs_detail_tab_headers[$col_letter++] ="Gl Actuals";
+    $swbs_detail_tab_headers[$col_letter++] ="Open PO";
+    $swbs_detail_tab_headers[$col_letter++] ="ETC";
+    $swbs_detail_tab_headers[$col_letter++] ="EAC";
     $objPHPExcel->setActiveSheetIndex($i);
-    foreach ( $swbs_detail_tab_headers as $cell=>$value) {
-        $objPHPExcel->getActiveSheet()->SetCellValue($cell."1", $value);
-        setCellWidth($cell."1", $objPHPExcel, 20);
+    $sheet = $objPHPExcel->getActiveSheet();
+    foreach ($swbs_detail_tab_headers as $cell=>$value) {
+        $sheet->SetCellValue($cell."5", $value);
+        switch ($value) {
+            case "ITEM GROUP Description":
+                setCellWidth($cell."1", $objPHPExcel, 39);
+                break;
+            case "Gl Actuals":
+            case "Open PO":
+            case "ETC":
+            case "EAC":
+                setCellWidth($cell."1", $objPHPExcel, 11);
+                break;
+            default:
+                setCellWidth($cell."1", $objPHPExcel, 20);
+        }
+        colorCellHeaderTitleSheet($cell."5", $sheet);
     }
 }
 function createSwbsTabs($ship_code,$objPHPExcel){
@@ -113,18 +134,17 @@ function createSwbsTabs($ship_code,$objPHPExcel){
         setSwbsTabTieldHeaders($objPHPExcel, $i);
         buildSWBSDetailTabs($ship_code, $swbs_group,$objPHPExcel,  $i);
         $highest_row = $objPHPExcel->setActiveSheetIndex($i)->getHighestRow();
-        $group_start = 2;
+        $group_start = 7;
+        $sheet = $objPHPExcel->getActiveSheet();
+        for ($row = 7; $row <= $highest_row; ++$row) {
 
-        for ($row = 2; $row <= $highest_row; ++$row) {
-
-            $cell_val  = $objPHPExcel->getActiveSheet()->getCell('A'.$row)->getValue();
+            $cell_val  = $sheet->getCell('A'.$row)->getValue();
             $next_row =  $row+1;
-            $next_row_val =  $objPHPExcel->getActiveSheet()->getCell('A'.$next_row)->getValue();
+            $next_row_val =  $sheet->getCell('A'.$next_row)->getValue();
             if($cell_val!=$next_row_val){
                 $group_end =$row;
                 for ($row = $group_start; $row <$group_end; ++$row) {
-                    $objPHPExcel->getActiveSheet()
-                        ->getRowDimension($row)
+                    $sheet->getRowDimension($row)
                         ->setOutlineLevel(1)
                         ->setVisible(false)
                         ->setCollapsed(true);
@@ -135,10 +155,26 @@ function createSwbsTabs($ship_code,$objPHPExcel){
                 else{
                     $group_val = $cell_val;
                 }
-                $objPHPExcel->getActiveSheet()->insertNewRowBefore($group_end + 1, 1);
+                $sheet->insertNewRowBefore($group_end + 1, 1);
                 $total_row = $group_end + 1;
+                $header_col = "D";
 
-                $objPHPExcel->getActiveSheet()->SetCellValue('A'.$total_row, "TOTAL for Group $group_val");
+                $sheet->SetCellValue('A'.$total_row, "TOTAL for Group $cell_val");
+                phpExcelCurrencySheetBOLDAndCOLOR('A'.$total_row, $sheet);
+                phpExcelCurrencySheetBOLDAndCOLOR('B'.$total_row, $sheet);
+                phpExcelCurrencySheetBOLDAndCOLOR('C'.$total_row, $sheet);
+
+                $sheet->SetCellValue($header_col.$total_row, "=SUM($header_col".$group_start.":$header_col".$group_end.")");
+                phpExcelCurrencySheetBOLDAndCOLOR($header_col++.$total_row, $sheet);
+
+                $sheet->SetCellValue($header_col.$total_row, "=SUM($header_col".$group_start.":$header_col".$group_end.")");
+                phpExcelCurrencySheetBOLDAndCOLOR($header_col++.$total_row, $sheet);
+
+                $sheet->SetCellValue($header_col.$total_row, "=SUM($header_col".$group_start.":$header_col".$group_end.")");
+                phpExcelCurrencySheetBOLDAndCOLOR($header_col++.$total_row, $sheet);
+
+                $sheet->SetCellValue($header_col.$total_row, "=SUM($header_col".$group_start.":$header_col".$group_end.")");
+                phpExcelCurrencySheetBOLDAndCOLOR($header_col++.$total_row, $sheet);
                 $row = $row+1;
                 $next_row = $total_row+1;
                 $highest_row = $highest_row+1;
@@ -147,11 +183,12 @@ function createSwbsTabs($ship_code,$objPHPExcel){
 
         }
         $objWorkSheet->setTitle("Group $swbs_group");
-
+        $objWorkSheet->setShowGridlines(False);
         $objWorkSheet->getTabColor()->setARGB('FF0094FF');
         $i++;
         $rs->MoveNext();
     }
+
 }
 function getCustomFieldNames($layout_id,$objPHPExcel){
     $sql = "
@@ -225,8 +262,36 @@ function colorCellRED($cell, $objPHPExcel){
         )
     );
 }
+function colorCellREDSheet($cell, $sheet){
+    $sheet->getStyle($cell)->applyFromArray(
+        array(
+            'fill' => array(
+                'type' => PHPExcel_Style_Fill::FILL_SOLID,
+                'color' => array('rgb' => 'FF0000')
+            ),
+            'font'  => array(
+                'bold'  => true,
+                'color' => array('rgb' => 'FDFEFE')
+            )
+        )
+    );
+}
 function colorCellYellow($cell, $objPHPExcel){
     $objPHPExcel->getActiveSheet()->getStyle($cell)->applyFromArray(
+        array(
+            'fill' => array(
+                'type' => PHPExcel_Style_Fill::FILL_SOLID,
+                'color' => array('rgb' => 'FFFF00')
+            ),
+            'font'  => array(
+                'bold'  => true,
+                'color' => array('rgb' => '000000')
+            )
+        )
+    );
+}
+function colorCellYellowSheet($cell, $sheet){
+    $sheet->getStyle($cell)->applyFromArray(
         array(
             'fill' => array(
                 'type' => PHPExcel_Style_Fill::FILL_SOLID,
@@ -253,6 +318,20 @@ function colorCellBLUE($cell, $objPHPExcel){
         )
     );
 }
+function colorCellBLUESheet($cell, $sheet){
+    $sheet->getStyle($cell)->applyFromArray(
+        array(
+            'fill' => array(
+                'type' => PHPExcel_Style_Fill::FILL_SOLID,
+                'color' => array('rgb' => '0000FF')
+            ),
+            'font'  => array(
+                'bold'  => true,
+                'color' => array('rgb' => 'FDFEFE')
+            )
+        )
+    );
+}
 function colorCellPurple($cell, $objPHPExcel){
     $objPHPExcel->getActiveSheet()->getStyle($cell)->applyFromArray(
         array(
@@ -263,6 +342,34 @@ function colorCellPurple($cell, $objPHPExcel){
             'font'  => array(
                 'bold'  => true,
                 'color' => array('rgb' => 'FDFEFE')
+            )
+        )
+    );
+}
+function colorCellPurpleSheet($cell, $sheet){
+    $sheet->getStyle($cell)->applyFromArray(
+        array(
+            'fill' => array(
+                'type' => PHPExcel_Style_Fill::FILL_SOLID,
+                'color' => array('rgb' => 'FF99CC')
+            ),
+            'font'  => array(
+                'bold'  => true,
+                'color' => array('rgb' => '000000')
+            )
+        )
+    );
+}
+function colorCellHeaderTitleSheet($cell, $sheet){
+    $sheet->getStyle($cell)->applyFromArray(
+        array(
+            'fill' => array(
+                'type' => PHPExcel_Style_Fill::FILL_SOLID,
+                'color' => array('rgb' => 'FF9933')
+            ),
+            'font'  => array(
+                'bold'  => true,
+                'color' => array('rgb' => 'FFFFFF')
             )
         )
     );

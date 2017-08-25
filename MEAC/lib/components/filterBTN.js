@@ -185,6 +185,23 @@ var getExcelExportProjectList = function (){
     }
     ajustamodal();
 }
+var getCBMLoaderProjectList = function (){
+    if($("#baan_loader_table").length > 0){
+        return true;
+    }
+    else{
+        $.ajax({
+            url     : "lib/php/meac_excel_export.php",
+            data: {
+                control   : "cbm_loader_list"
+            },
+            success : function (data) {
+                $("#cbm_loader_list").append(data);
+            }
+        });
+    }
+    ajustamodal();
+}
 var getExcelExportAllFields = function (){
 
     $('#excel_export_table').find('input[type="checkbox"]:checked').each(function () {
@@ -239,6 +256,60 @@ var getExcelExexSum = function (){
     });
 
 }
+var loadCBMByProject = function (){
+    var selections =$('#baan_loader_table').find('input[type="checkbox"]:checked');
+    if(selections!=""){
+        selections.each(function () {
+            var worker;
+            var ajaxDataObj       = {};
+            ajaxDataObj.control   = "load_cbm";
+            ajaxDataObj.code      = this.name;
+            ajaxDataObj.name      = "Loading " + this.name+ " CBM from Baan";
+            $("#status").append("<div id = \"img_"+ajaxDataObj.control+"\"><br><img src=\"../inc/images/ajax-loader.gif\" height=\"32\" width=\"32\"/>"+ajaxDataObj.name+"<br></div>");
+            workers     = new Worker("lib/workers/baan_loader.js");
+            workers.onmessage = workerDone;
+            workers.postMessage(ajaxDataObj);
+            function workerDone(e) {
+                if(e.data.id == undefined){
+                    return false;
+                }
+                else{
+                    console.log(e.data.id+" has completed");
+                    $("#img_"+e.data.id+" img").attr("src", "../images/tick.png");
+                }
+            }
+        });
+    }else {
+        bootbox.alert("Plesae Make a Selection!");
+    }
+}
+var loadEBOMByProject = function (){
+    var selections =$('#baan_loader_table').find('input[type="checkbox"]:checked');
+    if(selections!=""){
+        selections.each(function () {
+            var worker;
+            var ajaxDataObj       = {};
+            ajaxDataObj.control   = "load_ebom";
+            ajaxDataObj.code      = this.name;
+            ajaxDataObj.name      = "Loading " + this.name+" EBOM From Baan";
+            $("#status").append("<div id = \"img_"+ajaxDataObj.control+"\"><br><img src=\"../inc/images/ajax-loader.gif\" height=\"32\" width=\"32\"/>"+ajaxDataObj.name+"<br></div>");
+            workers     = new Worker("lib/workers/baan_loader.js");
+            workers.onmessage = workerDone;
+            workers.postMessage(ajaxDataObj);
+            function workerDone(e) {
+                if(e.data.id == undefined){
+                    return false;
+                }
+                else{
+                    console.log(e.data.id+" has completed");
+                    $("#img_"+e.data.id+" img").attr("src", "../images/tick.png");
+                }
+            }
+        });
+    }else {
+        bootbox.alert("Plesae Make a Selection!");
+    }
+}
 var getExcelExportCustom= function (){
     var ajaxDataObj     = {};
     var layout_id = $("#layout_list").val();
@@ -264,6 +335,9 @@ var getExcelExportCustom= function (){
         getExcelExportAllFields        : getExcelExportAllFields,
         getExcelExexSum                : getExcelExexSum,
         getExcelExportAllFieldsAllProjs: getExcelExportAllFieldsAllProjs,
-        getExcelExportCustom           : getExcelExportCustom
+        getExcelExportCustom           : getExcelExportCustom,
+        getCBMLoaderProjectList        : getCBMLoaderProjectList,
+        loadCBMByProject               : loadCBMByProject,
+        loadEBOMByProject              : loadEBOMByProject
     };
 });

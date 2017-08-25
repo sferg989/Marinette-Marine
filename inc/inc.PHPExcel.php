@@ -13,6 +13,49 @@ function phpExcelCurrency($range, $objPHPExcel){
         ->getNumberFormat()
         ->setFormatCode(PHPExcel_Style_NumberFormat::FORMAT_CURRENCY_USD);
 }
+function boldAndUnderLine($range, $sheet){
+    $styleArray = array(
+        'font' => array(
+            'bold' => true,
+            'underline' => PHPExcel_Style_Font::UNDERLINE_SINGLE
+        )
+    );
+    $sheet->getStyle($range)->applyFromArray($styleArray);
+}
+function phpExcelCurrencySheet($range, $sheet){
+    $sheet->getStyle($range)
+        ->getNumberFormat()
+        ->setFormatCode(PHPExcel_Style_NumberFormat::FORMAT_CURRENCY_USD);
+}
+function phpExcelCurrencySheetBOLD($range, $sheet){
+    $sheet->getStyle($range)
+        ->getNumberFormat()
+        ->setFormatCode(PHPExcel_Style_NumberFormat::FORMAT_CURRENCY_USD);
+    $styleArray = array(
+        'font' => array(
+            'bold' => true
+        )
+    );
+    $sheet->getStyle($range)->applyFromArray($styleArray);
+}
+function phpExcelCurrencySheetBOLDAndCOLOR($range, $sheet){
+
+    $sheet->getStyle($range)
+        ->getNumberFormat()
+        ->setFormatCode(PHPExcel_Style_NumberFormat::FORMAT_CURRENCY_USD);
+    $styleArray =
+        array(
+        'font' => array(
+            'bold' => true,
+            'color' => array('rgb' => '000000')
+        ),
+        'fill' => array(
+            'type' => PHPExcel_Style_Fill::FILL_SOLID,
+            'color' => array('rgb' => 'FF99CC')
+        )
+    );
+    $sheet->getStyle($range)->applyFromArray($styleArray);
+}
 function phpExcelFormatPercentage($range, $objPHPExcel){
     $objPHPExcel->getActiveSheet()
         ->getStyle($range)
@@ -22,6 +65,11 @@ function phpExcelFormatPercentage($range, $objPHPExcel){
 function phpExcelFormatHours($range,$objPHPExcel){
     $objPHPExcel->getActiveSheet()
         ->getStyle($range)
+        ->getNumberFormat()
+        ->setFormatCode('#,##0');
+}
+function phpExcelFormatHoursSheet($range,$sheet){
+    $sheet->getStyle($range)
         ->getNumberFormat()
         ->setFormatCode('#,##0');
 }

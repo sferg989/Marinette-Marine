@@ -33,6 +33,10 @@ $( document ).ready(function() {
     $("#btn_filter").click(function(){
         udf.setUDF();
     });
+    $("#btn_clear").click(function(){
+        $("#status").empty();
+    });
+
     $("#btn_group").click(function(){
         var layout_id = $("#layout_list").val();
         udf.getGroupableFields(layout_id);
@@ -54,6 +58,18 @@ $( document ).ready(function() {
     });
     $("#btn_excel_export_custom").click(function(){
         udf.getExcelExportCustom();
+
+    });
+    $("#btn_cbm_loader").click(function(){
+        udf.getCBMLoaderProjectList();
+
+    });
+    $("#btn_load_cbm").click(function(){
+        udf.loadCBMByProject();
+
+    });
+    $("#btn_load_ebom").click(function(){
+        udf.loadEBOMByProject();
 
     });
     function setGridColsCB(columnDefinitions){

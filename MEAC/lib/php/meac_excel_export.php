@@ -7,9 +7,11 @@
  */
 include('inc.insert_data.php');
 include('inc.meac.excel.export.php');
+include('inc.baan.fortis.php');
 include('../../../inc/inc.php');
 include('../../../inc/inc.PHPExcel.php');
 include("../../../inc/lib/php/phpExcel-1.8/classes/phpexcel/IOFactory.php");
+
 
 $user = $_SESSION["user_name"];
 $user = "fs11239";
@@ -191,6 +193,38 @@ if($control=="excel_export_list"){
     $data.="</table>";
     die($data);
 }
+if($control=="load_cbm"){
+
+    deleteFromTable("MEAC", "cbm", "ship_code", $ship_code);
+    insertCBMFromBaan($ship_code);
+}
+if($control=="load_ebom"){
+
+    deleteFromTable("meac", "wp_baan_ebom", "ship_code", $ship_code);
+    loadBaanEbom($ship_code);
+}
+
+if($control=="cbm_loader_list"){
+    $sql = "select ship_code from swbs_gl_summary group by ship_code";
+    $rs = dbCall($sql, "MEAC");
+    $data = "<table class = 'table' id ='baan_loader_table'><tr>";
+    $i=0;
+    while (!$rs->EOF)
+    {
+        $ship_code          = $rs->fields["ship_code"];
+        //print $i;
+        if($i%3 == 0) {
+            $data.= "</tr><tr><td><input type=\"checkbox\" name=\"$ship_code\" > $ship_code</td>";
+        }
+        else{
+            $data.= "<td><input type=\"checkbox\" name=\"$ship_code\" > $ship_code</td>";
+        }
+        $i++;
+        $rs->MoveNext();
+    }
+    $data.="</table>";
+    die($data);
+}
 if($control=="excel_export_custom"){
 // Create your database query
     $sql = getFieldNamesForSQL($wc);
@@ -252,6 +286,7 @@ if($control=="excel_exec_sum"){
     $objPHPExcel->setActiveSheetIndex(0);
     $rowCount = 2;
     $i=1;
+    $sheet = $objPHPExcel->getActiveSheet();
     while (!$rs->EOF)
     {
         $swbs_group             = $rs->fields["swbs_group"];
@@ -259,8 +294,8 @@ if($control=="excel_exec_sum"){
 
         // Set cell An to the "name" column from the database (assuming you have a column called name)
         //    where n is the Excel row number (ie cell A1 in the first row)
-        $objPHPExcel->getActiveSheet()->SetCellValue('A'.$rowCount, $swbs_group);
-        $objPHPExcel->getActiveSheet()->SetCellValue('B'.$rowCount, $swbs);
+        $sheet->SetCellValue('A'.$rowCount, $swbs_group);
+        $sheet->SetCellValue('B'.$rowCount, $swbs);
 
         $i++;
         $rowCount++;
@@ -271,14 +306,13 @@ if($control=="excel_exec_sum"){
 
     for ($row = 2; $row <= $highest_row; ++$row) {
 
-        $cell_val  = $objPHPExcel->getActiveSheet()->getCell('A'.$row)->getValue();
+        $cell_val  = $sheet->getCell('A'.$row)->getValue();
         $next_row =  $row+1;
-        $next_row_val =  $objPHPExcel->getActiveSheet()->getCell('A'.$next_row)->getValue();
+        $next_row_val =  $sheet->getCell('A'.$next_row)->getValue();
         if($cell_val!=$next_row_val){
             $group_end =$row;
             for ($row = $group_start; $row <$group_end; ++$row) {
-                $objPHPExcel->getActiveSheet()
-                    ->getRowDimension($row)
+                $sheet->getRowDimension($row)
                     ->setOutlineLevel(1)
                     ->setVisible(false)
                     ->setCollapsed(true);
@@ -289,10 +323,10 @@ if($control=="excel_exec_sum"){
             else{
                 $group_val = $cell_val;
             }
-            $objPHPExcel->getActiveSheet()->insertNewRowBefore($group_end + 1, 1);
+            $sheet->insertNewRowBefore($group_end + 1, 1);
             $total_row = $group_end + 1;
 
-            $objPHPExcel->getActiveSheet()->SetCellValue('A'.$total_row, "TOTAL for Group $group_val");
+            $sheet->SetCellValue('A'.$total_row, "TOTAL for Group $group_val");
             $row = $row+1;
             $next_row = $total_row+1;
             $highest_row = $highest_row+1;
@@ -300,7 +334,6 @@ if($control=="excel_exec_sum"){
         }
 
     }
-
     createSwbsTabs($ship_code, $objPHPExcel);
 
     $objWriter = new PHPExcel_Writer_Excel2007($objPHPExcel);

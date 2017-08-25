@@ -48,7 +48,7 @@ $dir = "C:\\evms\\";
 //copyListOfDirectoryToCSV($dir,"open_po",$open_po_directory, "open_po");
 
 //clearDirectory($committed_po_directory);
-//copyListOfDirectoryToCSV($dir,"committed_pos",$committed_po_directory, "committed_po");
+copyListOfDirectoryToCSV($dir,"committed_pos",$committed_po_directory, "committed_po");
 
 
 clearDirectory($gl_detail_directory);

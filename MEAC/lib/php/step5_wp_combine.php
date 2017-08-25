@@ -37,24 +37,24 @@ insertGLdetailWITHWP();
 $source_table = "wp_open_po";
 $destination_table = "z_".$rpt_period."_".$source_table;
 //duplicateTable($source_table, $source_schema, $destination_table, $destination_schema);
-//truncateTable("meac", "wp_open_po");
-//insertOpenPOWithWP();
+////truncateTable("meac", "wp_open_po");
+////insertOpenPOWithWP();
 
 $source_table = "wp_committed_po";
 $destination_table = "z_".$rpt_period."_".$source_table;
 //duplicateTable($source_table, $source_schema, $destination_table, $destination_schema);
-//truncateTable("meac", "wp_committed_po");
-//insertCommittedPOWP();
+////truncateTable("meac", "wp_committed_po");
+////insertCommittedPOWP();
 
 $source_table = "wp_open_buy";
 $destination_table = "z_".$rpt_period."_".$source_table;
 //duplicateTable($source_table, $source_schema, $destination_table, $destination_schema);
-//truncateTable("meac", "wp_open_buy");
-//insertOpenBuyWithWP();
+////truncateTable("meac", "wp_open_buy");
+////insertOpenBuyWithWP();
 
-/*$source_table = "wp_ebom";
+$source_table = "wp_ebom";
 $destination_table = "z_".$rpt_period."_".$source_table;
 //duplicateTable($source_table, $source_schema, $destination_table, $destination_schema);
-truncateTable("meac", "wp_ebom");
-insertEBOMWP();*/
+////truncateTable("meac", "wp_ebom");
+//insertEBOMWP();
 

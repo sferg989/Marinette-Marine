@@ -13,7 +13,7 @@ include("inc.baan.fortis.php");
 
 
 //deleteFromTable("meac", "po_data", "ship_code", $value);
-duplicateTable("po_data", "meac", "z_po_data20170811", "z_meac");
+//duplicateTable("po_data", "meac", "z_po_data20170811", "z_meac");
 truncateTable("meac", "po_data");
 loadFortisPOData();
 

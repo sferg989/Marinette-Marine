@@ -28,20 +28,19 @@ $array = array();
 //$array[] = 465;
 //$array[] = 467;
 $array[] = 469;
-//$array[] = 471;
-//$array[] = 473;
-//$array[] = 475;
-//$array[] = 477;
-$array[] = 479;
-//$array[] = 481;
-//$array[] = 483;
-//$array[] = 485;
+$array[] = 471;
+$array[] = 473;
+$array[] = 475;
+$array[] = 477;
+//$array[] = 479;
+$array[] = 481;
+$array[] = 483;
+$array[] = 485;
 
-/*foreach ($array as $value){
+foreach ($array as $value){
     deleteFromTable("MEAC", "swbs_gl_summary_stage", "ship_code", $value);
     insertSWBSSummaryStaging($value);
-}*/
-
+}
 $rel_path2_reports = "../../../util/csv_etc_load_file";
 $directory2Copy ="C:/evms/etc_load_file";
 print $directory2Copy;
@@ -54,3 +53,4 @@ foreach ($array as $value){
     deleteFromTable("MEAC", "swbs_gl_summary", "ship_code", $value);
     insertSWBSSummary($value);
 }
+deleteFromTableNotLike("MEAC", "swbs_gl_summary", "wp", "matl");

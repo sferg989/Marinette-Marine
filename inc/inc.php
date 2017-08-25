@@ -699,6 +699,11 @@ function deleteFromTable($schema, $table,$field, $value)
     $sql = "delete from $schema.$table where $field = '$value'";
     $junk = dbCall($sql,$schema);
 }
+function deleteFromTableNotLike($schema, $table,$field, $value)
+{
+    $sql = "delete from $schema.$table where $field not like '%$value%'";
+    $junk = dbCall($sql,$schema);
+}
 function threeLetterMonth2Number($month){
     //print $month."<br>";
     $date_array["Jan"] = "01";
@@ -723,7 +728,6 @@ function insertCobraCurData($ship_code, $rpt_period, $schema){
         createTableFromBase("cost2","template_cost", $table_name);
     }
     deleteShipFromTable($ship_code,$table_name, $schema);
-
 }
 
 
@@ -1175,4 +1179,3 @@ function duplicateTable($source_table, $source_schema, $destination_table,$desti
     $rs = dbCall($sql);
 
 }
-

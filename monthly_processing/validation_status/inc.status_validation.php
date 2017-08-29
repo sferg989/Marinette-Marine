@@ -153,9 +153,10 @@ function validatePCS2P6StatusLabor($schema, $rpt_period, $ship_code, $cost_set){
         $cost_set    = $rs->fields["cost_set"];
         $ca    = $rs->fields["ca"];
         $wp    = $rs->fields["wp"];
-        $p6    = formatNumber($rs->fields["p6val"]);
-        $cobra = formatNumber($rs->fields["cobraval"]);
-        $diff  = formatNumber($p6 - $cobra);
+
+        $p6    = formatNumber4decNoComma($rs->fields["p6val"]);
+        $cobra = formatNumber4decNoComma($rs->fields["cobraval"]);
+        $diff  = formatNumber4decNoComma($p6 - $cobra);
 
         if($diff>.5){
             $data_table.="
@@ -163,9 +164,9 @@ function validatePCS2P6StatusLabor($schema, $rpt_period, $ship_code, $cost_set){
                 <td>$cost_set</td>
                 <td>$ca</td>
                 <td>$wp</td>
-                <td>$p6</td>
-                <td>$cobra</td>
-                <td>$diff</td>
+                <td>".formatNumber($p6)."</td>
+                <td>".formatNumber($cobra)."</td>
+                <td>".formatNumber($diff)."</td>
             </tr>
             ";
             $i++;
@@ -214,10 +215,10 @@ function validateTPP6TP($schema, $rpt_period, $ship_code){
     {
         $ca          = $rs->fields["ca"];
         $wp          = $rs->fields["wp"];
-        $rpt_period          = $rs->fields["date"];
-        $p6_labor    = formatNumber($rs->fields["p6_labor"]);
-        $cobra_labor = formatNumber($rs->fields["cobra_labor"]);
-        $diff        = formatNumber($p6_labor - $cobra_labor);
+        $rpt_period  = $rs->fields["date"];
+        $p6_labor    = formatNumber4decNoComma($rs->fields["p6_labor"]);
+        $cobra_labor = formatNumber4decNoComma($rs->fields["cobra_labor"]);
+        $diff        = formatNumber4decNoComma($p6_labor - $cobra_labor);
 
         if($diff>.5){
             $data_table.="
@@ -225,9 +226,9 @@ function validateTPP6TP($schema, $rpt_period, $ship_code){
                 <td>$rpt_period</td>
                 <td>$ca</td>
                 <td>$wp</td>
-                <td>$p6_labor</td>
-                <td>$cobra_labor</td>
-                <td>$diff</td>
+                <td>".formatNumber($p6_labor)."</td>
+                <td>".formatNumber($cobra_labor)."</td>
+                <td>".formatNumber($diff)."</td>
             </tr>
             ";
             $i++;

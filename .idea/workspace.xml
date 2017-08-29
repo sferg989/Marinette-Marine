@@ -9,65 +9,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="47f822d5-caa4-4777-9772-746577f23a95" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/images/Clear-icon-16.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/images/wizard-icon-16.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/images/wizard-icon-24.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/images/wizard-icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/images/wizard-wand-16.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/excel_exports/479273export.xlsx" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/excel_exports/47996export.xlsx" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/MEAC/lib/php/baan_comitted_po.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/MEAC/lib/php/baan_ebom_loader.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/MEAC/lib/php/baan_load_responsible_buyer.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/MEAC/lib/php/baan_open_po_loader.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/MEAC/lib/php/baan_step2_cbm_loader.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/MEAC/lib/php/baan_step4A_inv_transfers.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/MEAC/lib/php/st_all_fields_meac_excel_export.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/MEAC/lib/php/st_exec_sum.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/MEAC/lib/workers/baan_loader.js" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MEAC/lib/php/ebom_loader_baan.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MEAC/lib/php/master_buyer_loader_baan.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MEAC/lib/php/open_po_loader_baan.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MEAC/lib/php/step2_cbm_loader_baan.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bkup/etc_load_file.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/util/excel_exports/465428export.xlsx" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/util/excel_exports/4671export.xlsx" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/util/excel_exports/469430export.xlsx" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/util/excel_exports/469496export.xlsx" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/util/excel_exports/469503export.xlsx" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/util/excel_exports/471650export.xlsx" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/util/excel_exports/473308export.xlsx" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/util/excel_exports/475767export.xlsx" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/util/excel_exports/477577export.xlsx" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/util/excel_exports/479902export.xlsx" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/util/excel_exports/481916export.xlsx" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/util/excel_exports/483776export.xlsx" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/util/excel_exports/485418export.xlsx" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/util/excel_exports/ALLHULLS_149export.xlsx" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/util/excel_exports/ALLHULLS_352export.xlsx" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/util/excel_exports/ALLHULLS_401export.xlsx" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/util/excel_exports/ALLHULLS_408export.xlsx" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/util/excel_exports/ALLHULLS_502export.xlsx" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/util/excel_exports/ALLHULLS_753export.xlsx" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/util/excel_exports/ALLHULLS_789export.xlsx" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/util/excel_exports/ALLHULLS_952export.xlsx" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/MEAC/lib/php/gl_detail_loader_baan.php" afterPath="$PROJECT_DIR$/MEAC/lib/php/baan_gl_detail_loader.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/MEAC/lib/php/st_meac_excel_export.php" afterPath="$PROJECT_DIR$/MEAC/lib/php/st_swbs_level_meac_excel_export.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/MEAC/lib/php/step4_openbuy_loader_baan.php" afterPath="$PROJECT_DIR$/MEAC/lib/php/baan_step4_openbuy_loader.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/MEAC/lib/php/baan_open_buy.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/MEAC/lib/php/tphase_step1.php" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MEAC/lib/php/baan_step4_openbuy_loader.php" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/MEAC/lib/php/baan_step2_cbm_loader.php" afterPath="$PROJECT_DIR$/MEAC/lib/php/baan_cbm_loader.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MEAC/indexallfields.html" afterPath="$PROJECT_DIR$/MEAC/indexallfields.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MEAC/lib/components/filterBTN.js" afterPath="$PROJECT_DIR$/MEAC/lib/components/filterBTN.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MEAC/lib/php/fortis_po_loader.php" afterPath="$PROJECT_DIR$/MEAC/lib/php/fortis_po_loader.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MEAC/lib/php/baan_comitted_po.php" afterPath="$PROJECT_DIR$/MEAC/lib/php/baan_comitted_po.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MEAC/lib/php/baan_ebom_loader.php" afterPath="$PROJECT_DIR$/MEAC/lib/php/baan_ebom_loader.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MEAC/lib/php/baan_gl_detail_loader.php" afterPath="$PROJECT_DIR$/MEAC/lib/php/baan_gl_detail_loader.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MEAC/lib/php/baan_open_po_loader.php" afterPath="$PROJECT_DIR$/MEAC/lib/php/baan_open_po_loader.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MEAC/lib/php/inc.baan.fortis.php" afterPath="$PROJECT_DIR$/MEAC/lib/php/inc.baan.fortis.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MEAC/lib/php/inc.insert_data.php" afterPath="$PROJECT_DIR$/MEAC/lib/php/inc.insert_data.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MEAC/lib/php/inc.meac.excel.export.php" afterPath="$PROJECT_DIR$/MEAC/lib/php/inc.meac.excel.export.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MEAC/lib/php/meac_excel_export.php" afterPath="$PROJECT_DIR$/MEAC/lib/php/meac_excel_export.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MEAC/lib/php/step1_gl_openPO_comitted_loader.php" afterPath="$PROJECT_DIR$/MEAC/lib/php/step1_gl_openPO_comitted_loader.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MEAC/lib/php/step5_wp_combine.php" afterPath="$PROJECT_DIR$/MEAC/lib/php/step5_wp_combine.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MEAC/lib/php/step7_swbs_gl_summary_table.php" afterPath="$PROJECT_DIR$/MEAC/lib/php/step7_swbs_gl_summary_table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MEAC/mainallfields.js" afterPath="$PROJECT_DIR$/MEAC/mainallfields.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/inc/inc.PHPExcel.php" afterPath="$PROJECT_DIR$/inc/inc.PHPExcel.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/inc/inc.php" afterPath="$PROJECT_DIR$/inc/inc.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/load_fiscalcalendar.php" afterPath="$PROJECT_DIR$/load_fiscalcalendar.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/monthly_processing/validation_bl/inc.bl_validation.php" afterPath="$PROJECT_DIR$/monthly_processing/validation_bl/inc.bl_validation.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/monthly_processing/validation_status/inc.status_validation.php" afterPath="$PROJECT_DIR$/monthly_processing/validation_status/inc.status_validation.php" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -101,65 +55,195 @@
       <file leaf-file-name="inc.baan.fortis.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/MEAC/lib/php/inc.baan.fortis.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="301">
-              <caret line="766" column="1" lean-forward="true" selection-start-line="766" selection-start-column="1" selection-end-line="766" selection-end-column="1" />
+            <state relative-caret-position="493">
+              <caret line="712" column="25" lean-forward="true" selection-start-line="712" selection-start-column="25" selection-end-line="712" selection-end-column="25" />
               <folding>
                 <element signature="n#returnFortisPOSQL#0;n#!!top" expanded="false" />
-                <marker date="1503671817653" expanded="true" signature="15829:18644" ph="SELECT disti... ttdpur041490" />
-                <marker date="1503671817653" expanded="true" signature="17801:18080" ph="select top 1... ttipcs950490" />
-                <marker date="1503671817653" expanded="true" signature="18721:18930" ph="Select Disti... ttipcs021490" />
-                <marker date="1503671817653" expanded="true" signature="18984:19033" ph="INSERT into master_buyer" />
-                <marker date="1503671817653" expanded="true" signature="19864:23493" ph="SELECT a.t_d... ttfgld106490" />
-                <marker date="1503671817653" expanded="true" signature="19867:23493" ph="SELECT a.t_d... ttfgld106490" />
-                <marker date="1503671817653" expanded="true" signature="21099:21208" ph="SELECT h.t_n... ttccom020490" />
-                <marker date="1503671817653" expanded="true" signature="21326:21435" ph="SELECT i.t_n... ttccom010490" />
-                <marker date="1503671817653" expanded="true" signature="21579:21688" ph="SELECT h.t_n... ttccom020490" />
-                <marker date="1503671817653" expanded="true" signature="21806:21915" ph="SELECT i.t_n... ttccom010490" />
-                <marker date="1503671817653" expanded="true" signature="23342:23493" ph="SELECT disti... ttfgld106490" />
-                <marker date="1503671817653" expanded="true" signature="26351:26796" ph="insert into meac.open_buy... " />
-                <marker date="1503671817653" expanded="true" signature="26889:27406" ph="insert into meac.open_po... " />
-                <marker date="1503671817653" expanded="true" signature="30297:30718" ph="INSERT INTO gl_detail" />
-                <marker date="1503671817653" expanded="true" signature="33852:35100" ph="select proje... FMM_Purchase_Order" />
-                <marker date="1503671817653" expanded="true" signature="35190:35497" ph="INSERT into po_data" />
-                <marker date="1503671817653" expanded="true" signature="38179:38269" ph="select t_cpr... ttipcs021490" />
-                <marker date="1503671817653" expanded="true" signature="38323:38385" ph="insert into buyer_reponsible... " />
-                <marker date="1503671817653" expanded="true" signature="39287:40046" ph="Select top 1... ttifct030490" />
-                <marker date="1503671817653" expanded="true" signature="40120:40387" ph="INSERT into change_item" />
-                <marker date="1503671817653" expanded="true" signature="42542:43158" ph="select b.t_c... ttipcs952490" />
-                <marker date="1503671817653" expanded="true" signature="43226:43327" ph="insert into meac.cbm... " />
-                <marker date="1503671817653" expanded="true" signature="44663:45899" ph="SELECT top 5... ttiitm901490" />
-                <marker date="1503671817653" expanded="true" signature="45247:45519" ph="select top 1... ttipcs950490" />
-                <marker date="1503671817653" expanded="true" signature="46484:46777" ph="INSERT into baan_ebom" />
+                <marker date="1503954138409" expanded="true" signature="15829:18644" ph="SELECT disti... ttdpur041490" />
+                <marker date="1503954138409" expanded="true" signature="17801:18080" ph="select top 1... ttipcs950490" />
+                <marker date="1503954138409" expanded="true" signature="18721:18930" ph="Select Disti... ttipcs021490" />
+                <marker date="1503954138409" expanded="true" signature="18984:19033" ph="INSERT into master_buyer" />
+                <marker date="1503954138409" expanded="true" signature="19862:25135" ph="SELECT a.t_d... ttfgld106490" />
+                <marker date="1503954138409" expanded="true" signature="19871:25133" ph="select *, ca... t_dim1" />
+                <marker date="1503954138409" expanded="true" signature="20052:20278" ph="select t_qua... ttipcs700490" />
+                <marker date="1503954138409" expanded="true" signature="20365:25113" ph="SELECT a.t_d... ttfgld106490" />
+                <marker date="1503954138409" expanded="true" signature="21983:22108" ph="SELECT h.t_n... ttccom020490" />
+                <marker date="1503954138409" expanded="true" signature="22242:22367" ph="SELECT i.t_n... ttccom010490" />
+                <marker date="1503954138409" expanded="true" signature="22551:22676" ph="SELECT h.t_n... ttccom020490" />
+                <marker date="1503954138409" expanded="true" signature="22810:22935" ph="SELECT i.t_n... ttccom010490" />
+                <marker date="1503954138409" expanded="true" signature="23797:24068" ph="select top 1... ttipcs950490" />
+                <marker date="1503954138409" expanded="true" signature="25134:25135" ph="SELECT disti... ttfgld106490" />
+                <marker date="1503954138409" expanded="true" signature="27980:28430" ph="insert into meac.open_buy... " />
+                <marker date="1503954138409" expanded="true" signature="28523:29040" ph="insert into meac.open_po... " />
+                <marker date="1503954138409" expanded="true" signature="31931:32403" ph="INSERT INTO gl_detail" />
+                <marker date="1503954138409" expanded="true" signature="35739:36987" ph="select proje... FMM_Purchase_Order" />
+                <marker date="1503954138409" expanded="true" signature="37077:37384" ph="INSERT into po_data" />
+                <marker date="1503954138409" expanded="true" signature="40066:40156" ph="select t_cpr... ttipcs021490" />
+                <marker date="1503954138409" expanded="true" signature="40210:40272" ph="insert into buyer_reponsible... " />
+                <marker date="1503954138409" expanded="true" signature="41174:41933" ph="Select top 1... ttifct030490" />
+                <marker date="1503954138409" expanded="true" signature="42007:42274" ph="INSERT into change_item" />
+                <marker date="1503954138409" expanded="true" signature="44429:45045" ph="select b.t_c... ttipcs952490" />
+                <marker date="1503954138409" expanded="true" signature="45113:45214" ph="insert into meac.cbm... " />
+                <marker date="1503954138409" expanded="true" signature="46550:47786" ph="SELECT top 5... ttiitm901490" />
+                <marker date="1503954138409" expanded="true" signature="47134:47406" ph="select top 1... ttipcs950490" />
+                <marker date="1503954138409" expanded="true" signature="48371:48664" ph="INSERT into baan_ebom" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="baan_open_po_loader.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/MEAC/lib/php/baan_open_po_loader.php">
+      <file leaf-file-name="baan_open_buy.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/MEAC/lib/php/baan_open_buy.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="544">
-              <caret line="32" column="15" lean-forward="true" selection-start-line="32" selection-start-column="15" selection-end-line="32" selection-end-column="15" />
+            <state relative-caret-position="459">
+              <caret line="27" column="17" lean-forward="false" selection-start-line="27" selection-start-column="17" selection-end-line="27" selection-end-column="17" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="baan_step4_openbuy_loader.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/MEAC/lib/php/baan_step4_openbuy_loader.php">
+      <file leaf-file-name="tphase_step1.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/MEAC/lib/php/tphase_step1.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="471">
-              <caret line="31" column="11" lean-forward="true" selection-start-line="31" selection-start-column="11" selection-end-line="31" selection-end-column="11" />
-              <folding />
+            <state relative-caret-position="352">
+              <caret line="37" column="33" lean-forward="true" selection-start-line="37" selection-start-column="33" selection-end-line="37" selection-end-column="33" />
+              <folding>
+                <element signature="n#insertSWBSGLByRPTPeriod#0;n#!!top" expanded="false" />
+                <element signature="n#insertTPhaseStep1#0;n#!!top" expanded="false" />
+                <element signature="n#getStageDates#0;n#!!top" expanded="false" />
+                <marker date="1504014678776" expanded="true" signature="1610:2085" ph="select ship_... wp_gl_detail" />
+                <marker date="1504014678776" expanded="true" signature="2520:2670" ph="insert into tphase_step1... " />
+                <marker date="1504014678776" expanded="true" signature="2879:2951" ph="select rpt_p... calendar" />
+                <marker date="1504014678776" expanded="true" signature="4136:4191" ph="select stage... tphase_stage" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="baan_ebom_loader.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/MEAC/lib/php/baan_ebom_loader.php">
+      <file leaf-file-name="bl_validation.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/monthly_processing/validation_bl/bl_validation.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+            <state relative-caret-position="383">
+              <caret line="182" column="32" lean-forward="true" selection-start-line="182" selection-start-column="32" selection-end-line="182" selection-end-column="32" />
+              <folding>
+                <element signature="e#2220#3837#0#PHP" expanded="false" />
+                <element signature="e#3838#4987#0#PHP" expanded="false" />
+                <element signature="e#4988#6295#0#PHP" expanded="false" />
+                <marker date="1496261388431" expanded="true" signature="949:1081" ph="insert into ${$table_name}... " />
+                <marker date="1496261388431" expanded="true" signature="2564:2632" ph="insert into ${$schema}.${$table_name}... " />
+                <marker date="1496261388431" expanded="true" signature="7208:7268" ph="select count... ${$table_name}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="inc.bl_validation.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/monthly_processing/validation_bl/inc.bl_validation.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="354">
+              <caret line="339" column="34" lean-forward="false" selection-start-line="339" selection-start-column="22" selection-end-line="339" selection-end-column="34" />
+              <folding>
+                <marker date="1504020995520" expanded="true" signature="593:667" ph="insert into ${$schema}.${$table_name}... " />
+                <marker date="1504020995520" expanded="true" signature="2445:2522" ph="insert into ${$schema}.${$table_name}... " />
+                <marker date="1504020995520" expanded="true" signature="3958:4246" ph="..." />
+                <marker date="1504020995520" expanded="true" signature="4078:4241" ph="..." />
+                <marker date="1504020995520" expanded="true" signature="4700:4880" ph="..." />
+                <marker date="1504020995520" expanded="true" signature="5033:5120" ph="..." />
+                <marker date="1504020995520" expanded="true" signature="5463:5795" ph="select p6.ca... ${$p6_table_name}" />
+                <marker date="1504020995520" expanded="true" signature="5980:6322" ph="select p6.ca... ${$p6_table_name}" />
+                <marker date="1504020995520" expanded="true" signature="6624:6950" ph="select p6.ca... ${$p6_table_name}" />
+                <marker date="1504020995520" expanded="true" signature="7216:7543" ph="..." />
+                <marker date="1504020995520" expanded="true" signature="7342:7542" ph="..." />
+                <marker date="1504020995520" expanded="true" signature="8075:8286" ph="..." />
+                <marker date="1504020995520" expanded="true" signature="8457:8544" ph="..." />
+                <marker date="1504020995520" expanded="true" signature="8808:9220" ph="select p6.ca... ${$p6_table_name}" />
+                <marker date="1504020995520" expanded="true" signature="9579:10118" ph="select cur.s... ${$cur_table_name}" />
+                <marker date="1504020995520" expanded="true" signature="10216:10545" ph="..." />
+                <marker date="1504020995520" expanded="true" signature="10337:10544" ph="..." />
+                <marker date="1504020995520" expanded="true" signature="11038:11156" ph="..." />
+                <marker date="1504020995520" expanded="true" signature="11038:11157" ph="..." />
+                <marker date="1504020995520" expanded="true" signature="11038:11299" ph="..." />
+                <marker date="1504020995520" expanded="true" signature="11449:11558" ph="..." />
+                <marker date="1504020995520" expanded="true" signature="12091:12158" ph="insert into ${$schema}.${$table_name}... " />
+                <marker date="1504020995520" expanded="true" signature="13680:13747" ph="insert into ${$schema}.${$table_name}... " />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="inc.status_validation.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/monthly_processing/validation_status/inc.status_validation.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="607">
+              <caret line="236" column="24" lean-forward="true" selection-start-line="236" selection-start-column="24" selection-end-line="236" selection-end-column="24" />
+              <folding>
+                <marker date="1504021263479" expanded="true" signature="579:658" ph="insert into ${$schema}.${$table_name}... " />
+                <marker date="1504021263479" expanded="true" signature="2470:2537" ph="insert into ${$schema}.${$table_name}... " />
+                <marker date="1504021263479" expanded="true" signature="4127:4540" ph="select p6.co... ${$p6_table_name}" />
+                <marker date="1504021263479" expanded="true" signature="4647:4979" ph="..." />
+                <marker date="1504021263479" expanded="true" signature="4777:4974" ph="..." />
+                <marker date="1504021263479" expanded="true" signature="5432:5547" ph="..." />
+                <marker date="1504021263479" expanded="true" signature="5432:5594" ph="..." />
+                <marker date="1504021263479" expanded="true" signature="5432:5644" ph="..." />
+                <marker date="1504021263479" expanded="true" signature="5432:5689" ph="..." />
+                <marker date="1504021263479" expanded="true" signature="5839:5950" ph="..." />
+                <marker date="1504021263479" expanded="true" signature="6214:6552" ph="select p6.ca... ${$p6_table_name}" />
+                <marker date="1504021263479" expanded="true" signature="6640:6967" ph="..." />
+                <marker date="1504021263479" expanded="true" signature="6766:6966" ph="..." />
+                <marker date="1504021263479" expanded="true" signature="7443:7560" ph="..." />
+                <marker date="1504021263479" expanded="true" signature="7443:7613" ph="..." />
+                <marker date="1504021263479" expanded="true" signature="7443:7669" ph="..." />
+                <marker date="1504021263479" expanded="true" signature="7443:7714" ph="..." />
+                <marker date="1504021263479" expanded="true" signature="7864:7975" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="status_validation.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/monthly_processing/validation_status/status_validation.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="361">
+              <caret line="182" column="47" lean-forward="true" selection-start-line="182" selection-start-column="47" selection-end-line="182" selection-end-column="47" />
+              <folding>
+                <element signature="e#2071#3975#0#PHP" expanded="false" />
+                <element signature="e#3976#5032#0#PHP" expanded="false" />
+                <element signature="e#5033#5503#0#PHP" expanded="false" />
+                <marker date="1493152743252" expanded="true" signature="813:945" ph="insert into ${$table_name}... " />
+                <marker date="1493152743252" expanded="true" signature="2427:2500" ph="insert into ${$schema}.${$table_name}... " />
+                <marker date="1493152743252" expanded="true" signature="6506:6566" ph="select count... ${$table_name}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="inc.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/inc/inc.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="602" column="12" lean-forward="false" selection-start-line="602" selection-start-column="12" selection-end-line="602" selection-end-column="12" />
+              <folding>
+                <marker date="1503581694356" expanded="true" signature="2513:2571" ph="select id fr... master_ca" />
+                <marker date="1503581694356" expanded="true" signature="2707:2734" ph="select max($... ${$table}" />
+                <marker date="1503581694356" expanded="true" signature="3232:3325" ph="INSERT INTO master_ca... " />
+                <marker date="1503581694356" expanded="true" signature="3431:3480" ph="select id fr... master_ca" />
+                <marker date="1503581694356" expanded="true" signature="6181:6235" ph="select name master_project" />
+                <marker date="1503581694356" expanded="true" signature="20749:20799" ph="delete from " />
+                <marker date="1503581694356" expanded="true" signature="20929:21039" ph="select table... tables" />
+                <marker date="1503581694356" expanded="true" signature="21843:21893" ph="delete from " />
+                <marker date="1503581694356" expanded="true" signature="22010:22069" ph="delete from " />
+                <marker date="1503581694356" expanded="true" signature="38535:38594" ph="select month... calendar" />
+                <marker date="1503581694356" expanded="true" signature="40128:40200" ph="CREATE TABLE... ${$destination_table}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="step5_wp_combine.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/MEAC/lib/php/step5_wp_combine.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="375">
+              <caret line="34" column="10" lean-forward="true" selection-start-line="34" selection-start-column="10" selection-end-line="34" selection-end-column="10" />
               <folding />
             </state>
           </provider>
@@ -168,8 +252,8 @@
       <file leaf-file-name="inc.insert_data.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/MEAC/lib/php/inc.insert_data.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="190" column="21" lean-forward="false" selection-start-line="190" selection-start-column="21" selection-end-line="190" selection-end-column="21" />
+            <state relative-caret-position="272">
+              <caret line="1958" column="0" lean-forward="false" selection-start-line="1958" selection-start-column="0" selection-end-line="1959" selection-end-column="51" />
               <folding>
                 <element signature="n#insertEBOM#0;n#!!top" expanded="false" />
                 <element signature="n#insertCBM#0;n#!!top" expanded="false" />
@@ -178,7 +262,6 @@
                 <element signature="n#returnOpenBuyInsert#0;n#!!top" expanded="false" />
                 <element signature="n#insertOpenBuyWithWP#0;n#!!top" expanded="false" />
                 <element signature="n#insertMEACDataNoCommodity#0;n#!!top" expanded="false" />
-                <element signature="n#insertSWBSSummaryOPENPO#0;n#!!top" expanded="false" />
                 <element signature="n#returnMeacSQL#0;n#!!top" expanded="false" />
                 <marker date="1503585481562" expanded="true" signature="1716:2204" ph="insert into mars.open_po... " />
                 <marker date="1503585481562" expanded="true" signature="4798:5246" ph="insert into mars.committed_po... " />
@@ -324,111 +407,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="inc.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/inc/inc.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="11832">
-              <caret line="696" column="9" lean-forward="false" selection-start-line="696" selection-start-column="9" selection-end-line="696" selection-end-column="9" />
-              <folding>
-                <marker date="1503581694356" expanded="true" signature="2513:2571" ph="select id fr... master_ca" />
-                <marker date="1503581694356" expanded="true" signature="2707:2734" ph="select max($... ${$table}" />
-                <marker date="1503581694356" expanded="true" signature="3232:3325" ph="INSERT INTO master_ca... " />
-                <marker date="1503581694356" expanded="true" signature="3431:3480" ph="select id fr... master_ca" />
-                <marker date="1503581694356" expanded="true" signature="6181:6235" ph="select name master_project" />
-                <marker date="1503581694356" expanded="true" signature="20749:20799" ph="delete from " />
-                <marker date="1503581694356" expanded="true" signature="20929:21039" ph="select table... tables" />
-                <marker date="1503581694356" expanded="true" signature="21843:21893" ph="delete from " />
-                <marker date="1503581694356" expanded="true" signature="22010:22069" ph="delete from " />
-                <marker date="1503581694356" expanded="true" signature="38535:38594" ph="select month... calendar" />
-                <marker date="1503581694356" expanded="true" signature="40128:40200" ph="CREATE TABLE... ${$destination_table}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="st_exec_sum.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/MEAC/lib/php/st_exec_sum.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1428">
-              <caret line="114" column="37" lean-forward="false" selection-start-line="114" selection-start-column="4" selection-end-line="114" selection-end-column="37" />
-              <folding>
-                <element signature="n#getAllCategoriesByShip#0;n#!!top" expanded="false" />
-                <element signature="n#getValByCategory#0;n#!!top" expanded="false" />
-                <marker date="1503349644046" expanded="true" signature="684:772" ph="select categ... swbs" />
-                <marker date="1503349644046" expanded="true" signature="1072:1271" ph="select sum(g... swbs_gl_summary" />
-                <marker date="1503349644046" expanded="true" signature="1072:1272" ph="select categ... swbs_gl_summary" />
-                <marker date="1503349644046" expanded="true" signature="1590:1840" ph="select (sele... " />
-                <marker date="1503349644046" expanded="true" signature="1590:3525" ph="select (sele... " />
-                <marker date="1503349644046" expanded="true" signature="1590:5126" ph="select (sele... " />
-                <marker date="1503349644046" expanded="true" signature="1604:1704" ph="select (sum(... swbs_gl_summary" />
-                <marker date="1503349644046" expanded="true" signature="1604:1760" ph="select (sum(... swbs_gl_summary" />
-                <marker date="1503349644046" expanded="true" signature="1788:1840" ph="select (sum(... swbs_gl_summary" />
-                <marker date="1503349644046" expanded="true" signature="1953:2096" ph="select (sum(... swbs_gl_summary" />
-                <marker date="1503349644046" expanded="true" signature="2118:2267" ph="select (sum(... swbs_gl_summary" />
-                <marker date="1503349644046" expanded="true" signature="2295:2441" ph="select (sum(... swbs_gl_summary" />
-                <marker date="1503349644046" expanded="true" signature="2466:2612" ph="select (sum(... swbs_gl_summary" />
-                <marker date="1503349644046" expanded="true" signature="2637:2781" ph="select (sum(... swbs_gl_summary" />
-                <marker date="1503349644046" expanded="true" signature="2804:2951" ph="select (sum(... swbs_gl_summary" />
-                <marker date="1503349644046" expanded="true" signature="2977:3131" ph="select (sum(... swbs_gl_summary" />
-                <marker date="1503349644046" expanded="true" signature="3152:3516" ph="select (sum(... swbs_gl_summary" />
-                <marker date="1503349644046" expanded="true" signature="3206:3516" ph="select (sum(... swbs_gl_summary" />
-                <marker date="1503349644046" expanded="true" signature="3534:3654" ph="select sum(e... swbs_gl_summary" />
-                <marker date="1503349644046" expanded="true" signature="3686:3792" ph="select sum(e... swbs_gl_summary" />
-                <marker date="1503349644046" expanded="true" signature="3818:3924" ph="select sum(e... swbs_gl_summary" />
-                <marker date="1503349644046" expanded="true" signature="3950:4062" ph="select sum(e... swbs_gl_summary" />
-                <marker date="1503349644046" expanded="true" signature="4094:4203" ph="select sum(e... swbs_gl_summary" />
-                <marker date="1503349644046" expanded="true" signature="4232:4341" ph="select sum(e... swbs_gl_summary" />
-                <marker date="1503349644046" expanded="true" signature="4370:4477" ph="select sum(e... swbs_gl_summary" />
-                <marker date="1503349644046" expanded="true" signature="4504:4614" ph="select sum(e... swbs_gl_summary" />
-                <marker date="1503349644046" expanded="true" signature="4644:4761" ph="select sum(e... swbs_gl_summary" />
-                <marker date="1503349644046" expanded="true" signature="4786:5113" ph="select sum(e... swbs_gl_summary" />
-                <marker date="1503349644046" expanded="true" signature="4802:5113" ph="select sum(e... swbs_gl_summary" />
-                <marker date="1503349644046" expanded="true" signature="9329:13709" ph="select swbs_... swbs_gl_summary" />
-                <marker date="1503349644046" expanded="true" signature="9403:9490" ph="select sum(g... swbs_gl_summary" />
-                <marker date="1503349644046" expanded="true" signature="9403:9563" ph="select (sum(... swbs_gl_summary" />
-                <marker date="1503349644046" expanded="true" signature="9599:9754" ph="select (sum(... swbs_gl_summary" />
-                <marker date="1503349644046" expanded="true" signature="9784:9939" ph="select (sum(... swbs_gl_summary" />
-                <marker date="1503349644046" expanded="true" signature="9969:10130" ph="select (sum(... swbs_gl_summary" />
-                <marker date="1503349644046" expanded="true" signature="10166:10324" ph="select (sum(... swbs_gl_summary" />
-                <marker date="1503349644046" expanded="true" signature="10357:10515" ph="select (sum(... swbs_gl_summary" />
-                <marker date="1503349644046" expanded="true" signature="10548:10704" ph="select (sum(... swbs_gl_summary" />
-                <marker date="1503349644046" expanded="true" signature="10735:10894" ph="select (sum(... swbs_gl_summary" />
-                <marker date="1503349644046" expanded="true" signature="10928:11094" ph="select (sum(... swbs_gl_summary" />
-                <marker date="1503349644046" expanded="true" signature="11123:11632" ph="select (sum(... swbs_gl_summary" />
-                <marker date="1503349644046" expanded="true" signature="11320:11632" ph="select (sum(... swbs_gl_summary" />
-                <marker date="1503349644046" expanded="true" signature="11677:11802" ph="select sum(e... swbs_gl_summary" />
-                <marker date="1503349644046" expanded="true" signature="11842:11961" ph="select sum(e... swbs_gl_summary" />
-                <marker date="1503349644046" expanded="true" signature="11995:12114" ph="select sum(e... swbs_gl_summary" />
-                <marker date="1503349644046" expanded="true" signature="12148:12273" ph="select sum(e... swbs_gl_summary" />
-                <marker date="1503349644046" expanded="true" signature="12313:12435" ph="select sum(e... swbs_gl_summary" />
-                <marker date="1503349644046" expanded="true" signature="12472:12594" ph="select sum(e... swbs_gl_summary" />
-                <marker date="1503349644046" expanded="true" signature="12631:12751" ph="select sum(e... swbs_gl_summary" />
-                <marker date="1503349644046" expanded="true" signature="12786:12909" ph="select sum(e... swbs_gl_summary" />
-                <marker date="1503349644046" expanded="true" signature="12947:13077" ph="select sum(e... swbs_gl_summary" />
-                <marker date="1503349644046" expanded="true" signature="13110:13583" ph="select sum(e... swbs_gl_summary" />
-                <marker date="1503349644046" expanded="true" signature="13739:14660" ph="select swbs_... swbs_gl_summary" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="inc.meac.excel.export.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/MEAC/lib/php/inc.meac.excel.export.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="544">
-              <caret line="32" column="23" lean-forward="false" selection-start-line="32" selection-start-column="23" selection-end-line="32" selection-end-column="23" />
-              <folding>
-                <element signature="n#colorCellYellow#0;n#!!top" expanded="false" />
-                <marker date="1503590467016" expanded="true" signature="140:294" ph="select commo... field_list" />
-                <marker date="1503590467016" expanded="true" signature="1014:1634" ph="SELECT ship_... swbs_gl_summary" />
-                <marker date="1503590467016" expanded="true" signature="4236:4299" ph="select swbs_... swbs_gl_summary" />
-                <marker date="1503590467016" expanded="true" signature="7391:7602" ph="select commo... field_list" />
-                <marker date="1503590467016" expanded="true" signature="8146:8333" ph="select field... field_list" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
@@ -442,39 +420,38 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>descript</find>
-      <find>insertEbomValSQL</find>
-      <find>item2</find>
-      <find>cbm</find>
-      <find>returnEBOMBaanSQL</find>
-      <find>last_unit_price</find>
-      <find>setSwbsTabTieldHeaders</find>
-      <find>inser</find>
-      <find>det</find>
-      <find>ta</find>
-      <find>buildSWBSDetailTabs</find>
-      <find>total</find>
-      <find>switch</find>
-      <find>glde</find>
-      <find>returnGlDetailBaanSQL</find>
-      <find>loadGlDetailBaan(</find>
-      <find>trunc</find>
-      <find>loadGlDetailBaan</find>
-      <find>ebom</find>
-      <find>,</find>
-      <find>])</find>
-      <find />
-      <find>insertSQLBaanComittedPO</find>
-      <find>noun1</find>
-      <find>returnBaanComittedPOSQL</find>
-      <find>insertSQLBaan</find>
-      <find>insertSQLBaanCommittedPO</find>
-      <find>returnBaanOpenPOSQL</find>
       <find>insertOpenPOReport</find>
       <find>returnOpenPOInsertSQL</find>
+      <find>glde</find>
+      <find>loadGlDetailBaan</find>
+      <find>returnGlDetailBaanSQL</find>
+      <find>returnGlDetailInsertS</find>
+      <find>returnGlD</find>
+      <find>returnGlDetailInsertSQL</find>
+      <find>rt</find>
+      <find>date</find>
+      <find>t_pono</find>
+      <find>order2</find>
+      <find>loadBaanEbom</find>
+      <find>returnBaanComittedPOSQL</find>
+      <find>renam</find>
+      <find>returnOpenBuyInsertSQL</find>
+      <find>insert into fmm_evms.calendar</find>
+      <find>loadFiscalCalendar</find>
+      <find>get</find>
+      <find>getMonthEndDay(</find>
+      <find>start</find>
+      <find>returnCaseStageSQL</find>
+      <find>insertSWBSGLByRPTPeriod</find>
+      <find>insertTPhaseStep1</find>
+      <find>returnBaanOpenBuySQL</find>
+      <find>swbs_grou</find>
+      <find>!=0</find>
+      <find>his</find>
+      <find>loadHistoryCheck</find>
+      <find>$diff</find>
     </findStrings>
     <replaceStrings>
-      <replace>&lt;li class=&quot;list-group-item&quot;&gt;</replace>
       <replace>$rs-&gt;fields</replace>
       <replace>$rs-&gt;fields[</replace>
       <replace>//$a</replace>
@@ -504,6 +481,7 @@
       <replace>trim</replace>
       <replace>',</replace>
       <replace>)</replace>
+      <replace>end</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -524,13 +502,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/cross_hull/main.js" />
-        <option value="$PROJECT_DIR$/inc/inc.bac_eac.php" />
-        <option value="$PROJECT_DIR$/monthly_processing/bac_eac/bac_eac.php" />
-        <option value="$PROJECT_DIR$/inc/lib/php/adodb5/drivers/adodb-odbc.inc.php" />
-        <option value="$PROJECT_DIR$/MEAC/lib/php/meac_grid.php" />
-        <option value="$PROJECT_DIR$/MEAC/lib/workers/excel_export.js" />
-        <option value="$PROJECT_DIR$/MEAC/lib/php/functiobuilder.php" />
         <option value="$PROJECT_DIR$/MEAC/lib/php/inc.baan.php" />
         <option value="$PROJECT_DIR$/MEAC/lib/php/master_buyer_loader_baan.php" />
         <option value="$PROJECT_DIR$/MEAC/lib/php/open_po_loader_baan.php" />
@@ -551,7 +522,6 @@
         <option value="$PROJECT_DIR$/MEAC/lib/php/st_swbs_level_meac_excel_export.php" />
         <option value="$PROJECT_DIR$/MEAC/lib/php/step5-1_inv_transfers.php" />
         <option value="$PROJECT_DIR$/MEAC/lib/php/step4A_inv_transfers.php" />
-        <option value="$PROJECT_DIR$/inc/mmev.inc.php" />
         <option value="$PROJECT_DIR$/inc/inc.PHPExcel.php" />
         <option value="$PROJECT_DIR$/MEAC/lib/php/load_responsible_buyer.php" />
         <option value="$PROJECT_DIR$/MEAC/lib/php/step4_openbuy_loader_baan.php" />
@@ -569,12 +539,20 @@
         <option value="$PROJECT_DIR$/MEAC/lib/php/step7_swbs_gl_summary_table.php" />
         <option value="$PROJECT_DIR$/MEAC/lib/php/st_exec_sum.php" />
         <option value="$PROJECT_DIR$/MEAC/lib/php/inc.meac.excel.export.php" />
-        <option value="$PROJECT_DIR$/MEAC/lib/php/baan_gl_detail_loader.php" />
-        <option value="$PROJECT_DIR$/MEAC/lib/php/baan_ebom_loader.php" />
         <option value="$PROJECT_DIR$/MEAC/lib/php/step1_gl_openPO_comitted_loader.php" />
-        <option value="$PROJECT_DIR$/MEAC/lib/php/baan_comitted_po.php" />
-        <option value="$PROJECT_DIR$/MEAC/lib/php/inc.baan.fortis.php" />
+        <option value="$PROJECT_DIR$/MEAC/lib/php/baan_ebom_loader.php" />
+        <option value="$PROJECT_DIR$/inc/mmev.inc.php" />
         <option value="$PROJECT_DIR$/MEAC/lib/php/baan_open_po_loader.php" />
+        <option value="$PROJECT_DIR$/MEAC/lib/php/baan_comitted_po.php" />
+        <option value="$PROJECT_DIR$/MEAC/lib/php/baan_gl_detail_loader.php" />
+        <option value="$PROJECT_DIR$/load_fiscalcalendar.php" />
+        <option value="$PROJECT_DIR$/monthly_processing/bcm/lib/php/log_trans.php" />
+        <option value="$PROJECT_DIR$/MEAC/lib/php/baan_open_buy.php" />
+        <option value="$PROJECT_DIR$/MEAC/lib/php/inc.baan.fortis.php" />
+        <option value="$PROJECT_DIR$/MEAC/lib/php/tphase_step1.php" />
+        <option value="$PROJECT_DIR$/monthly_processing/validation_bl/bl_validation.php" />
+        <option value="$PROJECT_DIR$/monthly_processing/validation_bl/inc.bl_validation.php" />
+        <option value="$PROJECT_DIR$/monthly_processing/validation_status/inc.status_validation.php" />
       </list>
     </option>
   </component>
@@ -631,7 +609,6 @@
     </navigator>
     <panes>
       <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -642,12 +619,19 @@
             <path>
               <item name="fmg" type="b2602c69:ProjectViewProjectNode" />
               <item name="fmg" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="inc" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="monthly_processing" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="fmg" type="b2602c69:ProjectViewProjectNode" />
+              <item name="fmg" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="monthly_processing" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="validation_status" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -656,29 +640,29 @@
     <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
-    <property name="last_opened_file_path" value="B:/fmg/inc/mmev.inc.php" />
+    <property name="last_opened_file_path" value="B:/fmg/monthly_processing/validation_status/inc.status_validation.php" />
     <property name="com.intellij.database.dataSource.DataSourceTemplate" value="localhost" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="ToolWindowDatabase Console.ShowToolbar" value="false" />
-    <property name="two.files.diff.last.used.folder" value="B:/fmg" />
-    <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/level1.require.config.js" />
+    <property name="two.files.diff.last.used.folder" value="B:/fmg/monthly_processing/validation_bl" />
+    <property name="two.files.diff.last.used.file" value="B:/fmg/monthly_processing/validation_status/inc.status_validation.php" />
     <property name="jsx.switch.disabled" value="true" />
     <property name="Git.Branch.Popup.ShowAllRemotes" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\fmg\bkup" />
-      <recent name="C:\xampp\htdocs\fmg\MEAC\lib\components" />
-      <recent name="C:\xampp\htdocs\fmg\MEAC\lib\php" />
-      <recent name="C:\xampp\htdocs\fmg\CEAC\lib\php" />
-      <recent name="C:\xampp\htdocs\fmg\cost_loader\lib\components" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\fmg\MEAC\lib\php" />
       <recent name="C:\xampp\htdocs\fmg\MEAC\lib\workers" />
       <recent name="C:\xampp\htdocs\fmg" />
       <recent name="C:\xampp\htdocs\fmg\pmo_cross_hull\lib\components" />
       <recent name="C:\xampp\htdocs\fmg\MEAC" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\fmg\bkup" />
+      <recent name="C:\xampp\htdocs\fmg\MEAC\lib\components" />
+      <recent name="C:\xampp\htdocs\fmg\MEAC\lib\php" />
+      <recent name="C:\xampp\htdocs\fmg\CEAC\lib\php" />
+      <recent name="C:\xampp\htdocs\fmg\cost_loader\lib\components" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -1103,14 +1087,11 @@
       <workItem from="1503493426808" duration="7743000" />
       <workItem from="1503545612066" duration="2894000" />
       <workItem from="1503578501852" duration="18787000" />
-      <workItem from="1503668016473" duration="4694000" />
-    </task>
-    <task id="LOCAL-00002" summary="Web workers is working on setup for cur month">
-      <created>1484258071575</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1484258071575</updated>
+      <workItem from="1503668016473" duration="8429000" />
+      <workItem from="1503683085995" duration="5525000" />
+      <workItem from="1503925679991" duration="1692000" />
+      <workItem from="1503937227780" duration="11449000" />
+      <workItem from="1504010891399" duration="4641000" />
     </task>
     <task id="LOCAL-00003" summary="update Log Analysis">
       <created>1484749833291</created>
@@ -1448,11 +1429,18 @@
       <option name="project" value="LOCAL" />
       <updated>1502829397578</updated>
     </task>
-    <option name="localTasksCounter" value="51" />
+    <task id="LOCAL-00051" summary="Late August Commit">
+      <created>1503674071776</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1503674071776</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2532636000" />
+    <option name="totallyTimeSpent" value="2559678000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1466,11 +1454,10 @@
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2734375" sideWeight="0.49638802" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19895834" sideWeight="0.49638802" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32946146" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32944915" sideWeight="0.5" order="11" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32916668" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.49947202" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.6342452" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1486,6 +1473,7 @@
       <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32920536" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3368532" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.49947202" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -1517,7 +1505,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="added the global worker directory" />
     <MESSAGE value="Pushing to Remote." />
     <MESSAGE value="made good progress on bac_eac" />
     <MESSAGE value="working.  CSV load of CPRs, for pre 17 and post 17" />
@@ -1542,7 +1529,8 @@
     <MESSAGE value="add bid price Loader" />
     <MESSAGE value="Push to Master Branch" />
     <MESSAGE value="Mid August Commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="Mid August Commit" />
+    <MESSAGE value="Late August Commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="Late August Commit" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1557,47 +1545,22 @@
           <line>1823</line>
           <option name="timeStamp" value="144" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/MEAC/lib/php/tphase_step1.php</url>
+          <line>118</line>
+          <option name="timeStamp" value="157" />
+        </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/monthly_processing/bcm/lib/components/createSlickGrid.js</url>
           <line>115</line>
           <option name="timeStamp" value="123" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="156" />
+      <option name="time" value="158" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/MEAC/lib/php/inc.fortis.php" />
-    <entry file="file://$PROJECT_DIR$/matlForecastupdates.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="45" column="0" lean-forward="true" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MEAC/lib/php/step4_openbuy_loader.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="28" column="0" lean-forward="true" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MEAC/lib/php/step0_target_cost_loader.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bkup/etc_load_file.php" />
-    <entry file="file://$PROJECT_DIR$/MEAC/lib/php/step6_meac_loader.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="2" lean-forward="true" selection-start-line="12" selection-start-column="2" selection-end-line="12" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/cbm_loader/lib/components/data.js" />
     <entry file="file://$PROJECT_DIR$/cbm_loader/index.html" />
     <entry file="file://$PROJECT_DIR$/cbm_loader/lib/components/title_update.js" />
@@ -1653,35 +1616,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/monthly_processing/validation_bl/bl_validation.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="403">
-          <caret line="60" column="0" lean-forward="false" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/monthly_processing/validation_bl/inc.bl_validation.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="62" column="25" lean-forward="false" selection-start-line="62" selection-start-column="9" selection-end-line="62" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/inc/inc.PHPExcel.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="320">
           <caret line="41" column="0" lean-forward="true" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
-          <folding>
-            <marker date="1503349724621" expanded="true" signature="7560:7627" ph="insert into ${$schema}.${$table_name}... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/inc/mmev.inc.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="714">
-          <caret line="47" column="28" lean-forward="true" selection-start-line="47" selection-start-column="28" selection-end-line="47" selection-end-column="28" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1705,6 +1643,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="493">
           <caret line="29" column="35" lean-forward="false" selection-start-line="29" selection-start-column="35" selection-end-line="29" selection-end-column="35" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1777,7 +1716,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MEAC/lib/php/baan_step2_cbm_loader.php">
+    <entry file="file://$PROJECT_DIR$/MEAC/lib/php/baan_cbm_loader.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="516">
           <caret line="34" column="15" lean-forward="true" selection-start-line="34" selection-start-column="15" selection-end-line="34" selection-end-column="15" />
@@ -1785,31 +1724,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MEAC/lib/php/baan_load_responsible_buyer.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="726">
-          <caret line="44" column="20" lean-forward="true" selection-start-line="44" selection-start-column="20" selection-end-line="44" selection-end-column="20" />
-          <folding>
-            <marker date="1503433219122" expanded="true" signature="343:601" ph="insert into item2buyer... " />
-            <marker date="1503433219122" expanded="true" signature="407:599" ph="select item,... buyer_reponsible" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/MEAC/lib/php/meac_excel_export.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="352">
           <caret line="203" column="29" lean-forward="true" selection-start-line="203" selection-start-column="29" selection-end-line="203" selection-end-column="29" />
-          <folding>
-            <element signature="e#398#8107#0#PHP" expanded="false" />
-            <element signature="e#8109#8761#0#PHP" expanded="false" />
-            <element signature="e#8762#8886#0#PHP" expanded="false" />
-            <element signature="e#9668#11487#0#PHP" expanded="false" />
-            <element signature="e#11488#13789#0#PHP" expanded="false" />
-            <marker date="1503580354807" expanded="true" signature="8156:8212" ph="select ship_... swbs_gl_summary" />
-            <marker date="1503580354807" expanded="true" signature="9063:9119" ph="select ship_... swbs_gl_summary" />
-            <marker date="1503580354807" expanded="true" signature="11531:11606" ph="select swbs_... swbs_gl_summary" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1817,6 +1736,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
           <caret line="33" column="15" lean-forward="true" selection-start-line="33" selection-start-column="15" selection-end-line="33" selection-end-column="15" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1828,38 +1748,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MEAC/lib/php/inc.meac.excel.export.php">
+    <entry file="file://$PROJECT_DIR$/MEAC/lib/php/step1_gl_openPO_comitted_loader.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="32" column="23" lean-forward="false" selection-start-line="32" selection-start-column="23" selection-end-line="32" selection-end-column="23" />
-          <folding>
-            <element signature="n#colorCellYellow#0;n#!!top" expanded="false" />
-            <marker date="1503590467016" expanded="true" signature="140:294" ph="select commo... field_list" />
-            <marker date="1503590467016" expanded="true" signature="1014:1634" ph="SELECT ship_... swbs_gl_summary" />
-            <marker date="1503590467016" expanded="true" signature="4236:4299" ph="select swbs_... swbs_gl_summary" />
-            <marker date="1503590467016" expanded="true" signature="7391:7602" ph="select commo... field_list" />
-            <marker date="1503590467016" expanded="true" signature="8146:8333" ph="select field... field_list" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/inc/inc.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="11832">
-          <caret line="696" column="9" lean-forward="false" selection-start-line="696" selection-start-column="9" selection-end-line="696" selection-end-column="9" />
-          <folding>
-            <marker date="1503581694356" expanded="true" signature="2513:2571" ph="select id fr... master_ca" />
-            <marker date="1503581694356" expanded="true" signature="2707:2734" ph="select max($... ${$table}" />
-            <marker date="1503581694356" expanded="true" signature="3232:3325" ph="INSERT INTO master_ca... " />
-            <marker date="1503581694356" expanded="true" signature="3431:3480" ph="select id fr... master_ca" />
-            <marker date="1503581694356" expanded="true" signature="6181:6235" ph="select name master_project" />
-            <marker date="1503581694356" expanded="true" signature="20749:20799" ph="delete from " />
-            <marker date="1503581694356" expanded="true" signature="20929:21039" ph="select table... tables" />
-            <marker date="1503581694356" expanded="true" signature="21843:21893" ph="delete from " />
-            <marker date="1503581694356" expanded="true" signature="22010:22069" ph="delete from " />
-            <marker date="1503581694356" expanded="true" signature="38535:38594" ph="select month... calendar" />
-            <marker date="1503581694356" expanded="true" signature="40128:40200" ph="CREATE TABLE... ${$destination_table}" />
-          </folding>
+        <state relative-caret-position="216">
+          <caret line="20" column="10" lean-forward="false" selection-start-line="20" selection-start-column="10" selection-end-line="20" selection-end-column="10" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1927,24 +1820,36 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MEAC/lib/php/step5_wp_combine.php">
+    <entry file="file://$PROJECT_DIR$/MEAC/lib/php/inc.meac.excel.export.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="34" column="16" lean-forward="true" selection-start-line="34" selection-start-column="16" selection-end-line="34" selection-end-column="16" />
+        <state relative-caret-position="544">
+          <caret line="32" column="82" lean-forward="false" selection-start-line="32" selection-start-column="82" selection-end-line="32" selection-end-column="82" />
+          <folding>
+            <element signature="n#colorCellYellow#0;n#!!top" expanded="false" />
+            <marker date="1503590467016" expanded="true" signature="140:294" ph="select commo... field_list" />
+            <marker date="1503590467016" expanded="true" signature="1014:1634" ph="SELECT ship_... swbs_gl_summary" />
+            <marker date="1503590467016" expanded="true" signature="4236:4299" ph="select swbs_... swbs_gl_summary" />
+            <marker date="1503590467016" expanded="true" signature="7391:7602" ph="select commo... field_list" />
+            <marker date="1503590467016" expanded="true" signature="8146:8333" ph="select field... field_list" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MEAC/lib/php/step1_gl_openPO_comitted_loader.php">
+    <entry file="file://$PROJECT_DIR$/MEAC/lib/php/baan_load_responsible_buyer.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="20" column="10" lean-forward="false" selection-start-line="20" selection-start-column="10" selection-end-line="20" selection-end-column="10" />
+        <state relative-caret-position="748">
+          <caret line="44" column="13" lean-forward="false" selection-start-line="44" selection-start-column="13" selection-end-line="44" selection-end-column="13" />
+          <folding>
+            <marker date="1503433219122" expanded="true" signature="343:601" ph="insert into item2buyer... " />
+            <marker date="1503433219122" expanded="true" signature="407:599" ph="select item,... buyer_reponsible" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/MEAC/lib/php/baan_step4A_inv_transfers.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="19" lean-forward="false" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="19" />
+        <state relative-caret-position="442">
+          <caret line="26" column="49" lean-forward="false" selection-start-line="26" selection-start-column="49" selection-end-line="26" selection-end-column="49" />
           <folding>
             <marker date="1503089752041" expanded="true" signature="219:392" ph="select top 5... ttipcs700490" />
             <marker date="1503089752041" expanded="true" signature="452:516" ph="insert into inv_transfers... " />
@@ -1952,10 +1857,129 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/MEAC/lib/php/baan_ebom_loader.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="3" lean-forward="false" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/monthly_processing/cur_month_setup/cur_month_setup.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="91" column="5" lean-forward="false" selection-start-line="91" selection-start-column="5" selection-end-line="91" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MEAC/lib/php/baan_comitted_po.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="312">
+          <caret line="147" column="54" lean-forward="true" selection-start-line="147" selection-start-column="54" selection-end-line="147" selection-end-column="54" />
+          <folding>
+            <element signature="n#returnBaanComittedPOSQL#0;n#!!top" expanded="false" />
+            <element signature="n#insertSQLBaanCommittedPO#0;n#!!top" expanded="false" />
+            <element signature="n#insertSQLSTRINGBaanComittedPO#0;n#!!top" expanded="false" />
+            <marker date="1503937333896" expanded="true" signature="418:3190" ph="SELECT top 5... ttdpur041490" />
+            <marker date="1503937333896" expanded="true" signature="2531:2802" ph="select top 1... ttipcs950490" />
+            <marker date="1503937333896" expanded="true" signature="3271:3836" ph="insert into wp_baan_committed_po... " />
+            <marker date="1503937333896" expanded="true" signature="3271:3843" ph="insert into wp_baan_committed_po... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inc/mmev.inc.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="35" column="0" lean-forward="true" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MEAC/lib/php/baan_open_po_loader.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="21" column="0" lean-forward="true" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MEAC/lib/php/baan_gl_detail_loader.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/load_fiscalcalendar.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="5" lean-forward="true" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
+          <folding>
+            <marker date="1503950599004" expanded="true" signature="126:213" ph="insert into fmm_evms.calendar... " />
+            <marker date="1503950599004" expanded="true" signature="320:450" ph="select FSC_D... FISCDETL" />
+            <marker date="1503950599004" expanded="true" signature="465:595" ph="select FSC_D... FISCDETL" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/monthly_processing/bcm/lib/php/log_trans.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="45" column="54" lean-forward="true" selection-start-line="45" selection-start-column="54" selection-end-line="45" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MEAC/lib/php/baan_open_buy.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="27" column="17" lean-forward="false" selection-start-line="27" selection-start-column="17" selection-end-line="27" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MEAC/lib/php/inc.baan.fortis.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="712" column="25" lean-forward="true" selection-start-line="712" selection-start-column="25" selection-end-line="712" selection-end-column="25" />
+          <folding>
+            <element signature="n#returnFortisPOSQL#0;n#!!top" expanded="false" />
+            <marker date="1503954138409" expanded="true" signature="15829:18644" ph="SELECT disti... ttdpur041490" />
+            <marker date="1503954138409" expanded="true" signature="17801:18080" ph="select top 1... ttipcs950490" />
+            <marker date="1503954138409" expanded="true" signature="18721:18930" ph="Select Disti... ttipcs021490" />
+            <marker date="1503954138409" expanded="true" signature="18984:19033" ph="INSERT into master_buyer" />
+            <marker date="1503954138409" expanded="true" signature="19862:25135" ph="SELECT a.t_d... ttfgld106490" />
+            <marker date="1503954138409" expanded="true" signature="19871:25133" ph="select *, ca... t_dim1" />
+            <marker date="1503954138409" expanded="true" signature="20052:20278" ph="select t_qua... ttipcs700490" />
+            <marker date="1503954138409" expanded="true" signature="20365:25113" ph="SELECT a.t_d... ttfgld106490" />
+            <marker date="1503954138409" expanded="true" signature="21983:22108" ph="SELECT h.t_n... ttccom020490" />
+            <marker date="1503954138409" expanded="true" signature="22242:22367" ph="SELECT i.t_n... ttccom010490" />
+            <marker date="1503954138409" expanded="true" signature="22551:22676" ph="SELECT h.t_n... ttccom020490" />
+            <marker date="1503954138409" expanded="true" signature="22810:22935" ph="SELECT i.t_n... ttccom010490" />
+            <marker date="1503954138409" expanded="true" signature="23797:24068" ph="select top 1... ttipcs950490" />
+            <marker date="1503954138409" expanded="true" signature="25134:25135" ph="SELECT disti... ttfgld106490" />
+            <marker date="1503954138409" expanded="true" signature="27980:28430" ph="insert into meac.open_buy... " />
+            <marker date="1503954138409" expanded="true" signature="28523:29040" ph="insert into meac.open_po... " />
+            <marker date="1503954138409" expanded="true" signature="31931:32403" ph="INSERT INTO gl_detail" />
+            <marker date="1503954138409" expanded="true" signature="35739:36987" ph="select proje... FMM_Purchase_Order" />
+            <marker date="1503954138409" expanded="true" signature="37077:37384" ph="INSERT into po_data" />
+            <marker date="1503954138409" expanded="true" signature="40066:40156" ph="select t_cpr... ttipcs021490" />
+            <marker date="1503954138409" expanded="true" signature="40210:40272" ph="insert into buyer_reponsible... " />
+            <marker date="1503954138409" expanded="true" signature="41174:41933" ph="Select top 1... ttifct030490" />
+            <marker date="1503954138409" expanded="true" signature="42007:42274" ph="INSERT into change_item" />
+            <marker date="1503954138409" expanded="true" signature="44429:45045" ph="select b.t_c... ttipcs952490" />
+            <marker date="1503954138409" expanded="true" signature="45113:45214" ph="insert into meac.cbm... " />
+            <marker date="1503954138409" expanded="true" signature="46550:47786" ph="SELECT top 5... ttiitm901490" />
+            <marker date="1503954138409" expanded="true" signature="47134:47406" ph="select top 1... ttipcs950490" />
+            <marker date="1503954138409" expanded="true" signature="48371:48664" ph="INSERT into baan_ebom" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/MEAC/lib/php/inc.insert_data.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="190" column="21" lean-forward="false" selection-start-line="190" selection-start-column="21" selection-end-line="190" selection-end-column="21" />
+        <state relative-caret-position="272">
+          <caret line="1958" column="0" lean-forward="false" selection-start-line="1958" selection-start-column="0" selection-end-line="1959" selection-end-column="51" />
           <folding>
             <element signature="n#insertEBOM#0;n#!!top" expanded="false" />
             <element signature="n#insertCBM#0;n#!!top" expanded="false" />
@@ -1964,7 +1988,6 @@
             <element signature="n#returnOpenBuyInsert#0;n#!!top" expanded="false" />
             <element signature="n#insertOpenBuyWithWP#0;n#!!top" expanded="false" />
             <element signature="n#insertMEACDataNoCommodity#0;n#!!top" expanded="false" />
-            <element signature="n#insertSWBSSummaryOPENPO#0;n#!!top" expanded="false" />
             <element signature="n#returnMeacSQL#0;n#!!top" expanded="false" />
             <marker date="1503585481562" expanded="true" signature="1716:2204" ph="insert into mars.open_po... " />
             <marker date="1503585481562" expanded="true" signature="4798:5246" ph="insert into mars.committed_po... " />
@@ -2109,85 +2132,136 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MEAC/lib/php/baan_comitted_po.php">
+    <entry file="file://$PROJECT_DIR$/MEAC/lib/php/step5_wp_combine.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="22" column="45" lean-forward="true" selection-start-line="22" selection-start-column="45" selection-end-line="22" selection-end-column="45" />
+        <state relative-caret-position="375">
+          <caret line="34" column="10" lean-forward="true" selection-start-line="34" selection-start-column="10" selection-end-line="34" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MEAC/lib/php/tphase_step1.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="37" column="33" lean-forward="true" selection-start-line="37" selection-start-column="33" selection-end-line="37" selection-end-column="33" />
           <folding>
-            <element signature="n#insertSQLBaanCommittedPO#0;n#!!top" expanded="false" />
-            <element signature="n#insertSQLSTRINGBaanComittedPO#0;n#!!top" expanded="false" />
-            <marker date="1503608199488" expanded="true" signature="438:3210" ph="SELECT top 5... ttdpur041490" />
-            <marker date="1503608199488" expanded="true" signature="2551:2822" ph="select top 1... ttipcs950490" />
-            <marker date="1503608199488" expanded="true" signature="3291:3856" ph="insert into wp_baan_committed_po... " />
-            <marker date="1503608199488" expanded="true" signature="3291:3863" ph="insert into wp_baan_committed_po... " />
+            <element signature="n#insertSWBSGLByRPTPeriod#0;n#!!top" expanded="false" />
+            <element signature="n#insertTPhaseStep1#0;n#!!top" expanded="false" />
+            <element signature="n#getStageDates#0;n#!!top" expanded="false" />
+            <marker date="1504014678776" expanded="true" signature="1610:2085" ph="select ship_... wp_gl_detail" />
+            <marker date="1504014678776" expanded="true" signature="2520:2670" ph="insert into tphase_step1... " />
+            <marker date="1504014678776" expanded="true" signature="2879:2951" ph="select rpt_p... calendar" />
+            <marker date="1504014678776" expanded="true" signature="4136:4191" ph="select stage... tphase_stage" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MEAC/lib/php/baan_gl_detail_loader.php">
+    <entry file="file://$PROJECT_DIR$/monthly_processing/validation_bl/bl_validation.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="25" lean-forward="true" selection-start-line="17" selection-start-column="25" selection-end-line="17" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MEAC/lib/php/inc.baan.fortis.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="301">
-          <caret line="766" column="1" lean-forward="true" selection-start-line="766" selection-start-column="1" selection-end-line="766" selection-end-column="1" />
+        <state relative-caret-position="383">
+          <caret line="182" column="32" lean-forward="true" selection-start-line="182" selection-start-column="32" selection-end-line="182" selection-end-column="32" />
           <folding>
-            <element signature="n#returnFortisPOSQL#0;n#!!top" expanded="false" />
-            <marker date="1503671817653" expanded="true" signature="15829:18644" ph="SELECT disti... ttdpur041490" />
-            <marker date="1503671817653" expanded="true" signature="17801:18080" ph="select top 1... ttipcs950490" />
-            <marker date="1503671817653" expanded="true" signature="18721:18930" ph="Select Disti... ttipcs021490" />
-            <marker date="1503671817653" expanded="true" signature="18984:19033" ph="INSERT into master_buyer" />
-            <marker date="1503671817653" expanded="true" signature="19864:23493" ph="SELECT a.t_d... ttfgld106490" />
-            <marker date="1503671817653" expanded="true" signature="19867:23493" ph="SELECT a.t_d... ttfgld106490" />
-            <marker date="1503671817653" expanded="true" signature="21099:21208" ph="SELECT h.t_n... ttccom020490" />
-            <marker date="1503671817653" expanded="true" signature="21326:21435" ph="SELECT i.t_n... ttccom010490" />
-            <marker date="1503671817653" expanded="true" signature="21579:21688" ph="SELECT h.t_n... ttccom020490" />
-            <marker date="1503671817653" expanded="true" signature="21806:21915" ph="SELECT i.t_n... ttccom010490" />
-            <marker date="1503671817653" expanded="true" signature="23342:23493" ph="SELECT disti... ttfgld106490" />
-            <marker date="1503671817653" expanded="true" signature="26351:26796" ph="insert into meac.open_buy... " />
-            <marker date="1503671817653" expanded="true" signature="26889:27406" ph="insert into meac.open_po... " />
-            <marker date="1503671817653" expanded="true" signature="30297:30718" ph="INSERT INTO gl_detail" />
-            <marker date="1503671817653" expanded="true" signature="33852:35100" ph="select proje... FMM_Purchase_Order" />
-            <marker date="1503671817653" expanded="true" signature="35190:35497" ph="INSERT into po_data" />
-            <marker date="1503671817653" expanded="true" signature="38179:38269" ph="select t_cpr... ttipcs021490" />
-            <marker date="1503671817653" expanded="true" signature="38323:38385" ph="insert into buyer_reponsible... " />
-            <marker date="1503671817653" expanded="true" signature="39287:40046" ph="Select top 1... ttifct030490" />
-            <marker date="1503671817653" expanded="true" signature="40120:40387" ph="INSERT into change_item" />
-            <marker date="1503671817653" expanded="true" signature="42542:43158" ph="select b.t_c... ttipcs952490" />
-            <marker date="1503671817653" expanded="true" signature="43226:43327" ph="insert into meac.cbm... " />
-            <marker date="1503671817653" expanded="true" signature="44663:45899" ph="SELECT top 5... ttiitm901490" />
-            <marker date="1503671817653" expanded="true" signature="45247:45519" ph="select top 1... ttipcs950490" />
-            <marker date="1503671817653" expanded="true" signature="46484:46777" ph="INSERT into baan_ebom" />
+            <element signature="e#2220#3837#0#PHP" expanded="false" />
+            <element signature="e#3838#4987#0#PHP" expanded="false" />
+            <element signature="e#4988#6295#0#PHP" expanded="false" />
+            <marker date="1496261388431" expanded="true" signature="949:1081" ph="insert into ${$table_name}... " />
+            <marker date="1496261388431" expanded="true" signature="2564:2632" ph="insert into ${$schema}.${$table_name}... " />
+            <marker date="1496261388431" expanded="true" signature="7208:7268" ph="select count... ${$table_name}" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MEAC/lib/php/baan_ebom_loader.php">
+    <entry file="file://$PROJECT_DIR$/inc/inc.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="306">
+          <caret line="602" column="12" lean-forward="false" selection-start-line="602" selection-start-column="12" selection-end-line="602" selection-end-column="12" />
+          <folding>
+            <marker date="1503581694356" expanded="true" signature="2513:2571" ph="select id fr... master_ca" />
+            <marker date="1503581694356" expanded="true" signature="2707:2734" ph="select max($... ${$table}" />
+            <marker date="1503581694356" expanded="true" signature="3232:3325" ph="INSERT INTO master_ca... " />
+            <marker date="1503581694356" expanded="true" signature="3431:3480" ph="select id fr... master_ca" />
+            <marker date="1503581694356" expanded="true" signature="6181:6235" ph="select name master_project" />
+            <marker date="1503581694356" expanded="true" signature="20749:20799" ph="delete from " />
+            <marker date="1503581694356" expanded="true" signature="20929:21039" ph="select table... tables" />
+            <marker date="1503581694356" expanded="true" signature="21843:21893" ph="delete from " />
+            <marker date="1503581694356" expanded="true" signature="22010:22069" ph="delete from " />
+            <marker date="1503581694356" expanded="true" signature="38535:38594" ph="select month... calendar" />
+            <marker date="1503581694356" expanded="true" signature="40128:40200" ph="CREATE TABLE... ${$destination_table}" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MEAC/lib/php/baan_open_po_loader.php">
+    <entry file="file://$PROJECT_DIR$/monthly_processing/validation_status/status_validation.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="32" column="15" lean-forward="true" selection-start-line="32" selection-start-column="15" selection-end-line="32" selection-end-column="15" />
-          <folding />
+        <state relative-caret-position="361">
+          <caret line="182" column="47" lean-forward="true" selection-start-line="182" selection-start-column="47" selection-end-line="182" selection-end-column="47" />
+          <folding>
+            <element signature="e#2071#3975#0#PHP" expanded="false" />
+            <element signature="e#3976#5032#0#PHP" expanded="false" />
+            <element signature="e#5033#5503#0#PHP" expanded="false" />
+            <marker date="1493152743252" expanded="true" signature="813:945" ph="insert into ${$table_name}... " />
+            <marker date="1493152743252" expanded="true" signature="2427:2500" ph="insert into ${$schema}.${$table_name}... " />
+            <marker date="1493152743252" expanded="true" signature="6506:6566" ph="select count... ${$table_name}" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MEAC/lib/php/baan_step4_openbuy_loader.php">
+    <entry file="file://$PROJECT_DIR$/monthly_processing/validation_bl/inc.bl_validation.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="471">
-          <caret line="31" column="11" lean-forward="true" selection-start-line="31" selection-start-column="11" selection-end-line="31" selection-end-column="11" />
-          <folding />
+        <state relative-caret-position="354">
+          <caret line="339" column="34" lean-forward="false" selection-start-line="339" selection-start-column="22" selection-end-line="339" selection-end-column="34" />
+          <folding>
+            <marker date="1504020995520" expanded="true" signature="593:667" ph="insert into ${$schema}.${$table_name}... " />
+            <marker date="1504020995520" expanded="true" signature="2445:2522" ph="insert into ${$schema}.${$table_name}... " />
+            <marker date="1504020995520" expanded="true" signature="3958:4246" ph="..." />
+            <marker date="1504020995520" expanded="true" signature="4078:4241" ph="..." />
+            <marker date="1504020995520" expanded="true" signature="4700:4880" ph="..." />
+            <marker date="1504020995520" expanded="true" signature="5033:5120" ph="..." />
+            <marker date="1504020995520" expanded="true" signature="5463:5795" ph="select p6.ca... ${$p6_table_name}" />
+            <marker date="1504020995520" expanded="true" signature="5980:6322" ph="select p6.ca... ${$p6_table_name}" />
+            <marker date="1504020995520" expanded="true" signature="6624:6950" ph="select p6.ca... ${$p6_table_name}" />
+            <marker date="1504020995520" expanded="true" signature="7216:7543" ph="..." />
+            <marker date="1504020995520" expanded="true" signature="7342:7542" ph="..." />
+            <marker date="1504020995520" expanded="true" signature="8075:8286" ph="..." />
+            <marker date="1504020995520" expanded="true" signature="8457:8544" ph="..." />
+            <marker date="1504020995520" expanded="true" signature="8808:9220" ph="select p6.ca... ${$p6_table_name}" />
+            <marker date="1504020995520" expanded="true" signature="9579:10118" ph="select cur.s... ${$cur_table_name}" />
+            <marker date="1504020995520" expanded="true" signature="10216:10545" ph="..." />
+            <marker date="1504020995520" expanded="true" signature="10337:10544" ph="..." />
+            <marker date="1504020995520" expanded="true" signature="11038:11156" ph="..." />
+            <marker date="1504020995520" expanded="true" signature="11038:11157" ph="..." />
+            <marker date="1504020995520" expanded="true" signature="11038:11299" ph="..." />
+            <marker date="1504020995520" expanded="true" signature="11449:11558" ph="..." />
+            <marker date="1504020995520" expanded="true" signature="12091:12158" ph="insert into ${$schema}.${$table_name}... " />
+            <marker date="1504020995520" expanded="true" signature="13680:13747" ph="insert into ${$schema}.${$table_name}... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/monthly_processing/validation_status/inc.status_validation.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="607">
+          <caret line="236" column="24" lean-forward="true" selection-start-line="236" selection-start-column="24" selection-end-line="236" selection-end-column="24" />
+          <folding>
+            <marker date="1504021263479" expanded="true" signature="579:658" ph="insert into ${$schema}.${$table_name}... " />
+            <marker date="1504021263479" expanded="true" signature="2470:2537" ph="insert into ${$schema}.${$table_name}... " />
+            <marker date="1504021263479" expanded="true" signature="4127:4540" ph="select p6.co... ${$p6_table_name}" />
+            <marker date="1504021263479" expanded="true" signature="4647:4979" ph="..." />
+            <marker date="1504021263479" expanded="true" signature="4777:4974" ph="..." />
+            <marker date="1504021263479" expanded="true" signature="5432:5547" ph="..." />
+            <marker date="1504021263479" expanded="true" signature="5432:5594" ph="..." />
+            <marker date="1504021263479" expanded="true" signature="5432:5644" ph="..." />
+            <marker date="1504021263479" expanded="true" signature="5432:5689" ph="..." />
+            <marker date="1504021263479" expanded="true" signature="5839:5950" ph="..." />
+            <marker date="1504021263479" expanded="true" signature="6214:6552" ph="select p6.ca... ${$p6_table_name}" />
+            <marker date="1504021263479" expanded="true" signature="6640:6967" ph="..." />
+            <marker date="1504021263479" expanded="true" signature="6766:6966" ph="..." />
+            <marker date="1504021263479" expanded="true" signature="7443:7560" ph="..." />
+            <marker date="1504021263479" expanded="true" signature="7443:7613" ph="..." />
+            <marker date="1504021263479" expanded="true" signature="7443:7669" ph="..." />
+            <marker date="1504021263479" expanded="true" signature="7443:7714" ph="..." />
+            <marker date="1504021263479" expanded="true" signature="7864:7975" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>

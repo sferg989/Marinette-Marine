@@ -9,17 +9,17 @@ include("../../../inc/inc.php");
 include("inc.baan.fortis.php");
 
 $array = array();
-//$array[] = 465;
-//$array[] = 467;
-//$array[] = 469;
-//$array[] = 471;
-//$array[] = 473;
-//$array[] = 475;
-//$array[] = 477;
-//$array[] = 479;
+$array[] = 465;
+$array[] = 467;
+$array[] = 469;
+$array[] = 471;
+$array[] = 473;
+$array[] = 475;
+$array[] = 477;
+$array[] = 479;
 $array[] = 481;
-//$array[] = 483;
-//$array[] = 485;
+$array[] = 483;
+$array[] = 485;
 function returnBaanComittedPOSQL($ship_code){
     $sql = "
         SELECT	a.t_cprj as ship_code,
@@ -151,27 +151,27 @@ function loadBaanCommittedPO($ship_code){
     $sql        = $insert_sql;
     $i = 0;
     while (!$rs->EOF) {
-        $program            = "LCS";
-        $ship_code          = intval($rs->fields["ship_code"]);
-        $wp                 = trim($rs->fields["wp"]);
-        $swbs          = intval($rs->fields["swbs"]);
-        $item          = addslashes(trim($rs->fields["item"]));
-        $description   = addslashes(trim($rs->fields["description"]));
-        $noun_1        = addslashes(trim($rs->fields["noun1"]));
-        $noun_2        = addslashes(trim($rs->fields["noun2"]));
-        $nre           = addslashes(trim($rs->fields["nre"]));
-        $vendor        = intval($rs->fields["vendor"]);
-        $po            = intval($rs->fields["po"]);
-        $line          = intval($rs->fields["line"]);
-        $unit_price    = formatNumber4decNoComma($rs->fields["unit_price"]);
-        $order_qty     = formatNumber4decNoComma($rs->fields["order_qty"]);
-        $delivered_qty = formatNumber4decNoComma($rs->fields["delivered_qty"]);
-        $committed_qty      = formatNumber4decNoComma($rs->fields["committed_qty"]);
-        $commit_amnt        = formatNumber4decNoComma($rs->fields["commit_amnt"]);
-        $delv_date          = fixExcelDateMySQL($rs->fields["delv_date"]);
-        $acct_proj_dept     = addslashes(trim($rs->fields["acct_proj_dept"]));
-        $clin               = addslashes(trim($rs->fields["clin"]));
-        $effort             = addslashes(trim($rs->fields["effort"]));
+        $program        = "LCS";
+        $ship_code      = intval($rs->fields["ship_code"]);
+        $wp             = trim($rs->fields["wp"]);
+        $swbs           = intval($rs->fields["swbs"]);
+        $item           = addslashes(trim($rs->fields["item"]));
+        $description    = addslashes(trim($rs->fields["description"]));
+        $noun_1         = addslashes(trim($rs->fields["noun1"]));
+        $noun_2         = addslashes(trim($rs->fields["noun2"]));
+        $nre            = addslashes(trim($rs->fields["nre"]));
+        $vendor         = intval($rs->fields["vendor"]);
+        $po             = intval($rs->fields["po"]);
+        $line           = intval($rs->fields["line"]);
+        $unit_price     = formatNumber4decNoComma($rs->fields["unit_price"]);
+        $order_qty      = formatNumber4decNoComma($rs->fields["order_qty"]);
+        $delivered_qty  = formatNumber4decNoComma($rs->fields["delivered_qty"]);
+        $committed_qty  = formatNumber4decNoComma($rs->fields["committed_qty"]);
+        $commit_amnt    = formatNumber4decNoComma($rs->fields["commit_amnt"]);
+        $delv_date      = fixExcelDateMySQL($rs->fields["delv_date"]);
+        $acct_proj_dept = addslashes(trim($rs->fields["acct_proj_dept"]));
+        $clin           = addslashes(trim($rs->fields["clin"]));
+        $effort         = addslashes(trim($rs->fields["effort"]));
 
         $sql.=insertSQLSTRINGBaanComittedPO($program,$ship_code,$wp,$swbs,$item,$description,
             $noun_1,$noun_2,$nre,$vendor,$po,$line,$unit_price,$order_qty,

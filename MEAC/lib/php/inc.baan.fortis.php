@@ -537,101 +537,123 @@ function loadBaanBuyerIDList(){
 }
 function returnGlDetailBaanSQL($wc=""){
     $sql = "
-    SELECT  a.t_dim1 as ship_code,
-        a.t_leac as ledger_acct,
-        a.t_otyp as transaction_type,
-        a.t_odoc as document,
-        a.t_olin as line,
-        CASE
-            WHEN a.t_intt = 1 THEN c.t_item
-            ELSE ''
-        END as item,
-        CASE
-            WHEN a.t_intt = 1 THEN
+        select  *,
+            case
+                when  qty > 0
+                        and integr_amt = 0
+                        and transaction_type like '%INV%'
+                then (select t_quan from ttipcs700490 inv where
+                    ltrim(rtrim(inv.t_cprj))= s.ship_code
+                    and inv.t_item = s.item
+                    and inv.t_orno = s.order2
+                 and inv.t_pono  = 0  )
+                else 0
+            end as no_cost_transfers
+        from (
+        SELECT
+            a.t_dim1 as ship_code,
+            a.t_leac as ledger_acct,
+            a.t_otyp as transaction_type,
+            a.t_odoc as document,
+            a.t_olin as line,
+            f.t_citg as item_group,
+            f.t_cpcp as swbs,
                 CASE
-                    WHEN ltrim(rtrim(c.t_cprj)) = '' or (c.t_tror = 4 and c.t_fitr = 20) THEN e.t_dsca
-                    ELSE f.t_dsca
-                END
-            ELSE
+                    WHEN a.t_intt = 1 THEN c.t_item
+                    ELSE ''
+                END as item,
                 CASE
-                    WHEN a.t_otyp in ('API','AMI','APC') THEN ''
-                    ELSE a.t_refr
-                END
-        END as description,
-        CASE
-            WHEN a.t_intt = 1 THEN c.t_orno
-            ELSE
+                    WHEN a.t_intt = 1 THEN
+                        CASE
+                            WHEN ltrim(rtrim(c.t_cprj)) = '' or (c.t_tror = 4 and c.t_fitr = 20) THEN e.t_dsca
+                            ELSE f.t_dsca
+                        END
+                    ELSE
+                        CASE
+                            WHEN a.t_otyp in ('API','AMI','APC') THEN ''
+                            ELSE a.t_refr
+                        END
+                END as description,
                 CASE
-                    WHEN a.t_otyp = 'API' THEN g.t_orno
-                END
-        END as order2,
-        CASE
-            WHEN a.t_intt = 1 THEN c.t_pono
-            ELSE
+                    WHEN a.t_intt = 1 THEN c.t_orno
+                    ELSE
+                        CASE
+                            WHEN a.t_otyp = 'API' THEN g.t_orno
+                        END
+                END as order2,
                 CASE
-                    WHEN a.t_otyp = 'API' THEN 0
-                    ELSE a.t_olin
-                END
-        END as qty,
-        CASE
-            WHEN a.t_intt = 1 THEN
+                    WHEN a.t_intt = 1 THEN c.t_pono
+                    ELSE
+                        CASE
+                            WHEN a.t_otyp = 'API' THEN 0
+                            ELSE a.t_olin
+                        END
+                END as position,
                 CASE
-                    WHEN ltrim(rtrim(c.t_suno)) <> '' THEN
-                        (SELECT	h.t_nama
-                        FROM	ttccom020490 h
-                        WHERE	h.t_suno = c.t_suno)
-                    WHEN ltrim(rtrim(c.t_suno)) = '' and ltrim(rtrim(c.t_cuno)) <> '' THEN
-                        (SELECT	i.t_nama
-                        FROM	ttccom010490 i
-                        WHERE	i.t_cuno = c.t_cuno)
-                END
-            ELSE
+                    WHEN a.t_intt = 1 THEN
+                        CASE
+                            WHEN ltrim(rtrim(c.t_suno)) <> '' THEN
+                                (SELECT	h.t_nama
+                                FROM	ttccom020490 h
+                                WHERE	h.t_suno = c.t_suno)
+                            WHEN ltrim(rtrim(c.t_suno)) = '' and ltrim(rtrim(c.t_cuno)) <> '' THEN
+                                (SELECT	i.t_nama
+                                FROM	ttccom010490 i
+                                WHERE	i.t_cuno = c.t_cuno)
+                        END
+                    ELSE
+                        CASE
+                            WHEN ltrim(rtrim(a.t_suno)) <> '' THEN
+                                (SELECT	h.t_nama
+                                FROM	ttccom020490 h
+                                WHERE	h.t_suno = a.t_suno)
+                            WHEN ltrim(rtrim(a.t_suno)) = '' and ltrim(rtrim(a.t_cuno)) <> '' THEN
+                                (SELECT	i.t_nama
+                                FROM	ttccom010490 i
+                                WHERE	i.t_cuno = a.t_cuno)
+                        END
+                END as cust_supp,
                 CASE
-                    WHEN ltrim(rtrim(a.t_suno)) <> '' THEN
-                        (SELECT	h.t_nama
-                        FROM	ttccom020490 h
-                        WHERE	h.t_suno = a.t_suno)
-                    WHEN ltrim(rtrim(a.t_suno)) = '' and ltrim(rtrim(a.t_cuno)) <> '' THEN
-                        (SELECT	i.t_nama
-                        FROM	ttccom010490 i
-                        WHERE	i.t_cuno = a.t_cuno)
-                END
-        END as cust_supp,
-        CASE
-            WHEN a.t_intt = 1 THEN c.t_nuni
-            ELSE 0
-        END as qty,
-        c.t_cuni as unit,
-        CASE
-            WHEN a.t_dbcr = 2 THEN 0 - a.t_amth
-            ELSE a.t_amth
-        END as amt,
-        d.t_tedt as date,
-        CASE
-            WHEN a.t_intt = 1 THEN
-                CASE
-                    WHEN c.t_dbcr = 2 THEN 0 - c.t_amth
-                    ELSE c.t_amth
-                END
-            ELSE
+                    WHEN a.t_intt = 1 THEN c.t_nuni
+                    ELSE 0
+                END as qty,
+                c.t_cuni as unit,
                 CASE
                     WHEN a.t_dbcr = 2 THEN 0 - a.t_amth
                     ELSE a.t_amth
-                END 
-        END as integr_amt
-    FROM	  ttfgld106490 a
-    left join ttfgld418490 b on b.t_fcom = a.t_ocmp and b.t_ttyp = a.t_otyp and b.t_docn = a.t_odoc and b.t_lino = a.t_olin
-    left join ttfgld410490 c on c.t_ocom = b.t_ocom and c.t_tror = b.t_tror and c.t_fitr = b.t_fitr and c.t_trdt = b.t_trdt
-       and c.t_trtm = b.t_trtm and c.t_sern = b.t_sern and c.t_line = b.t_line
-    left join ttfgld100490 d on d.t_year = a.t_oyer and d.t_btno = a.t_obat
-    left join ttiitm001490 e on e.t_item = c.t_item
-    left join ttipcs021490 f on f.t_cprj = c.t_cprj and f.t_item = c.t_item
-    left join ttfacp200490 g on g.t_ttyp = a.t_ctyp and g.t_ninv = a.t_cinv and g.t_line = 0 and g.t_tdoc = '' and g.t_docn = 0 and g.t_lino = 0
-    WHERE ltrim(rtrim(a.t_leac)) BETWEEN '4000' AND '4999'
-      $wc
-        AND		a.t_fyer BETWEEN 2008 and 2017
-        AND		d.t_tedt BETWEEN '01/01/2008' and '07/29/2017'
-        ORDER BY a.t_leac, a.t_odoc, a.t_olin
+                END as amt,
+                d.t_tedt as date,
+                CASE
+                    WHEN a.t_intt = 1 THEN
+                        CASE
+                            WHEN c.t_dbcr = 2 THEN 0 - c.t_amth
+                            ELSE c.t_amth
+                        END
+                    ELSE
+                        CASE
+                            WHEN a.t_dbcr = 2 THEN 0 - a.t_amth
+                            ELSE a.t_amth
+                        END
+                END as integr_amt,
+            (select
+                    top 1 LTRIM(RTRIM(bc.t_bitm)) as Activity
+                from ttipcs950490 as ab
+                left join ttipcs952490 as bc on ab.t_bdgt = bc.t_bdgt
+                where ab.t_cprj =f.t_cprj and bc.t_bdgt = ab.t_bdgt and bc.t_item = f.t_item ) wp
+        
+            FROM	  ttfgld106490 a
+            left join ttfgld418490 b on b.t_fcom = a.t_ocmp and b.t_ttyp = a.t_otyp and b.t_docn = a.t_odoc and b.t_lino = a.t_olin
+            left join ttfgld410490 c on c.t_ocom = b.t_ocom and c.t_tror = b.t_tror and c.t_fitr = b.t_fitr and c.t_trdt = b.t_trdt
+               and c.t_trtm = b.t_trtm and c.t_sern = b.t_sern and c.t_line = b.t_line
+            left join ttfgld100490 d on d.t_year = a.t_oyer and d.t_btno = a.t_obat
+            left join ttiitm001490 e on e.t_item = c.t_item
+            left join ttipcs021490 f on f.t_cprj = c.t_cprj and f.t_item = c.t_item
+            left join ttfacp200490 g on g.t_ttyp = a.t_ctyp and g.t_ninv = a.t_cinv and g.t_line = 0 and g.t_tdoc = '' and g.t_docn = 0 and g.t_lino = 0
+            WHERE ltrim(rtrim(a.t_leac)) BETWEEN '4000' AND '4999'
+              AND a.t_dim1 = '0479' -- and c.t_item like '%234-01-00001-885%'
+                AND		a.t_fyer BETWEEN 2008 and 2017
+                AND		d.t_tedt BETWEEN '01/01/2008' and '07/29/2017'
+                ) s;
     ";
     print $sql;
     return $sql;
@@ -648,7 +670,7 @@ function insertOpenBuyReport($ship_code){
         $buyer              = trim($rs->fields["buyer"]);
         $ship_code          = trim($rs->fields["ship_code"]);
         $swbs               = trim($rs->fields["swbs"]);
-        $item               = trim($rs->fields["swbs"]);
+        $item               = trim($rs->fields["item"]);
         $spn                = trim($rs->fields["spn"]);
         $description        = addslashes(str_replace("'", " ", trim($rs->fields["description"])));
         $origrinal_smos_qty = formatNumber4decNoComma($rs->fields["original_smos_qty"]);
@@ -675,22 +697,22 @@ function insertOpenBuyReport($ship_code){
             '$item',
             '$spn',
             '$description',
-            '$origrinal_smos_qty',
-            '$remain_smos_qty',
+            $origrinal_smos_qty,
+            $remain_smos_qty,
             '$yard_due_date',
             '$lead_time',
             '$plan_order_date',
             '$uom',
-            '$item_on_hand',
-            '$item_on_order',
-            '$item_shortage',
+            $item_on_hand,
+            $item_on_order,
+            $item_shortage,
             '$on_hold',
             '$entered_on',
             '$last_mod',
-            '$last_price',
-            '$expected_amt'
+            $last_price,
+            $expected_amt
         ),";
-        if($i == 500)
+        if($i == 250)
         {
             $sql = substr($sql, 0, -1);
             $junk = dbCall($sql, "meac");
@@ -702,8 +724,9 @@ function insertOpenBuyReport($ship_code){
         $i++;
         $rs->MoveNext();
     }
+
     //only insert remaining lines if the total number is not divisble by 1000.
-    if($i !=500)
+    if($i !=250)
     {
         $sql = substr($sql, 0, -1);
         $junk = dbCall($sql, "meac");
@@ -711,7 +734,7 @@ function insertOpenBuyReport($ship_code){
 }
 function returnOpenBuyInsertSQL(){
     $insert_sql = "
-    insert into meac.open_buy (
+    insert into meac.baan_open_buy (
         program,
         ship_code,
         buyer,
@@ -844,9 +867,10 @@ function insertOpenPOReport($ship_code){
 
 function returnGlDetailInsertSQL(){
     $insert_sql = "
-        INSERT  INTO meac.baan_gl_detail (
+        INSERT  INTO meac.wp_baan_gl_detail (
             program, 
             ship_code, 
+            wp, 
             ldger_acct,
             document,
             line,
@@ -862,7 +886,8 @@ function returnGlDetailInsertSQL(){
             integr_amt,
             clin,
             effort,
-            ecp_rea) 
+            ecp_rea,
+            no_cost_transfers) 
             values
            ";
     return $insert_sql;
@@ -889,29 +914,32 @@ function loadGlDetailBaan($ship_code="", $rpt_period=""){
     $i=0;
     while (!$rs->EOF)
     {
-        $ldger_acct       = intval($rs->fields["ledger_acct"]);
-        $transaction_type = trim($rs->fields["transaction_type"]);
-        $document         = $transaction_type . "  " . addslashes(trim($rs->fields["document"]));
-        $line             = intval($rs->fields["line"]);
-        $item             = addslashes(trim($rs->fields["item"]));
-        $description      = addslashes(trim($rs->fields["description"]));
-        $order            = intval($rs->fields["order2"]);
-        $pos              = intval($rs->fields["position"]);
-        $cust_supp        = addslashes(trim($rs->fields["cust_supp"]));
-        $qty              = formatNumber4decNoComma($rs->fields["qty"]);
-        $unit             = addslashes(trim($rs->fields["unit"]));
-        $amt              = formatNumber4decNoComma($rs->fields["amt"]);
-        $date             = fixExcelDateMySQL($rs->fields["date"]);
-        $integr_amt       = formatNumber4decNoComma($rs->fields["integr_amt"]);
-        $clin             = addslashes(trim($rs->fields["clin"]));
-        $effort           = addslashes(trim($rs->fields["effort"]));
-        $ecp_rea          = addslashes(trim($rs->fields["ecp_rea"]));
-        $ship_code        = intval($rs->fields["ship_code"]);
+        $ldger_acct        = intval($rs->fields["ledger_acct"]);
+        $transaction_type  = trim($rs->fields["transaction_type"]);
+        $document          = $transaction_type . "  " . addslashes(trim($rs->fields["document"]));
+        $line              = intval($rs->fields["line"]);
+        $item              = addslashes(trim($rs->fields["item"]));
+        $description       = addslashes(trim($rs->fields["description"]));
+        $order             = intval($rs->fields["order2"]);
+        $pos               = intval($rs->fields["position"]);
+        $cust_supp         = addslashes(trim($rs->fields["cust_supp"]));
+        $qty               = formatNumber4decNoComma($rs->fields["qty"]);
+        $unit              = addslashes(trim($rs->fields["unit"]));
+        $amt               = formatNumber4decNoComma($rs->fields["amt"]);
+        $date              = fixExcelDateMySQL($rs->fields["date"]);
+        $integr_amt        = formatNumber4decNoComma($rs->fields["integr_amt"]);
+        $clin              = addslashes(trim($rs->fields["clin"]));
+        $effort            = addslashes(trim($rs->fields["effort"]));
+        $ecp_rea           = addslashes(trim($rs->fields["ecp_rea"]));
+        $ship_code         = intval($rs->fields["ship_code"]);
+        $no_cost_transfers = intval($rs->fields["no_cost_transfers"]);
+        $wp                = trim($rs->fields["wp"]);
 
         $sql.=
             "(
                 'LCS',
                 $ship_code,
+                '$wp',
                 $ldger_acct,
                 '$document',
                 $line,
@@ -927,7 +955,8 @@ function loadGlDetailBaan($ship_code="", $rpt_period=""){
                 $integr_amt,
                 '$clin',
                 '$effort',
-                '$ecp_rea'
+                '$ecp_rea',
+                $no_cost_transfers
                 ),";
         if($i == 500)
         {
@@ -1387,4 +1416,5 @@ function loadBaanEbom($ship_code){
         $sql = substr($sql, 0, -1);
         $junk = dbCall($sql, "meac");
     }
+    print $sql;
 }

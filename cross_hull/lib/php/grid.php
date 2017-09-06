@@ -17,6 +17,7 @@ if(strlen($code)==3)
 }
 $rpt_period = currentRPTPeriod();
 $rpt_period = getPreviousRPTPeriod($rpt_period);
+die($rpt_period);
 if($control=="project_grid")
 {
     $field      = "s_cur";

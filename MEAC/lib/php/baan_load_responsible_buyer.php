@@ -11,19 +11,7 @@ include("inc.baan.fortis.php");
  */
 $ship_code ="0483";
 
-function loaditem2buyer(){
-    truncateTable("meac", "item2buyer");
-    $sql = "
-            insert into 
-            item2buyer (item, buyer) 
-            (select item, buyer from buyer_reponsible br
-              left JOIN  master_buyer mb
-                  on br.buyer_id = mb.id
-              where br.buyer_id <> 0
-                group by item );
-    ";
-    $junk = dbCall($sql, "meac");
-}
+
 truncateTable("meac", "master_buyer");
 loadBaanBuyerIDList();
 

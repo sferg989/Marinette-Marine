@@ -85,7 +85,7 @@ function insertTPhaseStep1($ship_code){
     while (!$rs->EOF)
     {
         $rpt_period = $rs->fields["rpt_period"];
-        $month_end  = $rs->fields["month_end"];
+        $end_day  = $rs->fields["month_end"];
 
         if($i==0) {
             $rpt_start_date = "2011-01-01";
@@ -96,8 +96,13 @@ function insertTPhaseStep1($ship_code){
             $start_month      = month2digit(substr($prev_rpt_period, -2));
 
             $start_day        = getMonthEndDay($prev_rpt_period);
-            
+
             if($start_day<5){
+                if($start_month==12){
+                    $start_month = 0;
+                    $start_year = $start_year+1;
+
+                }
                 $start_month = $start_month+1;
             }
             $rpt_start_date = "$start_year-$start_month-$start_day";
@@ -106,10 +111,16 @@ function insertTPhaseStep1($ship_code){
         $end_year       = intval(substr($rpt_period, 0, 4));
         $end_month      = month2digit(substr($rpt_period, -2));
 
-        if($month_end<5){
+        if($end_day<5){
+            if($end_month==12){
+                $end_month = 0;
+                $end_year = $end_year+1;
+
+            }
             $end_month = $end_month+1;
         }
-        $rpt_end_date = "$end_year-$end_month-$month_end";
+
+        $rpt_end_date = "$end_year-$end_month-$end_day";
         insertSWBSGLByRPTPeriod($ship_code, $case_sql, $rpt_period,$rpt_start_date, $rpt_end_date );
         $i++;
         $rs->MoveNext();
@@ -134,11 +145,11 @@ function getStageDates($ship_code){
     return $ship_stage_array;
 }
 $array = array();
-$array[] = 465;
-$array[] = 467;
+//$array[] = 465;
+//$array[] = 467;
 $array[] = 469;
-$array[] = 471;
-$array[] = 473;
+//$array[] = 471;
+//$array[] = 473;
 //$array[] = 475;
 //$array[] = 477;
 //$array[] = 479;

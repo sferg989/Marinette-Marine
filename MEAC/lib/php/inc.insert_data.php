@@ -99,19 +99,20 @@ function insertOpenPO($path2file){
         $noun_2        = addslashes(trim($data[5]));
         $nre           = addslashes(trim($data[6]));
         $vendor        = intval($data[7]);
-        $po            = intval($data[8]);
-        $line          = intval($data[9]);
-        $unit_price    = formatNumber4decNoComma($data[10]);
-        $order_qty     = formatNumber4decNoComma($data[11]);
-        $delivered_qty = formatNumber4decNoComma($data[12]);
-        $pending_qty   = formatNumber4decNoComma($data[13]);
-        $pending_amnt  = formatNumber4decNoComma($data[14]);
-        $delv_date     = fixExcelDateMySQL($data[15]);
-        $payment_terms = intval($data[16]);
-        $ledger_acct   = intval($data[17]);
-        $clin          = addslashes(trim($data[18]));
-        $effort        = addslashes(trim($data[19]));
-        $ecp_rea       = trim($data[20]);
+
+        $po            = intval($data[9]);
+        $line          = intval($data[10]);
+        $unit_price    = formatNumber4decNoComma($data[11]);
+        $order_qty     = formatNumber4decNoComma($data[12]);
+        $delivered_qty = formatNumber4decNoComma($data[13]);
+        $pending_qty   = formatNumber4decNoComma($data[14]);
+        $pending_amnt  = formatNumber4decNoComma($data[15]);
+        $delv_date     = fixExcelDateMySQL($data[16]);
+        $payment_terms = intval($data[17]);
+        $ledger_acct   = intval($data[18]);
+        $clin          = addslashes(trim($data[19]));
+        $effort        = addslashes(trim($data[20]));
+        $ecp_rea       = trim($data[21]);
 
         $sql.=
             "(
@@ -495,11 +496,12 @@ function insertETCLOADFILE($path2file){
     {
         $ship_code  = intval($data[0]);
         $item       = trim($data[1]);
+        $etc       = formatNumber4decNoComma($data[2]);
+
         $swbs       = substr(trim($data[3]), 5, 3);
         $swbs       = checkSWBSLength($swbs);
         $swbs_group = substr($swbs, 0, 1);
         $swbs_group .="00";
-        $etc       = formatNumber4decNoComma($data[2]);
         $wp        = trim($data[3]);
 
         $sql.= "(                                                 
@@ -685,7 +687,7 @@ function insertGLdetailWITHWP(){
           then (select qty from inv_transfers inv where inv.ship_code = gl.proj and inv.item = gl.item and gl.`order` = inv.`order`)
           else 0
         end as no_cost_transfers
-    FROM mars.gl_detail gl LEFT JOIN (select ship_code, wp, material from meac.cbm group by ship_code, wp, material) cbm
+    FROM mars.gl_detail gl LEFT JOIN (select ship_code, wp, material from meac.cbm group by ship_code, material) cbm
       ON cbm.ship_code = gl.proj
       AND cbm.material = gl.item
       where cbm.wp is not null 
@@ -746,7 +748,7 @@ function insertGLdetailWITHWP(){
           then (select qty from inv_transfers inv where inv.ship_code = gl.proj and inv.item = gl.item and gl.`order` = inv.`order`)
           else 0
         end as no_cost_transfers
-    FROM mars.gl_detail gl  LEFT JOIN (select ship_code, wp, material from meac.cbm group by ship_code, wp, material) cbm
+    FROM mars.gl_detail gl  LEFT JOIN (select ship_code, wp, material from meac.cbm group by ship_code, material) cbm
       ON cbm.ship_code = gl.proj
       AND cbm.material = gl.item
       where cbm.wp is  null and gl.description not like '%total%'
@@ -804,7 +806,7 @@ function insertOpenPOWithWP(){
             clin,
             effort,
             ecp_rea
-        from mars.open_po po  LEFT JOIN (select ship_code, wp, material from meac.cbm group by ship_code, wp, material) cbm
+        from mars.open_po po  LEFT JOIN (select ship_code, wp, material from meac.cbm group by ship_code, material) cbm
         on po.proj = cbm.ship_code
         and po.item = cbm.material
         where cbm.wp is not null
@@ -837,7 +839,7 @@ function insertOpenPOWithWP(){
         $ledger_acct   = intval($rs->fields["ledger_acct"]);
         $clin          = addslashes(trim($rs->fields["clin"]));
         $effort        = addslashes(trim($rs->fields["effort"]));
-        $ecp_rea        = addslashes(trim($rs->fields["ecp_rea"]));
+        $ecp_rea       = addslashes(trim($rs->fields["ecp_rea"]));
 
         $sql.=
             "(
@@ -1115,10 +1117,10 @@ function insertOpenBuyWithWP(){
             last_price,
             expected_amt
         from mars.open_buy ob
-        LEFT JOIN (select ship_code, wp, material from meac.cbm group by ship_code, wp, material) cbm
+        LEFT JOIN (select ship_code, wp, material from meac.cbm group by ship_code, material) cbm
         on ob.ship_code = cbm.ship_code
         and ob.item = cbm.material 
-        where wp is not null  $ship_code_wc
+        where wp is not null  
         $gb $ob
     ";
     $rs= dbCall($sql, "meac");
@@ -1310,7 +1312,7 @@ function insertEBOMWP(){
             noun1,
             noun2,
             noun3
-      from meac.ebom ebom  LEFT JOIN (select ship_code, wp, material from meac.cbm group by ship_code, wp, material) cbm
+      from meac.ebom ebom  LEFT JOIN (select ship_code, wp, material from meac.cbm group by ship_code, material) cbm
         on ebom.ship_code = cbm.ship_code
         and ebom.material= cbm.material
         where cbm.wp is not null
@@ -1530,7 +1532,7 @@ function insertCommittedPOWP(){
         clin,
         effort
         from mars.committed_po po
-            LEFT JOIN (select ship_code, wp, material from meac.cbm group by ship_code, wp, material) cbm
+            LEFT JOIN (select ship_code, wp, material from meac.cbm group by ship_code, material) cbm
             on po.proj = cbm.ship_code
             and po.item= cbm.material
     where cbm.wp is not null
@@ -1955,7 +1957,12 @@ function insertSWBSSummaryOPENPO($ship_code)
                 select
                     open_po.ship_code,
                     open_po.wp,
-                    cat.category,
+                    case when
+                        (select category from category cat where cat.ship_code = open_po.ship_code and cat.item = open_po.item limit 1 ) is null then
+                        (select category from category cat where cat.item = open_po.item limit 1)
+                    ELSE
+                        (select category from category cat where cat.ship_code = open_po.ship_code and cat.item = open_po.item limit 1 )
+                    END as category,
                     case when CHAR_LENGTH(open_po.swbs) = 3 then concat(left(open_po.swbs,1),'00') 
                       ELSE '000' end as swbs_group,
                     open_po.swbs,
@@ -1992,7 +1999,12 @@ function insertSWBSSummaryOPENPO($ship_code)
                     open_po.ecp_rea,
                     open_po.clin,
                     open_po.effort,
-                    (select buyer from master_buyer mb where id =(select buyer_id from buyer_reponsible br where br.item=open_po.item and br.buyer_id <> 0 limit 1) limit 1)  buyer
+                    case when
+                        (select buyer from item2buyer br where br.ship_code = open_po.ship_code and br.item = open_po.item limit 1 ) is null then
+                        (select buyer from item2buyer br where br.item = open_po.item limit 1)
+                    ELSE
+                        (select buyer from item2buyer br where br.ship_code = open_po.ship_code and br.item = open_po.item limit 1 )
+                    END as buyer
                 from wp_open_po open_po
                 left join wp_ebom e
                   on e.ship_code = open_po.ship_code and e.material =open_po.item
@@ -2000,8 +2012,6 @@ function insertSWBSSummaryOPENPO($ship_code)
                   on open_po.ship_code = gl.ship_code and open_po.item= gl.item
                 left join wp_open_buy open_buy
                     on open_po.ship_code = open_buy.ship_code and open_po.item= open_buy.item
-                left join meac.category cat
-                    on open_po.item= cat.item
                 where gl.ship_code is null
                   and open_po.ship_code = $ship_code
                 group by $gb
@@ -2102,7 +2112,12 @@ function insertSWBSSUmmaryEBOM($ship_code){
      select
             e.ship_code,
             e.wp,
-            cat.category,
+            case when
+                (select category from category cat where cat.ship_code = e.ship_code and cat.item = e.item limit 1 ) is null then
+                (select category from category cat where cat.item = e.item limit 1)
+            ELSE
+                (select category from category cat where cat.ship_code = e.ship_code and cat.item = e.item limit 1 )
+            END as category,
             case when CHAR_LENGTH(e.swbs) = 3 then concat(left(e.swbs,1),'00')
               ELSE '000' end as swbs_group,
             e.swbs,
@@ -2137,23 +2152,24 @@ function insertSWBSSUmmaryEBOM($ship_code){
             '' ecp_rea,
             '' clin,
             '' effort,
-              br.buyer buyer
-        from wp_baan_ebom e
+            case when
+                (select buyer from item2buyer br where br.ship_code = e.ship_code and br.item = e.item limit 1 ) is null then
+                (select buyer from item2buyer br where br.item = e.item limit 1)
+            ELSE
+              (select buyer from item2buyer br where br.ship_code = e.ship_code and br.item = e.item limit 1 )
+            END as buyer
+        from wp_ebom e
         left join wp_gl_detail gl
           on gl.ship_code= e.ship_code
-        and gl.item = e.item
+          and gl.item = e.item
         left join wp_open_buy ob
           on ob.ship_code= e.ship_code
-        and ob.item = e.item
+          and ob.item = e.item
         left join wp_open_po po
           on po.ship_code= e.ship_code
-        and po.item = e.item
-        left join item2buyer br
-            on br.item = e.item
-left join meac.category cat
-    on e.item= cat.item
+          and po.item = e.item
         where
-        e.ship_code = $ship_code and
+          e.ship_code = $ship_code and
           gl.ship_code is null and
           ob.ship_code is null and
           po.ship_code is null
@@ -2254,7 +2270,12 @@ function insertSWBSGLSUM($ship_code){
     select
             gl.ship_code,
             gl.wp,
-            cat.category,
+            case when
+                (select category from category cat where cat.ship_code = gl.ship_code and cat.item = gl.item limit 1 ) is null then
+                (select category from category cat where cat.item = gl.item limit 1)
+            ELSE
+                (select category from category cat where cat.ship_code = gl.ship_code and cat.item = gl.item limit 1 )
+            END as category,
             case when CHAR_LENGTH(gl.swbs) = 3 then concat(left(gl.swbs,1),'00') ELSE
               '000' end as swbs_group,
             gl.swbs,
@@ -2292,7 +2313,12 @@ function insertSWBSGLSUM($ship_code){
             (select sum(qty) from meac.wp_gl_detail gl2 where gl2.ship_code=gl.ship_code and gl2.item=gl.item and gl2.document like '%INV%' and gl2.integr_amt > 0) gl_qty_transfers_on,
             (select sum(no_cost_transfers) from meac.wp_gl_detail gl2 where gl2.ship_code=gl.ship_code and gl2.item=gl.item) no_cost_transfers,
             sum(gl.integr_amt) int_amt,
-            br.buyer,
+            case when
+                (select buyer from item2buyer br where br.ship_code = gl.ship_code and br.item = gl.item limit 1 ) is null then
+                (select buyer from item2buyer br where br.item = gl.item limit 1)
+            ELSE
+                (select buyer from item2buyer br where br.ship_code = gl.ship_code and br.item = gl.item limit 1 )
+            END as buyer,
             gl.ecp_rea as ecp_rea,
             gl.clin as clin,
             gl.effort as effort
@@ -2301,10 +2327,6 @@ function insertSWBSGLSUM($ship_code){
                 on e.ship_code = gl.ship_code and e.material= gl.item
         left join meac.wp_open_buy open_buy
             on gl.ship_code = open_buy.ship_code and gl.item= open_buy.item
-        left join meac.category cat
-            on gl.item= cat.item
-        left join item2buyer br on br.item = gl.item
-
         where gl.ship_code = $ship_code 
         group by $gb
         order by $ob 
@@ -2422,7 +2444,12 @@ function insertSWBSSummaryOPENBUY($ship_code)
     $sql = "
             select open_buy.ship_code,
                 open_buy.wp,
-                cat.category,
+                case when
+                    (select category from category cat where cat.ship_code = open_buy.ship_code and cat.item = open_buy.item limit 1 ) is null then
+                    (select category from category cat where cat.item = open_buy.item limit 1)
+                ELSE
+                    (select category from category cat where cat.ship_code = open_buy.ship_code and cat.item = open_buy.item limit 1 )
+                END as category,
                 case when CHAR_LENGTH(open_buy.swbs) = 3 then concat(left(open_buy.swbs,1),'00') ELSE
                   '000' end as swbs_group,
                 open_buy.swbs,
@@ -2463,8 +2490,6 @@ function insertSWBSSummaryOPENBUY($ship_code)
               on open_buy.ship_code = gl.ship_code and open_buy.item= gl.item
             left join wp_open_po open_po
               on open_po.ship_code = open_buy.ship_code and open_po.item= open_buy.item
-            left join meac.category cat
-              on open_buy.item= cat.item
             where
               gl.ship_code is null and
                 open_po.ship_code is null

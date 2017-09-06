@@ -25,14 +25,14 @@ function copyListOfDirectoryToCSV($directory2Copy,$rel_path2_reports){
 }
 
 $array = array();
-//$array[] = 465;
-//$array[] = 467;
+$array[] = 465;
+$array[] = 467;
 $array[] = 469;
 $array[] = 471;
 $array[] = 473;
 $array[] = 475;
 $array[] = 477;
-//$array[] = 479;
+$array[] = 479;
 $array[] = 481;
 $array[] = 483;
 $array[] = 485;
@@ -41,13 +41,13 @@ foreach ($array as $value){
     deleteFromTable("MEAC", "swbs_gl_summary_stage", "ship_code", $value);
     insertSWBSSummaryStaging($value);
 }
-$rel_path2_reports = "../../../util/csv_etc_load_file";
+/*$rel_path2_reports = "../../../util/csv_etc_load_file";
 $directory2Copy ="C:/evms/etc_load_file";
 print $directory2Copy;
 print $rel_path2_reports;
 deleteFromTable("meac", "swbs_gl_summary_stage", "category", "Load File Entry");
 clearDirectory($rel_path2_reports);
-copyListOfDirectoryToCSV($directory2Copy,$rel_path2_reports);
+copyListOfDirectoryToCSV($directory2Copy,$rel_path2_reports);*/
 
 foreach ($array as $value){
     deleteFromTable("MEAC", "swbs_gl_summary", "ship_code", $value);

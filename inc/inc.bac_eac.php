@@ -5,9 +5,6 @@
  * Date: 2/8/2017
  * Time: 12:47 PM
  */
-include("lib/php/phpExcel-1.8/classes/phpexcel.php");
-include("lib/php/phpExcel-1.8/classes/phpexcel/IOFactory.php");
-
 
 function returnTableArray($ship_code){
     $table_array = array();

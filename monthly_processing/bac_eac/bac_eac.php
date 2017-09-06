@@ -1,7 +1,7 @@
 <?php
 include("../../inc/inc.php");
 include("../../inc/inc.bac_eac.php");
-include("../../inc/inc.PHPExcel.phpphp");
+include("../../inc/inc.PHPExcel.php");
 include("change_summary.php");
 include("eac_change_summary.php");
 
@@ -269,15 +269,48 @@ if($control=="beac_eac_detail_chart"){
 
      * */
 
-    $category_array[] = "Negotiated Cost";
-    $category_array[] = "Target Profit";
-    $category_array[] = "Target Price";
-    $category_array[] = "Authorized Unpriced Work";
-    $category_array[] = "EAC Best Case";
-    $category_array[] = "EAC Worst Case";
-    $category_array[] = "EAC Most Likely";
-    $category_array[] = "Management Reserve";
+    $cobra_month      = substr($prev_rpt_period, 4, 2);
+    $cobra_year       = substr($prev_rpt_period, 2, 2);
+    $cobra_program    = $ship_code . $cobra_month . $cobra_year;
+    $sql = " 
+         select
+            p1.MR cur_mr,
+            p1.EAC_BEST cur_eac_best,
+            p1.EAC_WORST cur_eac_worst,
+            p1.EAC cur_eac,
+            p1.AUW cur_auw,
+            p1.FEE cur_fee,
+            p1.CTC cur_c_neg_cost,
+            
+            p2.MR prev_mr,
+            p2.EAC_BEST prev_eac_best,
+            p2.EAC_WORST prev_eac_worst,
+            p2.EAC prev_eac,
+            p2.AUW prev_auw,
+            p2.fee prev_fee,
+            p1.CTC prev_c_neg_cost
+         from PROGRAM p1
+            left join PROGRAM p2 on
+            p2.PROGRAM = '$cobra_program'
+            and p1.PROGRAM = '$ship_code'
+            where p1.PROGRAM = '$ship_code'";
+    $rs = dbCallCobra($sql);
 
+    $cur_mr         = $rs->fields["cur_mr"];
+    $cur_eac_best   = $rs->fields["cur_eac_best"];
+    $cur_eac_worst  = $rs->fields["cur_eac_worst"];
+    $cur_eac        = $rs->fields["cur_eac"];
+    $cur_auw        = $rs->fields["cur_auw"];
+    $cur_fee        = $rs->fields["cur_fee"];
+    $cur_c_neg_cost = $rs->fields["cur_c_neg_cost"];
+
+    $prev_mr        = $rs->fields["prev_mr"];
+    $prev_eac_best  = $rs->fields["prev_eac_best"];
+    $prev_eac_worst = $rs->fields["prev_eac_worst"];
+    $prev_eac       = $rs->fields["prev_eac"];
+    $prev_auw       = $rs->fields["prev_auw"];
+    $prev_fee       = $rs->fields["prev_fee"];
+    $prev_c_neg_cost= $rs->fields["prev_c_neg_cost"];
 
     $summary_html = "<table>
         <tr>
@@ -291,19 +324,95 @@ if($control=="beac_eac_detail_chart"){
             <td>% Change</td>    
         </tr>
     ";
-    foreach ($category_array as $value){
-        $summary_html.="
+    $category_array[] = "Management Reserve";
+    $diff = formatNumber($cur_c_neg_cost - $prev_c_neg_cost);
+
+    $summary_html.="
         <tr>
-            <td>$value</td>    
-            <td></td>    
-            <td></td>    
-            <td></td>    
-            <td></td>    
+            <td>Negotiated Cost</td>    
+            <td>$cur_c_neg_cost</td>    
+            <td>$prev_c_neg_cost</td>    
+            <td>".$diff."</td>    
+            <td>".formatPercent($diff/$cur_c_neg_cost)."</td>    
         </tr>
         ";
-    }
-    $summary_html.= "<tr></tr>";
 
+    $diff = formatNumber($cur_fee - $prev_fee);
+    $summary_html.="
+        <tr>
+            <td>Target Profit</td>    
+            <td>$cur_fee</td>    
+            <td>$prev_fee</td>    
+            <td>".$diff."</td>    
+            <td>".formatPercent($diff/$cur_fee)."</td>    
+        </tr>
+        ";
+    $diff = formatNumber(($cur_fee+$cur_c_neg_cost) - ($prev_fee+$prev_c_neg_cost));
+    $summary_html.="
+        <tr>
+            <td>Target Price</td>    
+            <td>".formatNumber($cur_fee+$cur_c_neg_cost)."</td>    
+            <td>".formatNumber($prev_fee+$prev_c_neg_cost)."</td>    
+            <td>".$diff."</td>    
+            <td>".formatPercent($diff/($cur_fee+$cur_c_neg_cost))."</td>    
+        </tr>
+        ";
+    $diff = formatNumber($cur_auw-$prev_auw);
+    $summary_html.="
+        <tr>
+            <td>Authorized Unpriced Work</td>    
+            <td>".formatNumber($cur_auw)."</td>    
+            <td>".formatNumber($prev_auw)."</td>    
+            <td>".$diff."</td>    
+            <td>".formatPercent($diff/($cur_auw))."</td>    
+        </tr>
+        ";
+    $diff = formatNumber($cur_eac_best-$prev_eac_best);
+    $summary_html.="
+        <tr>
+            <td>EAC Best Case</td>    
+            <td>".formatNumber($cur_eac_best)."</td>    
+            <td>".formatNumber($prev_eac_best)."</td>    
+            <td>".$diff."</td>    
+            <td>".formatPercent($diff/($cur_eac_best))."</td>    
+        </tr>
+        ";
+
+    $diff = formatNumber($cur_eac_worst-$prev_eac_worst);
+    $summary_html.="
+        <tr>
+            <td>EAC Worst Case</td>    
+            <td>".formatNumber($cur_eac_worst)."</td>    
+            <td>".formatNumber($prev_eac_worst)."</td>    
+            <td>".$diff."</td>    
+            <td>".formatPercent($diff/($cur_eac_worst))."</td>    
+        </tr>
+        ";
+
+    $diff = formatNumber($cur_eac-$prev_eac);
+    $summary_html.="
+        <tr>
+            <td>EAC Most Likely</td>    
+            <td>".formatNumber($cur_eac)."</td>    
+            <td>".formatNumber($prev_eac)."</td>    
+            <td>".$diff."</td>    
+            <td>".formatPercent($diff/($cur_eac))."</td>    
+        </tr>
+        ";
+
+    $diff = formatNumber($cur_mr-$prev_mr);
+    $summary_html.="
+        <tr>
+            <td>Management Reserve</td>    
+            <td>".formatNumber($cur_mr)."</td>    
+            <td>".formatNumber($prev_mr)."</td>    
+            <td>".$diff."</td>    
+            <td>".formatPercent($diff/($cur_mr))."</td>    
+        </tr>
+        ";
+
+
+    $summary_html.= "<tr></tr>";
     $summary_html .= returnBACEACTableHeaders("EAC", $prev_full_month, $cur_full_month);
     $table_name     = getCorrespondingTable($ship_code, "_cpr1h");
     $hours_data     = getTotalRow($prev_rpt_period, $rpt_period, $table_name, $ship_code, "est_vac");

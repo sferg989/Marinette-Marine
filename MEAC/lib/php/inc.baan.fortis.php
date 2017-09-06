@@ -1243,6 +1243,7 @@ function loadEFDBChangeBAAN($ship_code){
         $junk = dbCall($sql, "meac");
     }
 }
+
 function insertCBMFromBaan($ship_code){
 
     $sql ="select 
@@ -1417,4 +1418,22 @@ function loadBaanEbom($ship_code){
         $junk = dbCall($sql, "meac");
     }
     print $sql;
+}
+function loaditem2buyer(){
+    truncateTable("meac", "item2buyer");
+    $sql = "insert into
+            item2buyer 
+            (item, buyer, ship_code)
+            (
+              select 
+              item, 
+              buyer, 
+              br.ship_code 
+          from buyer_reponsible br
+              left JOIN  master_buyer mb
+                  on br.buyer_id = mb.id
+              where br.buyer_id <> 0
+                group by ship_code, item )
+    ";
+    $junk = dbCall($sql, "meac");
 }

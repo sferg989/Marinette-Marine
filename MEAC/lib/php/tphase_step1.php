@@ -127,23 +127,6 @@ function insertTPhaseStep1($ship_code){
     }
 
 }
-function getStageDates($ship_code){
-    $sql = "select stage, date from tphase_stage where ship_code = $ship_code";
-
-    $rs = dbCall($sql, "meac");
-    $ship_stage_array = array();
-    $i= 0 ;
-    while (!$rs->EOF)
-    {
-        $stage = trim($rs->fields["stage"]);
-        $date  = trim($rs->fields["date"]);
-        $ship_stage_array[$i]["stage"] = $stage;
-        $ship_stage_array[$i]["date"] = $date;
-        $i++;
-        $rs->MoveNext();
-    }
-    return $ship_stage_array;
-}
 $array = array();
 //$array[] = 465;
 //$array[] = 467;

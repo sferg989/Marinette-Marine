@@ -20,7 +20,7 @@ $array[] = 471;
 $array[] = 473;
 $array[] = 475;
 $array[] = 477;
-//$array[] = 479;
+$array[] = 479;
 $array[] = 481;
 $array[] = 483;
 $array[] = 485;
@@ -29,6 +29,7 @@ foreach ($array as $value){
 
     $sql = getFieldNamesForSQL($wc);
     //$sql.=" limit 50";
+    print $sql;
     $rs = dbCall($sql, "meac");
 
     $objPHPExcel = new PHPExcel();

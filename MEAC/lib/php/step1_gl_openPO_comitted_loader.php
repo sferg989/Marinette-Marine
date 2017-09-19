@@ -37,7 +37,7 @@ function copyListOfDirectoryToCSV($g_path2_baan_work,$baan_dir_name,$rel_path2_r
 //duplicateTable("swbs_gl_summary", "meac", "201708_swbs_gl_summary", "bkup");
 //die("made it");
 
-//truncateTable("mars", "gl_detail");
+truncateTable("mars", "gl_detail");
 //truncateTable("mars", "committed_po");
 //truncateTable("mars", "open_po");
 
@@ -55,5 +55,5 @@ $dir = "C:\\evms\\";
 //copyListOfDirectoryToCSV($dir,"committed_pos",$committed_po_directory, "committed_po");
 
 
-//clearDirectory($gl_detail_directory);
-//copyListOfDirectoryToCSV($dir,"gl_detail",$gl_detail_directory, "gl_detail");
+clearDirectory($gl_detail_directory);
+copyListOfDirectoryToCSV($dir,"gl_detail",$gl_detail_directory, "gl_detail");

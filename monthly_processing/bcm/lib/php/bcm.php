@@ -453,9 +453,10 @@ if($control=="log_analysis"){
 
     require('../../../../inc/lib/php/spreadsheet-reader-master/spreadsheet-reader-master/SpreadsheetReader.php');
     $i = 0;
-    $sql = $insert_sql;
     $Reader = new SpreadsheetReader($path2file);
     $data = "[";
+    //var_dump($Reader);
+    //die("made it");
     foreach ($Reader as $Row)
     {
         $log_rpt_period = addslashes(trim($Row[0]));
@@ -468,7 +469,7 @@ if($control=="log_analysis"){
         $db         = formatNumber4decNoComma(trim($Row[10]));
         $mr         = formatNumber4decNoComma(trim($Row[11]));
         $ub         = formatNumber4decNoComma(trim($Row[12]));
-        if($rpt_period==$log_rpt_period and $mr!=0){
+        if(intval($rpt_period)==intval($log_rpt_period) and $mr!=0){
             $data .= "{
             \"id\"             :$i,
             \"rpt_period\"     :\"$rpt_period\",

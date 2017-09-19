@@ -5,19 +5,6 @@
  * Date: 3/13/2017
  * Time: 2:01 PM
  */
-function processDescription($desc){
-    $desc = str_replace(",", " and ", trim($desc));
-    $desc = str_replace("\"", " and ", trim($desc));
-    $desc = str_replace('"', "", $desc);
-    $desc = str_replace('
-    ', "", $desc);
-    $desc = str_replace("'", "", $desc);
-    $desc = str_replace(array("\n\r", "\n", "\r"), " ", $desc);
-    $desc = str_replace("", "", $desc);
-    $desc = str_replace("/", "", $desc);
-    $desc = str_replace("#", "Num ", $desc);
-    return $desc;
-}
 function processDescriptionAgain($desc){
     $desc = str_replace("\"", " and ", trim($desc));
     $desc = str_replace(",", " and ", trim($desc));
@@ -2622,7 +2609,7 @@ function insertJournalEntries($ship_code){
     $junk = dbCall($sql, "meac");
 }
 function insertSWBSSummaryStaging($ship_code){
-    insertSWBSSummaryOPENPO($ship_code);
+    //insertSWBSSummaryOPENPO($ship_code);
     insertSWBSGLSUM($ship_code);
     insertSWBSSummaryOPENBUY($ship_code);
     insertSWBSSUmmaryEBOM($ship_code);
@@ -3053,8 +3040,9 @@ function getFieldNamesForSQL($wc="", $gb=""){
 
     $sql = substr($sql, 0, -1);
     $limit  = "";
-    $sql .= " from meac.swbs_gl_summary $wc 
-    $gb $limit";
+    //$sql .= " from meac.swbs_gl_summary $wc $gb $limit";
+    $sql .= " from meac.201708_swbs_gl_summary $wc $gb $limit";
+
     return $sql;
 }
 function correctShockOpenBuyItemShortage($ship_code){

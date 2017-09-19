@@ -6,7 +6,7 @@ define(function(){
         $.ajax({
             dataType: "json",
             url     : url,
-            data : ajaxDataObj,
+            data    : ajaxDataObj,
             success: function(data) {
                 return data;
             },
@@ -29,9 +29,23 @@ define(function(){
         });
 
     }
+    var loadTestResults = function (url, ajaxDataObj,reloadGridData) {
+        $.ajax({
+            url : url,
+            data: ajaxDataObj,
+            success: function(data) {
+                return data;
+            },
+        }).done(function (data){
+            reloadGridData();
+    });
+
+    }
+
     return {
-        getData    : getData,
-        excelExport: excelExport
+        getData        : getData,
+        excelExport    : excelExport,
+        loadTestResults: loadTestResults
     };
 })/**
  * Created by fs11239 on 4/11/2017.

@@ -15,20 +15,20 @@ $( document ).ready(function() {
         shipGridObj.dataView.endUpdate();
         shipGridObj.dataView.refresh();
         shipGridObj.grid.render();
-        shipGridObj.grid.updateRowCount();
-    }
-    function gridDataViewCallBa2ck(data){
-        shipGridObj.grid.invalidateAllRows();
-        shipGridObj.dataView.setItems(data);
-        shipGridObj.grid.render();
-
+        //shipGridObj.grid.updateRowCount();
     }
 
     var height = $(window).height();
+    function reloadGridData(){
+        var url             = "lib/php/grid.php";
+        var ajaxDataObj     = {};
+        ajaxDataObj.control = "project_grid";
+        dataService.getData(url, ajaxDataObj, gridDataViewCallBack);
+    }
     function excelExportCallBack(d){
         window.open(d);
     }
-    $("#rptGrid").height(height*.9);
+    $("#shipGrid").height(height*.9);
     function goBack() {
         window.history.back();
     }
@@ -36,69 +36,18 @@ $( document ).ready(function() {
         goBack();
     });
 
+    $("#btn_results_loader").click(function(){
+        var layout_id         = $("#layout_list").val();
+        var url               = "lib/php/grid.php";
+        var ajaxDataObj       = {};
+        ajaxDataObj.control   = "load_test_results";
+        ajaxDataObj.ship_code = layout_id;
+
+        dataService.loadTestResults(url,ajaxDataObj,reloadGridData)
+
+    });
+
     var shipCols      = gridColumns.cols;
-    var groupCols = {
-        id      : "group",
-        minWidth : 190,
-        name    : "group",
-        header : {
-            buttons: [
-                {
-                    image: "../inc/images/excel-icon.png",
-                    showOnHover: true,
-                    tooltip: "This button only appears on hover.",
-                    handler: function (e) {
-                        var url = "lib/php/grid.php";
-                        var ajaxDataObj     = {};
-                        ajaxDataObj.control = "excel_export";
-                        dataService.excelExport(url,ajaxDataObj,excelExportCallBack);
-                    }
-                },{
-                    image: "../inc/images/wbsh16.png",
-                    tooltip: "WBS Hours",
-                    handler: function (e) {
-                        var url = "lib/php/grid.php";
-                        var ajaxDataObj     = {};
-                        ajaxDataObj.control = "project_grid";
-                        ajaxDataObj.stucture = "wbs_h";
-                        dataService.getData(url,ajaxDataObj, gridDataViewCallBa2ck);
-                    }
-                },{
-                    image: "../inc/images/wbsd16.png",
-                    tooltip: "WBS Dollars",
-                    handler: function (e) {
-                        var url = "lib/php/grid.php";
-                        var ajaxDataObj     = {};
-                        ajaxDataObj.control = "project_grid";
-                        ajaxDataObj.stucture = "wbs_d";
-                        dataService.getData(url,ajaxDataObj, gridDataViewCallBa2ck);
-                    }
-                },{
-                    image: "../inc/images/obsh.png",
-                    tooltip: "OBS Hours",
-                    handler: function (e) {
-                        var url = "lib/php/grid.php";
-                        var ajaxDataObj     = {};
-                        ajaxDataObj.control = "project_grid";
-                        ajaxDataObj.stucture = "obs_h";
-                        dataService.getData(url,ajaxDataObj, gridDataViewCallBa2ck);
-                    }
-                },{
-                    image: "../inc/images/obsdgreen.png",
-                    tooltip: "OBS Dollars",
-                    handler: function (e) {
-                        var url = "lib/php/grid.php";
-                        var ajaxDataObj     = {};
-                        ajaxDataObj.control = "project_grid";
-                        ajaxDataObj.stucture = "obs_d";
-                        dataService.getData(url,ajaxDataObj, gridDataViewCallBa2ck);
-                    }
-                }
-            ]
-        },
-        field   : "group"
-    };
-    shipCols.unshift(groupCols);
 
     var grid1_options       = gridOptions.gridOptions;
 
@@ -108,12 +57,10 @@ $( document ).ready(function() {
     var url             = "lib/php/grid.php";
     var ajaxDataObj     = {};
     ajaxDataObj.control = "project_grid";
-    ajaxDataObj.stucture= "wbs_d";
     dataService.getData(url, ajaxDataObj, gridDataViewCallBack);
     shipGridObj.grid.setSelectionModel(new Slick.RowSelectionModel({
         selectActiveRow: true
     }));
-
 
 });
 });

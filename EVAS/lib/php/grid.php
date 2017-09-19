@@ -1,75 +1,46 @@
 <?php
 include('../../../inc/inc.php');
-include('../../../inc/inc.bac_eac.php');
-function getShipValByGROUPandDataType($ship_code, $group, $rpt_period,$field="s_vac", $data_type= "_cpr2h_obs"){
-    $table_suffix = getCorrespondingTable($ship_code, $data_type);
-    $table_name = $rpt_period."".$table_suffix;
-    $sql = "select $field from $table_name where ship_code = $ship_code and item like '%$group%'";
-    //print $sql;
-    $rs = dbCall($sql, "bac_eac");
-    $val = $rs->fields["$field"];
-    return $val;
-}
 
 if(strlen($code)==3)
 {
     $ship_code = "0".$code;
 }
+/*
+ * Do the test and if it fails insert it with the appropriate testID.
+ * */
+function evPCvsIMSPC($ship_code){
+
+
+}
 $rpt_period = currentRPTPeriod();
-$rpt_period = getPreviousRPTPeriod($rpt_period);
-die($rpt_period);
+function insertTest($test_id, $ship_code, $wp){
+    $sql = "INSERT  into results (test_id, ship_code, wp) values ($test_id,$ship_code, '$wp')";
+    $junk  = dbCall($sql, "evas");
+}
+
 if($control=="project_grid")
 {
-    $field      = "s_cur";
-    if($stucture=="obs_h")
-    {
-        $table_type = "_cpr2h_obs";
-        $data_type = "hours";
-        $item = "obs";
-    }
-    elseif ($stucture=="obs_d"){
-        $table_type = "_cpr2l_obs";
-        $data_type = "dollars";
-        $item = "obs";
-    }
-    elseif ($stucture=="wbs_h"){
-        $table_type = "_cpr2h_wbs";
-        $data_type = "hours";
-        $item = "wbs";
-    }
-    else {
-        //$stucture=="wbs_d";
-        $table_type = "_cpr2d_wbs";
-        $data_type = "dollars";
-        $item = "wbs";
-    }
-    $_SESSION["table_type"] = $table_type;
-    $_SESSION["data_type"]  = $data_type;
-    $_SESSION["item"]       = $item;
-    $_SESSION["field"]      = $field;
+    $sql = "
+            SELECT
+             id,
+             test_step,
+             threshold,
+             (select count(*) from results r where r.test_id =evas.id  and ship_code = 477 GROUP BY r. ship_code) AS count
+            FROM evas.metrics evas";
 
+    $rs  = dbCall($sql, "evas");
     $data = "[";
-    $sql = "select `group` from fmm_evms.cross_hull_group where type = '$item'";
-    $rs = dbCall($sql);
-    $id = 1;
     while (!$rs->EOF)
     {
-        $item   = addslashes($rs->fields["group"]);
-        $lcs17val = formatNumber4decNoComma(getShipValByGROUPandDataType("0477", $item, $rpt_period, $field, $table_type));
-        $lcs19val = formatNumber4decNoComma(getShipValByGROUPandDataType("0479", $item, $rpt_period, $field, $table_type));
-        $lcs21val = formatNumber4decNoComma(getShipValByGROUPandDataType("0481", $item, $rpt_period, $field, $table_type));
-        $lcs23val = formatNumber4decNoComma(getShipValByGROUPandDataType("0483", $item, $rpt_period, $field, $table_type));
-        $lcs25val = formatNumber4decNoComma(getShipValByGROUPandDataType("0485", $item, $rpt_period, $field, $table_type));
-        $id++;
+        $id        = $rs->fields["id"];
+        $test_step = $rs->fields["test_step"];
+        $threshold = $rs->fields["threshold"];
+        $count     = formatNumber4decNoComma($rs->fields["count"]);
         $data.="{
-            \"id\"   :$id,
-            \"group\"   :\"$item\",
-            \"data_type\"   :\"$data_type\",
-            \"lcs17\"   : $lcs17val,
-            \"lcs19\"   : $lcs19val,
-            \"lcs21\"   : $lcs21val,
-            \"lcs23\"   : $lcs23val,
-            \"lcs25\"   : $lcs25val
+            \"id\"          : $id,
+            \"threshold\"   : $threshold,
+            \"count\"       : $count,
+            \"test_step\"   :\"$test_step\"
         },";
 
         $rs->MoveNext();
@@ -78,51 +49,73 @@ if($control=="project_grid")
     $data.="]";
     die($data);
 }
-if($control =="excel_export"){
-
-    $table_type = $_SESSION["table_type"];
-    $data_type  = $_SESSION["data_type"];
-    $item       = $_SESSION["item"];
-    $field      = $_SESSION["field"];
-
-    $html = "
-    <table>
-    <tr>
-        <th>Group</th>
-        <th>LCS 17</th>
-        <th>LCS 19</th>
-        <th>LCS 21</th>
-        <th>LCS 23</th>
-        <th>LCS 25</th>
-    </tr>
-    ";
-    $sql = "select `group` from fmm_evms.cross_hull_group where type = '$item'";
-    $rs = dbCall($sql);
+if($control=="load_test_results"){
+    deleteFromTable("evas", "results", "ship_code", $ship_code);
+    /*test 1*/
+    $sql = "
+            select * from (
+            select 
+            c.ship_code,
+            c.wp c_wp,
+             c.pc c_pc,
+             p6.wp,
+             (p6.pc*100) p6_pc from cost2.201708_cost c  left join evas.p6 p6
+            on c.ship_code = p6.ship_code and
+            c.wp = p6.wp
+            where c.ship_code = 477 and p6.ev_technique like '%comp%') s where s.c_pc<> s.p6_pc
+            ";
+    $rs  = dbCall($sql, "evas");
     while (!$rs->EOF)
     {
-        $item = addslashes($rs->fields["group"]);
-        $lcs17val = getShipValByGROUPandDataType("0477", $item, $rpt_period, $field, $table_type);
-        $lcs19val = getShipValByGROUPandDataType("0479", $item, $rpt_period, $field, $table_type);
-        $lcs21val = getShipValByGROUPandDataType("0481", $item, $rpt_period, $field, $table_type);
-        $lcs23val = getShipValByGROUPandDataType("0483", $item, $rpt_period, $field, $table_type);
-        $lcs25val = getShipValByGROUPandDataType("0485", $item, $rpt_period, $field, $table_type);
-        $html.="
-        <tr>
-            <td>$item</td>
-            <td>".formatNumber($lcs17val)."</td>
-            <td>".formatNumber($lcs19val)."</td>
-            <td>".formatNumber($lcs21val)."</td>
-            <td>".formatNumber($lcs23val)."</td>
-            <td>".formatNumber($lcs25val)."</td>
-        </tr>
-        ";
-
+        $ship_code = $rs->fields["ship_code"];
+        $wp        = $rs->fields["c_wp"];
+        $c_pc      = $rs->fields["c_pc"];
+        $p6_pc     = $rs->fields["p6_pc"];
+        $result = abs($c_pc-$p6_pc);
+        if($result>1){
+            insertTest(1, $ship_code, $wp);
+        }
         $rs->MoveNext();
     }
-    $html.="</table>";
-    $token         = rand (0,1000);
-    $path2_export = $g_path_to_util."excel_exports/"."$token"."export.xls";
-    $path = "../util/excel_exports/".$token."export.xls";
-    file_put_contents($path2_export,$html);
-    die($path);
+}
+if($control=='test_drill_grid'){
+    $sql = "select *, (p6_pc-c_pc) as res  from (
+            select
+                c.ship_code,
+                c.wp c_wp,
+                 c.pc c_pc,
+                 (p6.pc*100) p6_pc from cost2.201708_cost c  left join evas.p6 p6
+                on c.ship_code = p6.ship_code and
+                c.wp = p6.wp
+                where c.ship_code = 477) s where s.p6_pc<> s.c_pc order by res desc";
+
+    $rs  = dbCall($sql, "evas");
+    $id = 1;
+    $data = "[";
+    while (!$rs->EOF)
+    {
+        $ship_code = $rs->fields["ship_code"];
+        $wp        = $rs->fields["c_wp"];
+        $c_pc      = $rs->fields["c_pc"];
+        $p6_pc     = $rs->fields["p6_pc"];
+        $result    = abs($c_pc - $p6_pc);
+        if($result>4)
+        {
+            $data.="{
+            \"id\"          : $id,
+            \"ship_code\"   : $ship_code,
+            \"c_pc\"        : $c_pc,
+            \"p6_pc\"       : $p6_pc,
+            \"result\"      : $result,
+            \"wp\"          :\"$wp\"
+        },";
+        }
+
+
+        $rs->MoveNext();
+        $id++;
+    }
+    $data = substr($data, 0, -1);
+    $data.="]";
+    die($data);
 }

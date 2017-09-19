@@ -10,10 +10,18 @@ define(function(){
         enableCellNavigation: true,
         editable            : true,
         forceFitColumns     : true,
-        autoHeight          : true,
+        autoHeight          : false,
         sort                : false
     };
+    var glOptions = {
+        enableCellNavigation: true,
+        editable            : false,
+        forceFitColumns     : true,
+        autoHeight          : true,
+        sort                : false
+    }
     return {
-        gridOptions : options
+        gridOptions : options,
+        glOptions: glOptions
     };
 })

@@ -75,6 +75,7 @@ function insertSWBSSummaryStagingRptPeriod($ship_code,$rpt_period){
     insertGlChargesNoPartNumAllocRptPeriod($ship_code, $rpt_period);
     insertGlChargesNoPartNumRptPeriod($ship_code, $rpt_period);
     insertJournalEntriesRptPeriod($ship_code, $rpt_period);
+
 }
 function insertCommittedPOWPRptPeriod($rpt_period){
     $insert_sql = "
@@ -640,26 +641,24 @@ function insertOpenBuyWithWPRptPeriod($rpt_period){
             $yard_due_date,$lead_time,$plan_order_date,$uom,$item_on_hand,
             $item_on_order,$item_shortage,$on_hold,$entered_on,$last_mod,
             $last_price,$expected_amt);
-        if($i == 1000)
+        if($i == 500)
         {
             $sql = substr($sql, 0, -1);
             $junk = dbCall($sql, "meac");
             $i=0;
             //clear out the sql stmt.
-            $sql = returnOpenBuyInsert();
+            $sql = returnOpenBuyInsertRptPeriod($rpt_period);
         }
         $i++;
         $rs->MoveNext();
     }
     //only insert remaining lines if the total number is not divisble by 1000.
-    if($i !=1000)
+    if($i !=500)
     {
 
         $sql = substr($sql, 0, -1);
         $junk = dbCall($sql, "meac");
     }
-    //print $sql;
-    //die("made it");
     /*
      * DEFAULT TO COMMODITY
      * DEFAULT TO COMMODITY
@@ -694,11 +693,11 @@ function insertOpenBuyWithWPRptPeriod($rpt_period){
         from mars.".$rpt_period."_open_buy ob left join meac.".$rpt_period."_cbm cbm
         on ob.ship_code = cbm.ship_code
         and ob.item = cbm.material
-        where wp is null  
+        where wp is null
         $gb $ob
     ";
     $rs= dbCall($sql, "meac");
-    $sql = returnOpenBuyInsert();
+    $sql = returnOpenBuyInsertRptPeriod($rpt_period);
     $i=0;
     while (!$rs->EOF)
     {
@@ -731,23 +730,27 @@ function insertOpenBuyWithWPRptPeriod($rpt_period){
             $yard_due_date,$lead_time,$plan_order_date,$uom,$item_on_hand,
             $item_on_order,$item_shortage,$on_hold,$entered_on,$last_mod,
             $last_price,$expected_amt);
-        if($i == 1000)
+        if($i == 500)
         {
             $sql = substr($sql, 0, -1);
             $junk = dbCall($sql, "meac");
             $i=0;
             //clear out the sql stmt.
-            $sql = returnOpenBuyInsert();
+            $sql = returnOpenBuyInsertRptPeriod($rpt_period);
         }
         $i++;
         $rs->MoveNext();
     }
+
     //only insert remaining lines if the total number is not divisble by 1000.
-    if($i !=1000)
+    if($i !=500)
     {
         $sql = substr($sql, 0, -1);
         $junk = dbCall($sql, "meac");
+        print $sql;
     }
+
+
 }
 function insertEBOMWPRptPeriod($rpt_period){
     $insert_sql = "
@@ -794,7 +797,7 @@ function insertEBOMWPRptPeriod($rpt_period){
             noun1,
             noun2,
             noun3
-      from meac.".$rpt_period."_ebom ebom  
+      from mars.".$rpt_period."_ebom ebom  
       LEFT JOIN (select ship_code, wp, material from meac.".$rpt_period."_cbm group by ship_code, material) cbm
         on ebom.ship_code = cbm.ship_code
         and ebom.material= cbm.material
@@ -893,7 +896,7 @@ function insertEBOMWPRptPeriod($rpt_period){
             noun1,
             noun2,
             noun3
-        from meac.".$rpt_period."_ebom ebom 
+        from mars.".$rpt_period."_ebom ebom 
         left join meac.".$rpt_period."_cbm cbm on
         ebom.ship_code = cbm.ship_code
         and ebom.material= cbm.material
@@ -1440,7 +1443,7 @@ function returnFortisPOInsertSQLRptPeriod($rpt_period){
     return $insert_sql;
 }
 function insertSWBSGLSUMRptPeriod($ship_code, $rpt_period){
-    $insert_sql = returnInsertSQLSWBSSumRptPeriod("swbs_gl_summary_stage", $rpt_period);
+    $insert_sql = returnInsertSQLSWBSSumRptPeriod($rpt_period, "swbs_gl_summary_stage");
     $ob = "gl.ship_code, gl.wp, gl.item";
     $gb = "gl.ship_code, gl.wp, gl.item";
     $sql = "
@@ -1471,30 +1474,30 @@ function insertSWBSGLSUMRptPeriod($ship_code, $rpt_period){
             (select unit_cost  from meac.target_cost tc where tc.item=gl.item  limit 1) target_unit_cost,
             gl.cust_supp as vendor_name,
             gl.document as document,
-            (SELECT GROUP_CONCAT(DISTINCT CONCAT(`order`, '-', pos)) FROM meac.wp_gl_detail gl2 where gl2.item= gl.item and gl2.ship_code= gl.ship_code ) po_data,
+            (SELECT GROUP_CONCAT(DISTINCT CONCAT(`order`, '-', pos)) FROM meac.".$rpt_period."_wp_gl_detail gl2 where gl2.item= gl.item and gl2.ship_code= gl.ship_code ) po_data,
             (SELECT GROUP_CONCAT(DISTINCT CONCAT(`origins`, ' - ')) FROM meac.k2_efdb k2 where k2.item= gl.item and k2.ship_code= gl.ship_code ) tc,
-            (select ci.date from meac.change_item ci where ci.ship_code=gl.ship_code and ci.item=gl.item  order by ci.date DESC limit 1) change_date,
-            (select ci.description from meac.change_item ci where ci.ship_code=gl.ship_code and ci.item=gl.item  order by ci.date DESC limit 1) change_reason,
-            (select vendor from meac.wp_committed_po wpc where wpc.ship_code=gl.ship_code and wpc.item = gl.item limit 1) vendor_id,
-            (select item_shortage from meac.wp_open_buy ob where ob.ship_code=gl.ship_code and ob.item=gl.item  limit 1) open_buy_item_shortage,
-            (select sum(pending_amnt) from meac.wp_open_po opo where opo.ship_code=gl.ship_code and opo.item=gl.item) open_po_pending_amt,
-            (select sum(integr_amt) from meac.wp_gl_detail gl2 where gl2.ship_code=gl.ship_code and gl2.item=gl.item and gl2.document like '%INV%') transfers,
-            (select sum(commit_amnt) from meac.wp_committed_po c where c.ship_code=gl.ship_code and c.item=gl.item group by c.ship_code, c.item) commit_amt,
-            (select avg(unit_price) from meac.wp_committed_po c where c.ship_code=gl.ship_code and c.item=gl.item group by c.ship_code, c.item) c_unit_price,
-            (select unit_price from meac.wp_committed_po c where c.item=gl.item and unit_price > 0 order by c.ship_code desc limit 1) last_unit_price,
-            (select c.ship_code from meac.wp_committed_po c where c.item=gl.item and unit_price > 0 order by c.ship_code desc limit 1) last_unit_price_ship,
-            (select sum(committed_qty) from meac.wp_committed_po c where c.ship_code=gl.ship_code and c.item=gl.item group by c.ship_code, c.item) commit_qty,
-            (select sum(qty) from meac.wp_gl_detail gl2 where gl2.ship_code=gl.ship_code and gl2.item=gl.item and gl2.document like '%PUR%' and gl2.integr_amt < 0) gl_pur_qty_off,
-            (select sum(qty) from meac.wp_gl_detail gl2 where gl2.ship_code=gl.ship_code and gl2.item=gl.item and gl2.document like '%PUR%' and gl2.integr_amt > 0) gl_pur_qty_on,
-            (select sum(qty) from meac.wp_gl_detail gl2 where gl2.ship_code=gl.ship_code and gl2.item=gl.item and gl2.document like '%INV%' and gl2.integr_amt < 0) gl_qty_transfers_off,
-            (select sum(qty) from meac.wp_gl_detail gl2 where gl2.ship_code=gl.ship_code and gl2.item=gl.item and gl2.document like '%INV%' and gl2.integr_amt > 0) gl_qty_transfers_on,
-            (select sum(no_cost_transfers) from meac.wp_gl_detail gl2 where gl2.ship_code=gl.ship_code and gl2.item=gl.item) no_cost_transfers,
+            (select ci.date from meac.".$rpt_period."_change_item ci where ci.ship_code=gl.ship_code and ci.item=gl.item  order by ci.date DESC limit 1) change_date,
+            (select ci.description from meac.".$rpt_period."_change_item ci where ci.ship_code=gl.ship_code and ci.item=gl.item  order by ci.date DESC limit 1) change_reason,
+            (select vendor from meac.".$rpt_period."_wp_committed_po wpc where wpc.ship_code=gl.ship_code and wpc.item = gl.item limit 1) vendor_id,
+            (select item_shortage from meac.".$rpt_period."_wp_open_buy ob where ob.ship_code=gl.ship_code and ob.item=gl.item  limit 1) open_buy_item_shortage,
+            (select sum(pending_amnt) from meac.".$rpt_period."_wp_open_po opo where opo.ship_code=gl.ship_code and opo.item=gl.item) open_po_pending_amt,
+            (select sum(integr_amt) from meac.".$rpt_period."_wp_gl_detail gl2 where gl2.ship_code=gl.ship_code and gl2.item=gl.item and gl2.document like '%INV%') transfers,
+            (select sum(commit_amnt) from meac.".$rpt_period."_wp_committed_po c where c.ship_code=gl.ship_code and c.item=gl.item group by c.ship_code, c.item) commit_amt,
+            (select avg(unit_price) from meac.".$rpt_period."_wp_committed_po c where c.ship_code=gl.ship_code and c.item=gl.item group by c.ship_code, c.item) c_unit_price,
+            (select unit_price from meac.".$rpt_period."_wp_committed_po c where c.item=gl.item and unit_price > 0 order by c.ship_code desc limit 1) last_unit_price,
+            (select c.ship_code from meac.".$rpt_period."_wp_committed_po c where c.item=gl.item and unit_price > 0 order by c.ship_code desc limit 1) last_unit_price_ship,
+            (select sum(committed_qty) from meac.".$rpt_period."_wp_committed_po c where c.ship_code=gl.ship_code and c.item=gl.item group by c.ship_code, c.item) commit_qty,
+            (select sum(qty) from meac.".$rpt_period."_wp_gl_detail gl2 where gl2.ship_code=gl.ship_code and gl2.item=gl.item and gl2.document like '%PUR%' and gl2.integr_amt < 0) gl_pur_qty_off,
+            (select sum(qty) from meac.".$rpt_period."_wp_gl_detail gl2 where gl2.ship_code=gl.ship_code and gl2.item=gl.item and gl2.document like '%PUR%' and gl2.integr_amt > 0) gl_pur_qty_on,
+            (select sum(qty) from meac.".$rpt_period."_wp_gl_detail gl2 where gl2.ship_code=gl.ship_code and gl2.item=gl.item and gl2.document like '%INV%' and gl2.integr_amt < 0) gl_qty_transfers_off,
+            (select sum(qty) from meac.".$rpt_period."_wp_gl_detail gl2 where gl2.ship_code=gl.ship_code and gl2.item=gl.item and gl2.document like '%INV%' and gl2.integr_amt > 0) gl_qty_transfers_on,
+            (select sum(no_cost_transfers) from meac.".$rpt_period."_wp_gl_detail gl2 where gl2.ship_code=gl.ship_code and gl2.item=gl.item) no_cost_transfers,
             sum(gl.integr_amt) int_amt,
             case when
-                (select buyer from item2buyer br where br.ship_code = gl.ship_code and br.item = gl.item limit 1 ) is null then
-                (select buyer from item2buyer br where br.item = gl.item limit 1)
+                (select buyer from ".$rpt_period."_item2buyer br where br.ship_code = gl.ship_code and br.item = gl.item limit 1 ) is null then
+                (select buyer from ".$rpt_period."_item2buyer br where br.item = gl.item limit 1)
             ELSE
-                (select buyer from item2buyer br where br.ship_code = gl.ship_code and br.item = gl.item limit 1 )
+                (select buyer from ".$rpt_period."_item2buyer br where br.ship_code = gl.ship_code and br.item = gl.item limit 1 )
             END as buyer,
             gl.ecp_rea as ecp_rea,
             gl.clin as clin,
@@ -1687,31 +1690,31 @@ function insertSWBSSummaryOPENPORptPeriod($ship_code, $rpt_period)
                     concat(open_po.po, ' - ', open_po.line) po_data,
                     (SELECT GROUP_CONCAT(DISTINCT CONCAT(`origins`, ' - ')) FROM meac.k2_efdb k2 where k2.item= open_po.item and k2.ship_code= open_po.ship_code ) tc,
                     (select ext_cost from target_cost tc where tc.item=open_po.item  limit 1) target_ext_cost,
-                    (select ci.date from meac.change_item ci where ci.ship_code=open_po.ship_code and ci.item=open_po.item  order by ci.date DESC limit 1) change_date,
-                    (select ci.description from meac.change_item ci where ci.ship_code=open_po.ship_code and ci.item=open_po.item  order by ci.date DESC limit 1) change_reason,
+                    (select ci.date from meac.".$rpt_period."_change_item ci where ci.ship_code=open_po.ship_code and ci.item=open_po.item  order by ci.date DESC limit 1) change_date,
+                    (select ci.description from meac.".$rpt_period."_change_item ci where ci.ship_code=open_po.ship_code and ci.item=open_po.item  order by ci.date DESC limit 1) change_reason,
                     (select qty from target_cost tc where tc.item=open_po.item  limit 1) target_qty,
                     (select unit_cost  from target_cost tc where tc.item=open_po.item  limit 1) target_unit_cost,
-                    (SELECT vendor FROM meac.po_data po_data where open_po.vendor=po_data.vendor_id  limit 1) vendor_name,
+                    (SELECT vendor FROM meac.".$rpt_period."_po_data po_data where open_po.vendor=po_data.vendor_id  limit 1) vendor_name,
                     gl.document as document,
                     open_po.vendor as vendor_id,
-                    (select item_shortage from wp_open_buy ob where ob.ship_code=open_po.ship_code and ob.item=open_po.item  limit 1) open_buy_item_shortage,
-                    (select sum(pending_amnt) from wp_open_po opo where opo.ship_code=open_po.ship_code and opo.item=open_po.item) open_po_pending_amt,
-                    (select sum(integr_amt) from wp_gl_detail gl2 where gl2.ship_code=open_po.ship_code and gl2.item=open_po.item and gl2.document like '%INV%') transfers,
-                    (select sum(commit_amnt) from wp_committed_po c where c.ship_code=open_po.ship_code and c.item=open_po.item group by c.ship_code, c.item) commit_amt,
-                    (select avg(unit_price) from wp_committed_po c where c.ship_code=open_po.ship_code and c.item=open_po.item group by c.ship_code, c.item) c_unit_price,
-                    (select unit_price from wp_committed_po c where c.item=open_po.item and unit_price > 0 order by c.ship_code desc limit 1) last_unit_price,
-                    (select c.ship_code from wp_committed_po c where c.item=open_po.item and unit_price > 0 order by c.ship_code desc limit 1) last_unit_price_ship,
-                    (select sum(committed_qty) from wp_committed_po c where c.ship_code=gl.ship_code and c.item=gl.item group by c.ship_code, c.item) commit_qty,
+                    (select item_shortage from ".$rpt_period."_wp_open_buy ob where ob.ship_code=open_po.ship_code and ob.item=open_po.item  limit 1) open_buy_item_shortage,
+                    (select sum(pending_amnt) from ".$rpt_period."_wp_open_po opo where opo.ship_code=open_po.ship_code and opo.item=open_po.item) open_po_pending_amt,
+                    (select sum(integr_amt) from ".$rpt_period."_wp_gl_detail gl2 where gl2.ship_code=open_po.ship_code and gl2.item=open_po.item and gl2.document like '%INV%') transfers,
+                    (select sum(commit_amnt) from ".$rpt_period."_wp_committed_po c where c.ship_code=open_po.ship_code and c.item=open_po.item group by c.ship_code, c.item) commit_amt,
+                    (select avg(unit_price) from ".$rpt_period."_wp_committed_po c where c.ship_code=open_po.ship_code and c.item=open_po.item group by c.ship_code, c.item) c_unit_price,
+                    (select unit_price from ".$rpt_period."_wp_committed_po c where c.item=open_po.item and unit_price > 0 order by c.ship_code desc limit 1) last_unit_price,
+                    (select c.ship_code from ".$rpt_period."_wp_committed_po c where c.item=open_po.item and unit_price > 0 order by c.ship_code desc limit 1) last_unit_price_ship,
+                    (select sum(committed_qty) from ".$rpt_period."_wp_committed_po c where c.ship_code=gl.ship_code and c.item=gl.item group by c.ship_code, c.item) commit_qty,
                     0 as gl_qty,
                     0 as int_amt,
                     open_po.ecp_rea,
                     open_po.clin,
                     open_po.effort,
                     case when
-                        (select buyer from item2buyer br where br.ship_code = open_po.ship_code and br.item = open_po.item limit 1 ) is null then
-                        (select buyer from item2buyer br where br.item = open_po.item limit 1)
+                        (select buyer from ".$rpt_period."_item2buyer br where br.ship_code = open_po.ship_code and br.item = open_po.item limit 1 ) is null then
+                        (select buyer from ".$rpt_period."_item2buyer br where br.item = open_po.item limit 1)
                     ELSE
-                        (select buyer from item2buyer br where br.ship_code = open_po.ship_code and br.item = open_po.item limit 1 )
+                        (select buyer from ".$rpt_period."_item2buyer br where br.ship_code = open_po.ship_code and br.item = open_po.item limit 1 )
                     END as buyer
                 from ".$rpt_period."_wp_open_po open_po
                 left join ".$rpt_period."_wp_ebom e
@@ -1813,37 +1816,37 @@ function insertSWBSSummaryOPENPORptPeriod($ship_code, $rpt_period)
 
 }
 function insertSWBSSUmmaryEBOMRptPeriod($ship_code, $rpt_period){
-    $ob = "e.ship_code, e.wp, e.item";
-    $gb = "e.ship_code, e.wp, e.item";
-    $insert_sql = returnInsertSQLSWBSSumRptPeriod("swbs_gl_summary_stage", $rpt_period);
+    $ob = "e.ship_code, e.wp, e.material";
+    $gb = "e.ship_code, e.wp, e.material";
+    $insert_sql = returnInsertSQLSWBSSumRptPeriod($rpt_period, "swbs_gl_summary_stage");
     $sql = "
      select
             e.ship_code,
             e.wp,
             case when
-                (select category from category cat where cat.ship_code = e.ship_code and cat.item = e.item limit 1 ) is null then
-                (select category from category cat where cat.item = e.item limit 1)
+                (select category from category cat where cat.ship_code = e.ship_code and cat.item = e.material limit 1 ) is null then
+                (select category from category cat where cat.item = e.material limit 1)
             ELSE
-                (select category from category cat where cat.ship_code = e.ship_code and cat.item = e.item limit 1 )
+                (select category from category cat where cat.ship_code = e.ship_code and cat.item = e.material limit 1 )
             END as category,
             case when CHAR_LENGTH(e.swbs) = 3 then concat(left(e.swbs,1),'00')
               ELSE '000' end as swbs_group,
             e.swbs,
             e.spn,
-            e.item,
+            e.material as item,
+            '' as description,
             e.item_group,
             (select ig.description from meac.item_group ig where ig.item_group= e.item_group limit 1) item_group_description,
             e.noun1,
-            e.description,
             e.uom as unit,
             e.ebom,
             '' po_data,
-            (SELECT GROUP_CONCAT(DISTINCT CONCAT(`origins`, ' - ')) FROM meac.k2_efdb k2 where k2.item= e.item and k2.ship_code= e.ship_code ) tc,
-            (select ext_cost from target_cost tc where tc.item=e.item  limit 1) target_ext_cost,
-            (select ci.date from meac.change_item ci where ci.ship_code=e.ship_code and ci.item=e.item  order by ci.date DESC limit 1) change_date,
-            (select ci.description from meac.change_item ci where ci.ship_code=e.ship_code and ci.item=e.item  order by ci.date DESC limit 1) change_reason,
-            (select qty from target_cost tc where tc.item=e.item  limit 1) target_qty,
-            (select unit_cost  from target_cost tc where tc.item=e.item  limit 1) target_unit_cost,
+            (SELECT GROUP_CONCAT(DISTINCT CONCAT(`origins`, ' - ')) FROM meac.k2_efdb k2 where k2.item= e.material and k2.ship_code= e.ship_code ) tc,
+            (select ext_cost from target_cost tc where tc.item=e.material  limit 1) target_ext_cost,
+            (select ci.date from meac.".$rpt_period."_change_item ci where ci.ship_code=e.ship_code and ci.item=e.material  order by ci.date DESC limit 1) change_date,
+            (select ci.description from meac.".$rpt_period."_change_item ci where ci.ship_code=e.ship_code and ci.item=e.material  order by ci.date DESC limit 1) change_reason,
+            (select qty from target_cost tc where tc.item=e.material  limit 1) target_qty,
+            (select unit_cost  from target_cost tc where tc.item=e.material  limit 1) target_unit_cost,
             '' vendor_name,
             '' document,
             '' as vendor_id,
@@ -1852,7 +1855,7 @@ function insertSWBSSUmmaryEBOMRptPeriod($ship_code, $rpt_period){
             '' transfers,
             '' commit_amt,
             '' c_unit_price,
-            (select unit_price from wp_committed_po c where c.item=e.item and unit_price > 0 order by c.ship_code desc limit 1) last_unit_price,
+            (select unit_price from ".$rpt_period."_wp_committed_po c where c.item=e.material and unit_price > 0 order by c.ship_code desc limit 1) last_unit_price,
             '' last_unit_price_ship,
             '' commit_qty,
             0 as gl_qty,
@@ -1861,32 +1864,31 @@ function insertSWBSSUmmaryEBOMRptPeriod($ship_code, $rpt_period){
             '' clin,
             '' effort,
             case when
-                (select buyer from item2buyer br where br.ship_code = e.ship_code and br.item = e.item limit 1 ) is null then
-                (select buyer from item2buyer br where br.item = e.item limit 1)
+                (select buyer from ".$rpt_period."_item2buyer br where br.ship_code = e.ship_code and br.item = e.material limit 1 ) is null then
+                (select buyer from ".$rpt_period."_item2buyer br where br.item = e.material limit 1)
             ELSE
-              (select buyer from item2buyer br where br.ship_code = e.ship_code and br.item = e.item limit 1 )
+              (select buyer from ".$rpt_period."_item2buyer br where br.ship_code = e.ship_code and br.item = e.material limit 1 )
             END as buyer
         from ".$rpt_period."_wp_ebom e
         left join ".$rpt_period."_wp_gl_detail gl
           on gl.ship_code= e.ship_code
-          and gl.item = e.item
+          and gl.item = e.material
         left join ".$rpt_period."_wp_open_buy ob
           on ob.ship_code= e.ship_code
-          and ob.item = e.item
+          and ob.item = e.material
         left join ".$rpt_period."_wp_open_po po
           on po.ship_code= e.ship_code
-          and po.item = e.item
+          and po.item = e.material
         where
           e.ship_code = $ship_code and
           gl.ship_code is null and
           ob.ship_code is null and
           po.ship_code is null
-                        group by $gb
-                        order by $ob
+          and e.ebom > 0
+                group by $gb
+                order by $ob
                 ";
-    print $sql;
     $i=0;
-
     $rs= dbCall($sql, "meac");
     $sql = $insert_sql;
     while (!$rs->EOF) {
@@ -1949,7 +1951,7 @@ function insertSWBSSUmmaryEBOMRptPeriod($ship_code, $rpt_period){
             $c_qty, $var_target_qty, $var_target_cost, $gl_qty, $var_ebom,
             $c_unit_price, $document, $ecp_rea,$clin,
             $effort, $po_data, $tc,$item_group_description, $change_date,$change_reason );
-        if($i == 500)
+        if($i == 1000)
         {
             $sql = substr($sql, 0, -1);
             $junk = dbCall($sql, "meac");
@@ -1962,7 +1964,7 @@ function insertSWBSSUmmaryEBOMRptPeriod($ship_code, $rpt_period){
 
     }
     //only insert remaining lines if the total number is not divisble by 1000.
-    if($i !=500)
+    if($i !=1000)
     {
         $sql = substr($sql, 0, -1);
         $junk = dbCall($sql, "meac");
@@ -1972,7 +1974,7 @@ function insertSWBSSUmmaryEBOMRptPeriod($ship_code, $rpt_period){
 }
 function insertSWBSSummaryOPENBUYRptPeriod($ship_code, $rpt_period)
 {
-    $insert_sql = returnInsertSQLSWBSSumRptPeriod("swbs_gl_summary_stage", $rpt_period);
+    $insert_sql = returnInsertSQLSWBSSumRptPeriod($rpt_period, "swbs_gl_summary_stage");
     $ob = "open_buy.ship_code, open_buy.wp, open_buy.item";
     $sql = "
             select open_buy.ship_code,
@@ -2008,14 +2010,14 @@ function insertSWBSSummaryOPENBUYRptPeriod($ship_code, $rpt_period)
                 '' as document,
                 '' as vendor_name,
                 '' as vendor_id,
-                (select unit_price from wp_committed_po c where c.item=open_buy.item and unit_price > 0 order by c.ship_code desc limit 1) last_unit_price,
-                (select ci.date from meac.change_item ci where ci.ship_code=open_buy.ship_code and ci.item=open_buy.item  order by ci.date DESC limit 1) change_date,
-                (select ci.description from meac.change_item ci where ci.ship_code=open_buy.ship_code and ci.item=open_buy.item  order by ci.date DESC limit 1) change_reason,
-                (select c.ship_code from wp_committed_po c where c.item=open_buy.item and unit_price > 0 order by c.ship_code desc limit 1) last_unit_price_ship,
+                (select unit_price from ".$rpt_period."_wp_committed_po c where c.item=open_buy.item and unit_price > 0 order by c.ship_code desc limit 1) last_unit_price,
+                (select ci.date from meac.".$rpt_period."_change_item ci where ci.ship_code=open_buy.ship_code and ci.item=open_buy.item  order by ci.date DESC limit 1) change_date,
+                (select ci.description from meac.".$rpt_period."_change_item ci where ci.ship_code=open_buy.ship_code and ci.item=open_buy.item  order by ci.date DESC limit 1) change_reason,
+                (select c.ship_code from ".$rpt_period."_wp_committed_po c where c.item=open_buy.item and unit_price > 0 order by c.ship_code desc limit 1) last_unit_price_ship,
                 0 as  commit_qty,
                 0 as gl_qty,
                 0 as int_amt,
-                (select buyer from master_buyer mb where open_buy.buyer = mb.id) buyer
+                (select buyer from ".$rpt_period."_master_buyer mb where open_buy.buyer = mb.id) buyer
             from ".$rpt_period."_wp_open_buy open_buy
             left join ".$rpt_period."_wp_ebom e
               on e.ship_code = open_buy.ship_code and e.material =open_buy.item
@@ -2026,12 +2028,11 @@ function insertSWBSSummaryOPENBUYRptPeriod($ship_code, $rpt_period)
             where
               gl.ship_code is null and
                 open_po.ship_code is null
-              -- and open_buy.wp = 'MATL-551-011'
               and open_buy.ship_code = $ship_code
               order by $ob
 ";
     $i=0;
-    //print $sql;
+    print $sql;
     $rs= dbCall($sql, "meac");
     $sql = $insert_sql;
     while (!$rs->EOF) {
@@ -2112,7 +2113,6 @@ function insertSWBSSummaryOPENBUYRptPeriod($ship_code, $rpt_period)
         $sql = substr($sql, 0, -1);
         $junk = dbCall($sql, "meac");
     }
-
 }
 
 function returnAllocInsertSQLRptPeriod($rpt_period){
@@ -2149,7 +2149,7 @@ function insertGlChargesNoPartNumAllocRptPeriod($ship_code, $rpt_period)
             gl.cust_supp as vendor_name,
             gl.qty as  gl_qty,
             gl.integr_amt int_amt
-        from wp_gl_detail gl
+        from ".$rpt_period."_wp_gl_detail gl
         where gl.ship_code = $ship_code
         and description like '%alloc%' and item = ''
         ";
@@ -2219,12 +2219,12 @@ function insertGlChargesNoPartNumRptPeriod($ship_code, $rpt_period)
               '000' end as swbs_group,
             gl.swbs,
             gl.item,
-            gl.description,
+            gl.description, 
             gl.unit,
             gl.cust_supp as vendor_name,
             gl.qty as  gl_qty,
             gl.integr_amt int_amt
-        from wp_gl_detail gl
+        from ".$rpt_period."_wp_gl_detail gl
         where gl.ship_code = $ship_code
         and description not like '%alloc%' and item = ''
         ";
@@ -2301,11 +2301,12 @@ function insertJournalEntriesRptPeriod($ship_code, $rpt_period){
                  and CAWPID in (select CAWPID from CAWP 
                  where CAWP.PROGRAM = '$program' 
                  and wp LIKE '%matl%'
-                         and  (and  DF_DATE <= '$year-$month-$day')
+                         and  (DF_DATE <= '$year-$month-$day')
     )
                group BY PROGRAM, CAWPID)
               s where s.ea <> 0
     ";
+    print $sql;
     $rs = dbCallCobra($sql);
     $sql = $insert_sql;
     while (!$rs->EOF)
@@ -2326,7 +2327,7 @@ function insertJournalEntriesRptPeriod($ship_code, $rpt_period){
 }
 
 function insertSWBSSummaryRptPeriod($value, $rpt_period){
-    $insert_sql= returnInsertSQLSWBSSumRptPeriod("swbs_gl_summary", $rpt_period);
+    $insert_sql= returnInsertSQLSWBSSumRptPeriod($rpt_period, "swbs_gl_summary");
     $sql = "
     select
         program,
@@ -2353,7 +2354,7 @@ function insertSWBSSummaryRptPeriod($value, $rpt_period){
         open_po_pending_amt,
         open_buy_item_shortage,
         sum(etc) etc,
-        eac,
+        sum(eac) eac,
         uncommitted,
         target_qty,
         target_unit_price,
@@ -2375,9 +2376,9 @@ function insertSWBSSummaryRptPeriod($value, $rpt_period){
         item_group_description,
         change_date,
         change_reason
-        from swbs_gl_summary_stage 
+        from ".$rpt_period."_swbs_gl_summary_stage 
         where ship_code = $value
-        group  by ship_code, wp, item -- limit 4500, 500
+        group  by ship_code, wp, item 
     ";
     $rs = dbCall($sql, "meac");
     $sql = $insert_sql;

@@ -24,6 +24,17 @@ function dbCallCobra($sql){
     $result = $db->Execute($sql);
     return $result;
 }
+function dbCallP6($sql){
+
+    $db = ADONewConnection('odbc_mssql');
+
+    $dsn = "Driver={SQL Server};Server=mmcsqlapp;Database=PMDB8_2;";
+//declare the SQL statement that will query the database
+    $db->Connect($dsn);
+    $db->SetFetchMode(3);
+    $result = $db->Execute($sql);
+    return $result;
+}
 function dbCallBaan($sql){
 
     $db = ADONewConnection('odbc_mssql');
@@ -1179,12 +1190,106 @@ function duplicateTable($source_table, $source_schema, $destination_table,$desti
     $rs = dbCall($sql);
 
 }
+function getRPTPeriodsgreaterThanYear($start_period, $end_period)
+{
+    $start_year  = substr($start_period, 0, 4);
+    $end_year    = substr($end_period, 0, 4);
+    $start_month = substr($start_period, -2);
+    $end_month   = substr($end_period, -2);
+    //202010-201710 = 3
+    $diff = $end_year-$start_year;
+    $year = $start_year;
+    $rpt_periods_array = array();
+    for ($i = $start_month; $i <= 12; $i++) {
+
+
+    }
+
+    if($diff==0)
+    {
+        for ($i = $start_month; $i <= $end_month; $i++) {
+            $month = $i;
+            if(strlen($month)==1)
+            {
+                $month = "0".$month;
+            }
+            $period = $start_year."".$month;
+            $rpt_periods_array[] = intval($period);
+        }
+    }
+    if($diff==1)
+    {
+        for ($i = $start_month; $i <= 12; $i++) {
+            $month = $i;
+            if(strlen($month)==1)
+            {
+                $month = "0".$month;
+            }
+            $period = $start_year."".$month;
+            $rpt_periods_array[] = intval($period);
+        }
+        for ($i = 1; $i <= $end_month; $i++) {
+            $month = $i;
+            if(strlen($month)==1)
+            {
+                $month = "0".$month;
+            }
+            $period = $end_year."".$month;
+            $rpt_periods_array[] = intval($period);
+        }
+    }
+    else{
+            for ($i = $start_month; $i <= 12; $i++) {
+                $month = $i;
+                if(strlen($month)==1)
+                {
+                    $month = "0".$month;
+                }
+                $period = $start_year."".$month;
+                $rpt_periods_array[] = intval($period);
+            }
+            $year = $start_year+1;
+            if($year==$end_year){
+                for ($i = 1; $i <= $end_month; $i++) {
+                    $month = $i;
+                    if(strlen($month)==1)
+                    {
+                        $month = "0".$month;
+                    }
+                    $period = $end_year."".$month;
+                    $rpt_periods_array[] = intval($period);
+                }
+            }
+            else{
+                for ($i = 1; $i <= 12; $i++) {
+                    $month = $i;
+                    if(strlen($month)==1)
+                    {
+                        $month = "0".$month;
+                    }
+                    $period = $year."".$month;
+                    $rpt_periods_array[] = intval($period);
+                }
+                for ($i = 1; $i <= $end_month; $i++) {
+                    $month = $i;
+                    if(strlen($month)==1)
+                    {
+                        $month = "0".$month;
+                    }
+                    $period = $end_year."".$month;
+                    $rpt_periods_array[] = intval($period);
+                }
+            }
+    }
+    return $rpt_periods_array;
+}
 function getRptPeriods($start_period, $end_period)
 {
-    $start_year = substr($start_period,0,4);
-    $end_year = substr($end_period,0,4);
+    $start_year  = substr($start_period, 0, 4);
+    $end_year    = substr($end_period, 0, 4);
     $start_month = substr($start_period, -2);
-    $end_month = substr($end_period, -2);
+    $end_month   = substr($end_period, -2);
+
     $rpt_periods_array = array();
     if($start_year==$end_year)
     {
@@ -1221,4 +1326,39 @@ function getRptPeriods($start_period, $end_period)
     }
     return $rpt_periods_array;
     //var_dump($rpt_periods_array);
+}
+
+function getStageDates($ship_code){
+    $sql = "select stage, start_date, end_date from tphase_hull_date where ship_code = $ship_code ORDER BY start_date";
+    print $sql;
+    $rs = dbCall($sql, "meac");
+    $ship_stage_array = array();
+    $i= 0 ;
+    while (!$rs->EOF)
+    {
+        $stage                              = trim($rs->fields["stage"]);
+        $start_date                         = trim($rs->fields["start_date"]);
+        $end_date                           = trim($rs->fields["end_date"]);
+
+        $ship_stage_array[$i]["stage"]      = $stage;
+        $ship_stage_array[$i]["start_date"] = $start_date;
+        $ship_stage_array[$i]["end_date"]   = $end_date;
+        $i++;
+        $rs->MoveNext();
+    }
+    return $ship_stage_array;
+}
+
+function processDescription($desc){
+    $desc = str_replace(",", " and ", trim($desc));
+    $desc = str_replace("\"", " and ", trim($desc));
+    $desc = str_replace('"', "", $desc);
+    $desc = str_replace('
+    ', "", $desc);
+    $desc = str_replace("'", "", $desc);
+    $desc = str_replace(array("\n\r", "\n", "\r"), " ", $desc);
+    $desc = str_replace("", "", $desc);
+    $desc = str_replace("/", "", $desc);
+    $desc = str_replace("#", "Num ", $desc);
+    return $desc;
 }

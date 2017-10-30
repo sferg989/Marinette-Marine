@@ -1,1 +1,1 @@
-cmd /k "C:\"program files (x86)"\deltek\"cobra 5"\cobra.api.exe script:"C:\xampp\htdocs\fmg\util\sql_util\BAT\0481_sqlUtil.BAT""
+cmd /k "C:\"program files (x86)"\deltek\"Cobra"\cobra.api.exe script:"C:\xampp\htdocs\fmg\util\sql_util\BAT\0481_sqlUtil.BAT""

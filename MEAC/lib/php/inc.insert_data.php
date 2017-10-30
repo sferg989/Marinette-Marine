@@ -187,17 +187,17 @@ function insertCommittedPO($path2file){
         $noun_2        = addslashes(trim($data[5]));
         $nre           = addslashes(trim($data[6]));
         $vendor        = intval($data[7]);
-        $po            = intval($data[8]);
-        $line          = intval($data[9]);
-        $unit_price    = formatNumber4decNoComma($data[10]);
-        $order_qty     = formatNumber4decNoComma($data[11]);
-        $delivered_qty = formatNumber4decNoComma($data[12]);
-        $committed_qty   = formatNumber4decNoComma($data[13]);
-        $commit_amnt  = formatNumber4decNoComma($data[14]);
-        $delv_date     = fixExcelDateMySQL($data[15]);
-        $acct_proj_dept = addslashes(trim($data[16]));
-        $clin          = addslashes(trim($data[17]));
-        $effort        = addslashes(trim($data[18]));
+        $po            = intval($data[9]);
+        $line          = intval($data[10]);
+        $unit_price    = formatNumber4decNoComma($data[11]);
+        $order_qty     = formatNumber4decNoComma($data[12]);
+        $delivered_qty = formatNumber4decNoComma($data[13]);
+        $committed_qty   = formatNumber4decNoComma($data[14]);
+        $commit_amnt  = formatNumber4decNoComma($data[15]);
+        $delv_date     = fixExcelDateMySQL($data[16]);
+        $acct_proj_dept = addslashes(trim($data[17]));
+        $clin          = addslashes(trim($data[18]));
+        $effort        = addslashes(trim($data[19]));
 
         $sql.=
             "(
@@ -245,8 +245,8 @@ function insertGLdetail($path2file){
     print $path2file;
     $path_exploded_array = explode("\\", $path2file);
     $file_name           = $path_exploded_array[1];
-    //$proj = substr($file_name, 0,4);
-    $proj = substr($file_name, 5,4);
+    $proj = substr($file_name, 0,4);
+    //$proj = substr($file_name, 5,4);
 
 
     $handle = fopen($path2file,"r");
@@ -598,6 +598,121 @@ function insertOpenBuy($path2file){
     '$last_mod',
     '$last_price',
     '$expected_amt'
+),";
+        if($i == 500)
+        {
+            $sql = substr($sql, 0, -1);
+            $junk = dbCall($sql, "mars");
+            print $sql;
+            $i=0;
+            //clear out the sql stmt.
+            $sql = $insert_sql;
+        }
+        $i++;
+    }
+    //only insert remaining lines if the total number is not divisble by 1000.
+    if($i !=500)
+    {
+        $sql = substr($sql, 0, -1);
+        $junk = dbCall($sql, "mars");
+    }
+}
+function insertEFDBOpenBuy($path2file){
+    $handle = fopen($path2file,"r");
+    //remove headers from the file.
+    //loop through the csv file and insert into database
+    $insert_sql = "
+   insert into mars.efdb_open_buy (
+   program,
+               ship_code,
+             buyer,
+             swbs,
+             item,
+             spn,
+             description,
+             ebom,
+             orig,
+             consum,
+             remain,
+             `group`,
+             supplier,
+             hold,
+             mriy_date,
+             lead_time,
+             shelf_life,
+             plan_order_date,
+             uom,
+             item_on_hand,
+             item_on_order,
+             item_shortage,
+             alloc,
+             efdb,
+             act_issue
+             )  VALUES ";
+
+    $sql = $insert_sql;
+    /*create counter so insert 1000 rows at a time.*/
+    $i=0;
+    /*skip header*/
+    fgetcsv($handle);
+    while (($data = fgetcsv($handle)) !== FALSE)
+    {
+        $buyer           = substr(trim($data[0]), 0, 4);
+        $ship_code       = trim($data[1]);
+        $swbs            = trim($data[2]);
+        $item            = trim($data[3]);
+        $spn             = trim($data[5]);
+        $description     = processDescription3(trim($data[4]));
+        $ebom            = formatNumber4decNoComma($data[6]);
+        $orig            = formatNumber4decNoComma($data[7]);
+        $consum          = formatNumber4decNoComma($data[8]);
+        $remain          = formatNumber4decNoComma($data[9]);
+        $group           = processDescription3(trim($data[10]));
+        $supplier        = trim($data[11]);
+        $hold            = trim($data[12]);
+        $mriy_date       = fixExcelDateMySQL($data[13]);
+        $lead_time       = $data[14];
+        $shelf_life      = trim($data[15]);
+        $plan_order_date = fixExcelDateMySQL($data[16]);
+
+        $uom           = trim($data[17]);
+        $item_on_hand  = formatNumber4decNoComma($data[18]);
+        $item_on_order = formatNumber4decNoComma($data[19]);
+        $alloc         = formatNumber4decNoComma($data[20]);
+        $efdb          = formatNumber4decNoComma($data[21]);
+        $act_issue     = formatNumber4decNoComma($data[22]);
+        $program       = "LCS";
+        $item_shortage = formatNumber4decNoComma($data[23]);
+
+        if($ship_code=="Proj."){
+            continue;
+        }
+        $sql.= " (
+            '$program',
+            $ship_code,
+            '$buyer',
+            '$swbs',
+            '$item',
+            '$spn',
+            '$description',
+            $ebom,
+            $orig,
+            $consum,
+            $remain,
+            '$group',
+            '$supplier',
+            '$hold',
+            '$mriy_date',
+            '$lead_time',
+            '$shelf_life',
+            '$plan_order_date',
+            '$uom',
+            $item_on_hand,
+            $item_on_order,
+            $item_shortage,
+            '$alloc',
+            $efdb,
+            $act_issue
 ),";
         if($i == 500)
         {
@@ -2609,7 +2724,7 @@ function insertJournalEntries($ship_code){
     $junk = dbCall($sql, "meac");
 }
 function insertSWBSSummaryStaging($ship_code){
-    //insertSWBSSummaryOPENPO($ship_code);
+    insertSWBSSummaryOPENPO($ship_code);
     insertSWBSGLSUM($ship_code);
     insertSWBSSummaryOPENBUY($ship_code);
     insertSWBSSUmmaryEBOM($ship_code);

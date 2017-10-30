@@ -66,6 +66,9 @@ if($control=="bkup_reclass_report")
         print "This Directory ".$path2CobraBkup." Does not exist!!  Go Back and Create this months Processing Folders!";
         die();
     }
+    if($ship_code=="0471"){
+        $ship_code = "0471-";
+    }
     copyProjectFromCobra($ship_code,$path2CobraBkup, $g_path2CobraAPI,$g_path2CMD,$g_path2BAT, "before_month_end_processing_begins",$debug);
 
 
@@ -74,6 +77,9 @@ if($control=="bkup_reclass_report")
     //this is the real one.  there were not enough characters allowed to have 'class check'
     $batch_rpt_name = $ship_code." Class Check";
     //$batch_rpt_name = $ship_code." Class";
+    if($ship_code=="0471-"){
+        $ship_code = "0471";
+    }
     runCobraBatchReportProcess($ship_code,$batch_rpt_name, $g_path2CobraAPI,$g_path2BatrptCMD,$g_path2BatrptBAT,$debug);
     die("BKUP-Reclass-Report have completed");
 }
@@ -84,6 +90,9 @@ if($control=="bkup_advance_bkup")
     {
         print "This Directory ".$path2CobraBkup." Does not exist!!  Go Back and Create this months Processing Folders!";
         die();
+    }
+    if($ship_code=="0471"){
+        $ship_code = "0471-";
     }
     copyProjectFromCobra($ship_code,$path2CobraBkup, $g_path2CobraAPI,$g_path2CMD,$g_path2BAT, "bkup_after_reclass",$debug);
 

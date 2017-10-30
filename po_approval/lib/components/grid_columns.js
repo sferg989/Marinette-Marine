@@ -15,7 +15,10 @@ define(["./data"],function(dataRepo){
         return x1 + x2;
     }
     function myFormatter(row, cell, value, columnDef, dataContext) {
-            if(value <0){
+        if(dataContext.item=="TOTAL DIFF "){
+            return "<p></p>";
+        }
+        else if(value <0){
                 var round = parseFloat(value).toFixed(0);
                 var withcommas = addCommas(round);
                 return "<p class='showNegRed'>(" + withcommas+")</p>";
@@ -28,6 +31,9 @@ define(["./data"],function(dataRepo){
 
     }
     function myFormatterCurrency(row, cell, value, columnDef, dataContext) {
+        if(dataContext.item=="TOTAL DIFF "){
+            return "<p></p>";
+        }
             if(value <0){
                 var round = parseFloat(value).toFixed(2);
                 var withcommas = addCommas(round);
@@ -40,122 +46,146 @@ define(["./data"],function(dataRepo){
             }
 
     }
-
-    function mycolorFormatter(row, cell, value, columnDef, dataContext) {
-        var round = parseFloat(value).toFixed(0);
-        if(round > 0){
-            var link_paran = "<p style='font-weight:bold; background-color: red; color: white;'><a href='#' onclick=window.open('test_drill.html?ship_code="+dataContext.ship_code+"&test_id="+dataContext.test_step+"')>"+value+"</a></p>";
-            //return "<p style='font-weight:bold; background-color: red; color: white;'>"+round+"</p>";
-            return link_paran;
-
-        }
-        else{
-            return "<p style='font-weight:bold; background-color: lime; color: black;'>"+round+"</p>";
-
-        }
-    }
-    function myPCFormatter(row, cell, value, columnDef, dataContext) {
-        var round = parseFloat(value).toFixed(0);
-        return "<p style='font-weight:bold; '>"+round+"%</p>";
-
+    function myFormatterCurrencyDIFF(row, cell, value, columnDef, dataContext) {
+            if(value <0){
+                var round = parseFloat(value).toFixed(2);
+                var withcommas = addCommas(round);
+                return "<p  style='text-align: right; font-weight:bold; background-color: limegreen; '>($" + withcommas+")</p>";
+            }
+            else{
+                var round = parseFloat(value).toFixed(2);
+                var withcommas = addCommas(round);
+                return "<p  style='text-align: right; font-weight:bold; background-color: red;color: white '>$" + withcommas+"</p>";
+            }
 
     }
-    function myLinkFormatter(row, cell, value, columnDef, dataContext) {
-        var round = parseFloat(value).toFixed(0);
-        if(round > 0) {
-            var link_paran = "<p style='font-weight:bold; background-color: red; color: white;'><a href='#' onclick=window.open('test_drill.html?ship_code="+dataContext.ship_code+"&wp="+dataContext.wp+"')>"+value+"</a></p>";
-            return link_paran;
+    function myFormatterCurrencyReEST(row, cell, value, columnDef, dataContext) {
+        if(dataContext.item=="TOTAL DIFF "){
+            return "<p></p>";
         }
-        else{
-            return "<p style='font-weight:bold; background-color: lime; color: black;'>"+round+"</p>";
-
-        }
-
+                var round = parseFloat(value).toFixed(2);
+                var withcommas = addCommas(round);
+                return "<p  style='text-align: right; font-weight:bold; background-color: yellow; '>$" + withcommas+"</p>";
     }
-
     var cols = [
         {
-            id       : "ship_code",
-            name     : "HULL",
-            field    : "ship_code"
+            id      : "ship_code",
+            name    : "HULL",
+            minWidth: 20,
+            maxWidth: 30,
+            field   : "ship_code"
         },{
             id       : "wp",
             name     : "WP",
-            field    : "wp"
+            field    : "wp",
+            minWidth: 80,
+            maxWidth: 120
         },{
             id       : "item",
             name     : "item",
-            field    : "item"
+            field    : "item",
+            minWidth: 80,
+            maxWidth: 130
         },{
             id       : "desc",
             name     : "desc",
-            field    : "desc"
+            field    : "desc",
+            minWidth: 120,
+            maxWidth: 400
         },{
             id       : "po",
             name     : "po",
-            field    : "po"
+            field    : "po",
+            minWidth: 40,
+            maxWidth: 80
         },{
             id       : "line",
             name     : "line",
-            field    : "line"
+            field    : "line",
+            minWidth: 10,
+            maxWidth: 30
         },{
             id       : "vendor",
             name     : "vendor",
-            field    : "vendor"
+            field    : "vendor",
+            minWidth: 120,
+            maxWidth: 200
         },{
-            id       : "c_order_qty",
-            name     : "c_order_qty",
+            id       : "NEW PO qty",
+            name     : "C QTY",
             field    : "c_order_qty",
-            formatter : myFormatter
+            formatter : myFormatter,
+            minWidth: 40,
+            maxWidth: 80
         },{
             id       : "c_unit_price",
-            name     : "c_unit_price",
+            name     : "C Unit Price",
             field    : "c_unit_price",
-            formatter : myFormatterCurrency
+            formatter : myFormatterCurrency,
+            minWidth: 40,
+            maxWidth: 80
         },{
             id       : "c_amnt",
-            name     : "c_amnt",
+            name     : "C AMT",
             field    : "c_amnt",
-            formatter : myFormatterCurrency
+            formatter : myFormatterCurrency,
+            minWidth: 40,
+            maxWidth: 80
         },{
             id       : "meac_c_qty",
-            name     : "meac_c_qty",
+            name     : "MEAC QTY",
             field    : "meac_c_qty",
-            formatter : myFormatter
+            formatter : myFormatter,
+            minWidth: 10,
+            maxWidth: 30
         },{
             id       : "meac_ebom",
-            name     : "meac_ebom",
+            name     : "EBOM",
             field    : "meac_ebom",
-            formatter : myFormatter
+            formatter : myFormatter,
+            minWidth: 10,
+            maxWidth: 30
         },{
             id       : "meac_var_ebom",
-            name     : "meac_var_ebom",
+            name     : "VAR",
             field    : "meac_var_ebom",
-            formatter : myFormatter
+            formatter : myFormatter,
+            minWidth: 10,
+            maxWidth: 30
         },{
             id       : "meac_last_price",
-            name     : "meac_last_price",
+            name     : "Last price",
             field    : "meac_last_price",
-            formatter : myFormatterCurrency
+            formatter : myFormatterCurrency,
+            minWidth: 40,
+            maxWidth: 80
         },{
             id       : "meac_re_est_etc",
-            name     : "meac_re_est_etc",
+            name     : "RE EST ETC",
             field    : "meac_re_est_etc",
-            formatter : myFormatterCurrency
+            formatter : myFormatterCurrencyReEST,
+            minWidth: 40,
+            maxWidth: 80
         },{
             id       : "meac_re_est_eac",
-            name     : "meac_re_est_eac",
+            name     : "RE EST EAC",
             field    : "meac_re_est_eac",
-            formatter : myFormatterCurrency
+            formatter : myFormatterCurrency,
+            minWidth: 40,
+            maxWidth: 80
         },{
             id       : "fortis_status",
             name     : "fortis_status",
-            field    : "fortis_status"
+            field    : "fortis_status",
+            minWidth: 40,
+            maxWidth: 80
         },{
             id       : "etc_diff",
             name     : "etc_diff",
             field    : "etc_diff",
-            formatter : myFormatterCurrency
+            formatter : myFormatterCurrencyDIFF,
+            minWidth: 40,
+            maxWidth: 80
         }];
     return {
         cols   : cols

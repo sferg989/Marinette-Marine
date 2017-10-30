@@ -35,3 +35,4 @@ print $directory2Copy;
 print $rel_path2_reports;
 clearDirectory($rel_path2_reports);
 copyListOfDirectoryToCSV($directory2Copy,$rel_path2_reports);
+duplicateTable("open_buy", "mars", "201710_open_buy", "mars");

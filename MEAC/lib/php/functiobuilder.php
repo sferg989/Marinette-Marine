@@ -391,7 +391,7 @@ function loadBaanBuyerIDListRptPeriod($rpt_period){
     while (!$rs->EOF)
     {
         $buyer_id = intval($rs->fields["buyer_id"]);
-        $buyer    = $rs->fields["buyer"];
+        $buyer    = trim($rs->fields["buyer"]);
         $sql.=
             "(
                 $buyer_id,
@@ -1704,7 +1704,7 @@ function insertSWBSSummaryOPENPORptPeriod($ship_code, $rpt_period)
                     (select avg(unit_price) from ".$rpt_period."_wp_committed_po c where c.ship_code=open_po.ship_code and c.item=open_po.item group by c.ship_code, c.item) c_unit_price,
                     (select unit_price from ".$rpt_period."_wp_committed_po c where c.item=open_po.item and unit_price > 0 order by c.ship_code desc limit 1) last_unit_price,
                     (select c.ship_code from ".$rpt_period."_wp_committed_po c where c.item=open_po.item and unit_price > 0 order by c.ship_code desc limit 1) last_unit_price_ship,
-                    (select sum(committed_qty) from ".$rpt_period."_wp_committed_po c where c.ship_code=gl.ship_code and c.item=gl.item group by c.ship_code, c.item) commit_qty,
+                    (select sum(committed_qty) from ".$rpt_period."_wp_committed_po c where c.ship_code=open_po.ship_code and c.item=open_po.item group by c.ship_code, c.item) commit_qty,
                     0 as gl_qty,
                     0 as int_amt,
                     open_po.ecp_rea,
@@ -2329,56 +2329,57 @@ function insertJournalEntriesRptPeriod($ship_code, $rpt_period){
 function insertSWBSSummaryRptPeriod($value, $rpt_period){
     $insert_sql= returnInsertSQLSWBSSumRptPeriod($rpt_period, "swbs_gl_summary");
     $sql = "
-    select
-        program,
-        ship_code,
-        category,
-        max(swbs_group) swbs_group,
-        max(swbs) swbs,
-        wp,
-        spn,
-        item,
-        item_group,
-        description,
-        unit,
-        noun1,
-        transfers,
-        c_amt,
-        c_unit_price,
-        last_unit_price,
-        gl_int_amt,
-        ebom,
-        ebom_on_hand,
-        ebom_issued,
-        last_unit_price_ship,
-        open_po_pending_amt,
-        open_buy_item_shortage,
-        sum(etc) etc,
-        sum(eac) eac,
-        uncommitted,
-        target_qty,
-        target_unit_price,
-        target_ext_cost,
-        vendor_name,
-        vendor_id,
-        var_target_cost,
-        c_qty,
-        var_target_qty,
-        buyer,
-        gl_qty,
-        var_ebom,
-        document,
-        clin,
-        effort,
-        ecp_rea,
-        po_data,
-        tc,
-        item_group_description,
-        change_date,
-        change_reason
-        from ".$rpt_period."_swbs_gl_summary_stage 
-        where ship_code = $value
-        group  by ship_code, wp, item 
+              SELECT
+            program,
+            ship_code,
+            category,
+            max(swbs_group) swbs_group,
+            max(swbs)       swbs,
+            wp,
+            spn,
+            item,
+            item_group,
+            description,
+            unit,
+            noun1,
+            transfers,
+            c_amt,
+            c_unit_price,
+            last_unit_price,
+            gl_int_amt,
+            ebom,
+            ebom_on_hand,
+            ebom_issued,
+            last_unit_price_ship,
+            open_po_pending_amt,
+            open_buy_item_shortage,
+            sum(etc)        etc,
+            sum(eac)        eac,
+            uncommitted,
+            target_qty,
+            target_unit_price,
+            target_ext_cost,
+            vendor_name,
+            vendor_id,
+            var_target_cost,
+            c_qty,
+            var_target_qty,
+             buyer,
+            gl_qty,
+            var_ebom,
+            document,
+            clin,
+            effort,
+            ecp_rea,
+            po_data,
+            tc,
+            item_group_description,
+            change_date,
+            change_reason
+            FROM ".$rpt_period."_swbs_gl_summary_stage stage
+            WHERE ship_code = $value
+            GROUP BY ship_code, wp, item 
+            
     ";
     $rs = dbCall($sql, "meac");
     $sql = $insert_sql;
@@ -2391,7 +2392,7 @@ function insertSWBSSummaryRptPeriod($value, $rpt_period){
         $swbs                   = intval($rs->fields["swbs"]);
         $wp                     = $rs->fields["wp"];
         $spn                    = $rs->fields["spn"];
-        $item                   = $rs->fields["item"];
+        $item                   = processDescription($rs->fields["item"]);
         $item_group             = $rs->fields["item_group"];
         $description            = $rs->fields["description"];
         $unit                   = $rs->fields["unit"];
@@ -2430,8 +2431,7 @@ function insertSWBSSummaryRptPeriod($value, $rpt_period){
         $tc                     = $rs->fields["tc"];
         $item_group_description = processDescription($rs->fields["item_group_description"]);
         $change_date            = fixExcelDateMySQL($rs->fields["change_date"]);
-        $change_reason          = $rs->fields["change_reason"];
-
+        $change_reason          = processDescription($rs->fields["change_reason"]);
         $sql.=createInsertValuesString($program, $ship_code,$category,$swbs_group, $swbs,
             $wp, $spn, $item, $item_group, $description,
             $unit, $noun1, $transfers, $c_amt, $last_unit_price,
@@ -2444,10 +2444,12 @@ function insertSWBSSummaryRptPeriod($value, $rpt_period){
             $c_unit_price, $document, $ecp_rea,$clin,
             $effort, $po_data, $tc,$item_group_description, $change_date, $change_reason);
 
-        if($i == 500)
+        if($i == 250)
         {
             $sql = substr($sql, 0, -1);
             $junk = dbCall($sql, "meac");
+            //print $sql;
+
             $i=0;
             //clear out the sql stmt.
             $sql = $insert_sql;
@@ -2456,14 +2458,14 @@ function insertSWBSSummaryRptPeriod($value, $rpt_period){
         $rs->MoveNext();
 
     }
-
-    //only insert remaining lines if the total number is not divisble by 1000.
-    if($i !=500)
+    if($i != 250)
     {
         $sql = substr($sql, 0, -1);
         $junk = dbCall($sql, "meac");
+        print $sql;
+
     }
-    print $sql;
+
 }
 function correctShockOpenBuyItemShortageRptPeriod($ship_code, $rpt_period){
     $sql = "

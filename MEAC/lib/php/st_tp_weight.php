@@ -106,7 +106,6 @@ $swbs_array[] = "700";
 $swbs_array[] = "800";
 $swbs_array[] = "900";
 
-
 $objPHPExcel = new PHPExcel();
 $objPHPExcel->setActiveSheetIndex(0);
 $sheet = $objPHPExcel->getActiveSheet();

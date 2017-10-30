@@ -44,6 +44,23 @@ function getPagesByCategory($category,$us_citizen, $role){
     }
     return $data;
 }
+if($control =="get_home_page"){
+    $role = $_SESSION["role"];
+    if($role=="PFA"){
+        die("../monthly_processing/processing_status/index.html");
+    }
+    if($role=="Material CAM"){
+        die("../po_approval/index.html");
+    }
+    if($role=="admin"){
+        die("../po_approval/index.html");
+    }
+    else{
+        die("../monthly_processing/processing_status/index.html");
+
+    }
+
+}
 if($control =="build_menu"){
     $user = $_SESSION["user_name"];
     $role = $_SESSION["role"];

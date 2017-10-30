@@ -56,6 +56,83 @@ function phpExcelCurrencySheetBOLDAndCOLOR($range, $sheet){
     );
     $sheet->getStyle($range)->applyFromArray($styleArray);
 }
+function phpExcelCurrencySheetBOLDAndCustomCOLORIFNOT0($range, $sheet, $bk_ground,$font,$val){
+    $val = intval($val);
+
+    if($val!=0){
+        $styleArray =
+            array(
+                'font' => array(
+                    'bold' => true,
+                    'color' => array('rgb' => $font)
+                ),
+                'fill' => array(
+                    'type' => PHPExcel_Style_Fill::FILL_SOLID,
+                    'color' => array('rgb' => $bk_ground)
+                )
+            );
+
+    }else{
+        $styleArray =
+            array(
+                'font' => array(
+                    'bold' => true,
+                    'color' => array('rgb' => '000000')
+                )
+            );
+    }
+    $sheet->getStyle($range)
+        ->getNumberFormat()
+        ->setFormatCode(PHPExcel_Style_NumberFormat::FORMAT_CURRENCY_USD);
+
+    $sheet->getStyle($range)->applyFromArray($styleArray);
+}
+
+function phpExcelCurrencySheetBOLDDiff($range, $sheet,$val){
+    $val = intval($val);
+    if($val>0){
+        $styleArray =
+            array(
+                'font' => array(
+                    'bold' => true,
+                    'color' => array('rgb' => "ffffff")
+                ),
+                'fill' => array(
+                    'type' => PHPExcel_Style_Fill::FILL_SOLID,
+                    'color' => array('rgb' => "e20909")
+                )
+            );
+
+    }
+    if($val<0){
+        $styleArray =
+            array(
+                'font' => array(
+                    'bold' => true
+                ),
+                'fill' => array(
+                    'type' => PHPExcel_Style_Fill::FILL_SOLID,
+                    //'color' => array('rgb' => "32CD32")
+                    'color' => array('rgb' => "98E698")
+                )
+            );
+
+    }
+    if($val==0){
+        $styleArray =
+            array(
+                'font' => array(
+                    'bold' => true
+                )
+            );
+
+    }
+    $sheet->getStyle($range)
+        ->getNumberFormat()
+        ->setFormatCode(PHPExcel_Style_NumberFormat::FORMAT_CURRENCY_USD);
+
+    $sheet->getStyle($range)->applyFromArray($styleArray);
+}
 function phpExcelFormatPercentage($range, $objPHPExcel){
     $objPHPExcel->getActiveSheet()
         ->getStyle($range)

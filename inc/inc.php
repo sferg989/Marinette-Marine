@@ -17,7 +17,7 @@ function dbCallCobra($sql){
 
     $db = ADONewConnection('odbc_mssql');
 
-    $dsn = "Driver={SQL Server};Server=mmcsqlapp;Database=Cobra51;";
+    $dsn = "Driver={SQL Server};Server=Fmmsqlapps1;Database=Cobra51;";
 //declare the SQL statement that will query the database
     $db->Connect($dsn);
     $db->SetFetchMode(3);
@@ -636,6 +636,16 @@ function formatNumber4decNoComma($number){
     }
     return $value;
 }
+function formatNumber6decNoComma($number){
+    $no_comma = str_replace(",", "", $number);
+    $no_sign = str_replace("$", "", $no_comma);
+
+    $value    = number_format($no_sign, 6, ".", "");
+    if($value ==""){
+        $value = 0;
+    }
+    return $value;
+}
 function formatNumber4decCobra($number){
 
     $value    = number_format($number, 4, ".", "");
@@ -1181,14 +1191,14 @@ function runSQLCommandUtil($ship_code,$sql, $g_path2CobraAPI,$g_path2CMD,$g_path
     }
 
 }
+
 function duplicateTable($source_table, $source_schema, $destination_table,$destination_schema){
 
-    $sql    = "CREATE TABLE $destination_schema.$destination_table LIKE $source_schema.$source_table";
-    $junk   = dbCall($sql);
+        $sql    = "CREATE TABLE $destination_schema.$destination_table LIKE $source_schema.$source_table";
+        $junk   = dbCall($sql);
 
-    $sql = "INSERT $destination_schema.$destination_table SELECT * FROM $source_schema.$source_table";
-    $rs = dbCall($sql);
-
+        $sql = "INSERT $destination_schema.$destination_table SELECT * FROM $source_schema.$source_table";
+        $junk= dbCall($sql);
 }
 function getRPTPeriodsgreaterThanYear($start_period, $end_period)
 {
@@ -1330,7 +1340,7 @@ function getRptPeriods($start_period, $end_period)
 
 function getStageDates($ship_code){
     $sql = "select stage, start_date, end_date from tphase_hull_date where ship_code = $ship_code ORDER BY start_date";
-    print $sql;
+    //print $sql;
     $rs = dbCall($sql, "meac");
     $ship_stage_array = array();
     $i= 0 ;
@@ -1360,5 +1370,32 @@ function processDescription($desc){
     $desc = str_replace("", "", $desc);
     $desc = str_replace("/", "", $desc);
     $desc = str_replace("#", "Num ", $desc);
+    $desc = str_replace("#'s", "Numbers ", $desc);
     return $desc;
+}
+function array_debug($my_array,$return_as_var=false)
+{
+    /*
+    print "count=".count($my_array)."<br>";
+    $i=0;
+    while($i < count($my_array))
+    {
+        print "$i " .$my_array[$i] . "<br>";
+        $i++;
+    }
+    */
+    if($return_as_var)
+    {
+        $z = "<pre>";
+        $z .= print_r($my_array,true);
+        $z .= "</pre>";
+        return $z;
+    }
+    else
+    {
+        print "<pre>";
+        print_r($my_array);
+        print "</pre>";
+    }
+    return true;
 }

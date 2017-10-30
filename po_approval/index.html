@@ -30,6 +30,10 @@
     .btn-warning {
         color: black;
     }
+    #shipGrid .slick-row.active .slick-cell {
+        background-color: #7FDBFF;
+        font-weight: bold;
+    }
     .slick-cell, .slick-headerrow-column {
         position: absolute;
         border: 1px solid transparent;
@@ -79,22 +83,26 @@
         font-family : "Helvetica ";
     }
 </style>
-    <title>EVAS Metrics</title>
     <link rel="stylesheet" href="../inc/lib/js/SlickGrid-master/plugins/slick.headerbuttons.css">
 </head>
 <body class="alt-grid">
 <!--<div id = "filters">-->
 
-<div class="container" >
+<div class="container">
     <div class="row">
         <div class="col-md-2 btn-toolbar">
             <div class="btn-group">
                 <button id = "btn_clear" class="btn"><img src="../images/Clear-icon-16.png"/></button>
                 <button id = "btn_comitted_rpt_loader" class="btn" ><img src="../images/wizard-icon-16.png"/></button>
+                <button id = "btn_excel_export" class="btn" ><img src="../images/Excel-icon-16.png"/></button>
                 <select id = "ship_code_list" >
-                    <option value="477" >LCS 17</option>
+                    <option value="465" >LCS 5</option>
+                    <option value="467" >LCS 7</option>
+                    <option value="469" >LCS 9</option>
+                    <option value="471" >LCS 11</option>
                     <option value="473" >LCS 13</option>
                     <option value="475" >LCS 15</option>
+                    <option value="477" >LCS 17</option>
                     <option value="479" >LCS 19</option>
                     <option value="481" >LCS 21</option>
                     <option value="483" >LCS 23</option>
@@ -105,7 +113,7 @@
     <div class="col-md-8">
         <div class="col-md-3">
             <label for="po_num">PO Number</label>
-            <input  value="931019" type="text" class="form-control input-sm" id="po_num">
+            <input  value="583715" type="text" class="form-control input-sm" id="po_num">
         </div>
         <div class="col-md-2">
             <label></label>

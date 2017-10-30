@@ -2,7 +2,6 @@
 include('../../../../inc/inc.php');
 function processJustification2($justification){
     $justification = trim($justification);
-    $justification = str_replace('2', "", $justification);
     $justification = str_replace("&", " and ", $justification);
     $justification = str_replace("\\", " and ", $justification);
     $justification = str_replace("\"", "'", $justification);

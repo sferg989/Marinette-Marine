@@ -6,7 +6,7 @@ require([
     "lib/components/grid_columns",
     "lib/components/data",
     "slickHeaderBtn"
-    ], function(grid,gridOptions,getUrl, gridColumns,dataService, filterBTN) {
+    ], function(grid,gridOptions,getUrl, gridColumns,dataService) {
 $( document ).ready(function() {
 
     function gridDataViewCallBack(data){

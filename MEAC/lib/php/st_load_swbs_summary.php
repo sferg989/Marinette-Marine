@@ -10,22 +10,193 @@ require('C:\xampp\htdocs\fmg\MEAC\lib\php\functiobuilder.php');
  * Date: 3/9/2017
  * Time: 4:02 PM
  */
-function saveListOfFileNamesPHPExcelAndInsertETCLoadFile($file_name_array,$directory2Copy,$rel_path2_desitnation)
-{
-    foreach ($file_name_array as $value) {
-        $path2XLSX    = "$directory2Copy/$value";
-        print $path2XLSX;
-        $csv_filename = savePHPEXCELCSV($value, $path2XLSX, $rel_path2_desitnation);
-        $path2file    = "$rel_path2_desitnation\\$csv_filename";
-        insertETCLOADFILE($path2file);
-        flush();
-    }
+function insertReESTADJ($rpt_period){
+    $sql = "
+    INSERT INTO meac.`201707_swbs_gl_summary_stage` (ship_code, buyer, wp, swbs, swbs_group, item, etc, category) (
+  SELECT
+    ship_code,
+    CASE WHEN buyer_item IS NULL
+      THEN buyer_ship
+    ELSE buyer_item END AS buyer,
+    wp,
+    swbs,
+    swbs_group,
+    item,
+    etc_diff,
+    category
+  FROM (
+         SELECT
+           s.ship_code,
+           buyer_item,
+           buyer_ship,
+           wp,
+           s.swbs,
+           s.swbs_group,
+           s.item,
+           -(s.cur_etc - s.reEst_ETC) etc_diff,
+           -(s.cur_eac - s.reEst_EAC) eac_diff,
+           category
+         FROM (
+                SELECT
+                  ship_code,
+                  'ADJUSTMENTS in the TABLE' AS                             category,
+                  (SELECT buyer
+                   FROM 201707_item2buyer i
+                   WHERE i.ship_code = cur.ship_code AND i.item = cur.item) buyer_item,
+                  (SELECT buyer
+                   FROM 201707_item2buyer i
+                   WHERE I.item = cur.item
+                   ORDER BY i.ship_code DESC
+                   LIMIT 1)                                                 buyer_ship,
+                  wp,
+                  swbs,
+                  swbs_group,
+                  item,
+                  COALESCE(sum(etc),0)                                                  cur_etc,
+
+                  COALESCE((SELECT sum(etc)
+                            FROM reest3 re
+                            WHERE re.ship_code = cur.ship_code AND re.wp = cur.wp AND re.item = cur.item and remaining = 'Yes'
+                            GROUP BY re.ship_code, re.wp, re.item), 0)      reEst_ETC,
+                  COALESCE((SELECT sum(eac)
+                            FROM reest3 re
+                            WHERE re.ship_code = cur.ship_code AND re.wp = cur.wp AND re.item = cur.item
+                            GROUP BY re.ship_code, re.wp, re.item), 0)      reEst_EAC,
+                  COALESCE(sum(eac),0)                                                  cur_eac
+                FROM meac.`201707_swbs_gl_summary_stage` cur
+                -- WHERE
+                -- ship_code = 473
+                --   AND item = '986-01-DC100-001'
+                GROUP BY ship_code, wp, item
+                UNION
+                SELECT
+                  re.ship_code                           AS               ship_code,
+                  'ADJUSTMENTS NOT IN TABLE'             AS               category,
+                  (SELECT buyer
+                   FROM item2buyer i
+                   WHERE i.ship_code = re.ship_code AND i.item = re.item) buyer_item,
+                  (SELECT buyer
+                   FROM item2buyer i
+                   WHERE I.item = re.item
+                   ORDER BY i.ship_code DESC
+                   LIMIT 1)                                               buyer_ship,
+                  re.wp,
+                  left(right(re.wp, 7), 3)               AS               swbs,
+                  concat(left(right(re.wp, 7), 1), '00') AS               swbs_group,
+                  re.item,
+                  0                                      AS               cur_etc,
+                  COALESCE(sum(re.etc),0)                                             reEst_ETC,
+                  COALESCE(sum(re.eac),0)                                             reEst_EAC,
+                  0                                      AS               cur_eac
+                FROM reest3 re
+                  LEFT JOIN `201707_swbs_gl_summary_stage` gl
+                    ON re.ship_code = gl.ship_code
+                       AND re.wp = gl.wp
+                       AND re.item = gl.item
+                WHERE
+                  gl.ship_code IS NULL
+                  AND gl.wp IS NULL
+                  AND gl.item IS NULL
+                  and remaining = 'yes'
+                GROUP BY re.ship_code, re.wp, re.item
+              ) s) final
+  WHERE (final.etc_diff <> 0))";
+    $junk = dbCall($sql,"meac");
+
+    $sql= "INSERT INTO meac.`201707_swbs_gl_summary_stage` (ship_code, buyer, wp, swbs, swbs_group, item, eac, category) (
+  SELECT
+    ship_code,
+    CASE WHEN buyer_item IS NULL
+      THEN buyer_ship
+    ELSE buyer_item END AS buyer,
+    wp,
+    swbs,
+    swbs_group,
+    item,
+    eac_diff,
+    category
+  FROM (
+         SELECT
+           s.ship_code,
+           buyer_item,
+           buyer_ship,
+           wp,
+           s.swbs,
+           s.swbs_group,
+           s.item,
+           -(s.cur_eac - s.reEst_EAC) eac_diff,
+           category
+         FROM (
+                SELECT
+                  ship_code,
+                  'ADJUSTMENTS in the TABLE' AS                             category,
+                  (SELECT buyer
+                   FROM 201707_item2buyer i
+                   WHERE i.ship_code = cur.ship_code AND i.item = cur.item) buyer_item,
+                  (SELECT buyer
+                   FROM 201707_item2buyer i
+                   WHERE I.item = cur.item
+                   ORDER BY i.ship_code DESC
+                   LIMIT 1)                                                 buyer_ship,
+                  wp,
+                  swbs,
+                  swbs_group,
+                  item,
+                  sum(etc)                                                  cur_etc,
+
+                  COALESCE((SELECT sum(etc)
+                            FROM reest3 re
+                            WHERE re.ship_code = cur.ship_code AND re.wp = cur.wp AND re.item = cur.item and remaining = 'Yes'
+                            GROUP BY re.ship_code, re.wp, re.item), 0)      reEst_ETC,
+                  COALESCE((SELECT sum(eac)
+                            FROM reest3 re
+                            WHERE re.ship_code = cur.ship_code AND re.wp = cur.wp AND re.item = cur.item
+                            GROUP BY re.ship_code, re.wp, re.item), 0)      reEst_EAC,
+                  COALESCE(sum(eac),0)                                                  cur_eac
+                FROM meac.`201707_swbs_gl_summary_stage` cur
+                -- WHERE
+                -- ship_code = 473
+                --   AND item = '986-01-DC100-001'
+                GROUP BY ship_code, wp, item
+             UNION
+                SELECT
+                  re.ship_code                           AS               ship_code,
+                  'ADJUSTMENTS NOT IN TABLE'             AS               category,
+                  (SELECT buyer
+                   FROM item2buyer i
+                   WHERE i.ship_code = re.ship_code AND i.item = re.item) buyer_item,
+                  (SELECT buyer
+                   FROM item2buyer i
+                   WHERE I.item = re.item
+                   ORDER BY i.ship_code DESC
+                   LIMIT 1)                                               buyer_ship,
+                  re.wp,
+                  left(right(re.wp, 7), 3)               AS               swbs,
+                  concat(left(right(re.wp, 7), 1), '00') AS               swbs_group,
+                  re.item,
+                  0                                      AS               cur_etc,
+                  COALESCE(sum(re.etc),0)                                             reEst_ETC,
+                  COALESCE(sum(re.eac),0)                                             reEst_EAC,
+                  0                                      AS               cur_eac
+                FROM reest3 re
+                  LEFT JOIN `201707_swbs_gl_summary_stage` gl
+                    ON re.ship_code = gl.ship_code
+                       AND re.wp = gl.wp
+                       AND re.item = gl.item
+                WHERE
+                  gl.ship_code IS NULL
+                  AND gl.wp IS NULL
+                  AND gl.item IS NULL
+                GROUP BY re.ship_code, re.wp, re.item
+
+              ) s) final
+  WHERE (final.eac_diff <> 0));
+    ";
+    $junk = dbCall($sql,"meac");
+
 }
-function copyListOfDirectoryToCSV($directory2Copy,$rel_path2_reports){
-    $file_name_array = getListOfFileNamesInDirectory($directory2Copy);
-    saveListOfFileNamesPHPExcelAndInsertETCLoadFile($file_name_array,$directory2Copy,$rel_path2_reports);
-}
-$rpt_period = 201708;
+
+$rpt_period = 201710;
 buildMEACTablesforRptPeriod($rpt_period);
 
 
@@ -34,24 +205,26 @@ buildMEACTablesforRptPeriod($rpt_period);
 //duplicateTable("gl_detail", "mars", "201708_gl_detail", "mars");
 //duplicateTable("open_buy", "mars", "201708_open_buy", "mars");
 //duplicateTable("open_po", "mars", "201708_open_po", "mars");
-//duplicateTable("201708_swbs_gl_summary", "meac", "201708_swbs_gl_summary_bkup", "bkup");
-//duplicateTable("201708_swbs_gl_summary_bkup", "bkup", "201708_swbs_gl_summary_stage", "meac");
-//die("made it");
+//duplicateTable("reest3", "meac", "reest3_bkup20171002", "bkup");
+//duplicateTable("reest3_bkup20171002", "bkup", "reest3", "meac");
 
+//duplicateTable("201707_swbs_gl_summary", "meac", "201707_swbs_gl_summary_bkup", "bkup");
+//die();
+//duplicateTable("201708_swbs_gl_summary_bkup", "bkup", "201708_swbs_gl_summary_stage", "meac");
 //die("made it");
 
 $array = array();
 //$array[] = 465;
 //$array[] = 467;
-$array[] = 469;
+//$array[] = 469;
 $array[] = 471;
-$array[] = 473;
-$array[] = 475;
-$array[] = 477;
-$array[] = 479;
-$array[] = 481;
-$array[] = 483;
-$array[] = 485;
+//$array[] = 473;
+//$array[] = 475;
+//$array[] = 477;
+//$array[] = 479;
+//$array[] = 481;
+//$array[] = 483;
+//$array[] = 485;
 
 /*
  * CBM
@@ -66,11 +239,11 @@ foreach ($array as $value){
     {
         $ship_code = "0".$value;
     }
-    //deleteFromTable("MEAC", $rpt_period."_cbm", "ship_code", $ship_code);
+    deleteFromTable("MEAC", $rpt_period."_cbm", "ship_code", $ship_code);
     print $ship_code;
-    //insertCBMFromBaanRptPeriod($ship_code,$rpt_period);
+    insertCBMFromBaanRptPeriod($ship_code,$rpt_period);
 }
-//deleteFromTable("meac", $rpt_period."_cbm", "material", "");
+deleteFromTable("meac", $rpt_period."_cbm", "material", "");
 
 /*
  *
@@ -81,15 +254,18 @@ foreach ($array as $value){
  *
  * */
 
-//truncateTable("meac", $rpt_period."_master_buyer");
-//loadBaanBuyerIDListRptPeriod($rpt_period);
+truncateTable("meac", $rpt_period."_master_buyer");
+loadBaanBuyerIDListRptPeriod($rpt_period);
+print "finished Master Buyer";
 
 foreach ($array as $value){
-    //deleteFromTable("MEAC", $rpt_period."_buyer_reponsible", "ship_code", $value);
-    //loadResponsibleBuyerRptPeriod($value, $rpt_period);
-}
-//loaditem2buyerRptPeriod($rpt_period);
+    deleteFromTable("MEAC", $rpt_period."_buyer_reponsible", "ship_code", $value);
 
+    loadResponsibleBuyerRptPeriod($value, $rpt_period);
+    print "finished Responsible Buyer $value";
+}
+
+loaditem2buyerRptPeriod($rpt_period);
 /*
  * EFDB
  * EFDB
@@ -99,8 +275,8 @@ foreach ($array as $value){
  * */
 
 foreach($array as $value){
-    //deleteFromTable("meac", $rpt_period."_change_item", "ship_code", $value);
-    //loadEFDBChangeBAANRptPeriod($value, $rpt_period);
+    deleteFromTable("meac", $rpt_period."_change_item", "ship_code", $value);
+    loadEFDBChangeBAANRptPeriod($value, $rpt_period);
 
 }
 
@@ -115,8 +291,8 @@ foreach($array as $value){
  * */
 
 foreach ($array as $ship_code){
-    //deleteFromTable("meac", $rpt_period."_inv_transfers", "ship_code", $ship_code);
-    //loadINVTranserfersRptPeriod($ship_code, $rpt_period);
+    deleteFromTable("meac", $rpt_period."_inv_transfers", "ship_code", $ship_code);
+    loadINVTranserfersRptPeriod($ship_code, $rpt_period);
 }
 
 
@@ -129,9 +305,10 @@ foreach ($array as $ship_code){
  *FORTIS PO LOADER
  *
  * */
+
 foreach ($array as $ship_code){
-    //deleteFromTable("meac", $rpt_period."_po_data", "ship_code", $ship_code);
-    //loadFortisPODataRptPeriod($ship_code, $rpt_period);
+    deleteFromTable("meac", $rpt_period."_po_data", "ship_code", $ship_code);
+    loadFortisPODataRptPeriod($ship_code, $rpt_period);
 }
 
 
@@ -167,9 +344,10 @@ foreach ($array as $ship_code){
  * GL DETAIL
  * GL DETAIL
  * GL DETAIL */
-//truncateTable("meac", $rpt_period."_wp_gl_detail");
-//insertGLdetailWITHWPRptPeriod($rpt_period);
+truncateTable("meac", $rpt_period."_wp_gl_detail");
+insertGLdetailWITHWPRptPeriod($rpt_period);
 
+print "FINISHED GL DETAIL";
 /*
  * OPEN PO
  * OPEN PO
@@ -177,10 +355,10 @@ foreach ($array as $ship_code){
  * OPEN PO
  * ".$rpt_period."_
  * */
-//truncateTable("meac", $rpt_period."_wp_open_po");
-//insertOpenPOWithWPRptPeriod($rpt_period);
+truncateTable("meac", $rpt_period."_wp_open_po");
+insertOpenPOWithWPRptPeriod($rpt_period);
 
-
+print "FINISHED OPEN PO";
 /*
  * WP COMITTED po
  * WP COMITTED po
@@ -188,8 +366,9 @@ foreach ($array as $ship_code){
  * WP COMITTED po
  * ".$rpt_period."_
  * */
-//truncateTable("meac", $rpt_period."_wp_committed_po");
-//insertCommittedPOWPRptPeriod($rpt_period);
+truncateTable("meac", $rpt_period."_wp_committed_po");
+insertCommittedPOWPRptPeriod($rpt_period);
+print "FINISHED COMITTED PO";
 
 /*
  * WP OPEN BUY
@@ -198,8 +377,10 @@ foreach ($array as $ship_code){
  * WP OPEN BUY
  * WP OPEN BUY
  * */
-//truncateTable("meac", $rpt_period."_wp_open_buy");
-//insertOpenBuyWithWPRptPeriod($rpt_period);
+truncateTable("meac", $rpt_period."_wp_open_buy");
+insertOpenBuyWithWPRptPeriod($rpt_period);
+
+print "FINISHED OPEN BUY";
 
 /*
  * WP EBOM
@@ -210,25 +391,23 @@ foreach ($array as $ship_code){
  * */
 //truncateTable("meac", $rpt_period."_wp_ebom");
 //insertEBOMWPRptPeriod($rpt_period);
+
+print "FINISHED WP EBOM";
+
+
 foreach ($array as $value){
 
-    //deleteFromTable("MEAC", $rpt_period."_swbs_gl_summary_stage", "ship_code", $value);
-    //insertSWBSSummaryStagingRptPeriod($value,$rpt_period);
+    deleteFromTable("MEAC", $rpt_period."_swbs_gl_summary_stage", "ship_code", $value);
+    insertSWBSSummaryStagingRptPeriod($value,$rpt_period);
     print "finished Staging".$value;
 }
 
-$rel_path2_reports =    "../../../util/csv_etc_load_file";
-$directory2Copy ="C:/evms/etc_load_file";
-print $directory2Copy;
-print $rel_path2_reports;
-//deleteFromTable("meac", "swbs_gl_summary_stage", "category", "Load File Entry");
-//clearDirectory($rel_path2_reports);
-//copyListOfDirectoryToCSV($directory2Copy,$rel_path2_reports);
-
+//die("mdae it");
+//insertReESTADJ($rpt_period);
 foreach ($array as $value){
     deleteFromTable("MEAC", $rpt_period."_swbs_gl_summary", "ship_code", $value);
     insertSWBSSummaryRptPeriod($value, $rpt_period);
     print "finished Staging".$value;
 
 }
-deleteFromTableNotLike("MEAC", "swbs_gl_summary", "wp", "matl");
+deleteFromTableNotLike("MEAC", $rpt_period."_swbs_gl_summary", "wp", "matl");

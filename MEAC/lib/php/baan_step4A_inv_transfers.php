@@ -50,8 +50,8 @@ function loadINVTranserfers($ship_code){
 }
 
 $array = array();
-$array[] = 465;
-$array[] = 467;
+//$array[] = 465;
+//$array[] = 467;
 $array[] = 469;
 $array[] = 471;
 $array[] = 473;

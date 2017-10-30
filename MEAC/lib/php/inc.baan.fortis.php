@@ -7,427 +7,108 @@
  */
 function returnBaanOpenBuySQL($ship_code){
     $sql = "
-SELECT	DISTINCT
-	b.t_buyr as buyer,
-	a.t_cprj as ship_code,
-	b.t_cpcp as swbs,
-	a.t_item as item,
-	b.t_dfit as spn,
-	-- Description
-		CASE
-			WHEN ltrim(a.t_cprj) <> ''
-			THEN b.t_dsca
-			ELSE c.t_dsca
-		END as description,
+SELECT DISTINCT
+  b.t_buyr                   AS                            buyer,
+  a.t_cprj                   AS                            ship_code,
+  b.t_cpcp                   AS                            swbs,
+  a.t_item                   AS                            item,
+  b.t_dfit                   AS                            spn,
+  -- Description
+  b.t_dsca                                                 description,
+  a.t_qana                   AS                            original_smos_qty,
+  -- Production Allocations
+  CASE
+  WHEN (SELECT sum(g.t_qana)
+        FROM ttipcs500490 g
+        WHERE g.t_cprj = b.t_cprj AND g.t_item = b.t_item
+              AND (g.t_koor = 1 OR g.t_koor = 8)
+              AND t_kotr = 2) IS NOT NULL
+    THEN (SELECT sum(g.t_qana)
+          FROM ttipcs500490 g
+          WHERE g.t_cprj = b.t_cprj AND g.t_item = b.t_item
+                AND (g.t_koor = 1 OR g.t_koor = 8)
+                AND t_kotr = 2)
+  ELSE 0
+  END                        AS                            production_allocations,
 
-	a.t_qana as original_smos_qty,
-	-- Production Allocations
+  -- Production Issues
 
-		CASE
-			WHEN (select sum(g.t_qana) from ttipcs500490 g where g.t_cprj = b.t_cprj and g.t_item = b.t_item
-									    and (g.t_koor = 1 or g.t_koor = 8)
-									    and t_kotr = 2) is not NULL
-			THEN (select sum(g.t_qana) from ttipcs500490 g where g.t_cprj = b.t_cprj and g.t_item = b.t_item
-									    and (g.t_koor = 1 or g.t_koor = 8)
-									    and t_kotr = 2)
-			ELSE 0
-		END  as production_allocations,
-
-	-- Production Issues
-
-		CASE
-			WHEN (select sum(h.t_qstk) from ttdilc301490 h where h.t_cprj = b.t_cprj and h.t_item = b.t_item
-									     and h.t_koor = 1 and h.t_kost = 7) >= 0
-			THEN (select sum(h.t_qstk) from ttdilc301490 h where h.t_cprj = b.t_cprj and h.t_item = b.t_item
-									     and h.t_koor = 1 and h.t_kost = 7)
-			ELSE 0
-		END as production_issues,
-
-	-- Remaining SMOS Qty
-
-		(a.t_qana -
-			CASE
-				WHEN (select sum(g.t_qana) from ttipcs500490 g where g.t_cprj = b.t_cprj and g.t_item = b.t_item
-								and (g.t_koor = 1 or g.t_koor = 8) and t_kotr = 2) is not NULL
-				THEN (select sum(g.t_qana) from ttipcs500490 g where g.t_cprj = b.t_cprj and g.t_item = b.t_item
-								and (g.t_koor = 1 or g.t_koor = 8) and t_kotr = 2)
-				ELSE 0
-			END -
-			CASE
-				WHEN (select sum(h.t_qstk) from ttdilc301490 h where h.t_cprj = b.t_cprj and h.t_item = b.t_item
-										and h.t_koor = 1 and h.t_kost = 7) >= 0
-				THEN (select sum(h.t_qstk) from ttdilc301490 h where h.t_cprj = b.t_cprj and h.t_item = b.t_item
-										and h.t_koor = 1 and h.t_kost = 7)
-				ELSE 0
-			END
-		) as remaining_smos_qty,
-
-		a.t_ddat as yard_due_date,
-
-		b.t_oltm as lead_time,
-
-	-- Planned Order Date
-		CASE
-			WHEN a.t_ddat = '1753-01-01'
-				THEN '1753-01-01'
-			ELSE cast(a.t_ddat as datetime) - b.t_oltm
-		END as plan_order_date,
-
-	-- UOM
-		CASE
-			WHEN  ltrim(a.t_cprj) <> ''
-				THEN b.t_cuni
-			ELSE 	c.t_cuni
-		END as uom,
-
-
-		b.t_stoc as cust_item_on_hand,
-		b.t_ordr as cust_item_on_order,
-		b.t_stoc,
-		b.t_ordr,
-
-	-- Total PRP Purch Order Qty
-		CASE
-			WHEN (select sum(i.t_oqan) from ttipcs520490 i where i.t_cprj = a.t_cprj and i.t_item = a.t_item
-										and i.t_osta = 1) is not NULL
-			THEN (select sum(i.t_oqan) from ttipcs520490 i where i.t_cprj = a.t_cprj and i.t_item = a.t_item
-										and i.t_osta = 1)
-			ELSE 0
-		END as total_prp_purch_ord_qty,
-
-	-- Total PRP Whse Order Qty
-		CASE
-			WHEN
-				CASE
-					WHEN j.t_kood in (2,3) THEN (select sum(j.t_oqan * -1) from ttipcs530490 j
-								     where j.t_cprj = b.t_cprj and j.t_citm = b.t_item)
-					WHEN j.t_kood = 1 THEN (select sum(j.t_oqan) from ttipcs530490 j
-								     where j.t_cprj = b.t_cprj and j.t_citm = b.t_item)
-				END is not NULL
-			THEN
-				CASE
-					WHEN j.t_kood in (2,3) THEN (select sum(j.t_oqan * -1) from ttipcs530490 j
-								     where j.t_cprj = b.t_cprj and j.t_citm = b.t_item)
-					WHEN j.t_kood = 1 THEN (select sum(j.t_oqan) from ttipcs530490 j
-								     where j.t_cprj = b.t_cprj and j.t_citm = b.t_item)
-				END
-			ELSE 0
-		END as total_prp_whse_ord_qty,
-
-	-- On Order Qty
-		CASE
-			WHEN
-				(b.t_ordr -
-					(select sum(i.t_oqan) from ttipcs520490 i
-					 where i.t_cprj = a.t_cprj and i.t_item = a.t_item and i.t_osta = 1) -
-					CASE
-						WHEN j.t_kood in (2,3) THEN (select sum(j.t_oqan * -1) from ttipcs530490 j
-										where j.t_cprj = b.t_cprj and j.t_citm = b.t_item)
-						WHEN j.t_kood = 1 THEN (select sum(j.t_oqan) from ttipcs530490 j
-										where j.t_cprj = b.t_cprj and j.t_citm = b.t_item)
-					END) is not NULL
-			THEN
-					(b.t_ordr -
-					(select sum(i.t_oqan) from ttipcs520490 i
-										where i.t_cprj = a.t_cprj and i.t_item = a.t_item and
-											i.t_osta = 1) -
-					CASE
-						WHEN j.t_kood in (2,3) THEN (select sum(j.t_oqan * -1) from ttipcs530490 j
-										where j.t_cprj = b.t_cprj and j.t_citm = b.t_item)
-						WHEN j.t_kood = 1 THEN (select sum(j.t_oqan) from ttipcs530490 j
-										where j.t_cprj = b.t_cprj and j.t_citm = b.t_item)
-					END)
-			ELSE 0
-		END  as on_order_qty,
-
-	-- Cust Item Shortage
-		CASE
-			WHEN
-				CASE
-					WHEN
-						(a.t_qana -
-							CASE
-								WHEN (select sum(g.t_qana) from ttipcs500490 g where g.t_cprj = b.t_cprj
-											and g.t_item = b.t_item
-											and (g.t_koor = 1 or g.t_koor = 8)
-											and t_kotr = 2) is not NULL
-								THEN (select sum(g.t_qana) from ttipcs500490 g where g.t_cprj = b.t_cprj
-											and g.t_item = b.t_item
-											and (g.t_koor = 1 or g.t_koor = 8)
-											and t_kotr = 2)
-								ELSE 0
-							END -
-							CASE
-								WHEN (select sum(h.t_qstk) from ttdilc301490 h where h.t_cprj = b.t_cprj
-											and h.t_item = b.t_item
-											and h.t_koor = 1 and h.t_kost = 7) >= 0
-								THEN (select sum(h.t_qstk) from ttdilc301490 h where h.t_cprj = b.t_cprj
-											and h.t_item = b.t_item
-											and h.t_koor = 1 and h.t_kost = 7)
-								ELSE 0
-							END) >
-							(b.t_stoc +
-							CASE
-								WHEN
-									(b.t_ordr -
-										(select sum(i.t_oqan) from ttipcs520490 i
-										 where i.t_cprj = a.t_cprj and i.t_item = a.t_item
-										  and i.t_osta = 1) -
-										CASE
-											WHEN j.t_kood in (2,3) THEN (select sum(j.t_oqan * -1) from ttipcs530490 j where
-			j.t_cprj = b.t_cprj and j.t_citm = b.t_item)
-											WHEN j.t_kood = 1 THEN (select sum(j.t_oqan) from ttipcs530490 j where
-			j.t_cprj = b.t_cprj and j.t_citm = b.t_item)
-										END) is not NULL
-								THEN
-										(b.t_ordr -
-										(select sum(i.t_oqan) from ttipcs520490 i
-										 where i.t_cprj = a.t_cprj and i.t_item = a.t_item
-										  and i.t_osta = 1) -
-										CASE
-											WHEN j.t_kood in (2,3) THEN (select sum(j.t_oqan * -1) from ttipcs530490 j
-		where j.t_cprj = b.t_cprj and j.t_citm = b.t_item)
-											WHEN j.t_kood = 1 THEN (select sum(j.t_oqan) from ttipcs530490 j
-		where j.t_cprj = b.t_cprj and j.t_citm = b.t_item)
-										END)
-								ELSE 0
-							END -
-							CASE
-								WHEN (select sum(g.t_qana) from ttipcs500490 g where g.t_cprj = b.t_cprj
-									 and g.t_item = b.t_item and (g.t_koor = 1 or g.t_koor = 8)
-									 and t_kotr = 2) is not NULL
-								THEN (select sum(g.t_qana) from ttipcs500490 g where g.t_cprj = b.t_cprj
-									 and g.t_item = b.t_item and (g.t_koor = 1 or g.t_koor = 8)
-									 and t_kotr = 2)
-								ELSE 0
-							END)
-					THEN
-						(a.t_qana -
-							CASE
-								WHEN (select sum(g.t_qana) from ttipcs500490 g where g.t_cprj = b.t_cprj
-									and g.t_item = b.t_item and (g.t_koor = 1 or g.t_koor = 8)
-									and t_kotr = 2) is not NULL
-								THEN (select sum(g.t_qana) from ttipcs500490 g where g.t_cprj = b.t_cprj
-									and g.t_item = b.t_item and (g.t_koor = 1 or g.t_koor = 8)
-									and t_kotr = 2)
-								ELSE 0
-							END -
-							CASE
-								WHEN (select sum(h.t_qstk) from ttdilc301490 h where h.t_cprj = b.t_cprj
-									and h.t_item = b.t_item and h.t_koor = 1 and h.t_kost = 7) >= 0
-								THEN (select sum(h.t_qstk) from ttdilc301490 h where h.t_cprj = b.t_cprj
-									and h.t_item = b.t_item and h.t_koor = 1 and h.t_kost = 7)
-								ELSE 0
-							END) -
-							(b.t_stoc +
-							CASE
-								WHEN
-									(b.t_ordr -
-										(select sum(i.t_oqan) from ttipcs520490 i where
-											i.t_cprj = a.t_cprj and i.t_item = a.t_item
-											and i.t_osta = 1) -
-										CASE
-											WHEN j.t_kood in (2,3) THEN (select sum(j.t_oqan * -1) from ttipcs530490 j
-		where j.t_cprj = b.t_cprj and j.t_citm = b.t_item)
-											WHEN j.t_kood = 1 THEN (select sum(j.t_oqan) from ttipcs530490 j
-		where j.t_cprj = b.t_cprj and j.t_citm = b.t_item)
-										END) is not NULL
-								THEN
-										(b.t_ordr -
-										(select sum(i.t_oqan) from ttipcs520490 i
-										 where i.t_cprj = a.t_cprj and i.t_item = a.t_item
-										 and i.t_osta = 1) -
-										CASE
-											WHEN j.t_kood in (2,3) THEN (select sum(j.t_oqan * -1) from ttipcs530490 j
-		 where j.t_cprj = b.t_cprj and j.t_citm = b.t_item)
-											WHEN j.t_kood = 1 THEN (select sum(j.t_oqan) from ttipcs530490 j
-		 where j.t_cprj = b.t_cprj and j.t_citm = b.t_item)
-										END)
-								ELSE 0
-							END -
-							CASE
-								WHEN (select sum(g.t_qana) from ttipcs500490 g where g.t_cprj = b.t_cprj
-									 and g.t_item = b.t_item and (g.t_koor = 1 or g.t_koor = 8)
-									 and t_kotr = 2) is not NULL
-								THEN (select sum(g.t_qana) from ttipcs500490 g where g.t_cprj = b.t_cprj
-									 and g.t_item = b.t_item and (g.t_koor = 1 or g.t_koor = 8)
-									 and t_kotr = 2)
-								ELSE 0
-							END)
-				END is not null
-			THEN
-				CASE
-					WHEN
-						(a.t_qana -
-							CASE
-								WHEN (select sum(g.t_qana) from ttipcs500490 g where
-									g.t_cprj = b.t_cprj and g.t_item = b.t_item and
-									(g.t_koor = 1 or g.t_koor = 8) and t_kotr = 2) is not NULL
-								THEN (select sum(g.t_qana) from ttipcs500490 g where g.t_cprj = b.t_cprj
-									and g.t_item = b.t_item and (g.t_koor = 1 or g.t_koor = 8)
-									and t_kotr = 2)
-								ELSE 0
-							END -
-							CASE
-								WHEN (select sum(h.t_qstk) from ttdilc301490 h where
-									h.t_cprj = b.t_cprj and h.t_item = b.t_item and h.t_koor = 1
-									and h.t_kost = 7) >= 0
-								THEN (select sum(h.t_qstk) from ttdilc301490 h where
-									h.t_cprj = b.t_cprj and h.t_item = b.t_item and h.t_koor = 1
-									and h.t_kost = 7)
-								ELSE 0
-							END) >
-							(b.t_stoc +
-							CASE
-								WHEN
-									(b.t_ordr -
-										(select sum(i.t_oqan) from ttipcs520490 i
-										  where i.t_cprj = a.t_cprj and i.t_item = a.t_item and
-										  i.t_osta = 1) -
-										CASE
-											WHEN j.t_kood in (2,3) THEN (select sum(j.t_oqan * -1) from ttipcs530490 j
-		where j.t_cprj = b.t_cprj and j.t_citm = b.t_item)
-											WHEN j.t_kood = 1 THEN (select sum(j.t_oqan) from ttipcs530490 j
-		where j.t_cprj = b.t_cprj and j.t_citm = b.t_item)
-										END) is not NULL
-								THEN
-										(b.t_ordr -
-										(select sum(i.t_oqan) from ttipcs520490 i
-										 where i.t_cprj = a.t_cprj and i.t_item = a.t_item
-										  and i.t_osta = 1) -
-										CASE
-											WHEN j.t_kood in (2,3) THEN (select sum(j.t_oqan * -1) from ttipcs530490 j
-		where j.t_cprj = b.t_cprj and j.t_citm = b.t_item)
-											WHEN j.t_kood = 1 THEN (select sum(j.t_oqan) from ttipcs530490 j
-		where j.t_cprj = b.t_cprj and j.t_citm = b.t_item)
-										END)
-								ELSE 0
-							END -
-							CASE
-								WHEN (select sum(g.t_qana) from ttipcs500490 g
-									where g.t_cprj = b.t_cprj and g.t_item = b.t_item
-									and (g.t_koor = 1 or g.t_koor = 8)
-									and t_kotr = 2) is not NULL
-								THEN (select sum(g.t_qana) from ttipcs500490 g
-									where g.t_cprj = b.t_cprj and g.t_item = b.t_item
-									and (g.t_koor = 1 or g.t_koor = 8)
-									and t_kotr = 2)
-								ELSE 0
-							END)
-					THEN
-						(a.t_qana -
-							CASE
-								WHEN (select sum(g.t_qana) from ttipcs500490 g
-									where g.t_cprj = b.t_cprj and g.t_item = b.t_item
-									and (g.t_koor = 1 or g.t_koor = 8) and t_kotr = 2) is not NULL
-								THEN (select sum(g.t_qana) from ttipcs500490 g
-									where g.t_cprj = b.t_cprj and g.t_item = b.t_item
-									and (g.t_koor = 1 or g.t_koor = 8) and t_kotr = 2)
-								ELSE 0
-							END -
-							CASE
-								WHEN (select sum(h.t_qstk) from ttdilc301490 h
-									where h.t_cprj = b.t_cprj and h.t_item = b.t_item
-									and h.t_koor = 1 and h.t_kost = 7) >= 0
-								THEN (select sum(h.t_qstk) from ttdilc301490 h
-									where h.t_cprj = b.t_cprj and h.t_item = b.t_item
-									and h.t_koor = 1 and h.t_kost = 7)
-								ELSE 0
-							END) -
-							(b.t_stoc +
-							CASE
-								WHEN
-									(b.t_ordr -
-										(select sum(i.t_oqan) from ttipcs520490 i
-									where i.t_cprj = a.t_cprj and i.t_item = a.t_item
-									and i.t_osta = 1) -
-										CASE
-											WHEN j.t_kood in (2,3) THEN (select sum(j.t_oqan * -1) from ttipcs530490 j
-		where j.t_cprj = b.t_cprj and j.t_citm = b.t_item)
-											WHEN j.t_kood = 1 THEN (select sum(j.t_oqan) from ttipcs530490 j
-		where j.t_cprj = b.t_cprj and j.t_citm = b.t_item)
-										END) is not NULL
-								THEN
-										(b.t_ordr -
-										(select sum(i.t_oqan) from ttipcs520490 i
-										 where i.t_cprj = a.t_cprj and i.t_item = a.t_item
-										 and i.t_osta = 1) -
-										CASE
-											WHEN j.t_kood in (2,3) THEN (select sum(j.t_oqan * -1) from ttipcs530490 j
-		where j.t_cprj = b.t_cprj and j.t_citm = b.t_item)
-											WHEN j.t_kood = 1 THEN (select sum(j.t_oqan) from ttipcs530490 j
-		where j.t_cprj = b.t_cprj and j.t_citm = b.t_item)
-										END)
-								ELSE 0
-							END -
-							CASE
-								WHEN (select sum(g.t_qana) from ttipcs500490 g
-									where g.t_cprj = b.t_cprj and g.t_item = b.t_item
-									and (g.t_koor = 1 or g.t_koor = 8) and t_kotr = 2) is not NULL
-								THEN (select sum(g.t_qana) from ttipcs500490 g
-									where g.t_cprj = b.t_cprj and g.t_item = b.t_item
-									and (g.t_koor = 1 or g.t_koor = 8) and t_kotr = 2)
-								ELSE 0
-							END)
-				END
-			ELSE 0
-		END as cust_item_shortage,
-
-		a.t_hold as on_hold,
-		cast(a.t_edon as datetime) as entered_on,
-		cast(a.t_lmon as datetime) as last_mod,
-		f.t_pric as last_price,
-		j.t_cprj,
-		j.t_citm,
-
-	-- Expected Amoount
-
-		CASE
-			WHEN (a.t_qana -
-				(select sum(g.t_qana) from ttipcs500490 g where g.t_cprj = a.t_cprj and g.t_item = a.t_item
-						and (g.t_koor = 1 or g.t_koor = 8) and t_kotr = 2) -
-				(select sum(h.t_qstk) from ttdilc301490 h where h.t_cprj = a.t_cprj and h.t_item = a.t_item
-						and h.t_koor = 1 and h.t_kost = 7)) >
-				(b.t_stoc +
-				(b.t_ordr -
-				(select sum(i.t_oqan) from ttipcs520490 i where i.t_cprj = a.t_cprj and i.t_item = a.t_item
-					and i.t_osta = 1) -
-				(select sum(j.t_oqan * -1) from ttipcs530490 j where j.t_cprj = a.t_cprj and j.t_citm = a.t_item
-					and j.t_osta not in (4,5)) -
-				(select sum(g.t_qana) from ttipcs500490 g where g.t_cprj = a.t_cprj and g.t_item = a.t_item
-					and (g.t_koor = 1 or g.t_koor = 8) and t_kotr = 2))) THEN
-					(b.t_stoc +
-					(b.t_ordr -
-					(select sum(i.t_oqan) from ttipcs520490 i
-					 where i.t_cprj = a.t_cprj and i.t_item = a.t_item and i.t_osta = 1) -
-					(select sum(j.t_oqan * -1) from ttipcs530490 j
-				   	 where j.t_cprj = a.t_cprj and j.t_citm = a.t_item and j.t_osta not in (4,5)) -
-					(select sum(g.t_qana) from ttipcs500490 g
-					 where g.t_cprj = a.t_cprj and g.t_item = a.t_item and (g.t_koor = 1 or g.t_koor = 8)
-					  and t_kotr = 2))) * f.t_pric
-			ELSE 0
-		END as expected_amt,
-		a.t_qana as remaining_qty,
-		b.t_ordr as on_order_qty,
-		b.t_stoc as stock,
-		(select
-                    top 1 LTRIM(RTRIM(bc.t_bitm)) as Activity
-                    from ttipcs950490 as ab
-                    left join ttipcs952490 as bc on ab.t_bdgt = bc.t_bdgt
-                where ab.t_cprj =f.t_cprj and bc.t_bdgt = ab.t_bdgt and bc.t_item = f.t_item ) wp
-    FROM	ttiitm901490 a
-    LEFT JOIN ttipcs021490 b on b.t_cprj = a.t_cprj and b.t_item = a.t_item
-    LEFT JOIN ttiitm001490 c on c.t_item = a.t_item
-    LEFT JOIN ttdpur300490 d on d.t_icap = 2 and cast(d.t_edat as DATETIME) > getdate() and cast(d.t_sdat as DATETIME) <= getdate()
-    LEFT JOIN ttdpur301490 e on e.t_item = b.t_dfit and e.t_cono = d.t_cono
-    LEFT JOIN ttdpur041490 f on f.t_cprj = a.t_cprj and f.t_item = a.t_item
-    LEFT JOIN ttipcs520490 i on i.t_cprj = a.t_cprj and i.t_item = a.t_item
-    LEFT JOIN ttipcs530490 j on j.t_cprj = b.t_cprj and j.t_citm = b.t_item --and j.t_osta not in (4,5)
-    LEFT JOIN ttdinv001490 k on k.t_item = b.t_dfit
-    LEFT JOIN ttdilc101490 l on l.t_cwar = k.t_cwar and l.t_item = b.t_dfit
-    where a.t_cprj
-    like '%$ship_code%'
-    ";
+  CASE
+  WHEN (SELECT sum(h.t_qstk)
+        FROM ttdilc301490 h
+        WHERE h.t_cprj = b.t_cprj AND h.t_item = b.t_item
+              AND h.t_koor = 1 AND h.t_kost = 7) >= 0
+    THEN (SELECT sum(h.t_qstk)
+          FROM ttdilc301490 h
+          WHERE h.t_cprj = b.t_cprj AND h.t_item = b.t_item
+                AND h.t_koor = 1 AND h.t_kost = 7)
+  ELSE 0
+  END                        AS                            production_issues,
+  -- Remaining SMOS Qty
+  (a.t_qana -
+   CASE
+   WHEN (SELECT sum(g.t_qana)
+         FROM ttipcs500490 g
+         WHERE g.t_cprj = b.t_cprj AND g.t_item = b.t_item
+               AND (g.t_koor = 1 OR g.t_koor = 8) AND t_kotr = 2) IS NOT NULL
+     THEN (SELECT sum(g.t_qana)
+           FROM ttipcs500490 g
+           WHERE g.t_cprj = b.t_cprj AND g.t_item = b.t_item
+                 AND (g.t_koor = 1 OR g.t_koor = 8) AND t_kotr = 2)
+   ELSE 0
+   END -
+   CASE
+   WHEN (SELECT sum(h.t_qstk)
+         FROM ttdilc301490 h
+         WHERE h.t_cprj = b.t_cprj AND h.t_item = b.t_item
+               AND h.t_koor = 1 AND h.t_kost = 7) >= 0
+     THEN (SELECT sum(h.t_qstk)
+           FROM ttdilc301490 h
+           WHERE h.t_cprj = b.t_cprj AND h.t_item = b.t_item
+                 AND h.t_koor = 1 AND h.t_kost = 7)
+   ELSE 0
+   END
+  )                          AS                            remaining_smos_qty,
+  a.t_ddat                   AS                            yard_due_date,
+  b.t_oltm                   AS                            lead_time,
+  -- Planned Order Date
+  CASE
+  WHEN a.t_ddat = '1753-01-01'
+    THEN '1753-01-01'
+  ELSE cast(a.t_ddat AS DATETIME) - b.t_oltm
+  END                        AS                            plan_order_date,
+  -- UOM
+  b.t_cuni                   AS                            uom,
+  -- Total PRP Purch Order Qty
+  CASE
+  WHEN (SELECT sum(i.t_oqan)
+        FROM ttipcs520490 i
+        WHERE i.t_cprj = a.t_cprj AND i.t_item = a.t_item
+              AND i.t_osta = 1) IS NOT NULL
+    THEN (SELECT sum(i.t_oqan)
+          FROM ttipcs520490 i
+          WHERE i.t_cprj = a.t_cprj AND i.t_item = a.t_item
+                AND i.t_osta = 1)
+  ELSE 0
+  END                        AS                            total_prp_purch_ord_qty,
+  a.t_hold                   AS                            on_hold,
+  cast(a.t_edon AS DATETIME) AS                            entered_on,
+  cast(a.t_lmon AS DATETIME) AS                            last_mod,
+  -- Expected Amoount
+  a.t_qana                   AS                            ebom,
+  b.t_ordr                   AS                            on_order_qty,
+  b.t_stoc                   AS                            stock,
+  (SELECT
+     TOP 1 LTRIM(RTRIM(bc.t_bitm)) AS Activity
+   FROM ttipcs950490 AS ab
+     LEFT JOIN ttipcs952490 AS bc ON ab.t_bdgt = bc.t_bdgt
+   WHERE LTRIM(RTRIM(ab.t_cprj)) = LTRIM(RTRIM(a.t_cprj)) AND LTRIM(RTRIM(bc.t_bdgt)) = LTRIM(RTRIM(ab.t_bdgt)) AND
+         LTRIM(RTRIM(bc.t_item)) = LTRIM(RTRIM(a.t_item))) wp
+FROM ttiitm901490 a
+  LEFT JOIN ttipcs021490 b ON b.t_cprj = a.t_cprj AND b.t_item = a.t_item
+WHERE a.t_cprj
+      LIKE '%$ship_code%'
+      ";
     return $sql;
 }
 function returnBaanOpenPOSQL($ship_code){
@@ -681,19 +362,19 @@ function insertOpenBuyReport($ship_code){
         $spn                = trim($rs->fields["spn"]);
         $description        = addslashes(str_replace("'", " ", trim($rs->fields["description"])));
         $origrinal_smos_qty = formatNumber4decNoComma($rs->fields["original_smos_qty"]);
-        $remain_smos_qty    = formatNumber4decNoComma($rs->fields["remain_smos_qty"]);
+        $production_issues  = formatNumber4decNoComma($rs->fields["production_issues"]);
+        $remain_smos_qty    = formatNumber4decNoComma($rs->fields["remaining_smos_qty"]);
         $yard_due_date      = fixExcelDateMySQL($rs->fields["yard_due_date"]);
         $lead_time          = $rs->fields["lead_time"];
         $plan_order_date    = fixExcelDateMySQL($rs->fields["plan_order_date"]);
         $uom                = trim($rs->fields["uom"]);
-        $item_on_hand       = formatNumber4decNoComma($rs->fields["item_on_hand"]);
-        $item_on_order      = formatNumber4decNoComma($rs->fields["item_on_order"]);
-        $item_shortage      = formatNumber4decNoComma($rs->fields["item_shortage"]);
+        $stock              = formatNumber4decNoComma($rs->fields["stock"]);
+        $on_order_qty       = formatNumber4decNoComma($rs->fields["on_order_qty"]);
+        $ebom               = formatNumber4decNoComma($rs->fields["ebom"]);
         $on_hold            = $rs->fields["on_hold"];
         $entered_on         = fixExcelDateMySQL($rs->fields["entered_on"]);
         $last_mod           = fixExcelDateMySQL($rs->fields["last_mod"]);
-        $last_price         = formatNumber4decNoComma($rs->fields["last_price"]);
-        $expected_amt       = formatNumber4decNoComma($rs->fields["expected_amt"]);
+        $item_shortage      = formatNumber4decNoComma($ebom - $stock - $on_order_qty- $production_issues);
 
 
         $sql.= " (
@@ -711,14 +392,13 @@ function insertOpenBuyReport($ship_code){
             '$lead_time',
             '$plan_order_date',
             '$uom',
-            $item_on_hand,
-            $item_on_order,
+            $stock,
+            $on_order_qty,
             $item_shortage,
             '$on_hold',
             '$entered_on',
             '$last_mod',
-            $last_price,
-            $expected_amt
+            $production_issues
         ),";
         if($i == 250)
         {
@@ -739,6 +419,7 @@ function insertOpenBuyReport($ship_code){
         $sql = substr($sql, 0, -1);
         $junk = dbCall($sql, "meac");
     }
+    print $sql;
 }
 function returnOpenBuyInsertSQL(){
     $insert_sql = "
@@ -763,8 +444,7 @@ function returnOpenBuyInsertSQL(){
         on_hold,
         entered_on,
         last_mod,
-        last_price,
-        expected_amt) VALUES ";
+        production_issues) VALUES ";
     return $insert_sql;
 }
 
@@ -998,6 +678,7 @@ function returnFortisPOSQL($ship_code=""){
                 supplier_name,
                 supplier_number,
                 notes,
+                Purchasing_Manager_Notes,
                 buyer_name,
                 purchase_order_type,
                 funding_source,
@@ -1039,7 +720,8 @@ function returnFortisPOInsertSQL(){
         program,
         order_date,
         created_date,
-        modified_date)  
+        modified_date,
+        purchasing_manager_notes)  
       VALUES 
     ";
     return $insert_sql;
@@ -1047,7 +729,7 @@ function returnFortisPOInsertSQL(){
 function returnInsertPODATAInsertSQL($ship_code,$po,$vendor,$vendor_id,
                                      $notes,$buyer,$po_type,$funding_source,
                                      $amt,$vendor_total,$status,$program,$order_date,
-                                     $created_date,$modified_date)
+                                     $created_date,$modified_date,$purchasing_manager_notes)
 {
     $sql = "(
         $ship_code,
@@ -1064,8 +746,12 @@ function returnInsertPODATAInsertSQL($ship_code,$po,$vendor,$vendor_id,
         '$program',
         '$order_date',
         '$created_date',
-        '$modified_date'),";
+        '$modified_date',
+        '$purchasing_manager_notes'),";
     return $sql;
+}
+function processFortisNotes(){
+
 }
 function loadFortisPOData($ship_code= ""){
     $sql        = returnFortisPOSQL($ship_code);
@@ -1077,25 +763,26 @@ function loadFortisPOData($ship_code= ""){
     $i = 0;
     while (!$rs->EOF)
     {
-        $ship_code      = intval(trim($rs->fields["project_number"]));
-        $po             = intval(trim($rs->fields["po_number"]));
-        $vendor         = processDescription(trim($rs->fields["supplier_name"]));
-        $vendor_id      = intval(trim($rs->fields["supplier_number"]));
-        $notes          = processDescription(trim($rs->fields["notes"]));
-        $buyer          = processDescription(trim($rs->fields["buyer_name"]));
-        $po_type        = trim($rs->fields["purchase_order_type"]);
-        $funding_source = trim($rs->fields["funding_source"]);
-        $status         = trim($rs->fields["fortisstatus"]);
-        $order_date     = $rs->fields["order_date"];
-        $created_date   = $rs->fields["created_date"];
-        $modified_date  = $rs->fields["modified_date"];
-        $amt            = formatNumber4decNoComma($rs->fields["total_amount"]);
-        $vendor_total   = formatNumber4decNoComma($rs->fields["vendor_project_total"]);
+        $ship_code                = intval(trim($rs->fields["project_number"]));
+        $po                       = intval(trim($rs->fields["po_number"]));
+        $vendor                   = processDescription(trim($rs->fields["supplier_name"]));
+        $vendor_id                = intval(trim($rs->fields["supplier_number"]));
+        $notes                    = processDescription(trim($rs->fields["notes"]));
+        $purchasing_manager_notes = processDescription(trim($rs->fields["Purchasing_Manager_Notes"]));
+        $buyer                    = trim($rs->fields["buyer_name"]);
+        $po_type                  = trim($rs->fields["purchase_order_type"]);
+        $funding_source           = trim($rs->fields["funding_source"]);
+        $status                   = trim($rs->fields["fortisstatus"]);
+        $order_date               = $rs->fields["order_date"];
+        $created_date             = $rs->fields["created_date"];
+        $modified_date            = $rs->fields["modified_date"];
+        $amt                      = formatNumber4decNoComma($rs->fields["total_amount"]);
+        $vendor_total             = formatNumber4decNoComma($rs->fields["vendor_project_total"]);
 
         $sql.=returnInsertPODATAInsertSQL($ship_code,$po,$vendor,$vendor_id,
             $notes,$buyer,$po_type,$funding_source,
             $amt,$vendor_total,$status,$program, $order_date,
-            $created_date, $modified_date);
+            $created_date, $modified_date,$purchasing_manager_notes);
 
         if($i == 2000)
         {

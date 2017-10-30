@@ -41,6 +41,7 @@ require.config({
         jquery           : ['jqueryPlugin'],
         jquery           : {exports: '$'},
         underscore       : {exports: '_'},
+        select2          : ['jquery'],
         bootstrapJS      : ['jquery'],
         bootstrap33      : ['jquery'],
         jqueryui         : ['jquery'],

@@ -10,8 +10,6 @@ include("inc.insert_data.php");
  */
 $files = array();
 
-
-
 function saveListOfFileNamesPHPExcel($file_name_array,$directory2Copy,$rel_path2_desitnation,$table_name)
 {
     foreach ($file_name_array as $value) {
@@ -38,22 +36,27 @@ function copyListOfDirectoryToCSV($g_path2_baan_work,$baan_dir_name,$rel_path2_r
 //die("made it");
 
 truncateTable("mars", "gl_detail");
-//truncateTable("mars", "committed_po");
-//truncateTable("mars", "open_po");
+truncateTable("mars", "committed_po");
+truncateTable("mars", "open_po");
 
 $rel_path2_reports = "../../../util/csv_pfa_open_po";
 $open_po_directory      = "../../../util/csv_PFA_Open_PO";
 $committed_po_directory = "../../../util/csv_PFA_Committed_PO";
 $gl_detail_directory    = "../../../util/csv_PFA_GL_Detail";
+
 $dir = $g_path2_baan_work;
 $dir = "C:\\evms\\";
 
-//clearDirectory($open_po_directory);
-//copyListOfDirectoryToCSV($dir,"open_po",$open_po_directory, "open_po");
+clearDirectory($open_po_directory);
+copyListOfDirectoryToCSV($dir,"open_po",$open_po_directory, "open_po");
 
-//clearDirectory($committed_po_directory);
-//copyListOfDirectoryToCSV($dir,"committed_pos",$committed_po_directory, "committed_po");
+clearDirectory($committed_po_directory);
+copyListOfDirectoryToCSV($dir,"committed_pos",$committed_po_directory, "committed_po");
 
 
 clearDirectory($gl_detail_directory);
 copyListOfDirectoryToCSV($dir,"gl_detail",$gl_detail_directory, "gl_detail");
+
+duplicateTable("open_po", "mars", "201710_open_po", "mars");
+duplicateTable("committed_po", "mars", "201710_committed_po", "mars");
+duplicateTable("gl_detail", "mars", "201710_gl_detail", "mars");

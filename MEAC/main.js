@@ -5,65 +5,46 @@ require([
     "../inc/custom_components/get_url",
     "lib/components/grid_columns",
     "lib/components/data",
+    "lib/components/selectBox",
+    "bootbox",
+    "lib/components/file_upload",
+    "bootstrap33",
+    "slickAutoToolTips",
+    "slickHeaderBtn",
     "slickPager"
-], function(grid,gridOptions,getUrl, gridColumns,dataService) {
+    ], function(grid,gridOptions,getUrl, gridColumns,dataService, selectBox, bootbox) {
 $( document ).ready(function() {
-    function gridDataViewCallBack(data){
-        shipGridObj.dataView.beginUpdate();
 
-        shipGridObj.dataView.setItems(data);
+    var loadingIndicator = null;
+    var url              = "lib/php/grid.php";
+
+    function gridDataViewCallBack(data){
+        var newdata = _(data).sortBy(function(obj) { return obj.delta })
+        shipGridObj.dataView.beginUpdate();
+        shipGridObj.dataView.setItems(newdata);
         shipGridObj.dataView.endUpdate();
         shipGridObj.dataView.refresh();
         shipGridObj.grid.render();
         shipGridObj.grid.updateRowCount();
     }
-
-    function goBack() {
-        window.history.back();
+    function clearAllRows(){
+        shipGridObj.grid.invalidateAllRows();
     }
-    $("#back_btn").click(function(){
-        goBack();
+    var height = $(window).height();
+
+    selectBox.createSelectBox("rpt_period",url);
+    selectBox.createSelectBox("ship_code",url);
+    selectBox.createSelectBox("ship_code_multi",url, 200);
+
+    selectBox.defaultRPTPeriod();
+
+    $('#ship_code').on('select2:close', function (e) {
     });
 
-    var shipCols           = gridColumns.cols;
-    var projectGridOptions = gridOptions.projectGridOptions;
-    var shipGridObj        = grid.createGrid("meacGrid", shipCols, projectGridOptions);
-    shipGridObj.dataView.setPagingOptions({
-        inlineFilters            : true,
-        pageSize: 25
-    });
-    var url = "lib/php/meac_grid.php";
-    var ajaxDataObj     = {};
-    ajaxDataObj.control = "meac_grid";
-    ajaxDataObj.ship_code= 0481;
 
-    dataService.getData(url,ajaxDataObj,gridDataViewCallBack);
-    var pager = new Slick.Controls.Pager(shipGridObj.dataView, shipGridObj.grid, $("#my_pager"));
-
-    shipGridObj.grid.setSelectionModel(new Slick.RowSelectionModel({
-        selectActiveRow: true
-    }));
-    shipGridObj.dataView.onRowCountChanged.subscribe(function (e, args) {
-        shipGridObj.grid.updateRowCount();
-        shipGridObj.grid.render();
-    });
-    shipGridObj.dataView.onRowsChanged.subscribe(function (e, args) {
-        shipGridObj.grid.invalidateRows(args.rows);
-        shipGridObj.grid.render();
-    });
-    shipGridObj.grid.onCellChange.subscribe(function (e,args) {
-        console.log(args);
+    $("#load_cbm").click(function(){
 
     });
-    shipGridObj.dataView.onPagingInfoChanged.subscribe(function (e, pagingInfo) {
-        var isLastPage = pagingInfo.pageNum == pagingInfo.totalPages - 1;
-        var enableAddRow = isLastPage || pagingInfo.pageSize == 0;
-        var options = shipGridObj.grid.getOptions();
-        if (options.enableAddRow != enableAddRow) {
-            shipGridObj.grid.setOptions({enableAddRow: enableAddRow});
-        }
-    });
-
 
 
 });

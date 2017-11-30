@@ -200,11 +200,12 @@ $rpt_period = 201710;
 buildMEACTablesforRptPeriod($rpt_period);
 
 
-//duplicateTable("committed_po", "mars", "201708_committed_po", "mars");
-//duplicateTable("ebom", "meac", "201708_ebom", "mars");
-//duplicateTable("gl_detail", "mars", "201708_gl_detail", "mars");
-//duplicateTable("open_buy", "mars", "201708_open_buy", "mars");
-//duplicateTable("open_po", "mars", "201708_open_po", "mars");
+//duplicateTable("committed_po", "mars", "201710_committed_po", "mars");
+//duplicateTable("gl_detail", "mars", "201710_gl_detail", "mars");
+//duplicateTable("open_po", "mars", "201710_open_po", "mars");
+//duplicateTable("ebom", "meac", "201710_ebom", "mars");
+//duplicateTable("open_buy", "mars", "201710_open_buy", "mars");
+
 //duplicateTable("reest3", "meac", "reest3_bkup20171002", "bkup");
 //duplicateTable("reest3_bkup20171002", "bkup", "reest3", "meac");
 
@@ -216,8 +217,8 @@ buildMEACTablesforRptPeriod($rpt_period);
 $array = array();
 //$array[] = 465;
 //$array[] = 467;
-//$array[] = 469;
-$array[] = 471;
+$array[] = 469;
+//$array[] = 471;
 //$array[] = 473;
 //$array[] = 475;
 //$array[] = 477;
@@ -243,7 +244,7 @@ foreach ($array as $value){
     print $ship_code;
     insertCBMFromBaanRptPeriod($ship_code,$rpt_period);
 }
-deleteFromTable("meac", $rpt_period."_cbm", "material", "");
+//deleteFromTable("meac", $rpt_period."_cbm", "material", "");
 
 /*
  *
@@ -254,18 +255,18 @@ deleteFromTable("meac", $rpt_period."_cbm", "material", "");
  *
  * */
 
-truncateTable("meac", $rpt_period."_master_buyer");
-loadBaanBuyerIDListRptPeriod($rpt_period);
+//truncateTable("meac", $rpt_period."_master_buyer");
+//loadBaanBuyerIDListRptPeriod($rpt_period);
 print "finished Master Buyer";
 
 foreach ($array as $value){
-    deleteFromTable("MEAC", $rpt_period."_buyer_reponsible", "ship_code", $value);
+    //deleteFromTable("MEAC", $rpt_period."_buyer_reponsible", "ship_code", $value);
 
-    loadResponsibleBuyerRptPeriod($value, $rpt_period);
+    //loadResponsibleBuyerRptPeriod($value, $rpt_period);
     print "finished Responsible Buyer $value";
 }
 
-loaditem2buyerRptPeriod($rpt_period);
+//loaditem2buyerRptPeriod($rpt_period);
 /*
  * EFDB
  * EFDB
@@ -275,8 +276,8 @@ loaditem2buyerRptPeriod($rpt_period);
  * */
 
 foreach($array as $value){
-    deleteFromTable("meac", $rpt_period."_change_item", "ship_code", $value);
-    loadEFDBChangeBAANRptPeriod($value, $rpt_period);
+    //deleteFromTable("meac", $rpt_period."_change_item", "ship_code", $value);
+    //loadEFDBChangeBAANRptPeriod($value, $rpt_period);
 
 }
 
@@ -291,8 +292,8 @@ foreach($array as $value){
  * */
 
 foreach ($array as $ship_code){
-    deleteFromTable("meac", $rpt_period."_inv_transfers", "ship_code", $ship_code);
-    loadINVTranserfersRptPeriod($ship_code, $rpt_period);
+    //deleteFromTable("meac", $rpt_period."_inv_transfers", "ship_code", $ship_code);
+    //loadINVTranserfersRptPeriod($ship_code, $rpt_period);
 }
 
 
@@ -307,8 +308,8 @@ foreach ($array as $ship_code){
  * */
 
 foreach ($array as $ship_code){
-    deleteFromTable("meac", $rpt_period."_po_data", "ship_code", $ship_code);
-    loadFortisPODataRptPeriod($ship_code, $rpt_period);
+    //deleteFromTable("meac", $rpt_period."_po_data", "ship_code", $ship_code);
+    //loadFortisPODataRptPeriod($ship_code, $rpt_period);
 }
 
 
@@ -389,8 +390,8 @@ print "FINISHED OPEN BUY";
  * WP EBOM
  * WP EBOM
  * */
-//truncateTable("meac", $rpt_period."_wp_ebom");
-//insertEBOMWPRptPeriod($rpt_period);
+truncateTable("meac", $rpt_period."_wp_ebom");
+insertEBOMWPRptPeriod($rpt_period);
 
 print "FINISHED WP EBOM";
 

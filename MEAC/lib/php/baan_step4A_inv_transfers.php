@@ -7,47 +7,6 @@
  */
 include("../../../inc/inc.php");
 include("inc.baan.fortis.php");
-function loadINVTranserfers($ship_code){
-
-    $sql = "
-        select 
-            t_cprj,
-            t_item,
-            t_orno,
-            t_quan 
-         from ttipcs700490 
-         where t_cprj like '%$ship_code%' and t_pono  = 0
-         ";
-    $rs = dbCallBaan($sql);
-    $insert_sql = "insert into inv_transfers (ship_code, item, `order`, qty) values";
-    $sql = $insert_sql;
-    $i = 0;
-    while (!$rs->EOF) {
-        $ship_code = intval($rs->fields["t_cprj"]);
-        $item      = trim($rs->fields["t_item"]);
-        $order     = intval($rs->fields["t_orno"]);
-        $qty       = formatNumber4decNoComma($rs->fields["t_quan"]);
-
-        $sql.=" ($ship_code, '$item', $order, $qty),";
-        if($i == 500)
-        {
-            $sql = substr($sql, 0, -1);
-            $junk = dbCall($sql, "meac");
-
-            $i=0;
-            //clear out the sql stmt.
-            $sql = $insert_sql;
-        }
-        $i++;
-        $rs->MoveNext();
-    }
-    if($i !=500)
-    {
-        $sql = substr($sql, 0, -1);
-        $junk = dbCall($sql, "meac");
-    }
-    print $sql;
-}
 
 $array = array();
 //$array[] = 465;

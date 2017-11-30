@@ -206,7 +206,7 @@ function returnInsertValuesSQL($ship_code,$wbs_id,$clndr_id,$rsrc_id,$pc,$comple
 if($control=="project_grid")
 {
     $data = "[";
-    $sql = "select id, name, code, ppm_ap_id, ppm_bl_id from fmm_evms.master_project order by code";
+    $sql = "select id, name, code, ppm_ap_id, ppm_bl_id from fmm_evms.master_project where name not like '%27%' order by code";
     //print $sql;
     $rs = dbCall($sql);
     while (!$rs->EOF)

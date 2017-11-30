@@ -26,7 +26,7 @@ function copyListOfDirectoryToCSV($g_path2_baan_work,$baan_dir_name,$rel_path2_r
         $file_name_array = getListOfFileNamesInDirectory($directory2Copy);
         saveListOfFileNamesPHPExcel($file_name_array,$directory2Copy,$rel_path2_reports,$table_name);
 }
-
+$rpt_period = 201710;
 //duplicateTable("gl_detail", "mars", "201708_gl", "bkup");
 //duplicateTable("committed_po", "mars", "201708_committed_po", "bkup");
 //duplicateTable("open_po", "mars", "201708_open_po_bkup", "bkup");
@@ -51,12 +51,36 @@ clearDirectory($open_po_directory);
 copyListOfDirectoryToCSV($dir,"open_po",$open_po_directory, "open_po");
 
 clearDirectory($committed_po_directory);
-copyListOfDirectoryToCSV($dir,"committed_pos",$committed_po_directory, "committed_po");
-
+//copyListOfDirectoryToCSV($dir,"committed_pos",$committed_po_directory, "committed_po");
 
 clearDirectory($gl_detail_directory);
 copyListOfDirectoryToCSV($dir,"gl_detail",$gl_detail_directory, "gl_detail");
 
-duplicateTable("open_po", "mars", "201710_open_po", "mars");
-duplicateTable("committed_po", "mars", "201710_committed_po", "mars");
-duplicateTable("gl_detail", "mars", "201710_gl_detail", "mars");
+$create_table = checkIfTableExists("mars", $rpt_period."_open_po");
+if($create_table === true){
+    dropTable("mars", $rpt_period."_open_po");
+    duplicateTable("open_po", "mars", $rpt_period."_open_po", "mars");
+}
+else{
+    duplicateTable("open_po", "mars", $rpt_period."_open_po", "mars");
+}
+
+$create_table = checkIfTableExists("mars", $rpt_period."_committed_po");
+
+if($create_table === true){
+    dropTable("mars", $rpt_period."_committed_po");
+    duplicateTable("committed_po", "mars", $rpt_period."_committed_po", "mars");
+}
+else{
+    duplicateTable("committed_po", "mars", $rpt_period."_committed_po", "mars");
+}
+
+$create_table = checkIfTableExists("mars", $rpt_period."_gl_detail");
+if($create_table === true){
+    dropTable("mars", $rpt_period."_gl_detail");
+    duplicateTable("gl_detail", "mars", $rpt_period."_gl_detail", "mars");
+}
+else{
+    duplicateTable("gl_detail", "mars", $rpt_period."_gl_detail", "mars");
+
+}

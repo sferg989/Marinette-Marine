@@ -2266,9 +2266,13 @@ function insertGlChargesNoPartNumRptPeriod($ship_code, $rpt_period)
     }
 }
 function insertJournalEntriesRptPeriod($ship_code, $rpt_period){
+    if($ship_code == 471){
+        $program = "0471-";
+    }
     if(strlen($ship_code)==3)
     {
         $program = "0".$ship_code;
+
     }
     $year = intval(substr($rpt_period, 0, 4));
     $month = month2digit(substr($rpt_period, -2));

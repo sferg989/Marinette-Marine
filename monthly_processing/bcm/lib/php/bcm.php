@@ -452,6 +452,7 @@ if($control=="log_analysis"){
 
     require('../../../../inc/lib/php/spreadsheet-reader-master/spreadsheet-reader-master/SpreadsheetReader.php');
     $i = 0;
+    $sql = $insert_sql;
     $Reader = new SpreadsheetReader($path2file);
     $data = "[";
     //var_dump($Reader);

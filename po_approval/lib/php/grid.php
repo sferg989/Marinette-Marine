@@ -139,9 +139,8 @@ if($control=="project_grid")
     die($data);
 }
 if($control=="load_comitted_rpt"){
-
-    //deleteFromTable("meac", "wp_baan_committed_po", "ship_code", $ship_code);
-    //loadBaanCommittedPO($ship_code);
+    deleteFromTable("meac", "wp_baan_committed_po", "ship_code", $ship_code);
+    loadBaanCommittedPO($ship_code);
     truncateTable("meac", "po_data");
     loadFortisPOData();
 }

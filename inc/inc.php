@@ -68,6 +68,11 @@ function truncateTable($schema, $table){
     $sql = "truncate table $schema.$table";
     $junk = dbCall($sql, $schema);
 }
+
+function dropTable($schema, $table){
+    $sql = "drop table $schema.$table";
+    $junk = dbCall($sql, $schema);
+}
 function buildWCandGB($pmid,$cmid="",$cam="")
 {
     $wc = "where ";
@@ -691,7 +696,7 @@ function deleteShipFromTable($ship_code,$table_name, $schema)
 }
 function checkIfTableExists($schema, $table_name){
     $sql = "select table_name from information_schema.tables where table_schema = '$schema' and table_name = '$table_name'";
-    //print $sql;
+
     $rs = dbcall($sql, "information_schema");
     $val = $rs->fields["table_name"];
     if($val==""){
@@ -750,7 +755,6 @@ function insertCobraCurData($ship_code, $rpt_period, $schema){
     }
     deleteShipFromTable($ship_code,$table_name, $schema);
 }
-
 
 function getListOfFileNamesInDirectory($directory){
     //print $directory;
@@ -1191,14 +1195,14 @@ function runSQLCommandUtil($ship_code,$sql, $g_path2CobraAPI,$g_path2CMD,$g_path
     }
 
 }
-
 function duplicateTable($source_table, $source_schema, $destination_table,$destination_schema){
 
-        $sql    = "CREATE TABLE $destination_schema.$destination_table LIKE $source_schema.$source_table";
-        $junk   = dbCall($sql);
+    $sql    = "CREATE TABLE $destination_schema.$destination_table LIKE $source_schema.$source_table";
+    $junk   = dbCall($sql);
 
-        $sql = "INSERT $destination_schema.$destination_table SELECT * FROM $source_schema.$source_table";
-        $junk= dbCall($sql);
+    $sql = "INSERT $destination_schema.$destination_table SELECT * FROM $source_schema.$source_table";
+    $junk = dbCall($sql);
+
 }
 function getRPTPeriodsgreaterThanYear($start_period, $end_period)
 {

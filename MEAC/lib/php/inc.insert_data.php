@@ -244,11 +244,12 @@ function insertCommittedPO($path2file){
 function insertGLdetail($path2file){
     print $path2file;
     $path_exploded_array = explode("\\", $path2file);
-    $file_name           = $path_exploded_array[1];
+    //array_debug($path_exploded_array);
+    $file_name           = $path_exploded_array[6];
+    //$file_name           = $path_exploded_array[1];
     $proj = substr($file_name, 0,4);
     //$proj = substr($file_name, 5,4);
-
-
+    print $proj;
     $handle = fopen($path2file,"r");
     //remove headers from the file.
     //loop through the csv file and insert into database
@@ -2088,7 +2089,7 @@ function insertSWBSSummaryOPENPO($ship_code)
                     (SELECT vendor FROM meac.po_data po_data where open_po.vendor=po_data.vendor_id  limit 1) vendor_name,
                     gl.document as document,
                     open_po.vendor as vendor_id,
-                    (select item_shortage from wp_open_buy ob where ob.ship_code=open_po.ship_code and ob.item=open_po.item  limit 1) open_buy_item_shortage,
+                    (select item_shortage from efdb_open_buy ob where ob.ship_code=open_po.ship_code and ob.item=open_po.item  limit 1) open_buy_item_shortage,
                     (select sum(pending_amnt) from wp_open_po opo where opo.ship_code=open_po.ship_code and opo.item=open_po.item) open_po_pending_amt,
                     (select sum(integr_amt) from wp_gl_detail gl2 where gl2.ship_code=open_po.ship_code and gl2.item=open_po.item and gl2.document like '%INV%') transfers,
                     (select sum(commit_amnt) from wp_committed_po c where c.ship_code=open_po.ship_code and c.item=open_po.item group by c.ship_code, c.item) commit_amt,
@@ -2112,7 +2113,7 @@ function insertSWBSSummaryOPENPO($ship_code)
                   on e.ship_code = open_po.ship_code and e.material =open_po.item
                 left join wp_gl_detail gl
                   on open_po.ship_code = gl.ship_code and open_po.item= gl.item
-                left join wp_open_buy open_buy
+                left join efdb_open_buy open_buy
                     on open_po.ship_code = open_buy.ship_code and open_po.item= open_buy.item
                 where gl.ship_code is null
                   and open_po.ship_code = $ship_code
@@ -2264,7 +2265,7 @@ function insertSWBSSUmmaryEBOM($ship_code){
         left join wp_gl_detail gl
           on gl.ship_code= e.ship_code
           and gl.item = e.item
-        left join wp_open_buy ob
+        left join efdb_open_buy ob
           on ob.ship_code= e.ship_code
           and ob.item = e.item
         left join wp_open_po po
@@ -2401,7 +2402,7 @@ function insertSWBSGLSUM($ship_code){
             (select ci.date from meac.change_item ci where ci.ship_code=gl.ship_code and ci.item=gl.item  order by ci.date DESC limit 1) change_date,
             (select ci.description from meac.change_item ci where ci.ship_code=gl.ship_code and ci.item=gl.item  order by ci.date DESC limit 1) change_reason,
             (select vendor from meac.wp_committed_po wpc where wpc.ship_code=gl.ship_code and wpc.item = gl.item limit 1) vendor_id,
-            (select item_shortage from meac.wp_open_buy ob where ob.ship_code=gl.ship_code and ob.item=gl.item  limit 1) open_buy_item_shortage,
+            (select item_shortage from meac.efdb_open_buy ob where ob.ship_code=gl.ship_code and ob.item=gl.item  limit 1) open_buy_item_shortage,
             (select sum(pending_amnt) from meac.wp_open_po opo where opo.ship_code=gl.ship_code and opo.item=gl.item) open_po_pending_amt,
             (select sum(integr_amt) from meac.wp_gl_detail gl2 where gl2.ship_code=gl.ship_code and gl2.item=gl.item and gl2.document like '%INV%') transfers,
             (select sum(commit_amnt) from meac.wp_committed_po c where c.ship_code=gl.ship_code and c.item=gl.item group by c.ship_code, c.item) commit_amt,
@@ -2427,7 +2428,7 @@ function insertSWBSGLSUM($ship_code){
         from meac.wp_gl_detail gl
         left join meac.wp_ebom e
                 on e.ship_code = gl.ship_code and e.material= gl.item
-        left join meac.wp_open_buy open_buy
+        left join meac.efdb_open_buy open_buy
             on gl.ship_code = open_buy.ship_code and gl.item= open_buy.item
         where gl.ship_code = $ship_code 
         group by $gb
@@ -2585,7 +2586,7 @@ function insertSWBSSummaryOPENBUY($ship_code)
                 0 as gl_qty,
                 0 as int_amt,
                 (select buyer from master_buyer mb where open_buy.buyer = mb.id) buyer
-            from wp_open_buy open_buy
+            from efdb_open_buy open_buy
             left join wp_ebom e
               on e.ship_code = open_buy.ship_code and e.material =open_buy.item
             left join wp_gl_detail gl

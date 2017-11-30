@@ -56,21 +56,38 @@ function phpExcelCurrencySheetBOLDAndCOLOR($range, $sheet){
     );
     $sheet->getStyle($range)->applyFromArray($styleArray);
 }
-function phpExcelCurrencySheetBOLDAndCustomCOLORIFNOT0($range, $sheet, $bk_ground,$font,$val){
+function phpExcelCurrencySheetBOLDAndCustomCOLORIFNOT0($range, $sheet, $bk_ground,$font,$val, $fortis_status=""){
     $val = intval($val);
 
     if($val!=0){
-        $styleArray =
-            array(
-                'font' => array(
-                    'bold' => true,
-                    'color' => array('rgb' => $font)
-                ),
-                'fill' => array(
-                    'type' => PHPExcel_Style_Fill::FILL_SOLID,
-                    'color' => array('rgb' => $bk_ground)
-                )
-            );
+        /*NOT APPROVED POS*/
+        if($fortis_status!="Approved"){
+            $styleArray =
+                array(
+                    'font' => array(
+                        'bold' => true,
+                        'color' => array('rgb' => $font)
+                    ),
+                    'fill' => array(
+                        'type' => PHPExcel_Style_Fill::FILL_SOLID,
+                        'color' => array('rgb' => "0a34db")
+                    )
+                );
+        }
+        /*approved po's*/
+        else{
+            $styleArray =
+                array(
+                    'font' => array(
+                        'bold' => true,
+                        'color' => array('rgb' => $font)
+                    ),
+                    'fill' => array(
+                        'type' => PHPExcel_Style_Fill::FILL_SOLID,
+                        'color' => array('rgb' => $bk_ground)
+                    )
+                );
+        }
 
     }else{
         $styleArray =

@@ -7,12 +7,11 @@ self.addEventListener('message', function(e) {
 }, false);
 this.onmessage = function(e) {
 
-    var control = e.data.control;
-    var wc     = e.data.wc;
-    var http   = new XMLHttpRequest();
-    console.log(control);
-    var url = "../php/meac_excel_export.php";
-    var params = "control="+control+"&wc="+wc;
+    var control   = e.data.control;
+    var ship_code = e.data.ship_code;
+    var http      = new XMLHttpRequest();
+    var url = "../php/grid.php";
+    var params = "control="+control+"&ship_code="+ship_code;
     http.open("POST", url, true);
 
 //Send the proper header information along with the request

@@ -10,7 +10,7 @@ session_start();
 //extract($_COOKIE);
 extract($_REQUEST);
 set_time_limit(0);
-//error_reporting(0);
+error_reporting(0);
 
 include('lib/php/adodb5/adodb.inc.php');
 

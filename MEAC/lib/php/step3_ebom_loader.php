@@ -29,9 +29,9 @@ function copyListOfDirectoryToCSV($directory2Copy,$rel_path2_reports){
 $rel_path2_reports = "../../../util/csv_ebom";
 $directory2Copy =$base_path."ebom";
 $directory2Copy ="C:/evms/ebom";
-//truncateTable("meac", "ebom");
+truncateTable("meac", "ebom");
 print $directory2Copy;
 print $rel_path2_reports;
-//clearDirectory($rel_path2_reports);
-//copyListOfDirectoryToCSV($directory2Copy,$rel_path2_reports);
+clearDirectory($rel_path2_reports);
+copyListOfDirectoryToCSV($directory2Copy,$rel_path2_reports);
 duplicateTable("ebom", "meac", "201710_ebom", "mars");

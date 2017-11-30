@@ -1,0 +1,1 @@
+START cmd /k "C:\xampp\php\php.exe "C:\xampp\htdocs\fmg\MEAC\lib\php\st_weekly_load_gl_comitted.php"" EXIT

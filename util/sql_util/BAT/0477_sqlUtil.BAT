@@ -1,0 +1,5 @@
+﻿[Process021]
+
+ProcessID=SQLCommand
+
+SQLCommand=update tphase set DIRECT = 94613.2302 where program = '0477' and CAWPID in (988714294) and CLASS = 'Forecast';insert into TPHASE (PROGRAM, CAWPID, CECODE, CLASS, DF_DATE, DIRECT) values ('0477', -2053854269, 'MATL', 'Forecast', '2017-11-25 00:00:00.000',3044.7000);update cawp set eac = 6628.2600, EAC_NONLAB = 6628.2600, PC_COMP = 54.0600 where PROGRAM = '0477' and wp = 'MATL-999-999';update tphase set DIRECT = 3044.7000 where program = '0477' and CAWPID in (-2053854269) and CLASS = 'Forecast';update cawp set eac = 95853.5400, EAC_NONLAB = 95853.5400, PC_COMP = 0.1200 where PROGRAM = '0477' and wp = 'ODC-042-999';update tphase set DIRECT = 10637.5438 where program = '0477' and CAWPID in (1947678417) and CLASS = 'Forecast';update cawp set eac = 118336.5655, EAC_NONLAB = 118336.5655, PC_COMP = 10.1000 where PROGRAM = '0477' and wp = 'ODC-854-999';update tphase set DIRECT = 11820.1360 where program = '0477' and CAWPID in (-1260963072) and CLASS = 'Forecast'

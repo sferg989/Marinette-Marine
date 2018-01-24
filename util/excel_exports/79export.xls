@@ -1,0 +1,137 @@
+
+    <table>
+    <tr>
+        <th>Group</th>
+        <th>LCS 17</th>
+        <th>LCS 19</th>
+        <th>LCS 21</th>
+        <th>LCS 23</th>
+        <th>LCS 25</th>
+    </tr>
+    
+        <tr>
+            <td>600 Manufacturing</td>
+            <td>1,300,080.00</td>
+            <td>1,233,761.00</td>
+            <td>1,198,624.00</td>
+            <td>1,147,458.00</td>
+            <td>1,117,572.00</td>
+        </tr>
+        
+        <tr>
+            <td>620 Manufacturing Supervision</td>
+            <td>135,637.00</td>
+            <td>140,341.00</td>
+            <td>139,474.00</td>
+            <td>140,000.00</td>
+            <td>147,000.00</td>
+        </tr>
+        
+        <tr>
+            <td>650 Production Planning & Control</td>
+            <td>48,742.00</td>
+            <td>50,251.00</td>
+            <td>51,149.00</td>
+            <td>48,950.00</td>
+            <td>49,106.00</td>
+        </tr>
+        
+        <tr>
+            <td>500 Engineering</td>
+            <td>84,380.00</td>
+            <td>37,757.00</td>
+            <td>55,574.00</td>
+            <td>47,950.00</td>
+            <td>25,546.00</td>
+        </tr>
+        
+        <tr>
+            <td>300 Purchasing</td>
+            <td>14,135.00</td>
+            <td>13,620.00</td>
+            <td>13,098.00</td>
+            <td>13,610.00</td>
+            <td>11,819.00</td>
+        </tr>
+        
+        <tr>
+            <td>611 Program Management</td>
+            <td>21,670.00</td>
+            <td>16,563.00</td>
+            <td>24,505.00</td>
+            <td>12,516.00</td>
+            <td>13,728.00</td>
+        </tr>
+        
+        <tr>
+            <td>200 Finance</td>
+            <td>5,056.00</td>
+            <td>5,974.00</td>
+            <td>3,997.00</td>
+            <td>3,608.00</td>
+            <td>3,911.00</td>
+        </tr>
+        
+        <tr>
+            <td>546 Quality Assurance</td>
+            <td>8,921.00</td>
+            <td>10,776.00</td>
+            <td>11,852.00</td>
+            <td>13,759.00</td>
+            <td>13,530.00</td>
+        </tr>
+        
+        <tr>
+            <td>800 Contracts</td>
+            <td>4,828.00</td>
+            <td>4,218.00</td>
+            <td>3,701.00</td>
+            <td>3,918.00</td>
+            <td>3,600.00</td>
+        </tr>
+        
+        <tr>
+            <td>b. COST OF MONEY</td>
+            <td>0.00</td>
+            <td>0.00</td>
+            <td>0.00</td>
+            <td>0.00</td>
+            <td>0.00</td>
+        </tr>
+        
+        <tr>
+            <td>c. GENERAL AND ADMINISTRATIVE</td>
+            <td>0.00</td>
+            <td>0.00</td>
+            <td>0.00</td>
+            <td>0.00</td>
+            <td>0.00</td>
+        </tr>
+        
+        <tr>
+            <td>d. UNDISTRIBUTED BUDGET</td>
+            <td>0.00</td>
+            <td>0.00</td>
+            <td>0.00</td>
+            <td>0.00</td>
+            <td>0.00</td>
+        </tr>
+        
+        <tr>
+            <td>f. MANAGEMENT RESERVE</td>
+            <td>0.00</td>
+            <td>0.00</td>
+            <td>0.00</td>
+            <td>0.00</td>
+            <td>0.00</td>
+        </tr>
+        
+        <tr>
+            <td>CLASSIFICATION (When Filled In)</td>
+            <td>0.00</td>
+            <td>0.00</td>
+            <td>0.00</td>
+            <td>0.00</td>
+            <td>0.00</td>
+        </tr>
+        </table>

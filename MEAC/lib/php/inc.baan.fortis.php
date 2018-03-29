@@ -5,6 +5,7 @@
  * Date: 8/7/2017
  * Time: 5:43 PM
  */
+
 function loadINVTranserfers($ship_code){
 
     $sql = "
@@ -440,7 +441,8 @@ function insertOpenBuyReport($ship_code){
             '$on_hold',
             '$entered_on',
             '$last_mod',
-            $production_issues
+            $production_issues,
+            $ebom
         ),";
         if($i == 250)
         {
@@ -486,7 +488,8 @@ function returnOpenBuyInsertSQL(){
         on_hold,
         entered_on,
         last_mod,
-        production_issues) VALUES ";
+        production_issues,
+        ebom) VALUES ";
     return $insert_sql;
 }
 
@@ -711,7 +714,7 @@ function loadGlDetailBaan($ship_code="", $rpt_period=""){
 function returnFortisPOSQL($ship_code=""){
     $wc = "where Project_Number  <> ''";
     if($ship_code!=""){
-        $wc = " and Project_Number = '$ship_code'";
+        $wc = " where Project_Number like '%$ship_code%'";
     }
     $sql = "select
                 project_number,
@@ -719,7 +722,7 @@ function returnFortisPOSQL($ship_code=""){
                 supplier_name,
                 supplier_number,
                 notes,
-                Purchasing_Manager_Notes,
+                Purchasing_Manager_Notes purchasing_manager_notes,
                 buyer_name,
                 purchase_order_type,
                 funding_source,
@@ -1046,7 +1049,7 @@ function insertCBMFromBaan($ship_code){
         $junk = dbCall($sql, "meac");
     }
 }
-function returnEBOMBaanSQL($ship_code){
+function    returnEBOMBaanSQL($ship_code){
 
     $sql = "
           SELECT 
@@ -1078,6 +1081,80 @@ function returnEBOMBaanSQL($ship_code){
             LEFT JOIN ttifct020490 d on a.t_cprj = d.t_cprj and a.t_item = d.t_item
           WHERE	a.t_cprj like '%$ship_code%'
             and a.t_qana <> '0'
+            order by a.t_cprj, a.t_item";
+    return $sql;
+
+}
+function returnEBOMBaanSQLMappedWP($ship_code){
+
+    $sql = "
+          SELECT 
+            a.t_cprj as ship_code,
+            a.t_item as item,
+            b.t_n1at as noun1,
+            b.t_n2at as noun2,
+            b.t_n3at as noun3,
+            b.t_dsca as description,
+            b.t_citg as item_group,
+            b.t_cpcp as swbs,
+            CASE
+                WHEN b.t_cprj <> '' and b.t_item <> '' THEN b.t_dfit
+                ELSE ''
+            END as spn,
+            CASE
+                WHEN b.t_cprj <> '' and b.t_item <> '' THEN b.t_cuni
+                ELSE c.t_cuni
+            END as uom,
+            a.t_qana as ebom,
+          (select 
+              top 1 LTRIM(RTRIM(bc.t_bitm)) as Activity
+              from ttipcs950490 as ab
+                    left join ttipcs952490 as bc on ab.t_bdgt = bc.t_bdgt
+                    where ab.t_cprj =a.t_cprj and bc.t_bdgt = ab.t_bdgt and bc.t_item = a.t_item ) wp
+          FROM	ttiitm901490 a
+            LEFT JOIN ttipcs021490 b on b.t_cprj = a.t_cprj and b.t_item = a.t_item
+            LEFT JOIN ttiitm001490 c on c.t_item = a.t_item
+            LEFT JOIN ttifct020490 d on a.t_cprj = d.t_cprj and a.t_item = d.t_item
+          WHERE	a.t_cprj like '%$ship_code%'
+            and a.t_qana <> '0' and (select 
+              top 1 LTRIM(RTRIM(bc.t_bitm)) as Activity
+              from ttipcs950490 as ab
+                    left join ttipcs952490 as bc on ab.t_bdgt = bc.t_bdgt
+                    where ab.t_cprj =a.t_cprj and bc.t_bdgt = ab.t_bdgt and bc.t_item = a.t_item ) is not null
+            order by a.t_cprj, a.t_item";
+    return $sql;
+}
+function returnEBOMBaanSQLNOTMappedWP($ship_code){
+
+    $sql = "
+          SELECT 
+            a.t_cprj as ship_code,
+            a.t_item as item,
+            b.t_n1at as noun1,
+            b.t_n2at as noun2,
+            b.t_n3at as noun3,
+            b.t_dsca as description,
+            b.t_citg as item_group,
+            b.t_cpcp as swbs,
+            CASE
+                WHEN b.t_cprj <> '' and b.t_item <> '' THEN b.t_dfit
+                ELSE ''
+            END as spn,
+            CASE
+                WHEN b.t_cprj <> '' and b.t_item <> '' THEN b.t_cuni
+                ELSE c.t_cuni
+            END as uom,
+            a.t_qana as ebom
+          FROM	ttiitm901490 a
+            LEFT JOIN ttipcs021490 b on b.t_cprj = a.t_cprj and b.t_item = a.t_item
+            LEFT JOIN ttiitm001490 c on c.t_item = a.t_item
+            LEFT JOIN ttifct020490 d on a.t_cprj = d.t_cprj and a.t_item = d.t_item
+          WHERE	a.t_cprj like '%$ship_code%'
+            and a.t_qana <> '0' and (select 
+              top 1 LTRIM(RTRIM(bc.t_bitm)) as Activity
+              from ttipcs950490 as ab
+                    left join ttipcs952490 as bc on ab.t_bdgt = bc.t_bdgt
+                    where ab.t_cprj =a.t_cprj and bc.t_bdgt = ab.t_bdgt and bc.t_item = a.t_item ) is null
             order by a.t_cprj, a.t_item";
     return $sql;
 

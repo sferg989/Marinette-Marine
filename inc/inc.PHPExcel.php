@@ -156,6 +156,11 @@ function phpExcelFormatPercentage($range, $objPHPExcel){
         ->getNumberFormat()
         ->setFormatCode(PHPExcel_Style_NumberFormat::FORMAT_PERCENTAGE_00);
 }
+function phpExcelFormatPercentageSheet($range, $sheet){
+    $sheet->getStyle($range)
+        ->getNumberFormat()
+        ->setFormatCode(PHPExcel_Style_NumberFormat::FORMAT_PERCENTAGE_00);
+}
 function phpExcelFormatHours($range,$objPHPExcel){
     $objPHPExcel->getActiveSheet()
         ->getStyle($range)
@@ -365,4 +370,19 @@ function loadTimePhaseFutureCheck($rpt_period, $schema, $ship_code, $time_phased
 
         $junk = dbCall($sql, $schema);
     }
+}
+
+function colorCellHeaderTitleSheet($cell, $sheet){
+    $sheet->getStyle($cell)->applyFromArray(
+        array(
+            'fill' => array(
+                'type' => PHPExcel_Style_Fill::FILL_SOLID,
+                'color' => array('rgb' => 'FF9933')
+            ),
+            'font'  => array(
+                'bold'  => true,
+                'color' => array('rgb' => 'FFFFFF')
+            )
+        )
+    );
 }

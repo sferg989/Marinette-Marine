@@ -1,88 +1,15 @@
 <?php
 include("inc/inc.php");
+include("inc/inc.PHPExcel.php");
 include("inc/inc.cobra.php");
 
-function getTotalActuals($ship_code, $cawpid){
-    $sql = "
-    select 
-        sum(DIRECT) as sum 
-        from tphase 
-        where PROGRAM = '$ship_code' 
-        and CAWPID =$cawpid   
-        and CLASS = 'Actual' 
-    group by CAWPID
-";
-    //print $sql;
-    $rs = dbCallCobra($sql);
-    $a         = $rs->fields["sum"];
-    return $a;
-}
-function getTotalActualsODC($ship_code, $cawpid){
-    $sql = "
-    select
-  (sum(DIRECT) +
- sum(GANDA)+
- sum(SYSGA) +
- sum(ODCNOGA)) sum
-        from tphase
-        where PROGRAM = '$ship_code'
-        and CAWPID =$cawpid
-        and CLASS in('Actual', 'EA', 'CA')
-    group by CAWPID
-";
-    //print $sql;
-    $rs = dbCallCobra($sql);
-    $a         = $rs->fields["sum"];
-    return $a;
-}
-function getCUREAC($ship_code, $cawpid){
-    $sql = "select eac from CAWP where PROGRAM = '$ship_code' and CAWPID = $cawpid";
-    //print $sql;
-    $rs = dbCallCobra($sql);
-    $eac         = $rs->fields["eac"];
-    return $eac;
-}
-function getCURLFD($ship_code, $cawpid){
-    $sql = "select lfd from CAWP where PROGRAM = '$ship_code' and CAWPID = $cawpid";
-    //print $sql;
-    $rs = dbCallCobra($sql);
-    $lfd         = $rs->fields["lfd"];
-    return $lfd;
-}
-function getTotalNumberofForecastRecords($ship_code, $cawpid){
-    $sql = "
-        select count(*) as count 
-        from tphase 
-        where 
-        PROGRAM = '$ship_code' 
-        and CAWPID =$cawpid 
-        and CLASS = 'Forecast'
-";
-    $rs = dbCallCobra($sql);
-    $count         = $rs->fields["count"];
-    return $count;
-}
-function checkIFForecastRecordExists($ship_code, $cawpid){
-    $sql = "
-    select count(*) count 
-    from TPHASE 
-    where PROGRAM = '$ship_code' 
-    and CLASS = 'Forecast' 
-    and CAWPID = $cawpid 
-    GROUP BY PROGRAM, CAWPID;
-    ";
-    $rs     = dbCallCobra($sql);
-    $count  = $rs->fields["count"];
-    return $count;
-}
-
-$path2file =  "C:/evms/matl_updates/0483.xlsx";
+$path2file =  "C:/evms/201710-adj/0477201711.xlsx";
 require('inc/lib/php/spreadsheet-reader-master/spreadsheet-reader-master/SpreadsheetReader.php');
 
-$ship_code          = '0483';
+$ship_code          = '0477';
 $Reader             = new SpreadsheetReader($path2file);
 $sql_array          = array();
-$rpt_period         = 201710;
+$rpt_period         = 201711;
 $next_rpt_period    = getNextRPTPeriod($rpt_period);
 $year               = intval(substr($next_rpt_period, 0, 4));
 $month              = month2digit(substr($next_rpt_period, -2));
@@ -111,10 +38,13 @@ foreach ($Reader as $Row)
         $i++;
         continue;
     }
-    //$a               = formatNumber4decNoComma(getTotalActuals($ship_code, $cawpid));
-    //only ODC's
     $a               = formatNumber4decNoComma(getTotalActualsODC($ship_code, $cawpid));
-    $new_etc         = formatNumber4decNoComma($new_eac - $a);
+    //ODC MOdification.  there are NEGATIVE COSTS in the future.
+    $future_offset   = getODCFutureCost($ship_code, $cawpid);
+
+    $total_offset    = $a + $future_offset;
+    //$new_etc         = formatNumber4decNoComma($new_eac - $a);
+    $new_etc         = formatNumber4decNoComma($new_eac - $total_offset);
     $forcast_records = getTotalNumberofForecastRecords($ship_code, $cawpid);
     if($forcast_records<1){
         $forcast_records = 1;

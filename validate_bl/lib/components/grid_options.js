@@ -8,11 +8,8 @@ define(function(){
 
     var options = {
         enableCellNavigation: true,
-        editable            : true,
-        forceFitColumns     : false,
+        forceFitColumns     : true,
         autoHeight          : true,
-        sort                : false,
-        autoEdit            : true,
         asyncEditorLoading  : false,
         frozenColumn : 2
     };

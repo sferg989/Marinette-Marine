@@ -17,22 +17,46 @@ $( document ).ready(function() {
     var url              = "lib/php/update_meac.php";
 
     function gridDataViewCallBack(data){
-        var newdata = _(data).sortBy(function(obj) { return obj.delta })
         shipGridObj.dataView.beginUpdate();
-        shipGridObj.dataView.setItems(newdata);
+        shipGridObj.dataView.setItems(data);
         shipGridObj.dataView.endUpdate();
         shipGridObj.dataView.refresh();
         shipGridObj.grid.render();
         shipGridObj.grid.updateRowCount();
+        shipGridObj.grid.setSortColumn("wp",true);
+        loadingIndicator.fadeOut();
+
     }
     function clearAllRows(){
         shipGridObj.grid.invalidateAllRows();
     }
     var height = $(window).height();
-    function  updateEACCB() {
+    function  updateEACCB(data) {
         loadingIndicator.fadeOut();
-        console.log("t his is the finish insert");
-        bootbox.alert("EAC has been Updated!");
+        //console.log("t his is the finish insert");
+        bootbox.alert(data + "EAC has been Updated!");
+    }
+    function insertDataCB(data){
+        var rpt_period         = $("#rpt_period").val()
+        var view_updates       = $("#view_updates").val()
+        var ship_code          = $("#ship_code").val()
+        var ajaxDataObj        = {};
+        ajaxDataObj.control    = "meac_eac_change_grid";
+        ajaxDataObj.rpt_period = rpt_period;
+        ajaxDataObj.view       = view_updates;
+        ajaxDataObj.ship_code  = ship_code;
+        if (!loadingIndicator) {
+            loadingIndicator = $("<span class='loading-indicator'><label>Loading...</label></span>").appendTo(document.body);
+            var $g = $("#meac_eac_change_grid");
+            loadingIndicator
+                .css("position", "absolute")
+                .css("top", $g.position().top + $g.height() / 2 - loadingIndicator.height() / 2)
+                .css("left", $g.position().left + $g.width() / 2 - loadingIndicator.width() / 2);
+        }
+        loadingIndicator.show();
+        dataService.getData(url,ajaxDataObj, gridDataViewCallBack);
+
+        //console.log(data+" THIS IS A CB");
     }
     function excelExportCallBack(data){
         loadingIndicator.fadeOut();
@@ -88,10 +112,9 @@ $( document ).ready(function() {
         loadingIndicator.show();
         var rpt_period   = $("#rpt_period").val();
         var ajaxDataObj     = {};
-
         ajaxDataObj.rpt_period = rpt_period;
         ajaxDataObj.ship_code  = $("#ship_code").val();
-        ajaxDataObj.control    = "accept_changes";
+        ajaxDataObj.control    = "accept_changes_tool";
         dataService.updateEAC(url,ajaxDataObj, updateEACCB)
 
     });
@@ -121,15 +144,7 @@ $( document ).ready(function() {
         // Set up the AJAX request.
 
         var xhr = new XMLHttpRequest();
-        if (!loadingIndicator) {
-            loadingIndicator = $("<span class='loading-indicator'><label>Loading...</label></span>").appendTo(document.body);
-            var $g = $("#meac_eac_change_grid");
-            loadingIndicator
-                .css("position", "absolute")
-                .css("top", $g.position().top + $g.height() / 2 - loadingIndicator.height() / 2)
-                .css("left", $g.position().left + $g.width() / 2 - loadingIndicator.width() / 2);
-        }
-        loadingIndicator.show();
+
         // Open the connection.
         xhr.open('POST', 'lib/php/update_meac.php?control=upload_v2&rpt_period='+rpt_period+'', true);
 
@@ -138,19 +153,25 @@ $( document ).ready(function() {
             if (xhr.status === 200) {
                 //$("#div_file_upload_div").hide();
 
-                console.log("this is the call back");
-                var ajaxDataObj        = {};
-                ajaxDataObj.control    = "meac_eac_change_grid";
-                ajaxDataObj.rpt_period = rpt_period;
-                loadingIndicator.fadeOut();
+                if (!loadingIndicator) {
+                    loadingIndicator = $("<span class='loading-indicator'><label>Loading...</label></span>").appendTo(document.body);
+                    var $g = $("#meac_eac_change_grid");
+                    loadingIndicator
+                        .css("position", "absolute")
+                        .css("top", $g.position().top + $g.height() / 2 - loadingIndicator.height() / 2)
+                        .css("left", $g.position().left + $g.width() / 2 - loadingIndicator.width() / 2);
+                }
+                loadingIndicator.show();
                 var rpt_period         = $("#rpt_period").val()
                 var view_updates       = $("#view_updates").val()
                 var ship_code          = $("#ship_code").val()
 
+                var ajaxDataObj        = {};
+                ajaxDataObj.control    = "insert_item_delta";
+                ajaxDataObj.uploadPath = xhr.responseText;
                 ajaxDataObj.rpt_period = rpt_period;
-                ajaxDataObj.view       = view_updates;
                 ajaxDataObj.ship_code  = ship_code;
-                dataService.getData(url,ajaxDataObj, gridDataViewCallBack);
+                dataService.insertData(url, ajaxDataObj, insertDataCB);
 
             } else {
                 statusDiv.innerHTML = 'An error occurred while uploading the file. Try again';
@@ -168,12 +189,12 @@ $( document ).ready(function() {
     var shipCols      = gridColumns.cols;
     var groupCols = {
         id      : "ship_code",
-        name    : "ship_code",
+        name    : "HULL",
         header : {
             buttons: [
                 {
                     image: "../inc/images/excel-icon.png",
-                    showOnHover: true,
+                    showOnHover: false,
                     tooltip: "This button only appears on hover.",
                     handler: function (e) {
                         var url               = "lib/php/update_meac.php";
@@ -195,7 +216,8 @@ $( document ).ready(function() {
                 }
             ]
         },
-        field   : "ship_code"
+        field   : "ship_code",
+        formatter : gridColumns.shipFormatter
     };
     shipCols.unshift(groupCols);
     var grid1_options = gridOptions.gridOptions;
@@ -213,6 +235,15 @@ $( document ).ready(function() {
     ajaxDataObj.rpt_period = rpt_period;
     ajaxDataObj.view       = view_updates;
     ajaxDataObj.ship_code  = ship_code;
+    if (!loadingIndicator) {
+        loadingIndicator = $("<span class='loading-indicator'><label>Loading...</label></span>").appendTo(document.body);
+        var $g = $("#meac_eac_change_grid");
+        loadingIndicator
+            .css("position", "absolute")
+            .css("top", $g.position().top + $g.height() / 2 - loadingIndicator.height() / 2)
+            .css("left", $g.position().left + $g.width() / 2 - loadingIndicator.width() / 2);
+    }
+    loadingIndicator.show();
     dataService.getData(url,ajaxDataObj, gridDataViewCallBack);
 
     var pager = new Slick.Controls.Pager(shipGridObj.dataView, shipGridObj.grid, $("#my_pager"));
@@ -246,6 +277,20 @@ $( document ).ready(function() {
     var headerButtonsPlugin = new Slick.Plugins.HeaderButtons();
 
     shipGridObj.grid.registerPlugin(headerButtonsPlugin);
+    shipGridObj.grid.onSort.subscribe(function(e, args) {
+        // args.multiColumnSort indicates whether or not this is a multi-column sort.
+        // If it is, args.sortCols will have an array of {sortCol:..., sortAsc:...} objects.
+        // If not, the sort column and direction will be in args.sortCol & args.sortAsc.
+
+        // We'll use a simple comparer function here.
+        var comparer = function(a, b) {
+            return (a[args.sortCol.field] > b[args.sortCol.field]) ? 1 : -1;
+        }
+
+        // Delegate the sorting to DataView.
+        // This will fire the change events and update the grid.
+        shipGridObj.dataView.sort(comparer, args.sortAsc);
+    })
 
 
 });

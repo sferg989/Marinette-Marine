@@ -136,17 +136,6 @@ function getStartRPTPeriod($rpt_period, $num_periods){
     }
     return $rpt_period;
 }
-function getRPTList($rpt_period, $num_periods){
-    $start_rpt = getStartRPTPeriod($rpt_period, $num_periods);
-    $rpt_period_string = "\"$start_rpt\",";
-
-    for ($i=1;$i<$num_periods;$i++){
-        $start_rpt = getNextRPTPeriod($start_rpt);
-        $rpt_period_string.="\"$start_rpt\",";
-    }
-    $rpt_period_string = substr($rpt_period_string, 0,-1);
-    return $rpt_period_string;
-}
 function buildLineChartWC($filterarray){
     foreach ($filterarray as $key=>$value){
         if($key=="Hull"){

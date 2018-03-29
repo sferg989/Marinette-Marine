@@ -5,16 +5,15 @@ require([
     "lib/components/grid_columns",
     "lib/components/data",
     "bootbox",
-    "../inc/custom_components/jsonexcelexport",
     "slickGridFrozen",
-    "slickdataview",
+    "slickdataviewFrozen",
     "slickAutoToolTipsFrozen",
-    "slickHeaderBtn",
+    "slickHeaderBtnFrozen",
     "slickRowSelectionFrozen",
     "dragevent",
     "slickColumnPicker",
     "slickPagerFrozen"
-    ], function(gridOptions,getUrl, gridColumns,dataService, bootbox,jsonExporter) {
+    ], function(gridOptions,getUrl, gridColumns,dataService, bootbox) {
 $( document ).ready(function() {
 
     var loadingIndicator = null;
@@ -27,6 +26,7 @@ $( document ).ready(function() {
         shipGridObj.dataView.refresh();
         shipGridObj.grid.render();
         shipGridObj.grid.updateRowCount();
+
         //jsonExporter.jsonExporter(data,"PO APPROVAL", "YES");
     }
     function clearAllRows(){
@@ -59,7 +59,6 @@ $( document ).ready(function() {
         console.log(ajaxDataObj);
         ajaxDataObj.rows = {};
         var divide = Math.ceil(total_rows/10);
-
         for (i = 0; i <divide; i++) {
             ajaxDataObj.rows = {};
             var start_counter = i*10;
@@ -101,6 +100,12 @@ $( document ).ready(function() {
             ajaxDataObj.po      = po_num;
             clearAllRows();
             dataService.getData(url, ajaxDataObj, gridDataViewCallBack);
+
+            var ajaxDataObj     = {};
+            ajaxDataObj.control = "excel_export_po";
+            ajaxDataObj.po      = po_num;
+
+            dataService.excelExport(url,ajaxDataObj,excelExportCallBack);
         }
     });
 
@@ -108,8 +113,9 @@ $( document ).ready(function() {
     var groupCols = {
         id      : "ship_code",
         name    : "Hull",
-        width   : 65,
+        width   : 85,
         field   : "ship_code",
+        sortable: true,
         header : {
             buttons: [
                 {
@@ -146,13 +152,14 @@ $( document ).ready(function() {
         }
     };
     shipCols.unshift(groupCols);
-    var grid1_options = gridOptions.gridOptions;
-    var shipGridObj= {};
+    var grid1_options    = gridOptions.gridOptions;
+    var shipGridObj      = {};
     shipGridObj.dataView = {};
-    shipGridObj.grid = {};
+    shipGridObj.grid     = {};
     shipGridObj.dataView = new Slick.Data.DataView();
     shipGridObj.grid     = new Slick.Grid('#shipGrid', shipGridObj.dataView, shipCols, grid1_options);
-    var pager = new Slick.Controls.Pager(shipGridObj.dataView, shipGridObj.grid, $("#my_pager"));
+    var pager            = new Slick.Controls.Pager(shipGridObj.dataView, shipGridObj.grid, $("#my_pager"));
+
     shipGridObj.grid.onMouseEnter.subscribe(function(e) {
         var cell = this.getCellFromEvent(e);
         this.setSelectedRows([cell.row]);
@@ -197,6 +204,20 @@ $( document ).ready(function() {
 
     shipGridObj.grid.setSelectionModel(new Slick.RowSelectionModel());
     //shipGridObj.grid.setSelectionModel(new Slick.CellSelectionModel());
+    shipGridObj.grid.onSort.subscribe(function(e, args) {
+        // args.multiColumnSort indicates whether or not this is a multi-column sort.
+        // If it is, args.sortCols will have an array of {sortCol:..., sortAsc:...} objects.
+        // If not, the sort column and direction will be in args.sortCol & args.sortAsc.
+
+        // We'll use a simple comparer function here.
+        var comparer = function(a, b) {
+            return (a[args.sortCol.field] > b[args.sortCol.field]) ? 1 : -1;
+        }
+
+        // Delegate the sorting to DataView.
+        // This will fire the change events and update the grid.
+        shipGridObj.dataView.sort(comparer, args.sortAsc);
+    })
 
 });
 });

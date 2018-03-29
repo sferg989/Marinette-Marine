@@ -162,10 +162,8 @@ $( document ).ready(function() {
 
 
     var shipCols      = gridColumns.cols;
-
-    var grid1_options       = gridOptions.gridOptions;
-
-    var shipGridObj         = grid.createGrid("shipGrid", shipCols, grid1_options);
+    var grid1_options = gridOptions.gridOptions;
+    var shipGridObj   = grid.createGrid("shipGrid", shipCols, grid1_options);
     shipGridObj.grid.registerPlugin(new Slick.AutoTooltips({
         enableForCells      : true,
         enableForHeaderCells: false,

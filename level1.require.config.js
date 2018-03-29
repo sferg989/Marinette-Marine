@@ -28,6 +28,7 @@ require.config({
         slickPager             : "../inc/lib/js/SlickGrid-master/controls/slick.pager",
         slickPagerFrozen       : "../inc/lib/js/SlickGrid-2.0-frozenRowsAndColumns/controls/slick.pager",
         slickRemotePager       : "../inc/lib/js/SlickGrid-master/plugins/slickgrid.remotepager",
+        slickdataviewFrozen    : "../inc/lib/js/SlickGrid-2.0-frozenRowsAndColumns/slick.dataview",
         slickGridFrozen        : "../inc/lib/js/SlickGrid-2.0-frozenRowsAndColumns/slick.grid",
         slickgrid              : "../inc/lib/js/SlickGrid-master/slick.grid",
         slickdataview          : "../inc/lib/js/SlickGrid-master/slick.dataview",
@@ -44,7 +45,8 @@ require.config({
         firebugx               : "../inc/lib/js/SlickGrid-master/lib/firebugx",
         slickCellRangeSelector : "../inc/lib/js/SlickGrid-master/plugins/slick.cellrangeselector",
         slickColumnPicker      : "../inc/lib/js/SlickGrid-master/controls/slick.columnpicker",
-        slickHeaderBtn         : "../inc/lib/js/SlickGrid-master/plugins/slick.headerbuttons"
+        slickHeaderBtn         : "../inc/lib/js/SlickGrid-master/plugins/slick.headerbuttons",
+        slickHeaderBtnFrozen   : "../inc/lib/js/SlickGrid-2.0-frozenRowsAndColumns/plugins/slick.headerbuttons"
         //totalDataView         : "../../inc/lib/js/slickgrid-totals-plugin-master/src/TotalsDataView",
         //totalPlugin         : "../../inc/lib/js/slickgrid-totals-plugin-master/src/TotalsPlugin"
     },
@@ -55,7 +57,7 @@ require.config({
         jquery                 : {exports: '$'},
         underscore             : {exports: '_'},
         jqueryui               : ['jquery'],
-        jQueryMouseWheel       : ['jquery'],
+        jQueryMouseWheel       : ["jqueryPlugin",'jquery'],
         slickColumnPicker      : ['jquery'],
         slickCellRangeDecorator: ['jquery'],
         cellSelectionModel     : ['jquery', 'slickCellRangeSelector', 'slickCellRangeDecorator'],
@@ -74,6 +76,7 @@ require.config({
         slickRowSelectionFrozen: ['jquery'],
         slickRowSelection      : ['jquery'],
         slickHeaderBtn         : ["jqueryPlugin",'jquery'],
+        slickHeaderBtnFrozen   : ["jqueryPlugin",'jquery'],
         slickFormatters        : ['jquery'],
         bootstrapJS            : ['jquery'],
         bootstrap33            : ['jquery'],
@@ -81,7 +84,8 @@ require.config({
         slickcore              : ['jqueryui'],
         slickgrid              : ['slickcore', 'dragevent', 'dropevent', 'underscore'],
         slickGridFrozen        : ['slickcore', 'dragevent', 'dropevent', 'underscore'],
-        slickdataview          : ['slickgrid']
+        slickdataview          : ['slickgrid'],
+        slickdataviewFrozen    : ['slickgrid']
 /*        totalDataView    : ['jquery'],
         totalPlugin     : ['jquery']*/
     }

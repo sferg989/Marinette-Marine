@@ -1,9 +1,23 @@
 <?php
 include("mmev.inc.php");
-
 //session_start();
-
+function createLink2Db($schema){
+    $user     = "steve";
+    $password = "all4him";
+    $link = mysqli_connect("localhost", $user, $password, $schema);
+    return $link;
+}
 function dbCall($sql,$schema="fmm_evms",$server="localhost"){
+
+    $user     = "steve";
+    $password = "all4him";
+    $db = ADONewConnection('mysql');
+    $db->Connect($server, $user, $password, $schema);
+
+    $result = $db->Execute($sql);
+    return $result;
+}
+function dbCallZorro($sql,$schema="fmm_evms",$server="10.102.9.10"){
 
     $user     = "steve";
     $password = "all4him";
@@ -51,6 +65,17 @@ function dbCallFortis($sql){
     $db = ADONewConnection('odbc_mssql');
 
     $dsn = "Driver={SQL Server};Server=mmcsqlapp;Database=Marinette_Marine;";
+//declare the SQL statement that will query the database
+    $db->Connect($dsn);
+    $db->SetFetchMode(3);
+    $result = $db->Execute($sql);
+    return $result;
+}
+function dbCallK2($sql){
+
+    $db = ADONewConnection('odbc_mssql');
+
+    $dsn = "Driver={SQL Server};Server=mmcecmsql1;Database=engineering;";
 //declare the SQL statement that will query the database
     $db->Connect($dsn);
     $db->SetFetchMode(3);
@@ -634,8 +659,10 @@ function formatNumber($number){
 function formatNumber4decNoComma($number){
     $no_comma = str_replace(",", "", $number);
     $no_sign = str_replace("$", "", $no_comma);
+    $no_paran = str_replace("(", "-", $no_sign);
+    $no_right_paran = str_replace(")", "", $no_paran);
 
-    $value    = number_format($no_sign, 4, ".", "");
+    $value    = number_format($no_right_paran, 4, ".", "");
     if($value ==""){
         $value = 0;
     }
@@ -725,6 +752,11 @@ function deleteFromTable($schema, $table,$field, $value)
     $sql = "delete from $schema.$table where $field = '$value'";
     $junk = dbCall($sql,$schema);
 }
+function deleteFromTableIN($schema, $table,$field, $value)
+{
+    $sql = "delete from $schema.$table where $field in($value)";
+    $junk = dbCall($sql,$schema);
+}
 function deleteFromTableNotLike($schema, $table,$field, $value)
 {
     $sql = "delete from $schema.$table where $field not like '%$value%'";
@@ -765,6 +797,18 @@ function getListOfFileNamesInDirectory($directory){
         $files[] = $file;
     }
     return $files;
+}
+
+
+function returnCobraProgram($ship_code){
+    if(strlen($ship_code)==3 or strlen($ship_code)==7)
+    {
+        $ship_code = "0".$ship_code;
+    }
+    if($ship_code =="0471"){
+        $ship_code = "0471-";
+    }
+    return $ship_code;
 }
 function currentRPTPeriod(){
     $day = date("d");
@@ -1402,4 +1446,119 @@ function array_debug($my_array,$return_as_var=false)
         print "</pre>";
     }
     return true;
+}
+
+function getRPTList($rpt_period, $num_periods){
+    $start_rpt = getStartRPTPeriod($rpt_period, $num_periods);
+    $rpt_period_string = "\"$start_rpt\",";
+
+    for ($i=1;$i<$num_periods;$i++){
+        $start_rpt = getNextRPTPeriod($start_rpt);
+        $rpt_period_string.="\"$start_rpt\",";
+    }
+    $rpt_period_string = substr($rpt_period_string, 0,-1);
+    return $rpt_period_string;
+}
+function updateCalendarSet($ship_code, $rpt_period)
+{
+    $prev_rpt_period        = getPreviousRPTPeriod($rpt_period);
+    $one_ahead_rpt_period   = getNextRPTPeriod($rpt_period);
+    $two_ahead_rpt_period   = getNextRPTPeriod($one_ahead_rpt_period);
+    $three_ahead_rpt_period = getNextRPTPeriod($two_ahead_rpt_period);
+    $four_ahead_rpt_period  = getNextRPTPeriod($three_ahead_rpt_period);
+    $five_ahead_rpt_period  = getNextRPTPeriod($four_ahead_rpt_period);
+    $six_ahead_rpt_period   = getNextRPTPeriod($five_ahead_rpt_period);
+
+    $prev_rpt_date    = getDateCobraWC($prev_rpt_period);
+    $cur_rpt_date     = getDateCobraWC($rpt_period);
+    $one_ahead_date   = getDateCobraWC($one_ahead_rpt_period);
+    $two_ahead_date   = getDateCobraWC($two_ahead_rpt_period);
+    $three_ahead_date = getDateCobraWC($three_ahead_rpt_period);
+    $four_ahead_date  = getDateCobraWC($four_ahead_rpt_period);
+    $five_ahead_date  = getDateCobraWC($five_ahead_rpt_period);
+    $six_ahead_date   = getDateCobraWC($six_ahead_rpt_period);
+
+    $field_data_array = array();
+
+    $field_data_array[$four_ahead_date]  = "PLAN 3";
+    $field_data_array[$three_ahead_date] = "PLAN 2";
+    $field_data_array[$two_ahead_date]   = "PLAN 1";
+    $field_data_array[$one_ahead_date]   = "FREEZE";
+    $field_data_array[$cur_rpt_date]     = "THISMONTH";
+    $field_data_array[$prev_rpt_date]    = "TODATE";
+    $wc= "";
+    foreach ($field_data_array as $key=>$value){
+        $wc.= "'$value',";
+    }
+    $wc = substr($wc, 0, -1);
+    $sql_plan_horizon = array();
+
+    $sql_plan_horizon[] = "update  FISCDETL  set  FIELD06 = '', FLAG06 = ''  where  FISCFILE = '$ship_code' and FIELD06 in ($wc)";
+    //print $sql;
+    foreach ($field_data_array as $key=>$value){
+        $sql_plan_horizon[] ="update  FISCDETL  set  FIELD06 = '$value',  FLAG06 = '*' where  FISCFILE = '$ship_code' and FSC_DATE  = '$key'";
+    }
+
+    $field_data_array = array();
+    $field_data_array[$prev_rpt_date] = "PREVIOUS";
+    $field_data_array[$cur_rpt_date] = "TODATE";
+    $wc= "";
+    foreach ($field_data_array as $key=>$value){
+        $wc.= "'$value',";
+    }
+    $wc = substr($wc, 0, -1);
+
+    $sql_plan_horizon[] = "update  FISCDETL  set  FIELD18 = '', FLAG18 = ''  where  FISCFILE = '$ship_code' and FIELD18 in ($wc)";
+    foreach ($field_data_array as $key=>$value){
+        $sql_plan_horizon[] ="update  FISCDETL  set  FIELD18 = '$value',  FLAG18 = '*' where  FISCFILE = '$ship_code' and FSC_DATE  = '$key'";
+    }
+
+    $field_data_array = array();
+    $req_value_1 = returnRequiredSetText($one_ahead_date);
+    $req_value_2 = returnRequiredSetText($two_ahead_date);
+    $req_value_3 = returnRequiredSetText($three_ahead_date);
+    $req_value_4 = returnRequiredSetText($four_ahead_date);
+    $req_value_5 = returnRequiredSetText($five_ahead_date);
+    $req_value_6 = returnRequiredSetText($six_ahead_date);
+    $field_data_array[$prev_rpt_date]   = "PREVIOUS";
+    $field_data_array[$cur_rpt_date]    = "TODATE";
+    $field_data_array[$one_ahead_date]  = $req_value_1;
+    $field_data_array[$two_ahead_date]  = $req_value_2;
+    $field_data_array[$three_ahead_date]= $req_value_3;
+    $field_data_array[$four_ahead_date] = $req_value_4;
+    $field_data_array[$five_ahead_date] = $req_value_5;
+    $field_data_array[$six_ahead_date]  = $req_value_6;
+    $wc= "";
+    foreach ($field_data_array as $key=>$value){
+        $wc.= "'$value',";
+    }
+    $wc = substr($wc, 0, -1);
+
+    $sql_plan_horizon[] = "update  FISCDETL  set  FIELD19 = '', FLAG19 = ''  where  FISCFILE = '$ship_code' and FLAG19 = '*'";
+    foreach ($field_data_array as $key=>$value){
+        $sql_plan_horizon[] ="update  FISCDETL  set  FIELD19 = '$value',  FLAG19 = '*' where  FISCFILE = '$ship_code' and FSC_DATE  = '$key'";
+    }
+    //array_debug($sql_plan_horizon);
+    return $sql_plan_horizon;
+}
+function getDateCobraWC($rpt_period){
+    $year    = intval(substr($rpt_period, 0, 4));
+    $month   = month2digit(substr($rpt_period, -2));
+    $end_day = getMonthEndDay($rpt_period);
+    $day     = month2digit($end_day);
+
+    $date = $year."-".$month."-".$day." 00:00:00.000";
+    return $date;
+}
+
+function returnRequiredSetText($date){
+    $year = substr($date, 0,4);
+    $month = month2digit(substr($date, 5,2));
+    print $month;
+    $dateObj            = DateTime::createFromFormat('!m', $month);
+    $month_letters = $dateObj->format('M');
+    $month_letters = strtoupper($month_letters);
+    $text = $month_letters." ".$year;
+    return $text;
+
 }

@@ -91,7 +91,7 @@ define(["slickEditors"],function(){
             name     : "buyer",
             field    : "buyer",
             width: 120
-        },];
+        }];
     return {
         cols   : cols
     };

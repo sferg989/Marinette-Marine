@@ -16,18 +16,6 @@ define(function(){
         });
 
     }
-    var approvePO = function (url, ajaxDataObj) {
-        $.ajax({
-            url     : url,
-            data    : ajaxDataObj,
-            success: function(data) {
-                return data;
-            },
-        }).done(function (data){
-            return data;
-        });
-
-    }
     var excelExport = function (url, ajaxDataObj,excelExportCallBack) {
         $.ajax({
             url     : url,
@@ -41,24 +29,8 @@ define(function(){
         });
 
     }
-    var reloadFortis = function (url, ajaxDataObj, fortisCB) {
-        $.ajax({
-            url     : url,
-            data    : ajaxDataObj,
-            success: function(data) {
-                return data;
-            },
-        }).done(function (data){
-            fortisCB(data);
-            return data;
-        });
-
-    }
-
     return {
         getData     : getData,
-        approvePO   : approvePO,
-        reloadFortis: reloadFortis,
         excelExport : excelExport
     };
 })/**

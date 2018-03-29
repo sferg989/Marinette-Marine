@@ -56,6 +56,10 @@
         }
 
 
+        #shipGrid .slick-row.active .slick-cell {
+            background-color: #7FDBFF;
+            font-weight: bold;
+        }
         .slick-viewport { overflow-x: auto !important; overflow-y: auto !important; }
 
         .tabs-left, .tabs-right {
@@ -94,16 +98,17 @@
             <!-- required for floating -->
             <!-- Nav tabs -->
             <ul class="nav nav-tabs tabs-left">
-                <li><a href="#home" data-toggle="tab">Material Report Upload</a></li>
-                <li class="active"><a href="#profile" data-toggle="tab">Build MEAC Tables</a></li>
-                <li><a href="#messages" data-toggle="tab">Messages</a></li>
-                <li><a href="#settings" data-toggle="tab">Settings</a></li>
+                <li class="active"><a href="#home" data-toggle="tab">Material Report Upload</a></li>
+                <li><a href="#profile" data-toggle="tab">Build MEAC Tables</a></li>
+                <li><a href="#messages" data-toggle="tab">Build WP JOINED Tables</a></li>
+                <li><a href="#swbs_summary" data-toggle="tab">Build SWBS SUMMARY</a></li>
+                <li ><a href="#settings" data-toggle="tab">DATA STATUS/Download MEAC</a></li>
             </ul>
         </div>
         <div class="col-xs-10">
             <!-- Tab panes -->
             <div class="tab-content">
-                <div class="tab-pane" id="home">
+                <div class="tab-pane active" id="home">
                         <div id="div_file_upload_div" class="col-md-12">
                             <div class="row">
                                 <div class="col-md-2">
@@ -146,34 +151,126 @@
                                     <input type="submit" id="submit_open_buy" name="submit_open_buy" value="Upload File Now" class="col-md-3">
                             </div>
                             </form>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <button   id="build_meac_tables" name="build_meac_tables" class="btn-success"> LOAD MEAC Tables</button>
+                                </div>
+                            </div>
                         </div>
                     <div id = 'status'></div>
                 </div>
-                <div class="tab-pane active" id="profile">
+                <div class="tab-pane" id="profile">
                     <div class="row">
-                        <label for="ship_code_multi">
+                        <label for="ship_code_cbm">
 
                         </label>
                         <div class="col-md-3">
-                            <select id="ship_code_multi" style="display:none" class="ship_code_multi" placeholder="HULL"
-                                    multiple="multiple"></select>
+                            <select id="ship_code_cbm" style="display:none" class="ship_code_cbm" placeholder="HULL" multiple="multiple"></select>
                         </div>
                         <div class="col-md-3">
                             <button   id="load_cbm" name="load_cbm" class="btn-success"> LOAD CBM </button>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col-md-3"></div>
+                        <div class="col-md-3">
+                            <button   id="load_buyer_responsible" name="load_buyer_responsible" class="btn-success"> LOAD Buyer Responsible </button>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+
+                        <div class="col-md-3"></div>
+                        <div class="col-md-3">
+                            <button   id="inv_trans" name="inv_trans" class="btn-success"> LOAD INV Transfers/Fortis Data </button>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+
+                        <div class="col-md-3"></div>
+                        <div class="col-md-3">
+                            <button   id="cobra_codes" name="cobra_codes" class="btn-success"> LOAD Cobra Codes</button>
+                        </div>
+                    </div>
 
 
-                    This is The Profile TAB
-                    1.  Build CBM
-                    2.  Buyer Reponsible.
-                    3.  EFDB Baan
-                    4.  Correct Open Buy Item Shortage
-                    5.  build WP Tables.
-                    6. Final SWBS Summary Table
                 </div>
-                <div class="tab-pane" id="messages">Messages Tab.</div>
-                <div class="tab-pane" id="settings">Settings Tab.</div>
+                <div class="tab-pane" id="messages">
+
+                    <div class="col-md-3">
+                        <select id="ship_code_wp_table" style="display:none" class="ship_code_wp_table" placeholder="HULL" multiple="multiple"></select>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <button   id="load_gl" name="load_gl" class="btn-success"> LOAD WP GL</button>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+
+                        <div class="col-md-3"></div>
+                        <div class="col-md-3">
+                            <button   id="load_open_po" name="load_open_po" class="btn-success"> LOAD WP Open PO</button>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+
+                        <div class="col-md-3"></div>
+                        <div class="col-md-3">
+                            <button   id="wp_committed_po" name="wp_committed_po" class="btn-success"> LOAD WP Committed PO</button>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+
+                        <div class="col-md-3"></div>
+                        <div class="col-md-3">
+                            <button   id="wp_open_buy" name="wp_open_buy" class="btn-success"> LOAD WP Open Buy </button>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+
+                        <div class="col-md-3"></div>
+                        <div class="col-md-3">
+                            <button   id="wp_ebom" name="wp_ebom" class="btn-success"> LOAD WP EBOM</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane" id="swbs_summary">CHeck if all requirements are met, and build the Part level MEAC Table.
+                    <div class="row">
+                        <div class="col-md-3"><select id="ship_code_swbs_summary" style="display:none" class="ship_code_status_grid" placeholder="HULL" multiple="multiple"></select></div>
+                        <button   id="build_swbs_table" name="build_swbs_table" class="btn-success"> LOAD SWBS Summary Table</button>
+                    </div>
+                    <br>
+                    <div class="row">
+
+                    </div>
+                </div>
+                <div class="tab-pane" id="settings">Check if all requirements are met, and download Part level MEAC.
+                    <div class="row">
+                        <div class="col-md-3"><select id="ship_code_status_grid" style="display:none" class="ship_code_status_grid" placeholder="HULL" multiple="multiple"></select></div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div id = "shipGrid"></div>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                    <br>
+                    <div class="row">
+
+                        <div class="col-md-6"></div>
+                        <div class="col-md-3">
+                            <button   id="build_meac" name="build_meac" class="btn-success"> BUILD MEAC FILE</button>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
         <div class="clearfix"></div>

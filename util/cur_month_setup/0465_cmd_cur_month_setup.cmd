@@ -1,0 +1,1 @@
+cmd /k "C:\"program files (x86)"\deltek\"Cobra"\cobra.api.exe script:"C:\xampp\htdocs\fmg\util\cur_month_setup\0465_bat_cur_month_setup.BAT""

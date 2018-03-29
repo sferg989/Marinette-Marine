@@ -1,9 +1,16 @@
 /**
  * Created by fs11239 on 2/23/2017.
  */
-define(["jquery", "bootbox"],function($, bootbox){
+define([
+    "jquery",
+    "bootbox",
+    "lib/components/data"],function($, bootbox, dataService){
     var loadingIndicator = null;
     var url = "lib/php/grid.php?control=upload_v2";
+    function buildMeacTablesCB(data) {
+        loadingIndicator.fadeOut();
+    }
+
     $("#submit_open_po").click(function(){
         var form         = document.getElementById('file-form');
         var fileSelect   = document.getElementById('open_po');
@@ -63,7 +70,6 @@ define(["jquery", "bootbox"],function($, bootbox){
 
         });
     });
-
     $("#submit_committed_po").click(function(){
         var form         = document.getElementById('file-form');
         var fileSelect   = document.getElementById('committed_po');
@@ -237,6 +243,29 @@ define(["jquery", "bootbox"],function($, bootbox){
         xhr.send(formData, function (){
 
         });
+    });
+    $("#build_meac_tables").click(function(){
+
+        var ship_code          = $("#ship_code").val();
+        var rpt_period         = $("#rpt_period").val();
+        if (rpt_period == null) {
+            bootbox.alert("Please Select a Ship")
+            return false;
+        }
+        var ajaxDataObj        = {};
+        ajaxDataObj.control    = "build_meac_tables";
+        ajaxDataObj.ship_code  = ship_code;
+        ajaxDataObj.rpt_period = rpt_period;
+        if (!loadingIndicator) {
+            loadingIndicator = $("<span class='loading-indicator'><label>Loading...</label></span>").appendTo(document.body);
+            var $g = $("#div_file_upload_div");
+            loadingIndicator
+                .css("position", "absolute")
+                .css("top", $g.position().top + $g.height() / 2 - loadingIndicator.height() / 2)
+                .css("left", $g.position().left + $g.width() / 2 - loadingIndicator.width() / 2);
+        }
+        loadingIndicator.show();
+        dataService.buildMEACTables(ajaxDataObj,buildMeacTablesCB);
     });
 
 })/**

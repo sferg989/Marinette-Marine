@@ -56,40 +56,54 @@ define(function(){
         }
 
     }
-    function shipFormatter(row, cell, value, columnDef, dataContext){
+    var shipFormatter = function shipFormatter(row, cell, value, columnDef, dataContext){
         return "<p  style='text-align: center; font-weight:bold;'>" + value+"</p>";
     }
     var cols = [
         {
-            id      : "ship_code",
-            name    : "HULL",
-            field   : "ship_code",
-            formatter : shipFormatter
-        },{
             id       : "wp",
             name     : "wp",
-            field    : "wp"
+            field    : "wp",
+            sortable : true
 
         },{
             id       : "prev_eac",
-            name     : "PREV EAC",
+            name     : "TOOL EAC",
             field    : "prev_eac",
-            formatter : myFormatterCurrency
+            formatter : myFormatterCurrency,
+            sortable : true
+
+        },{
+            id       : "cur_cobra_eac",
+            name     : "COBRA EAC",
+            field    : "cur_cobra_eac",
+            formatter : myFormatterCurrency,
+            sortable : true
 
         },{
             id       : "new_eac",
             name     : "Proposed EAC",
             field    : "new_eac",
-            formatter : myFormatterCurrency
+            formatter : myFormatterCurrency,
+            sortable : true
 
         },{
-            id       : "delta",
-            name     : "DELTA",
-            field    : "delta",
-            formatter : deltaCurrencyFormatter
+            id        : "delta",
+            name      : "TOOL VS PROPOSED",
+            field     : "delta",
+            formatter : deltaCurrencyFormatter,
+            sortable  : true
+
+        },{
+            id        : "tool_cobra_delta",
+            name      : "TOOL VS COBRA",
+            field     : "tool_cobra_delta",
+            formatter : deltaCurrencyFormatter,
+            sortable  : true
 
         }];
     return {
-        cols   : cols
+        cols   : cols,
+        shipFormatter : shipFormatter
     };
 })

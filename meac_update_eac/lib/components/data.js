@@ -24,7 +24,19 @@ define(function(){
                 return data;
             },
         }).done(function (data){
-            updateEACCB()
+            updateEACCB(data)
+        });
+
+    }
+    var insertData = function (url, ajaxDataObj, insertDataCB) {
+        $.ajax({
+            url     : url,
+            data    : ajaxDataObj,
+            success: function(data) {
+                return data;
+            },
+        }).done(function (data){
+            insertDataCB(data)
         });
 
     }
@@ -47,6 +59,7 @@ define(function(){
     return {
         getData    : getData,
         updateEAC  : updateEAC,
+        insertData : insertData,
         excelExport: excelExport
     };
 })/**

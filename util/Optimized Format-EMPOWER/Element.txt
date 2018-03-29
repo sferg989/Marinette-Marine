@@ -1,0 +1,117 @@
+V51	postgres	Element													
+n	n	n	s	s	n	s	s	s	n	s	s	s	s	n	s
+ElemID	ContrID	StruID	WbsNum	ElemDesc	ParentID	ElemType	Evm	LongDesc	NAFlag	ProjOff	OffSym	OffExt	RiskLevel	CtrID	Email
+1	1	1	P	PISCES				PISCES	0				L	1	
+2	1	1	1	1.0 BASE PERIOD: INFLUENZA/CBRN - MODULE DEVELOPMENT	1			1.0 BASE PERIOD: INFLUENZA/CBRN - MODULE DEVELOPMENT	0				L	1	
+3	1	1	1.1	Project I love Management	2			Project I love Management	0				L	1
+4	1	1	1.1.1	   WBS1.1 Project Management 	3	CA		   WBS1.1 Project Management 	0				L	1	
+5	1	1	1.1.1.1	      Ongoing Project which is cool Management	4	WP	LOE	      Ongoing which is cool Project Management	0				L	1
+6	1	1	1.1.1.2	      Project Management Administration	4	WP	LOE	      Project Management Administration	0				L	1	
+7	1	1	1.1.1.3	Planning Pack 	4	PP		Planning Pack 	0				L	1	
+8	1	1	1.2	BioChemistry	2			BioChemistry	0				L	1	
+9	1	1	1.2.1	Pathogen Capture System (PCS)	8			Pathogen Capture System (PCS)	0				L	1	
+10	1	1	1.2.1.1	PCS CLIN 1	9	CA		PCS CLIN 1	0				L	1	
+11	1	1	1.2.1.1.1	Analyte and Reagent Selection 	10	WP	PCT	Analyte and Reagent Selection 	0				L	1	
+12	1	1	1.2.1.1.2	Capture Parameter Study	10	WP	PCT	Capture Parameter Study	0				L	1	
+13	1	1	1.2.1.1.3	Titration Study with spiked samples	10	WP	PCT	Titration Study with spiked samples	0				L	1	
+14	1	1	1.2.1.1.4	Planning Pack 	10	PP		Planning Pack 	0				L	1	
+15	1	1	1.2.1.2	PCS CLIN 2	9	CA		PCS CLIN 2	0				L	1	
+16	1	1	1.2.1.2.1	" Develop manual workflow with specific, limited target capture after the lysis step of standard PCS sample prep"	15	WP	PCT	" Develop manual workflow with specific, limited target capture after the lysis step of standard PCS sample prep"	0				L	1	
+17	1	1	1.2.1.2.2	Demonstrate manual workflow: basic end-to-end tests with infectious disease spiked samples	15	WP	PCT	Demonstrate manual workflow: basic end-to-end tests with infectious disease spiked samples	0				L	1	
+18	1	1	1.2.1.2.3	Demonstrate end-to-end tests on non-integrated modules using blood specimens spiked with bacteria	15	WP	PCT	Demonstrate end-to-end tests on non-integrated modules using blood specimens spiked with bacteria	0				L	1	
+19	1	1	1.2.1.2.4	Planning Pack 	15	PP		Planning Pack 	0				L	1	
+20	1	1	1.2.2	Sequencing Template Preperation 	8			Sequencing Template Preperation 	0				L	1	
+21	1	1	1.2.2.1	Library Prep 	20	CA		Library Prep 	0				L	1	
+22	1	1	1.2.2.1.1	Demonstrate manual workflow: basic end-to-end tests with infectious disease spiked samples	21	WP	PCT	Demonstrate manual workflow: basic end-to-end tests with infectious disease spiked samples	0				L	1	
+23	1	1	1.2.2.1.2	"Demonstrate manual workflow, backup method: basic end-to-end tests with infectious disease spiked samples"	21	WP	PCT	"Demonstrate manual workflow, backup method: basic end-to-end tests with infectious disease spiked samples"	0				L	1	
+24	1	1	1.2.2.1.3	Demonstrate end-to-end tests on non-integrated modules using blood specimens spiked with bacteria	21	WP	PCT	Demonstrate end-to-end tests on non-integrated modules using blood specimens spiked with bacteria	0				L	1	
+25	1	1	1.2.2.1.4	Demonstrate key influenze assay steps	21	WP	PCT	Demonstrate key influenze assay steps	0				L	1	
+26	1	1	1.2.2.1.5	Planning Pack 	21	PP		Planning Pack 	0				L	1	
+27	1	1	1.2.2.2	Clonal Applification 	20	CA		Clonal Applification 	0				L	1	
+28	1	1	1.2.2.2.1	Demonstrate manual workflow : basic end-to-end tests with infectious disease spiked samples	27	WP	PCT	Demonstrate manual workflow : basic end-to-end tests with infectious disease spiked samples	0				L	1	
+29	1	1	1.2.2.2.2	Demonstrate end-to-end tests on non-integrated modules using blood specimens spiked with bacteria	27	WP	PCT	Demonstrate end-to-end tests on non-integrated modules using blood specimens spiked with bacteria	0				L	1	
+30	1	1	1.2.2.2.3	Planning Pack 	27	PP		Planning Pack 	0				L	1	
+31	1	1	1.2.2.3 	BioInformatics Pre-seq template generation	20	CA		BioInformatics Pre-seq template generation	0				L	1	
+32	1	1	1.2.2.3.1	Panel Structure & Assay Design 	31	WP	PCT	Panel Structure & Assay Design 	0				L	1	
+33	1	1	1.2.2.3.2	Influenza 	31	WP	PCT	Influenza 	0				L	1	
+34	1	1	1.2.2.3.3	Assay Design Expertise 	31	WP	PCT	Assay Design Expertise 	0				L	1	
+35	1	1	1.2.2.3.4	Planning Pack 	31	PP		Planning Pack 	0				L	1	
+36	1	1	1.2.2.3.5	Planning Pack Clin 2	31	WP	PCT	Planning Pack Clin 2	0				L	1	
+37	1	1	1.2.3	Sequencing	8	CA		Sequencing	0				L	1	
+38	1	1	1.2.3.1	Demonstrate manual workflow : basic end-to-end tests with infectious disease spiked samples	37	WP	PCT	Demonstrate manual workflow : basic end-to-end tests with infectious disease spiked samples	0				L	1	
+39	1	1	1.2.3.2	Demonstrate end-to-end tests on non-integrated modules using blood specimens spiked with bacteria	37	WP	PCT	Demonstrate end-to-end tests on non-integrated modules using blood specimens spiked with bacteria	0				L	1	
+40	1	1	1.2.3.3	Demonstrate key influenza steps	37	WP	PCT	Demonstrate key influenza steps	0				L	1	
+41	1	1	1.2.3.4	Planning Pack 	37	PP		Planning Pack 	0				L	1	
+42	1	1	1.2.3.5	Enzyme Supply (MATL)	37	WP	PCT	Enzyme Supply (MATL)	0				L	1	
+43	1	1	1.3	Cartridge	2			Cartridge	0				L	1	
+44	1	1	1.3.1	Cartridge	43	CA		Cartridge	0				L	1	
+45	1	1	1.3.1.1	Coupon Development 	44	WP	PCT	Coupon Development 	0				L	1	
+46	1	1	1.3.1.2	Alpha Prototype Cartridge Design	44	WP	PCT	Alpha Prototype Cartridge Design	0				L	1	
+47	1	1	1.3.1.3	Planning Pack 	44	pp		Planning Pack 	0				L	1	
+48	1	1	1.3.1.4	Cartridge Componets for Testing 	44	WP	LOE	Cartridge Componets for Testing 	0				L	1	
+49	1	1	1.4	Instrument	2			Instrument	0				L	1	
+50	1	1	1.4.1	Instrument	49	CA		Instrument	0				L	1	
+51	1	1	1.4.1.1	Coupon Fixture Development 	50	WP	PCT	Coupon Fixture Development 	0				L	1	
+52	1	1	1.4.1.2	Breadboard prototype (1.4.2)	50	WP	LOE	Breadboard prototype (1.4.2)	0				L	1	
+53	1	1	1.4.1.3	Alpha instrument initial development (1.4.3 + 1.4.4)	50	WP	PCT	Alpha instrument initial development (1.4.3 + 1.4.4)	0				L	1	
+54	1	1	1.4.1.4	Alpha instrument initial manufacturing (1.4.4)	50	WP	PCT	Alpha instrument initial manufacturing (1.4.4)	0				L	1	
+55	1	1	1.4.1.5	Planning Pack 	50	PP		Planning Pack 	0				L	1	
+56	1	1	1.5	Integrated Circuit (IC) Design and software	2			Integrated Circuit (IC) Design and software	0				L	1	
+57	1	1	1.5.1	Integrated Circuit (IC) Design and software	56	CA		Integrated Circuit (IC) Design and software	0				L	1	
+58	1	1	1.5.1.1	Foundry selection & well development 	57	WP	PCT	Foundry selection & well development 	0				L	1	
+59	1	1	1.5.1.2	IC Top-Level	57	WP	PCT	IC Top-Level	0				L	1	
+60	1	1	1.5.1.3	Analog Design 	57	WP	PCT	Analog Design 	0				L	1	
+61	1	1	1.5.1.4	Digtital Design	57	WP	PCT	Digtital Design	0				L	1	
+62	1	1	1.5.1.5	Planning Pack 	57	PP		Planning Pack 	0				L	1	
+63	1	1	1.5.1.6	PCB Board	57	WP	LOE	PCB Board	0				L	1	
+64	1	1	1.5.1.7	Custom Chips	57	WP	LOE	Custom Chips	0				L	1	
+65	1	1	1.5.2	Production Test Development	56	CA		Production Test Development	0				L	1	
+66	1	1	1.5.2.1	Test Development	65	WP	PCT	Test Development	0				L	1	
+67	1	1	1.5.3	Analysis Software 	56	CA		Analysis Software 	0				L	1	
+68	1	1	1.5.3.1	Analysis Software  (exc. Bioinformatics)	67	WP	PCT	Analysis Software  (exc. Bioinformatics)	0				L	1	
+69	1	1	1.5.3.2	Analysis Software (Bioinformatics)	67	WP	PCT	Analysis Software (Bioinformatics)	0				L	1	
+70	1	1	1.5.3.3	Planning Pack 	67	PP		Planning Pack 	0				L	1	
+71	1	1	1.6	Module and Integrated System Testing	2			Module and Integrated System Testing	0				L	1	
+72	1	1	1.6.1	Bench & Module Testing	71	CA		Bench & Module Testing	0				L	1	
+73	1	1	1.6.1.1	Demonstrate key steps of influenza assay	72	WP	LOE	Demonstrate key steps of influenza assay	0				L	1	
+74	1	1	1.6.1.2	End-to-end platform testing on modules	72	WP	LOE	End-to-end platform testing on modules	0				L	1	
+75	1	1	1.6.1.3	Planning Pack 	72	PP		Planning Pack 	0				L	1	
+76	1	1	1.6.2	Breadboard System Proof of Concept	71	CA		Breadboard System Proof of Concept	0				L	1	
+77	1	1	1.6.2.1	Breadboard system proof of concept testing	76	WP	LOE	Breadboard system proof of concept testing	0				L	1	
+78	1	1	1.6.2.2	Planning Pack 	76	PP		Planning Pack 	0				L	1	
+79	1	1	1.6.3	System Integration	71	CA		System Integration	0				L	1	
+80	1	1	1.6.3.1	System Workflow and Process Development (Bacteria and Flu)	79	WP	LOE	System Workflow and Process Development (Bacteria and Flu)	0				L	1	
+81	1	1	1.6.3.2	Technical Risk Register	79	WP	LOE	Technical Risk Register	0				L	1	
+82	1	1	1.6.3.3	PCS (Sample prep)	79	WP	LOE	PCS (Sample prep)	0				L	1	
+83	1	1	1.6.3.4	Sequencing Process	79	WP	LOE	Sequencing Process	0				L	1	
+84	1	1	1.6.3.5	Sequencing Test (Bacteria and Flu)	79	WP	LOE	Sequencing Test (Bacteria and Flu)	0				L	1	
+85	1	1	1.6.3.6	Software Development (Fixture and Instrument Control - Bacteria and Flu)	79	WP	LOE	Software Development (Fixture and Instrument Control - Bacteria and Flu)	0				L	1	
+86	1	1	1.6.3.7	Signal Processing (Bacteria and Flu)	79	WP	LOE	Signal Processing (Bacteria and Flu)	0				L	1	
+87	1	1	1.6.3.8	Test output Algorithm Development (Bacteria and Flu)	79	WP	LOE	Test output Algorithm Development (Bacteria and Flu)	0				L	1	
+88	1	1	1.6.3.9	Planning Pack 	79	PP	LOE	Planning Pack 	0				L	1	
+89	1	1	1.7	Regulatory	2			Regulatory	0				L	1	
+90	1	1	1.7.1	Regulatory	89	CA		Regulatory	0				L	1	
+91	1	1	1.7.1.1	Regulatory requirements	90	WP	LOE	Regulatory requirements	0				L	1	
+92	1	1	1.7.1.2	FDA Consultations	90	WP	LOE	FDA Consultations	0				L	1	
+93	1	1	1.7.1.3	Planning Pack 	90	PP	LOE	Planning Pack 	0				L	1	
+94	1	1	1.8	Clinical Requirements and Commercialisation	2			Clinical Requirements and Commercialisation	0				L	1	
+95	1	1	1.8.1	Clinical Requirements and Commercialisation	94			Clinical Requirements and Commercialisation	0				L	1	
+96	1	1	1.8.1.1	Clinical Requirements 	95	CA		Clinical Requirements 	0				L	1	
+97	1	1	1.8.1.1.1	Contextual Inquiary	96	WP	PCT	Contextual Inquiary	0				L	1	
+98	1	1	1.8.1.1.2	User Research	96	WP	PCT	User Research	0				L	1	
+99	1	1	1.8.1.1.3	Planning Pack 	96	PP		Planning Pack 	0				L	1	
+100	1	1	1.8.2.1	Commercialisation Plans	95	CA		Commercialisation Plans	0				L	1	
+101	1	1	1.8.2.1.1	Commercialisation Plans	100	WP	LOE	Commercialisation Plans	0				L	1	
+102	1	1	1.8.2.1.2	Planning Pack 	100	PP	LOE	Planning Pack 	0				L	1	
+103	1	1	2	2.0 BASE PERIOD: INFLUENZA/CBRN - MODULE DEVELOPMENT 	1			2.0 BASE PERIOD: INFLUENZA/CBRN - MODULE DEVELOPMENT 	0				L	1	
+104	1	1	2.1	Project Management	103			Project Management	0				L	1	
+105	1	1	2.1.1		104				0				L	1	
+106	1	1	2.1.1.1	Ongoing Project Management 	105	WP	LOE	Ongoing Project Management 	0				L	1	
+107	1	1	2.1.1.2	Project Management Administration	105	WP	LOE	Project Management Administration	0				L	1	
+108	1	1	2.1.1.3	Planning Pack 	105	PP		Planning Pack 	0				L	1	
+109	1	1	2.1.1.4	Travel	105	WP	PCT	Travel	0				L	1	
+110	1	3	[OH]	OVERHEAD	1			OVERHEAD	0				L	1	
+111	1	3	[COM]	COST OF MONEY	1			COST OF MONEY	0				L	1	
+112	1	3	[G&A]	GEN & ADMIN	1			GEN & ADMIN	0				L	1	
+113	1	3	[UB]	UNDIST BUDGET	1			UNDIST BUDGET	0				L	1	
+114	1	3	[MR]	MGT RESERVE	1			MGT RESERVE	0				L	1	

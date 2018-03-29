@@ -120,17 +120,20 @@ define(["slickEditors"],function(){
             id       : "wp",
             name     : "WP",
             field    : "wp",
+            sortable: true,
             width: 200
 
         },{
             id       : "item",
             name     : "item",
             field    : "item",
-            width: 200
+            width: 200,
+            sortable: true
         },{
             id       : "ecp_rea",
             name     : "ECP REA",
             field    : "ecp_rea",
+            sortable: true,
             width: 120
         },{
             id       : "desc",
@@ -151,75 +154,87 @@ define(["slickEditors"],function(){
             id       : "line",
             name     : "line",
             field    : "line",
-            width: 65
+            width: 65,
+            sortable: true
         },{
             id       : "vendor",
             name     : "vendor",
             field    : "vendor",
-            width: 250
+            width: 250,
+            sortable: true
         },{
             id       : "NEW PO qty",
             name     : "ORDER QTY",
             field    : "order_qty",
             formatter : myFormatter,
-            width: 65
+            width: 65,
+            sortable: true
         },{
             id       : "c_unit_price",
             name     : "Unit Price",
             field    : "c_unit_price",
             formatter : myFormatterCurrency,
-            width: 80
+            width: 80,
+            sortable: true
         },{
             id       : "c_amnt",
             name     : "ORDER $",
             field    : "c_amnt",
             formatter : myFormatterCurrency,
-            width: 80
+            width: 80,
+            sortable: true
         },{
             id       : "ebom",
             name     : "EBOM",
             field    : "ebom",
             formatter : myFormatter,
-            width: 65
+            width: 65,
+            sortable: true
         },{
             id       : "c_qty",
             name     : "QTY (w TRANS)",
             field    : "c_qty",
             formatter : myFormatter,
-            width: 80
+            width: 80,
+            sortable: true
         },{
             id       : "meac_re_est_etc",
             name     : "Target",
             field    : "meac_re_est_etc",
             formatter : myFormatterCurrencyReEST,
-            width: 80
+            width: 80,
+            sortable: true
         },{
             id       : "etc_diff",
             name     : "DIFF",
             field    : "etc_diff",
             formatter : myFormatterCurrencyDIFF,
-            width: 80
+            width: 80,
+            sortable: true
         }, {
             id      : "reason_for_change",
             name    : "Reason",
             field   : "reason_for_change",
             width: 250,
             formatter : reasonForChangeFormatter,
-            editor  : Slick.Editors.Text
+            editor  : Slick.Editors.Text,
+            sortable: true
         }, {
             id      : "explanation",
             name    : "Explanation",
             field   : "explanation",
             width: 250,
             formatter : explanationFormatter,
-            editor  : Slick.Editors.Text
+            editor  : Slick.Editors.Text,
+            sortable: true
         }, {
             id      : "other_notes",
             name    : "OTHER NOTES",
             field   : "other_notes",
             width: 250,
             formatter : explanationFormatter,
-            editor  : Slick.Editors.Text
+            editor  : Slick.Editors.Text,
+            sortable: true
         }];
     return {
         cols   : cols

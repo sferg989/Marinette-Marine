@@ -22,6 +22,9 @@ $g_path_to_util = "C:\\xampp\\htdocs\\fmg\\util\\";
 $g_path2BAT     = $g_path_to_util . "backup_scripts\\BAT\\";
 $g_path2CMD     = $g_path_to_util . "backup_scripts\\CMD\\";
 
+$g_path2BATCurMonthSetup     = $g_path_to_util . "cur_month_setup\\";
+$g_path2CMDCurMonthSetup     = $g_path_to_util . "cur_month_setup\\";
+
 $g_path2BATSQLUtil     = $g_path_to_util . "sql_util\\BAT\\";
 $g_path2CMDSQLUtil     = $g_path_to_util . "sql_util\\CMD\\";
 

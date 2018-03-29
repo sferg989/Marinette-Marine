@@ -5,8 +5,6 @@
  * Date: 4/13/2017
  * Time: 10:59 AM
  */
-include("inc.PHPExcel.php");
-
 function loadCOBRABCRLOGCurrentPeriod($ship_code, $rpt_period, $table_name){
     $year = intval(substr($rpt_period, 0, 4));
     $month = month2digit(substr($rpt_period, -2));
@@ -524,13 +522,113 @@ function getNextRefno($ship_code){
 }
 function getCAWPID($ship_code, $wp){
     $sql = "select CAWPID from cawp where program = '$ship_code' and wp = '$wp'";
+    //print $sql;
     $rs = dbCallCobra($sql);
     $cawpid = $rs->fields["CAWPID"];
     return $cawpid;
+}
+
+function getTotalActualsForMATLWP($ship_code){
+    if(strlen($ship_code)==3)
+    {
+        $ship_code = "0".$ship_code;
+    }
+    $sql = "
+        select
+            wp,
+            (sum(DIRECT) +
+            sum(GANDA)+
+            sum(SYSGA) +
+            sum(ODCNOGA)) a
+        from tphase t left join CAWP p
+        on t.PROGRAM = p.PROGRAM and t.CAWPID = p.CAWPID
+        where t.PROGRAM = '$ship_code'
+        and CLASS in ('Actual', 'EA', 'CA')
+          and (wp like '%matl%' or wp like '%odc%')
+    group by t.PROGRAM, p.WP
+    ";
+    $cobra_array = array();
+    $rs = dbCallCobra($sql);
+    while (!$rs->EOF)
+    {
+        $wp        = $rs->fields["wp"];
+        $a         = $rs->fields["a"];
+
+        $cobra_array[$wp] = $a;
+        $rs->MoveNext();
+    }
+    return $cobra_array;
 }
 function getWPFromCAWPID($ship_code, $cawpid){
     $sql = "select WP from cawp where program = '$ship_code' and CAWPID = $cawpid";
     $rs = dbCallCobra($sql);
     $wp = $rs->fields["WP"];
     return $wp;
+}
+
+function getTotalActualsODC($ship_code, $cawpid){
+    $sql = "
+    select
+  (sum(DIRECT) +
+ sum(GANDA)+
+ sum(SYSGA) +
+ sum(ODCNOGA)) sum
+        from tphase
+        where PROGRAM = '$ship_code'
+        and CAWPID =$cawpid
+        and CLASS in ('Actual', 'EA', 'CA')
+    group by CAWPID
+";
+
+    $rs = dbCallCobra($sql);
+    $a         = $rs->fields["sum"];
+    return $a;
+}
+function getODCFutureCost($ship_code, $cawpid){
+    $sql = "
+    select (sum(GANDA)+ sum(SYSGA) + sum(ODCNOGA)) sum from tphase where PROGRAM = '$ship_code' and CAWPID =$cawpid and CLASS = 'forecast' group by CAWPID
+    ";
+    $rs = dbCallCobra($sql);
+    $future_cost         = $rs->fields["sum"];
+    return $future_cost;
+}
+function getCUREAC($ship_code, $cawpid){
+    $sql = "select eac from CAWP where PROGRAM = '$ship_code' and CAWPID = $cawpid";
+    //print $sql;
+    $rs = dbCallCobra($sql);
+    $eac         = $rs->fields["eac"];
+    return $eac;
+}
+function getCURLFD($ship_code, $cawpid){
+    $sql = "select lfd from CAWP where PROGRAM = '$ship_code' and CAWPID = $cawpid";
+    //print $sql;
+    $rs = dbCallCobra($sql);
+    $lfd         = $rs->fields["lfd"];
+    return $lfd;
+}
+function getTotalNumberofForecastRecords($ship_code, $cawpid){
+    $sql = "
+        select count(*) as count 
+        from tphase 
+        where 
+        PROGRAM = '$ship_code' 
+        and CAWPID =$cawpid 
+        and CLASS = 'Forecast'
+";
+    $rs = dbCallCobra($sql);
+    $count         = $rs->fields["count"];
+    return $count;
+}
+function checkIFForecastRecordExists($ship_code, $cawpid){
+    $sql = "
+    select count(*) count 
+    from TPHASE 
+    where PROGRAM = '$ship_code' 
+    and CLASS = 'Forecast' 
+    and CAWPID = $cawpid 
+    GROUP BY PROGRAM, CAWPID
+    ";
+    $rs     = dbCallCobra($sql);
+    $count  = $rs->fields["count"];
+    return $count;
 }

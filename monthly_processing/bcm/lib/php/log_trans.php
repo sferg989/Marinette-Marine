@@ -52,6 +52,9 @@ if($control =="log_trans"){
             $year       = intval(substr($rpt_period, 0, 4));
             $month      = month2digit(substr($rpt_period, -2));
             $day        = getMonthEndDay($rpt_period);
+            $prev_rpt_period = getPreviousRPTPeriod($rpt_period);
+            $data  = returnPeriodData($ship_code, $prev_rpt_period, $rpt_period);
+            $cur_month_letters  = $data["cur_month_letters"];
 
             $month3digit = date("M");
             if($day<5){
@@ -64,7 +67,7 @@ if($control =="log_trans"){
             $bbl_date     = date("Y-m-d");
             $bbl_date     = "$bbl_date 00:00:00.000";
             $status_date  = "$year-$month-$day 00:00:00.000";
-            $log_comment  = "$ship_code $month3digit $year BCR $bcr";
+            $log_comment  = "$ship_code $cur_month_letters $year BCR $bcr";
             $cpr3         = 0;
             $hours        = 0;
             $sig          = 0;

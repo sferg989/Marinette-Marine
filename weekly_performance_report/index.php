@@ -22,19 +22,20 @@ function deleteSummaryTable($period)
     print $sql;
 }
 
-function loadCSVSintoCrossHullTable($path2file, $table_name){
+function loadCSVSWeeklyPerformanceRPT($path2file,$current_week){
     $handle = fopen($path2file,"r");
     //remove headers from the file.
     //loop through the csv file and insert into database
     $insert_sql = "
-        insert into weekly_performance_report.$table_name (
-                project,
+        insert into weekly_performance_report.summary (
+                ship_code,
                 provider,
                 clin,
                 effort,
-                activity,
+                wp,
                 ca,
                 ecp_rea,
+                change_code,
                 swbs,
                 `group`,
                 soc,
@@ -75,66 +76,67 @@ function loadCSVSintoCrossHullTable($path2file, $table_name){
         values ";
     $sql = $insert_sql;
     /*create counter so insert 1000 rows at a time.*/
-    $i=0;
+    $z=0;
     /*skip header*/
     fgetcsv($handle);
     while (($data = fgetcsv($handle)) !== FALSE)
     {
-
-            $project     = intval($data[0]);
-            $provider    = intval($data[1]);
-            $clin        = intval($data[2]);
-            $effort      = trim($data[3]);
-            $activity    = addslashes(trim($data[4]));
-            $ca          = addslashes(trim($data[5]));
-            $ecp_rea     = $data[6];
-            $change_code = $data[7];
-            $swbs             = $data[8];
-            $group            = $data[9];
-            $soc              = intval($data[10]);
-            $owning_org       = $data[11];
-            $rsrc             = $data[12];
-            $planning_unit    = $data[13];
-            $sequence         = $data[14];
-            $fm               = $data[15];
-            $wo               = intval($data[16]);
-            $item             = trim($data[17]);
-            $op               = $data[18];
-            $scope            = addslashes(trim($data[19]));
-            $task             = intval($data[20]);
-            $progress         = formatNumber4decNoComma($data[21]);
-            $bac              = formatNumber4decNoComma($data[22]);
-            $estimate         = formatNumber4decNoComma($data[23]);
-            $p2bac            = formatNumber4decNoComma($data[24]);
-            $p2est            = formatNumber4decNoComma($data[25]);
-            $a                = formatNumber4decNoComma($data[26]);
-            $etc              = formatNumber4decNoComma($data[27]);
-            $target           = formatNumber4decNoComma($data[28]);
-            $provider_target  = formatNumber4decNoComma($data[29]);
-            $provider_a       = formatNumber4decNoComma($data[30]);
-            $eac              = formatNumber4decNoComma($data[31]);
-            $bac_cpi          = formatNumber4decNoComma($data[32]);
-            $est_cpi          = formatNumber4decNoComma($data[33]);
-            $bl_start         = fixExcelDateMySQL($data[34]);
-            $bl_finish        = fixExcelDateMySQL($data[35]);
-            $f_start          = fixExcelDateMySQL($data[36]);
-            $f_finish         = fixExcelDateMySQL($data[37]);
-            $parent_operation = trim($data[38]);
-            $prev_a           = formatNumber4decNoComma($data[39]);
-            $prev_provider_a  = formatNumber4decNoComma($data[40]);
-            $prev_etc         = formatNumber4decNoComma($data[41]);
-            $prev_eac         = formatNumber4decNoComma($data[42]);
-            $eac_growth       = formatNumber4decNoComma($data[43]);
-            $period           = 20170429;
+        $i                = 0;
+        $ship_code        = intval($data[$i++]);
+        $provider         = intval($data[$i++]);
+        $clin             = intval($data[$i++]);
+        $effort           = trim($data[$i++]);
+        $wp               = addslashes(trim($data[$i++]));
+        $ca               = addslashes(trim($data[$i++]));
+        $ecp_rea          = $data[$i++];
+        $change_code      = $data[$i++];
+        $swbs             = $data[$i++];
+        $group            = $data[$i++];
+        $soc              = intval($data[$i++]);
+        $owning_org       = $data[$i++];
+        $rsrc             = $data[$i++];
+        $planning_unit    = $data[$i++];
+        $sequence         = $data[$i++];
+        $fm               = $data[$i++];
+        $wo               = intval($data[$i++]);
+        $item             = trim($data[$i++]);
+        $op               = $data[$i++];
+        $scope            = addslashes(trim($data[$i++]));
+        $task             = intval($data[$i++]);
+        $progress         = formatNumber4decNoComma($data[$i++]);
+        $bac              = formatNumber4decNoComma($data[$i++]);
+        $estimate         = formatNumber4decNoComma($data[$i++]);
+        $p2bac            = formatNumber4decNoComma($data[$i++]);
+        $p2est            = formatNumber4decNoComma($data[$i++]);
+        $a                = formatNumber4decNoComma($data[$i++]);
+        $etc              = formatNumber4decNoComma($data[$i++]);
+        $target           = formatNumber4decNoComma($data[$i++]);
+        $provider_target  = formatNumber4decNoComma($data[$i++]);
+        $provider_a       = formatNumber4decNoComma($data[$i++]);
+        $eac              = formatNumber4decNoComma($data[$i++]);
+        $bac_cpi          = formatNumber4decNoComma($data[$i++]);
+        $est_cpi          = formatNumber4decNoComma($data[$i++]);
+        $bl_start         = fixExcelDateMySQL($data[$i++]);
+        $bl_finish        = fixExcelDateMySQL($data[$i++]);
+        $f_start          = fixExcelDateMySQL($data[$i++]);
+        $f_finish         = fixExcelDateMySQL($data[$i++]);
+        $parent_operation = trim($data[$i++]);
+        $prev_a           = formatNumber4decNoComma($data[$i++]);
+        $prev_provider_a  = formatNumber4decNoComma($data[$i++]);
+        $prev_etc         = formatNumber4decNoComma($data[$i++]);
+        $prev_eac         = formatNumber4decNoComma($data[$i++]);
+        $eac_growth       = formatNumber4decNoComma($data[$i++]);
+        $period           = $current_week;
         $sql.=
             "(
-                $project,
+                $ship_code,
                 $provider,
                 $clin,
                 '$effort',
-                '$activity',
+                '$wp',
                 '$ca',
                 '$ecp_rea',
+                '$change_code',
                 '$swbs',
                 '$group',
                 $soc,
@@ -173,21 +175,21 @@ function loadCSVSintoCrossHullTable($path2file, $table_name){
                 $eac_growth,
                 $period
             ),";
-        if($i == 500)
+        if($z == 500)
         {
             $sql = substr($sql, 0, -1);
             $junk = dbCall($sql, "weekly_performance_report");
             print $sql;
             print "<br> break";
             print "<br>";
-            $i=0;
+            $z=0;
             //clear out the sql stmt.
             $sql = $insert_sql;
         }
-        $i++;
+        $z++;
     }
     //only insert remaining lines if the total number is not divisble by 1000.
-    if($i !=500)
+    if($z !=500)
     {
         $sql = substr($sql, 0, -1);
         $junk = dbCall($sql, "weekly_performance_report");
@@ -196,7 +198,7 @@ function loadCSVSintoCrossHullTable($path2file, $table_name){
 
 $rel_path2_reports      = "../util/csv_weekly_performance_report";
 $g_path2_perform_report = "D:\\";
-$current_week           = "20170429";
+$current_week           = "20180120";
 $directory              = "$g_path2_perform_report$current_week";
 print $directory;
 if (! is_dir($directory)) {
@@ -218,10 +220,9 @@ foreach ($files as $key=>$value){
 
     $path2xlsfile =$directory."/$value";
     $file_name = substr($value, 0, -5);
-    savePHPEXCELCSV($file_name,$path2xlsfile,$rel_path2_reports);
-    flush();
+    //savePHPEXCELCSV($file_name,$path2xlsfile,$rel_path2_reports);
+    //flush();
 }
-
 /*Loop through the UTIL CSV files and load them all into the table.
 */
 $csvfiles =     array();
@@ -233,19 +234,21 @@ foreach (scandir($g_path2weeklyPerformanceCSV) as $file) {
 
 }
 
+
 $table_name   = "z_".$current_week;
-$create_table = checkIfTableExists("weekly_performance_report", $table_name);
-if($create_table== "create_table"){
-    createTableFromBase("weekly_performance_report","template_summary", $table_name);
-}
+duplicateTable("summary", "weekly_performance_report", $table_name,"z_weekly_performance_report");
+truncateTable("weekly_performance_report", "summary");
+die("mdae it");
+
 foreach ($csvfiles as $key=>$value){
     $path2xlsfile = $g_path2weeklyPerformanceCSV . "/$value";
     $file_name    = substr($value, 0, -5);
     print $value."<br>";
-    loadCSVSintoCrossHullTable($path2xlsfile, $table_name);
+    loadCSVSWeeklyPerformanceRPT($path2xlsfile,$current_week);
 }
 deleteTotalLines("effort");
 deleteTotalLines("provider");
 deleteTotalLines("owning_org");
-clearDirectory($rel_path2_reports);
+
+//clearDirectory($rel_path2_reports);
 

@@ -14,7 +14,9 @@ define(function(){
         sort                : false,
         autoEdit            : true,
         asyncEditorLoading  : false,
-        frozenColumn : 2
+        frozenColumn : 2,
+        syncColumnCellResize: false
+
     };
     return {
         gridOptions : options

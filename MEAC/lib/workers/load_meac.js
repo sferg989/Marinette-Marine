@@ -7,11 +7,12 @@ self.addEventListener('message', function(e) {
 }, false);
 this.onmessage = function(e) {
 
-    var control   = e.data.control;
-    var ship_code = e.data.ship_code;
-    var http      = new XMLHttpRequest();
-    var url = "../php/grid.php";
-    var params = "control="+control+"&ship_code="+ship_code;
+    var control    = e.data.control;
+    var ship_code  = e.data.ship_code;
+    var rpt_period = e.data.rpt_period;
+    var http       = new XMLHttpRequest();
+    var url        = "../php/grid.php";
+    var params     = "control=" + control + "&ship_code=" + ship_code+"&rpt_period=" + rpt_period;
     http.open("POST", url, true);
 
 //Send the proper header information along with the request

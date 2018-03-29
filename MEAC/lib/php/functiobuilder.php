@@ -22,8 +22,6 @@ function buildMEACTablesforRptPeriod($rpt_period){
         $rs->MoveNext();
 
     }
-
-
 }
 function loadINVTranserfersRptPeriod($ship_code, $rpt_period){
 
@@ -64,9 +62,7 @@ function loadINVTranserfersRptPeriod($ship_code, $rpt_period){
         $sql = substr($sql, 0, -1);
         $junk = dbCall($sql, "meac");
     }
-    print $sql;
 }
-
 function insertSWBSSummaryStagingRptPeriod($ship_code,$rpt_period){
     insertSWBSSummaryOPENPORptPeriod($ship_code, $rpt_period);
     insertSWBSGLSUMRptPeriod($ship_code, $rpt_period);
@@ -77,7 +73,13 @@ function insertSWBSSummaryStagingRptPeriod($ship_code,$rpt_period){
     insertJournalEntriesRptPeriod($ship_code, $rpt_period);
 
 }
-function insertCommittedPOWPRptPeriod($rpt_period){
+function insertCommittedPOWPRptPeriod($rpt_period, $ship_code){
+    if($ship_code==""){
+        $ship_code_wc = "";
+    }
+    else{
+        $ship_code_wc = "and po.proj in($ship_code)";
+    }
     $insert_sql = "
         insert into meac.".$rpt_period."_wp_committed_po (
         program,
@@ -131,6 +133,7 @@ function insertCommittedPOWPRptPeriod($rpt_period){
             on po.proj = cbm.ship_code
             and po.item= cbm.material
     where cbm.wp is not null
+    $ship_code_wc
     ";
     $i=0;
     //print $sql;
@@ -236,6 +239,7 @@ function insertCommittedPOWPRptPeriod($rpt_period){
         po.proj = cbm.ship_code
         and po.item= cbm.material
     where cbm.wp is null
+    $ship_code_wc
     ";
     $i=0;
 
@@ -309,8 +313,6 @@ function insertCommittedPOWPRptPeriod($rpt_period){
         $junk = dbCall($sql, "meac");
     }
 }
-
-
 function loaditem2buyerRptPeriod($rpt_period){
     truncateTable("meac", $rpt_period."_item2buyer");
     $sql = "insert into
@@ -325,6 +327,24 @@ function loaditem2buyerRptPeriod($rpt_period){
               left JOIN  ".$rpt_period."_master_buyer mb
                   on br.buyer_id = mb.id
               where br.buyer_id <> 0
+                group by ship_code, item )
+    ";
+    $junk = dbCall($sql, "meac");
+}
+function loaditem2buyerRptPeriodByShip($ship_code, $rpt_period){
+    deleteFromTable("meac", $rpt_period."_item2buyer", "ship_code", $ship_code);
+    $sql = "insert into
+            ".$rpt_period."_item2buyer 
+            (item, buyer, ship_code)
+            (
+              select 
+              item, 
+              buyer, 
+              br.ship_code 
+          from ".$rpt_period."_buyer_reponsible br
+              left JOIN  ".$rpt_period."_master_buyer mb
+                  on br.buyer_id = mb.id
+              where br.buyer_id <> 0 and br.ship_code = $ship_code
                 group by ship_code, item )
     ";
     $junk = dbCall($sql, "meac");
@@ -373,7 +393,6 @@ function loadResponsibleBuyerRptPeriod($ship_code, $rpt_period){
         $junk = dbCall($sql, "meac");
     }
 }
-
 function loadBaanBuyerIDListRptPeriod($rpt_period){
     $sql = "
           Select Distinct 
@@ -415,9 +434,7 @@ function loadBaanBuyerIDListRptPeriod($rpt_period){
         $sql = substr($sql, 0, -1);
         $junk = dbCall($sql, "meac");
     }
-    print $sql;
 }
-
 function returnBaanEFDBInsertRptPeriod($rpt_period){
     $sql = "INSERT  into ".$rpt_period."_change_item (
             ship_code,
@@ -474,7 +491,6 @@ function loadEFDBChangeBAANRptPeriod($ship_code, $rpt_period){
         $junk = dbCall($sql, "meac");
     }
 }
-
 function returnOpenBuyInsertRptPeriod($rpt_period){
     $insert_sql = "insert into meac.".$rpt_period."_wp_open_buy(
             program,
@@ -520,7 +536,6 @@ function insertCBMFromBaanRptPeriod($ship_code, $rpt_period){
         join ttipcs951490 as d on a.t_bdgt = d.t_bdgt and LTRIM(RTRIM(a.t_item)) = LTRIM(RTRIM(d.t_bitm))
         Where b.t_cprj like '%$ship_code%'
     Order by 1, 2, 3, 6";
-    print $sql;
     $rs = dbCallBaan($sql);
 
     $insert_sql = " insert into meac.".$rpt_period."_cbm (program, ship_code, wp, material, budget, assigned_amt, price, qty, pos) values ";
@@ -564,14 +579,17 @@ function insertCBMFromBaanRptPeriod($ship_code, $rpt_period){
     if($i !=1000)
     {
         $sql = substr($sql, 0, -1);
-        print $sql;
         $junk = dbCall($sql, "meac");
     }
 }
-
-
-function insertOpenBuyWithWPRptPeriod($rpt_period){
+function insertOpenBuyWithWPRptPeriod($rpt_period, $ship_code=""){
     //$ship_code_wc = "and ob.ship_code = 485";
+    if($ship_code==""){
+        $ship_code_wc = "";
+    }
+    else{
+        $ship_code_wc = "and ob.ship_code in ($ship_code)";
+    }
     $ob = "order by ob.ship_code";
     $gb = "group by ob.ship_code,cbm.wp, ob.item ";
     $sql = "
@@ -604,10 +622,11 @@ function insertOpenBuyWithWPRptPeriod($rpt_period){
         on ob.ship_code = cbm.ship_code
         and ob.item = cbm.material 
         where wp is not null  
+        $ship_code_wc
         $gb $ob
     ";
     $rs= dbCall($sql, "meac");
-    print $sql;
+
     $sql = returnOpenBuyInsertRptPeriod($rpt_period);
     $i=0;
     while (!$rs->EOF)
@@ -655,10 +674,10 @@ function insertOpenBuyWithWPRptPeriod($rpt_period){
     //only insert remaining lines if the total number is not divisble by 1000.
     if($i !=500)
     {
-
         $sql = substr($sql, 0, -1);
         $junk = dbCall($sql, "meac");
     }
+
     /*
      * DEFAULT TO COMMODITY
      * DEFAULT TO COMMODITY
@@ -694,6 +713,7 @@ function insertOpenBuyWithWPRptPeriod($rpt_period){
         on ob.ship_code = cbm.ship_code
         and ob.item = cbm.material
         where wp is null
+        $ship_code_wc
         $gb $ob
     ";
     $rs= dbCall($sql, "meac");
@@ -734,6 +754,7 @@ function insertOpenBuyWithWPRptPeriod($rpt_period){
         {
             $sql = substr($sql, 0, -1);
             $junk = dbCall($sql, "meac");
+
             $i=0;
             //clear out the sql stmt.
             $sql = returnOpenBuyInsertRptPeriod($rpt_period);
@@ -747,105 +768,61 @@ function insertOpenBuyWithWPRptPeriod($rpt_period){
     {
         $sql = substr($sql, 0, -1);
         $junk = dbCall($sql, "meac");
-        print $sql;
     }
 
 
 }
-function insertEBOMWPRptPeriod($rpt_period){
+function insertEBOMWPRptPeriod($rpt_period, $ship_code=""){
     $insert_sql = "
 
         insert into meac.".$rpt_period."_wp_ebom (
             program,
             ship_code,
-            wp,
-            material,
-            cbm_material,
+            item,
             spn,
             uom,
             item_group,
             swbs,
             ebom,
-            ord_qty,
-            on_hand,
-            issued,
-            unit_cost,
-            supplier,
             noun1,
             noun2,
-            noun3) 
-        VALUES 
+            noun3,
+            description,
+            wp) VALUES 
        ";
-    $sql = "
-        select
-            ebom.program,
-            ebom.ship_code,
-            swbs,
-            wp,
-            ebom.material,
-            cbm.material cbm_material,
-            spn,
-            uom,
-            item_group,
-            swbs,
-            ebom,
-            ord_qty,
-            on_hand,
-            issued,
-            unit_cost,
-            supplier,
-            noun1,
-            noun2,
-            noun3
-      from mars.".$rpt_period."_ebom ebom  
-      LEFT JOIN (select ship_code, wp, material from meac.".$rpt_period."_cbm group by ship_code, material) cbm
-        on ebom.ship_code = cbm.ship_code
-        and ebom.material= cbm.material
-        where cbm.wp is not null
-    ";
+    $sql = returnEBOMBaanSQLMappedWP($ship_code);
     $i=0;
-    $rs= dbCall($sql, "meac");
+    $rs= dbCallBaan($sql);
     $sql = $insert_sql;
     while (!$rs->EOF) {
-        $program      = $rs->fields["program"]  ;
-        $ship_code    = intval($rs->fields["ship_code"]);
-        $wp           = $rs->fields["wp"];
-        $material     = $rs->fields["material"];
-        $cbm_material = $rs->fields["cbm_material"];
-        $spn          = $rs->fields["spn"];
-        $uom          = $rs->fields["uom"];
-        $item_group   = $rs->fields["item_group"];
-        $swbs         = checkSWBSLength($rs->fields["swbs"]);
+        $ship_code    = intval(trim($rs->fields["ship_code"]));
+        $wp           = trim($rs->fields["wp"]);
+        $material     = trim($rs->fields["item"]);
+        $spn          = trim($rs->fields["spn"]);
+        $uom          = trim($rs->fields["uom"]);
+        $item_group   = trim($rs->fields["item_group"]);
+        $description   = processDescription(trim($rs->fields["description"]));
+        $swbs         = trim(checkSWBSLength($rs->fields["swbs"]));
         $ebom         = formatNumber4decNoComma($rs->fields["ebom"]);
-        $ord_qty      = formatNumber4decNoComma($rs->fields["ord_qty"]);
-        $on_hand      = formatNumber4decNoComma($rs->fields["on_hand"]);
-        $issued       = formatNumber4decNoComma($rs->fields["issued"]);
-        $unit_cost    = formatNumber4decNoComma($rs->fields["unit_cost"]);
-        $supplier     = $rs->fields["supplier"];
-        $noun1        = $rs->fields["noun1"];
-        $noun2        = $rs->fields["noun2"];
-        $noun3        = $rs->fields["noun3"];
+        $noun1        = trim($rs->fields["noun1"]);
+        $noun2        = trim($rs->fields["noun2"]);
+        $noun3        = trim($rs->fields["noun3"]);
 
         $sql.=
             "(
-                '$program',
+                'LCS',
                 $ship_code,
-                '$wp',
                 '$material',
-                '$cbm_material',
                 '$spn',
                 '$uom',
                 '$item_group',
                 '$swbs',
-                '$ebom',
-                $ord_qty,
-                $on_hand,
-                $issued,
-                $unit_cost,
-                '$supplier',
+                $ebom,
                 '$noun1',
                 '$noun2',
-                '$noun3'
+                '$noun3',
+                '$description',
+                '$wp'
                 ),";
         if($i == 1000)
         {
@@ -853,7 +830,6 @@ function insertEBOMWPRptPeriod($rpt_period){
             $sql = substr($sql, 0, -1);
 
             $junk = dbCall($sql, "meac");
-
             $i=0;
             //clear out the sql stmt.
             $sql = $insert_sql;
@@ -874,93 +850,52 @@ function insertEBOMWPRptPeriod($rpt_period){
     /************/
     /************/
     /************/
-
-    $sql = "
-        select
-            ebom.program,
-            ebom.ship_code,
-            swbs,
-            wp,
-            ebom.material,
-            cbm.material cbm_material,
-            spn,
-            uom,
-            item_group,
-            swbs,
-            ebom,
-            ord_qty,
-            on_hand,
-            issued,
-            unit_cost,
-            supplier,
-            noun1,
-            noun2,
-            noun3
-        from mars.".$rpt_period."_ebom ebom 
-        left join meac.".$rpt_period."_cbm cbm on
-        ebom.ship_code = cbm.ship_code
-        and ebom.material= cbm.material
-        where cbm.wp is null
-    ";
+    $sql = returnEBOMBaanSQLNOTMappedWP($ship_code);
     $i=0;
-
-    $rs= dbCall($sql, "meac");
+    $rs= dbCallBaan($sql);
     $sql = $insert_sql;
     while (!$rs->EOF) {
-        $program      = $rs->fields["program"];
-        $ship_code    = intval($rs->fields["ship_code"]);
-        $swbs          = checkSWBSLength($rs->fields["swbs"]);
-        $wp            = "MATL-".$swbs."-999";
-        $material     = $rs->fields["material"];
-        $cbm_material = $rs->fields["cbm_material"];
-        $spn          = $rs->fields["spn"];
-        $uom          = $rs->fields["uom"];
-        $item_group   = $rs->fields["item_group"];
-        $swbs         = checkSWBSLength($rs->fields["swbs"]);
-        $ebom         = formatNumber4decNoComma($rs->fields["ebom"]);
-        $ord_qty      = formatNumber4decNoComma($rs->fields["ord_qty"]);
-        $on_hand      = formatNumber4decNoComma($rs->fields["on_hand"]);
-        $issued       = formatNumber4decNoComma($rs->fields["issued"]);
-        $unit_cost    = formatNumber4decNoComma($rs->fields["unit_cost"]);
-        $supplier     = $rs->fields["supplier"];
-        $noun1        = $rs->fields["noun1"];
-        $noun2        = $rs->fields["noun2"];
-        $noun3        = $rs->fields["noun3"];
+        $ship_code   = intval(trim($rs->fields["ship_code"]));
+        $material    = trim($rs->fields["item"]);
+        $spn         = trim($rs->fields["spn"]);
+        $uom         = trim($rs->fields["uom"]);
+        $item_group  = trim($rs->fields["item_group"]);
+        $description = processDescription(trim($rs->fields["description"]));
+        $swbs        = trim(checkSWBSLength($rs->fields["swbs"]));
+        $wp          = "MATL-" . $swbs . "-999";
+        $ebom        = formatNumber4decNoComma($rs->fields["ebom"]);
+        $noun1       = trim($rs->fields["noun1"]);
+        $noun2       = trim($rs->fields["noun2"]);
+        $noun3       = trim($rs->fields["noun3"]);
 
         $sql.=
             "(
-                '$program',
+                'LCS',
                 $ship_code,
-                '$wp',
                 '$material',
-                '$cbm_material',
                 '$spn',
                 '$uom',
                 '$item_group',
                 '$swbs',
-                '$ebom',
-                $ord_qty,
-                $on_hand,
-                $issued,
-                $unit_cost,
-                '$supplier',
+                $ebom,
                 '$noun1',
                 '$noun2',
-                '$noun3'
+                '$noun3',
+                '$description',
+                '$wp'
                 ),";
         if($i == 1000)
         {
+
             $sql = substr($sql, 0, -1);
 
             $junk = dbCall($sql, "meac");
-
             $i=0;
             //clear out the sql stmt.
             $sql = $insert_sql;
         }
         $i++;
         $rs->MoveNext();
-
     }
     //only insert remaining lines if the total number is not divisble by 1000.
     if($i !=1000)
@@ -969,9 +904,13 @@ function insertEBOMWPRptPeriod($rpt_period){
         $junk = dbCall($sql, "meac");
     }
 }
-
-
-function insertOpenPOWithWPRptPeriod($rpt_period){
+function insertOpenPOWithWPRptPeriod($rpt_period, $ship_code=""){
+    if($ship_code==""){
+        $ship_code_wc = "";
+    }
+    else{
+        $ship_code_wc = "and po.proj in ($ship_code)";
+    }
     $insert_sql = "
     insert into meac.".$rpt_period."_wp_open_po (
             ship_code,
@@ -1028,9 +967,10 @@ function insertOpenPOWithWPRptPeriod($rpt_period){
         on po.proj = cbm.ship_code
         and po.item = cbm.material
         where cbm.wp is not null
+        $ship_code_wc
     ";
+    //print $sql;
     $i=0;
-    print $sql;
     $rs= dbCall($sql, "meac");
     $sql = $insert_sql;
     while (!$rs->EOF)
@@ -1164,9 +1104,10 @@ function insertOpenPOWithWPRptPeriod($rpt_period){
         po.proj = cbm.ship_code
         and po.item = cbm.material
         where cbm.wp is null
+        $ship_code_wc
     ";
     $i=0;
-
+    //print $sql;
     $rs= dbCall($sql, "meac");
     $sql = $insert_sql;
     while (!$rs->EOF)
@@ -1244,12 +1185,17 @@ function insertOpenPOWithWPRptPeriod($rpt_period){
     /************/
     /************/
 }
-
-function insertGLdetailWITHWPRptPeriod($rpt_period){
+function insertGLdetailWITHWPRptPeriod($rpt_period, $ship_code=""){
     /*
      * insert the GL with the matching WP and swbs.  So we can sum everything together properly.
      * items that dont match in the CBM get defaulted to the Commodity.
      * */
+    if($ship_code==""){
+        $ship_code_wc = "";
+    }
+    else{
+        $ship_code_wc = "and gl.proj in ($ship_code)";
+    }
     $insert_sql = "
     INSERT  INTO meac.".$rpt_period."_wp_gl_detail (
         ship_code, 
@@ -1306,10 +1252,10 @@ function insertGLdetailWITHWPRptPeriod($rpt_period){
       ON cbm.ship_code = gl.proj
       AND cbm.material = gl.item
       where cbm.wp is not null 
+      $ship_code_wc
       
     )";
     //$sql = "and gl.description not like '%total%'";
-
     $junk = dbCall($insert_sql,"meac");
     $insert_sql = "
     INSERT  INTO meac.".$rpt_period."_wp_gl_detail (
@@ -1366,7 +1312,9 @@ function insertGLdetailWITHWPRptPeriod($rpt_period){
     FROM mars.".$rpt_period."_gl_detail gl  LEFT JOIN (select ship_code, wp, material from meac.".$rpt_period."_cbm group by ship_code, material) cbm
       ON cbm.ship_code = gl.proj
       AND cbm.material = gl.item
-      where cbm.wp is  null and gl.description not like '%total%'
+      where cbm.wp is  null 
+      and gl.description not like '%Total:%'
+      $ship_code_wc
     )";
     $junk = dbCall($insert_sql,"meac");
 }
@@ -1380,25 +1328,26 @@ function loadFortisPODataRptPeriod($ship_code= "", $rpt_period){
     $i = 0;
     while (!$rs->EOF)
     {
-        $ship_code      = intval(trim($rs->fields["project_number"]));
-        $po             = intval(trim($rs->fields["po_number"]));
-        $vendor         = processDescription(trim($rs->fields["supplier_name"]));
-        $vendor_id      = intval(trim($rs->fields["supplier_number"]));
-        $notes          = processDescription(trim($rs->fields["notes"]));
-        $buyer          = processDescription(trim($rs->fields["buyer_name"]));
-        $po_type        = trim($rs->fields["purchase_order_type"]);
-        $funding_source = trim($rs->fields["funding_source"]);
-        $status         = trim($rs->fields["fortisstatus"]);
-        $order_date     = $rs->fields["order_date"];
-        $created_date   = $rs->fields["created_date"];
-        $modified_date  = $rs->fields["modified_date"];
-        $amt            = formatNumber4decNoComma($rs->fields["total_amount"]);
-        $vendor_total   = formatNumber4decNoComma($rs->fields["vendor_project_total"]);
+        $ship_code                = intval(trim($rs->fields["project_number"]));
+        $po                       = intval(trim($rs->fields["po_number"]));
+        $vendor                   = processDescription(trim($rs->fields["supplier_name"]));
+        $vendor_id                = intval(trim($rs->fields["supplier_number"]));
+        $notes                    = processDescription(trim($rs->fields["notes"]));
+        $buyer                    = processDescription(trim($rs->fields["buyer_name"]));
+        $po_type                  = trim($rs->fields["purchase_order_type"]);
+        $funding_source           = trim($rs->fields["funding_source"]);
+        $status                   = trim($rs->fields["fortisstatus"]);
+        $order_date               = $rs->fields["order_date"];
+        $created_date             = $rs->fields["created_date"];
+        $modified_date            = $rs->fields["modified_date"];
+        $amt                      = formatNumber4decNoComma($rs->fields["total_amount"]);
+        $vendor_total             = formatNumber4decNoComma($rs->fields["vendor_project_total"]);
+        $purchasing_manager_notes = processDescription(trim($rs->fields["purchasing_manager_notes"]));
 
         $sql.=returnInsertPODATAInsertSQL($ship_code,$po,$vendor,$vendor_id,
             $notes,$buyer,$po_type,$funding_source,
             $amt,$vendor_total,$status,$program, $order_date,
-            $created_date, $modified_date);
+            $created_date, $modified_date,$purchasing_manager_notes);
 
         if($i == 2000)
         {
@@ -1418,7 +1367,6 @@ function loadFortisPODataRptPeriod($ship_code= "", $rpt_period){
         $sql = substr($sql, 0, -1);
         $junk = dbCall($sql, "meac");
     }
-    //print $sql;
 }
 function returnFortisPOInsertSQLRptPeriod($rpt_period){
     $insert_sql = "
@@ -1437,7 +1385,8 @@ function returnFortisPOInsertSQLRptPeriod($rpt_period){
         program,
         order_date,
         created_date,
-        modified_date)  
+        modified_date,
+        purchasing_manager_notes)  
       VALUES 
     ";
     return $insert_sql;
@@ -1504,14 +1453,13 @@ function insertSWBSGLSUMRptPeriod($ship_code, $rpt_period){
             gl.effort as effort
         from meac.".$rpt_period."_wp_gl_detail gl
         left join meac.".$rpt_period."_wp_ebom e
-                on e.ship_code = gl.ship_code and e.material= gl.item
+                on e.ship_code = gl.ship_code and e.item = gl.item
         left join meac.".$rpt_period."_wp_open_buy open_buy
             on gl.ship_code = open_buy.ship_code and gl.item= open_buy.item
         where gl.ship_code = $ship_code 
         group by $gb
         order by $ob 
       ";
-    print $sql;
     $i=0;
     $rs= dbCall($sql, "meac");
     $sql = $insert_sql;
@@ -1603,7 +1551,6 @@ function insertSWBSGLSUMRptPeriod($ship_code, $rpt_period){
         $sql = substr($sql, 0, -1);
         $junk = dbCall($sql, "meac");
     }
-    print $sql;
 }
 function returnInsertSQLSWBSSumRptPeriod($rpt_period, $table_name){
     $table  = $rpt_period."_".$table_name;
@@ -1718,7 +1665,7 @@ function insertSWBSSummaryOPENPORptPeriod($ship_code, $rpt_period)
                     END as buyer
                 from ".$rpt_period."_wp_open_po open_po
                 left join ".$rpt_period."_wp_ebom e
-                  on e.ship_code = open_po.ship_code and e.material =open_po.item
+                  on e.ship_code = open_po.ship_code and e.item =open_po.item
                 left join ".$rpt_period."_wp_gl_detail gl
                   on open_po.ship_code = gl.ship_code and open_po.item= gl.item
                 left join ".$rpt_period."_wp_open_buy open_buy
@@ -1728,7 +1675,7 @@ function insertSWBSSummaryOPENPORptPeriod($ship_code, $rpt_period)
                 group by $gb
                 order by $ob
 ";
-    print $sql;
+
     $i=0;
 
     $rs= dbCall($sql, "meac");
@@ -1811,29 +1758,26 @@ function insertSWBSSummaryOPENPORptPeriod($ship_code, $rpt_period)
         $sql = substr($sql, 0, -1);
         $junk = dbCall($sql, "meac");
     }
-    print $sql;
-
-
 }
 function insertSWBSSUmmaryEBOMRptPeriod($ship_code, $rpt_period){
-    $ob = "e.ship_code, e.wp, e.material";
-    $gb = "e.ship_code, e.wp, e.material";
+    $ob = "e.ship_code, e.wp, e.item";
+    $gb = "e.ship_code, e.wp, e.item";
     $insert_sql = returnInsertSQLSWBSSumRptPeriod($rpt_period, "swbs_gl_summary_stage");
     $sql = "
      select
             e.ship_code,
             e.wp,
             case when
-                (select category from category cat where cat.ship_code = e.ship_code and cat.item = e.material limit 1 ) is null then
-                (select category from category cat where cat.item = e.material limit 1)
+                (select category from category cat where cat.ship_code = e.ship_code and cat.item = e.item limit 1 ) is null then
+                (select category from category cat where cat.item = e.item limit 1)
             ELSE
-                (select category from category cat where cat.ship_code = e.ship_code and cat.item = e.material limit 1 )
+                (select category from category cat where cat.ship_code = e.ship_code and cat.item = e.item limit 1 )
             END as category,
             case when CHAR_LENGTH(e.swbs) = 3 then concat(left(e.swbs,1),'00')
               ELSE '000' end as swbs_group,
             e.swbs,
             e.spn,
-            e.material as item,
+            e.item as item,
             '' as description,
             e.item_group,
             (select ig.description from meac.item_group ig where ig.item_group= e.item_group limit 1) item_group_description,
@@ -1841,12 +1785,12 @@ function insertSWBSSUmmaryEBOMRptPeriod($ship_code, $rpt_period){
             e.uom as unit,
             e.ebom,
             '' po_data,
-            (SELECT GROUP_CONCAT(DISTINCT CONCAT(`origins`, ' - ')) FROM meac.k2_efdb k2 where k2.item= e.material and k2.ship_code= e.ship_code ) tc,
-            (select ext_cost from target_cost tc where tc.item=e.material  limit 1) target_ext_cost,
-            (select ci.date from meac.".$rpt_period."_change_item ci where ci.ship_code=e.ship_code and ci.item=e.material  order by ci.date DESC limit 1) change_date,
-            (select ci.description from meac.".$rpt_period."_change_item ci where ci.ship_code=e.ship_code and ci.item=e.material  order by ci.date DESC limit 1) change_reason,
-            (select qty from target_cost tc where tc.item=e.material  limit 1) target_qty,
-            (select unit_cost  from target_cost tc where tc.item=e.material  limit 1) target_unit_cost,
+            (SELECT GROUP_CONCAT(DISTINCT CONCAT(`origins`, ' - ')) FROM meac.k2_efdb k2 where k2.item= e.item and k2.ship_code= e.ship_code ) tc,
+            (select ext_cost from target_cost tc where tc.item=e.item limit 1) target_ext_cost,
+            (select ci.date from meac.".$rpt_period."_change_item ci where ci.ship_code=e.ship_code and ci.item=e.item order by ci.date DESC limit 1) change_date,
+            (select ci.description from meac.".$rpt_period."_change_item ci where ci.ship_code=e.ship_code and ci.item=e.item order by ci.date DESC limit 1) change_reason,
+            (select qty from target_cost tc where tc.item=e.item limit 1) target_qty,
+            (select unit_cost  from target_cost tc where tc.item=e.item limit 1) target_unit_cost,
             '' vendor_name,
             '' document,
             '' as vendor_id,
@@ -1855,7 +1799,7 @@ function insertSWBSSUmmaryEBOMRptPeriod($ship_code, $rpt_period){
             '' transfers,
             '' commit_amt,
             '' c_unit_price,
-            (select unit_price from ".$rpt_period."_wp_committed_po c where c.item=e.material and unit_price > 0 order by c.ship_code desc limit 1) last_unit_price,
+            (select unit_price from ".$rpt_period."_wp_committed_po c where c.item=e.item and unit_price > 0 order by c.ship_code desc limit 1) last_unit_price,
             '' last_unit_price_ship,
             '' commit_qty,
             0 as gl_qty,
@@ -1864,21 +1808,21 @@ function insertSWBSSUmmaryEBOMRptPeriod($ship_code, $rpt_period){
             '' clin,
             '' effort,
             case when
-                (select buyer from ".$rpt_period."_item2buyer br where br.ship_code = e.ship_code and br.item = e.material limit 1 ) is null then
-                (select buyer from ".$rpt_period."_item2buyer br where br.item = e.material limit 1)
+                (select buyer from ".$rpt_period."_item2buyer br where br.ship_code = e.ship_code and br.item = e.item limit 1 ) is null then
+                (select buyer from ".$rpt_period."_item2buyer br where br.item = e.item limit 1)
             ELSE
-              (select buyer from ".$rpt_period."_item2buyer br where br.ship_code = e.ship_code and br.item = e.material limit 1 )
+              (select buyer from ".$rpt_period."_item2buyer br where br.ship_code = e.ship_code and br.item = e.item limit 1 )
             END as buyer
         from ".$rpt_period."_wp_ebom e
         left join ".$rpt_period."_wp_gl_detail gl
           on gl.ship_code= e.ship_code
-          and gl.item = e.material
+          and gl.item = e.item
         left join ".$rpt_period."_wp_open_buy ob
           on ob.ship_code= e.ship_code
-          and ob.item = e.material
+          and ob.item = e.item
         left join ".$rpt_period."_wp_open_po po
           on po.ship_code= e.ship_code
-          and po.item = e.material
+          and po.item = e.item
         where
           e.ship_code = $ship_code and
           gl.ship_code is null and
@@ -1888,6 +1832,7 @@ function insertSWBSSUmmaryEBOMRptPeriod($ship_code, $rpt_period){
                 group by $gb
                 order by $ob
                 ";
+
     $i=0;
     $rs= dbCall($sql, "meac");
     $sql = $insert_sql;
@@ -1969,8 +1914,6 @@ function insertSWBSSUmmaryEBOMRptPeriod($ship_code, $rpt_period){
         $sql = substr($sql, 0, -1);
         $junk = dbCall($sql, "meac");
     }
-    print $sql;
-
 }
 function insertSWBSSummaryOPENBUYRptPeriod($ship_code, $rpt_period)
 {
@@ -2020,7 +1963,7 @@ function insertSWBSSummaryOPENBUYRptPeriod($ship_code, $rpt_period)
                 (select buyer from ".$rpt_period."_master_buyer mb where open_buy.buyer = mb.id) buyer
             from ".$rpt_period."_wp_open_buy open_buy
             left join ".$rpt_period."_wp_ebom e
-              on e.ship_code = open_buy.ship_code and e.material =open_buy.item
+              on e.ship_code = open_buy.ship_code and e.item =open_buy.item
             left join ".$rpt_period."_wp_gl_detail gl
               on open_buy.ship_code = gl.ship_code and open_buy.item= gl.item
             left join ".$rpt_period."_wp_open_po open_po
@@ -2031,8 +1974,8 @@ function insertSWBSSummaryOPENBUYRptPeriod($ship_code, $rpt_period)
               and open_buy.ship_code = $ship_code
               order by $ob
 ";
+
     $i=0;
-    print $sql;
     $rs= dbCall($sql, "meac");
     $sql = $insert_sql;
     while (!$rs->EOF) {
@@ -2114,7 +2057,6 @@ function insertSWBSSummaryOPENBUYRptPeriod($ship_code, $rpt_period)
         $junk = dbCall($sql, "meac");
     }
 }
-
 function returnAllocInsertSQLRptPeriod($rpt_period){
     $sql = "
           insert into ".$rpt_period."_swbs_gl_summary_stage (
@@ -2310,7 +2252,6 @@ function insertJournalEntriesRptPeriod($ship_code, $rpt_period){
                group BY PROGRAM, CAWPID)
               s where s.ea <> 0
     ";
-    print $sql;
     $rs = dbCallCobra($sql);
     $sql = $insert_sql;
     while (!$rs->EOF)
@@ -2329,7 +2270,6 @@ function insertJournalEntriesRptPeriod($ship_code, $rpt_period){
     $sql = substr($sql, 0, -1);
     $junk = dbCall($sql, "meac");
 }
-
 function insertSWBSSummaryRptPeriod($value, $rpt_period){
     $insert_sql= returnInsertSQLSWBSSumRptPeriod($rpt_period, "swbs_gl_summary");
     $sql = "
@@ -2466,8 +2406,6 @@ function insertSWBSSummaryRptPeriod($value, $rpt_period){
     {
         $sql = substr($sql, 0, -1);
         $junk = dbCall($sql, "meac");
-        print $sql;
-
     }
 
 }
@@ -2494,4 +2432,786 @@ function correctShockOpenBuyItemShortageRptPeriod($ship_code, $rpt_period){
                 where s.sum =0 and s.proj = $ship_code)
     ";
     $junk = dbCall($sql, "mars");
+}
+
+function colorWISheet($sheet){
+    $i = 1;
+    $sheet->SetCellValue("B".$i++, "New Open PO Value");
+    $sheet->SetCellValue("B".$i++, "New Open PO Value NOT APPROVED IN FORTIS");
+    $sheet->SetCellValue("B".$i++, "New Acutals This month");
+    $sheet->SetCellValue("B".$i++, "Fortis Status Is run Live");
+    $sheet->SetCellValue("B".$i++, "Open PO Value is from the first day after month end");
+    $sheet->SetCellValue("B".$i++, "Notes Field consists of PO Approval Log Notes, and if it did not exist then it looks for a GL INV transfer.");
+    $red= array(
+        'fill' => array(
+            'type' => PHPExcel_Style_Fill::FILL_SOLID,
+            'color' => array('rgb' => "e20909")
+        )
+    );
+    $blue= array(
+        'fill' => array(
+            'type' => PHPExcel_Style_Fill::FILL_SOLID,
+            'color' => array('rgb' => "0a34db")
+        )
+    );
+    $sheet->getStyle("A1")->applyFromArray($red);
+    $sheet->getStyle("A2")->applyFromArray($blue);
+    $sheet->getStyle("A3")->applyFromArray($red);
+
+}
+function getPONumLogNotesFortisStatus($item, $ship_code,$rpt_period){
+    $sql = "
+        select
+            s.po po,
+            s.po_log_notes notes,
+            coalesce((select status from ".$rpt_period."_po_data po where s.po = po.po order by modified_date desc LIMIT 1), '') as fortis_status,
+            coalesce((select buyer from ".$rpt_period."_po_data po where s.po = po.po order by modified_date desc LIMIT 1), '') as buyer
+        from (
+        SELECT
+          GROUP_CONCAT(DISTINCT po) as po,
+          GROUP_CONCAT(DISTINCT CONCAT(`reason_for_change`, '-', funding_source, '-', other_notes)) as po_log_notes
+        
+        FROM po_approval_log
+        WHERE item = '$item' AND ship_code = $ship_code) s
+    ";
+    $rs = dbCall($sql, "meac");
+    $po             = $rs->fields["po"];
+    $po_log_notes   = $rs->fields["notes"];
+    $fortis_status  = $rs->fields["fortis_status"];
+    $buyer          = $rs->fields["buyer"];
+    $data = array();
+    $data["po"]             = $po;
+    $data["fortis_status"]  = $fortis_status;
+    $data["notes"]          = $po_log_notes;
+    $data["buyer"]          = $buyer;
+    return $data;
+}
+function getECPREA($rpt_period, $item, $ship_code){
+    $sql     = "select ecp_rea from meac." . $rpt_period."_wp_open_po where item = '$item' and ship_code = $ship_code limit 1";
+    $rs      = dbCall($sql, "meac");
+    $ecp_rea = $rs->fields["ecp_rea"];
+    if($ecp_rea==""){
+        $sql     = "select ecp_rea from meac." . $rpt_period . "_wp_gl_detail where item = '$item' and ship_code = $ship_code order by date DESC ";
+        $rs      = dbCall($sql, "meac");
+        $ecp_rea = $rs->fields["ecp_rea"];
+    }
+    return $ecp_rea;
+}
+function getFortisNotes($ship_code, $item, $rpt_period){
+    $po = getPONumFromItem($item,$ship_code, $rpt_period);
+    $fortis_notes = "";
+    $sql = "select purchasing_manager_notes notes  from `".$rpt_period."_po_data` where ship_code = $ship_code and po = $po and purchasing_manager_notes <> ''";
+    $rs = dbCall($sql, "meac");
+    if($rs){
+        while (!$rs->EOF) {
+            $notes= trim($rs->fields["notes"]);
+            $fortis_notes.=$notes."--NEXT--";
+            $rs->MoveNext();
+        }
+        $fortis_notes = substr($fortis_notes, 0, -8);
+        return $fortis_notes;
+    }
+    else{
+        $fortis_notes = "NO FORTIS NOTES";
+        return $fortis_notes;
+    }
+}
+function getGlDoc($rpt_period, $item, $ship_code, $wp){
+    $sql = "select document from ".$rpt_period."_wp_gl_detail 
+    where item = '$item' and ship_code = $ship_code 
+    and wp = '$wp'
+    order by `date` desc limit 1";
+    //print $sql;
+    $rs = dbCall($sql, "meac");
+    $doc= $rs->fields["document"];
+    return $doc;
+}
+function getPONumFromItem($item,$ship_code, $rpt_period){
+    $sql = "select po as po from `".$rpt_period."_wp_open_po` WHERE  item = '$item' and ship_code = $ship_code order by po desc limit 1";
+    $rs = dbCall($sql,"meac");
+    $po = $rs->fields["po"];
+    if($po==""){
+        $sql = "select `order` po from `".$rpt_period."_wp_gl_detail` WHERE  item = '$item' and ship_code = $ship_code";
+
+        $rs = dbCall($sql,"meac");
+        $po = $rs->fields["po"];
+    }
+    return $po;
+}
+function checkPOStatus($ship_code, $item,$rpt_period){
+    $po     = getPONumFromItem($item, $ship_code,$rpt_period);
+    $sql    = "select status stat, buyer from ".$rpt_period."_po_data WHERE po = $po order by modified_date desc limit 1";
+    $rs     = dbCall($sql, "meac");
+    $status = $rs->fields["stat"];
+    $buyer = $rs->fields["buyer"];
+    if($status==""){
+        $status = "NOT IN FORTIS";
+    }
+    $data           = array();
+    $data["status"] = $status;
+    $data["po"]     = $po;
+    $data["buyer"]     = $buyer;
+    return $data;
+}
+function getALlWPS($ship_code, $rpt_period)
+{
+    $wp_array =array();
+    $sql = "select wp from 201707_swbs_gl_summary WHERE ship_code = $ship_code and wp like '%matl%' 
+  and wp not in ('MATL-825-999', 'MATL-829-999', 'MATL-828-999')
+group by wp
+union
+select wp from ".$rpt_period."_swbs_gl_summary WHERE ship_code = $ship_code and wp like '%matl%'
+  and wp not in ('MATL-825-999', 'MATL-829-999', 'MATL-828-999')
+group by wp
+union
+select wp from reest3 WHERE ship_code = $ship_code and wp like '%matl%'
+  and wp not in ('MATL-825-999', 'MATL-829-999', 'MATL-828-999')
+group by wp
+";
+    $rs  = dbCall($sql, "meac");
+    while (!$rs->EOF) {
+
+        $wp= trim($rs->fields["wp"]);
+        $wp_array[] = $wp;
+        $rs->MoveNext();
+    }
+    return $wp_array;
+}
+function calcNewETC($ebom, $prev_etc, $diff_a,$diff_open_po, $category){
+    $change = $diff_a+$diff_open_po;
+    if($category == "Vendor Service"){
+        if($change <= 0){
+            $new_etc = $prev_etc+abs($change);
+        }
+        else{
+            $new_etc = floatval($prev_etc)-floatval($change);
+            if($new_etc <1){
+                $new_etc = 0;
+            }
+        }
+        return $new_etc;
+    }
+    if($category != "Vendor Service"){
+        if($change <= 0){
+            $new_etc = $prev_etc+abs($change);
+            return $new_etc;
+        }
+        else if($ebom <1){
+            $new_etc = 0;
+            return $new_etc;
+        }
+        else{
+            $new_etc = floatval($prev_etc)-floatval($change);
+            return $new_etc;
+        }
+    }
+    return $new_etc;
+}
+function getFrozenEACWP($ship_code){
+    $wp_array = array();
+    $sql = "select wp from frozen_eac_wp where ship_code = '$ship_code'
+    union 
+    select wp from frozen_eac_wp where ship_code = 'All'
+    ";
+    $rs= dbCall($sql,"meac");
+    while (!$rs->EOF)
+    {
+        $wp= $rs->fields["wp"];
+
+        $wp_array[] = $wp;
+        $rs->MoveNext();
+    }
+    return $wp_array;
+}
+function calcNewEAC2($wp_freeze_array, $new_etc, $cur_gl, $cur_open_po, $wp, $prev_eac, $diff_a, $diff_open_po){
+    $change = $diff_a+$diff_open_po;
+    $freeze = in_array($wp, $wp_freeze_array);
+    if($freeze==true){
+        /*        if($prev_eac< ($cur_gl+$cur_open_po)){
+                    $new_eac = $cur_gl+$cur_open_po;
+                }
+                else{
+                    $new_eac = $prev_eac;
+                    //die("mad eit freeze else");
+                }*/
+        $new_eac = $prev_eac;
+        return $new_eac;
+    }
+    else{
+        if($new_etc<=0){
+            $new_eac = $cur_gl+$cur_open_po;
+            return $new_eac;
+        }
+        else if(intval($change)==0){
+            $new_eac = $prev_eac;
+            return $new_eac;
+        }
+        else{
+            $new_eac = $cur_gl+$cur_open_po+ abs($new_etc);
+            return $new_eac;
+        }
+        return $new_eac;
+    }
+}
+function returnHeadersMEAC($cur_month_letters, $prev_month_letters){
+    $header_array[] = "Hull";
+    $header_array[] = "SWBS GROUP";
+    $header_array[] = "SWBS";
+    $header_array[] = "WP";
+    $header_array[] = "Item";
+    $header_array[] = "PREV ETC";
+    $header_array[] = "PREV EAC";
+    $header_array[] = "$prev_month_letters ACTUALS";
+    $header_array[] = "$cur_month_letters ACTUALS";
+    $header_array[] = "$prev_month_letters OPEN PO";
+    $header_array[] = "$cur_month_letters OPEN PO";
+    $header_array[] = "NEW ACTUALS THIS MONTH";
+    $header_array[] = "NEW OPEN PO THIS MONTH";
+    $header_array[] = "ETC DIFF";
+    $header_array[] = "EAC DIFF";
+    $header_array[] = "NEW EAC";
+    $header_array[] = "NEW ETC";
+    $header_array[] = "EBOM";
+    $header_array[] = "PO";
+    $header_array[] = "Buyer";
+    $header_array[] = "Log Comments";
+    $header_array[] = "Fortis Notes";
+    $header_array[] = "Gl Doc";
+    $header_array[] = "ECP REA";
+    $header_array[] = "Fortis Status";
+    $header_array[] = "Proposed EAC";
+    $header_array[] = "CHANGE";
+    $header_array[] = "Comment";
+    $header_array[] = "Bucket";
+    return $header_array;
+}
+function returnHeadersMEACWP($cur_month_letters, $prev_month_letters){
+    $header_array[] = "Hull";
+    $header_array[] = "SWBS GROUP";
+    $header_array[] = "SWBS";
+    $header_array[] = "WP";
+    $header_array[] = "PREV ETC";
+    $header_array[] = "PREV EAC";
+    $header_array[] = "$prev_month_letters ACTUALS";
+    $header_array[] = "$cur_month_letters ACTUALS";
+    $header_array[] = "$prev_month_letters OPEN PO";
+    $header_array[] = "$cur_month_letters OPEN PO";
+    $header_array[] = "NEW ACTUALS THIS MONTH";
+    $header_array[] = "NEW OPEN PO THIS MONTH";
+    $header_array[] = "ETC DIFF";
+    $header_array[] = "EAC DIFF";
+    $header_array[] = "NEW EAC";
+    $header_array[] = "NEW ETC";
+    return $header_array;
+}
+function rtnMEACDeltaSQL($rpt_period, $prev_rpt_period, $ship_code, $wp=""){
+    if($ship_code>= 477){
+        $wp1_exclude = "and prev.wp not in ('MATL-900-999')";
+        $wp2_exclude  = "and cur.wp not in ('MATL-900-999')";
+        $wp3_exclude  = "and reest.wp not in ('MATL-900-999')";
+    }
+    else{
+        $wp1_exclude = "";
+        $wp2_exclude = "";
+        $wp3_exclude = "";
+    }
+    if($wp=="")
+    {
+        $wp1_wc = $wp1_exclude;
+        $wp2_wc = $wp2_exclude;
+        $wp3_wc = $wp3_exclude;
+    }
+    else{
+        $wp1_wc = "AND prev.wp = '$wp' $wp1_exclude";
+        $wp2_wc = "and cur.wp = '$wp' $wp2_exclude";
+        $wp3_wc = "and reest.wp = '$wp' $wp3_exclude";
+    }
+
+    $sql = "
+SELECT
+      ship_code,
+      concat(right(left(wp, 6), 1), '00') swbs_group,
+              left(right(wp, 7),3) swbs,
+      wp,
+      category,
+      var_ebom,
+      item,
+      prev_etc,
+      prev_eac,
+      prev_a,
+      CUR_ACTUALS,
+      prev_OPENPO,
+      CUR_OPENPO,
+      (CUR_ACTUALS- prev_a) AS     NEW_ACTUALS_THIS_MONTH,
+      (CUR_OPENPO - prev_OPENPO)   AS     new_OPEN_PO_THIS_MONTH
+    from (
+        SELECT
+    s2.ship_code,
+      s2.wp,
+      s2.item,
+      s2.category,
+      s2.var_ebom,
+      (prev_eac - (prev_OPENPO+prev_a)) as prev_etc,
+      s2.prev_eac,
+      s2.prev_a,
+      s2.CUR_ACTUALS,
+      s2.prev_OPENPO,
+      s2.CUR_OPENPO
+    FROM (
+            SELECT
+                     prev.ship_code,
+                     prev.wp,
+                     prev.item,
+                     prev.category,
+                     coalesce((SELECT sum(var_ebom)
+                               FROM `".$rpt_period."_swbs_gl_summary` meac
+                               WHERE meac.ship_code = prev.ship_code AND meac.wp = prev.wp AND meac.item = prev.item),
+                              0)                                                                                          AS var_ebom,
+                     coalesce((SELECT sum(inflation_eac)
+                               FROM reest3 meac
+                               WHERE meac.ship_code = prev.ship_code AND meac.wp = prev.wp AND meac.item = prev.item),
+                              0)                                                                                          AS prev_eac,
+                     coalesce(sum(gl_int_amt), 0)                                                                            prev_a,
+                     coalesce((SELECT sum(gl_int_amt)
+                               FROM `".$rpt_period."_swbs_gl_summary` meac
+                               WHERE meac.ship_code = prev.ship_code AND meac.wp = prev.wp AND meac.item = prev.item),
+                              0)                                                                                          AS CUR_ACTUALS,
+                     coalesce(sum(open_po_pending_amt),
+                              0)                                                                                             prev_OPENPO,
+                     coalesce((SELECT sum(open_po_pending_amt)
+                               FROM `".$rpt_period."_swbs_gl_summary` meac
+                               WHERE meac.ship_code = prev.ship_code AND meac.wp = prev.wp AND meac.item = prev.item),
+                              0)                                                                                          AS CUR_OPENPO
+                   FROM `".$prev_rpt_period."_swbs_gl_summary` prev 
+                   WHERE prev.ship_code = $ship_code 
+                   and prev.wp like '%matl%' 
+                   and prev.wp <> 'matl-825-999' 
+                   and prev.wp <> 'MATL-829-999' 
+                   and prev.wp <> 'MATL-828-999'
+                        $wp1_wc
+                   GROUP BY ship_code, wp, item)  s2
+    union
+      /*
+      ITEMS that are not in PREV but are in CUR
+      */
+
+    SELECT
+      cur.ship_code,
+      cur.wp,
+      cur.item,
+      cur.category,
+      cur.var_ebom,
+      coalesce((SELECT sum(inflation_etc)
+       FROM `reest3` re
+       WHERE re.ship_code = cur.ship_code AND re.wp = cur.wp AND re.item = cur.item),0) AS prev_etc,
+      coalesce((SELECT sum(inflation_eac)
+       FROM `reest3` re
+       WHERE re.ship_code = cur.ship_code AND re.wp = cur.wp AND re.item = cur.item),0) AS prev_eac,
+      0                                                                                 prev_a,
+      coalesce(sum(cur.gl_int_amt),0)                                                            AS CUR_ACTUALS,
+      0                                                                                 prev_OPENPO,
+      coalesce(sum(cur.open_po_pending_amt),0)                                                   AS CUR_OPENPO
+
+
+    from `".$rpt_period."_swbs_gl_summary` cur
+    left join `".$prev_rpt_period."_swbs_gl_summary` prev
+      on cur.ship_code = prev.ship_code
+    and cur.wp = prev.wp
+    and cur.item = prev.item
+    where
+      cur.ship_code = $ship_code 
+      and cur.wp like '%matl%'
+      and cur.wp <> 'matl-825-999' 
+      and cur.wp <> 'MATL-829-999' 
+      and cur.wp <> 'MATL-828-999'
+     $wp2_wc
+    and prev.ship_code is null AND
+      prev.ship_code is null
+    and prev.item is null
+    GROUP BY ship_code, wp, item
+   UNION
+      /*ITEMS THAT ARE NOT IN THE 201709 PERIOD OR IN 201710 PERIOD*/
+    SELECT
+          reest.ship_code,
+          reest.wp,
+          reest.item,
+          ''             category,
+          0             var_ebom,
+          coalesce((SELECT sum(reest.inflation_etc)
+                    FROM reest3 meac
+                    WHERE meac.ship_code =
+                          reest.ship_code AND
+                          meac.wp = reest.wp AND
+                          meac.item = reest.item AND
+                          remaining = 'yes' limit 1),
+                   0 ) AS prev_etc,
+          coalesce(sum(inflation_eac),0) AS prev_eac,
+          0              prev_a,
+          0       AS CUR_ACTUALS,
+          0              prev_OPENPO,
+          0           AS CUR_OPENPO
+        FROM reest3 reest LEFT JOIN
+          ".$prev_rpt_period."_swbs_gl_summary prev ON
+prev.ship_code = reest.ship_code 
+AND prev.wp =reest.wp 
+AND prev.item = reest.item
+          LEFT JOIN `".$rpt_period."_swbs_gl_summary` cur ON
+cur.ship_code=reest.ship_code AND
+cur.wp = reest.wp
+AND cur.item =reest.item
+    WHERE reest.ship_code = $ship_code  
+        and reest.wp like '%matl%'
+        and reest.wp <> 'matl-825-999' 
+        and reest.wp <> 'MATL-829-999' 
+        and reest.wp <> 'MATL-828-999'
+        and prev.ship_code IS NULL 
+        AND cur.ship_code IS NULL 
+         $wp3_wc
+         group by reest.ship_code, reest.wp, reest.item
+    ) s where s.ship_code is not NULL 
+    ";
+    return $sql;
+}
+function buildMEACFile($ship_code, $prev_rpt_period,$rpt_period, $g_path_to_util){
+    $wp_freeze_array = getFrozenEACWP($ship_code);
+
+    $data  = returnPeriodData($ship_code, $prev_rpt_period, $rpt_period);
+    $red   = "e20909";
+    $white = "ffffff";
+
+    $cur_year           = $data["cur_year"];
+    $prev_month_letters = $data["prev_month_letters"];
+    $cur_month_letters  = $data["cur_month_letters"];
+    $header_array = returnHeadersMEACWP($cur_month_letters, $prev_month_letters);
+
+    $objPHPExcel = new PHPExcel();
+// Set the active Excel worksheet to sheet 0
+    $objPHPExcel->setActiveSheetIndex(0);
+    $sheet = $objPHPExcel->getActiveSheet();
+    $sheet->setTitle("WP Summary");
+    $sheet->getTabColor()->setARGB('FF0094FF');
+    $header_row= 1;
+    $header_col = "A";
+    foreach ($header_array as $header){
+        $header = strtoupper($header);
+        $sheet->SetCellValue($header_col.$header_row, $header);
+        colorCellHeaderTitleSheet($header_col++.$header_row, $sheet);
+    }
+    $sheet->freezePane('G2');
+
+    $wp_array= getALlWPS($ship_code, $rpt_period);
+
+    $wp_array2[] ="MATL-330-999";
+    $data_start = 2;
+
+    foreach ($wp_array as $wp){
+        $wp_data = array();
+        $wp_data = null;
+        $sql = rtnMEACDeltaSQL($rpt_period,$prev_rpt_period, $ship_code, $wp);
+
+        $rs = dbCall($sql,"meac");
+
+        while (!$rs->EOF)
+        {
+
+            $swbs_group                     = trim($rs->fields["swbs_group"]);
+            $category                       = trim($rs->fields["category"]);
+            $swbs                           = trim($rs->fields["swbs"]);
+            $item                           = trim($rs->fields["item"]);
+            $ebom                           = $rs->fields["var_ebom"];
+            $wp_data[$item]["prev_etc"]     = formatNumber4decNoComma($rs->fields["prev_etc"]);
+            $wp_data[$item]["prev_a"]       = formatNumber4decNoComma($rs->fields["prev_a"]);
+            $wp_data[$item]["cur_a"]        = formatNumber4decNoComma($rs->fields["CUR_ACTUALS"]);
+            $wp_data[$item]["prev_open_po"] = formatNumber4decNoComma($rs->fields["prev_OPENPO"]);
+            $wp_data[$item]["cur_open_po"]  = formatNumber4decNoComma($rs->fields["CUR_OPENPO"]);
+            $wp_data[$item]["diff_a"]       = formatNumber4decNoComma($rs->fields["NEW_ACTUALS_THIS_MONTH"]);
+            $wp_data[$item]["diff_open_po"] = formatNumber4decNoComma($rs->fields["new_OPEN_PO_THIS_MONTH"]);
+            $wp_data[$item]["prev_eac"]     = formatNumber4decNoComma($rs->fields["prev_eac"]);
+            /*
+             * if eac was reduced last period, and there was no activity.  the etc = eac*/
+            if($wp_data[$item]["prev_etc"]>$wp_data[$item]["prev_eac"]){
+                $wp_data[$item]["prev_etc"] =  $wp_data[$item]["prev_eac"];
+            }
+
+            $wp_data[$item]["new_etc"]      = calcNewETC($ebom, $wp_data[$item]["prev_etc"], $wp_data[$item]["diff_a"], $wp_data[$item]["diff_open_po"], $category);
+            $wp_data[$item]["new_eac"]      = calcNewEAC2($wp_freeze_array, $wp_data[$item]["new_etc"], $wp_data[$item]["cur_a"], $wp_data[$item]["cur_open_po"], $wp, $wp_data[$item]["prev_eac"],$wp_data[$item]["diff_a"], $wp_data[$item]["diff_open_po"]);
+            if($wp_data[$item]["new_etc"]<0){
+                //$etc_diff = $new_etc;
+                $wp_data[$item]["etc_diff"]= $wp_data[$item]["new_etc"] ;
+            }
+            else{
+                //$etc_diff     = ($new_etc - $prev_etc);
+                $wp_data[$item]["etc_diff"]     = ($wp_data[$item]["new_etc"] - $wp_data[$item]["prev_etc"]);
+
+            }
+
+            $wp_data[$item]["eac_diff"]= ($wp_data[$item]["new_eac"] - $wp_data[$item]["prev_eac"]);
+            if($wp_data[$item]["diff_open_po"]!=0){
+                $status_array  = checkPOStatus($ship_code, $item, $rpt_period);
+                $fortis_status = $status_array["status"];
+                $po            = $status_array["po"];
+                if($fortis_status=="Denied"){
+                    $wp_data[$item]["diff_open_po"] = 0;
+                }
+            }
+            $header_col = "A";
+            $rs->MoveNext();
+        }
+
+        $res = array();
+        foreach($wp_data as $value) {
+            foreach($value as $key => $number) {
+                (!isset($res[$key])) ?
+                    $res[$key] = $number :
+                    $res[$key] += $number;
+            }
+        }
+        $prev_etc     = $res["prev_etc"];
+        $prev_a       = $res["prev_a"];
+        $cur_a        = $res["cur_a"];
+        $prev_open_po = $res["prev_open_po"];
+        $cur_open_po  = $res["cur_open_po"];
+        $diff_a       = $res["diff_a"];
+        $diff_open_po = $res["diff_open_po"];
+        $prev_eac     = $res["prev_eac"];
+        $new_etc      = $res["new_etc"];
+        $new_eac      = $res["new_eac"];
+        $eac_diff     = $res["eac_diff"];
+        $etc_diff     = $res["etc_diff"];
+
+        $freeze = in_array($wp, $wp_freeze_array);
+        if($freeze==true){
+
+            if(($cur_a+$cur_open_po)>$prev_eac){
+                $new_eac  = $cur_a + $cur_open_po;
+                $eac_diff = ($prev_eac - $new_eac);
+            }
+        }
+
+        //die("made it");
+
+        $sheet->SetCellValue($header_col++.$data_start, $ship_code);
+        $sheet->SetCellValue($header_col++.$data_start, $swbs_group);
+        $sheet->SetCellValue($header_col++.$data_start, $swbs);
+        $sheet->SetCellValue($header_col++.$data_start, $wp);
+        $sheet->SetCellValue($header_col.$data_start, $prev_etc);
+        phpExcelCurrencySheet($header_col++.$data_start, $sheet);
+
+        $sheet->SetCellValue($header_col.$data_start, $prev_eac);
+        phpExcelCurrencySheet($header_col++.$data_start, $sheet);
+
+        $sheet->SetCellValue($header_col.$data_start, $prev_a);
+        phpExcelCurrencySheet($header_col++.$data_start, $sheet);
+
+        $sheet->SetCellValue($header_col.$data_start, $cur_a);
+        phpExcelCurrencySheet($header_col++.$data_start, $sheet);
+
+        $sheet->SetCellValue($header_col.$data_start, $prev_open_po);
+        phpExcelCurrencySheet($header_col++.$data_start, $sheet);
+
+        $sheet->SetCellValue($header_col.$data_start, $cur_open_po);
+        phpExcelCurrencySheet($header_col++.$data_start, $sheet);
+
+        $sheet->SetCellValue($header_col.$data_start, $diff_a);
+        phpExcelCurrencySheetBOLDAndCustomCOLORIFNOT0($header_col++.$data_start, $sheet,$red, $white,$diff_a, "Approved");
+
+        $sheet->SetCellValue($header_col.$data_start, $diff_open_po);
+        phpExcelCurrencySheetBOLDAndCustomCOLORIFNOT0($header_col++.$data_start, $sheet,$red, $white,$diff_open_po, "Approved");
+
+
+        $sheet->SetCellValue($header_col.$data_start, $etc_diff);
+        phpExcelCurrencySheetBOLDDiff($header_col++.$data_start, $sheet,$etc_diff);
+
+        $sheet->SetCellValue($header_col.$data_start, $eac_diff);
+        phpExcelCurrencySheetBOLDDiff($header_col++.$data_start, $sheet,$eac_diff);
+
+        $sheet->SetCellValue($header_col.$data_start, $new_eac);
+        phpExcelCurrencySheet($header_col++.$data_start, $sheet);
+
+
+        $sheet->SetCellValue($header_col.$data_start, $new_etc);
+        phpExcelCurrencySheetBOLDDiff($header_col++.$data_start, $sheet, $etc_diff);
+
+        $data_start++;
+    }
+
+
+    /**
+     *
+     **DETail tab
+     **DETail tab
+     **DETail tab
+     **DETail tab
+     **DETail tab
+     **DETail tab
+     **DETail tab
+     **DETail tab
+     **DETail tab
+     */
+
+    $objWorkSheet = $objPHPExcel->createSheet(1); //Setting index when creating
+    $objPHPExcel->setActiveSheetIndex(1);
+    $objWorkSheet->setTitle("Detail");
+    $sheet->getTabColor()->setARGB('FF0094FF');
+    $sheet      = $objPHPExcel->getActiveSheet();
+
+    $header_array = returnHeadersMEAC($cur_month_letters, $prev_month_letters);
+    $header_row= 1;
+    $header_col = "A";
+    foreach ($header_array as $header){
+        $header = strtoupper($header);
+        $sheet->SetCellValue($header_col.$header_row, $header);
+        colorCellHeaderTitleSheet($header_col++.$header_row, $sheet);
+    }
+
+//$ship_code = "0481";
+    $sheet->freezePane('F2');
+    $sql = rtnMEACDeltaSQL($rpt_period,$prev_rpt_period,$ship_code);
+
+    $rs = dbCall($sql,"meac");
+    $data_start = 2;
+    while (!$rs->EOF)
+    {
+
+        $swbs_group = trim($rs->fields["swbs_group"]);
+        $swbs       = trim($rs->fields["swbs"]);
+        $wp         = trim($rs->fields["wp"]);
+        $item       = trim($rs->fields["item"]);
+        $prev_etc   = trim($rs->fields["prev_etc"]);
+        $prev_a       = formatNumber4decNoComma($rs->fields["prev_a"]);
+        $cur_a        = formatNumber4decNoComma($rs->fields["CUR_ACTUALS"]);
+        $prev_open_po = formatNumber4decNoComma($rs->fields["prev_OPENPO"]);
+        $cur_open_po  = formatNumber4decNoComma($rs->fields["CUR_OPENPO"]);
+        $diff_a       = formatNumber4decNoComma($rs->fields["NEW_ACTUALS_THIS_MONTH"]);
+        $diff_open_po = formatNumber4decNoComma($rs->fields["new_OPEN_PO_THIS_MONTH"]);
+        $ebom         = formatNumber4decNoComma($rs->fields["var_ebom"]);
+        $prev_eac     = formatNumber4decNoComma($rs->fields["prev_eac"]);
+        if($prev_etc>$prev_eac){
+            $prev_etc =  $prev_eac;
+        }
+        $new_etc      = calcNewETC($ebom, $prev_etc, $diff_a,$diff_open_po, $category);
+        $new_eac      = calcNewEAC2($wp_freeze_array, $new_etc, $cur_a, $cur_open_po, $wp, $prev_eac,$diff_a,$diff_open_po);
+
+        if($new_etc<0){
+            $etc_diff = $new_etc;
+        }
+        else{
+            $etc_diff     = $new_etc - $prev_etc;
+
+        }
+        $eac_diff = formatNumber4decNoComma($new_eac - $prev_eac);
+        $fortis_notes  = "";
+        $notes         = "";
+        $po            = "";
+        $gl_doc        = "";
+        $ecp_rea       = "";
+        $fortis_status = "";
+        $buyer         = "";
+        if(intval($eac_diff)!=0){
+            $po_data = array();
+            $po_data = getPONumLogNotesFortisStatus($item, $ship_code,$rpt_period);
+
+            $gl_doc        = getGlDoc($rpt_period, $item, $ship_code, $wp);
+            $ecp_rea       = getECPREA($rpt_period, $item, $ship_code);
+            $notes         = $po_data["notes"];
+            $fortis_status = $po_data["fortis_status"];
+            $po            = $po_data["po"];
+            $buyer         = $po_data["buyer"];
+        }
+
+        if($diff_open_po!=0){
+            $status_array  = checkPOStatus($ship_code, $item, $rpt_period);
+            $fortis_status = $status_array["status"];
+            /*do not overrite a PO in the LOG.
+            */
+            $fortis_notes  = getFortisNotes($ship_code, $item, $rpt_period);
+            if($po=="" ){
+                $po    = $status_array["po"];
+                $buyer = $status_array["buyer"];
+            }
+            if($fortis_status=="Denied"){
+                $diff_open_po.=" NOT INCLUDED";
+            }
+        }
+        $header_col = "A";
+        $sheet->SetCellValue($header_col++.$data_start, $ship_code);
+        $sheet->SetCellValue($header_col++.$data_start, $swbs_group);
+        $sheet->SetCellValue($header_col++.$data_start, $swbs);
+        $sheet->SetCellValue($header_col++.$data_start, $wp);
+        $sheet->SetCellValue($header_col++.$data_start, $item);
+        $sheet->SetCellValue($header_col.$data_start, $prev_etc);
+        phpExcelCurrencySheet($header_col++.$data_start, $sheet);
+
+        $sheet->SetCellValue($header_col.$data_start, $prev_eac);
+        phpExcelCurrencySheet($header_col++.$data_start, $sheet);
+
+        $sheet->SetCellValue($header_col.$data_start, $prev_a);
+        phpExcelCurrencySheet($header_col++.$data_start, $sheet);
+
+        $sheet->SetCellValue($header_col.$data_start, $cur_a);
+        phpExcelCurrencySheet($header_col++.$data_start, $sheet);
+
+        $sheet->SetCellValue($header_col.$data_start, $prev_open_po);
+        phpExcelCurrencySheet($header_col++.$data_start, $sheet);
+
+        $sheet->SetCellValue($header_col.$data_start, $cur_open_po);
+        phpExcelCurrencySheet($header_col++.$data_start, $sheet);
+
+        $sheet->SetCellValue($header_col.$data_start, $diff_a);
+        phpExcelCurrencySheetBOLDAndCustomCOLORIFNOT0($header_col++.$data_start, $sheet,$red, $white,$diff_a, "Approved");
+
+        $sheet->SetCellValue($header_col.$data_start, $diff_open_po);
+        phpExcelCurrencySheetBOLDAndCustomCOLORIFNOT0($header_col++.$data_start, $sheet,$red, $white,$diff_open_po, $fortis_status);
+
+
+        $sheet->SetCellValue($header_col.$data_start, $etc_diff);
+        phpExcelCurrencySheetBOLDDiff($header_col++.$data_start, $sheet,$etc_diff);
+
+        $sheet->SetCellValue($header_col.$data_start, $eac_diff);
+        phpExcelCurrencySheetBOLDDiff($header_col++.$data_start, $sheet,$eac_diff);
+
+        $sheet->SetCellValue($header_col.$data_start, $new_eac);
+        phpExcelCurrencySheet($header_col++.$data_start, $sheet);
+
+
+        $sheet->SetCellValue($header_col.$data_start, $new_etc);
+        phpExcelCurrencySheetBOLDDiff($header_col++.$data_start, $sheet, $etc_diff);
+
+        $sheet->SetCellValue($header_col++.$data_start, $ebom);
+        $sheet->SetCellValue($header_col++.$data_start, $po);
+        $sheet->SetCellValue($header_col++.$data_start, $buyer);
+        $sheet->SetCellValue($header_col++.$data_start, $notes);
+        $sheet->SetCellValue($header_col++.$data_start, $fortis_notes);
+        $sheet->SetCellValue($header_col++.$data_start, $gl_doc);
+        $sheet->SetCellValue($header_col++.$data_start, $ecp_rea);
+        $sheet->SetCellValue($header_col++.$data_start, $fortis_status);
+
+
+        $data_start++;
+
+        $rs->MoveNext();
+    }
+    /*Work instructions
+     *
+     * */
+    $objWorkSheet = $objPHPExcel->createSheet(2); //Setting index when creating
+    $objPHPExcel->setActiveSheetIndex(2);
+    $objWorkSheet->setTitle("Work Instructions");
+    $sheet->getTabColor()->setARGB('FF0094FF');
+    $sheet      = $objPHPExcel->getActiveSheet();
+    colorWISheet($sheet);
+
+    $i= 1;
+    foreach ($wp_freeze_array as $wp){
+        $sheet->SetCellValue("C".$i, "FROZEN EAC");
+        $sheet->SetCellValue("D".$i++, $wp);
+    }
+    $objWriter = new PHPExcel_Writer_Excel2007($objPHPExcel);
+    $token         = rand (0,1000);
+    $objWriter->save("$g_path_to_util/excel_exports/".$ship_code."- Tool ".$cur_month_letters." ".$cur_year.$token." MEAC Prelim.xlsx");
+    $path = "../util/excel_exports/".$ship_code."- Tool ".$cur_month_letters." ".$cur_year.$token." MEAC Prelim.xlsx";
+    return $path;
+
+    //$objWriter->save("C:/evms/meac_delta/".$ship_code."- Tool ".$cur_month_letters." ".$cur_year.$token." MEAC Prelim.xlsx");
+    //die("C:/evms/meac_delta/".$ship_code."- Tool ".$cur_month_letters." ".$cur_year.$token." MEAC Prelim.xlsx");
 }

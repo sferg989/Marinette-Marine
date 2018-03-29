@@ -50,13 +50,13 @@ $create_table = checkIfTableExists($destination_schema, $destination_table);
 if($create_table== "create_table") {
     duplicateTable($source_table, "meac", $destination_table, $destination_schema);
 }
-truncateTable("mars", "gl_detail");
-truncateTable("meac", "wp_gl_detail");
-truncateTable("mars", "committed_po");
-truncateTable("meac", "wp_committed_po");
-truncateTable("meac", "inv_transfers");
-truncateTable("meac", "master_buyer");
-truncateTable("meac", "cbm");
+//truncateTable("mars", "gl_detail");
+//truncateTable("meac", "wp_gl_detail");
+//truncateTable("mars", "committed_po");
+//truncateTable("meac", "wp_committed_po");
+//truncateTable("meac", "inv_transfers");
+//truncateTable("meac", "master_buyer");
+//truncateTable("meac", "cbm");
 
 
 $committed_po_directory = 'C:\xampp\htdocs\fmg\util\csv_PFA_Committed_PO';
@@ -66,16 +66,15 @@ $gl_detail_directory    = 'C:\xampp\htdocs\fmg\util\csv_PFA_GL_Detail';
 $dir = $g_path2_baan_work;
 
 
-clearDirectory($committed_po_directory);
-copyListOfDirectoryToCSV($dir,"PFA_Committed_PO",$committed_po_directory, "committed_po");
+//clearDirectory($committed_po_directory);
+//copyListOfDirectoryToCSV($dir,"PFA_Committed_PO",$committed_po_directory, "committed_po");
 
-clearDirectory($gl_detail_directory);
-copyListOfDirectoryToCSV($dir,"PFA_GL_Detail",$gl_detail_directory, "gl_detail");
+//clearDirectory($gl_detail_directory);
+//copyListOfDirectoryToCSV($dir,"PFA_GL_Detail",$gl_detail_directory, "gl_detail");
 
 
 $array = array();
 
-$array[] = 469;
 $array[] = 471;
 $array[] = 473;
 $array[] = 475;
@@ -84,6 +83,7 @@ $array[] = 479;
 $array[] = 481;
 $array[] = 483;
 $array[] = 485;
+$array[] = 487;
 
 foreach ($array as $ship_code){
     deleteFromTable("meac", "inv_transfers", "ship_code", $ship_code);

@@ -131,11 +131,12 @@ function validatePCS2P6StatusLabor($schema, $rpt_period, $ship_code, $cost_set){
         from status_validation.$p6_table_name p6
         left JOIN status_validation.$cobra_table_name cobra
             on p6.ca = cobra.ca and p6.wp = cobra.wp and p6.cost_set = cobra.cost_set
-        where p6.ship_code= $ship_code and p6.cost_set = '$cost_set' group by p6.ca, p6.wp
-  ";
+        where p6.ship_code= $ship_code and p6.cost_set = '$cost_set' 
+        group by p6.ca, p6.wp
+    ";
 
     $rs = dbCall($sql,$schema);
-    //print $sql;
+
     $data_table = "<table class = 'table table-sm'>
             <tr ><th colspan = 6 class = 'table_headers'>$cost_set Differences</th></tr>
             <tr class = 'table_headers'>
@@ -150,14 +151,14 @@ function validatePCS2P6StatusLabor($schema, $rpt_period, $ship_code, $cost_set){
     $i=0;
     while (!$rs->EOF)
     {
-        $cost_set    = $rs->fields["cost_set"];
-        $ca    = $rs->fields["ca"];
-        $wp    = $rs->fields["wp"];
+
+        $cost_set = $rs->fields["cost_set"];
+        $ca       = $rs->fields["ca"];
+        $wp       = $rs->fields["wp"];
 
         $p6    = formatNumber4decNoComma($rs->fields["p6val"]);
         $cobra = formatNumber4decNoComma($rs->fields["cobraval"]);
-        $diff  = formatNumber4decNoComma($p6 - $cobra);
-
+        $diff  = abs(formatNumber4decNoComma($p6 - $cobra));
         if($diff>.5){
             $data_table.="
             <tr align=\"center\" class = 'table_data'>

@@ -117,104 +117,40 @@ define(["slickEditors"],function(){
     }
     var cols = [
         {
-            id       : "wp",
-            name     : "WP",
-            field    : "wp",
-            width: 200
-
-        },{
-            id       : "item",
-            name     : "item",
-            field    : "item",
+            id       : "rpt_period",
+            name     : "rpt_period",
+            field    : "rpt_period",
             width: 200
         },{
-            id       : "desc",
-            name     : "desc",
-            field    : "desc",
+            id       : "ship_code",
+            name     : "Program",
+            field    : "ship_code",
+            width: 200
+        },{
+            id   : "wp",
+            name : "wp",
+            field: "wp",
             width: 120
         },{
-            id       : "buyer",
-            name     : "buyer",
-            field    : "buyer",
+            id       : "prev_val",
+            name     : "prev_val",
+            field    : "prev_val",
             width: 120
         },{
-            id       : "po",
-            name     : "po",
-            field    : "po",
+            id       : "cur_val",
+            name     : "cur_val",
+            field    : "cur_val",
+            width: 120
+        },{
+            id       : "diff",
+            name     : "diff",
+            field    : "diff",
             width: 65
         },{
-            id       : "line",
-            name     : "line",
-            field    : "line",
+            id       : "type",
+            name     : "type",
+            field    : "type",
             width: 65
-        },{
-            id       : "vendor",
-            name     : "vendor",
-            field    : "vendor",
-            width: 250
-        },{
-            id       : "NEW PO qty",
-            name     : "ORDER QTY",
-            field    : "order_qty",
-            formatter : myFormatter,
-            width: 65
-        },{
-            id       : "c_unit_price",
-            name     : "C Unit Price",
-            field    : "c_unit_price",
-            formatter : myFormatterCurrency,
-            width: 80
-        },{
-            id       : "c_amnt",
-            name     : "ORDER $",
-            field    : "c_amnt",
-            formatter : myFormatterCurrency,
-            width: 80
-        },{
-            id       : "ebom",
-            name     : "EBOM",
-            field    : "ebom",
-            formatter : myFormatter,
-            width: 65
-        },{
-            id       : "c_qty",
-            name     : "GL QTY (w TRANS)",
-            field    : "c_qty",
-            formatter : myFormatter,
-            width: 80
-        },{
-            id       : "meac_re_est_etc",
-            name     : "RE EST ETC",
-            field    : "meac_re_est_etc",
-            formatter : myFormatterCurrencyReEST,
-            width: 80
-        },{
-            id       : "etc_diff",
-            name     : "etc_diff",
-            field    : "etc_diff",
-            formatter : myFormatterCurrencyDIFF,
-            width: 80
-        }, {
-            id      : "reason_for_change",
-            name    : "reason_for_change",
-            field   : "reason_for_change",
-            width: 250,
-            formatter : reasonForChangeFormatter,
-            editor  : Slick.Editors.Text
-        }, {
-            id      : "explanation",
-            name    : "explanation",
-            field   : "explanation",
-            width: 250,
-            formatter : explanationFormatter,
-            editor  : Slick.Editors.Text
-        }, {
-            id      : "other_notes",
-            name    : "OTHER NOTES",
-            field   : "other_notes",
-            width: 250,
-            formatter : explanationFormatter,
-            editor  : Slick.Editors.Text
         }];
     return {
         cols   : cols

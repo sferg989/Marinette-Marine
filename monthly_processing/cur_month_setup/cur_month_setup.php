@@ -126,7 +126,7 @@ if($control =="new_folder")
                     if (!$fileinfo->isDot())
                     {
                         $file_name =$fileinfo->getFilename();
-                        $file_name = substr($file_name, 13);
+                        $file_name = trim(substr($file_name, 13));
                         $new_name = $path."/" . $ship_code . " " . $cur_month_letters . " " . $cur_year . " ".$file_name;
                         $full_path = $path."/".$fileinfo->getFilename();
                         rename($full_path,$new_name);
@@ -140,8 +140,8 @@ if($control =="new_folder")
                 {
                     if (!$fileinfo->isDot())
                     {
-                        $file_name = $fileinfo->getFilename();
-                        $file_name = substr($file_name, 13);
+                        $file_name = trim($fileinfo->getFilename());
+                        $file_name = trim(substr($file_name, 13));
                         $new_name  = $path . "/" . $ship_code . " " . $cur_month_letters . " " . $cur_year . " " . $file_name;
                         $full_path = $path . "/" . $fileinfo->getFilename();
                         rename($full_path,$new_name);

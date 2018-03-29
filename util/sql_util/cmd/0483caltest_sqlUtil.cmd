@@ -1,0 +1,1 @@
+cmd /k "C:\"program files (x86)"\deltek\"Cobra"\cobra.api.exe script:"C:\xampp\htdocs\fmg\util\sql_util\BAT\0483caltest_sqlUtil.BAT""

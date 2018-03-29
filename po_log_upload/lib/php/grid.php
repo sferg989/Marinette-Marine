@@ -2,6 +2,7 @@
 include('../../../inc/inc.php');
 include('../../../meac/lib/php/inc.baan.fortis.php ');
 require('C:\xampp\htdocs\fmg\inc\inc.PHPExcel.php');
+session_write_close();
 
 function returnInsertSqlPoApprovalLog(){
     $sql = "INSERT INTO po_approval_log (
@@ -75,7 +76,7 @@ if($control=="upload"){
     $objPHPExcel = $objReader->load($uploadPath);
     $insert_sql = returnInsertSqlPoApprovalLog();
     $sql = $insert_sql;
-    for ($sheet_index = 0; $sheet_index <= 1; $sheet_index++) {
+    for ($sheet_index = 0; $sheet_index <= 2; $sheet_index++) {
         $objPHPExcel->setActiveSheetIndex($sheet_index);
         $sheet = $objPHPExcel->getActiveSheet();
         //now do whatever you want with the active sheet
@@ -92,7 +93,7 @@ if($control=="upload"){
             $po                = intval($sheet->getCell($col++.$i)->getValue());
             $buyer             = $sheet->getCell($col++.$i)->getValue();
             $wp                = $sheet->getCell($col++.$i)->getValue();
-            $swbs              = intval($sheet->getCell($col++.$i)->getValue());
+            $swbs              = intval($sheet->getCell($col++.$i)->getFormattedValue());
             $item              = $sheet->getCell($col++.$i)->getValue();
             $val               = formatNumber4decNoComma($sheet->getCell($col++.$i)->getValue());
             $etc               = formatNumber4decNoComma($sheet->getCell($col++.$i)->getValue());
@@ -100,36 +101,46 @@ if($control=="upload"){
             $qty               = formatNumber4decNoComma($sheet->getCell($col++.$i)->getValue());
             $ebom              = formatNumber4decNoComma($sheet->getCell($col++.$i)->getValue());
             $remaining         = formatNumber4decNoComma($sheet->getCell($col++.$i)->getFormattedValue());
-            $cam               = $sheet->getCell($col++.$i)->getValue();
-            $reason_for_change = $sheet->getCell($col++.$i)->getValue();
-            $funding_source    = $sheet->getCell($col++.$i)->getValue();
+            $cam               = $sheet->getCell($col++.$i)->getFormattedValue();
+            $reason_for_change = $sheet->getCell($col++.$i)->getFormattedValue();
+            $funding_source    = $sheet->getCell($col++.$i)->getFormattedValue();
             $other_notes       = processDescription($sheet->getCell($col++.$i)->getFormattedValue());
             $sql .="
-        (
-        $ship_code,
-        '$date',
-        '$week',
-        $po,
-        '$buyer',
-        '$wp',
-        $swbs,
-        '$item',
-        $val,
-        $etc,
-       $change,
-        $qty,
-        $ebom,
-        $remaining,
-        '$cam',
-        '$reason_for_change',
-        '$funding_source',
-        '$other_notes'),";
+                (
+                $ship_code,
+                '$date',
+                '$week',
+                $po,
+                '$buyer',
+                '$wp',
+                $swbs,
+                '$item',
+                $val,
+                $etc,
+               $change,
+                $qty,
+                $ebom,
+                $remaining,
+                '$cam',
+                '$reason_for_change',
+                '$funding_source',
+                '$other_notes'),";
+            if($i % 500==0)
+            {
+                $sql = substr($sql, 0, -1);
+                $junk = dbCall($sql,"meac");
+                $insert_sql = returnInsertSqlPoApprovalLog();
+                $sql = $insert_sql;
+            }
+
+        }
+        if($i!=500){
+            $sql = substr($sql, 0, -1);
+            $junk = dbCall($sql,"meac");
+            $insert_sql = returnInsertSqlPoApprovalLog();
+            $sql = $insert_sql;
         }
     }
-    $sql = substr($sql, 0, -1);
-    print $sql;
-
-    $junk = dbCall($sql,"meac");
     die();
 }
 if($control=="po_approval_grid"){

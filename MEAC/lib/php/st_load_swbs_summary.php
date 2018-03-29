@@ -1,5 +1,6 @@
 <?php
 require('C:\xampp\htdocs\fmg\inc\inc.php');
+require('C:\xampp\htdocs\fmg\inc\inc.PHPExcel.php');
 require('C:\xampp\htdocs\fmg\inc\inc.cobra.php');
 require('C:\xampp\htdocs\fmg\MEAC\lib\php\inc.insert_data.php');
 require('C:\xampp\htdocs\fmg\MEAC\lib\php\inc.baan.fortis.php');
@@ -10,6 +11,7 @@ require('C:\xampp\htdocs\fmg\MEAC\lib\php\functiobuilder.php');
  * Date: 3/9/2017
  * Time: 4:02 PM
  */
+
 function insertReESTADJ($rpt_period){
     $sql = "
     INSERT INTO meac.`201707_swbs_gl_summary_stage` (ship_code, buyer, wp, swbs, swbs_group, item, etc, category) (
@@ -196,8 +198,8 @@ function insertReESTADJ($rpt_period){
 
 }
 
-$rpt_period = 201710;
-buildMEACTablesforRptPeriod($rpt_period);
+$rpt_period = 201711;
+//buildMEACTablesforRptPeriod($rpt_period);
 
 
 //duplicateTable("committed_po", "mars", "201710_committed_po", "mars");
@@ -217,13 +219,13 @@ buildMEACTablesforRptPeriod($rpt_period);
 $array = array();
 //$array[] = 465;
 //$array[] = 467;
-$array[] = 469;
+//$array[] = 469;
 //$array[] = 471;
-//$array[] = 473;
-//$array[] = 475;
+$array[] = 473;
+$array[] = 475;
 //$array[] = 477;
 //$array[] = 479;
-//$array[] = 481;
+$array[] = 481;
 //$array[] = 483;
 //$array[] = 485;
 
@@ -240,9 +242,9 @@ foreach ($array as $value){
     {
         $ship_code = "0".$value;
     }
-    deleteFromTable("MEAC", $rpt_period."_cbm", "ship_code", $ship_code);
+    //deleteFromTable("MEAC", $rpt_period."_cbm", "ship_code", $ship_code);
     print $ship_code;
-    insertCBMFromBaanRptPeriod($ship_code,$rpt_period);
+    //insertCBMFromBaanRptPeriod($ship_code,$rpt_period);
 }
 //deleteFromTable("meac", $rpt_period."_cbm", "material", "");
 
@@ -262,11 +264,11 @@ print "finished Master Buyer";
 foreach ($array as $value){
     //deleteFromTable("MEAC", $rpt_period."_buyer_reponsible", "ship_code", $value);
 
-    //loadResponsibleBuyerRptPeriod($value, $rpt_period);
+    loadResponsibleBuyerRptPeriod($value, $rpt_period);
     print "finished Responsible Buyer $value";
 }
 
-//loaditem2buyerRptPeriod($rpt_period);
+loaditem2buyerRptPeriod($rpt_period);
 /*
  * EFDB
  * EFDB
@@ -328,7 +330,7 @@ foreach ($array as $ship_code){
  *
  * */
 foreach ($array as $ship_code){
-    correctShockOpenBuyItemShortageRptPeriod($ship_code, $rpt_period);
+    //correctShockOpenBuyItemShortageRptPeriod($ship_code, $rpt_period);
 }
 
 /*
@@ -345,8 +347,8 @@ foreach ($array as $ship_code){
  * GL DETAIL
  * GL DETAIL
  * GL DETAIL */
-truncateTable("meac", $rpt_period."_wp_gl_detail");
-insertGLdetailWITHWPRptPeriod($rpt_period);
+//truncateTable("meac", $rpt_period."_wp_gl_detail");
+//insertGLdetailWITHWPRptPeriod($rpt_period);
 
 print "FINISHED GL DETAIL";
 /*
@@ -356,8 +358,8 @@ print "FINISHED GL DETAIL";
  * OPEN PO
  * ".$rpt_period."_
  * */
-truncateTable("meac", $rpt_period."_wp_open_po");
-insertOpenPOWithWPRptPeriod($rpt_period);
+//truncateTable("meac", $rpt_period."_wp_open_po");
+//insertOpenPOWithWPRptPeriod($rpt_period);
 
 print "FINISHED OPEN PO";
 /*
@@ -367,8 +369,8 @@ print "FINISHED OPEN PO";
  * WP COMITTED po
  * ".$rpt_period."_
  * */
-truncateTable("meac", $rpt_period."_wp_committed_po");
-insertCommittedPOWPRptPeriod($rpt_period);
+//truncateTable("meac", $rpt_period."_wp_committed_po");
+//insertCommittedPOWPRptPeriod($rpt_period);
 print "FINISHED COMITTED PO";
 
 /*
@@ -378,7 +380,7 @@ print "FINISHED COMITTED PO";
  * WP OPEN BUY
  * WP OPEN BUY
  * */
-truncateTable("meac", $rpt_period."_wp_open_buy");
+//truncateTable("meac", $rpt_period."_wp_open_buy");
 insertOpenBuyWithWPRptPeriod($rpt_period);
 
 print "FINISHED OPEN BUY";
@@ -390,7 +392,7 @@ print "FINISHED OPEN BUY";
  * WP EBOM
  * WP EBOM
  * */
-truncateTable("meac", $rpt_period."_wp_ebom");
+//truncateTable("meac", $rpt_period."_wp_ebom");
 insertEBOMWPRptPeriod($rpt_period);
 
 print "FINISHED WP EBOM";

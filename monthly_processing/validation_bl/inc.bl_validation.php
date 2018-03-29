@@ -162,7 +162,7 @@ function returnTableFromRS($rs, $table_name){
 function validatePCS2P6BLLabor($schema, $rpt_period, $ship_code){
     /*Material*/
     $data_table = "";
-    if($ship_code<477){
+    if($ship_code<477 or $ship_code>485){
 
         $cobra_table_name = $rpt_period . "_cost";
         $p6_table_name    = $rpt_period . "_p6_bl_labor";

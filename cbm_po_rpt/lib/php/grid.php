@@ -128,6 +128,7 @@ function getBaanPOSQL($po_wc){
             LEFT JOIN ttipcs952490 AS bc ON ab.t_bdgt = bc.t_bdgt
             WHERE ab.t_cprj = a.t_cprj AND bc.t_bdgt = ab.t_bdgt AND bc.t_item = a.t_item)
         is null
+        and a.t_item not like '%HPR-%'
         and
             CASE
               WHEN a.t_pacn <> 0

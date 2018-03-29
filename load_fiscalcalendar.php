@@ -35,6 +35,9 @@ function loadFiscalCalendar(){
     }
 }
 
+
+
+
 /**
  * Created by PhpStorm.
  * User: fs11239
@@ -42,7 +45,10 @@ function loadFiscalCalendar(){
  * Time: 2:52 PM
  */
 
-loadFiscalCalendar();
+$cur_rpt_period = 201711;
+updateCalendarSet("0483",$cur_rpt_period);
+die();
+//loadFiscalCalendar();
 
 //insertCalendar(202001, 30);
 //$g_path2_perform_report          = "D:\\";

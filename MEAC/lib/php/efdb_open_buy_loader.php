@@ -23,8 +23,8 @@ function saveListOfFileNamesPHPExcelAndInsertEBOM($file_name_array,$directory2Co
     }
 }
 function copyListOfDirectoryToCSV($directory2Copy,$rel_path2_reports){
-        $file_name_array = getListOfFileNamesInDirectory($directory2Copy);
-        saveListOfFileNamesPHPExcelAndInsertEBOM($file_name_array,$directory2Copy,$rel_path2_reports);
+    $file_name_array = getListOfFileNamesInDirectory($directory2Copy);
+    saveListOfFileNamesPHPExcelAndInsertEBOM($file_name_array,$directory2Copy,$rel_path2_reports);
 }
 
 $rel_path2_reports = "../../../util/csv_openbuy";

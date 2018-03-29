@@ -6,13 +6,15 @@
  */
 define(function(){
 
+
     var options = {
         enableCellNavigation: true,
         editable            : true,
         forceFitColumns     : true,
         autoHeight          : true,
-        sort                : false
-    };
+        sort                : false,
+        leaveSpaceForNewRows : true
+    }
     return {
         gridOptions : options
     };

@@ -1,0 +1,4 @@
+V51	postgres	Calendar	
+n	s	s	s
+CalID	CalDesc	DateFmt	FyEnd
+1	PISCES 2	!%b %y	12.31

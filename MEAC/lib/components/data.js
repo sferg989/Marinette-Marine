@@ -18,21 +18,9 @@ define(function(){
         });
 
     }
-    var updateEAC = function (url, ajaxDataObj, updateEACCB) {
-        $.ajax({
-            url     : url,
-            data    : ajaxDataObj,
-            success: function(data) {
-                return data;
-            },
-        }).done(function (data){
-            updateEACCB()
-        });
-
-    }
-    var excelExport= function (url, ajaxDataObj, excelExportCallBack) {
+    var loadBaan = function (ajaxDataObj,loadCBMCB) {
         var worker;
-        workers     = new Worker("lib/workers/excel_export.js");
+        workers     = new Worker("lib/workers/load_baan.js");
         workers.onmessage = workerDone;
         workers.postMessage(ajaxDataObj);
         function workerDone(e) {
@@ -40,16 +28,47 @@ define(function(){
                 return false;
             }
             else{
-                excelExportCallBack(e.data.response)
-
+                loadCBMCB(e.data.response)
             }
         }
+
+    }
+    var loadMEAC = function (ajaxDataObj,loadMEACFileCB) {
+        var worker;
+        workers     = new Worker("lib/workers/load_meac.js");
+        workers.onmessage = workerDone;
+        workers.postMessage(ajaxDataObj);
+        function workerDone(e) {
+            if(e.data.id == undefined){
+                return false;
+            }
+            else{
+                loadMEACFileCB(e.data.response)
+            }
+        }
+
+    }
+    var buildMEACTables = function (ajaxDataObj,buildMeacTablesCB) {
+        var worker;
+        workers     = new Worker("lib/workers/build_meac_tables.js");
+        workers.onmessage = workerDone;
+        workers.postMessage(ajaxDataObj);
+        function workerDone(e) {
+            if(e.data.id == undefined){
+                return false;
+            }
+            else{
+                buildMeacTablesCB(e.data.response)
+            }
+        }
+
     }
 
     return {
-        getData    : getData,
-        updateEAC  : updateEAC,
-        excelExport: excelExport
+        getData        : getData,
+        loadBaan       : loadBaan,
+        buildMEACTables: buildMEACTables,
+        loadMEAC       : loadMEAC
     };
 })/**
  * Created by fs11239 on 4/11/2017.

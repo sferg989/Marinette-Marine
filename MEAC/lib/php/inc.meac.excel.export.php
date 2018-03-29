@@ -360,20 +360,6 @@ function colorCellPurpleSheet($cell, $sheet){
         )
     );
 }
-function colorCellHeaderTitleSheet($cell, $sheet){
-    $sheet->getStyle($cell)->applyFromArray(
-        array(
-            'fill' => array(
-                'type' => PHPExcel_Style_Fill::FILL_SOLID,
-                'color' => array('rgb' => 'FF9933')
-            ),
-            'font'  => array(
-                'bold'  => true,
-                'color' => array('rgb' => 'FFFFFF')
-            )
-        )
-    );
-}
 function setCellWidth($column, $objPHPExcel, $width){
     $objPHPExcel->getActiveSheet()->getColumnDimension($column)->setWidth($width);
 }

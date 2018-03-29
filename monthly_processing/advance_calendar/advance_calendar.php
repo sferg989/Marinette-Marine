@@ -35,6 +35,7 @@ $cur_month_dir      = $path2_cobra_dir."/".$ship_code." ".$cur_year."/".$ship_co
 
 $path2CobraBkup     = $cur_month_dir."/".$ship_code." ".$cur_month_letters." ". $cur_year." Cobra Backups";
 
+
 if($control=="step_grid")
 {
     $data = "[";
@@ -57,7 +58,6 @@ if($control=="step_grid")
     $data.="]";
     die($data);
 }
-
 
 if($control=="bkup_reclass_report")
 {
@@ -86,6 +86,20 @@ if($control=="bkup_reclass_report")
 
 if($control=="bkup_advance_bkup")
 {
+    $sql_array = array();
+    if($ship_code=="0471"){
+        $ship_code = "0471-";
+    }
+    $sql_array = updateCalendarSet($ship_code, $rpt_period);
+
+    $split_array = array_chunk($sql_array, 999);
+    foreach ($split_array as $sql_chunks){
+        $sql_implode = implode(";", $sql_chunks);
+
+        //array_debug($sql_chunks);
+        //print $sql_implode;
+        runSQLCommandUtil($ship_code,$sql_implode, $g_path2CobraAPI,$g_path2CMDSQLUtil,$g_path2BATSQLUtil);
+    }
     if(file_exists($path2CobraBkup)==false)
     {
         print "This Directory ".$path2CobraBkup." Does not exist!!  Go Back and Create this months Processing Folders!";
@@ -103,7 +117,6 @@ if($control=="bkup_advance_bkup")
     $update_eac                 = "0";
 
     advanceCalendarCobraProject($ship_code,$g_path2CobraAPI,$g_path2AdvanceCalendarProjectCMD,$g_path2AdvanceCalendarProjectBAT,$status_date_for_loe,$update_rates_fte,$sync_calendar,$rolling_wave_skip, $update_eac,$debug);
-
     if(file_exists($path2CobraBkup)==false)
     {
         print "This Directory ".$path2CobraBkup." Does not exist!!  Go Back and Create this months Processing Folders!";

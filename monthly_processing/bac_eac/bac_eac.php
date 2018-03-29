@@ -4,7 +4,7 @@ include("../../inc/inc.bac_eac.php");
 include("../../inc/inc.PHPExcel.php");
 include("change_summary.php");
 include("eac_change_summary.php");
-
+session_write_close();
 
 /**
  * Created by PhpStorm.

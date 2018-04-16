@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CBM PART Mapping</title>
+    <link rel="stylesheet" href="../inc/lib/css/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="../inc/lib/js/SlickGrid-2.0-frozenRowsAndColumns/plugins/slick.headerbuttons.css">
+
+    <link rel="stylesheet" href="../inc/lib/js/SlickGrid-2.0-frozenRowsAndColumns/controls/slick.pager.css">
+    <link rel="stylesheet" href="../inc/lib/js/SlickGrid-2.0-frozenRowsAndColumns/slick.grid.css">
+    <link rel="stylesheet" href="../inc/lib/js/SlickGrid-2.0-frozenRowsAndColumns/controls/slick.columnpicker.css">
+    <link rel="stylesheet" href="../inc/lib/js/SlickGrid-2.0-frozenRowsAndColumns/css/smoothness/jquery-ui-1.8.24.custom.css">
+    <link rel="stylesheet" href="../inc/lib/js/SlickGrid-2.0-frozenRowsAndColumns/examples/examples.css">
+    <script src="../inc/lib/js/tether-1.3.3/dist/js/tether.min.js"></script>
+<style>
+    [class^="slickgrid_"],
+    [class^="slickgrid_"] div {
+        -webkit-box-sizing: content-box;
+        -moz-box-sizing: content-box;
+        box-sizing: content-box;
+    }
+
+</style>
+
+
+<style>
+
+
+    /* container adjusted */
+    .alt-grid .container {width:98%;height:50%;max-width:none;padding:0}
+    body {overflow-x: hidden;}
+
+    .btn-warning {
+        color: black;
+    }
+    #shipGrid .slick-row.active .slick-cell {
+        background-color: #7FDBFF;
+        font-weight: bold;
+    }
+    .slick-cell, .slick-headerrow-column {
+        position: absolute;
+        border: 1px solid transparent;
+        border-right: 1px dotted silver;
+        border-bottom-color: silver;
+        overflow: hidden;
+        -o-text-overflow: ellipsis;
+        text-overflow: ellipsis;
+        vertical-align: middle;
+        z-index: 1;
+        padding: 1px 2px 2px 1px;
+        margin: 0;
+        /*white-space: nowrap;*/
+        cursor: default;
+    }
+    .loading-indicator {
+        display: inline-block;
+        padding: 12px;
+        background: white;
+        -opacity: 0.5;
+        color: black;
+        font-weight: bold;
+        z-index: 9999;
+        border: 1px solid red;
+        -moz-border-radius: 10px;
+        -webkit-border-radius: 10px;
+        -moz-box-shadow: 0 0 5px red;
+        -webkit-box-shadow: 0px 0px 5px red;
+        -text-shadow: 1px 1px 1px white;
+    }
+    .loading-indicator label {
+        padding-left: 20px;
+        background: url('../inc/images/loading-icon-16.png') no-repeat center left;
+    }
+    .showNegRed{
+        text-align: right;
+        color: red;
+    }
+    .showPosBlack{
+        text-align: right;
+    }
+
+
+    .slick-viewport { overflow-x: auto !important; overflow-y: auto !important; }
+    .title_font {
+        font-size: 15px;
+        font-family : "Helvetica ";
+    }
+</style>
+
+
+</head>
+<body class="alt-grid">
+<!--<div id = "filters">-->
+
+<div class="container">
+    <div class="row">
+    <div class="col-md-12">
+        <div class="col-md-3">
+            <h6>Run live from Fortis and Baan</h6>
+            <h6 >All Po's that New/Pending IN Fortis. And Are not in the CBM.<br>
+                Excluded- SWBS 825.<br>
+                Excluded- All Items Not associated with a Buyer are. <br>
+                Excluded- Non Contrustion Clins.
+            </h6>
+        </div>
+
+    </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-12">
+            <div id="my_pager" style="width:100%;"></div>
+            <div id="shipGrid" style="width:100%;height: 100%;"></div>
+        </div>
+
+    </div>
+    <br>
+</div>
+</body>
+
+<script src="../inc/lib/js/require.js" data-main="main.js" ></script>
+
+<script src="../level1.require.config.js"></script>
+
+</html>

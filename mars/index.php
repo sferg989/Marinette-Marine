@@ -25,6 +25,7 @@ function insertData($table_name, $path2file,$period){
         insertGLdetail($path2file, $period);
     }
 }
+
 function saveListOfFileNamesPHPExcel($file_name_array,$directory2Copy,$rel_path2_desitnation, $period, $table_name)
 {
 

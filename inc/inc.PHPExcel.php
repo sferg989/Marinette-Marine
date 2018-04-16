@@ -7,7 +7,177 @@
  */
 include("lib/php/phpExcel-1.8/classes/PHPExcel.php");
 //include("lib/php/phpExcel-1.8/classes/phpexcel/IOFactory.php");
+function phpExcelCurrency($range, $objPHPExcel){
+    $objPHPExcel->getActiveSheet()
+        ->getStyle($range)
+        ->getNumberFormat()
+        ->setFormatCode(PHPExcel_Style_NumberFormat::FORMAT_CURRENCY_USD);
+}
+function boldAndUnderLine($range, $sheet){
+    $styleArray = array(
+        'font' => array(
+            'bold' => true,
+            'underline' => PHPExcel_Style_Font::UNDERLINE_SINGLE
+        )
+    );
+    $sheet->getStyle($range)->applyFromArray($styleArray);
+}
+function phpExcelCurrencySheet($range, $sheet){
+    $sheet->getStyle($range)
+        ->getNumberFormat()
+        ->setFormatCode(PHPExcel_Style_NumberFormat::FORMAT_CURRENCY_USD);
+}
+function phpExcelCurrencySheetBOLD($range, $sheet){
+    $sheet->getStyle($range)
+        ->getNumberFormat()
+        ->setFormatCode(PHPExcel_Style_NumberFormat::FORMAT_CURRENCY_USD);
+    $styleArray = array(
+        'font' => array(
+            'bold' => true
+        )
+    );
+    $sheet->getStyle($range)->applyFromArray($styleArray);
+}
+function phpExcelCurrencySheetBOLDAndCOLOR($range, $sheet){
 
+    $sheet->getStyle($range)
+        ->getNumberFormat()
+        ->setFormatCode(PHPExcel_Style_NumberFormat::FORMAT_CURRENCY_USD);
+    $styleArray =
+        array(
+        'font' => array(
+            'bold' => true,
+            'color' => array('rgb' => '000000')
+        ),
+        'fill' => array(
+            'type' => PHPExcel_Style_Fill::FILL_SOLID,
+            'color' => array('rgb' => 'FF99CC')
+        )
+    );
+    $sheet->getStyle($range)->applyFromArray($styleArray);
+}
+function phpExcelCurrencySheetBOLDAndCustomCOLORIFNOT0($range, $sheet, $bk_ground,$font,$val, $fortis_status=""){
+    $val = intval($val);
+
+    if($val!=0){
+        /*NOT APPROVED POS*/
+        if($fortis_status!="Approved"){
+            $styleArray =
+                array(
+                    'font' => array(
+                        'bold' => true,
+                        'color' => array('rgb' => $font)
+                    ),
+                    'fill' => array(
+                        'type' => PHPExcel_Style_Fill::FILL_SOLID,
+                        'color' => array('rgb' => "0a34db")
+                    )
+                );
+        }
+        /*approved po's*/
+        else{
+            $styleArray =
+                array(
+                    'font' => array(
+                        'bold' => true,
+                        'color' => array('rgb' => $font)
+                    ),
+                    'fill' => array(
+                        'type' => PHPExcel_Style_Fill::FILL_SOLID,
+                        'color' => array('rgb' => $bk_ground)
+                    )
+                );
+        }
+
+    }else{
+        $styleArray =
+            array(
+                'font' => array(
+                    'bold' => true,
+                    'color' => array('rgb' => '000000')
+                )
+            );
+    }
+    $sheet->getStyle($range)
+        ->getNumberFormat()
+        ->setFormatCode(PHPExcel_Style_NumberFormat::FORMAT_CURRENCY_USD);
+
+    $sheet->getStyle($range)->applyFromArray($styleArray);
+}
+
+function phpExcelCurrencySheetBOLDDiff($range, $sheet,$val){
+    $val = intval($val);
+    if($val>0){
+        $styleArray =
+            array(
+                'font' => array(
+                    'bold' => true,
+                    'color' => array('rgb' => "ffffff")
+                ),
+                'fill' => array(
+                    'type' => PHPExcel_Style_Fill::FILL_SOLID,
+                    'color' => array('rgb' => "e20909")
+                )
+            );
+
+    }
+    if($val<0){
+        $styleArray =
+            array(
+                'font' => array(
+                    'bold' => true
+                ),
+                'fill' => array(
+                    'type' => PHPExcel_Style_Fill::FILL_SOLID,
+                    //'color' => array('rgb' => "32CD32")
+                    'color' => array('rgb' => "98E698")
+                )
+            );
+
+    }
+    if($val==0){
+        $styleArray =
+            array(
+                'font' => array(
+                    'bold' => true
+                )
+            );
+
+    }
+    $sheet->getStyle($range)
+        ->getNumberFormat()
+        ->setFormatCode(PHPExcel_Style_NumberFormat::FORMAT_CURRENCY_USD);
+
+    $sheet->getStyle($range)->applyFromArray($styleArray);
+}
+function phpExcelFormatPercentage($range, $objPHPExcel){
+    $objPHPExcel->getActiveSheet()
+        ->getStyle($range)
+        ->getNumberFormat()
+        ->setFormatCode(PHPExcel_Style_NumberFormat::FORMAT_PERCENTAGE_00);
+}
+function phpExcelFormatPercentageSheet($range, $sheet){
+    $sheet->getStyle($range)
+        ->getNumberFormat()
+        ->setFormatCode(PHPExcel_Style_NumberFormat::FORMAT_PERCENTAGE_00);
+}
+function phpExcelFormatHours($range,$objPHPExcel){
+    $objPHPExcel->getActiveSheet()
+        ->getStyle($range)
+        ->getNumberFormat()
+        ->setFormatCode('#,##0');
+}
+function phpExcelFormatHoursSheet($range,$sheet){
+    $sheet->getStyle($range)
+        ->getNumberFormat()
+        ->setFormatCode('#,##0');
+}
+function phpExcelFormatDecimal($range,$objPHPExcel){
+    $objPHPExcel->getActiveSheet()
+        ->getStyle($range)
+        ->getNumberFormat()
+        ->setFormatCode('#,##0');
+}
 function loadPHPEXCELFile($path2xlsfile)
 {
     print "<br>".$path2xlsfile."<br>";
@@ -73,7 +243,6 @@ function savePHPEXCELCSV($file_name,$path2xlsfile,$path2_destination)
     }
 
     $objPHPExcel  = loadPHPEXCELFile($path2xlsfile);
-
     $objWriter    = PHPExcel_IOFactory::createWriter($objPHPExcel, 'CSV');
     $sheet_exists = PHPExcelcheckifSheetNameExists($objPHPExcel, "Locked Data");
     if($sheet_exists==true){
@@ -95,6 +264,7 @@ function savePHPEXCELCSV($file_name,$path2xlsfile,$path2_destination)
     $objPHPExcel = null;
     return $outFile;
 }
+
 function savePHPEXCELCSV1WorkSheetByIndex($file_name,$path2xlsfile,$path2_destination, $sheet_index)
 {
     print $path2_destination."<br>";
@@ -141,6 +311,7 @@ function savePHPEXCELCSV1WorkSheetByIndex2007($file_name,$path2xlsfile,$path2_de
 
 function PHPExcelRemoveSheetByName($objWorkSheet,$sheet_name){
     $objWorkSheet->setActiveSheetIndexByName($sheet_name);
+
     $sheetIndex = $objWorkSheet->getActiveSheetIndex();
     $objWorkSheet->removeSheetByIndex($sheetIndex);
 }
@@ -199,4 +370,19 @@ function loadTimePhaseFutureCheck($rpt_period, $schema, $ship_code, $time_phased
 
         $junk = dbCall($sql, $schema);
     }
+}
+
+function colorCellHeaderTitleSheet($cell, $sheet){
+    $sheet->getStyle($cell)->applyFromArray(
+        array(
+            'fill' => array(
+                'type' => PHPExcel_Style_Fill::FILL_SOLID,
+                'color' => array('rgb' => 'FF9933')
+            ),
+            'font'  => array(
+                'bold'  => true,
+                'color' => array('rgb' => 'FFFFFF')
+            )
+        )
+    );
 }

@@ -1,0 +1,4 @@
+V51	postgres	Cpr																																															
+n	d	d	s	n	d	n	n	n	n	n	d	n	s	s	s	d	n	n	n	n	n	n	n	n	n	d	d	d	d	d	n	n	n	n	n	n	n	n	n	n	n	n	n	n	n	n	s	d	s
+PeriodID	RptStartDt	RptEndDt	LastContrChg	TotalNegChg	LastOTB	CBB	TAB	FundsObl	TgtFeeDol	TgtFeePct	LastItemDlv	Incentives	ApprName	ApprTitle	ApprOrg	SubmDate	NegCost	AuthUnpr	TgtPrice	EstPrice	ContrCeiling	EstCeiling	TotalAwdFee	AwdFeePaid	AwdFeeRem	ContrCompl	PoEstCompl	CtrEstCompl	PlanCompl	EvmsAppr	EacMin	EacML	EacMax	PoEpc	CaoEpc	TotalFund	MinFee	MaxFee	FixedFee	NonFeeBearCost	ShareAbove	ShareBelow	TFloat	FundLimit	AmtBilled	PmtRcvd	BaselineRevNum	BaselineRevDate	OmbConcur
+12	2017-08-01	2017-08-31	0	13067289		13067289	13067289	14374017.9	1306728.9	10.00%	2017-10-01	0	Derek	Program Manager			13067289	0	13067289	13067289	0	0	0	0	0	2017-10-01		2017-10-01	2017-10-01		0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	2017-08-01	N

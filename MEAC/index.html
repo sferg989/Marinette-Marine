@@ -2,92 +2,284 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="../inc/lib/css/bootstrap/css/bootstrap.css">
-    <link rel="stylesheet" href="../inc/lib/js/SlickGrid-master/examples/examples.css">
-    <link rel="stylesheet" href="../inc/lib/js/SlickGrid-master/slick.grid.css">
-    <link rel="stylesheet" href="../inc/lib/js/SlickGrid-master/controls/slick.pager.css">
+    <title>MEAC TOOL</title>
+    <link rel="stylesheet" href="../inc/lib/js/SlickGrid-master/plugins/slick.headerbuttons.css">
 
+    <link rel="stylesheet" href="../inc/lib/js/SlickGrid-master/examples/examples.css">
+    <link rel="stylesheet" href="../inc/lib/js/SlickGrid-master/controls/slick.pager.css">
+    <link rel="stylesheet" href="../inc/lib/js/SlickGrid-master/slick.grid.css">
     <link rel="stylesheet" href="../inc/lib/js/SlickGrid-master/css/smoothness/jquery-ui-1.8.16.custom.css">
     <link rel="stylesheet" href="../inc/lib/js/SlickGrid-master/controls/slick.columnpicker.css">
+    <link rel="stylesheet" href="../inc/lib/js/select2-4.0.3/dist/css/select2.min.css">
     <script src="../inc/lib/js/tether-1.3.3/dist/js/tether.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
-<style>
-    [class^="slickgrid_"],
-    [class^="slickgrid_"] div {
-        -webkit-box-sizing: content-box;
-        -moz-box-sizing: content-box;
-        box-sizing: content-box;
-    }
+<!--
+    <link rel="stylesheet" href="../inc/lib/css/bootstrap/css/bootstrap.css">
+-->
 
-</style>
+    <style>
+        [class^="slickgrid_"],
+        [class^="slickgrid_"] div {
+            -webkit-box-sizing: content-box;
+            -moz-box-sizing: content-box;
+            box-sizing: content-box;
+        }
 
+    </style>
 
-<style>
-
-
-    /* container adjusted */
-    .alt-grid .container {width:98%;height:50%;max-width:none;padding:0}
-    body {overflow-x: hidden;}
-
-    .btn-warning {
-        color: black;
-    }
-    .slick-cell, .slick-headerrow-column {
-        position: absolute;
-        border: 1px solid transparent;
-        border-right: 1px dotted silver;
-        border-bottom-color: silver;
-        overflow: hidden;
-        -o-text-overflow: ellipsis;
-        text-overflow: ellipsis;
-        vertical-align: middle;
-        z-index: 1;
-        padding: 1px 2px 2px 1px;
-        margin: 0;
-        /*white-space: nowrap;*/
-        cursor: default;
-    }
-    .showNegRed{
-        text-align: right;
-        color: red;
-    }
-    .showPosBlack{
-        text-align: right;
-    }
+    <style>
 
 
-    .slick-viewport { overflow-x: auto !important; overflow-y: auto !important; }
-    .title_font {
-        font-size: 15px;
-        font-family : "Helvetica ";
-    }
-</style>
-<title>MEAC TOOL</title>
+        /* container adjusted */
+        .alt-grid .container {width:98%;height:50%;max-width:none;padding:0}
+        body {overflow-x: hidden;}
+
+        .slick-cell, .slick-headerrow-column {
+            position: absolute;
+            border: 1px solid transparent;
+            border-right: 1px dotted silver;
+            border-bottom-color: silver;
+            overflow: hidden;
+            -o-text-overflow: ellipsis;
+            text-overflow: ellipsis;
+            vertical-align: middle;
+            z-index: 1;
+            padding: 1px 2px 2px 1px;
+            margin: 0;
+            /*white-space: nowrap;*/
+            cursor: default;
+        }
+        .loading-indicator label {
+            padding-left: 20px;
+            background: url('../inc/images/loading-icon-16.png') no-repeat center left;
+        }
+
+
+        #shipGrid .slick-row.active .slick-cell {
+            background-color: #7FDBFF;
+            font-weight: bold;
+        }
+        .slick-viewport { overflow-x: auto !important; overflow-y: auto !important; }
+
+        .tabs-left, .tabs-right {
+            border-bottom: none;
+            padding-top: 2px;
+        }
+        .tabs-left {
+            border-right: 1px solid #ddd;
+        }
+        .tabs-left>li, .tabs-right>li {
+            float: none;
+            margin-bottom: 2px;
+        }
+        .tabs-left>li {
+            margin-right: -1px;
+        }
+        .tabs-left>li.active>a,
+        .tabs-left>li.active>a:hover,
+        .tabs-left>li.active>a:focus {
+            border-bottom-color: #ddd;
+            border-right-color: transparent;
+        }
+        .tabs-left>li>a {
+            border-radius: 4px 0 0 4px;
+            margin-right: 0;
+            display:block;
+        }
+    </style>
 </head>
 <body class="alt-grid">
-<!--<div id = "filters">-->
-
-<div class="container" >
-    <div class="row">
-        <div class="col-md-1">
-            <button id="back_btn" type="button" class="btn btn-info btn-sm">Back</button>
+<div class="container">
+    <div  class="col-sm-12">
+        <h4>Part Level MEAC</h4>
+        <hr/>
+        <div class="col-xs-2">
+            <!-- required for floating -->
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs tabs-left">
+                <li class="active"><a href="#home" data-toggle="tab">Material Report Upload</a></li>
+                <li><a href="#profile" data-toggle="tab">Build MEAC Tables</a></li>
+                <li><a href="#messages" data-toggle="tab">Build WP JOINED Tables</a></li>
+                <li><a href="#swbs_summary" data-toggle="tab">Build SWBS SUMMARY</a></li>
+                <li ><a href="#settings" data-toggle="tab">DATA STATUS/Download MEAC</a></li>
+            </ul>
         </div>
-    </div>
-    <br>
-    <div class="row">
-        <div id = "meac_div">
-            <div id = "my_pager" style="width:100%;height:20px;"></div>
-            <div id = "meacGrid" style="width:100%;"></div>
+        <div class="col-xs-10">
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div class="tab-pane active" id="home">
+                        <div id="div_file_upload_div" class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <label for="rpt_period">
+                                        <h6>RPT Period</h6>
+                                    </label>
+                                    <div>
+                                        <select id="rpt_period" style="display:none" class="rpt_period" placeholder="RPT Period"></select>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="ship_code">
+                                        <h6>Hull</h6>
+                                    </label>
+                                    <div >
+                                        <select id="ship_code" style="display:none" class="ship_code" placeholder="HULL"></select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <form id="file-form" action="lib/php/grid.php" method="post" enctype="multipart/form-data">
+                            <div class="row">
+                                    <h6>Open PO</h6>
+                                    <input type="file" id="open_po" name="open_po" class="col-md-3">
+                                    <input type="submit" id="submit_open_po" name="submit_open_po" value="Upload File Now" class="col-md-3">
+                                </div>
+                            <div class="row">
+                                    <h6>Committed PO</h6>
+                                    <input type="file" id="committed_po" name="committed_po" class="col-md-3">
+                                    <input type="submit" id="submit_committed_po" name="submit_committed_po" value="Upload File Now" class="col-md-3">
+                            </div>
+                            <div class="row">
+                                    <h6>GL DETAIL</h6>
+                                    <input type="file" id="gl_detail" name="gl_detail" class="col-md-3">
+                                    <input type="submit" id="submit_gl_detail" name="submit_gl_detail" value="Upload File Now" class="col-md-3">
+                            </div>
+                            <div class="row">
+                                    <h6>Open Buy</h6>
+                                    <input type="file" id="open_buy" name="open_buy" class="col-md-3">
+                                    <input type="submit" id="submit_open_buy" name="submit_open_buy" value="Upload File Now" class="col-md-3">
+                            </div>
+                            </form>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <button   id="build_meac_tables" name="build_meac_tables" class="btn-success"> LOAD MEAC Tables</button>
+                                </div>
+                            </div>
+                        </div>
+                    <div id = 'status'></div>
+                </div>
+                <div class="tab-pane" id="profile">
+                    <div class="row">
+                        <label for="ship_code_cbm">
+
+                        </label>
+                        <div class="col-md-3">
+                            <select id="ship_code_cbm" style="display:none" class="ship_code_cbm" placeholder="HULL" multiple="multiple"></select>
+                        </div>
+                        <div class="col-md-3">
+                            <button   id="load_cbm" name="load_cbm" class="btn-success"> LOAD CBM </button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3"></div>
+                        <div class="col-md-3">
+                            <button   id="load_buyer_responsible" name="load_buyer_responsible" class="btn-success"> LOAD Buyer Responsible </button>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+
+                        <div class="col-md-3"></div>
+                        <div class="col-md-3">
+                            <button   id="inv_trans" name="inv_trans" class="btn-success"> LOAD INV Transfers/Fortis Data </button>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+
+                        <div class="col-md-3"></div>
+                        <div class="col-md-3">
+                            <button   id="cobra_codes" name="cobra_codes" class="btn-success"> LOAD Cobra Codes</button>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="tab-pane" id="messages">
+
+                    <div class="col-md-3">
+                        <select id="ship_code_wp_table" style="display:none" class="ship_code_wp_table" placeholder="HULL" multiple="multiple"></select>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <button   id="load_gl" name="load_gl" class="btn-success"> LOAD WP GL</button>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+
+                        <div class="col-md-3"></div>
+                        <div class="col-md-3">
+                            <button   id="load_open_po" name="load_open_po" class="btn-success"> LOAD WP Open PO</button>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+
+                        <div class="col-md-3"></div>
+                        <div class="col-md-3">
+                            <button   id="wp_committed_po" name="wp_committed_po" class="btn-success"> LOAD WP Committed PO</button>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+
+                        <div class="col-md-3"></div>
+                        <div class="col-md-3">
+                            <button   id="wp_open_buy" name="wp_open_buy" class="btn-success"> LOAD WP Open Buy </button>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+
+                        <div class="col-md-3"></div>
+                        <div class="col-md-3">
+                            <button   id="wp_ebom" name="wp_ebom" class="btn-success"> LOAD WP EBOM</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane" id="swbs_summary">CHeck if all requirements are met, and build the Part level MEAC Table.
+                    <div class="row">
+                        <div class="col-md-3"><select id="ship_code_swbs_summary" style="display:none" class="ship_code_status_grid" placeholder="HULL" multiple="multiple"></select></div>
+                        <button   id="build_swbs_table" name="build_swbs_table" class="btn-success"> LOAD SWBS Summary Table</button>
+                    </div>
+                    <br>
+                    <div class="row">
+
+                    </div>
+                </div>
+                <div class="tab-pane" id="settings">Check if all requirements are met, and download Part level MEAC.
+                    <div class="row">
+                        <div class="col-md-3"><select id="ship_code_status_grid" style="display:none" class="ship_code_status_grid" placeholder="HULL" multiple="multiple"></select></div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div id = "shipGrid"></div>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                    <br>
+                    <div class="row">
+
+                        <div class="col-md-6"></div>
+                        <div class="col-md-3">
+                            <button   id="build_meac" name="build_meac" class="btn-success"> BUILD MEAC FILE</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </div>
+        <div class="clearfix"></div>
     </div>
 
-    <br>
 
 </div>
-</body>
-
 <script src="../inc/lib/js/require.js" data-main="main.js" ></script>
 
 <script src="../level1.require.config.js"></script>
-
+</body>
 </html>

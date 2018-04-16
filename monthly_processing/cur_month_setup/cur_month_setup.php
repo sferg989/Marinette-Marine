@@ -64,11 +64,19 @@ if($control=="step_grid")
 if($control =="archive_project")
 {
     //$ship_code= "04731216";
+
+    if($ship_code=="0471"){
+        $ship_code = "0471-";
+    }
     archiveCobraProject($ship_code, $prev_month,$prev_year_last2,$prev_month_letters,$prev_year,$g_path2CobraAPI,$g_path2ArhiveProjectCMD,$g_path2ArhiveProjectBAT,$debug);
     die("Archive Prior Month Cobra Project");
 }
 if($control =="bkup")
 {
+
+    if($ship_code=="0471"){
+        $ship_code = "0471-";
+    }
     copyProjectFromCobra($ship_code,$path2CobraBkup, $g_path2CobraAPI,$g_path2CMD,$g_path2BAT,"final",$debug);
     die("Cobra Backup has been Created");
 }
@@ -118,7 +126,7 @@ if($control =="new_folder")
                     if (!$fileinfo->isDot())
                     {
                         $file_name =$fileinfo->getFilename();
-                        $file_name = substr($file_name, 13);
+                        $file_name = trim(substr($file_name, 13));
                         $new_name = $path."/" . $ship_code . " " . $cur_month_letters . " " . $cur_year . " ".$file_name;
                         $full_path = $path."/".$fileinfo->getFilename();
                         rename($full_path,$new_name);
@@ -132,8 +140,8 @@ if($control =="new_folder")
                 {
                     if (!$fileinfo->isDot())
                     {
-                        $file_name = $fileinfo->getFilename();
-                        $file_name = substr($file_name, 13);
+                        $file_name = trim($fileinfo->getFilename());
+                        $file_name = trim(substr($file_name, 13));
                         $new_name  = $path . "/" . $ship_code . " " . $cur_month_letters . " " . $cur_year . " " . $file_name;
                         $full_path = $path . "/" . $fileinfo->getFilename();
                         rename($full_path,$new_name);

@@ -16,7 +16,7 @@ function findBudgetValuesByColumnIndex($ship_code, $lines, $col_index,$col_title
         $fields   = explode("	", $value);
         $ca       = addslashes(trim($fields[0]));
         $wp       = addslashes(trim($fields[1]));
-        $val    = intval($fields[$col_index]);
+        $val    = formatNumber4decNoComma($fields[$col_index]);
         if($val!=0){
             insertTimephasedRecord($ship_code,$ca,$wp,$val,$col_title, $schema,$table_name);
         }
@@ -83,7 +83,7 @@ if($control=="load_p6_status_data"){
         $p      = formatNumber4decNoComma($fields[2]);
         $a      = formatNumber4decNoComma($fields[3]);
         $etc    = formatNumber4decNoComma($fields[4]);
-        $eac    = formatNumber4decNoComma($a + $etc);
+        $eac    = formatNumber4decNoComma($fields[5]);
 
         $ship_code = intval($ship_code);
         $sql.="(
@@ -175,7 +175,7 @@ if($control=="status_valid_check"){
     $status_labor_table = "";
     $cost_set_list[] = "Actuals";
     $cost_set_list[] = "EAC";
-    $cost_set_list[] = "Earned Value";
+    $cost_set_list[] = "Earned";
     $cost_set_list[] = "ETC";
 
 

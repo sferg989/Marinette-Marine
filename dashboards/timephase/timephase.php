@@ -1,49 +1,6 @@
 <?php
 include('../../inc/inc.php');
 $i = 0;
-function getRptPeriods($start_period, $end_period)
-{
-    $start_year = substr($start_period,0,4);
-    $end_year = substr($end_period,0,4);
-    $start_month = substr($start_period, -2);
-    $end_month = substr($end_period, -2);
-    $rpt_periods_array = array();
-    if($start_year==$end_year)
-    {
-        for ($i = $start_month; $i <= $end_month; $i++) {
-            $month = $i;
-            if(strlen($month)==1)
-            {
-                $month = "0".$month;
-            }
-            $period = $start_year."".$month;
-            $rpt_periods_array[] = intval($period);
-        }
-    }
-    if($start_year!=$end_year)
-    {
-        for ($i = $start_month; $i <= 12; $i++) {
-            $month = $i;
-            if(strlen($month)==1)
-            {
-                $month = "0".$month;
-            }
-            $period = $start_year."".$month;
-            $rpt_periods_array[] = intval($period);
-        }
-        for ($i = 1; $i <= $end_month; $i++) {
-            $month = $i;
-            if(strlen($month)==1)
-            {
-                $month = "0".$month;
-            }
-            $period = $end_year."".$month;
-            $rpt_periods_array[] = intval($period);
-        }
-    }
-    return $rpt_periods_array;
-    //var_dump($rpt_periods_array);
-}
 
 if($chart_type =="spa")
 {

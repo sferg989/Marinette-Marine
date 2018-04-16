@@ -10,8 +10,9 @@ function insertCalendar($rpt_period, $month_end)
 
 }
 function loadFiscalCalendar(){
-$sql = "select FSC_DATE, FIELD00, FIELD01 from FISCDETL where FSC_DATE < '2016-01-30 00:00:00.000' and FISCFILE = '0473' order by FSC_DATE";
-$rs = dbcallCobra($sql);
+    //$sql = "select FSC_DATE, FIELD00, FIELD01 from FISCDETL where FSC_DATE < '2016-01-30 00:00:00.000' and FISCFILE = '0473' order by FSC_DATE";
+    $sql = "select FSC_DATE, FIELD00, FIELD01 from FISCDETL where FSC_DATE < '2013-01-26 00:00:00.000' and FISCFILE = '0465' order by FSC_DATE";
+    $rs = dbcallCobra($sql);
     while (!$rs->EOF)
     {
 
@@ -34,6 +35,9 @@ $rs = dbcallCobra($sql);
     }
 }
 
+
+
+
 /**
  * Created by PhpStorm.
  * User: fs11239
@@ -41,16 +45,21 @@ $rs = dbcallCobra($sql);
  * Time: 2:52 PM
  */
 
+$cur_rpt_period = 201711;
+updateCalendarSet("0483",$cur_rpt_period);
+die();
 //loadFiscalCalendar();
+
 //insertCalendar(202001, 30);
-$g_path2_perform_report          = "D:\\";
-foreach (scandir($g_path2_perform_report) as $file) {
+//$g_path2_perform_report          = "D:\\";
+/*foreach (scandir($g_path2_perform_report) as $file) {
     if ('.' === $file) continue;
     if ('..' === $file) continue;
     print $file."<br>";
     //$csvfiles[] = $file;
 
-}
+}*/
+
 /*
  * **************************************
  * *************************************

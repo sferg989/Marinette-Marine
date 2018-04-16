@@ -6,22 +6,16 @@
  */
 define(function(){
 
-    var projectGridOptions = {
+
+    var options = {
         enableCellNavigation: true,
         editable            : true,
         forceFitColumns     : true,
         autoHeight          : true,
-        sort                : false
-    }
-    var glOptions = {
-        enableCellNavigation: true,
-        editable            : false,
-        forceFitColumns     : true,
-        autoHeight          : true,
-        sort                : false
+        sort                : false,
+        leaveSpaceForNewRows : true
     }
     return {
-        projectGridOptions: projectGridOptions,
-        glOptions: glOptions
+        gridOptions : options
     };
-})
+});

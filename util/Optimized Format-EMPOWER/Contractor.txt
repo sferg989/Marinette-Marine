@@ -1,0 +1,4 @@
+V51	postgres	Contractor								
+n	s	s	s	s	s	s	s	s	n	s
+CtrID	CtrName	Abbr	Addr1	Addr2	City	State	Country	Zip	IDType	IDCode
+1	Electronics	XYZ Ugli Campus Block C	56 Wood Lane	City NA	Country 12345		

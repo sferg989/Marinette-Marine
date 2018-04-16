@@ -1,5 +1,7 @@
 <?php
 include("../../../inc/inc.php");
+include("../../../inc/inc.PHPExcel.php");
+include('../../../inc/inc.cobra.php');
 include("inc.insert_data.php");
 /**
  * Created by PhpStorm.
@@ -7,27 +9,53 @@ include("inc.insert_data.php");
  * Date: 3/9/2017
  * Time: 4:02 PM
  */
-$files = array();
-//truncateTable("meac", "wp_gl_detail");
-//truncateTable("meac", "wp_open_po");
-//truncateTable("meac", "wp_open_buy");
-//truncateTable("meac", "wp_ebom");
-//truncateTable("meac", "wp_committed_po");
-//truncateTable("meac", "swbs_gl_summary");
+$destination_schema = "z_meac";
+$source_schema = "meac";
 
-//insertGLdetailWITHWP();
-//insertOpenPOWithWP();
-//insertOpenBuyWithWP();
-//insertEBOMWP();
-//insertCommittedPOWP();
-insertSWBSSummary(483);
+$array = array();
+$array[] = 465;
+$array[] = 467;
+$array[] = 469;
+$array[] = 471;
+$array[] = 473;
+$array[] = 475;
+$array[] = 477;
+$array[] = 479;
+$array[] = 481;
+$array[] = 483;
+$array[] = 485;
 
-/*
-$rpt_period = 201705;
-$table_name   = $rpt_period . "_meac";
-$create_table = checkIfTableExists($schema, $table_name);
-if($create_table== "create_table"){
-    createTableFromBase("meac","template_meac", $table_name);
+foreach ($array as $ship_code){
+    correctShockOpenBuyItemShortage($ship_code);
 }
-truncateTable("meac", $table_name);
-insertMEACDataNoCommodity($table_name);*/
+
+//$source_table = "wp_gl_detail";
+//$destination_table = "z_".$rpt_period."_".$source_table;
+//duplicateTable($source_table, $source_schema, $destination_table, $destination_schema);
+truncateTable("meac", "wp_gl_detail");
+insertGLdetailWITHWP();
+
+//$source_table = "wp_open_po";
+//$destination_table = "z_".$rpt_period."_".$source_table;
+//duplicateTable($source_table, $source_schema, $destination_table, $destination_schema);
+truncateTable("meac", "wp_open_po");
+insertOpenPOWithWP();
+
+//$source_table = "wp_committed_po";
+//$destination_table = "z_".$rpt_period."_".$source_table;
+//duplicateTable($source_table, $source_schema, $destination_table, $destination_schema);
+truncateTable("meac", "wp_committed_po");
+insertCommittedPOWP();
+
+//$source_table = "wp_open_buy";
+//$destination_table = "z_".$rpt_period."_".$source_table;
+//duplicateTable($source_table, $source_schema, $destination_table, $destination_schema);
+truncateTable("meac", "wp_open_buy");
+insertOpenBuyWithWP();
+
+//$source_table = "wp_ebom";
+//$destination_table = "z_".$rpt_period."_".$source_table;
+//duplicateTable($source_table, $source_schema, $destination_table, $destination_schema);
+truncateTable("meac", "wp_ebom");
+insertEBOMWP();
+

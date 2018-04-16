@@ -18,8 +18,8 @@ $(document).ready(function() {
             role      = e.data.role;
             hulls     = e.data.hulls;
             login     = e.data.login;
-            console.log("this is status "+login);
-            console.log("thses are the hulls" + hulls);
+            //console.log("this is status "+login);
+            //console.log("thses are the hulls" + hulls);
             if(login ==false){
                 bootbox.alert("please Login into FMM-EV", function (){
                     navigate("../../login/login.html");

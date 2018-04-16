@@ -8,5 +8,33 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module-library">
+      <library name="PHARS">
+        <CLASSES>
+          <root url="phar://$MODULE_DIR$/inc/lib/php/PhpSpreadsheet-develop/composer.phar/" />
+          <root url="phar://$MODULE_DIR$/inc/lib/php/PHPWord-develop/vendor/zendframework/zend-i18n/test/Translator/_files/translations.phar/" />
+          <root url="phar://$MODULE_DIR$/inc/lib/php/PHPWord-develop/vendor/symfony/dependency-injection/Tests/Fixtures/includes/ProjectWithXsdExtensionInPhar.phar/" />
+          <root url="phar://$MODULE_DIR$/inc/lib/php/PHPWord-develop/vendor/pdepend/pdepend/src/site/rst/static_reflection/releases/staticReflection-0.1.1.phar/" />
+          <root url="phar://$MODULE_DIR$/inc/lib/php/PHPWord-develop/vendor/friendsofphp/php-cs-fixer/tests/Fixtures/empty.phar/" />
+          <root url="phar://$MODULE_DIR$/inc/lib/php/PHPWord-develop/composer.phar/" />
+          <root url="phar://$MODULE_DIR$/inc/lib/php/PHPWord-develop/vendor/twig/twig/test/Twig/Tests/Loader/Fixtures/phar/phar-sample.phar/" />
+          <root url="phar://$MODULE_DIR$/inc/lib/php/PHPWord-develop/vendor/phpdocumentor/phpdocumentor/tests/data/test.phar/" />
+          <root url="phar://$MODULE_DIR$/inc/lib/php/PHPWord-develop/vendor/phpdocumentor/fileset/tests/data/test.phar/" />
+          <root url="phar://$MODULE_DIR$/inc/lib/php/PHPWord-develop/vendor/phpunit/phpunit/tests/_files/phpunit-example-extension/tools/phpunit.d/phpunit-example-extension-1.0.0.phar/" />
+        </CLASSES>
+        <SOURCES>
+          <root url="phar://$MODULE_DIR$/inc/lib/php/PhpSpreadsheet-develop/composer.phar/" />
+          <root url="phar://$MODULE_DIR$/inc/lib/php/PHPWord-develop/vendor/zendframework/zend-i18n/test/Translator/_files/translations.phar/" />
+          <root url="phar://$MODULE_DIR$/inc/lib/php/PHPWord-develop/vendor/symfony/dependency-injection/Tests/Fixtures/includes/ProjectWithXsdExtensionInPhar.phar/" />
+          <root url="phar://$MODULE_DIR$/inc/lib/php/PHPWord-develop/vendor/pdepend/pdepend/src/site/rst/static_reflection/releases/staticReflection-0.1.1.phar/" />
+          <root url="phar://$MODULE_DIR$/inc/lib/php/PHPWord-develop/vendor/friendsofphp/php-cs-fixer/tests/Fixtures/empty.phar/" />
+          <root url="phar://$MODULE_DIR$/inc/lib/php/PHPWord-develop/composer.phar/" />
+          <root url="phar://$MODULE_DIR$/inc/lib/php/PHPWord-develop/vendor/twig/twig/test/Twig/Tests/Loader/Fixtures/phar/phar-sample.phar/" />
+          <root url="phar://$MODULE_DIR$/inc/lib/php/PHPWord-develop/vendor/phpdocumentor/phpdocumentor/tests/data/test.phar/" />
+          <root url="phar://$MODULE_DIR$/inc/lib/php/PHPWord-develop/vendor/phpdocumentor/fileset/tests/data/test.phar/" />
+          <root url="phar://$MODULE_DIR$/inc/lib/php/PHPWord-develop/vendor/phpunit/phpunit/tests/_files/phpunit-example-extension/tools/phpunit.d/phpunit-example-extension-1.0.0.phar/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
   </component>
 </module>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Data Quality Tool</title>
+    <link rel="stylesheet" href="../inc/lib/css/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="../inc/lib/js/SlickGrid-master/examples/examples.css">
+    <link rel="stylesheet" href="../inc/lib/js/SlickGrid-master/slick.grid.css">
+    <link rel="stylesheet" href="../inc/lib/js/SlickGrid-master/css/smoothness/jquery-ui-1.8.16.custom.css">
+    <link rel="stylesheet" href="../inc/lib/js/SlickGrid-master/controls/slick.columnpicker.css">
+    <script src="../inc/lib/js/tether-1.3.3/dist/js/tether.min.js"></script>
+<style>
+    [class^="slickgrid_"],
+    [class^="slickgrid_"] div {
+        -webkit-box-sizing: content-box;
+        -moz-box-sizing: content-box;
+        box-sizing: content-box;
+    }
+
+</style>
+
+
+<style>
+
+
+    /* container adjusted */
+    .alt-grid .container {width:98%;height:50%;max-width:none;padding:0}
+    body {overflow-x: hidden;}
+
+    .btn-warning {
+        color: black;
+    }
+    .slick-cell, .slick-headerrow-column {
+        position: absolute;
+        border: 1px solid transparent;
+        border-right: 1px dotted silver;
+        border-bottom-color: silver;
+        overflow: hidden;
+        -o-text-overflow: ellipsis;
+        text-overflow: ellipsis;
+        vertical-align: middle;
+        z-index: 1;
+        padding: 1px 2px 2px 1px;
+        margin: 0;
+        /*white-space: nowrap;*/
+        cursor: default;
+    }
+    .showNegRed{
+        text-align: right;
+        color: red;
+    }
+    .showPosBlack{
+        text-align: right;
+    }
+
+
+    .slick-viewport { overflow-x: auto !important; overflow-y: auto !important; }
+    .title_font {
+        font-size: 15px;
+        font-family : "Helvetica ";
+    }
+</style>
+    <title>EVAS Metrics</title>
+    <link rel="stylesheet" href="../inc/lib/js/SlickGrid-master/plugins/slick.headerbuttons.css">
+</head>
+<body class="alt-grid">
+<!--<div id = "filters">-->
+
+<div class="container" >
+    <div class="row">
+        <div class="btn-toolbar">
+            <div class="btn-group">
+                <button id = "btn_clear" class="btn"><img src="../images/Clear-icon-16.png"/></button>
+                <button id = "btn_results_loader" class="btn" ><img src="../images/wizard-icon-16.png"/></button>
+                <select id = "layout_list" >
+                    <option value="477" >LCS 17</option>
+                    <option value="473" >LCS 13</option>
+                    <option value="475" >LCS 15</option>
+                    <option value="479" >LCS 19</option>
+                    <option value="481" >LCS 21</option>
+                    <option value="483" >LCS 23</option>
+                    <option value="485" >LCS 25</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-12">
+            <div id = "shipGrid"></div>
+        </div>
+
+    </div>
+    <div class="row">
+    </div>
+    <br>
+</div>
+</body>
+
+<script src="../inc/lib/js/require.js" data-main="main.js" ></script>
+
+<script src="../level1.require.config.js"></script>
+
+</html>

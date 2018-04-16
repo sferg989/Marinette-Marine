@@ -1,0 +1,6 @@
+V51	postgres	Structure
+n	s	s
+StruID	StruName	StruDesc
+1	WBS	Work Break Down Structure
+2	OBS	Organization Breakdown Structure
+3	Indirect	Indirect

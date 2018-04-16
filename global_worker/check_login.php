@@ -9,10 +9,11 @@ extract($_SESSION);
  * Time: 3:20 PM
  */
 if($control =="login"){
-    $login = $_SESSION["logged_in"];
-    $user  = $_SESSION["user_name"];
-    $hulls = $_SESSION["hulls"];
-    $role = $_SESSION["role"];
+
+    $login  = $_SESSION["logged_in"];
+    $user   = $_SESSION["user_name"];
+    $hulls  = $_SESSION["hulls"];
+    $role   = $_SESSION["role"];
     $data = "$login, $role, $user, $hulls";
     die($data);
 }

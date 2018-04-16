@@ -63,6 +63,8 @@ function checkUser($username,$password){
         $_SESSION["role"] = $role;
         $_SESSION["hulls"] = "17<>19<>21";
         $msg = "login";
+        session_write_close();
+
         return $msg;
     }
 }

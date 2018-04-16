@@ -1,0 +1,4 @@
+V51	postgres	Period				
+n	n	d	n	n	s	n
+PeriodID	ContrID	EndDate	PerNum	OrdVal	Alias	PubLevel
+12	1	2017-08-31	8	1		0

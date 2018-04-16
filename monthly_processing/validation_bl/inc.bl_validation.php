@@ -162,7 +162,7 @@ function returnTableFromRS($rs, $table_name){
 function validatePCS2P6BLLabor($schema, $rpt_period, $ship_code){
     /*Material*/
     $data_table = "";
-    if($ship_code<477){
+    if($ship_code<477 or $ship_code>485){
 
         $cobra_table_name = $rpt_period . "_cost";
         $p6_table_name    = $rpt_period . "_p6_bl_labor";
@@ -327,19 +327,19 @@ function validateHistoryCheck($schema, $prev_rpt_period,$cur_rpt_period, $ship_c
         $type     = $rs->fields["type"];
         $cost_set = $rs->fields["cost_set"];
         $date     = $rs->fields["date"];
-        $cur      = formatNumber($rs->fields["cur"]);
-        $prev     = formatNumber($rs->fields["prev"]);
-        $diff     = formatNumber($cur - $prev);
+        $cur      = formatNumber4decNoComma($rs->fields["cur"]);
+        $prev     = formatNumber4decNoComma($rs->fields["prev"]);
+        $diff     = formatNumber4decNoComma($cur - $prev);
 
-        if($diff>1 and $date<=$cur_rpt_period and $cost_set=="Budget"){
+        if($diff!=0 and $date<=$cur_rpt_period and $cost_set=="Budget"){
             $data_table.="
             <tr class = 'table_data'>
                 <td>$type</td>
                 <td>$date</td>
                 <td>$cost_set</td>
-                <td>$cur</td>
-                <td>$prev</td>
-                <td>$diff</td>
+                <td>".formatNumber($cur)."</td>
+                <td>".formatNumber($prev)."</td>
+                <td>".formatNumber($diff)."</td>
             </tr>
             ";
             $i++;

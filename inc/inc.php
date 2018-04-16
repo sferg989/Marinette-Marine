@@ -1,9 +1,23 @@
 <?php
-
 include("mmev.inc.php");
-session_start();
-
+//session_start();
+function createLink2Db($schema){
+    $user     = "steve";
+    $password = "all4him";
+    $link = mysqli_connect("localhost", $user, $password, $schema);
+    return $link;
+}
 function dbCall($sql,$schema="fmm_evms",$server="localhost"){
+
+    $user     = "steve";
+    $password = "all4him";
+    $db = ADONewConnection('mysql');
+    $db->Connect($server, $user, $password, $schema);
+
+    $result = $db->Execute($sql);
+    return $result;
+}
+function dbCallZorro($sql,$schema="fmm_evms",$server="10.102.9.10"){
 
     $user     = "steve";
     $password = "all4him";
@@ -17,13 +31,58 @@ function dbCallCobra($sql){
 
     $db = ADONewConnection('odbc_mssql');
 
-    $dsn = "Driver={SQL Server};Server=mmcsqlapp;Database=Cobra51;";
+    $dsn = "Driver={SQL Server};Server=Fmmsqlapps1;Database=Cobra51;";
 //declare the SQL statement that will query the database
     $db->Connect($dsn);
     $db->SetFetchMode(3);
     $result = $db->Execute($sql);
     return $result;
 }
+function dbCallP6($sql){
+
+    $db = ADONewConnection('odbc_mssql');
+
+    $dsn = "Driver={SQL Server};Server=mmcsqlapp;Database=PMDB8_2;";
+//declare the SQL statement that will query the database
+    $db->Connect($dsn);
+    $db->SetFetchMode(3);
+    $result = $db->Execute($sql);
+    return $result;
+}
+function dbCallBaan($sql){
+
+    $db = ADONewConnection('odbc_mssql');
+
+    $dsn = "Driver={SQL Server};Server=mmc-baan02;Database=baandb;";
+//declare the SQL statement that will query the database
+    $db->Connect($dsn);
+    $db->SetFetchMode(3);
+    $result = $db->Execute($sql);
+    return $result;
+}
+function dbCallFortis($sql){
+
+    $db = ADONewConnection('odbc_mssql');
+
+    $dsn = "Driver={SQL Server};Server=mmcsqlapp;Database=Marinette_Marine;";
+//declare the SQL statement that will query the database
+    $db->Connect($dsn);
+    $db->SetFetchMode(3);
+    $result = $db->Execute($sql);
+    return $result;
+}
+function dbCallK2($sql){
+
+    $db = ADONewConnection('odbc_mssql');
+
+    $dsn = "Driver={SQL Server};Server=mmcecmsql1;Database=engineering;";
+//declare the SQL statement that will query the database
+    $db->Connect($dsn);
+    $db->SetFetchMode(3);
+    $result = $db->Execute($sql);
+    return $result;
+}
+
 function now()
 {
     $timestamp = date("Y-m-d h:i:s");
@@ -32,6 +91,11 @@ function now()
 
 function truncateTable($schema, $table){
     $sql = "truncate table $schema.$table";
+    $junk = dbCall($sql, $schema);
+}
+
+function dropTable($schema, $table){
+    $sql = "drop table $schema.$table";
     $junk = dbCall($sql, $schema);
 }
 function buildWCandGB($pmid,$cmid="",$cam="")
@@ -595,8 +659,20 @@ function formatNumber($number){
 function formatNumber4decNoComma($number){
     $no_comma = str_replace(",", "", $number);
     $no_sign = str_replace("$", "", $no_comma);
+    $no_paran = str_replace("(", "-", $no_sign);
+    $no_right_paran = str_replace(")", "", $no_paran);
 
-    $value    = number_format($no_sign, 4, ".", "");
+    $value    = number_format($no_right_paran, 4, ".", "");
+    if($value ==""){
+        $value = 0;
+    }
+    return $value;
+}
+function formatNumber6decNoComma($number){
+    $no_comma = str_replace(",", "", $number);
+    $no_sign = str_replace("$", "", $no_comma);
+
+    $value    = number_format($no_sign, 6, ".", "");
     if($value ==""){
         $value = 0;
     }
@@ -647,7 +723,7 @@ function deleteShipFromTable($ship_code,$table_name, $schema)
 }
 function checkIfTableExists($schema, $table_name){
     $sql = "select table_name from information_schema.tables where table_schema = '$schema' and table_name = '$table_name'";
-    //print $sql;
+
     $rs = dbcall($sql, "information_schema");
     $val = $rs->fields["table_name"];
     if($val==""){
@@ -676,6 +752,16 @@ function deleteFromTable($schema, $table,$field, $value)
     $sql = "delete from $schema.$table where $field = '$value'";
     $junk = dbCall($sql,$schema);
 }
+function deleteFromTableIN($schema, $table,$field, $value)
+{
+    $sql = "delete from $schema.$table where $field in($value)";
+    $junk = dbCall($sql,$schema);
+}
+function deleteFromTableNotLike($schema, $table,$field, $value)
+{
+    $sql = "delete from $schema.$table where $field not like '%$value%'";
+    $junk = dbCall($sql,$schema);
+}
 function threeLetterMonth2Number($month){
     //print $month."<br>";
     $date_array["Jan"] = "01";
@@ -700,9 +786,7 @@ function insertCobraCurData($ship_code, $rpt_period, $schema){
         createTableFromBase("cost2","template_cost", $table_name);
     }
     deleteShipFromTable($ship_code,$table_name, $schema);
-
 }
-
 
 function getListOfFileNamesInDirectory($directory){
     //print $directory;
@@ -713,6 +797,18 @@ function getListOfFileNamesInDirectory($directory){
         $files[] = $file;
     }
     return $files;
+}
+
+
+function returnCobraProgram($ship_code){
+    if(strlen($ship_code)==3 or strlen($ship_code)==7)
+    {
+        $ship_code = "0".$ship_code;
+    }
+    if($ship_code =="0471"){
+        $ship_code = "0471-";
+    }
+    return $ship_code;
 }
 function currentRPTPeriod(){
     $day = date("d");
@@ -1141,5 +1237,328 @@ function runSQLCommandUtil($ship_code,$sql, $g_path2CobraAPI,$g_path2CMD,$g_path
         print $cmd_file;
         exec($cmd_file);
     }
+
+}
+function duplicateTable($source_table, $source_schema, $destination_table,$destination_schema){
+
+    $sql    = "CREATE TABLE $destination_schema.$destination_table LIKE $source_schema.$source_table";
+    $junk   = dbCall($sql);
+
+    $sql = "INSERT $destination_schema.$destination_table SELECT * FROM $source_schema.$source_table";
+    $junk = dbCall($sql);
+
+}
+function getRPTPeriodsgreaterThanYear($start_period, $end_period)
+{
+    $start_year  = substr($start_period, 0, 4);
+    $end_year    = substr($end_period, 0, 4);
+    $start_month = substr($start_period, -2);
+    $end_month   = substr($end_period, -2);
+    //202010-201710 = 3
+    $diff = $end_year-$start_year;
+    $year = $start_year;
+    $rpt_periods_array = array();
+    for ($i = $start_month; $i <= 12; $i++) {
+
+
+    }
+
+    if($diff==0)
+    {
+        for ($i = $start_month; $i <= $end_month; $i++) {
+            $month = $i;
+            if(strlen($month)==1)
+            {
+                $month = "0".$month;
+            }
+            $period = $start_year."".$month;
+            $rpt_periods_array[] = intval($period);
+        }
+    }
+    if($diff==1)
+    {
+        for ($i = $start_month; $i <= 12; $i++) {
+            $month = $i;
+            if(strlen($month)==1)
+            {
+                $month = "0".$month;
+            }
+            $period = $start_year."".$month;
+            $rpt_periods_array[] = intval($period);
+        }
+        for ($i = 1; $i <= $end_month; $i++) {
+            $month = $i;
+            if(strlen($month)==1)
+            {
+                $month = "0".$month;
+            }
+            $period = $end_year."".$month;
+            $rpt_periods_array[] = intval($period);
+        }
+    }
+    else{
+            for ($i = $start_month; $i <= 12; $i++) {
+                $month = $i;
+                if(strlen($month)==1)
+                {
+                    $month = "0".$month;
+                }
+                $period = $start_year."".$month;
+                $rpt_periods_array[] = intval($period);
+            }
+            $year = $start_year+1;
+            if($year==$end_year){
+                for ($i = 1; $i <= $end_month; $i++) {
+                    $month = $i;
+                    if(strlen($month)==1)
+                    {
+                        $month = "0".$month;
+                    }
+                    $period = $end_year."".$month;
+                    $rpt_periods_array[] = intval($period);
+                }
+            }
+            else{
+                for ($i = 1; $i <= 12; $i++) {
+                    $month = $i;
+                    if(strlen($month)==1)
+                    {
+                        $month = "0".$month;
+                    }
+                    $period = $year."".$month;
+                    $rpt_periods_array[] = intval($period);
+                }
+                for ($i = 1; $i <= $end_month; $i++) {
+                    $month = $i;
+                    if(strlen($month)==1)
+                    {
+                        $month = "0".$month;
+                    }
+                    $period = $end_year."".$month;
+                    $rpt_periods_array[] = intval($period);
+                }
+            }
+    }
+    return $rpt_periods_array;
+}
+function getRptPeriods($start_period, $end_period)
+{
+    $start_year  = substr($start_period, 0, 4);
+    $end_year    = substr($end_period, 0, 4);
+    $start_month = substr($start_period, -2);
+    $end_month   = substr($end_period, -2);
+
+    $rpt_periods_array = array();
+    if($start_year==$end_year)
+    {
+        for ($i = $start_month; $i <= $end_month; $i++) {
+            $month = $i;
+            if(strlen($month)==1)
+            {
+                $month = "0".$month;
+            }
+            $period = $start_year."".$month;
+            $rpt_periods_array[] = intval($period);
+        }
+    }
+    if($start_year!=$end_year)
+    {
+        for ($i = $start_month; $i <= 12; $i++) {
+            $month = $i;
+            if(strlen($month)==1)
+            {
+                $month = "0".$month;
+            }
+            $period = $start_year."".$month;
+            $rpt_periods_array[] = intval($period);
+        }
+        for ($i = 1; $i <= $end_month; $i++) {
+            $month = $i;
+            if(strlen($month)==1)
+            {
+                $month = "0".$month;
+            }
+            $period = $end_year."".$month;
+            $rpt_periods_array[] = intval($period);
+        }
+    }
+    return $rpt_periods_array;
+    //var_dump($rpt_periods_array);
+}
+
+function getStageDates($ship_code){
+    $sql = "select stage, start_date, end_date from tphase_hull_date where ship_code = $ship_code ORDER BY start_date";
+    //print $sql;
+    $rs = dbCall($sql, "meac");
+    $ship_stage_array = array();
+    $i= 0 ;
+    while (!$rs->EOF)
+    {
+        $stage                              = trim($rs->fields["stage"]);
+        $start_date                         = trim($rs->fields["start_date"]);
+        $end_date                           = trim($rs->fields["end_date"]);
+
+        $ship_stage_array[$i]["stage"]      = $stage;
+        $ship_stage_array[$i]["start_date"] = $start_date;
+        $ship_stage_array[$i]["end_date"]   = $end_date;
+        $i++;
+        $rs->MoveNext();
+    }
+    return $ship_stage_array;
+}
+
+function processDescription($desc){
+    $desc = str_replace(",", " and ", trim($desc));
+    $desc = str_replace("\"", " and ", trim($desc));
+    $desc = str_replace('"', "", $desc);
+    $desc = str_replace('
+    ', "", $desc);
+    $desc = str_replace("'", "", $desc);
+    $desc = str_replace(array("\n\r", "\n", "\r"), " ", $desc);
+    $desc = str_replace("", "", $desc);
+    $desc = str_replace("/", "", $desc);
+    $desc = str_replace("#", "Num ", $desc);
+    $desc = str_replace("#'s", "Numbers ", $desc);
+    return $desc;
+}
+function array_debug($my_array,$return_as_var=false)
+{
+    /*
+    print "count=".count($my_array)."<br>";
+    $i=0;
+    while($i < count($my_array))
+    {
+        print "$i " .$my_array[$i] . "<br>";
+        $i++;
+    }
+    */
+    if($return_as_var)
+    {
+        $z = "<pre>";
+        $z .= print_r($my_array,true);
+        $z .= "</pre>";
+        return $z;
+    }
+    else
+    {
+        print "<pre>";
+        print_r($my_array);
+        print "</pre>";
+    }
+    return true;
+}
+
+function getRPTList($rpt_period, $num_periods){
+    $start_rpt = getStartRPTPeriod($rpt_period, $num_periods);
+    $rpt_period_string = "\"$start_rpt\",";
+
+    for ($i=1;$i<$num_periods;$i++){
+        $start_rpt = getNextRPTPeriod($start_rpt);
+        $rpt_period_string.="\"$start_rpt\",";
+    }
+    $rpt_period_string = substr($rpt_period_string, 0,-1);
+    return $rpt_period_string;
+}
+function updateCalendarSet($ship_code, $rpt_period)
+{
+    $prev_rpt_period        = getPreviousRPTPeriod($rpt_period);
+    $one_ahead_rpt_period   = getNextRPTPeriod($rpt_period);
+    $two_ahead_rpt_period   = getNextRPTPeriod($one_ahead_rpt_period);
+    $three_ahead_rpt_period = getNextRPTPeriod($two_ahead_rpt_period);
+    $four_ahead_rpt_period  = getNextRPTPeriod($three_ahead_rpt_period);
+    $five_ahead_rpt_period  = getNextRPTPeriod($four_ahead_rpt_period);
+    $six_ahead_rpt_period   = getNextRPTPeriod($five_ahead_rpt_period);
+
+    $prev_rpt_date    = getDateCobraWC($prev_rpt_period);
+    $cur_rpt_date     = getDateCobraWC($rpt_period);
+    $one_ahead_date   = getDateCobraWC($one_ahead_rpt_period);
+    $two_ahead_date   = getDateCobraWC($two_ahead_rpt_period);
+    $three_ahead_date = getDateCobraWC($three_ahead_rpt_period);
+    $four_ahead_date  = getDateCobraWC($four_ahead_rpt_period);
+    $five_ahead_date  = getDateCobraWC($five_ahead_rpt_period);
+    $six_ahead_date   = getDateCobraWC($six_ahead_rpt_period);
+
+    $field_data_array = array();
+
+    $field_data_array[$four_ahead_date]  = "PLAN 3";
+    $field_data_array[$three_ahead_date] = "PLAN 2";
+    $field_data_array[$two_ahead_date]   = "PLAN 1";
+    $field_data_array[$one_ahead_date]   = "FREEZE";
+    $field_data_array[$cur_rpt_date]     = "THISMONTH";
+    $field_data_array[$prev_rpt_date]    = "TODATE";
+    $wc= "";
+    foreach ($field_data_array as $key=>$value){
+        $wc.= "'$value',";
+    }
+    $wc = substr($wc, 0, -1);
+    $sql_plan_horizon = array();
+
+    $sql_plan_horizon[] = "update  FISCDETL  set  FIELD06 = '', FLAG06 = ''  where  FISCFILE = '$ship_code' and FIELD06 in ($wc)";
+    //print $sql;
+    foreach ($field_data_array as $key=>$value){
+        $sql_plan_horizon[] ="update  FISCDETL  set  FIELD06 = '$value',  FLAG06 = '*' where  FISCFILE = '$ship_code' and FSC_DATE  = '$key'";
+    }
+
+    $field_data_array = array();
+    $field_data_array[$prev_rpt_date] = "PREVIOUS";
+    $field_data_array[$cur_rpt_date] = "TODATE";
+    $wc= "";
+    foreach ($field_data_array as $key=>$value){
+        $wc.= "'$value',";
+    }
+    $wc = substr($wc, 0, -1);
+
+    $sql_plan_horizon[] = "update  FISCDETL  set  FIELD18 = '', FLAG18 = ''  where  FISCFILE = '$ship_code' and FIELD18 in ($wc)";
+    foreach ($field_data_array as $key=>$value){
+        $sql_plan_horizon[] ="update  FISCDETL  set  FIELD18 = '$value',  FLAG18 = '*' where  FISCFILE = '$ship_code' and FSC_DATE  = '$key'";
+    }
+
+    $field_data_array = array();
+    $req_value_1 = returnRequiredSetText($one_ahead_date);
+    $req_value_2 = returnRequiredSetText($two_ahead_date);
+    $req_value_3 = returnRequiredSetText($three_ahead_date);
+    $req_value_4 = returnRequiredSetText($four_ahead_date);
+    $req_value_5 = returnRequiredSetText($five_ahead_date);
+    $req_value_6 = returnRequiredSetText($six_ahead_date);
+    $field_data_array[$prev_rpt_date]   = "PREVIOUS";
+    $field_data_array[$cur_rpt_date]    = "TODATE";
+    $field_data_array[$one_ahead_date]  = $req_value_1;
+    $field_data_array[$two_ahead_date]  = $req_value_2;
+    $field_data_array[$three_ahead_date]= $req_value_3;
+    $field_data_array[$four_ahead_date] = $req_value_4;
+    $field_data_array[$five_ahead_date] = $req_value_5;
+    $field_data_array[$six_ahead_date]  = $req_value_6;
+    $wc= "";
+    foreach ($field_data_array as $key=>$value){
+        $wc.= "'$value',";
+    }
+    $wc = substr($wc, 0, -1);
+
+    $sql_plan_horizon[] = "update  FISCDETL  set  FIELD19 = '', FLAG19 = ''  where  FISCFILE = '$ship_code' and FLAG19 = '*'";
+    foreach ($field_data_array as $key=>$value){
+        $sql_plan_horizon[] ="update  FISCDETL  set  FIELD19 = '$value',  FLAG19 = '*' where  FISCFILE = '$ship_code' and FSC_DATE  = '$key'";
+    }
+    //array_debug($sql_plan_horizon);
+    return $sql_plan_horizon;
+}
+function getDateCobraWC($rpt_period){
+    $year    = intval(substr($rpt_period, 0, 4));
+    $month   = month2digit(substr($rpt_period, -2));
+    $end_day = getMonthEndDay($rpt_period);
+    $day     = month2digit($end_day);
+
+    $date = $year."-".$month."-".$day." 00:00:00.000";
+    return $date;
+}
+
+function returnRequiredSetText($date){
+    $year = substr($date, 0,4);
+    $month = month2digit(substr($date, 5,2));
+    print $month;
+    $dateObj            = DateTime::createFromFormat('!m', $month);
+    $month_letters = $dateObj->format('M');
+    $month_letters = strtoupper($month_letters);
+    $text = $month_letters." ".$year;
+    return $text;
 
 }
